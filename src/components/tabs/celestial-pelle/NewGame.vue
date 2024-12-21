@@ -22,7 +22,7 @@ export default {
       this.visible = GameEnd.endState > END_STATE_MARKERS.SHOW_NEW_GAME && !GameEnd.removeAdditionalEnd;
       this.opacity = (GameEnd.endState - END_STATE_MARKERS.SHOW_NEW_GAME) * 2;
       this.hasMoreCosmetics = GlyphAppearanceHandler.lockedSets.length > 0;
-      this.selectedSetName = GlyphAppearanceHandler.chosenFromModal?.name ?? "None (will choose randomly)";
+      this.selectedSetName = GlyphAppearanceHandler.chosenFromModal?.name ?? "Нет (будет выбран случайно)";
     },
     startNewGame() {
       NG.startNewGame();
@@ -40,39 +40,39 @@ export default {
     :style="style"
   >
     <h2>
-      Reset the entire game, but keep Automator Scripts, Study Presets, Secret Themes, Secret Achievements, Options,
-      and Companion Glyph.
+      Сбросить всю игру, кроме программ для Автоматизатора, сохранённых Древ, разблокированных секретных тем и достижений
+      и Глифа-компаньона.
     </h2>
-    <h3>You can use the button in the top-right to view the game as it is right now.</h3>
+    <h3>Вы можете просмотреть игру в её текущем состоянии, нажав кнопку в правом верхнем углу.</h3>
     <div class="c-new-game-button-container">
       <button
         class="c-new-game-button"
         @click="startNewGame"
       >
-        Start over?
+        Начать заново?
       </button>
     </div>
     <br>
     <h3 v-if="hasMoreCosmetics">
-      For completing the game, you also unlock a new cosmetic set of your choice for Glyphs. These are freely
-      modifiable once you reach Reality again, but are purely visual and offer no gameplay bonuses.
+      В честь завершения игры вы получаете новый косметический набор глифов по вашему выбору. Вы сможете свободно настраивать
+      внешний вид глифов, когда вы вновь достигнете реальности, но это никак не отразится собственно на геймплее.
       <br>
       <button
         class="c-new-game-button"
         @click="openSelectionModal"
       >
-        Choose Cosmetic Set
+        Выбрать косметический набор
       </button>
       <br>
       <br>
-      Selected Set: {{ selectedSetName }}
+      Выбрано: {{ selectedSetName }}
     </h3>
     <h3 v-else>
-      You have unlocked all Glyph cosmetic sets!
+      Вы уже разблокировали все наборы глифов!
     </h3>
     <br>
     <h3>
-      You can also import "speedrun" to start the game again with additional tracking for speedrunning purposes.
+      Вы также можете импортировать "спидран", чтобы перезапустить игру с дополнительной отслежкой скорости вашего прогресса.
     </h3>
   </div>
 </template>

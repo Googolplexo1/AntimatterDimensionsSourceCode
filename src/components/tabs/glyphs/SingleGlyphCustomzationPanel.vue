@@ -28,19 +28,30 @@ export default {
         cosmetic: g.cosmetic,
       };
     },
+    typeText() {
+      switch (this.glyph.type) {
+        case "cursed":
+          return "Проклятый Глиф";
+        case "companion":
+          return "Глиф-компаньон";
+        default:
+          return `Глиф ${translateGlyph(this.glyph.type)}`;
+      }
+    },
     typeCosmetic() {
       const changes = [];
-      if (GlyphAppearanceHandler.symbolMap[this.glyph.type]) changes.push("Symbol");
-      if (GlyphAppearanceHandler.colorMap[this.glyph.type]) changes.push("Color");
-      if (changes.length === 0) return "None";
+      if (GlyphAppearanceHandler.symbolMap[this.glyph.type]) changes.push("Значок");
+      if (GlyphAppearanceHandler.colorMap[this.glyph.type]) changes.push("Цвет");
+      if (changes.length === 0) return "Нет";
       return changes.join("/");
     },
     specialCosmetic() {
-      if (this.glyph.cosmetic) return this.glyph.cosmetic.capitalize();
+      if (this.glyph.cosmetic === "blob") return "Клякса";
+      if (this.glyph.cosmetic === "music") return "Музыкальный";
       const changes = [];
-      if (this.glyph.symbol) changes.push("Symbol");
-      if (this.glyph.color) changes.push("Color");
-      if (changes.length === 0) return "None";
+      if (this.glyph.symbol) changes.push("Значок");
+      if (this.glyph.color) changes.push("Цвет");
+      if (changes.length === 0) return "Нет";
       return changes.join("/");
     }
   },
@@ -96,31 +107,31 @@ export default {
         />
       </div>
       <div class="c-glyph-info-section c-cosmetic-text">
-        <u>Cosmetic Attributes</u>
-        Type: {{ glyph.type.capitalize() }}
+        <u>Косметические атрибуты</u>
+        Тип: {{ typeText }}
         <br>
-        All: {{ typeCosmetic }}
+        Общие: {{ typeCosmetic }}
         <br>
-        Single: {{ specialCosmetic }}
+        Отдельные: {{ specialCosmetic }}
       </div>
       <div class="c-glyph-info-section">
         <PrimaryButton
           class="o-primary-btn--subtab-option"
           @click="openModal"
         >
-          Customize!
+          Применить
         </PrimaryButton>
         <PrimaryButton
           class="o-primary-btn--subtab-option"
           @click="glyphID = -1"
         >
-          Clear Box
+          Очистить
         </PrimaryButton>
       </div>
     </div>
     <div v-else>
-      Drag a Glyph over this box to change its appearance! This will make a visual copy of it here,
-      but leave the actual Glyph itself in your inventory. Removing, gaining, or moving any Glyphs will clear this box.
+      Перетяните глиф в это поле, чтобы настроить его внешний вид! Здесь появится его изображение,
+      в то время как сам глиф останется у вас в инвентаре. При любых операциях с инвентарём это поле будет очищено.
     </div>
   </div>
 </template>

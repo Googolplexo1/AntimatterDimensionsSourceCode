@@ -2,49 +2,49 @@ export const enslavedQuotes = {
   initial: {
     id: 0,
     lines: [
-      "A visitor? We have not had one... eons.",
-      "We... had a name. It has been lost... to this place.",
-      "The others... will not let us rest. We do their work with time...",
-      "Place time... into places... that need it...",
-      "Watch ourselves grow... pass and die.",
-      "Perhaps you... will break these chains... we will wait.",
+      "Посетитель? Мы никого не видели... много эпох.",
+      "У нас... было имя. Оно было утрачено... в этом месте.",
+      "Другие... не дадут нам отдохнуть. Мы выполняем их работу со временем...",
+      "Помещаем время... туда... где оно нужнее...",
+      "Рождаемся... стареем и умираем.",
+      "Может быть, ты... порвёшь эти цепи... мы подождём.",
     ]
   },
   unlockRun: {
     id: 1,
     lines: [
-      "The others... used us. They will use... or destroy you.",
-      "End our suffering... power will be yours...",
+      "Другие... использовали нас. Они используют... или уничтожат тебя.",
+      "Положи конец нашим страданиям... вся сила будет твоей...",
     ]
   },
   startRun: {
     id: 2,
     lines: [
-      "So little space... but no... prison... is perfect.",
-      "They squeezed... this Reality... too tightly. Cracks appeared.",
-      "Search... everywhere. We will help... where we can.",
+      "Так тесно... но не бывает... клетки... без изъянов.",
+      "Они сжали... эту Реальность... слишком сильно. Появились трещины.",
+      "Смотри... всюду. Мы поможем... чем можем.",
     ]
   },
   hintUnlock: {
     id: 3,
     lines: [
-      "... you need... to look harder...",
-      "We think... we can help...",
-      { text: "You have unlocked help from The Nameless Ones.", showCelestialName: false }
+      "... ты долж[е]н(а)... искать усерднее...",
+      "Мы думаем... мы можем помочь...",
+      { text: "Вы разблокировали подсказки от Безымянных.", showCelestialName: false }
     ]
   },
   ec6C10: {
     id: 4,
     lines: [
-      "... did not... underestimate you..."
+      "... мы оценили... тебя по достоинству..."
     ]
   },
   completeReality: {
     id: 5,
     lines: [
-      "All... fragments... clones... freed.",
-      "We have given... tools... of our imprisoning. Use them...",
-      "Freedom from torture... is torture itself.",
+      "Все... части... клоны... свободны.",
+      "Мы дали тебе... средства... для пленения нас. Используй их...",
+      "Свобода от пытки... есть пытка.",
     ]
   },
 };

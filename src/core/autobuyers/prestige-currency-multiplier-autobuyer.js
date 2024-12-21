@@ -6,7 +6,7 @@ export class IPMultAutobuyerState extends AutobuyerState {
   }
 
   get name() {
-    return `Infinity Point Multiplier`;
+    return `Удвоителей Очков Бесконечности`;
   }
 
   get isUnlocked() {
@@ -28,7 +28,7 @@ export class EPMultAutobuyerState extends AutobuyerState {
   }
 
   get name() {
-    return `Eternity Point Multiplier`;
+    return `Упятерителей Очков Вечности`;
   }
 
   get isUnlocked() {

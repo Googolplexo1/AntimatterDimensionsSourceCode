@@ -4,78 +4,78 @@ export const alchemyResources = {
   // T1 resources (Non-Effarig "base" resources)
   "power": {
     id: ALCHEMY_RESOURCE.POWER,
-    name: "Power",
+    name: "Сила",
     symbol: "Ω",
     isBaseResource: true,
     effect: amount => 1 + amount / 200000,
     tier: 1,
     uiOrder: 1,
     unlockedAt: 2,
-    description: "provides a power to Antimatter Dimensions",
-    formatEffect: value => `Antimatter Dimension multipliers ${formatPow(value, 4, 4)}`
+    description: "возводит множители Измерений Антиматерии в степень",
+    formatEffect: value => `множители Измерений Антиматерии возведены в степень ${format(value, 4, 4)}`
   },
   "infinity": {
     id: ALCHEMY_RESOURCE.INFINITY,
-    name: "Infinity",
+    name: "Бесконечность",
     symbol: "∞",
     isBaseResource: true,
     effect: amount => 1 + amount / 200000,
     tier: 1,
     uiOrder: 2,
     unlockedAt: 3,
-    description: "provides a power to Infinity Dimensions",
-    formatEffect: value => `Infinity Dimension multipliers ${formatPow(value, 4, 4)}`
+    description: "возводит множители Измерений Бесконечности в степень",
+    formatEffect: value => `множители Измерений Бесконечности возведены в степень ${format(value, 4, 4)}`
   },
   "time": {
     id: ALCHEMY_RESOURCE.TIME,
-    name: "Time",
+    name: "Время",
     symbol: "Δ",
     isBaseResource: true,
     effect: amount => 1 + amount / 200000,
     tier: 1,
     uiOrder: 3,
     unlockedAt: 4,
-    description: "provides a power to Time Dimensions",
-    formatEffect: value => `Time Dimension multipliers ${formatPow(value, 4, 4)}`
+    description: "возводит множители Измерений Времени в степень",
+    formatEffect: value => `множители Измерений Времени возведены в степень ${format(value, 4, 4)}`
   },
   "replication": {
     id: ALCHEMY_RESOURCE.REPLICATION,
-    name: "Replication",
+    name: "Репликация",
     symbol: "Ξ",
     isBaseResource: true,
     effect: amount => Decimal.pow10(amount / 1000),
     tier: 1,
     uiOrder: 4,
     unlockedAt: 5,
-    description: `increases Replication speed`,
-    formatEffect: value => `Replication speed is increased by ${formatX(value, 2, 2)}`
+    description: `даёт множитель к скорости репликации`,
+    formatEffect: value => `множитель ${formatX(value, 2, 2)} к скорости репликации`
   },
   "dilation": {
     id: ALCHEMY_RESOURCE.DILATION,
-    name: "Dilation",
+    name: "Замедление",
     symbol: "Ψ",
     isBaseResource: true,
     effect: amount => Decimal.pow10(amount / 2000),
     tier: 1,
     uiOrder: 5,
     unlockedAt: 6,
-    description: "increases Dilated Time production",
-    formatEffect: value => `Dilated Time production is increased by ${formatX(value, 2, 2)}`
+    description: "даёт множитель к производству Замедленного Времени",
+    formatEffect: value => `множитель ${formatX(value, 2, 2)} к производству Замедленного Времени`
   },
 
   // T2 resources (combinations of pairs of T1 resources)
   "cardinality": {
     id: ALCHEMY_RESOURCE.CARDINALITY,
-    name: "Cardinality",
+    name: "Мощность",
     symbol: "α",
     isBaseResource: false,
     effect: amount => 1 + 0.2 / (1 + amount / 20000),
     tier: 2,
     uiOrder: 3,
     unlockedAt: 8,
-    description: "reduces Replicanti slowdown when above the cap",
-    formatEffect: value => `Replicanti interval increases slower ${formatX(1.2, 1, 1)} ➜
-      ${formatX(value, 4, 4)} per ${format(Number.MAX_VALUE, 2)}`,
+    description: "ослабляет мягкое ограничение на скорость репликации",
+    formatEffect: value => `степень мягкого ограничения на скорость репликации понижена: ${formatX(Math.log10(1.2) / LOG10_MAX_VALUE, 6, 6)} ➜
+      ${formatX(Math.log10(value) / LOG10_MAX_VALUE, 6, 6)}`,
     reagents: [
       {
         resource: ALCHEMY_RESOURCE.TIME,
@@ -89,15 +89,15 @@ export const alchemyResources = {
   },
   "eternity": {
     id: ALCHEMY_RESOURCE.ETERNITY,
-    name: "Eternity",
+    name: "Вечность",
     symbol: "τ",
     isBaseResource: false,
     effect: amount => 1 + amount / 15000,
     tier: 2,
     uiOrder: 2,
     unlockedAt: 9,
-    description: "provides a power to Eternity generation",
-    formatEffect: value => `Eternity generation ${formatPow(value, 4, 4)}`,
+    description: "возводит производство вечностей в секунду в степень",
+    formatEffect: value => `производство вечностей в секунду возведено в степень ${format(value, 4, 4)}`,
     reagents: [
       {
         resource: ALCHEMY_RESOURCE.TIME,
@@ -111,15 +111,15 @@ export const alchemyResources = {
   },
   "dimensionality": {
     id: ALCHEMY_RESOURCE.DIMENSIONALITY,
-    name: "Dimensionality",
+    name: "Размерность",
     symbol: "ρ",
     isBaseResource: false,
     effect: amount => Decimal.pow10(5 * amount),
     tier: 2,
     uiOrder: 1,
     unlockedAt: 10,
-    description: "provides a large multiplier to all Dimensions",
-    formatEffect: value => `All Dimensions ${formatX(value)}`,
+    description: "даёт большой множитель ко всем измерениям",
+    formatEffect: value => `множитель ${formatX(value)} ко всем измерениям`,
     reagents: [
       {
         resource: ALCHEMY_RESOURCE.POWER,
@@ -133,16 +133,15 @@ export const alchemyResources = {
   },
   "inflation": {
     id: ALCHEMY_RESOURCE.INFLATION,
-    name: "Inflation",
+    name: "Инфляция",
     symbol: "λ",
     isBaseResource: false,
     effect: amount => Decimal.pow10(6e9 - 3e5 * amount),
     tier: 2,
     uiOrder: 5,
     unlockedAt: 11,
-    description: "provides an additional power for very large multipliers",
-    formatEffect: value => `All Antimatter Dimension multipliers are ${formatPow(1.05, 2, 2)}
-      if they are above ${format(value)} `,
+    description: () => `возводит большие множители Измерений Антиматерии в степень ${format(1.05, 2, 2)}`,
+    formatEffect: value => `множители Измерений Антиматерии, большие ${format(value)}, возведены в степень ${format(1.05, 2, 2)}`,
     reagents: [
       {
         resource: ALCHEMY_RESOURCE.POWER,
@@ -156,16 +155,15 @@ export const alchemyResources = {
   },
   "alternation": {
     id: ALCHEMY_RESOURCE.ALTERNATION,
-    name: "Alternation",
+    name: "Чередование",
     symbol: "ω",
     isBaseResource: false,
     effect: amount => amount / 200000,
     tier: 2,
     uiOrder: 4,
     unlockedAt: 12,
-    description: "increases the strength of Tachyon Galaxies based on Replicanti",
-    formatEffect: value => `Tachyon Galaxies are ${formatPercents(value, 2, 2)} stronger
-      per ${format(DC.E1E6)} Replicanti`,
+    description: "усиливает Тахионные Галактики в зависимости от количества Репликанти",
+    formatEffect: value => `Тахионные Галактики в 1+${format(value / 1e6, 10, 10)}log₁₀(Репликанти) раза сильнее`,
     reagents: [
       {
         resource: ALCHEMY_RESOURCE.REPLICATION,
@@ -181,19 +179,19 @@ export const alchemyResources = {
   // T3 resources (Effarig and conbinations of T1/T2 with Effarig)
   "effarig": {
     id: ALCHEMY_RESOURCE.EFFARIG,
-    name: "Effarig",
+    name: "Эффариг",
     symbol: "Ϙ",
     isBaseResource: true,
     effect: amount => Math.pow(10, amount / 2500),
     tier: 1,
     uiOrder: 1.5,
     unlockedAt: 7,
-    description: "increases Relic Shard gain",
-    formatEffect: value => `Relic Shard gain is multiplied ${formatX(value, 2, 2)}`
+    description: "даёт множитель к получению Реликтовых Осколков",
+    formatEffect: value => `множитель ${formatX(value, 2, 2)} к получению Реликтовых Осколков`
   },
   "synergism": {
     id: ALCHEMY_RESOURCE.SYNERGISM,
-    name: "Synergism",
+    name: "Синергия",
     symbol: "π",
     isBaseResource: false,
     effect: amount => {
@@ -203,10 +201,10 @@ export const alchemyResources = {
     tier: 3,
     uiOrder: 2,
     unlockedAt: 13,
-    description: "increases the yield of Alchemy Reactions",
+    description: "повышает производительность алхимических реакций",
     formatEffect(value) {
-      return `Alchemy Reaction efficiency ${formatPercents(0.3)} ➜ ${formatPercents(value, 2, 2)}
-        ${(!Achievement(175).isUnlocked && value >= 1) ? " (Capped)" : ""}`;
+      return `множитель ${formatX(value / 0.3, 2, 2)} к получению ресурсов от алхимических реакций
+        ${(!Achievement(175).isUnlocked && value >= 1) ? " (ограничено)" : ""}`;
     },
     reagents: [
       {
@@ -225,17 +223,17 @@ export const alchemyResources = {
   },
   "momentum": {
     id: ALCHEMY_RESOURCE.MOMENTUM,
-    name: "Momentum",
+    name: "Импульс",
     symbol: "μ",
     isBaseResource: false,
     effect: amount => 1 + amount / 125000,
     tier: 3,
     uiOrder: 3,
     unlockedAt: 15,
-    description: "provides a power to all Dimensions that permanently grows over time",
-    formatEffect: value => `All Dimensions ${formatPow(Ra.momentumValue, 4, 4)}, increasing by
-      ${format(0.005 * Achievement(175).effectOrDefault(1), 3, 3)}
-      per real-time hour after the resource is unlocked, up to a maximum of ${formatPow(value, 4, 4)}`,
+    description: "возводит множители всех измерений в степень, растущую со временем",
+    formatEffect: value => `множители всех измерений возведены в степень ${format(Ra.momentumValue, 4, 4)}, которая растёт
+      линейно на ${format(0.005 * Achievement(175).effectOrDefault(1), 3, 3)}
+      в час по реальному времяисчислению с момента разблокировки этого ресурса, но имеет ограничение в ${format(value, 4, 4)}`,
     reagents: [
       {
         resource: ALCHEMY_RESOURCE.EFFARIG,
@@ -253,16 +251,16 @@ export const alchemyResources = {
   },
   "decoherence": {
     id: ALCHEMY_RESOURCE.DECOHERENCE,
-    name: "Decoherence",
+    name: "Декогеренция",
     symbol: "ξ",
     isBaseResource: false,
     effect: amount => 0.15 * Math.sqrt(amount / 25000),
     tier: 3,
     uiOrder: 4,
     unlockedAt: 14,
-    description: "gives all basic Alchemy Resources upon refinement",
-    formatEffect: value => `Refined Glyphs also give ${formatPercents(value, 2)} of their value ` +
-      "to all other base resources",
+    description: "повышает эффективность облагораживания глифов",
+    formatEffect: value => `при облагораживании глифа вы получаете не только некоторое количество соответствующего ему ресурса, но и количество всех остальных основных ресурсов, равное ${formatPercents(value, 2)}` +
+      " от того количества",
     reagents: [
       {
         resource: ALCHEMY_RESOURCE.EFFARIG,
@@ -278,15 +276,15 @@ export const alchemyResources = {
   // T4 resources (resources which feed directly into the final resource)
   "exponential": {
     id: ALCHEMY_RESOURCE.EXPONENTIAL,
-    name: "Exponential",
+    name: "Экспонента",
     symbol: "Γ",
     isBaseResource: false,
     effect: amount => 10 * Math.pow(amount / 10000, 2),
     tier: 4,
     uiOrder: 2,
     unlockedAt: 18,
-    description: "multiplies Infinity Points based on Replicanti",
-    formatEffect: value => `Infinity Points multiplied by Replicanti${formatPow(value, 2, 3)}`,
+    description: "даёт множитель к получению Очков Бесконечности в зависимости от количества Репликанти",
+    formatEffect: value => `множитель к получению Очков Бесконечности, равный количеству Репликанти в степени ${format(value, 2, 3)}`,
     reagents: [
       {
         resource: ALCHEMY_RESOURCE.INFLATION,
@@ -300,15 +298,15 @@ export const alchemyResources = {
   },
   "force": {
     id: ALCHEMY_RESOURCE.FORCE,
-    name: "Force",
+    name: "Работа",
     symbol: "Φ",
     isBaseResource: false,
     effect: amount => 5 * amount,
     tier: 4,
     uiOrder: 2,
     unlockedAt: 17,
-    description: "multiplies Antimatter Dimensions based on Reality Machines",
-    formatEffect: value => `Multiply Antimatter Dimensions by Reality Machines${formatPow(value, 2, 2)}`,
+    description: "даёт множитель к Измерениям Антиматерии в зависимости от количества Машин Реальности",
+    formatEffect: value => `множитель к Измерениям Антиматерии, равный количеству Машин Реальности в степени ${format(value, 2, 2)}`,
     reagents: [
       {
         resource: ALCHEMY_RESOURCE.DIMENSIONALITY,
@@ -322,15 +320,15 @@ export const alchemyResources = {
   },
   "uncountability": {
     id: ALCHEMY_RESOURCE.UNCOUNTABILITY,
-    name: "Uncountability",
+    name: "Несчётность",
     symbol: "Θ",
     isBaseResource: false,
     effect: amount => 160 * Math.sqrt(amount / 25000),
     tier: 4,
     uiOrder: 3,
     unlockedAt: 19,
-    description: "passively generates Realities and Perk Points",
-    formatEffect: value => `Generate ${format(value, 2, 2)} Realities and Perk Points per second`,
+    description: "производит реальности и Очки Умения",
+    formatEffect: value => `вы получаете ${format(value, 2, 2)} реальности и Очка Умения в секунду`,
     reagents: [
       {
         resource: ALCHEMY_RESOURCE.INFINITY,
@@ -348,15 +346,15 @@ export const alchemyResources = {
   },
   "boundless": {
     id: ALCHEMY_RESOURCE.BOUNDLESS,
-    name: "Boundless",
+    name: "Бездна",
     symbol: "Π",
     isBaseResource: false,
     effect: amount => amount / 80000,
     tier: 4,
     uiOrder: 1,
     unlockedAt: 20,
-    description: "makes Tesseracts stronger",
-    formatEffect: value => `Tesseracts are +${formatPercents(value, 2, 2)} stronger`,
+    description: "усиливает Тессеракты",
+    formatEffect: value => `Тессеракты на ${formatPercents(value, 2, 2)} сильнее`,
     reagents: [
       {
         resource: ALCHEMY_RESOURCE.ETERNITY,
@@ -370,16 +368,16 @@ export const alchemyResources = {
   },
   "multiversal": {
     id: ALCHEMY_RESOURCE.MULTIVERSAL,
-    name: "Multiversal",
+    name: "Многомирие",
     symbol: "Σ",
     isBaseResource: false,
-    effect: amount => 32 * Math.pow(amount / 25000, 2),
+    effect: amount => Math.floor(32 * Math.pow(amount / 25000, 2)),
     tier: 4,
     uiOrder: 5,
     unlockedAt: 16,
-    description: "makes each Reality simulate more Realities",
-    formatEffect: value => `Each Reality simulates ${format(value, 2, 3)} additional Realities, giving all
-      the same rewards as if it was amplified`,
+    description: "симулирует реальности многократно",
+    formatEffect: value => `каждая реальность симулируется ${quantifyInt("дополнительный", value)} ${pluralize("раз", value)},` +
+      " как при усилении",
     reagents: [
       {
         resource: ALCHEMY_RESOURCE.ALTERNATION,
@@ -393,7 +391,7 @@ export const alchemyResources = {
   },
   "unpredictability": {
     id: ALCHEMY_RESOURCE.UNPREDICTABILITY,
-    name: "Unpredictability",
+    name: "Непредсказуемость",
     symbol: "Λ",
     isBaseResource: false,
     // Somewhat ugly number to make this show 70.00% at cap
@@ -401,9 +399,9 @@ export const alchemyResources = {
     tier: 4,
     uiOrder: 4,
     unlockedAt: 21,
-    description: "makes each Alchemy Reaction have a chance to happen twice",
-    formatEffect: value => `Any Alchemy Reaction has a ${formatPercents(value, 2, 2)}
-      chance of triggering again`,
+    description: "даёт каждой алхимической реакции шанс произойти повторно",
+    formatEffect: value => `каждый раз, когда алхимическая реакция происходит, с вероятностью ${formatPercents(value, 2, 2)}
+      она происходит повторно`,
     reagents: [
       {
         resource: ALCHEMY_RESOURCE.EFFARIG,
@@ -423,14 +421,14 @@ export const alchemyResources = {
   // T5 (Reality)
   "reality": {
     id: ALCHEMY_RESOURCE.REALITY,
-    name: "Reality",
+    name: "Реальность",
     symbol: "Ϟ",
     isBaseResource: false,
     effect: amount => Math.floor(amount),
     tier: 5,
     unlockedAt: 25,
-    description: "can be consumed to create Reality Glyphs",
-    formatEffect: value => `Consume all Reality Resource to create a level ${formatInt(value)} Reality Glyph`,
+    description: "можно преобразовать в глиф нового типа",
+    formatEffect: value => "отсутствует, зато вы можете преобразовать этот ресурс в Глиф Реальности",
     reagents: [
       {
         resource: ALCHEMY_RESOURCE.EXPONENTIAL,

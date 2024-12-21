@@ -83,7 +83,7 @@ export default {
       {{ name }}
     </template>
     <div v-if="isGlyphSelection">
-      Projected Glyph Level: {{ formatInt(gainedLevel) }}
+      Уровень получаемых глифов: {{ formatInt(gainedLevel) }}
     </div>
     <GlyphSetName
       v-if="showSetName"
@@ -110,7 +110,7 @@ export default {
 .c-glyph-choice-container {
   display: flex;
   flex-flow: row wrap;
-  width: 74rem;
+  width: 90rem;
 }
 
 .c-glyph-choice-container-single {
@@ -120,7 +120,7 @@ export default {
 .c-glyph-choice-single-glyph {
   display: flex;
   flex-direction: row;
-  width: 36rem;
+  width: 44rem;
   height: 12rem;
   justify-content: space-evenly;
   align-items: center;

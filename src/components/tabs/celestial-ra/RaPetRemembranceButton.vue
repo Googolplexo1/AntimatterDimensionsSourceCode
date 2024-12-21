@@ -50,10 +50,10 @@ export default {
     @click="toggleRemembrance"
   >
     <span v-if="hasRemembrance">
-      Remembrance given to {{ name }}
+      Напоминание {{ name }} действует!
     </span>
     <span v-else>
-      Give Remembrance to {{ name }}
+      Напоминание {{ name }}
     </span>
   </button>
 </template>

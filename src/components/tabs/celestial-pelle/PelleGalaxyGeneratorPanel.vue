@@ -33,6 +33,9 @@ export default {
       return GalaxyGeneratorUpgrades.all;
     },
     galaxyText() {
+      return pluralize("галактика", this.galaxies);
+    },
+    galaxyAmount() {
       let text = format(Math.max(this.galaxies, 0), 2);
       if (this.galaxies < 0) text += ` [${format(this.galaxies, 2)}]`;
       return text;
@@ -57,7 +60,7 @@ export default {
       this.capRift = GalaxyGenerator.capRift;
       this.sacrificeActive = GalaxyGenerator.sacrificeActive;
       this.barWidth = (this.isCapped ? this.capRift.reducedTo : this.emphasisedStart);
-      if (this.capRift) this.capRiftName = wordShift.wordCycle(this.capRift.name);
+      if (this.capRift) this.capRiftName = wordShift.wordCycle(this.capRift.config.nameObjective);
     },
     increaseCap() {
       if (GalaxyGenerator.isCapped) GalaxyGenerator.startSacrifice();
@@ -82,7 +85,7 @@ export default {
         class="c-collapse-icon-clickable"
         @click="toggleCollapse"
       />
-      Galaxy Generator
+      Генератор Галактик
     </div>
     <div
       v-if="!isCollapsed"
@@ -90,10 +93,10 @@ export default {
     >
       <div v-if="isUnlocked">
         <div>
-          You have a total of
-          <span class="c-galaxies-amount">{{ galaxyText }}</span>
-          Galaxies.
-          <span class="c-galaxies-amount">+{{ format(galaxiesPerSecond, 2, 1) }}/s</span>
+          У вас
+          <span class="c-galaxies-amount">{{ galaxyAmount }}</span>
+          {{ galaxyText }}.
+          <span class="c-galaxies-amount">+{{ format(galaxiesPerSecond, 2, 1) }}/с</span>
         </div>
         <div>
           <button
@@ -117,20 +120,20 @@ export default {
                 v-if="!sacrificeActive"
                 class="c-big-text"
               >
-                Sacrifice your {{ capRiftName }}
+                Уничтожить {{ capRiftName }}
               </span>
               <span
                 v-else
                 class="c-big-text"
               >
-                Getting rid of all that {{ capRiftName }}...
+                Уничтожаем {{ capRiftName }}...
               </span>
             </div>
             <div
               v-else
               class="c-increase-cap-text c-medium-text"
             >
-              {{ format(generatedGalaxies, 2) }} / {{ format(cap, 2) }} Galaxies generated
+              {{ format(generatedGalaxies, 2) }} / {{ format(cap, 2) }} галактик произведено Генератором
             </div>
           </button>
         </div>
@@ -148,7 +151,7 @@ export default {
         class="c-generator-unlock-button"
         @click="unlock"
       >
-        Unlock the Galaxy Generator
+        Разблокировать Генератор Галактик
       </button>
     </div>
   </div>

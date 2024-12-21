@@ -6,9 +6,7 @@ import { MultiplierTabIcons } from "./icons";
 // See index.js for documentation
 export const general = {
   achievement: {
-    name: (ach, dim) => (dim?.length === 2
-      ? `Achievement ${ach} (${dim})`
-      : `Achievement ${ach}`),
+    name: (ach, dim) => `Награда за достижение ${ach}`,
     multValue: (ach, dim) => {
       // There is also a banked infinities gain effect, but we don't track that in the multiplier tab
       if (ach === 131) return Achievement(131).canBeApplied
@@ -46,9 +44,7 @@ export const general = {
     },
   },
   timeStudy: {
-    name: (ts, dim) => (dim?.length === 2
-      ? `Time Study ${ts} (${dim})`
-      : `Time Study ${ts}`),
+    name: (ts, dim) => `Исследование Времени ${ts}`,
     multValue: (ts, dim) => {
       // This is a special case for the passive path RG study, as its effect is 0.4 (for galaxy power) but
       // in the multiplier tab we only reference its replicanti speed value (which is 1.5)
@@ -82,16 +78,12 @@ export const general = {
     },
   },
   infinityChallenge: {
-    name: ic => `Infinity Challenge ${ic}`,
-    displayOverride: ic => (ic === 4 ? formatPow(InfinityChallenge(4).reward.effectValue, 0, 3) : ""),
+    name: ic => `${ic}-е Испытание Бесконечности`,
     multValue: (ic, dim) => {
       // We cheat here by actually giving IC4 a multiplier of a value equal to its effect on the final
       // value in order to represent its proportion accurately. It's hidden by displayOverride
       if (ic === 4) {
-        const ic4Pow = InfinityChallenge(4).reward.effectValue;
-        const mults = AntimatterDimensions.all.map(ad => ad.multiplier.pow((ic4Pow - 1) / ic4Pow));
-        if (dim?.length === 2) return mults.reduce((x, y) => x.times(y), DC.D1);
-        return mults[Number(dim.charAt(2)) - 1];
+        return 1;
       }
 
       if (dim?.length === 2) {
@@ -106,6 +98,7 @@ export const general = {
       if (ic === 8) return (num > 1 && num < 8) ? InfinityChallenge(ic).reward.effectValue : DC.D1;
       return InfinityChallenge(ic).reward.effectValue;
     },
+    powValue: ic => (ic === 4 ? InfinityChallenge(4).reward.effectValue : 1),
     isActive: ic => InfinityChallenge(ic).isCompleted,
     icon: ic => {
       const base = MultiplierTabIcons.CHALLENGE("infinity");
@@ -116,7 +109,7 @@ export const general = {
     },
   },
   eternityChallenge: {
-    name: ec => `Eternity Challenge ${ec}`,
+    name: ec => `${ec}-е Испытание Вечности`,
     multValue: (ec, dim) => {
       if (dim?.length === 2) {
         let totalEffect = DC.D1;

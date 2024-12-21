@@ -1,5 +1,5 @@
 <script>
-import * as ADNotations from "@antimatter-dimensions/notations";
+import { Settings } from "../../../ad-notations.esm"
 
 import ModalWrapper from "@/components/modals/ModalWrapper";
 import SliderComponent from "@/components/SliderComponent";
@@ -36,11 +36,11 @@ export default {
   watch: {
     commaDigits(newValue) {
       player.options.notationDigits.comma = newValue;
-      ADNotations.Settings.exponentCommas.min = 10 ** newValue;
+      Settings.exponentCommas.min = 10 ** newValue;
     },
     notationDigits(newValue) {
       player.options.notationDigits.notation = newValue;
-      ADNotations.Settings.exponentCommas.max = 10 ** newValue;
+      Settings.exponentCommas.max = 10 ** newValue;
     },
   },
   // This puts the sliders in the right spots on initialization
@@ -74,16 +74,16 @@ export default {
 <template>
   <ModalWrapper>
     <template #header>
-      Exponent Notation Settings
+      Настройки записи порядка
     </template>
-    You can adjust what your numbers look like when very large. With small values, the exponent will
-    be directly displayed with no additional formatting. Larger values will have commas inserted into the exponent
-    for clarity, and the largest values will apply notation formatting to the exponent in order to shorten it. You can
-    adjust the two thresholds between these regions below:
+    Вы можете контролировать запись огромных чисел в игре. Порядок числа, если он достаточно мал, будет
+    отображён без дополнительного форматирования. У досаточно больших чисел в порядок для ясности будут вставлены пробелы,
+    а у самых больших чисел порядок будет форматирован в соответствии с текущей нотацией. Ниже вы можете
+    изменить, сколько цифр должен иметь порядок, чтобы он был отформатирован описанным образом:
     <br>
     <br>
     <div class="c-single-slider">
-      <b class="o-digit-text">Minimum for commas in exponent: {{ formatInt(commaDigits) }} digits</b>
+      <b class="o-digit-text">Вставка пробелов в порядок: с {{ formatInt(commaDigits + 1) }} цифр</b>
       <SliderComponent
         class="o-primary-btn--slider__slider o-slider"
         v-bind="sliderProps"
@@ -92,7 +92,7 @@ export default {
       />
     </div>
     <div class="c-single-slider">
-      <b class="o-digit-text">Minimum for notation in exponent: {{ formatInt(notationDigits) }} digits</b>
+      <b class="o-digit-text">Форматирование порядка в соответствии с нотацией: с {{ formatInt(notationDigits + 1) }} цифр</b>
       <SliderComponent
         class="o-primary-btn--slider__slider o-slider"
         v-bind="sliderProps"
@@ -101,7 +101,7 @@ export default {
       />
     </div>
     <br>
-    Sample numbers for exponent formatting:
+    Примеры форматированных чисел:
     <div class="c-sample-numbers">
       <span
         v-for="(num, id) in sampleNums"
@@ -112,10 +112,10 @@ export default {
       </span>
     </div>
     <br>
-    Note: The interface is generally optimized for Scientific notation with settings of {{ formatInt(5) }}
-    and {{ formatInt(9) }} digits. Some text may look odd or overflow out of boxes if you
-    differ significantly from these values. Additionally, these settings might not cause any visual changes
-    when using certain notations.
+    Примечание: интерфейс, как правило, оптимизирован под Научную нотацию с настройками в {{ formatInt(6) }}
+    и {{ formatInt(10) }} цифр соответственно. Некоторые строки текста могут выглядеть странно или вылезать за пределы блоков, если ваши настройки
+    значительно отличаются. Кроме того, эти настройки не влияют на запись чисел
+    в некоторых нотациях.
   </ModalWrapper>
 </template>
 

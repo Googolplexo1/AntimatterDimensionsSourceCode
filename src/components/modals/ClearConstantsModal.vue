@@ -15,6 +15,8 @@ export default {
     update() {
       this.constantCount = Object.keys(player.reality.automator.constants).length;
       if (this.constantCount === 0) this.emitClose();
+      this.number = quantify("постоянная", this.constantCount);
+      this.deleted = quantify("удалена", this.constantCount);
     },
     deleteConstants() {
       player.reality.automator.constants = {};
@@ -29,17 +31,17 @@ export default {
     @confirm="deleteConstants"
   >
     <template #header>
-      Deleting Automator Constants
+      Удаление постоянных для Автоматизатора
     </template>
     <div class="c-modal-message__text">
-      Are you sure you wish to delete all of your currently-defined automator constants?
+      Вы уверены, что хотите удалить все определённые в данный момент постоянные для Автоматизатора?
       <br>
       <span class="l-lost-text">
-        This will irreversibly delete {{ quantify("constant", constantCount) }}!
+        {{ number }} будет безвозвратно {{ deleted }}!
       </span>
     </div>
     <template #confirm-text>
-      Delete All
+      Удалить все
     </template>
   </ModalWrapperChoice>
 </template>

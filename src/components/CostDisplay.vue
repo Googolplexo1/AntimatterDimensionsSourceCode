@@ -18,9 +18,13 @@ export default {
       type: String,
       required: true
     },
+    postName: {
+      type: String,
+      required: false
+    },
     label: {
       type: String,
-      default: "Cost:",
+      default: "Цена:",
       required: false
     }
   },
@@ -88,6 +92,6 @@ export default {
 <template>
   <span v-if="isVisible">
     <br v-if="br">
-    {{ label }} {{ quantify(name, cost, 0, 0, formatCost) }}
+    {{ label }} {{ quantify(name, cost, 0, 0, formatCost) }} {{ postName }} 
   </span>
 </template>

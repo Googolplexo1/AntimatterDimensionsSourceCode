@@ -9,7 +9,8 @@ export default {
   },
   data() {
     return {
-      isUnlocked: false
+      isUnlocked: false,
+      isCompleted: false
     };
   },
   computed: {
@@ -21,7 +22,8 @@ export default {
   },
   methods: {
     update() {
-      this.isUnlocked = this.unlock.isUnlocked;
+      this.isCompleted = this.unlock.isUnlocked;
+      this.isUnlocked = this.isCompleted || Effarig.currentStageName === this.unlock.config.label
     }
   }
 };
@@ -35,6 +37,7 @@ export default {
     <div
       v-if="isUnlocked"
       class="l-effarig-tab__reward-descriptions"
+      :class="{ 'c-effarig-reward': isCompleted }"
     >
       <div
         v-for="(description, descriptionKey) in descriptionLines"

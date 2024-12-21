@@ -18,7 +18,10 @@ export default {
   },
   computed: {
     remnants() {
-      return format(this.remnantsGain, 2, this.remnantsGain > 1 ? 0 : 2);
+      return pluralize("Останок", this.remnantsGain);
+    },
+    remnantGain() {
+      return format(this.remnantsGain, 2);
     },
     buttonClassObject() {
       return {
@@ -52,16 +55,16 @@ export default {
     :class="buttonClassObject"
     @click="manualArmageddon"
   >
-    <span v-if="isHeader">You cannot escape a Doomed Reality!<br></span>
+    <span v-if="isHeader">Нельзя выйти из Обречённой Реальности!<br></span>
     <span class="c-remnant-gain-display">
-      Armageddon for
-      <span class="c-remnant-gain">{{ remnants }}</span>
-      Remnants
+      Совершить армагеддон за
+      <span class="c-remnant-gain">{{ remnantGain }}</span>
+      {{ remnants }}
     </span>
     <br>
-    Reality Shards
-    <span class="c-reality-shard-gain">{{ format(realityShardGain, 2, 2) }}</span>/s ➜
-    <span class="c-reality-shard-gain">{{ format(nextRealityShardGain, 2, 2) }}</span>/s
+    Производство Осколков Реальности:
+    <span class="c-reality-shard-gain">{{ format(realityShardGain, 2, 2) }}</span>/с ➜
+    <span class="c-reality-shard-gain">{{ format(nextRealityShardGain, 2, 2) }}</span>/с
   </button>
 </template>
 

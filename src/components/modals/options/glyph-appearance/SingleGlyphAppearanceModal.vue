@@ -31,7 +31,7 @@ export default {
     },
     glyph() {
       return Glyphs.findById(this.glyphId);
-    }
+    },
   },
   created() {
     // This force-closes the modal only if another glyph is dragged into the panel
@@ -53,6 +53,14 @@ export default {
       this.defaultKeySwap = false;
       EventHub.dispatch(GAME_EVENT.GLYPH_VISUAL_CHANGE);
     },
+    name(type) {
+      switch (type) {
+        case "blob":
+          return "Клякса";
+        case "music":
+          return "Музыкальный";
+      }
+    },
     cosmeticTypeClass(type) {
       return {
         "o-primary-btn--subtab-option": true,
@@ -66,13 +74,13 @@ export default {
 <template>
   <ModalWrapperOptions class="c-modal-options__large">
     <template #header>
-      Modifying Single Glyph Appearance
+      Изменение внешнего вида отдельного глифа
     </template>
     <PrimaryButton
       class="o-primary-btn--subtab-option"
       @click="setType(undefined)"
     >
-      Reset this Glyph's appearance
+      Сбросить внешний вид этого глифа
     </PrimaryButton>
     <GlyphCustomizationSingleType
       :key="defaultKeySwap"
@@ -80,20 +88,20 @@ export default {
       :glyph-id="glyphId"
     />
     <div v-if="cosmeticTypes && glyph.fixedCosmetic">
-      This Glyph's Cosmetic Type cannot be changed!
+      Косметика этого глифа не может быть изменена!
     </div>
     <div
       v-else-if="cosmeticTypes"
       class="c-special-type"
     >
-      Apply Special Cosmetic Type:
+      Выставить особый косметический тип глифа:
       <PrimaryButton
         v-for="type in cosmeticTypes"
         :key="type"
         :class="cosmeticTypeClass(type)"
         @click="setType(type)"
       >
-        {{ type.capitalize() }}
+        {{ name(type) }}
       </PrimaryButton>
     </div>
   </ModalWrapperOptions>

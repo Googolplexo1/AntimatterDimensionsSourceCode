@@ -85,44 +85,44 @@ function positionNumToVector(num) {
 // Specification for different starting layouts
 export const PerkLayouts = [
   {
-    buttonText: "Default Untangled",
+    buttonText: "По умолчанию",
     position: config => positionNumToVector(config.layoutPosList[0]),
   },
   {
-    buttonText: "Random Positions",
+    buttonText: "Случайно",
     position: () => new Vector(2000 * Math.random() - 1000, 1200 * Math.random() - 600),
   },
   {
     // This is the perks laid out in the same way that they're laid out in the Android version
-    buttonText: "Android Layout",
+    buttonText: "Как в версии игры для Android",
     position: config => globalScale(positionNumToVector(config.layoutPosList[1]), 20, 1.5),
     centerOffset: new Vector(0, 120),
     forcePhysics: false,
     straightEdges: true,
   },
   {
-    buttonText: "Square",
+    buttonText: "Квадрат",
     position: config => globalScale(positionNumToVector(config.layoutPosList[2]), 27.5),
     centerOffset: new Vector(0, 0),
     forcePhysics: false,
     straightEdges: true,
   },
   {
-    buttonText: "Horizontal Grid",
+    buttonText: "Прямоугольник",
     position: config => globalScale(positionNumToVector(config.layoutPosList[3]), 32.5),
     centerOffset: new Vector(-60, 0),
     forcePhysics: false,
     straightEdges: true,
   },
   {
-    buttonText: "Distance from START",
+    buttonText: "Подвешенное за Навык СТАРТ",
     position: config => globalScale(positionNumToVector(config.layoutPosList[4]), 17.5),
     centerOffset: new Vector(0, 0),
     forcePhysics: false,
     straightEdges: true,
   },
   {
-    buttonText: "Blob",
+    buttonText: "Клякса",
     position: config => positionNumToVector(config.layoutPosList[5]),
     centerOffset: new Vector(50, 0),
     forcePhysics: false,
@@ -211,7 +211,7 @@ export const PerkNetwork = {
           `<span style='text-decoration: line-through;'>${perk.config.description}</span>`
         )
         : `${perk.config.description} ${perk.config.automatorPoints && !isDisabled(perk)
-          ? `(+${formatInt(perk.config.automatorPoints)} AP)`
+          ? `(+${formatInt(perk.config.automatorPoints)} ОА)`
           : ""}`
       ),
       x: selectPos(perk.config).x,

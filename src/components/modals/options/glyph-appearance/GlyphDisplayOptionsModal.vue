@@ -35,11 +35,11 @@ export default {
     glyphBGStr() {
       switch (this.glyphBG) {
         case GLYPH_BG_SETTING.AUTO:
-          return "Auto";
+          return "Автоматически";
         case GLYPH_BG_SETTING.LIGHT:
-          return "Light";
+          return "Светлый";
         case GLYPH_BG_SETTING.DARK:
-          return "Dark";
+          return "Тёмный";
         default:
           throw new Error("Unrecognized Glyph BG setting");
       }
@@ -105,51 +105,51 @@ export default {
 <template>
   <ModalWrapperOptions class="c-modal-options__glyph">
     <template #header>
-      Glyph Display Options
+      Настройки отображения глифов
     </template>
     <div class="c-glyph-visual-options c-modal--short">
       <div class="c-modal-options__button-container">
         <ModalOptionsToggleButton
           v-model="newGlyphs"
-          text="New Glyph identifier:"
+          text="Идентификатор нового глифа:"
         />
         <ModalOptionsToggleButton
           v-model="showUnequippedGlyphIcon"
-          text="Unequipped Glyph identifier:"
+          text="Идентификатор деактивированного глифа:"
         />
         <ModalOptionsToggleButton
           v-model="glyphEffectDots"
-          text="Always show Glyph effect dots:"
+          text="Точки эффектов глифов:"
         />
         <ModalOptionsToggleButton
           v-model="glyphBorders"
-          text="Fancy Glyph borders:"
+          text="Графика обрамления глифов:"
         />
         <button
           class="o-primary-btn o-primary-btn--modal-option"
           @click="cycleBG()"
         >
-          Glyph BG color: {{ glyphBGStr }}
+          Фон глифов: {{ glyphBGStr }}
         </button>
         <ModalOptionsToggleButton
           v-model="showGlyphInfoByDefault"
           :style="noEffectStyle()"
-          text="Always show Glyph Info:"
+          text="Дополнительная информация о глифах:"
         />
         <ModalOptionsToggleButton
           v-model="highContrastRarity"
-          text="High-contrast rarity colors:"
+          text="Контрастные цвета категорий редкости:"
         />
         <ModalOptionsToggleButton
           v-model="swapGlyphColors"
-          text="Swap border and symbol colors:"
+          text="Поменять местами цвета обрамления и символа:"
         />
         <ExpandingControlBox
           class="o-primary-btn c-dropdown-btn"
         >
           <template #header>
             <div class="c-dropdown-header">
-              ▼ Additional Glyph Info: ▼
+              ▼ Дополнительная информация о глифах: ▼
               <br>
               {{ infoLabel }}
             </div>
@@ -176,7 +176,7 @@ export default {
 }
 
 .c-dropdown-btn {
-  width: 24rem;
+  width: 32rem;
   margin: 0.3rem;
   padding: 0;
 }

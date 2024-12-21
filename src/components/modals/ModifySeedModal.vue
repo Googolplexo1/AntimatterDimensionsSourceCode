@@ -76,48 +76,48 @@ export default {
 <template>
   <ModalWrapper>
     <template #header>
-      Modifying Glyph RNG Seed
+      Изменение зерна для генерации глифов
     </template>
     <div>
-      All Glyph options beyond the first Reality for an entire playthrough are randomly determined from the very
-      beginning, based on the value of an initial seed number. The role of this seed is that it chooses a single,
-      <i>particular</i> set of Glyph options for your playthrough. If you or anyone else chooses the same seed
-      in a different run, you will get the same options for Glyphs.
+      Все наборы выбираемых глифов после первой Реальности на всю игру случайно определяются с самого
+      первого запуска игры по начальному значению числа, которое называется "зерном". Его роль заключается в генерации
+      <i>определёной</i> последовательности наборов выбираемых глифов. Если кто-то выберет то же зерно, что и вы,
+      в другом забеге, вы будете выбирать глифы из одинаковых наборов.
       <br>
       <br>
-      You can switch between these three options any point before you generate your first Glyph.
+      Вы можете свободно переключаться между следующими тремя опциями, до тех пор пока вы не получите первый глиф.
       <br>
-      Current Setting: <b>{{ seedText }}</b>
+      Текущая настройка: <b>{{ seedText }}</b>
       <br>
       <br>
       <PrimaryButton
         :class="buttonClass(choiceEnum.FIXED)"
         @click="setMode(choiceEnum.FIXED)"
       >
-        Official Preset Seed
+        Официально утверждённое зерно
       </PrimaryButton>
       <br>
-      This is the default option which chooses the seed <b>{{ officialSeed }}</b>. Anyone who
-      chooses to not modify the seed at all will get these Glyph options.
+      Эта настройка, выставленная по умолчанию, выбирает зерно <b>{{ officialSeed }}</b>. Любой, кто
+      не будет менять зерно, увидит те же самые наборы выбираемых глифов.
       <br>
       <br>
       <PrimaryButton
         :class="buttonClass(choiceEnum.RANDOM)"
         @click="setMode(choiceEnum.RANDOM)"
       >
-        Randomized Seed
+        Случайное зерно
       </PrimaryButton>
       <br>
-      This selects a completely randomized seed value, producing Glyph options which are very likely to be
-      different from anyone else's playthrough unless they intentionally choose the same value.
+      Зерно будет выбрано случайным образом, что почти гарантированно сделает наборы выбираемых глифов
+      другими, нежели в забеге любого другого игрока, если только они не выбрали то же самое значение намеренно.
       <br>
       <br>
       <PrimaryButton
-        v-tooltip="seedValue === 0 ? 'Input seed cannot be zero!' : ''"
+        v-tooltip="seedValue === 0 ? 'Зерно не может быть равно нулю!' : ''"
         :class="buttonClass(choiceEnum.PLAYER)"
         @click="setMode(choiceEnum.PLAYER, seedValue)"
       >
-        Player-selected Seed:
+        Зерно по выбору игрока:
       </PrimaryButton>
       <input
         ref="inputSeed"
@@ -127,17 +127,17 @@ export default {
         @input="handleSeedInput()"
       >
       <br>
-      This option sets your seed to the value you type into the text box.
+      Ваше зерно примет введённое вами значение.
       <br>
       <span v-if="seedValue !== 0">
-        Your current input will be {{ convertedInput ? "converted to" : "used as" }} the number <b>{{ seedValue }}</b>.
+        Вы ввели значение, которое будет {{ convertedInput ? "преобразовано в" : "использовано как" }} число <b>{{ seedValue }}</b>.
       </span>
       <span v-else>
-        Your current input {{ convertedInput ? "converts to" : "is equal to" }} <b>0</b>;
-        the seed will default to Official Preset.
+        Введённое вами значение {{ convertedInput ? "преобразуется в" : "равно" }} <b>0</b>;
+        зерно примет значение по умолчанию.
       </span>
       <br>
-      For technical reasons, this value must be must be non-zero to be accepted.
+      По техническим причинам значение зерна должно быть ненулевым для корректной генерации глифов.
     </div>
   </ModalWrapper>
 </template>

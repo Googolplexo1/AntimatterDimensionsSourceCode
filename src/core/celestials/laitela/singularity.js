@@ -82,8 +82,7 @@ class SingularityMilestoneState extends GameMechanicState {
   }
 
   get effectDisplay() {
-    if (Number.isFinite(this.effectValue)) return this.config.effectFormat(this.effectValue);
-    return "N/A";
+    return this.config.effectFormat(this.effectValue);
   }
 
   get nextEffectDisplay() {
@@ -91,7 +90,7 @@ class SingularityMilestoneState extends GameMechanicState {
   }
 
   get description() {
-    return this.config.description;
+    return this.config.description(this.completions);
   }
 
   get canBeApplied() {
@@ -281,7 +280,7 @@ EventHub.logic.on(GAME_EVENT.GAME_LOAD, () => SingularityMilestones.lastNotified
 EventHub.logic.on(GAME_EVENT.SINGULARITY_RESET_AFTER, () => {
   const newMilestones = SingularityMilestones.unnotifiedMilestones.length;
   if (newMilestones === 0) return;
-  if (newMilestones === 1) GameUI.notify.blackHole(`You reached a Singularity milestone!`);
-  else GameUI.notify.blackHole(`You reached ${formatInt(newMilestones)} Singularity milestones!`);
+  if (newMilestones === 1) GameUI.notify.blackHole(`Вы достигли нового Этапа Сингулярности!`);
+  else GameUI.notify.blackHole(`Вы достигли ${quantifyInt("нового Этапа", newMilestones)} Сингулярности!`);
   SingularityMilestones.lastNotified = Currency.singularities.value;
 });

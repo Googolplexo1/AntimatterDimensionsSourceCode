@@ -32,29 +32,29 @@ export default {
       {
         pet: Ra.pets.teresa,
         scalingUpgradeVisible: () => Ra.unlocks.chargedInfinityUpgrades.isUnlocked,
-        scalingUpgradeText: () => `You can Charge ${quantifyInt("Infinity Upgrade", Ra.totalCharges)}.`,
+        scalingUpgradeText: () => `Вы можете заряжать до ${quantifyInt("Улучшения", Ra.totalCharges)} Бесконечности.`,
       },
       {
         pet: Ra.pets.effarig,
         scalingUpgradeVisible: () => AlchemyResources.all.filter(r => r.isUnlocked).length > 0,
         scalingUpgradeText: () => {
           const resources = AlchemyResources.all.filter(r => r.isUnlocked).length;
-          return `You have unlocked ${quantifyInt("Alchemy Resource", resources)}.`;
+          return `Вы разблокировали ${quantifyInt("алхимический ресурс", resources)}.`;
         },
       },
       {
         pet: Ra.pets.enslaved,
         scalingUpgradeVisible: () => Ra.unlocks.improvedStoredTime.isUnlocked,
-        scalingUpgradeText: () => `Stored game time
-          ${formatX(Ra.unlocks.improvedStoredTime.effects.gameTimeAmplification.effectOrDefault(1), 2)} and real time
-          +${formatInt(Ra.unlocks.improvedStoredTime.effects.realTimeCap.effectOrDefault(0) / (1000 * 3600))} hours`,
+        scalingUpgradeText: () => `Множитель
+          ${formatX(Ra.unlocks.improvedStoredTime.effects.gameTimeAmplification.effectOrDefault(1), 2)} к сохранённому игровому времени и
+          +${quantifyInt("час", Ra.unlocks.improvedStoredTime.effects.realTimeCap.effectOrDefault(0) / (1000 * 3600))} к максимальному количеству сохранённого реального времени.`,
       },
       {
         pet: Ra.pets.v,
         scalingUpgradeVisible: () => Ra.unlocks.unlockHardV.isUnlocked,
         scalingUpgradeText: () => {
           const triadCount = Ra.unlocks.unlockHardV.effectOrDefault(0);
-          return `You have unlocked ${quantifyInt("Triad Study", triadCount)}.`;
+          return `Вы разблокировали ${quantifyInt("Тройственное Исследование", triadCount)}.`;
         },
       }
     ],
@@ -77,8 +77,11 @@ export default {
       return GameDatabase.celestials.descriptions[4].effects().replace(/^\w/u, c => c.toUpperCase()).split("\n");
     },
     memoryDescription() {
-      return `Within Ra's Reality, Memory Chunks for Celestial Memories
-        will be generated based on certain resource amounts.`;
+      return `В Реальности Ра вы производите Куски Памяти для Небожителей
+        в зависимости от определённых параметров.`;
+    },
+    achievementBonusText() {
+      return Achievement(168).isUnlocked ? "; также достижение 168 даёт постоянный бонус" : "";
     },
     isDoomed: () => Pelle.isDoomed,
   },
@@ -98,7 +101,7 @@ export default {
     },
     startRun() {
       if (this.isDoomed) return;
-      Modal.celestials.show({ name: "Ra's", number: 4 });
+      Modal.celestials.show({ name: "Ра", number: 4 });
     },
     toggleMode() {
       Ra.toggleMode();
@@ -112,23 +115,23 @@ export default {
     <div class="c-ra-memory-header">
       <CelestialQuoteHistory celestial="ra" />
       <div v-if="!isRaCapped">
-        Each Memory Chunk generates a base of one Memory per second<span v-if="memoriesPerChunk > 1">,
-          which has been increased to {{ quantify("Memory", memoriesPerChunk, 2, 3) }} per second</span>.
-        <br>
-        Storing real time prevents Memory Chunk generation, but Memories will still be gained normally.
+        Каждый Кусок Памяти генерирует одну единицу соответствующей Памяти в секунду<span v-if="memoriesPerChunk > 1">,
+          что с учётом множителей даёт {{ format(memoriesPerChunk, 2, 3) }} Памяти в секунду</span>.
         <span v-if="memoriesPerChunk > 1">
           <br>
-          This is being increased due to {{ memoryBoosts }}.
+          Множители к производству Памяти зависят от {{ memoryBoosts }}{{ achievementBonusText }}.
         </span>
+        <br>
+        Хранение реального времени останавливает производство Кусков Памяти, но не влияет на производство Памяти.
       </div>
       <div v-else>
-        All Memories have been returned.
+        Все Небожители полностью восстановлены в памяти.
       </div>
     </div>
     <div>
-      Mouse-over the icons below the bar to see descriptions of upgrades,
+      Вы можете наводить курсор на значки Этапов Небожителей, расположенные под их полосами прогресса, чтобы просмотреть их эффекты,
       <br>
-      and mouse-over <i class="fas fa-question-circle" /> icons for specific resource information.
+      и на иконки <i class="fas fa-question-circle" /> для просмотра информации о том, от чего зависит получение ресурсов.
     </div>
     <div class="l-ra-all-pets-container">
       <RaPet
@@ -140,9 +143,7 @@ export default {
     <div class="l-ra-non-pets">
       <button class="c-ra-run-button">
         <h2 :class="{ 'o-pelle-disabled': isDoomed }">
-          <span v-if="isRunning">You are in </span>
-          <span v-else>Start </span>
-          Ra's Reality
+          Запустить Реальность Ра
         </h2>
         <div
           :class="runButtonClassObject"
@@ -166,11 +167,11 @@ export default {
         class="c-ra-remembrance-unlock"
       >
         <h1 :style="petStyle">
-          Remembrance
+          Напоминание
         </h1>
         <span :style="petStyle">
-          Whichever Celestial has Remembrance will get {{ formatX(remembranceMult) }} Memory Chunk gain. The other
-          Celestials will get {{ formatX(remembranceNerf, 1, 1) }} Memory Chunk gain.
+          Напоминание действует так, что один из Небожителей получает в {{ format(remembranceMult) }} раз больше Кусков Памяти, а остальные
+          - в {{ format(1 / remembranceNerf) }} раза меньше.
         </span>
         <div
           v-if="hasRemembrance"
@@ -186,8 +187,8 @@ export default {
           v-else
           class="c-ra-remembrance-unlock-inner"
         >
-          Unlocked by getting {{ formatInt(remembranceReq) }} total Celestial Memory levels
-          (you need {{ formatInt(remembranceReq - totalLevels) }} more)
+          Разблокируется, когда суммарный уровень всех Небожителей достигнет {{ formatInt(remembranceReq) }}
+          (необходимо увеличить его ещё на {{ formatInt(remembranceReq - totalLevels) }})
         </div>
       </div>
     </div>

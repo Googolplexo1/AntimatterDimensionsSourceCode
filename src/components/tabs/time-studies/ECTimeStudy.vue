@@ -42,13 +42,6 @@ export default {
     },
     formatValue() {
       return this.config.secondary.formatValue;
-    },
-    // Linebreaks added to avoid twitching in scientific notation
-    needsFirstLinebreak() {
-      return this.study.id === 7;
-    },
-    needsSecondLinebreak() {
-      return [3, 4, 7].includes(this.study.id);
     }
   },
   methods: {
@@ -81,23 +74,21 @@ export default {
       type="studies"
       class="l-hint-text--time-study"
     >
-      EC{{ id }}
+      ИспВ{{ id }}
     </HintText>
-    Eternity Challenge {{ id }}
+    {{ id }}-е Испытание Вечности
     ({{ formatInt(completions) }}<span v-if="showTotalCompletions">/{{ formatInt(5) }}</span>)
     <template v-if="hasRequirement">
       <br>
-      Requirement:
-      <br v-if="needsFirstLinebreak">
-      <span v-if="config.secondary.path">Use only the {{ config.secondary.path }} path</span>
+      Требование:
+      <span v-if="config.secondary.path">Используйте только путь Измерений {{ config.secondary.path }}</span>
       <span v-else>
         {{ formatValue(requirement.current) }}/{{ formatValue(requirement.total) }}
-        <br v-if="needsSecondLinebreak">
-        {{ config.secondary.resource }}
+        {{ pluralize(config.secondary.word, requirement.total) }}{{ config.secondary.resource }}
       </span>
     </template>
-    <span v-if="isUnlocked && !isRunning"><br>Double click to start</span>
-    <span v-else-if="isRunning"><br>Currently Running</span>
+    <span v-if="isUnlocked && !isRunning"><br>Дважды щёлкните, чтобы начать Испытание</span>
+    <span v-else-if="isRunning"><br>Запущено</span>
   </TimeStudyButton>
 </template>
 

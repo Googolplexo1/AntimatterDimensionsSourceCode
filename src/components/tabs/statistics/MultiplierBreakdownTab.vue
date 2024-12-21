@@ -3,18 +3,18 @@ import { createEntryInfo } from "./breakdown-entry-info";
 import MultiplierBreakdownEntry from "./MultiplierBreakdownEntry";
 
 const MULT_TAB_OPTIONS = [
-  { id: 0, key: "AM", text: "Antimatter Production" },
-  { id: 1, key: "tickspeed", text: "Tickspeed" },
-  { id: 2, key: "AD", text: "Antimatter Dimensions" },
-  { id: 3, key: "IP", text: "Infinity Points" },
-  { id: 4, key: "ID", text: "Infinity Dimensions" },
-  { id: 5, key: "infinities", text: "Infinities" },
-  { id: 6, key: "replicanti", text: "Replicanti Speed" },
-  { id: 7, key: "EP", text: "Eternity Points" },
-  { id: 8, key: "TD", text: "Time Dimensions" },
-  { id: 9, key: "eternities", text: "Eternities" },
-  { id: 10, key: "DT", text: "Dilated Time" },
-  { id: 11, key: "gamespeed", text: "Game Speed" },
+  { id: 0, key: "AM", text: "Антиматерия" },
+  { id: 1, key: "tickspeed", text: "Скорость тика" },
+  { id: 2, key: "AD", text: "Измерения Антиматерии" },
+  { id: 3, key: "IP", text: "Очки Бесконечности" },
+  { id: 4, key: "ID", text: "Измерения Бесконечности" },
+  { id: 5, key: "infinities", text: "Бесконечности" },
+  { id: 6, key: "replicanti", text: "Скорость репликации" },
+  { id: 7, key: "EP", text: "Очки Вечности" },
+  { id: 8, key: "TD", text: "Измерения Времени" },
+  { id: 9, key: "eternities", text: "Вечности" },
+  { id: 10, key: "DT", text: "Замедленное Время" },
+  { id: 11, key: "gamespeed", text: "Скорость игры" },
 ];
 
 export default {
@@ -95,14 +95,12 @@ export default {
         :is-root="true"
       />
       <div class="c-multiplier-tab-text-line">
-        Note: Entries are only expandable if they contain multiple sources which can be different values.
-        For example, any effects which affect all Dimensions of any type equally will not expand into a
-        list of eight identical numbers.
+        Примечание: эффект раскрывается, только в том случае если его составные части могут принимать разные значения.
         <br>
         <b>
-          Some entries may cause lag if expanded out fully. Resizing happens over 200 ms (instead of instantly)
-          in order to reduce possible adverse effects due to photosensitivity. This may cause some visual weirdness
-          after prestige events.
+          Чрезмерно глубокое раскрытие эффектов может вызвать зависание. Изменение размеров полосок происходит плавно
+          с интервалом в 200мс в целях предотвращения неблагоприятных последствий при высокой фоточуствительности.
+          Вследствие этого полоски могут выглядеть странно при частых сбросах.
         </b>
       </div>
     </div>

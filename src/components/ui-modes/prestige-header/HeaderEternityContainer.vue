@@ -39,10 +39,10 @@ export default {
       v-if="showEP"
       class="c-eternity-points"
     >
-      You have
+      У вас
       <span class="c-game-header__ep-amount">{{ format(eternityPoints, 2) }}</span>
-      {{ pluralize("Eternity Point", eternityPoints) }}.
-      <span v-if="showNextEP">(Next EP at {{ format(nextEP, 1) }} IP)</span>
+      {{ pluralize("Очко", eternityPoints) }} Вечности.
+      <span v-if="showNextEP">(Следующее ОВ на {{ format(nextEP, 1) }} ОБ)</span>
     </div>
     <UnlockInfinityDimButton />
     <EternityButton />
@@ -53,5 +53,6 @@ export default {
 .c-eternity-points {
   font-size: 1.2rem;
   padding-bottom: 0.5rem;
+  width: 27rem;
 }
 </style>

@@ -35,11 +35,11 @@ export default {
       return AwayProgressTypes.appearsInAwayModal;
     },
     headerText() {
-      const timeDisplay = TimeSpan.fromSeconds(this.seconds).toString();
+      const timeDisplay = TimeSpan.fromSeconds(this.seconds).toString("genitive");
       if (this.nothingHappened || !this.somethingHappened) {
-        return `While you were away for ${timeDisplay}... Nothing happened.`;
+        return `Пока вы отсутствовали в течение ${timeDisplay}... Ничего не произошло.`;
       }
-      return `While you were away for ${timeDisplay}: `;
+      return `Пока вы отсутствовали в течение ${timeDisplay}: `;
     },
   },
   mounted() {
@@ -69,7 +69,7 @@ export default {
         @something-happened="somethingHappened = true"
       />
     </div>
-    <span v-if="!nothingHappened && somethingHappened">Note: Click an entry to hide it in the future.</span>
+    <span v-if="!nothingHappened && somethingHappened">Примечание: нажмите на статью прогресса, чтобы скрыть её на будущее.</span>
   </ModalWrapper>
 </template>
 

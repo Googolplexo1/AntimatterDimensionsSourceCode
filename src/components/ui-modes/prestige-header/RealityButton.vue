@@ -6,8 +6,7 @@ export default {
       canReality: false,
       showSpecialEffect: false,
       hasRealityStudy: false,
-      machinesGained: new Decimal(),
-      projectedRM: new Decimal(),
+      machinesGained: new Decimal(0),
       newIMCap: 0,
       realityTime: 0,
       glyphLevel: 0,
@@ -15,44 +14,56 @@ export default {
       nextMachineEP: 0,
       shardsGained: 0,
       currentShardsRate: 0,
+      bestMachineRate: new Decimal(0),
+      bestMachineRateVal: new Decimal(0),
       bestShardRate: 0,
       bestShardRateVal: 0,
       ppGained: 0,
+      willAmplify: false,
       celestialRunText: ["", "", "", "", ""]
     };
   },
   computed: {
     formatMachinesGained() {
-      if (this.machinesGained.gt(0)) return `Machines gained: ${format(this.machinesGained, 2)}`;
-      return "No Machines gained";
+      if (this.machinesGained.gt(0)) return `Машин Реальности: ${format(this.machinesGained, 2)}`;
+      return "Достигнут предел МР";
     },
     formatMachineStats() {
       if (!PlayerProgress.realityUnlocked() && this.nextMachineEP.gt("1e8000")) {
-        return `(Capped this Reality!)`;
+        return `(Ограничено на текущую реальность!)`;
       }
       if (this.machinesGained.gt(0) && this.machinesGained.lt(100)) {
-        return `(Next at ${format(this.nextMachineEP, 2)} EP)`;
+        return `(Следующая на ${format(this.nextMachineEP, 2)} ОВ)`;
       }
       if (this.machinesGained.eq(0) && this.newIMCap === 0) {
-        return `(Projected: ${format(this.projectedRM, 2)} RM)`;
+        return `(Теоретически: ${format(this.projectedRM, 2)} МР)`;
       }
       if (this.newIMCap !== 0) {
-        return `(iM Cap: ${formatMachines(0, this.newIMCap)})`;
+        return `(Предел ММ: ${format(this.newIMCap, 2)})`;
       }
-      if (this.machinesGained.lt(Number.MAX_VALUE)) {
-        return `(${format(this.machinesGained.divide(this.realityTime), 2, 2)} RM/min)`;
+      if (this.machinesGained.lt(Number.MAX_VALUE) && !this.willAmplify) {
+        return `(${format(this.machinesGained.divide(this.realityTime), 2, 2)} МР/мин)`;
+      }
+      return "";
+    },
+    additionalRMText() {
+      if (this.newIMCap !== 0) {
+        return `Теоретически: ${format(this.projectedRM, 2)} МР`;
+      }
+      if (!this.willAmplify && this.machinesGained.gte(100) && this.machinesGained.lt(Number.MAX_VALUE)) {
+        return `Пик МР: ${format(this.bestMachineRate, 2)}/мин на ${format(this.bestMachineRateVal, 2)} МР`;
       }
       return "";
     },
     formatGlyphLevel() {
-      if (this.glyphLevel >= 10000) return `Glyph level: ${formatInt(this.glyphLevel)}`;
-      return `Glyph level: ${formatInt(this.glyphLevel)} (${this.nextGlyphPercent} to next)`;
+      if (this.glyphLevel >= 10000) return `Уровень глифа: ${formatInt(this.glyphLevel)}`;
+      return `Уровень глифа: ${formatInt(this.glyphLevel)} (${this.nextGlyphPercent} до следующего)`;
     },
     showShardsRate() {
       return this.currentShardsRate;
     },
     shardsGainedText() {
-      return quantify("Relic Shard", this.shardsGained, 2);
+      return quantify("Реликтовый Осколок", this.shardsGained, 2);
     },
     classObject() {
       return {
@@ -90,10 +101,10 @@ export default {
       }
 
       const multiplier = simulatedRealityCount(false) + 1;
-      this.projectedRM = MachineHandler.gainedRealityMachines.times(multiplier)
-        .clampMax(MachineHandler.hardcapRM);
+      this.willAmplify = Enslaved.boostReality;
+      this.projectedRM = MachineHandler.uncappedRM;
       this.newIMCap = MachineHandler.projectedIMCap;
-      this.machinesGained = this.projectedRM.clampMax(MachineHandler.distanceToRMCap);
+      this.machinesGained = gainedRealityMachines(true);
       this.realityTime = Time.thisRealityRealTime.totalMinutes;
       this.glyphLevel = gainedGlyphLevel().actualLevel;
       this.nextGlyphPercent = this.percentToNextGlyphLevelText();
@@ -101,17 +112,19 @@ export default {
       this.ppGained = multiplier;
       this.shardsGained = Effarig.shardsGained * multiplier;
       this.currentShardsRate = (this.shardsGained / Time.thisRealityRealTime.totalMinutes);
+      this.bestMachineRate = player.records.thisReality.bestRMmin;
+      this.bestMachineRateVal = player.records.thisReality.bestRMminVal;
       this.bestShardRate = player.records.thisReality.bestRSmin * multiplier;
       this.bestShardRateVal = player.records.thisReality.bestRSminVal * multiplier;
 
       const teresaReward = this.formatScalingMultiplierText(
-        "Glyph Sacrifice",
+        "Награда за Реальность Терезы:",
         Teresa.runRewardMultiplier,
         Math.max(Teresa.runRewardMultiplier, Teresa.rewardMultiplier(Currency.antimatter.value)));
       const teresaThreshold = this.formatThresholdText(
         Teresa.rewardMultiplier(Currency.antimatter.value) > Teresa.runRewardMultiplier,
         player.celestials.teresa.bestRunAM,
-        "antimatter");
+        "антиматерии");
       this.celestialRunText = [
         [Teresa.isRunning, teresaReward, teresaThreshold]];
     },
@@ -125,7 +138,7 @@ export default {
     },
     formatThresholdText(condition, threshold, resourceName) {
       if (condition) return "";
-      return `(${format(threshold, 2, 2)} ${resourceName} to improve)`;
+      return `(необходимо ${format(threshold, 2, 2)} ${resourceName} для улучшения)`;
     },
     // Make the button have a visual animation if Realitying will give a reward
     hasSpecialReward() {
@@ -149,27 +162,25 @@ export default {
       <div class="l-reality-button__contents">
         <template v-if="canReality">
           <div class="c-reality-button__header">
-            Make a new Reality
+            Создать новую реальность
           </div>
           <div>{{ formatMachinesGained }} {{ formatMachineStats }}</div>
           <div>{{ formatGlyphLevel }}</div>
         </template>
-        <template v-else-if="hasRealityStudy">
-          <div>Get {{ format("1e4000") }} Eternity Points to unlock a new Reality</div>
-        </template>
         <template v-else>
-          <div>Purchase the study in the Eternity tab to unlock a new Reality</div>
+          <div>Разблокируйте реальность в Древе Исследований</div>
         </template>
         <div
           v-if="canReality"
           class="infotooltiptext"
         >
-          <div>Other resources gained:</div>
-          <div>{{ quantifyInt("Perk Point", ppGained) }}</div>
+          <div>{{ additionalRMText }}</div>
+          <div>Получение других ресурсов:</div>
+          <div>{{ quantifyInt("Очко", ppGained) }} Умения</div>
           <div v-if="shardsGained !== 0">
-            {{ shardsGainedText }} ({{ format(currentShardsRate, 2) }}/min)
+            {{ shardsGainedText }}<span v-if="!willAmplify"> ({{ format(currentShardsRate, 2) }}/мин)
             <br>
-            Peak: {{ format(bestShardRate, 2) }}/min at {{ format(bestShardRateVal, 2) }} RS
+            Пик: {{ format(bestShardRate, 2) }}/мин на {{ format(bestShardRateVal, 2) }} РО</span>
           </div>
           <div
             v-for="(celestialInfo, i) in celestialRunText"

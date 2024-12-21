@@ -32,33 +32,33 @@ export default {
 <template>
   <div class="o-glyph-inventory-management-group">
     <div class="l-glyph-sacrifice-options__header">
-      Sort Glyphs:
+      Упорядочить глифы:
     </div>
     <button
       class="c-glyph-inventory-option"
       @click="sortByLevel"
     >
-      Sort by level
+      По уровню
       <div class="c-glyph-inventory-option__tooltip">
-        Arranges by decreasing Glyph level
+        Сортировать глифы в порядке убывания уровня
       </div>
     </button>
     <button
       class="c-glyph-inventory-option"
       @click="sortByPower"
     >
-      Sort by power
+      По мощности
       <div class="c-glyph-inventory-option__tooltip">
-        Arranges by decreasing level×rarity
+        Сортировать глифы в порядке убывания произведения уровня на редкость
       </div>
     </button>
     <button
       class="c-glyph-inventory-option"
       @click="sortByEffect"
     >
-      Sort by effect
+      По эффектам
       <div class="c-glyph-inventory-option__tooltip">
-        Groups Glyphs together based on effects
+        Группировать глифы с одинаковыми наборами эффектов
       </div>
     </button>
     <button
@@ -66,18 +66,18 @@ export default {
       class="c-glyph-inventory-option"
       @click="sortByScore"
     >
-      Sort by score
+      По оценке
       <div class="c-glyph-inventory-option__tooltip">
-        Arranges by decreasing Glyph filter score
+        Сортировать глифы в порядке убывания оценки Фильтра
       </div>
     </button>
     <button
       class="c-glyph-inventory-option"
       @click="collapseEmpty"
     >
-      Collapse empty space
+      Переместить глифы наверх
       <div class="c-glyph-inventory-option__tooltip">
-        Moves all Glyphs to the earliest empty slots
+        Переместить все глифы в самые верхние свободные ячейки
       </div>
     </button>
   </div>

@@ -1,7 +1,7 @@
 export const dilationTimeStudies = [
   {
     id: 1,
-    description: "Unlock Time Dilation",
+    description: "Разблокировать Замедление Времени",
     cost: 5000,
     requirement: () => {
       const ttRequirement = Currency.timeTheorems.max.gte(TimeStudy.dilation.totalTimeTheoremRequirement);
@@ -19,33 +19,33 @@ export const dilationTimeStudies = [
   },
   {
     id: 2,
-    description: "Unlock the 5th Time Dimension",
+    description: "Разблокировать 5-е Измерение Времени",
     cost: 1e6,
     requirement: () => PlayerProgress.dilationUnlocked()
   },
   {
     id: 3,
-    description: "Unlock the 6th Time Dimension",
+    description: "Разблокировать 6-е Измерение Времени",
     cost: 1e7,
     requirement: () => TimeStudy.timeDimension(5).isBought
   },
   {
     id: 4,
-    description: "Unlock the 7th Time Dimension",
+    description: "Разблокировать 7-е Измерение Времени",
     cost: 1e8,
     requirement: () => TimeStudy.timeDimension(6).isBought
   },
   {
     id: 5,
-    description: "Unlock the 8th Time Dimension",
+    description: "Разблокировать 8-е Измерение Времени",
     cost: 1e9,
     requirement: () => TimeStudy.timeDimension(7).isBought
   },
   {
     id: 6,
     description: () => (Pelle.isDoomed
-      ? "You cannot escape a Doomed Reality"
-      : "Unlock Reality"),
+      ? "Нельзя выйти из Обречённой Реальности!"
+      : "Разблокировать реальность"),
     cost: 1,
     requirement: () => TimeStudy.timeDimension(8).isBought &&
       player.records.thisReality.maxEP.exponent >= 4000 &&

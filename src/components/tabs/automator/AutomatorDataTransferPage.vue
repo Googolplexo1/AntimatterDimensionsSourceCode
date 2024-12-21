@@ -33,16 +33,16 @@ export default {
 
 <template>
   <div class="l-panel-padding">
-    This page lets you import and export scripts with additional data attached; the encoded text will also include data
-    for any Time Study presets or constants used within the script. This will allow you to more easily transfer working
-    scripts between different save files, but you may have to overwrite existing data in the process due to limited
-    space for study presets and constants. Data exported from this page is also imported in the same way that single
-    script data is imported.
+    Эта страница позволяет вам импортировать и экспортировать программы с прикреплением дополнительных данных; закодированный текст также будет содержать данные
+    о всех сохранённых Древах Исследований и постоянных, использованных в программе. Это позволяет более легко перемещать работающие
+    программы между сохранениями, но, возможно, вам придётся заместить часть существующих данных ввиду ограниченности
+    памяти, отведённой на сохранённые Древа и постоянные. Данные, экспортируемые с данной страницы, могут быть импортированы таким же образом, как
+    импортируются данные отдельной программы.
     <br>
     <br>
-    Note: Any mentions of constant names or full study-buying commands within comments will also be counted as being
-    "used" within a script. This is intentional, as the comment is assumed to be indicative of what the script itself
-    is attempting to do with presets or constants.
+    Примечание: упоминание имени постоянной или команды закупки сохранённого Древа в комментариях также будут считаться
+    "использованиями" их в программе. Так сделанно намеренно, так как предполагается, что комментарий отражает то, что сама программа
+    пытается делать с сохранёнными Древами и постоянными.
     <br>
     <br>
     <div

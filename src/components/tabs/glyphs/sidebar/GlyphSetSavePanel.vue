@@ -19,12 +19,8 @@ export default {
     };
   },
   computed: {
-    questionmarkTooltip() {
-      return `Glyph Presets work like Time Study Loadouts, allowing you to equip a
-        full set of previously-saved Glyphs`;
-    },
     noSet() {
-      return `No Glyph Preset saved in this slot`;
+      return `Свободно`;
     },
   },
   watch: {
@@ -57,8 +53,8 @@ export default {
       this.glyphSets = player.reality.glyphs.sets.map(g => Glyphs.copyForRecords(g.glyphs));
     },
     setName(id) {
-      const name = this.names[id] === "" ? "" : `: ${this.names[id]}`;
-      return `Glyph Preset #${id + 1}${name}`;
+      const name = this.names[id] === "" ? "" : `: "${this.names[id]}"`;
+      return `№${id + 1}${name}`;
     },
     saveGlyphSet(id) {
       if (!this.hasEquipped || player.reality.glyphs.sets[id].glyphs.length) return;
@@ -120,10 +116,10 @@ export default {
         }
       }
       if (missingGlyphs > 0) {
-        GameUI.notify.error(`Could not find or equip ${missingGlyphs} ${pluralize("Glyph", missingGlyphs)} from
+        GameUI.notify.error(`Не удалось найти или активировать ${quantify("глиф", missingGlyphs)} из набора
           ${this.setName(id)}.`);
       } else {
-        GameUI.notify.success(`Successfully loaded ${this.setName(id)}.`);
+        GameUI.notify.success(`Набор ${this.setName(id)} успешно загружен.`);
       }
     },
     // Given a list of options for suitable matches to those glyphs and a maximum glyph count to match, returns the
@@ -172,7 +168,7 @@ export default {
     },
     loadingTooltip(set) {
       return this.setLengthValid(set) && this.hasEquipped
-        ? "This set may not load properly because you already have some Glyphs equipped"
+        ? "Этот набор может быть загружен неправильно, так как у вас уже есть действующие глифы"
         : null;
     },
     glyphSetKey(set, index) {
@@ -184,38 +180,31 @@ export default {
 
 <template>
   <div class="l-glyph-sacrifice-options c-glyph-sacrifice-options l-glyph-sidebar-panel-size">
-    <span
-      v-tooltip="questionmarkTooltip"
-      class="l-glyph-sacrifice-options__help c-glyph-sacrifice-options__help o-questionmark"
-    >
-      ?
-    </span>
+    <br>
     <div class="l-glyph-set-save__header">
-      When loading a preset, try to match the following attributes. "Exact" will only equip Glyphs
-      identical to the ones in the preset. The other settings will, loosely speaking, allow "better" Glyphs to be
-      equipped in their place.
+      При загрузке набора постарайтесь иметь глифы, соответствующие следующим характеристикам.
     </div>
     <div class="c-glyph-set-save-container">
       <ToggleButton
         v-model="effects"
         class="c-glyph-set-save-setting-button"
-        label="Effects:"
-        on="Including"
-        off="Exact"
+        label="Эффекты:"
+        on="включая"
+        off="такие же"
       />
       <ToggleButton
         v-model="level"
         class="c-glyph-set-save-setting-button"
-        label="Level:"
-        on="Increased"
-        off="Exact"
+        label="Уровень:"
+        on="не ниже"
+        off="равный"
       />
       <ToggleButton
         v-model="rarity"
         class="c-glyph-set-save-setting-button"
-        label="Rarity:"
-        on="Increased"
-        off="Exact"
+        label="Редкость:"
+        on="не ниже"
+        off="равная"
       />
     </div>
     <div
@@ -234,13 +223,13 @@ export default {
         />
       </div>
       <div class="c-glyph-single-set-save-flexbox">
-        <div ach-tooltip="Set a custom name (up to 20 characters)">
+        <div ach-tooltip="Введите имя набора (не более 20 символов)">
           <input
             :id="id"
             type="text"
             size="20"
             maxlength="20"
-            placeholder="Custom set name"
+            placeholder="Имя набора"
             class="c-glyph-sets-save-name__input"
             :value="names[id]"
             @blur="nicknameBlur"
@@ -252,7 +241,7 @@ export default {
             :class="{'c-glyph-set-save-button--unavailable': !hasEquipped || set.length}"
             @click="saveGlyphSet(id)"
           >
-            Save
+            Сохранить
           </button>
           <button
             v-tooltip="loadingTooltip(set)"
@@ -260,14 +249,14 @@ export default {
             :class="{'c-glyph-set-save-button--unavailable': !setLengthValid(set)}"
             @click="loadGlyphSet(set, id)"
           >
-            Load
+            Загрузить
           </button>
           <button
             class="c-glyph-set-save-button"
             :class="{'c-glyph-set-save-button--unavailable': !set.length}"
             @click="deleteGlyphSet(id)"
           >
-            Delete
+            Удалить
           </button>
         </div>
       </div>

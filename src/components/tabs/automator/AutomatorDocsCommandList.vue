@@ -30,7 +30,7 @@ export default {
         class="c-automator-docs--button l-return-button fas fa-arrow-left"
         @click="selectedCommand = -1"
       />
-      Return to the Command List
+      Назад к списку команд
     </div>
     <AutomatorDocsManPage
       v-if="selectedCommand !== -1"
@@ -40,16 +40,16 @@ export default {
       v-else
       class="c-automator-docs-page"
     >
-      Click on an underlined command to see more details on syntax, usage, and functionality.
+      Нажмите на подчёркнутую команду, чтобы просмотреть подробности по её синтаксису, использованию и функциональности.
       <br>
       <br>
-      <span>Command List:</span>
+      <span>Список команд:</span>
       <br>
       <div
         v-for="(category, i) in categoryNames"
         :key="i"
       >
-        {{ category }} ({{ commandsInCategory(i).length }} commands)
+        {{ category }}
         <div
           v-for="command in commandsInCategory(i)"
           :key="command.id"
@@ -63,10 +63,10 @@ export default {
       </div>
       <br>
       <span>
-        Note: In the SYNTAX note on each command, <u>underlined</u> inputs are <i>required</i> inputs which you must
-        fill and inputs in [square brackets] are optional (if used, they should be input <i>without</i> the brackets).
-        Any other parts should be typed in as they appear. Unless otherwise stated, all of the inputs are
-        case-insensitive. Some commands may have more than one valid format, which will appear on separate lines.
+        Примечание: в описании синтаксиса каждой команды <u>подчёркнутые</u> параметры должны <i>обязательно</i> быть
+        даны, в то время как параметры в [квадратных скобках] необязательны (при их наличии скобки вводить <i>не нужно</i>).
+        Все остальные части команды должны быть введены в той форме, в которой они показаны. Если не сказано иное,
+        регистр не важен. У некоторых команд есть несколько допустимых форматов, в таком случае они отображаются в разных строках.
       </span>
     </div>
   </div>

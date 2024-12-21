@@ -28,7 +28,7 @@ export default {
       return this.challenge.config;
     },
     name() {
-      return `IC${this.challenge.id}`;
+      return `ИспБ${this.challenge.id}`;
     }
   },
   methods: {
@@ -60,12 +60,14 @@ export default {
     </template>
     <template #bottom>
       <div class="l-challenge-box__bottom--infinity">
-        <span>Goal: {{ format(config.goal) }} antimatter</span>
+        <span>Цель: {{ format(config.goal) }} антиматерии</span>
         <DescriptionDisplay
           :config="config.reward"
-          title="Reward:"
+          title="Награда:"
+          :capitalizationNeeded="false"
         />
         <EffectDisplay
+          v-if="isCompleted"
           :config="config.reward"
         />
       </div>

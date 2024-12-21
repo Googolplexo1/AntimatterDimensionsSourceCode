@@ -194,11 +194,11 @@ export class EternityChallengeState extends GameMechanicState {
     if (!this.isUnlocked) return false;
     const maxInversion = player.requirementChecks.reality.slowestBH <= 1e-300;
     if (this.id === 12 && ImaginaryUpgrade(24).isLockingMechanics && Ra.isRunning && maxInversion) {
-      if (!auto) ImaginaryUpgrade(24).tryShowWarningModal("enter Eternity Challenge 12");
+      if (!auto) ImaginaryUpgrade(24).tryShowWarningModal("начать 12-е Испытание Вечности");
       return false;
     }
     if (this.id === 7 && ImaginaryUpgrade(15).isLockingMechanics && TimeDimension(1).amount.gt(0)) {
-      if (!auto) ImaginaryUpgrade(15).tryShowWarningModal("enter Eternity Challenge 7");
+      if (!auto) ImaginaryUpgrade(15).tryShowWarningModal("начать 7-е Испытание Вечности");
       return false;
     }
 
@@ -250,25 +250,25 @@ export class EternityChallengeState extends GameMechanicState {
     let reason;
     if (auto) {
       if (this.id === 4) {
-        reason = restriction => `Auto Eternity Challenge completion completed ` +
-        `Eternity Challenge ${this.id} and made the next tier ` +
-        `require having less Infinities (${quantifyInt("Infinity", restriction)} ` +
-        `or less) than you had`;
+        reason = restriction => `4-е Испытание Вечности было автоматически выполнено, ` +
+        `и оказалось, что следующее выполнение требует ` +
+        `иметь меньше бесконечностей (не более ${formatInt(restriction)} ` +
+        `бесконечностей), чем было у вас`;
       } else if (this.id === 12) {
-        reason = restriction => `Auto Eternity Challenge completion completed ` +
-        `Eternity Challenge ${this.id} and made the next tier ` +
-        `require spending less time in it (${quantify("in-game second", restriction, 0, 1)} ` +
-        `or less) than you had spent`;
+        reason = restriction => `12-е Испытание Вечности было автоматически выполнено, ` +
+        `и оказалось, что следующее выполнение требует ` +
+        `провести в нём меньше времени по игровому времяисчислению (не более ${format(restriction, 0, 1)} ` +
+        `секунды), чем провели вы`;
       }
     } else if (this.id === 4) {
-      reason = restriction => `You failed Eternity Challenge ${this.id} due to ` +
-      `having more than ${quantifyInt("Infinity", restriction)}`;
+      reason = restriction => `Вы провалили 4-е Испытание Вечности, ` +
+      `набрав больше ${formatInt(restriction)} бесконечностей`;
     } else if (this.id === 12) {
-      reason = restriction => `You failed Eternity Challenge ${this.id} due to ` +
-      `spending more than ${quantify("in-game second", restriction, 0, 1)} in it`;
+      reason = restriction => `Вы провалили 12-е Испытание Вечности, ` +
+      `проведя в нём больше ${format(restriction, 0, 1)} секунды по игровому времяисчислению`;
     }
     Modal.message.show(`${reason(this.config.restriction(this.completions))}, ` +
-    `which has caused you to exit it.`,
+    `вследствие чего вы покинули Испытание в принудительном порядке.`,
     { closeEvent: GAME_EVENT.REALITY_RESET_AFTER }, 1);
     EventHub.dispatch(GAME_EVENT.CHALLENGE_FAILED);
   }

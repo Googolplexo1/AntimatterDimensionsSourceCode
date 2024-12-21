@@ -83,23 +83,23 @@ export default {
     },
     showEternity() {
       return PlayerProgress.eternityUnlocked()
-        ? "this Eternity"
+        ? " в текущей вечности"
         : "";
     },
     isShowingStateInfo() {
       // Prestiging for a static amount is zero in both AUTO_CRUNCH_MODE and AUTO_ETERNITY_MODE
-      return this.isActive && ["Infinity", "Eternity"].includes(this.autobuyer.name) && this.currMode !== 0;
+      return this.isActive && ["Большого Сжатия", "вечности"].includes(this.autobuyer.name) && this.currMode !== 0;
     },
     extraInfo() {
       // This logic takes advantage of AUTO_CRUNCH_MODE and AUTO_ETERNITY_MODE being identical
       switch (this.currMode) {
         case AUTO_ETERNITY_MODE.TIME:
           return this.nextTime > 0
-            ? `Will trigger in ${TimeSpan.fromSeconds(this.nextTime).toStringShort()}`
-            : "Will trigger ASAP";
+            ? `Сработает через ${TimeSpan.fromSeconds(this.nextTime).toStringShort()}`
+            : "Сработает как можно скорее";
         case AUTO_ETERNITY_MODE.X_HIGHEST:
         default:
-          return `Will trigger at ${format(this.nextValue, 2)} ${this.autobuyer.name === "Infinity" ? "IP" : "EP"}`;
+          return `Сработает при ${format(this.nextValue, 2)} ${this.autobuyer.name === "Infinity" ? "ОБ" : "ОВ"}`;
       }
     }
   },
@@ -188,7 +188,7 @@ export default {
   >
     {{ name }}
     <br>
-    Requirement: {{ format(antimatterCost) }} Total Antimatter {{ showEternity }}
+    Требование: достигните {{ format(antimatterCost) }} антиматерии{{ showEternity }}
   </div>
 </template>
 

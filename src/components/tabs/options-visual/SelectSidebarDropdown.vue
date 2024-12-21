@@ -23,7 +23,7 @@ export default {
         class="o-primary-btn l-select-theme__item c-select-theme__item"
         @click="setResource(0)"
       >
-        Latest Resource
+        Новейший ресурс
       </div>
       <div
         v-for="res in resources"

@@ -1,7 +1,6 @@
-import * as ADNotations from "@antimatter-dimensions/notations";
+import { AllNotation, BarNotation, BlindNotation, BlobsNotation, BracketsNotation, ClockNotation, CustomNotation, DotsNotation, EmojiNotation, EngineeringNotation, HexNotation, ImperialNotation, InfinityNotation, LettersNotation, LogarithmNotation, MixedEngineeringNotation, MixedScientificNotation,  PrimeNotation, RomanNotation, ScientificNotation, Settings, ShiNotation, StandardNotation, ZalgoNotation, abbreviateStandard, formatMantissa, formatMantissaBaseTen, formatMantissaWithExponent } from "../ad-notations.esm";
 
 export const Notation = (function() {
-  const N = ADNotations;
   const notation = type => {
     const n = new type();
     n.setAsCurrent = () => {
@@ -15,28 +14,28 @@ export const Notation = (function() {
     return n;
   };
   return {
-    scientific: notation(N.ScientificNotation),
-    engineering: notation(N.EngineeringNotation),
-    letters: notation(N.LettersNotation),
-    standard: painful(notation(N.StandardNotation)),
-    emoji: painful(notation(N.EmojiNotation)),
-    mixedScientific: notation(N.MixedScientificNotation),
-    mixedEngineering: notation(N.MixedEngineeringNotation),
-    logarithm: notation(N.LogarithmNotation),
-    brackets: painful(notation(N.BracketsNotation)),
-    infinity: notation(N.InfinityNotation),
-    roman: painful(notation(N.RomanNotation)),
-    dots: painful(notation(N.DotsNotation)),
-    zalgo: painful(notation(N.ZalgoNotation)),
-    hex: painful(notation(N.HexNotation)),
-    imperial: painful(notation(N.ImperialNotation)),
-    clock: painful(notation(N.ClockNotation)),
-    prime: painful(notation(N.PrimeNotation)),
-    bar: painful(notation(N.BarNotation)),
-    shi: painful(notation(N.ShiNotation)),
-    blind: painful(notation(N.BlindNotation)),
-    blobs: painful(notation(N.BlobsNotation)),
-    all: painful(notation(N.AllNotation))
+    scientific: notation(ScientificNotation),
+    engineering: notation(EngineeringNotation),
+    letters: notation(LettersNotation),
+    standard: painful(notation(StandardNotation)),
+    emoji: painful(notation(EmojiNotation)),
+    mixedScientific: notation(MixedScientificNotation),
+    mixedEngineering: notation(MixedEngineeringNotation),
+    logarithm: notation(LogarithmNotation),
+    brackets: painful(notation(BracketsNotation)),
+    infinity: notation(InfinityNotation),
+    roman: painful(notation(RomanNotation)),
+    dots: painful(notation(DotsNotation)),
+    zalgo: painful(notation(ZalgoNotation)),
+    hex: painful(notation(HexNotation)),
+    imperial: painful(notation(ImperialNotation)),
+    clock: painful(notation(ClockNotation)),
+    prime: painful(notation(PrimeNotation)),
+    bar: painful(notation(BarNotation)),
+    shi: painful(notation(ShiNotation)),
+    blind: painful(notation(BlindNotation)),
+    blobs: painful(notation(BlobsNotation)),
+    all: painful(notation(AllNotation))
   };
 }());
 
@@ -81,7 +80,7 @@ export const Notations = {
   }
 };
 
-ADNotations.Settings.isInfinite = decimal => ui.formatPreBreak && decimal.gte(Decimal.NUMBER_MAX_VALUE);
+Settings.isInfinite = decimal => ui.formatPreBreak && decimal.gte(Decimal.NUMBER_MAX_VALUE);
 
 EventHub.logic.on(GAME_EVENT.GAME_TICK_AFTER, () => {
   ui.formatPreBreak = !PlayerProgress.hasBroken() || (NormalChallenge.isRunning && !Enslaved.isRunning);

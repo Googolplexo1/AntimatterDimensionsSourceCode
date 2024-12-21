@@ -27,37 +27,37 @@ import { GameKeyboard } from "./keyboard";
 
 export const shortcuts = [
   {
-    name: "Toggle Autobuyers",
+    name: "Переключить автоматику",
     keys: ["a"],
     type: "bindHotkey",
     function: () => keyboardToggleAutobuyers(),
     visible: true
   }, {
-    name: "Buy one Tickspeed",
+    name: "Купить один ускоритель",
     keys: ["shift", "t"],
     type: "bindRepeatableHotkey",
     function: () => buyTickSpeed(),
     visible: true
   }, {
-    name: "Buy max Tickspeed",
+    name: "Купить все ускорители",
     keys: ["t"],
     type: "bindRepeatableHotkey",
     function: () => buyMaxTickSpeed(),
     visible: true
   }, {
-    name: "Max all",
+    name: "Купить всё",
     keys: ["m"],
     type: "bindRepeatableHotkey",
     function: () => maxAll(),
     visible: true
   }, {
-    name: "Dimensional Sacrifice",
+    name: "Пожертвование Измерений",
     keys: ["s"],
     type: "bindRepeatableHotkey",
     function: () => sacrificeBtnClick(),
     visible: true
   }, {
-    name: "Dimension Boost",
+    name: "Расширение Измерений",
     keys: ["d"],
     type: "bindRepeatableHotkey",
     function: () => manualRequestDimensionBoost(true),
@@ -69,7 +69,7 @@ export const shortcuts = [
     function: () => manualRequestDimensionBoost(false),
     visible: false
   }, {
-    name: "Antimatter Galaxy",
+    name: "Галактика Антиматерии",
     keys: ["g"],
     type: "bindRepeatableHotkey",
     function: () => manualRequestGalaxyReset(true),
@@ -81,13 +81,13 @@ export const shortcuts = [
     function: () => manualRequestGalaxyReset(false),
     visible: false
   }, {
-    name: "Big Crunch",
+    name: "Большое Сжатие",
     keys: ["c"],
     type: "bindRepeatableHotkey",
     function: () => manualBigCrunchResetRequest(),
     visible: true
   }, {
-    name: "Replicanti Galaxy",
+    name: "Галактика Репликанти",
     keys: ["r"],
     type: "bindHotkey",
     function: () => {
@@ -96,95 +96,95 @@ export const shortcuts = [
     },
     visible: () => Replicanti.areUnlocked || PlayerProgress.eternityUnlocked()
   }, {
-    name: "Eternity",
+    name: "Вечность",
     keys: ["e"],
     type: "bindRepeatableHotkey",
     function: () => eternityResetRequest(),
     visible: () => PlayerProgress.eternityUnlocked() || Player.canEternity
   }, {
-    name: "Toggle Time Study respec",
+    name: "Переключить сброс Исследований Времени",
     keys: ["shift", "e"],
     type: "bindHotkey",
     function: () => {
       player.respec = !player.respec;
-      GameUI.notify.info(`Time Study respec is now ${player.respec ? "active" : "inactive"}`);
+      GameUI.notify.info(`Исследования Времени ${player.respec ? "" : "не "}будут сброшены`);
     },
     visible: () => PlayerProgress.eternityUnlocked()
   }, {
-    name: "Enter/Exit Dilation",
+    name: "Переключить Замедление",
     keys: ["l"],
     type: "bindRepeatableHotkey",
     function: () => startDilatedEternityRequest(),
     visible: () => PlayerProgress.realityUnlocked() || PlayerProgress.dilationUnlocked()
   }, {
-    name: "Reality",
+    name: "Реальность",
     keys: ["y"],
     type: "bindRepeatableHotkey",
     function: () => requestManualReality(),
     visible: () => PlayerProgress.realityUnlocked() || isRealityAvailable()
   }, {
-    name: "Toggle Glyph unequip",
+    name: "Переключить сброс глифов",
     keys: ["shift", "y"],
     type: "bindHotkey",
     function: () => {
       player.reality.respec = !player.reality.respec;
-      GameUI.notify.info(`Glyph respec is now ${player.reality.respec ? "active" : "inactive"}`);
+      GameUI.notify.info(`Глифы ${player.reality.respec ? "" : "не "}будут сброшены`);
     },
     visible: () => PlayerProgress.realityUnlocked()
   }, {
-    name: "Start/Pause Automator",
+    name: "Переключить Автоматизатор",
     keys: ["u"],
     type: "bindHotkey",
     function: () => keyboardAutomatorToggle(),
     visible: () => Player.automatorUnlocked
   }, {
-    name: "Restart Automator",
+    name: "Перезапустить текущую программу для Автоматизатора",
     keys: ["shift", "u"],
     type: "bindHotkey",
     function: () => keyboardAutomatorRestart(),
     visible: () => Player.automatorUnlocked
   }, {
-    name: "Undo Edit (Automator)",
+    name: "Отменить изменение в Автоматизаторе",
     keys: ["mod", "z"],
     type: "bind",
     function: () => AutomatorData.undoScriptEdit(),
     visible: () => Player.automatorUnlocked
   }, {
-    name: "Redo Edit (Automator)",
+    name: "Восстановить изменение в Автоматизаторе",
     keys: ["mod", "y"],
     type: "bind",
     function: () => AutomatorData.redoScriptEdit(),
     visible: () => Player.automatorUnlocked
   }, {
-    name: "Toggle Black Hole",
+    name: "Переключить Чёрную Дыру",
     keys: ["b"],
     type: "bindHotkey",
     function: () => BlackHoles.togglePause(),
     visible: () => PlayerProgress.realityUnlocked()
   }, {
-    name: "Toggle Continuum",
+    name: "Переключить Континуум",
     keys: ["alt", "a"],
     type: "bindHotkey",
     function: () => keyboardToggleContinuum(),
     visible: () => Laitela.continuumUnlocked
   }, {
-    name: "Armageddon",
+    name: "Армагеддон",
     keys: ["z"],
     type: "bindRepeatableHotkey",
     function: () => armageddonRequest(),
     visible: () => Pelle.isDoomed
   }, {
-    name: "Toggle Glyph unequip (Pelle)",
+    name: "Переключить сброс глифов в Обречении",
     keys: ["shift", "z"],
     type: "bindHotkey",
     function: () => {
       if (!Pelle.isDoomed) return;
       player.reality.respec = !player.reality.respec;
-      GameUI.notify.info(`Glyph respec is now ${player.reality.respec ? "active" : "inactive"}`);
+      GameUI.notify.info(`Глифы ${player.reality.respec ? "" : "не "}будут сброшены`);
     },
     visible: () => Pelle.isDoomed
   }, {
-    name: "Save game",
+    name: "Сохранить игру",
     keys: ["mod", "s"],
     type: "bind",
     function: () => {
@@ -193,7 +193,7 @@ export const shortcuts = [
     },
     visible: true
   }, {
-    name: "Export game",
+    name: "Экспортировать сохранение",
     keys: ["mod", "e"],
     type: "bind",
     function: () => {
@@ -202,7 +202,7 @@ export const shortcuts = [
     },
     visible: true
   }, {
-    name: "Open Hotkey List Modal",
+    name: "Раскрыть список горячих клавиш",
     keys: ["?"],
     type: "bind",
     function: () => {
@@ -211,7 +211,7 @@ export const shortcuts = [
     },
     visible: true
   }, {
-    name: "Open How To Play Modal",
+    name: "Открыть окно помощи по игре",
     keys: ["h"],
     type: "bind",
     function: () => {
@@ -220,7 +220,7 @@ export const shortcuts = [
     },
     visible: true
   }, {
-    name: "Modify visible tabs",
+    name: "Раскрыть изменение отображаемых вкладок",
     keys: ["tab"],
     type: "bind",
     function: () => {
@@ -229,7 +229,7 @@ export const shortcuts = [
     },
     visible: true
   }, {
-    name: "Confirm Modal",
+    name: "Подтвердить",
     keys: ["enter"],
     type: "bind",
     function: () => {
@@ -238,7 +238,7 @@ export const shortcuts = [
     },
     visible: true
   }, {
-    name: "Close Modal or open Options",
+    name: `Закрыть окно или открыть вкладку "Настройки"`,
     keys: ["esc"],
     type: "bind",
     function: () => {
@@ -251,7 +251,7 @@ export const shortcuts = [
     keys: ["f"],
     type: "bindRepeatable",
     function: () => {
-      GameUI.notify.info("Paying respects");
+      GameUI.notify.info("Чтим память");
       SecretAchievement(13).unlock();
     },
     visible: false
@@ -299,7 +299,7 @@ export const shortcuts = [
     visible: false
   },
   {
-    name: "Adjust Autobuyers",
+    name: "Открыть окно настройки автоматики",
     keys: ["mod", "alt", "a"],
     type: "bind",
     function: () => keyboardEditAutobuyers(),
@@ -395,21 +395,23 @@ function toggleAutobuyer(buyer) {
   // Autobuyer.tickspeed.isUnlocked is false without NC9, but we still want the simpler one to be togglable via hotkey
   const isSimpleTickspeed = buyer === Autobuyer.tickspeed && buyer.isBought;
   if (buyer.disabledByContinuum) {
-    GameUI.notify.info("Continuum is enabled, you cannot alter this autobuyer");
+    GameUI.notify.info("Континуум замещает эту автоматику");
   } else if (buyer.isUnlocked || isSimpleTickspeed) {
     buyer.toggle();
-    GameUI.notify.info(`${buyer.name} Autobuyer toggled ${(buyer.isActive) ? "on" : "off"}`);
+    const name = buyer.fullName === undefined ? buyer.name : buyer.fullName;
+    GameUI.notify.info(`Автоматика ${name} ${(buyer.isActive) ? "включена" : "выключена"}`);
   }
   return false;
 }
 
 function toggleBuySingles(buyer) {
   if (buyer.disabledByContinuum) {
-    GameUI.notify.info("Continuum is enabled, you cannot alter this autobuyer");
+    GameUI.notify.info("Континуум замещает эту автоматику");
   } else if (buyer.isUnlocked && buyer.toggleMode !== null) {
     buyer.toggleMode();
-    const bulkName = (buyer.name === "Tickspeed" || buyer.hasUnlimitedBulk) ? "max" : "10";
-    GameUI.notify.info(`${buyer.name} Autobuyer set to buy ${(buyer.mode === 1) ? "singles" : bulkName}`);
+    const bulkName = (buyer.name === "Tickspeed" || buyer.hasUnlimitedBulk) ? "максимума" : "по 10";
+    const name = buyer.fullName === undefined ? buyer.name : buyer.fullName;
+    GameUI.notify.info(`Автоматика ${name} настроена на покупку ${(buyer.mode === 1) ? "по одному" : bulkName}`);
   }
   return false;
 }
@@ -417,7 +419,7 @@ function toggleBuySingles(buyer) {
 function keyboardToggleAutobuyers() {
   if (Tab.automation.isUnlocked) {
     Autobuyers.toggle();
-    GameUI.notify.info(`Autobuyers ${player.auto.autobuyersOn ? "resumed" : "paused"}`);
+    GameUI.notify.info(`Автоматика ${player.auto.autobuyersOn ? "возобновлена" : "приостановлена"}`);
   }
 }
 
@@ -430,7 +432,7 @@ function keyboardToggleContinuum() {
   // This is a toggle despite the lack of !, because player.auto.disableContinuum
   // is negated compared to whether continuum is on.
   Laitela.setContinuum(player.auto.disableContinuum);
-  GameUI.notify.info(`${(player.auto.disableContinuum) ? "Disabled" : "Enabled"} Continuum`);
+  GameUI.notify.info(`Континуум ${(player.auto.disableContinuum) ? "отключён" : "включён"}`);
 }
 
 function keyboardAutomatorToggle() {
@@ -446,22 +448,22 @@ function keyboardAutomatorToggle() {
       AutomatorBackend.restart();
       AutomatorBackend.start(visibleIndex);
       if (AutomatorData.currentErrors().length === 0) {
-        GameUI.notify.automator(`Starting script "${AutomatorBackend.scriptName}"`);
+        GameUI.notify.automator(`Запущена программа "${AutomatorBackend.scriptName}"`);
       } else {
-        GameUI.notify.error(`Cannot start script "${AutomatorBackend.scriptName}" (has errors)`);
+        GameUI.notify.error(`Программа "${AutomatorBackend.scriptName}" не может быть запущена ввиду наличия ошибок`);
       }
       return;
     }
-    const action = AutomatorBackend.isRunning ? "Resuming" : "Pausing";
+    const action = AutomatorBackend.isRunning ? "возобновлено" : "приостановлено";
     const linenum = AutomatorBackend.currentLineNumber;
-    GameUI.notify.automator(`${action} script "${AutomatorBackend.scriptName}" at line ${linenum}`);
+    GameUI.notify.automator(`Выполнение программы "${AutomatorBackend.scriptName}" ${action} на строке ${linenum}`);
   }
 }
 
 function keyboardAutomatorRestart() {
   if (Player.automatorUnlocked) {
-    const action = AutomatorBackend.isOn ? "Restarting" : "Starting";
-    GameUI.notify.automator(`${action} script "${AutomatorBackend.scriptName}"`);
+    const action = AutomatorBackend.isOn ? "Перезапущена" : "Запущена";
+    GameUI.notify.automator(`${action} программа "${AutomatorBackend.scriptName}"`);
 
     AutomatorBackend.restart();
     AutomatorBackend.start();

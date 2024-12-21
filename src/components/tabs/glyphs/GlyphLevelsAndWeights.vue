@@ -352,7 +352,7 @@ function roundPreservingSum(data) {
         :style="rowStyle('perk shop')"
         class="l-glyph-levels-and-weights__factor"
       >
-        Teresa's Perk shop
+        Улучшение Терезы
       </div>
       <div
         :style="rowStyle('perk shop')"
@@ -372,7 +372,7 @@ function roundPreservingSum(data) {
         :style="rowStyle('shards')"
         class="l-glyph-levels-and-weights__factor"
       >
-        {{ formatInt(100) }}×Shards{{ formatPow(2) }}
+        {{ formatInt(100) }}×РО{{ formatPow(2) }}
       </div>
       <div
         :style="rowStyle('shards')"
@@ -392,7 +392,7 @@ function roundPreservingSum(data) {
         :style="rowStyle('singularities')"
         class="l-glyph-levels-and-weights__factor"
       >
-        Singularities
+        Этап Сингулярности
       </div>
       <div
         :style="rowStyle('singularities')"
@@ -412,7 +412,7 @@ function roundPreservingSum(data) {
         :style="rowStyle('instability')"
         class="l-glyph-levels-and-weights__factor"
       >
-        Instability
+        Неустойчивость
       </div>
       <div
         :style="rowStyle('instability')"
@@ -432,7 +432,7 @@ function roundPreservingSum(data) {
         :style="rowStyle('upgrade rows')"
         class="l-glyph-levels-and-weights__factor"
       >
-        Upgrade Rows
+        Ряды Улучшений
       </div>
       <div
         :style="rowStyle('upgrade rows')"
@@ -452,7 +452,7 @@ function roundPreservingSum(data) {
         :style="rowStyle('achievements')"
         class="l-glyph-levels-and-weights__factor"
       >
-        Achievements
+        Достижения
       </div>
       <div
         :style="rowStyle('achievements')"
@@ -471,7 +471,7 @@ function roundPreservingSum(data) {
       :style="rowStyle('level')"
       class="l-glyph-levels-and-weights__factor"
     >
-      Final Level
+      Итого
     </div>
     <div
       :style="rowStyle('level')"
@@ -480,16 +480,10 @@ function roundPreservingSum(data) {
       {{ formatLevel(factors.actualLevel) }}
     </div>
     <div
-      :style="rowStyle('info')"
-      class="l-glyph-levels-and-weights__factor l-glyph-level-and-weights-note"
-    >
-      Note: All resources here are log10 of their actual values.
-    </div>
-    <div
       :style="rowStyle('info2')"
       class="l-glyph-levels-and-weights__factor l-glyph-level-and-weights-note"
     >
-      EP, Replicanti, and DT use their highest values this Reality.
+      В формулу подставляются десятичные логарифмы рекордных количеств ресурсов в текущей реальности.
     </div>
     <template v-if="adjustVisible">
       <div
@@ -497,13 +491,13 @@ function roundPreservingSum(data) {
         class="l-glyph-levels-and-weights__adjust-outline"
       />
       <div class="l-glyph-levels-and-weights__adjust-label">
-        Adjust weights
+        Корректировка весов
         <div class="l-glyph-levels-and-weights__reset-btn-outer">
           <div
             :class="resetWeightsButtonClass()"
             @click="resetWeights"
           >
-            Reset
+            Сбросить
           </div>
         </div>
       </div>
@@ -512,7 +506,7 @@ function roundPreservingSum(data) {
           v-if="showAutoAdjustWeights"
           v-model="isAutoAdjustWeightsOn"
           class="c-glyph-levels-and-weights__auto-btn"
-          label="Auto adjustment:"
+          label="Автоматическая корректировка:"
         />
       </div>
       <div

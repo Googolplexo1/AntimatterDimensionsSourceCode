@@ -16,15 +16,15 @@ export default {
   },
   computed: {
     upgrades: () => ImaginaryUpgrades.all,
-    lockTooltip: () => `Requirement locks only prevent manual and automated actions. Any related upgrades
-      will not be disabled and may still cause requirements to be failed.`,
+    lockTooltip: () => `Проверка требования только предотвращает действия, 
+      а не выключает эффекты, делающие его выполнение невозможным.`,
   },
   methods: {
     update() {
       this.baseRMCap.copyFrom(MachineHandler.baseRMCap);
       this.capRM.copyFrom(MachineHandler.hardcapRM);
       this.scaleTime = MachineHandler.scaleTimeForIM;
-      this.capStr = formatMachines(MachineHandler.hardcapRM, MachineHandler.currentIMCap);
+      this.capStr = format(MachineHandler.currentIMCap, 2, 2);
     },
     id(row, column) {
       return (row - 1) * 5 + column - 1;
@@ -36,25 +36,25 @@ export default {
 <template>
   <div class="l-reality-upgrade-grid">
     <div class="c-cap-text">
-      Your Machine cap is <span class="c-reality-tab__reality-machines">{{ capStr }}</span>.
+      Предел количества Мнимых Машин: <span class="c-reality-tab__reality-machines">{{ capStr }}</span>.
     </div>
     <div class="c-info-text">
-      You have reached the limits of Reality and cannot hold more than {{ format(capRM) }} Reality Machines.
+      Вы достигли ограничения на количество Машин Реальности: {{ format(capRM) }}.
       <br>
-      Machines gained in excess of {{ format(baseRMCap) }} will raise the maximum amount of Imaginary Machines
-      you can have.
+      Рекордное количество Машин Реальности, которое вы могли бы получить на реальности, не будь этого ограничения,
+      влияет на предел количества Мнимых Машин.
       <br>
-      Imaginary Machines are gained passively over time up to the cap, but gain slows down exponentially
-      as you approach the cap.
+      Мнимые Машины пассивно производятся со временем, но их производство экспоненциально замедляется
+      по мере приближения их количества к пределу.
       <br>
-      Every {{ formatInt(scaleTime) }} seconds the difference in iM between your current amount and the cap
-      will be cut in half.
+      Каждые {{ formatInt(scaleTime) }} секунд разность от количества ваших Мнимых Машин до
+      его предела уменьшается вдвое.
       <br>
       <br>
-      The first two rows of upgrades can be purchased endlessly and the rest of the upgrades are one-time upgrades
-      with requirements.
+      Улучшения из двух верхних рядов можно покупать сколь угодно много раз, а остальные - по одному,
+      и у них есть требования.
       <br>
-      Upgrades here have the same gameplay and visual behavior as Reality Upgrades, but cost Imaginary Machines instead.
+      Мнимые Улучшения ведут себя аналогично Улучшениям Реальности с той лишь разницей, что покупаются за Мнимые Машины.
       <span :ach-tooltip="lockTooltip">
         <i class="fas fa-question-circle" />
       </span>

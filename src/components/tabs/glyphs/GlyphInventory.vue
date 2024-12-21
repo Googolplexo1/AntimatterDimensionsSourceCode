@@ -88,7 +88,7 @@ export default {
 
 <template>
   <div class="l-glyph-inventory">
-    Click and drag or double-click to equip Glyphs.
+    Чтобы активировать глиф, перетяните его в свободный слот или дважды щёлкните по нему.
     <div
       v-for="row in rowCount"
       :key="protectedRows + row"

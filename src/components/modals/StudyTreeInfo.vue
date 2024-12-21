@@ -24,19 +24,19 @@ export default {
       v-if="treeStatus.firstPaths"
       class="l-modal-import-tree__tree-info-line"
     >
-      Dimension Split: {{ treeStatus.firstPaths }}
+      Развилка Измерений: путь {{ treeStatus.firstPaths }}
     </div>
     <div
       v-if="treeStatus.secondPaths"
       class="l-modal-import-tree__tree-info-line"
     >
-      Pace Split: {{ treeStatus.secondPaths }}
+      Развилка темпа: {{ treeStatus.secondPaths }} путь
     </div>
     <div
       v-if="treeStatus.ec > 0"
       class="l-modal-import-tree__tree-info-line"
     >
-      Eternity Challenge: {{ treeStatus.ec }} {{ treeStatus.startEC ? "(will start)" : "" }}
+      Испытание Вечности: {{ treeStatus.ec }} {{ treeStatus.startEC ? "(будет запущено)" : "" }}
     </div>
   </div>
 </template>

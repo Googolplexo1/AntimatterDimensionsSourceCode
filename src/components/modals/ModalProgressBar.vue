@@ -41,10 +41,10 @@ export default {
         </div>
         <div class="modal-progress-bar__margin">
           <div>
-            {{ progress.progressName }}: {{ formatInt(progress.current) }}/{{ formatInt(progress.max) }}
+            {{ progress.progressName }} рассчитано: {{ formatInt(progress.current) }}/{{ formatInt(progress.max) }}
           </div>
           <div>
-            Remaining: {{ remainingTime }}
+            Времени осталось: {{ remainingTime }}
           </div>
           <div class="modal-progress-bar__hbox">
             <div class="modal-progress-bar__bg">

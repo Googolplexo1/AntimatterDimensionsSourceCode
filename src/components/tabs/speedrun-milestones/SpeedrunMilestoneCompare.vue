@@ -69,14 +69,14 @@ export default {
 <template>
   <div :class="classObject">
     <span class="l-milestone-title">{{ milestone.name }}</span>
-    <span :style="timeStyle(currTime)">Current run: {{ timeString(currTime) }}</span>
+    <span :style="timeStyle(currTime)">Текущий забег: {{ timeString(currTime) }}</span>
     <span
       v-if="refTime"
       :style="timeStyle(refTime)"
     >
-      Run {{ runIndices[0] }}: {{ timeString(refTime, true) }}
+      Забег №{{ runIndices[0] }}: {{ timeString(refTime, true) }}
     </span>
-    <span :style="timeStyle(bestTime)">Best ({{ runIndices[1] }}): {{ timeString(bestTime, true) }}</span>
+    <span :style="timeStyle(bestTime)">Лучший результат (забег №{{ runIndices[1] }}): {{ timeString(bestTime, true) }}</span>
   </div>
 </template>
 

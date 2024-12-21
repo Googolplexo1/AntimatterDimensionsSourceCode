@@ -10,32 +10,35 @@ export default {
     return {
       layers: {
         reality: {
-          name: "Reality",
-          plural: "Realities",
-          currency: "RM",
+          name: "реальность",
+          plural: "реальностей",
+          uppercase: "Реальностей",
+          currency: "МР",
           condition: () => PlayerProgress.realityUnlocked(),
           getRuns: () => player.records.recentRealities,
-          extra: ["Glyph Level", "Relic Shards"],
+          extra: ["Уровень глифа", "РО"],
           showExtra: [() => true, () => TeresaUnlocks.effarig.canBeApplied],
           formatExtra: [x => formatInt(x), x => format(x, 2)],
           allowRate: [false, true],
-          rateString: ["", "Relic Shard Rate"],
+          rateString: ["", "РО за время"],
         },
         eternity: {
-          name: "Eternity",
-          plural: "Eternities",
-          currency: "EP",
+          name: "вечность",
+          plural: "вечностей",
+          uppercase: "Вечностей",
+          currency: "ОВ",
           condition: () => PlayerProgress.eternityUnlocked(),
           getRuns: () => player.records.recentEternities,
-          extra: ["Tachyon Particles"],
+          extra: ["Тахионов"],
           showExtra: [() => PlayerProgress.dilationUnlocked()],
           formatExtra: [x => format(x, 2)],
           allowRate: [false],
         },
         infinity: {
-          name: "Infinity",
-          plural: "Infinities",
-          currency: "IP",
+          name: "бесконечность",
+          plural: "бесконечностей",
+          uppercase: "Бесконечностей",
+          currency: "ОБ",
           condition: () => PlayerProgress.infinityUnlocked(),
           getRuns: () => player.records.recentInfinities,
         },
@@ -47,13 +50,13 @@ export default {
     resourceText() {
       switch (this.resourceType) {
         case RECENT_PRESTIGE_RESOURCE.ABSOLUTE_GAIN:
-          return "total resource gain";
+          return "Полученные ресурсы";
         case RECENT_PRESTIGE_RESOURCE.RATE:
-          return "resource gain rate";
+          return "Прирост ресурсов за время";
         case RECENT_PRESTIGE_RESOURCE.CURRENCY:
-          return "prestige currency";
+          return "Валюта престижа";
         case RECENT_PRESTIGE_RESOURCE.PRESTIGE_COUNT:
-          return "prestige count";
+          return "Статистика престижа";
         default:
           throw new Error("Unrecognized Statistics tab resource type");
       }
@@ -78,7 +81,7 @@ export default {
         class="o-primary-btn o-primary-btn--subtab-option"
         @click="cycleButton()"
       >
-        Showing {{ resourceText }}
+        {{ resourceText }}
       </button>
     </div>
     <PastPrestigeRunsContainer

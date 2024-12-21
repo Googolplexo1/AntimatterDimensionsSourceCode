@@ -19,8 +19,8 @@ export default {
   },
   computed: {
     enslavedText() {
-      return `${Enslaved.displayName} are helping you look for cracks in their Reality -
-        they can give you some advice in ${this.enslavedTimer}`;
+      return `Безымянные помогают вам искать трещины в их Реальности -
+        они смогут дать вам совет через ${this.enslavedTimer}`;
     }
   },
   methods: {
@@ -33,7 +33,7 @@ export default {
 
       this.isInEffarig = Effarig.isRunning;
       if (this.isInEffarig) {
-        this.effarigMultNerfText = `${formatPow(0.25 + 0.25 * Effarig.nerfFactor(Currency.infinityPower.value), 0, 5)}`;
+        this.effarigMultNerfText = `${format(0.25 + 0.25 * Effarig.nerfFactor(Currency.infinityPower.value), 0, 5)}`;
         this.effarigTickNerfText = `${formatPow(0.7 + 0.1 * Effarig.nerfFactor(Currency.timeShards.value), 0, 5)}`;
       }
       this.isInLaitela = Laitela.isRunning;
@@ -61,13 +61,13 @@ export default {
       this.isChallengePowerVisible = isChallengePowerVisible;
       if (isChallengePowerVisible) {
         const powerArray = [];
-        if (isC2Running) powerArray.push(`Production: ${formatPercents(player.chall2Pow, 2, 2)}`);
-        if (isC3Running) powerArray.push(`First dimension: ${formatX(player.chall3Pow, 3, 4)}`);
-        if (isIC6Running) powerArray.push(`Matter: Antimatter Dimensions /
+        if (isC2Running) powerArray.push(`Скорость производства: ${formatPercents(player.chall2Pow, 2, 2)}`);
+        if (isC3Running) powerArray.push(`Множитель к производству антиматерии: ${formatX(player.chall3Pow, 3, 4)}`);
+        if (isIC6Running) powerArray.push(`Множители Измерений Антиматерии разделены на
           ${format(new Decimal(1).timesEffectOf(InfinityChallenge(6)), 2, 2)}`);
-        if (isIC8Running) powerArray.push(`Production: /
+        if (isIC8Running) powerArray.push(`Множители Измерений Антиматерии разделены на
           ${format(new Decimal(1).timesEffectOf(InfinityChallenge(8)).reciprocal(), 2, 2)}`);
-        this.challengePower = powerArray.join(", ");
+        this.challengePower = powerArray.join(" | ");
       }
     },
   },
@@ -80,15 +80,15 @@ export default {
       {{ enslavedText }}
     </div>
     <div v-if="isInEffarig">
-      Game speed and multipliers are Dilated {{ effarigMultNerfText }}
+      Скорость игры и множители измерений замедлены со степенью {{ effarigMultNerfText }}
       <br>
-      Tickspeed is Dilated {{ effarigTickNerfText }}
+      Скорость тика замедлена со степенью {{ effarigTickNerfText }}
     </div>
     <div v-if="isInLaitela">
-      Entropy: {{ laitelaEntropy }} ({{ laitelaTimer }})
+      Энтропия: {{ laitelaEntropy }} ({{ laitelaTimer }})
     </div>
     <div v-if="isInMatterChallenge">
-      There is {{ format(matter, 2, 1) }} matter.
+      Есть {{ format(matter, 2, 1) }} материи.
     </div>
     <div v-if="isChallengePowerVisible">
       {{ challengePower }}

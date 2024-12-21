@@ -10,12 +10,12 @@ export default {
     on: {
       type: String,
       required: false,
-      default: "ON"
+      default: "ВКЛ."
     },
     off: {
       type: String,
       required: false,
-      default: "OFF"
+      default: "ВЫКЛ."
     },
     value: {
       type: Boolean,

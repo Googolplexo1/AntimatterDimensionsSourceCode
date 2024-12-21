@@ -10,24 +10,23 @@ import { MultiplierTabIcons } from "./icons";
 // after the first ever dilation unlock on the 0th reality
 export const DT = {
   total: {
-    name: "Dilated Time gain",
-    displayOverride: () => `${format(getDilationGainPerSecond().times(getGameSpeedupForDisplay()), 2, 2)}/sec`,
+    name: "Производство Замедленного Времени",
+    displayOverride: () => `${format(getDilationGainPerSecond().times(getGameSpeedupForDisplay()), 2, 2)}/с`,
     multValue: () => getDilationGainPerSecond().times(getGameSpeedupForDisplay()),
     isActive: () => PlayerProgress.realityUnlocked() ||
       (PlayerProgress.dilationUnlocked() && getDilationGainPerSecond().gt(0)),
     dilationEffect: () => (Enslaved.isRunning ? 0.85 : 1),
-    isDilated: true,
     overlay: ["Ψ"],
   },
   achievement: {
-    name: "Achievements",
+    name: "Награды за достижения",
     multValue: () => Achievement(132).effectOrDefault(1) * Achievement(137).effectOrDefault(1),
     isActive: () => (Achievement(132).canBeApplied || Achievement(137).canBeApplied) &&
       getDilationGainPerSecond().neq(0),
     icon: MultiplierTabIcons.ACHIEVEMENT,
   },
   dilation: {
-    name: "Repeatable Dilation Upgrades",
+    name: "Улучшения Замедления",
     multValue: () => DC.D1.timesEffectsOf(
       DilationUpgrade.dtGain,
       DilationUpgrade.dtGainPelle,
@@ -41,13 +40,13 @@ export const DT = {
     icon: MultiplierTabIcons.UPGRADE("dilation"),
   },
   amplifierDT: {
-    name: "Reality Upgrade - Temporal Amplifier",
+    name: `Улучшение Реальности "Временной Усилитель"`,
     multValue: () => RealityUpgrade(1).effectOrDefault(1),
     isActive: () => RealityUpgrade(1).canBeApplied && getDilationGainPerSecond().neq(0) && !Pelle.isDoomed,
     icon: MultiplierTabIcons.UPGRADE("reality"),
   },
   glyph: {
-    name: "Glyph Effects",
+    name: "Глифы",
     multValue: () => {
       const dtMult = getAdjustedGlyphEffect("dilationDT").times(Pelle.specialGlyphEffect.dilation);
       const repliDT = Replicanti.areUnlocked
@@ -59,19 +58,19 @@ export const DT = {
     icon: MultiplierTabIcons.GENERIC_GLYPH
   },
   ra1: {
-    name: "Ra Upgrade - Multiplier based on TT",
+    name: "Этап Ра: 10-й Уровень Ви",
     multValue: () => DC.D1.timesEffectsOf(Ra.unlocks.continuousTTBoost.effects.dilatedTime),
     isActive: () => Ra.unlocks.autoTP.canBeApplied && getDilationGainPerSecond().neq(0),
     icon: MultiplierTabIcons.GENERIC_RA,
   },
   ra2: {
-    name: "Ra Upgrade - Multiplier based on peak game speed",
+    name: "Этап Ра: 15-й Уровень Безымянных",
     multValue: () => DC.D1.timesEffectsOf(Ra.unlocks.peakGamespeedDT),
     isActive: () => Ra.unlocks.autoTP.canBeApplied && getDilationGainPerSecond().neq(0),
     icon: MultiplierTabIcons.GENERIC_RA,
   },
   alchemy: {
-    name: "Glyph Alchemy",
+    name: () => `Алхимический ресурс "Замедление"`,
     multValue: () => AlchemyResource.dilation.effectOrDefault(1),
     isActive: () => Ra.unlocks.unlockGlyphAlchemy.canBeApplied && getDilationGainPerSecond().neq(0),
     icon: MultiplierTabIcons.ALCHEMY,
@@ -82,24 +81,16 @@ export const DT = {
     isActive: () => ShopPurchaseData.totalSTD > 0 && getDilationGainPerSecond().neq(0),
     icon: MultiplierTabIcons.IAP,
   },
-
   nerfV: {
-    name: "V's Reality",
-    powValue: () => 0.5,
+    name: "Условие Реальности Ви",
+    powValue: 0.5,
     isActive: () => V.isRunning && getDilationGainPerSecond().neq(0),
     icon: MultiplierTabIcons.GENERIC_V,
   },
   nerfPelle: {
-    name: "Doomed Reality",
+    name: "Условие Обречённой Реальности",
     multValue: 1e-5,
     isActive: () => Pelle.isDoomed && getDilationGainPerSecond().neq(0),
     icon: MultiplierTabIcons.PELLE,
-  },
-  gamespeed: {
-    name: "Current Game speed",
-    multValue: () => getGameSpeedupForDisplay(),
-    isActive: () => getGameSpeedupForDisplay() > 1 && getDilationGainPerSecond().neq(0),
-    ignoresNerfPowers: true,
-    icon: MultiplierTabIcons.GAMESPEED,
   },
 };

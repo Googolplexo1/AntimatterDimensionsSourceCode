@@ -537,12 +537,10 @@ button:focus {
   flex-grow: 0;
   flex-shrink: 0;
   height: 2.5rem;
-  min-width: 8rem;
+  min-width: 12rem;
   align-self: stretch;
   font-size: 1rem !important;
   margin: 0.3rem;
-  padding-right: 1rem;
-  padding-left: 1rem;
 }
 
 .l-tt-save-load-btn__wrapper {
@@ -780,7 +778,7 @@ button:focus {
 }
 
 .l-reality-button {
-  width: 35rem;
+  width: 37rem;
   height: 6rem;
 }
 
@@ -869,7 +867,7 @@ button:focus {
 .l-reset-reality-button {
   display: block;
   width: 100%;
-  height: 100%;
+  height: 6.5rem;
 }
 
 .c-reset-reality-button {
@@ -919,6 +917,7 @@ button:focus {
   box-shadow: 0 0 2rem inset rgba(244, 164, 96, 50%);
   margin-right: 0.5rem;
   transition-duration: 0.2s;
+  height: 6.5rem;
 }
 
 .l-reality-amplify-button--clickable {
@@ -1596,6 +1595,12 @@ br {
 
 /* #region modifiers */
 
+.o-primary-btn--news-option {
+  width: 24rem;
+  height: 7rem;
+  box-sizing: border-box;
+}
+
 .o-primary-btn--width-medium {
   width: 12rem;
 }
@@ -1692,7 +1697,7 @@ br {
 
 .o-primary-btn--modal-option {
   width: 16rem;
-  height: 6.5rem;
+  height: 8rem;
   margin: 0.3rem;
 }
 
@@ -1736,7 +1741,7 @@ br {
 }
 
 .o-primary-btn--small-spoon {
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .o-primary-btn--replicanti-unlock {
@@ -1746,7 +1751,7 @@ br {
 
 .o-primary-btn--replicanti-upgrade {
   width: 18rem;
-  height: 5rem;
+  height: 6rem;
   font-size: 1rem;
   padding: 0.1rem 0.6rem;
 }
@@ -1765,14 +1770,14 @@ br {
 }
 
 .o-primary-btn--replicanti-galaxy {
-  width: 22rem;
+  width: 37rem;
   height: 7rem;
   font-size: 1.2rem;
   padding: 0.1rem 0.6rem;
 }
 
 .o-primary-btn--replicanti-galaxy-toggle {
-  width: 22rem;
+  width: 37rem;
   font-size: 1.2rem;
 }
 
@@ -1997,8 +2002,8 @@ br {
 }
 
 .o-prestige-button {
-  width: 22rem;
   height: 7rem;
+  width: 27rem;
   font-family: Typewriter, serif;
   font-size: 1.1rem;
   border: var(--var-border-width, 0.2rem) solid;
@@ -2192,6 +2197,7 @@ br {
 
 .o-hint-text--alchemy-node {
   font-size: 1.2rem;
+  width: 15rem;
   color: var(--color-text);
   text-shadow: none;
   transition: opacity 0.2s;
@@ -2765,7 +2771,7 @@ br {
 }
 
 .l-options-grid__button {
-  width: 22rem;
+  width: 30rem;
   margin: 0.5rem 0.8rem;
 }
 
@@ -2778,6 +2784,7 @@ br {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 30rem;
 }
 
 .c-options-grid__notations {
@@ -2946,7 +2953,7 @@ br {
 .l-glyph-set-entry {
   display: flex;
   flex-direction: column;
-  width: 35rem;
+  width: 40rem;
   height: 12rem;
   justify-content: space-between;
   font-size: 1.4rem;
@@ -2974,7 +2981,7 @@ br {
   display: flex;
   flex-direction: column;
   width: 25rem;
-  height: 8rem;
+  height: 9rem;
   justify-content: space-between;
   color: var(--color-text);
   border: var(--var-border-width, 0.2rem) solid var(--color-text);
@@ -3403,7 +3410,7 @@ br {
 
 .c-challenge-box {
   width: 40rem;
-  height: 13rem;
+  height: 15rem;
   font-size: 1rem;
   font-weight: bold;
   border: var(--var-border-width, 0.2rem) solid black;
@@ -3427,7 +3434,7 @@ br {
 }
 
 .c-challenge-box--eternity {
-  height: 18rem;
+  height: 21rem;
   color: var(--color-text);
   background-color: var(--color-prestige--accent);
   border-color: var(--color-eternity);
@@ -3479,6 +3486,14 @@ br {
   display: flex;
   flex-direction: column;
   height: 5.5rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.l-challenge-box__bottom--eternity {
+  display: flex;
+  flex-direction: column;
+  height: 9rem;
   justify-content: flex-end;
   align-items: center;
 }
@@ -3746,7 +3761,7 @@ br {
 
 .o-infinity-upgrade-btn {
   width: 19rem;
-  height: 9rem;
+  height: 9.5rem;
   font-family: Typewriter, serif;
   font-size: 1rem;
   font-weight: bold;
@@ -4325,7 +4340,7 @@ br {
   text-align: center;
   text-align-last: center;
   font-family: Typewriter, serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: black;
   border-radius: var(--var-border-radius, 0.4rem);
   user-select: none;
@@ -4859,7 +4874,7 @@ properly on certain themes. */
 }
 
 .o-eternity-milestone__reward {
-  width: 25rem;
+  width: 26rem;
   height: 8rem;
   font-family: Typewriter, serif;
   font-size: 1.2rem;
@@ -5412,6 +5427,7 @@ properly on certain themes. */
 
 .c-modal-hard-reset-btn {
   margin-top: 0.3rem;
+  width: 25rem;
 }
 
 .c-modal-hard-reset-info > div {
@@ -5842,7 +5858,7 @@ kbd {
 }
 
 .c-teresa-unlock-description {
-  width: 14rem;
+  width: 16rem;
   font-size: 1rem;
   color: var(--color-teresa--base);
   background-color: var(--color-teresa--accent);
@@ -6019,7 +6035,7 @@ kbd {
 
 .c-teresa-pour {
   width: 13rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
   padding: 0.5rem;
 }
@@ -6050,7 +6066,7 @@ kbd {
 .c-effarig-shop-button {
   display: flex;
   flex-direction: column;
-  width: 35rem;
+  width: 45rem;
   justify-content: center;
   align-items: center;
   font-family: Typewriter;
@@ -6116,6 +6132,10 @@ kbd {
 .c-effarig-run-button--not-running:hover {
   color: var(--color-effarig--base);
   background-color: black;
+}
+
+.c-effarig-reward {
+  color: var(--color-good);
 }
 
 @keyframes a-effarig-run-button--not-running-glow {
@@ -6346,7 +6366,7 @@ kbd {
   min-width: 11ch;
   text-align: left;
   font-weight: bold;
-  padding-right: 1rem;
+  padding-right: 0rem;
 }
 
 .c-effarig-tab__reward-symbol {
@@ -6358,6 +6378,7 @@ kbd {
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-left: 2rem;
 }
 
 .c-effarig-tab__reward-description {
@@ -6700,8 +6721,8 @@ kbd {
 .o-v-milestone {
   display: flex;
   flex-direction: column;
-  width: 25rem;
-  height: 10rem;
+  width: 31rem;
+  height: 12rem;
   justify-content: space-around;
   font-size: 1.2rem;
   color: black;
@@ -6892,7 +6913,7 @@ kbd {
 }
 
 .c-ra-pet-header {
-  width: 35rem;
+  width: 38rem;
   background: linear-gradient(#2f2f2f, #464646);
   border-radius: var(--var-border-radius, 1.5rem);
   margin: 2rem auto;
@@ -7981,7 +8002,7 @@ kbd {
 }
 
 .c-laitela-singularity__cap-control {
-  width: 20rem;
+  width: 25rem;
   font-family: Typewriter;
   font-size: 1.1rem;
   font-weight: bold;
@@ -8158,7 +8179,7 @@ kbd {
 }
 
 .l-laitela-annihilation-button {
-  width: 35rem;
+  width: 40rem;
   height: 3rem;
   font-family: Typewriter, serif;
   color: var(--color-laitela--accent);
@@ -8191,10 +8212,10 @@ kbd {
 }
 
 .c-laitela-automation-toggle {
-  width: 22rem;
-  height: 3rem;
+  width: 24rem;
+  height: 4.5rem;
   font-family: Typewriter;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: bold;
   color: var(--color-laitela--accent);
   background: var(--color-laitela--base);
@@ -8472,8 +8493,8 @@ kbd {
 .l-reality-upgrade-btn {
   display: flex;
   flex-direction: column;
-  width: 20.5rem;
-  height: 10rem;
+  width: 22rem;
+  height: 11rem;
   position: relative;
   justify-content: center;
   align-items: center;
@@ -9277,7 +9298,7 @@ input.o-automator-block-input {
 }
 
 .l-pelle-panel-container {
-  width: 98rem;
+  width: 100rem;
   border: var(--var-border-width, 0.2rem) solid var(--color-pelle--base);
   border-radius: var(--var-border-radius, 0.5rem);
   margin: 1rem;

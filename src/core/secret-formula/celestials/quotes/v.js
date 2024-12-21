@@ -2,93 +2,93 @@ export const vQuotes = {
   initial: {
     id: 0,
     lines: [
-      "How pathetic..."
+      "Какое ничтожество..."
     ],
   },
   unlock: {
     id: 1,
     lines: [
-      "Welcome to my Reality.",
-      "I am surprised you could reach it.",
-      "This is my realm after all...",
-      "Not everyone is as great as me.",
+      "Добро пожаловать в мою Реальность.",
+      "Удивительно, как ты смог(ла) её достичь.",
+      "Всё-таки это моё царство...",
+      "Не каждый так же велик, как я.",
     ],
   },
   realityEnter: {
     id: 2,
     lines: [
-      "Good luck with that!",
-      "You will need it.",
-      "My reality is flawless. You will fail.",
+      "Удачи!",
+      "Тебе она понадобится.",
+      "Моя Реальность безупречна. Ты потерпишь неудачу.",
     ],
   },
   realityComplete: {
     id: 3,
     lines: [
-      "So fast...",
-      "Do not think so much of yourself.",
-      "This is just the beginning.",
-      "You will never be better than me.",
+      "Так быстро...",
+      "Не зазнавайся.",
+      "Это лишь начало.",
+      "Ты никогда не станешь лучше меня.",
     ],
   },
   achievement1: {
     id: 4,
     requirement: () => V.spaceTheorems >= 1,
     lines: [
-      "Only one? Pathetic.",
-      "Your accomplishments pale in comparison to mine.",
+      "Только одно? Ничтожество.",
+      "Твои достижения блекнут на фоне моих.",
     ],
   },
   achievement6: {
     id: 5,
     requirement: () => V.spaceTheorems >= 6,
     lines: [
-      "This is nothing.",
-      "Do not be so full of yourself.",
+      "Это ничто.",
+      "Не будь настолько самоуверенн(ой)[ым].",
     ],
   },
   hex1: {
     id: 6,
     requirement: () => player.celestials.v.runUnlocks.filter(a => a === 6).length >= 1,
     lines: [
-      "Do not think it will get any easier from now on.",
-      "You are awfully proud for such a little achievement.",
+      "Не думай, что дальше будет проще.",
+      "Ты непростительно горд(а) за такое малое достижение.",
     ],
   },
   achievement12: {
     id: 7,
     requirement: () => V.spaceTheorems >= 12,
     lines: [
-      "How did you...",
-      "This barely amounts to anything!",
-      "You will never complete them all.",
+      "Как ты...",
+      "Это практически ничего не значит!",
+      "Ты никогда не выполнишь их все.",
     ],
   },
   achievement24: {
     id: 8,
     requirement: () => V.spaceTheorems >= 24,
     lines: [
-      "Impossible...",
-      "After how difficult it was for me...",
+      "Это невозможно...",
+      "После того, как трудно это было для меня...",
     ],
   },
   hex3: {
     id: 9,
     requirement: () => player.celestials.v.runUnlocks.filter(a => a === 6).length >= 3,
     lines: [
-      "No... No... No...",
-      "This cannot be...",
+      "Нет... Нет... Нет...",
+      "Этого не может быть...",
     ],
   },
   allAchievements: {
     id: 10,
     requirement: () => V.spaceTheorems >= 36,
     lines: [
-      "I... how did you do it...",
-      "I worked so hard to get them...",
-      "I am the greatest...",
-      "No one is better than me...",
-      "No one... no one... no on-",
+      "Я... как ты это сделал(а)...",
+      "Я так долго трудился, чтобы их получить...",
+      "Я величайший...",
+      "Нет никого лучше меня...",
+      "Никого... никого... нико-",
     ],
   }
 };

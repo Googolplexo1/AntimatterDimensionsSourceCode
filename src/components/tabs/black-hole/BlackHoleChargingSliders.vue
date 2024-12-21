@@ -22,12 +22,11 @@ export default {
   computed: {
     infoTooltip() {
       return this.isLaitela
-        ? "The physics of this Reality do not allow Black Hole Inversion"
-        : "Black Hole must be paused to activate Inversion";
+        ? "Физика этой реальности несовместима с инверсией Чёрных Дыр"
+        : "Чёрная Дыра должна быть приостановлена при инверсии";
     },
     reqLockText() {
-      return `Inversion strength cannot be modified due to Lock for
-        "${ImaginaryUpgrade(24).name}"`;
+      return `Сила инверсии не может быть изменена из-за требования Мнимого Улучшения`;
     }
   },
   methods: {
@@ -53,7 +52,7 @@ export default {
         min: 0,
         max: negative ? this.maxNegativeBlackHole : 990,
         interval: 1,
-        width: "55rem",
+        width: "57rem",
         tooltip: false
       };
     },
@@ -68,8 +67,8 @@ export default {
       class="l-black-hole-sliders"
     >
       <b>
-        Inverted Black Hole divides game speed by {{ format(negativeBHDivisor, 2, 2) }}.
-        (Currently {{ isInverted ? "active" : "inactive" }}<span
+        Инвертированная Чёрная Дыра делит скорость игры на {{ format(negativeBHDivisor, 2, 2) }}.
+        (В данный момент {{ isInverted ? "включено" : "отключено" }}<span
           v-if="negativeSlider !== 0 && !isInverted"
           :ach-tooltip="infoTooltip"
         >
@@ -89,15 +88,15 @@ export default {
         {{ reqLockText }}
       </div>
       <br>
-      Inverting the Black Hole only affects its own speedup, no other upgrades or effects, although
-      it will also indirectly affect the Effarig Game speed power effect.
+      Инверсия Чёрной Дыры влияет только на её собственный эффект, а не на финальную скорость игры, хотя
+      она также влияет на фактическое значение эффекта Глифа Эффарига, возводящего скорость игры в степень.
     </div>
   </div>
 </template>
 
 <style scoped>
 .l-black-hole-sliders {
-  width: 55rem;
+  width: 57rem;
   color: var(--color-text);
 }
 

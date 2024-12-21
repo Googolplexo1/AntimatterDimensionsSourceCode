@@ -100,10 +100,10 @@ export default {
     },
     achievedTime() {
       if (!player.speedrun.isActive) return null;
-      if (this.achievementTime === undefined) return "Not Achieved yet";
+      if (this.achievementTime === undefined) return "Не выполнено";
       return this.achievementTime === 0
-        ? "Given at Speedrun start"
-        : `Achieved after ${TimeSpan.fromMilliseconds(this.achievementTime).toStringShort()}`;
+        ? "Дано на старте спидрана"
+        : `Выполнено за ${TimeSpan.fromMilliseconds(this.achievementTime).toStringShort()}`;
     }
   },
   beforeDestroy() {
@@ -203,7 +203,7 @@ export default {
             v-if="!isObscured"
             :class="{ 'o-pelle-disabled': isDisabled }"
           >
-            Reward: {{ config.reward }}
+            Награда: {{ config.reward }}
             <EffectDisplay
               v-if="config.formatEffect"
               br

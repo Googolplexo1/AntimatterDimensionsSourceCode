@@ -1,4 +1,5 @@
 import { GameMechanicState } from "../../game-mechanics";
+import { alchemyResources } from "../../secret-formula/celestials/alchemy";
 
 /**
  * @abstract
@@ -67,7 +68,7 @@ class AlchemyResourceState extends GameMechanicState {
   }
 
   get lockText() {
-    return `${this.unlockedWith.name} Level ${formatInt(this.unlockedAt)}`;
+    return `${formatInt(this.unlockedAt)}-й Уровень Эффарига`;
   }
 
   get isCustomEffect() {
@@ -99,7 +100,7 @@ class BasicAlchemyResourceState extends AlchemyResourceState {
     super(config);
     // The names are capitalized, so we need to convert them to lower case
     // in order to access highestRefinementValue values which are not capitalized.
-    this._name = config.name.toLowerCase();
+    this._name = Object.keys(alchemyResources).find(name => alchemyResources[name].name === config.name);
   }
 
   get highestRefinementValue() {

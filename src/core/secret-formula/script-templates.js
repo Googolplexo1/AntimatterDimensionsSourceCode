@@ -37,15 +37,20 @@ export const automatorTemplates = {
     },
     {
       name: "boolean",
-      boolDisplay: [true, false],
+      boolDisplay: ["Да", "Нет"],
     },
     {
       name: "nowait",
-      boolDisplay: ["Continue onward", "Keep buying Studies"],
+      boolDisplay: ["Пропустить недоступные Исследования", "Продолжить попытки купить Исследования"],
     },
     {
-      name: "mode",
-      boolDisplay: ["X times highest", "Seconds since last"],
+      name: "modeEter",
+      boolDisplay: ["При ОВ, в X раз превышающих максимальные", "Вечность каждые X секунд"],
+      map: x => (x ? "mult" : "time"),
+    },
+    {
+      name: "modeInf",
+      boolDisplay: ["При ОБ, в X раз превышающих максимальные", "Сжатие каждые X секунд"],
       map: x => (x ? "mult" : "time"),
     },
   ],
@@ -66,131 +71,131 @@ export const automatorTemplates = {
     */
   scripts: [
     {
-      name: "Climb EP",
-      description: `This script performs repeated Eternities, attempting to re-purchase a Time Study Tree every
-        Eternity. Autobuyer settings must be supplied for the Infinity and Eternity Autobuyers. The script will
-        repeat until a final Eternity Point value is reached.`,
+      name: "Увеличение количества ОВ",
+      description: `Этот шаблон совершает вечности одна за другой, каждую вечность пытаясь заново купить Древо
+        Исследований. Вы должны выбрать настройки для автоматики Большого Сжатия и вечности. Шаблон завершит
+        работу, достигнув целевого количества Очков Вечности.`,
       inputs: [
-        { name: "treeStudies", type: "tree", prompt: "Or directly enter your time studies" },
-        { name: "treeNowait", type: "nowait", prompt: "Missing Study behavior" },
-        { name: "finalEP", type: "decimal", prompt: "Target EP" },
-        { name: "autoInfMode", type: "mode", prompt: "Infinity Autobuyer Mode" },
-        { name: "autoInfValue", type: "decimal", prompt: "Infinity Autobuyer Threshold" },
-        { name: "autoEterMode", type: "mode", prompt: "Eternity Autobuyer Mode" },
-        { name: "autoEterValue", type: "decimal", prompt: "Eternity Autobuyer Threshold" },
+        { name: "treeStudies", type: "tree", prompt: "Вместо сохранённого Древа вы можете ввести любое другое" },
+        { name: "treeNowait", type: "nowait", prompt: "Поведение программы при невозможности купить Исследования Времени" },
+        { name: "finalEP", type: "decimal", prompt: "Целевое количество ОВ" },
+        { name: "autoInfMode", type: "modeInf", prompt: "Режим автоматики Большого Сжатия" },
+        { name: "autoInfValue", type: "decimal", prompt: "Настройка автоматики Большого Сжатия" },
+        { name: "autoEterMode", type: "modeEter", prompt: "Режим автоматики вечности" },
+        { name: "autoEterValue", type: "decimal", prompt: "Настройка автоматики вечности" },
       ],
       warnings: () => {
         const list = [];
         if (!RealityUpgrade(10).isBought) {
-          list.push(`This script will be unable to properly set Autobuyer modes without at least ${formatInt(100)}
-            Eternities. Consider getting Reality Upgrade "${RealityUpgrade(10).name}" before using this at the start
-            of a Reality.`);
+          list.push(`Автоматизатор не сможет настроить автоматику Большого Сжатия до ${formatInt(5)} вечностей и автоматику вечности до ${formatInt(100)}
+            вечностей. Рекомендуется купить Улучшение Реальности "${RealityUpgrade(10).name}", прежде чем использовать
+            этот шаблон в начале реальности.`);
         }
         // Telemechanical Process (TD/5xEP autobuyers)
         if (!RealityUpgrade(13).isBought) {
-          list.push(`This template may perform poorly without Reality Upgrade "${RealityUpgrade(13).name}"`);
+          list.push(`Автоматизатор не сможет настроить автоматику вечности без Улучшения Реальности "${RealityUpgrade(13).name}"`);
         }
         if (!Perk.ttBuySingle.isBought) {
-          list.push(`This template may perform poorly without Perk "${Perk.ttBuySingle.label}" unless you can generate
-            Time Theorems without purchsing them`);
+          list.push(`Этот шаблон может плохо работать без Навыка ${Perk.ttBuySingle.label}, если вы не можете получать
+            Теоремы Времени, не покупая их`);
         }
         return list;
       },
     },
     {
-      name: "Grind Eternities",
-      description: `This script performs repeated fast Eternities after buying a specified Time Study Tree.
-        Auto-Infinity will be set to "Times Highest" with a specified number of crunches and Auto-Eternity will
-        trigger as soon as possible. The script will repeat until a final Eternity count is reached.`,
+      name: "Накопление вечностей",
+      description: `Этот шаблон покупает указанное Древо Исследований и начинает совершать быстрые вечности одна за другой.
+        Автоматика Большого Сжатия будет выставлена на режим Сжатия при ОБ, в X раз превышающих максимальные, так, чтобы успевать за вечность сработать указанное количество раз,
+        а автоматика вечности будет срабатывать как можно скорее. Шаблон завершит работу, достигнув целевого количества вечностей.`,
       inputs: [
-        { name: "treeStudies", type: "tree", prompt: "Or directly enter your time studies" },
-        { name: "treeNowait", type: "nowait", prompt: "Missing Study behavior" },
-        { name: "crunchesPerEternity", type: "integer", prompt: "Crunches per Eternity" },
-        { name: "eternities", type: "decimal", prompt: "Target Eternity Count" },
+        { name: "treeStudies", type: "tree", prompt: "Вместо сохранённого Древа вы можете ввести любое другое" },
+        { name: "treeNowait", type: "nowait", prompt: "Поведение программы при невозможности купить Исследования Времени" },
+        { name: "crunchesPerEternity", type: "integer", prompt: "Больших Сжатий за вечность" },
+        { name: "eternities", type: "decimal", prompt: "Целевое количество вечностей" },
       ],
       warnings: () => {
         const list = [];
         // Eternal flow (eternity generation)
         if (RealityUpgrade(14).isBought) {
-          list.push(`You probably do not need to use this due to Reality Upgrade "${RealityUpgrade(14).name}"`);
+          list.push(`Поскольку у вас есть Улучшение Реальности "${RealityUpgrade(14).name}", этот шаблон, скорее всего, бесполезен для вас`);
         }
         return list;
       },
     },
     {
-      name: "Grind Infinities",
-      description: `This script buys a specified Time Study Tree and then configures your Autobuyers for gaining
-        Infinities. It will repeat until a final Infinity count is reached; the count can be for Banked Infinities,
-        in which case it will get all Infinities before performing a single Eternity.`,
+      name: "Накопление бесконечностей",
+      description: `Этот шаблон покупает указанное Древо Исследований и настраивает вашу автоматику для накопления
+        бесконечностей. Шаблон завершит работу, достигнув целевого количества бесконечностей, которое также может быть выражено в сохранённых бесконечностях,
+        в случае чего он сначала накопит необходимое количество бесконечностей, а затем совершит одну вечность.`,
       inputs: [
-        { name: "treeStudies", type: "tree", prompt: "Or directly enter your time studies" },
-        { name: "treeNowait", type: "nowait", prompt: "Missing Study behavior" },
-        { name: "infinities", type: "decimal", prompt: "Target Infinity Count" },
-        { name: "isBanked", type: "boolean", prompt: "Use Banked for Target?" },
+        { name: "treeStudies", type: "tree", prompt: "Вместо сохранённого Древа вы можете ввести любое другое" },
+        { name: "treeNowait", type: "nowait", prompt: "Поведение программы при невозможности купить Исследования Времени" },
+        { name: "infinities", type: "decimal", prompt: "Целевое количество бесконечностей" },
+        { name: "isBanked", type: "boolean", prompt: "Цель выражена в сохранённых бесконечностях" },
       ],
       warnings: () => {
         const list = [];
         if (!Perk.achievementGroup5.isBought) {
-          list.push(`You will not start this Reality with Achievement "${Achievement(131).name}" - grinding
-            Infinities may be less useful than expected since they cannot be Banked until later`);
+          list.push(`У вас не будет достижения "${Achievement(131).name}" в начале реальности, так что учтите,
+            что накопленные бесконечности не сохранятся без ИссЛВ191`);
         }
         // Boundless flow (infinity generation)
         if (RealityUpgrade(11).isBought) {
-          list.push(`You probably do not need to use this due to Reality Upgrade "${RealityUpgrade(11).name}"`);
+          list.push(`Поскольку у вас есть Улучшение Реальности "${RealityUpgrade(11).name}", этот шаблон, скорее всего, бесполезен для вас`);
         }
         return list;
       },
     },
     {
-      name: "Complete Eternity Challenge",
-      description: `This script buys a specified Time Study Tree and then unlocks a specified Eternity Challenge.
-        Then it will set your Infinity Autobuyer to your specified settings and enter the Eternity Challenge.
-        Finally, it will wait until at least the desired number of completions before triggering an Eternity to
-        complete the Challenge.`,
+      name: "Выполнение Испытания Вечности",
+      description: `Этот шаблон покупает указанное Древо Исследований и разблокирует указанное Испытание Вечности.
+        Затем он настраивает автоматику Большого Сжатия согласно введённым данным и начинает Испытание Вечности.
+        Наконец, он дожидается целевого количества выполнений и совершает вечность, чтобы
+        выполнить Испытание.`,
       inputs: [
-        { name: "treeStudies", type: "tree", prompt: "Or directly enter your time studies" },
-        { name: "treeNowait", type: "nowait", prompt: "Missing Study behavior" },
-        { name: "ec", type: "integer", prompt: "Eternity Challenge ID" },
-        { name: "completions", type: "integer", prompt: "Target Completion Count" },
-        { name: "autoInfMode", type: "mode", prompt: "Infinity Autobuyer Mode" },
-        { name: "autoInfValue", type: "decimal", prompt: "Infinity Autobuyer Threshold" },
+        { name: "treeStudies", type: "tree", prompt: "Вместо сохранённого Древа вы можете ввести любое другое" },
+        { name: "treeNowait", type: "nowait", prompt: "Поведение программы при невозможности купить Исследования Времени" },
+        { name: "ec", type: "integer", prompt: "Номер Испытания Вечности" },
+        { name: "completions", type: "integer", prompt: "Целевое количество выполнений" },
+        { name: "autoInfMode", type: "modeInf", prompt: "Режим автоматики Большого Сжатия" },
+        { name: "autoInfValue", type: "decimal", prompt: "Настройка автоматики Большого Сжатия" },
       ],
       warnings: () => {
         const list = [];
         if (!Perk.studyECRequirement.isBought) {
-          list.push(`Eternity Challenges may not be reliably unlockable due to secondary resource requirements, consider
-            unlocking Perk "${Perk.studyECRequirement.label}" before using this template`);
+          list.push(`Ввиду наличия вторичного требования разблокировка Испытание Вечности может оказаться невозможной.
+            Рекомендуется купить Навык ${Perk.studyECRequirement.label}, прежде чем использовать этот шаблон`);
         }
         if (!Perk.studyECBulk.isBought) {
-          list.push(`Using this template without bulk completions of Eternity Challenges may lead to long scripts which
-            are slower and difficult to modify. If you use this template, consider returning to simplify your scripts
-            after unlocking Perk "${Perk.studyECBulk.label}"`);
+          list.push(`При использовании этого шаблона без опта Испытаний Вечности может получиться длинная
+            медленная программа низкой гибкости. Если вы всё же используете шаблон, рекомендуется возвратиться к Автоматизатору и упростить вашу программу
+            по покупке Навыка ${Perk.studyECBulk.label}`);
         }
         return list;
       },
     },
     {
-      name: "Unlock Dilation",
-      description: `This script performs repeated Eternities, attempting to re-purchase a Time Study Tree every
-        Eternity. Settings must be supplied for the Eternity Autobuyer; your Infinity Autobuyer will be
-        turned off. The script loops until you have the total Time Theorem requirement to unlock Dilation, and then
-        it will unlock Dilation once it does.`,
+      name: "Разблокировка Замедления",
+      description: `Этот шаблон совершает вечности одна за другой, каждую вечность пытаясь заново купить Древо
+        Исследований. Вы должны выбрать настройки для автоматики вечности; автоматика Большого Сжатия будет
+        выключена. Шаблон работает, пока не достигнет необходимого количества Теорем Времени, а затем
+        разблокирует Замедление.`,
       inputs: [
-        { name: "treeStudies", type: "tree", prompt: "Or directly enter your time studies" },
-        { name: "treeNowait", type: "nowait", prompt: "Missing Study behavior" },
-        { name: "finalEP", type: "decimal", prompt: "Target EP" },
-        { name: "autoEterMode", type: "mode", prompt: "Eternity Autobuyer Mode" },
-        { name: "autoEterValue", type: "decimal", prompt: "Eternity Autobuyer Threshold" },
+        { name: "treeStudies", type: "tree", prompt: "Вместо сохранённого Древа вы можете ввести любое другое" },
+        { name: "treeNowait", type: "nowait", prompt: "Поведение программы при невозможности купить Исследования Времени" },
+        { name: "finalEP", type: "decimal", prompt: "Целевое количество ОВ" },
+        { name: "autoEterMode", type: "modeEter", prompt: "Режим автоматики вечности" },
+        { name: "autoEterValue", type: "decimal", prompt: "Настройка автоматики вечности" },
       ],
       warnings: () => {
         const list = [];
         // Telemechanical Process (TD/5xEP autobuyers)
         if (!RealityUpgrade(13).isBought) {
-          list.push(`This template may perform poorly without Reality Upgrade "${RealityUpgrade(13).name}"`);
+          list.push(`Автоматизатор не сможет настроить автоматику вечности без Улучшения Реальности "${RealityUpgrade(13).name}"`);
         }
         if (!Perk.ttBuySingle.isBought) {
-          list.push(`This template may perform poorly without Perk "${Perk.ttBuySingle.label}" unless you can generate
-            Time Theorems without purchsing them`);
+          list.push(`Этот шаблон может плохо работать без Навыка ${Perk.ttBuySingle.label}, если вы не можете получать
+            Теоремы Времени, не покупая их`);
         }
         return list;
       },

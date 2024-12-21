@@ -10,7 +10,9 @@ export default {
     return {
       infinityChallengesUnlocked: false,
       normalChallenges: [],
-      infinityChallenges: []
+      infinityChallenges: [],
+      normalNames: [],
+      infinityNames: []
     };
   },
   methods: {
@@ -19,6 +21,8 @@ export default {
         PlayerProgress.eternityUnlocked();
       this.normalChallenges = player.challenge.normal.bestTimes.slice(0);
       this.infinityChallenges = player.challenge.infinity.bestTimes.slice(0);
+      this.normalNames = [`Обычного Испытания`, `Обычное Испытание`, `Обычных Испытаний`];
+      this.infinityNames = [`Испытания Бесконечности`, `Испытание Бесконечности`, `Испытаний Бесконечности`];
     }
   }
 };
@@ -29,13 +33,13 @@ export default {
     <ChallengeRecordsList
       :start="2"
       :times="normalChallenges"
-      name="Normal Challenge"
+      :names="normalNames"
     />
     <ChallengeRecordsList
       v-if="infinityChallengesUnlocked"
       :start="1"
       :times="infinityChallenges"
-      name="Infinity Challenge"
+      :names="infinityNames"
       class="l-challenge-records-tab__infinity_challenges"
     />
   </div>

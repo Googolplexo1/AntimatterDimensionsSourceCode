@@ -20,20 +20,20 @@ export default {
   },
   computed: {
     resourceStr() {
-      const states = ["Singularity Count", "Condense Count", "Manual Time", "Auto Time"];
+      const states = ["Сингулярностях", "Сжатиях", "Оставшемся времени при сжатии вручную", "Оставшемся времени при автоматическом сжатии"];
       return states[this.resourceVal];
     },
     sortStr() {
-      const states = ["Singularities needed", "Current Completions", "Progress to full completion",
-        "Final Singularities", "Most Recent"];
+      const states = ["Оставшимся Сингулярностям", "Количеству выполнений", "Доле от завершения",
+        "Сингулярностям для завершения", "Порядку получения"];
       return states[this.sortVal];
     },
     completedStr() {
-      const states = ["First", "Last", "Don't move"];
+      const states = ["В начало", "В конец", "Без изменений"];
       return states[this.completedVal];
     },
     orderStr() {
-      const states = ["Ascending", "Descending"];
+      const states = ["Возрастающий", "Убывающий"];
       return states[this.orderVal];
     },
   },
@@ -107,7 +107,7 @@ export default {
 <template>
   <ModalWrapper>
     <template #header>
-      Singularity Milestones
+      Этапы Сингулярностей
     </template>
     <div
       class="c-modal__confirmation-toggle"
@@ -120,7 +120,7 @@ export default {
         />
       </div>
       <span class="c-modal__confirmation-toggle__text">
-        Make button glow when new milestones have been reached
+        Включить подсветку кнопки при выполнении новых этапов
       </span>
     </div>
     <div class="l-singularity-milestone-modal-container-outer">
@@ -137,7 +137,7 @@ export default {
         class="c-singularity-milestone-modal-sort-button"
         @click="cycleButton(0)"
       >
-        To Milestone:
+        Измерять расстояние до этапов в:
         <br>
         {{ resourceStr }}
       </button>
@@ -145,7 +145,7 @@ export default {
         class="c-singularity-milestone-modal-sort-button"
         @click="cycleButton(1)"
       >
-        Sort by:
+        Сортировать по:
         <br>
         {{ sortStr }}
       </button>
@@ -153,7 +153,7 @@ export default {
         class="c-singularity-milestone-modal-sort-button"
         @click="cycleButton(2)"
       >
-        Completed Milestones:
+        Помесить завершённые этапы:
         <br>
         {{ completedStr }}
       </button>
@@ -161,7 +161,7 @@ export default {
         class="c-singularity-milestone-modal-sort-button"
         @click="cycleButton(3)"
       >
-        Sort Order:
+        Порядок:
         <br>
         {{ orderStr }}
       </button>

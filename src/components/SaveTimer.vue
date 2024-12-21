@@ -16,7 +16,7 @@ export default {
       const localStr = timeDisplayShort(this.currentTime - this.lastLocalSave);
       const cloudStr = timeDisplayShort(this.currentTime - this.lastCloudSave);
       return this.cloudSaveEnabled
-        ? `${localStr} (local) | ${cloudStr} (cloud)`
+        ? `${localStr} (локальное) | ${cloudStr} (облачное)`
         : localStr;
     },
   },
@@ -42,8 +42,8 @@ export default {
     class="o-save-timer"
     @click="save"
   >
-    <b v-if="saveDisabled">There is nothing left to save.</b>
-    <span v-else>Time since last save: {{ timeString }}</span>
+    <b v-if="saveDisabled">Больше нечего сохранять.</b>
+    <span v-else>Время, прошедшее с момента последнего сохранения: {{ timeString }}</span>
   </div>
 </template>
 

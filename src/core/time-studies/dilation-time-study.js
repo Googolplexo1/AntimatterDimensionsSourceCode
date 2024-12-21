@@ -48,10 +48,10 @@ export class DilationTimeStudyState extends TimeStudyState {
     if (this.id === 6) {
       // ID 6 is the reality unlock study
       if (!PlayerProgress.realityUnlocked()) {
-        Modal.message.show(`Reality Machine gain for your first Reality is reduced above ${format("1e6000")} Eternity
-          Points and capped at ${format("1e8000")} Eternity Points. This is due to balance changes made in the Reality
-          update which affect the difficulty of reaching those amounts, such as the increased Time Dimension cost
-          scaling above ${format("1e6000")}.`, {}, 3);
+        Modal.message.show(`Получение Машин Реальности на первой реальности имеет мягкое ограничение на ${format(Decimal.pow(10, 6000))} Очков
+          Вечности и полное на ${format(Decimal.pow(10, 8000))} Очков Вечности. Причина такого решения заключается в том, что
+          в обновлении, добавившем реальность, были сделаны определённые изменения в игровом балансе, такие как
+          увеличение наценки на Измерения Времени на ${format(Decimal.pow(10, 6000))} Очков Вечности, которые значительно замедлили прогресс после этого количества.`, {}, 3);
         EventHub.dispatch(GAME_EVENT.REALITY_FIRST_UNLOCKED);
       }
       if (!Perk.autounlockReality.isBought) Tab.reality.glyphs.show();

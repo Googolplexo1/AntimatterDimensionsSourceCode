@@ -257,8 +257,8 @@ class InfinityDimensionState extends DimensionState {
     if (!this.isAvailableForPurchase) return false;
     if (ImaginaryUpgrade(15).isLockingMechanics) {
       const lockString = this.tier === 1
-        ? "purchase a 1st Infinity Dimension"
-        : "purchase a Dimension which will produce 1st IDs";
+        ? "купить 1-е Измерение Бесконечности"
+        : "купить Измерение Бесконечности, что запустит производство ИБ1";
       ImaginaryUpgrade(15).tryShowWarningModal(lockString);
       return false;
     }
@@ -280,8 +280,8 @@ class InfinityDimensionState extends DimensionState {
     if (!this.isAvailableForPurchase) return false;
     if (ImaginaryUpgrade(15).isLockingMechanics) {
       const lockString = this.tier === 1
-        ? "purchase a 1st Infinity Dimension"
-        : "purchase a Dimension which will produce 1st IDs";
+        ? "купить 1-е Измерение Бесконечности"
+        : "купить Измерение Бесконечности, что запустит производство ИБ1";
       if (!auto) ImaginaryUpgrade(15).tryShowWarningModal(lockString);
       return false;
     }

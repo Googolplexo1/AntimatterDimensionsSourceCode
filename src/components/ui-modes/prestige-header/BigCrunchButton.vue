@@ -111,34 +111,34 @@ export default {
   >
     <!-- Cannot Crunch -->
     <template v-if="!canCrunch">
-      Reach {{ format(infinityGoal, 2, 2) }}
+      Достигните {{ format(infinityGoal, 2, 2) }}
       <br>
-      antimatter
+      антиматерии
     </template>
 
     <!-- Can Crunch in challenge -->
     <template v-else-if="inAntimatterChallenge">
-      Big Crunch to
+      Совершить Большое Сжатие
       <br>
-      complete the challenge
+      и завершить Испытание
     </template>
 
     <!-- Can Crunch -->
     <template v-else>
       <div v-if="!showIPRate" />
       <b>
-        Big Crunch for
+        Совершить Большое Сжатие за <br v-if="!showIPRate">
         <span :style="amountStyle">{{ format(gainedIP, 2) }}</span>
-        <span v-if="showIPRate"> IP</span>
-        <span v-else> Infinity {{ pluralize("Point", gainedIP) }}</span>
+        <span v-if="showIPRate"> ОБ</span>
+        <span v-else> {{ pluralize("Очко", gainedIP) }} Бесконечности</span>
       </b>
       <template v-if="showIPRate">
         <br>
-        Current: {{ format(currentIPRate, 2) }} IP/min
+        Текущий прирост: {{ format(currentIPRate, 2) }} ОБ/мин
         <br>
-        Peak: {{ format(peakIPRate, 2) }} IP/min
+        Пик: {{ format(peakIPRate, 2) }} ОБ/мин
         <br>
-        at {{ format(peakIPRateVal, 2) }} IP
+        при {{ format(peakIPRateVal, 2) }} ОБ
       </template>
       <div v-else />
     </template>
@@ -151,7 +151,7 @@ export default {
     @click="switchToInfinity"
   >
     <b>
-      You have enough Infinity Points to buy a Tesseract
+      У вас достаточно Очков Бесконечности для покупки Тессеракта
     </b>
   </button>
 </template>

@@ -9,12 +9,12 @@ export default {
   computed: {
     message() {
       const infinity = formatPostBreak(Number.MAX_VALUE, 2);
-      return `Breaking Infinity will allow you to gain antimatter past ${infinity}${PlayerProgress.eternityUnlocked()
-        ? "." : `, and allow you to read numbers past ${infinity}.`}
-        Dimensions and Tickspeed Upgrades will scale in cost faster after ${infinity} antimatter.
-        You will gain additional Infinity Points on Big Crunch based on antimatter produced over ${infinity}.\
-        ${EternityMilestone.keepAutobuyers.isReached ? "" : `\nIt will also unlock Break Infinity Upgrades and max\
-        all Normal Challenge Autobuyers.`}`.split("\n");
+      return `Преодоление Бесконечности позволит вам набрать больше ${infinity} антиматерии${PlayerProgress.eternityUnlocked()
+        ? "." : ` и читать числа, превышающие ${infinity}.`}
+        Измерения и ускорители будут расти в цене быстрее после ${infinity} антиматерии.
+        Вы будете получать больше Очков Бесконечности при Большом Сжатии в зависимости от наибольшего количества антиматерии в этой бесконечности.\
+        ${EternityMilestone.keepAutobuyers.isReached ? "" : `\nВы также разблокируете Улучшения Преодоления и улучшите до предела\
+        всю автоматику, разблокированную или улучшенную Обычными Испытаниями.`}`.split("\n");
     },
   },
   methods: {
@@ -31,7 +31,7 @@ export default {
     @confirm="handleYesClick"
   >
     <template #header>
-      You are Breaking Infinity
+      Вы преодолеваете Бесконечность
     </template>
     <div class="c-modal-message__text">
       <span
@@ -42,7 +42,7 @@ export default {
       </span>
     </div>
     <template #confirm-text>
-      Break
+      Преодолеть
     </template>
   </ModalWrapperChoice>
 </template>

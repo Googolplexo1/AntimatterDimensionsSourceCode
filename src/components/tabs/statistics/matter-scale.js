@@ -4,12 +4,12 @@ export const MatterScale = {
   proton: new Decimal("2.82e-45"),
 
   estimate(matter) {
-    if (!matter) return ["There is no antimatter yet."];
-    if (matter.gt(DC.E100000)) {
+    if (!matter) return ["У вас нет антиматерии."];
+    if (matter.gt(DC.C2P1024)) {
       return [
-        `If you wrote ${formatInt(3)} numbers a second, it would take you`,
-        TimeSpan.fromSeconds(matter.log10() / 3).toString(),
-        "to write down your antimatter amount."
+        `Если писать три цифры в секунду, понадобится ` +
+        TimeSpan.fromSeconds(matter.log10() / 3).toString() +
+        ", чтобы записать количество вашей антиматерии с точностью до целых."
       ];
     }
     const planck = new Decimal("4.22419e-105");
@@ -17,12 +17,12 @@ export const MatterScale = {
     if (planckedMatter.gt(this.proton)) {
       const scale = this.macroScale(planckedMatter);
       const amount = format(planckedMatter.dividedBy(scale.amount), 2, 1);
-      return [`If every antimatter were a planck volume, you would have
-        enough to ${scale.verb} ${amount} ${scale.name}`];
+      return [`Если бы каждая единица антиматерии занимала планковский объём,
+        вы бы могли заполнить около ${amount} объёма ${scale.name}`];
     }
     const scale = this.microScale(matter);
-    return [`If every antimatter were ${format(this.proton.div(scale.amount).div(matter), 2, 1)} ${scale.name},
-      you would have enough to make a proton.`];
+    return [`Если бы каждая единица антиматерии занимала объём, равный ${format(this.proton.div(scale.amount).div(matter), 2, 1)} ${scale.name},
+      вы бы могли заполнить объём одного протона.`];
   },
 
   microScale(matter) {
@@ -54,42 +54,39 @@ export const MatterScale = {
   },
 
   microObjects: [
-    { amount: new Decimal("1e-54"), name: "attometers cubed" },
-    { amount: new Decimal("1e-63"), name: "zeptometers cubed" },
-    { amount: new Decimal("1e-72"), name: "yoctometers cubed" },
-    { amount: new Decimal("4.22419e-105"), name: "planck volumes" }
+    { amount: new Decimal("1e-54"), name: "кубического аттометра" },
+    { amount: new Decimal("1e-63"), name: "кубического зептометра" },
+    { amount: new Decimal("1e-72"), name: "кубического иоктометра" },
+    { amount: new Decimal("4.22419e-105"), name: "планковского объёма" }
   ],
 
   macroObjects: [
-    { amount: new Decimal("2.82e-45"), name: "protons", verb: "make" },
-    { amount: new Decimal("1e-42"), name: "nuclei", verb: "make" },
-    { amount: new Decimal("7.23e-30"), name: "Hydrogen atoms", verb: "make" },
-    { amount: new Decimal("5e-21"), name: "viruses", verb: "make" },
-    { amount: new Decimal("9e-17"), name: "red blood cells", verb: "make" },
-    { amount: new Decimal("6.2e-11"), name: "grains of sand", verb: "make" },
-    { amount: new Decimal("5e-8"), name: "grains of rice", verb: "make" },
-    { amount: new Decimal("3.555e-6"), name: "teaspoons", verb: "fill" },
-    { amount: new Decimal("7.5e-4"), name: "wine bottles", verb: "fill" },
-    { amount: DC.D1, name: "fridge-freezers", verb: "fill" },
-    { amount: new Decimal("2.5e3"), name: "Olympic-sized swimming pools", verb: "fill" },
-    { amount: new Decimal("2.6006e6"), name: "Great Pyramids of Giza", verb: "make" },
-    { amount: new Decimal("3.3e8"), name: "Great Walls of China", verb: "make" },
-    { amount: new Decimal("5e12"), name: "large asteroids", verb: "make" },
-    { amount: new Decimal("4.5e17"), name: "dwarf planets", verb: "make" },
-    { amount: new Decimal("1.08e21"), name: "Earths", verb: "make" },
-    { amount: new Decimal("1.53e24"), name: "Jupiters", verb: "make" },
-    { amount: new Decimal("1.41e27"), name: "Suns", verb: "make" },
-    { amount: new Decimal("5e32"), name: "red giants", verb: "make" },
-    { amount: new Decimal("8e36"), name: "hypergiant stars", verb: "make" },
-    { amount: new Decimal("1.7e45"), name: "nebulas", verb: "make" },
-    { amount: new Decimal("1.7e48"), name: "Oort clouds", verb: "make" },
-    { amount: new Decimal("3.3e55"), name: "Local Bubbles", verb: "make" },
-    { amount: new Decimal("3.3e61"), name: "galaxies", verb: "make" },
-    { amount: new Decimal("5e68"), name: "Local Groups", verb: "make" },
-    { amount: new Decimal("1e73"), name: "Sculptor Voids", verb: "make" },
-    { amount: new Decimal("3.4e80"), name: "observable universes", verb: "make" },
-    { amount: new Decimal("1e113"), name: "Dimensions", verb: "make" },
-    { amount: DC.C2P1024, name: "Infinity Dimensions", verb: "make" },
-    { amount: new Decimal("1e65000"), name: "Time Dimensions", verb: "make" }
+    { amount: new Decimal("2.5e-45"), name: "протона"},
+    { amount: new Decimal("1.72e-42"), name: "ядра урана-238"},
+    { amount: new Decimal("6.6e-31"), name: "атома водорода"},
+    { amount: new Decimal("5e-21"), name: "вируса"},
+    { amount: new Decimal("9e-17"), name: "эритроцита"},
+    { amount: new Decimal("6.2e-11"), name: "песчинки"},
+    { amount: new Decimal("5e-8"), name: "зерна риса"},
+    { amount: new Decimal("5e-6"), name: "чайной ложки"},
+    { amount: new Decimal("7.5e-4"), name: "винной бутылки"},
+    { amount: DC.D1, name: "морозильной камеры"},
+    { amount: new Decimal("2.5e3"), name: "олимпийского бассейна"},
+    { amount: new Decimal("2.44e6"), name: "пирамиды Хеопса"},
+    { amount: new Decimal("3.3e8"), name: "Великой Китайской стены"},
+    { amount: new Decimal("5e12"), name: "крупного астероида"},
+    { amount: new Decimal("4.5e17"), name: "карликовой планеты"},
+    { amount: new Decimal("1.08e21"), name: "Земли"},
+    { amount: new Decimal("1.53e24"), name: "Юпитера"},
+    { amount: new Decimal("1.41e27"), name: "Солнца"},
+    { amount: new Decimal("5e32"), name: "красного гиганта"},
+    { amount: new Decimal("8e36"), name: "гипергиганта"},
+    { amount: new Decimal("1.7e45"), name: "туманности"},
+    { amount: new Decimal("1.7e48"), name: "облака Оорта"},
+    { amount: new Decimal("3.3e55"), name: "Местного пузыря"},
+    { amount: new Decimal("3.3e61"), name: "галактики"},
+    { amount: new Decimal("5e68"), name: "Местной группы галактик"},
+    { amount: new Decimal("1e73"), name: "Пустоты Скульптора"},
+    { amount: new Decimal("3.4e80"), name: "наблюдаемой Вселенной"},
   ]
 };

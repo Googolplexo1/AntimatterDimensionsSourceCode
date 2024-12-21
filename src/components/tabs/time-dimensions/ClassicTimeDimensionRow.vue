@@ -44,7 +44,7 @@ export default {
       return ui.view.shiftDown;
     },
     name() {
-      return `${TimeDimension(this.tier).shortDisplayName} Time Dimension`;
+      return `${this.tier}-е Измерение Времени`;
     },
     buttonContents() {
       if (this.showTTCost) return this.formattedTTCost;
@@ -52,28 +52,28 @@ export default {
     },
     tooltipContents() {
       if (this.showTTCost) return `${this.formattedEPCost}<br>${this.timeEstimate}`;
-      if (this.isCapped) return `Nameless prevents the purchase of more than ${format(1)} Time Dimension`;
-      return `Purchased ${quantifyInt("time", this.bought)}`;
+      if (this.isCapped) return `В Реальности Безымянных нельзя купить более ${format(1)} Измерения Времени одного уровня`;
+      return `Куплено ${quantifyInt("раз", this.bought)}`;
     },
     showRow() {
       return this.realityUnlocked || this.isUnlocked || this.requirementReached;
     },
     formattedTTCost() {
-      return `Unlock: ${format(this.ttCost)} TT`;
+      return `Цена разблокировки: ${format(this.ttCost)} ТВ`;
     },
     formattedEPCost() {
-      return this.isCapped ? "Capped" : `${this.showCostTitle ? "Cost: " : ""}${format(this.cost, 2)} EP`;
+      return this.isCapped ? "Ограничено" : `${this.showCostTitle ? "Цена: " : ""}${format(this.cost, 2)} ОВ`;
     },
     hasLongText() {
       return this.buttonContents.length > 20;
     },
     showCostTitle() {
-      return this.cost.exponent < 1e5;
+      return this.cost.exponent < 1e6;
     },
     timeEstimate() {
       if (!this.showTTCost || this.ttGen.eq(0)) return "";
       const time = Decimal.sub(this.ttCost, this.currTT).dividedBy(this.ttGen);
-      return time.gt(0) ? `Enough TT in ${TimeSpan.fromSeconds(time.toNumber()).toStringShort()}` : "";
+      return time.gt(0) ? `Время до необходимого количества ТВ: ${TimeSpan.fromSeconds(time.toNumber()).toStringShort()}` : "";
     }
   },
   watch: {
@@ -149,7 +149,7 @@ export default {
         v-if="areAutobuyersUnlocked"
         v-model="isAutobuyerOn"
         class="o-primary-btn--buy-td-auto"
-        label="Auto:"
+        label="Автоматика:"
       />
       <PrimaryButton
         v-else
@@ -157,7 +157,7 @@ export default {
         class="o-primary-btn--buy-td-auto"
         @click="buyMaxTimeDimension"
       >
-        Buy Max
+        Купить все
       </PrimaryButton>
     </div>
   </div>

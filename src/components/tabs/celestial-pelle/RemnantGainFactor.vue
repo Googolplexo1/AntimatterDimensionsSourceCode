@@ -47,36 +47,36 @@ export default {
   <div class="c-remnant-factors-container">
     <ExpandingControlBox
       container-class="c-remnant-factors"
-      label="Remnant Gain Factors"
+      label="Факторы получения Останков"
       :style="{ opacity }"
     >
       <template #dropdown>
         <div class="c-remnant-factors-text">
-          Best AM: {{ format(best.am, 2, 2) }}<br>
-          Best IP: {{ format(best.ip, 2, 2) }}<br>
-          Best EP: {{ format(best.ep, 2, 2) }}<br><br>
+          Антиматерия: {{ format(best.am, 2, 2) }}<br>
+          ОБ: {{ format(best.ip, 2, 2) }}<br>
+          ОВ: {{ format(best.ep, 2, 2) }}<br><br>
           <div class="l-remnant-factors-row">
             <div class="l-remnant-factors-col l-remnant-factors-col--first">
               <div class="l-remnant-factors-item">
-                log10(log10(am){{ dilationMult[0] > 1 ? `*${dilationMult[0]}` : "" }} + 2)
+                log10(log10(x){{ dilationMult[0] > 1 ? `*${dilationMult[0]}` : "" }} + 2)
               </div>
               <div class="l-remnant-factors-item">
-                log10(log10(ip){{ dilationMult[1] > 1 ? `*${dilationMult[1]}` : "" }} + 2)
+                log10(log10(x){{ dilationMult[1] > 1 ? `*${dilationMult[1]}` : "" }} + 2)
               </div>
               <div class="l-remnant-factors-item">
-                log10(log10(ep){{ dilationMult[2] > 1 ? `*${dilationMult[2]}` : "" }} + 2)
+                log10(log10(x){{ dilationMult[2] > 1 ? `*${dilationMult[2]}` : "" }} + 2)
               </div>
               <div class="l-remnant-factors-item">
-                Static divisor
+                Постоянный делитель
               </div>
               <div class="l-remnant-factors-item">
-                Static power
+                Постоянная степень
               </div>
               <div class="l-remnant-factors-item">
-                Existing Remnants
+                Имеющиеся Останки
               </div>
               <div class="l-remnant-factors-item">
-                Final amount
+                Итого
               </div>
             </div>
             <div class="l-remnant-factors-col">
@@ -102,10 +102,10 @@ export default {
                 {{ format(Math.log10(best.am.add(1).log10()*dilationMult[0] + 2), 2, 2) }}
               </div>
               <div class="l-remnant-factors-item">
-                {{ format(Math.log10(best.ip.add(1).log10()*dilationMult[1] + 2), 2, 2) }}
+                {{ format(Math.log10(best.ip.add(1).log10()*dilationMult[0] + 2), 2, 2) }}
               </div>
               <div class="l-remnant-factors-item">
-                {{ format(Math.log10(best.ep.add(1).log10()*dilationMult[2] + 2), 2, 2) }}
+                {{ format(Math.log10(best.ep.add(1).log10()*dilationMult[0] + 2), 2, 2) }}
               </div>
               <div class="l-remnant-factors-item">
                 {{ format(1.64, 2, 2) }}

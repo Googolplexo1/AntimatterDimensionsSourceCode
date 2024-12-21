@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     isCelestial() {
-      return this.challengeName.match("Reality");
+      return this.challengeName.match("Реальность");
     },
     isRestarting() {
       return this.isCelestial ? player.options.retryCelestial : player.options.retryChallenge;
@@ -47,22 +47,22 @@ export default {
     @confirm="handleYesClick"
   >
     <template #header>
-      You are about to {{ isRestarting ? "restart" : "exit" }} {{ challengeName }}
+      Вы {{ isRestarting ? "перезапускаете" : "покидаете" }} {{ challengeName }}
     </template>
 
     <div class="c-modal-message__text">
       <span v-if="isRestarting">
-        You will immediately re-enter {{ challengeName }} again after confirming this modal.
+        Вы немедленно запустите {{ challengeName }} вновь при подтверждении.
       </span>
       <span v-else>
-        This will place you back into a regular {{ normalName }} without any restrictions.
+        Вы окажетесь в обычной {{ normalName }}, не обременённой условиями {{ isCelestial ? "Небожителя" : "Испытания" }}.
       </span>
       <span v-if="hasHigherLayers">
-        Other effects coming from higher-layer restrictions will still continue to apply.
+        Условия испытаний высших слоёв продолжат действовать.
       </span>
     </div>
     <template #confirm-text>
-      {{ isRestarting ? "Restart" : "Exit" }}
+      {{ isRestarting ? "Перезапустить" : "Выйти" }}
     </template>
   </ModalWrapperChoice>
 </template>

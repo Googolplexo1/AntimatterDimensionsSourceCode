@@ -11,10 +11,8 @@ export default {
   }),
   computed: {
     tooltip() {
-      if (this.isDoomed) return "You cannot amplify a Doomed Reality";
-      if (this.isDisabled) return "You cannot amplify Celestial Realities";
-      if (!this.canAmplify) {
-        return "Store more real time or complete the Reality faster to amplify";
+      if (!this.canAmplify && !this.isDoomed) {
+        return "Чтобы усилить реальность, необходимо либо сохранить больше реального времени, либо совершить её быстрее";
       }
       return null;
     },
@@ -51,16 +49,16 @@ export default {
     @click="toggleActive"
   >
     <div v-if="isDoomed">
-      You cannot amplify Doomed Realities.
+      Невозможно усилить Обречённую Реальность.
     </div>
     <div v-else-if="canAmplify">
-      <span v-if="isActive">Will be amplified:</span>
-      <span v-else>Amplify this Reality:</span>
+      <span v-if="isActive">Реальность будет усилена:</span>
+      <span v-else>Усилить текущую реальность:</span>
       <br>
-      All rewards ×{{ formatInt(ratio) }}
+      Множитель ×{{ formatInt(ratio) }} ко всем наградам
     </div>
     <div v-else>
-      Not enough stored real time to amplify.
+      Недостаточно сохранённого реального времени.
     </div>
   </button>
 </template>

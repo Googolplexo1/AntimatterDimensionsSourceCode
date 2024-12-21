@@ -37,6 +37,9 @@ export default {
     attrString() {
       return this.isSymbol ? "symbol" : "color";
     },
+    attrStringRussian() {
+      return this.isSymbol ? "символов" : "цвета";
+    },
     typeObject() {
       return CosmeticGlyphTypes;
     },
@@ -213,7 +216,7 @@ export default {
       v-else
       class="c-no-options"
     >
-      You have no custom options for changing Glyph {{ attrString }}s.
+      Вам недоступны опции изменения {{ attrStringRussian }} ваших глифов.
     </div>
   </div>
 </template>

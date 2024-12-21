@@ -7,8 +7,8 @@ export const Teresa = {
   timePoured: 0,
   lastUnlock: "effarig",
   pouredAmountCap: 1e24,
-  displayName: "Teresa",
-  possessiveName: "Teresa's",
+  displayName: "Тереза",
+  possessiveName: "Терезы",
   get isUnlocked() {
     return Achievement(147).isUnlocked;
   },
@@ -57,7 +57,9 @@ export const Teresa = {
   get runCompleted() {
     return player.celestials.teresa.bestRunAM.gt(1);
   },
-  quotes: Quotes.teresa,
+  get quotes() {
+    return Quotes().teresa;
+  },
   symbol: "Ϟ"
 };
 
@@ -100,17 +102,17 @@ class PerkShopUpgradeState extends RebuyableMechanicState {
       if (GameCache.glyphInventorySpace.value === 0) {
         // Refund the perk point if they didn't actually get a glyph
         Currency.perkPoints.add(1);
-        GameUI.notify.error("You have no empty inventory space!");
+        GameUI.notify.error("Все ячейки инвентаря заняты!");
       } else {
         Glyphs.addToInventory(GlyphGenerator.musicGlyph());
-        GameUI.notify.success("Created a Music Glyph");
+        GameUI.notify.success("Создан музыкальный глиф");
       }
     }
     // Fill the inventory with music glyphs
     if (this.id === 5 && !Pelle.isDoomed) {
       const toCreate = GameCache.glyphInventorySpace.value;
       for (let count = 0; count < toCreate; count++) Glyphs.addToInventory(GlyphGenerator.musicGlyph());
-      GameUI.notify.success(`Created ${quantifyInt("Music Glyph", toCreate)}`);
+      GameUI.notify.success(`${pluralize("Создан", toCreate)} ${quantifyInt("музыкальный глиф", toCreate)}`);
     }
   }
 }

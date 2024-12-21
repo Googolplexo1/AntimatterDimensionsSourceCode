@@ -24,10 +24,10 @@ export default {
       const first = this.nextIC?.id === 1;
       const next = InfinityChallenges.nextICUnlockAM;
 
-      if (first) return `The first Infinity Challenge unlocks at ${format(next)} antimatter.`;
+      if (first) return `Первое Испытание Бесконечности разблокируется на ${format(next)} антиматерии.`;
       return next === undefined
-        ? "All Infinity Challenges unlocked"
-        : `Next Infinity Challenge unlocks at ${format(next)} antimatter.`;
+        ? "Вы разблокировали все Испытания Бесконечности."
+        : `Следующее Испытание Бесконечности разблокируется на ${format(next)} антиматерии.`;
     }
   },
   methods: {
@@ -46,8 +46,8 @@ export default {
   <div class="l-challenges-tab">
     <ChallengeTabHeader />
     <div>
-      An active Big Crunch Autobuyer will Crunch immediately when
-      reaching an Infinity Challenge's antimatter goal, regardless of settings.
+      Если автоматика Большого Сжатия включена, она сработает немедленно по
+      достижении цели текущего Испытания Бесконечности вне зависимости от настроек.
     </div>
     <div>{{ nextAtDisplay }}</div>
     <ChallengeGrid

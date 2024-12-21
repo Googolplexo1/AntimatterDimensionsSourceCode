@@ -12,10 +12,9 @@ export default {
     templates: () => GameDatabase.reality.automator.templates.scripts,
     pasteText() {
       return this.isBlock
-        ? `create a special block you can drag into your Automator where you would like it to be placed. It will then
-          automatically fill in all of the individual blocks needed for the template`
-        : `copy the template as text onto your clipboard. You can directly paste the template text into your Automator
-          wherever you would like it`;
+        ? `будет создан специальный блок, который вы сможете перетянуть в то место в поле программы, где вы хотите его поместить. При этом
+          он будет автоматически преобразован в группу блоков, соответствующих шаблону`
+        : `шаблон будет скопирован в буфер обмена в виде текста. Затем вы сможете напрямую вставить его в желаемое место программы`;
     }
   },
   methods: {
@@ -56,19 +55,19 @@ export default {
 
 <template>
   <div>
-    These templates will let you do some more common things within the Automator. They may be slightly slower than
-    manually-written scripts, but don't require you to have any previous programming experience to use. Clicking any
-    of these buttons will open up a prompt with some input fields, which will generate a template you can place into
-    your Automator.
+    Эти шаблоны позволяют вам быстро составить блок кода для выполнения часто возникающих задач. Генерированный код может оказаться немного медленнее, чем
+    код, написанный вручную, зато вам не нужно разбираться в программировании, если вы никогда им не занимались. При нажатии любой
+    из этих кнопок откроется окно с определёнными полями ввода, которое генерирует шаблонный блок кода, который вы сможете использовать в
+    вашей программе для Автоматизатора.
     <button
       v-for="template in templates"
       :key="template.name"
       class="o-primary-btn c-automator-docs-template--button l-automator__button"
       @click="showModal(template)"
     >
-      Template: {{ template.name }}
+      Шаблон: {{ template.name }}
     </button>
-    Since you are currently in the {{ isBlock ? "Block" : "Text" }} editor, this panel will {{ pasteText }}.
+    Поскольку вы сейчас в {{ isBlock ? "блочном" : "текстовом" }} режиме редактирования, {{ pasteText }}.
     <br>
     <br>
     <draggable

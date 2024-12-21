@@ -37,8 +37,8 @@ export default {
       return this.rift.id === 3;
     },
     infoTooltip() {
-      return `The Replicanti requirement for the 2nd Rift is based on the total amount you have ever filled, including
-        any amount drained to fill this Rift.`;
+      return `Количество Репликанти, необходимое для заполнения Второго Разлома, зависит в том числе и от
+        процента, расходованного на Третий Разлом.`;
     }
   },
   methods: {
@@ -104,7 +104,7 @@ export default {
               {{ riftName() }}
             </h2>
             <div class="c-pelle-rift-rift-info-container">
-              Drains {{ drainResource() }} to fill.
+              Расходует {{ drainResource() }} на заполнение.
               <span
                 v-if="specialRift"
                 :ach-tooltip="infoTooltip"
@@ -113,10 +113,10 @@ export default {
               </span>
               <br>
               <template v-if="!isMaxed">
-                Current Amount: {{ formatRift(resource) }}
+                Имеется: {{ formatRift(resource) }}
               </template>
               <br>
-              Total Filled: {{ formatRift(rift.totalFill) }}
+              Расходовано: {{ formatRift(rift.totalFill) }}
             </div>
           </div>
         </div>
@@ -153,6 +153,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 97rem;
 }
 
 .c-pelle-rift-column {
@@ -170,7 +171,7 @@ export default {
 .c-pelle-rift-status {
   display: flex;
   flex-direction: column;
-  width: 28rem;
+  width: 32rem;
   align-items: center;
 }
 

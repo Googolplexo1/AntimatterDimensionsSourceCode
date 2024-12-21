@@ -50,30 +50,30 @@ export default {
   <div class="c-subtab-option-container">
     <PrimaryToggleButton
       v-model="autobuyersOn"
-      on="Pause autobuyers"
-      off="Resume autobuyers"
+      on="Приостановить автоматику"
+      off="Возобновить автоматику"
       class="o-primary-btn--subtab-option"
     />
     <PrimaryButton
       class="o-primary-btn--subtab-option"
       @click="toggleAllAutobuyers()"
     >
-      {{ allAutobuyersDisabled ? "Enable" : "Disable" }} all autobuyers
+      {{ allAutobuyersDisabled ? "Включить" : "Выключить" }} всю автоматику
     </PrimaryButton>
     <span v-if="isDoomed">
       <PrimaryButton
         v-if="showContinuum"
         class="o-primary-btn--subtab-option"
       >
-        Continuum is disabled
+        Континуум отключён
       </PrimaryButton>
     </span>
     <span v-else>
       <PrimaryToggleButton
         v-if="showContinuum"
         v-model="disableContinuum"
-        on="Enable Continuum"
-        off="Disable Continuum"
+        on="Включить Континуум"
+        off="Выключить Континуум"
         class="o-primary-btn--subtab-option"
       />
     </span>

@@ -98,16 +98,16 @@ export class TimeStudyTree {
   static get sets() {
     // Grouping of studies. The key followed by an array of the studies the key is a shorthand for.
     return new Map([
-      ["antimatter", [71, 81, 91, 101]],
-      ["infinity", [72, 82, 92, 102]],
-      ["time", [73, 83, 93, 103]],
-      ["active", [121, 131, 141]],
-      ["passive", [122, 132, 142]],
-      ["idle", [123, 133, 143]],
-      ["light", [221, 223, 225, 227, 231, 233]],
-      ["dark", [222, 224, 226, 228, 232, 234]],
+      ["антиматерии", [71, 81, 91, 101]],
+      ["бесконечности", [72, 82, 92, 102]],
+      ["времени", [73, 83, 93, 103]],
+      ["активный", [121, 131, 141]],
+      ["средний", [122, 132, 142]],
+      ["пассивный", [123, 133, 143]],
+      ["светлые", [221, 223, 225, 227, 231, 233]],
+      ["тёмные", [222, 224, 226, 228, 232, 234]],
       ...(Ra.unlocks.unlockHardV.canBeApplied
-        ? [["triad", [301, 302, 303, 304].slice(0, Ra.unlocks.unlockHardV.effectOrDefault(0))]]
+        ? [["тройственные", [301, 302, 303, 304].slice(0, Ra.unlocks.unlockHardV.effectOrDefault(0))]]
         : [])
     ]);
   }

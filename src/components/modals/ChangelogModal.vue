@@ -41,7 +41,7 @@ export default {
     <ModalCloseButton @click="emitClose" />
     <div class="l-changelog-header">
       <div class="c-changelog-title">
-        Changelog
+        История изменений
       </div>
     </div>
     <div class="l-changelog-container">

@@ -64,12 +64,12 @@ export default {
     @confirm="importConstants"
   >
     <template #header>
-      Importing Time Study Presets as Constants
+      Импорт сохранённых Древ Исследований в качестве постоянных
     </template>
     <div class="c-modal-message__text">
-      Confirming this modal will import all of your saved Time Study presets as new Automator constants.
-      Below are all the valid presets which will be imported, with the beginning and end of their contained
-      studies shown. Some names may be changed due to restrictions on constant name formatting.
+      Все ваши сохранённые Древа Исследований будут импортированы в качестве новых постоянных для Автоматизатора.
+      Ниже приведены все допустимые Древа, которые могут быть импортированы, с началом и концом списка содержащихся в них
+      Исследований. Некоторые названия могут быть изменены из-за ограничений на имена постоянных.
       <br>
       <br>
       <div
@@ -77,7 +77,7 @@ export default {
         :key="i"
         :class="{ 'l-not-imported' : !willImport[i-1] }"
       >
-        Name: {{ presets[i-1].name }} ➜ <b>{{ names[i-1] }}</b>
+        Название: {{ presets[i-1].name }} ➜ <b>{{ names[i-1] }}</b>
         <br>
         {{ shortenString(presets[i-1].studies) }}
         <span
@@ -85,7 +85,7 @@ export default {
           class="l-warn-text"
         >
           <br>
-          This will overwrite an existing constant!
+          Существующая постоянная будет замещена!
         </span>
         <br>
         <br>
@@ -94,12 +94,12 @@ export default {
         v-if="missedImports() > 0"
         class="l-warn-text"
       >
-        {{ quantify("preset", missedImports()) }} in this list cannot be imported
-        due to the limit on constant count.
+        {{ quantify("Древо", missedImports()) }} из этого списка не может быть импортировано
+        из-за ограничения на количество постоянных.
       </div>
     </div>
     <template #confirm-text>
-      Import All
+      Импортировать все
     </template>
   </ModalWrapperChoice>
 </template>

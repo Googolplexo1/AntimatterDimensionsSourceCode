@@ -77,10 +77,10 @@ export default {
       return this.constantCountAfterImport - this.maxConstantCount;
     },
     presetButtonText() {
-      return this.ignorePresets ? "Will Ignore Presets" : "Will Import Presets";
+      return this.ignorePresets ? "Игнорирует сохранённые Древа" : "Импортирует сохранённые Древа";
     },
     constantButtonText() {
-      return this.ignoreConstants ? "Will Ignore Constants" : "Will Import Constants";
+      return this.ignoreConstants ? "Игнорирует постоянные" : "Импортирует постоянные";
     }
   },
   mounted() {
@@ -110,6 +110,8 @@ export default {
       this.lineCount = this.scriptContent.split("\n").length;
       this.hasErrors = hasCompilationErrors(this.scriptContent);
       this.isValid = true;
+      this.number = quantify("постоянная", this.extraConstants);
+      this.imported = quantify("импортирована", this.extraConstants);
     },
     importSave() {
       if (!this.isValid) return;
@@ -134,10 +136,10 @@ export default {
     @confirm="importSave"
   >
     <template #header>
-      Import Automator Script Data
+      Ипортировать данные прогаммы для Автоматизатора
     </template>
-    This will create a new Automator script at the end of your list.
-    <span v-if="isImportingExtraData">This will also import additional data related to the script.</span>
+    Новая программа для Автоматизатора будет добавлена в конец списка.
+    <span v-if="isImportingExtraData">Дополнительные данные, связанные с программой, также будут импоритрованы.</span>
     <input
       ref="input"
       v-model="input"
@@ -147,12 +149,12 @@ export default {
       @keyup.esc="emitClose"
     >
     <div v-if="isValid">
-      Script name: {{ scriptName }}
+      Название программы: {{ scriptName }}
       <br>
-      Line count: {{ lineCount }}
+      Количество строк: {{ lineCount }}
       <div v-if="hasPresets">
         <br>
-        Study Presets:
+        Сохранённые Древа:
         <span
           v-for="(preset, id) in importedPresets"
           :key="id"
@@ -165,8 +167,8 @@ export default {
           v-if="!ignorePresets && overwrittenPresetCount > 0"
           class="l-has-errors"
         >
-          {{ formatInt(overwrittenPresetCount) }} of your existing presets
-          will be overwritten by imported presets!
+          {{ formatInt(overwrittenPresetCount) }} из ваших сохранённых Древ
+          будут замещены импортируемыми Древами!
         </div>
         <br>
         <button
@@ -178,7 +180,7 @@ export default {
       </div>
       <div v-if="hasConstants">
         <br>
-        Constants:
+        Постоянные:
         <span
           v-for="(constant, id) in importedConstants"
           :key="id + 10"
@@ -190,11 +192,11 @@ export default {
           v-if="!ignoreConstants && (willOverwriteConstant || extraConstants > 0)"
           class="l-has-errors"
         >
-          <span v-if="willOverwriteConstant">Some of your existing constants will be overwritten!</span>
+          <span v-if="willOverwriteConstant">Некоторые из ваших существующих постоянных будут замещены!</span>
           <br v-if="willOverwriteConstant && extraConstants > 0">
           <span v-if="extraConstants > 0">
-            {{ quantifyInt("constant", extraConstants) }} will not be imported due to the
-            {{ maxConstantCount }} constant limit.
+            {{ number }} не будет {{ imported }} из-за ограничения в
+            {{ maxConstantCount }} постоянных.
           </span>
         </div>
         <br>
@@ -210,17 +212,17 @@ export default {
         v-if="hasErrors"
         class="l-has-errors"
       >
-        This script has errors which need to be fixed before it can be run!
+         Эта программа содержит ошибки, которые должны быть исправлены, прежде чем она сможет быть запущена!
       </div>
       <div v-if="hasErrors && isImportingExtraData">
-        <i>Some errors may be fixed with the additional data being imported.</i>
+        <i>Некоторые ошибки можно исправить за счёт импорта дополнительных данных.</i>
       </div>
     </div>
     <div v-else-if="input.length !== 0">
-      Invalid Automator data string
+      Недопустимая кодировка данных для Автоматизатора
     </div>
     <template #confirm-text>
-      Import
+      Импортировать
     </template>
   </ModalWrapperChoice>
 </template>

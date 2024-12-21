@@ -82,11 +82,12 @@ class QuoteLine {
       : [[parent.celestial, 1]];
 
     const replacementMatch = /\$(\d+)/gu;
+    const genderMatch = player.options.genderMale ? /\(\S*\)|[\[\]]/gu : /\[\S*\]|[\(\)]/gu;
 
     this._line = typeof line === "string"
-      ? line
+      ? line.replaceAll(genderMatch, "")
       // This matches each digit after a $ and replaces it with the wordCycle of an array with the digit it matched.
-      : () => line.text.replaceAll(replacementMatch, (_, i) => wordShift.wordCycle(line[i]));
+      : () => line.text.replaceAll(replacementMatch, (_, i) => wordShift.wordCycle(line[i])).replaceAll(genderMatch, "");
   }
 
   get line() {
@@ -145,34 +146,35 @@ class CelQuotes extends BitUpgradeState {
   }
 }
 
-
-export const Quotes = {
-  teresa: mapGameDataToObject(
-    GameDatabase.celestials.quotes.teresa,
-    config => new CelQuotes(config, "teresa")
-  ),
-  effarig: mapGameDataToObject(
-    GameDatabase.celestials.quotes.effarig,
-    config => new CelQuotes(config, "effarig")
-  ),
-  enslaved: mapGameDataToObject(
-    GameDatabase.celestials.quotes.enslaved,
-    config => new CelQuotes(config, "enslaved")
-  ),
-  v: mapGameDataToObject(
-    GameDatabase.celestials.quotes.v,
-    config => new CelQuotes(config, "v")
-  ),
-  ra: mapGameDataToObject(
-    GameDatabase.celestials.quotes.ra,
-    config => new CelQuotes(config, "ra")
-  ),
-  laitela: mapGameDataToObject(
-    GameDatabase.celestials.quotes.laitela,
-    config => new CelQuotes(config, "laitela")
-  ),
-  pelle: mapGameDataToObject(
-    GameDatabase.celestials.quotes.pelle,
-    config => new CelQuotes(config, "pelle")
-  ),
+export function Quotes() {
+  return {
+    teresa: mapGameDataToObject(
+      GameDatabase.celestials.quotes.teresa,
+      config => new CelQuotes(config, "teresa")
+    ),
+    effarig: mapGameDataToObject(
+      GameDatabase.celestials.quotes.effarig,
+      config => new CelQuotes(config, "effarig")
+    ),
+    enslaved: mapGameDataToObject(
+      GameDatabase.celestials.quotes.enslaved,
+      config => new CelQuotes(config, "enslaved")
+    ),
+    v: mapGameDataToObject(
+      GameDatabase.celestials.quotes.v,
+      config => new CelQuotes(config, "v")
+    ),
+    ra: mapGameDataToObject(
+      GameDatabase.celestials.quotes.ra,
+      config => new CelQuotes(config, "ra")
+    ),
+    laitela: mapGameDataToObject(
+      GameDatabase.celestials.quotes.laitela,
+      config => new CelQuotes(config, "laitela")
+    ),
+    pelle: mapGameDataToObject(
+      GameDatabase.celestials.quotes.pelle,
+      config => new CelQuotes(config, "pelle")
+    ),
+  };
 };

@@ -124,14 +124,14 @@ export default {
     copyAndClose() {
       if (this.isBlock) {
         const newTemplateBlock = {
-          name: `Template: ${this.name}`,
+          name: `Шаблон: ${this.name}`,
           blocks: blockifyTextAutomator(this.templateScript.script).blocks
         };
         AutomatorData.blockTemplates.push(newTemplateBlock);
-        GameUI.notify.info("Custom template block created");
+        GameUI.notify.info("Создан пользовательский шаблон");
       } else {
         copyToClipboard(this.templateScript.script);
-        GameUI.notify.info("Template copied to clipboard");
+        GameUI.notify.info("Шаблон скопирован в буфер обмена");
       }
       this.emitClose();
     }
@@ -142,15 +142,16 @@ export default {
 <template>
   <ModalWrapper class="c-automator-template-container">
     <template #header>
-      {{ name }} Template
+      Шаблон: {{ name }}
     </template>
     <div class="c-automator-template-description">
       {{ description }}
     </div>
+    <br>
     <div class="c-automator-template-inputs">
-      <b>Required Information:</b>
+      <b>Требуемые данные:</b>
       <br>
-      Use a preset Study Tree:
+      Древо Исследований:
       <button
         v-for="(preset, presetNumber) in presets"
         :key="preset.name"
@@ -163,7 +164,7 @@ export default {
         class="o-primary-btn o-load-preset-button-margin"
         @click="loadCurrent"
       >
-        <i>Current Tree</i>
+        <i>Текущее Древо</i>
       </button>
       <div
         v-for="input in inputs"
@@ -192,7 +193,7 @@ export default {
       </div>
     </div>
     <div class="c-automator-template-warnings">
-      <b>Possible things to consider:</b>
+      <b>Возможные недостатки:</b>
       <div v-if="validWarnings.length !== 0">
         <div
           v-for="warning in validWarnings"
@@ -203,7 +204,7 @@ export default {
         </div>
       </div>
       <div v-else>
-        (If something seems wrong with the template inputs, it will show up here)
+        (Если в данных, введённых вами, будут обнаружены недостатки, они будут отображены здесь)
       </div>
       <br>
       <br>
@@ -213,13 +214,13 @@ export default {
       class="o-primary-btn"
       @click="copyAndClose"
     >
-      {{ isBlock ? "Create custom template block" : "Copy this template to your clipboard" }} and close this modal
+      {{ isBlock ? "Создать блок кода по шаблону" : "Копировать шаблон в буфер обмена" }} и закрыть это окно
     </button>
     <button
       v-else
       class="o-primary-btn o-primary-btn--disabled"
     >
-      Cannot generate template (You have {{ quantifyInt("invalid input", invalidInputCount) }})
+      Код невозможно генерировать (недопустимый ввод в {{ quantifyInt("поле", invalidInputCount) }})
     </button>
   </ModalWrapper>
 </template>

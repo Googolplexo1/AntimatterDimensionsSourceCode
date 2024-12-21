@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     upgradeStr() {
-      return this.isImaginary ? "Imaginary Upgrade" : "Reality Upgrade";
+      return this.isImaginary ? "Мнимого Улучшения" : "Улучшения Реальности";
     },
     lockEvent() {
       return this.specialLockText ?? this.upgrade.lockEvent;
@@ -42,26 +42,26 @@ export default {
     @confirm="disableLock"
   >
     <template #header>
-      {{ upgradeStr }} Condition Lock
+      Проверка требования {{ upgradeStr }}
     </template>
     <div class="c-modal-message__text">
-      Are you sure you wish to {{ lockEvent }}? Doing this right now will cause you to
+      Вы уверены, что хотите {{ lockEvent }}? Если вы сделаете это прямо сейчас,
       <span class="l-emphasis">
-        fail the requirement for the {{ upgradeStr }} "{{ upgrade.name }}"
+        вы нарушите требование {{ upgradeStr }} "{{ upgrade.name }}"
       </span>
       <span :ach-tooltip="upgrade.requirement">
         <i class="fas fa-question-circle" />
       </span>
       <br>
       <br>
-      Selecting "Cancel" will close this modal with no effect, while selecting "Disable Lock" will disable the
-      requirement check for this upgrade and prevent this message from reappearing unless you turn it back on.
+      Нажав "Отменить", вы закроете это окно без последствий, в то время как при выборе варианта "Отключить проверку"
+      проверка требования этого Улучшения будет отключена, и это сообщение больше не всплывёт, если только вы не включите проверку вновь.
       <br>
       <br>
-      Neither of these options will perform the action you just attempted, so you will need to try again.
+      В любом случае действие, которое вы попытались совершить, не будет совершено, так что вам придётся попробовать совершить его снова.
     </div>
     <template #confirm-text>
-      Disable Lock
+      Отключить проверку
     </template>
   </ModalWrapperChoice>
 </template>

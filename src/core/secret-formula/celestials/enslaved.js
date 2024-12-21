@@ -3,55 +3,53 @@ export const enslaved = {
   progress: {
     hintsUnlocked: {
       id: 0,
-      hint: "The Nameless Ones want to help, but the help takes a while.",
-      condition: () => `Spent more than ${formatInt(5)} real-time hours inside the Reality without completing it;
-        time outside the Reality counts for ${formatPercents(0.4)} as much. The timer starts once the
-        Reality is unlocked, but accumulates continuously.`,
+      hint: "Безымянные хотят вам помочь, но для этого им нужно время.",
+      condition: () => `Вы подождали достаточно долгое время после разблокировки Реальности Безымянных и разблокировали
+        возможность получать от них подсказки`,
     },
     ec1: {
       id: 1,
-      hint: "That's odd, the Automatic Eternity Challenge perk seems to be having some trouble working properly.",
-      condition: () => `Gained more than ${formatInt(5)} completions of Eternity Challenge 1 at once`,
+      hint: "Странно, автоматическое выполнение Испытаний Вечности работает как-то неправильно.",
+      condition: () => `Вы можете выполнять 1-е Испытание Вечности более ${formatInt(5)} раз`,
     },
     feelEternity: {
       id: 2,
-      hint: "Infinity seems to be more broken than usual in this Reality, but is that even fixable?",
-      condition: "Tried to Fix Infinity, but instead found and clicked the FEEL ETERNITY button",
+      hint: "Кажется, в этой Реальности бесконечность преодолена, но как-то слишком. Можно ли это исправить?",
+      condition: `Вы открыли вкладку "Преодоление Бесконечности" и нашли там кнопку "ПОЧУВСТВОВАТЬ ВЕЧНОСТЬ"`,
     },
     ec6: {
       id: 3,
-      hint: `Some Challenges are harder, but also boost something in exchange. I wonder if there's a Challenge
-        that's just strictly better than normal here.`,
-      condition: () => `Entered Eternity Challenge 6 again after completing it ${formatInt(5)} times in order
-        to use its cheaper Replicanti Galaxies`,
+      hint: `В некоторых испытаниях за суровые ослабления даётся компенсация. А есть ли испытание, в котором ослабления
+        и вовсе отсутствуют?.`,
+      condition: () => `Вы можете начинать 6-е Испытание Вечности, даже после того как полностью выполнили его,
+        так как его ослабление неактуально в этой Реальности, а вот компенсация - очень даже актуальна`,
     },
     c10: {
       id: 4,
-      hint: "Is there a way to get Antimatter Galaxies without 8th Antimatter Dimensions?",
-      condition: "Used Challenge 10 to get more than one Antimatter Galaxy with 6th Antimatter Dimensions",
+      hint: "Вот бы можно было получать Галактики Антиматерии без 8-х Измерений Антиматерии...",
+      condition: "Вы можете начинать 10-е Обычное Испытание, чтобы получать Галактики Антиматерии за 6-е Измерения Антиматерии",
     },
     secretStudy: {
       id: 5,
-      hint: "Time Study 12? What's that?",
-      condition: () => `Clicked the secret Time Study and gained an extra ${formatInt(100)} Time Theorems`,
+      hint: "Исследование Времени 12? Что это такое?",
+      condition: () => `Вы открыли секретное Исследование Времени справа от ИсслВ11, дающее ${formatInt(100)} Теорем Времени бесплатно`,
     },
     storedTime: {
       id: 6,
-      hint: "It seems like certain parts of this Reality erode away if you wait long enough.",
-      condition: "Discharged to have more than a year of game time this Reality",
+      hint: "Если подождать достаточно долго, цепи, сковывающие эту Реальность, сотрутся.",
+      condition: `Вы можете разряжать Чёрную Дыру в этой Реальности из вкладки "Безымянные"`,
     },
     challengeCombo: {
       id: 7,
-      hint: "Could I possibly use one Challenge to get around a restriction in another Challenge?",
-      condition: "Entered Challenge 10 while already inside of Eternity Challenge 6",
+      hint: "Как известно, минус на минус даёт плюс. Может быть, одно испытание поможет внутри другого?",
+      condition: "Вы можете эксплуатировать 6-е Испытание Вечности и 10-е Обычное Испытание одновременно",
     },
   },
   // These get unlocked sequentially
   glyphHints: [
-    "Infinity and Dilation Glyphs seem confined too tightly to be useful at all.",
-    "Power and Time Glyphs are particularly strong here.",
-    `Effarig Glyphs are only useful with the right effects, but you can complete the Reality without one.
-      A Replication Glyph is very helpful, but it's not strictly necessary or quite as strong
-      as Power and Time.`
+    "Глифы Бесконечности и Замедления скованы слишком сильно, чтобы принести хоть какую-нибудь пользу.",
+    "Глифы Силы и Времени довольно хорошо противостоят ослаблениям этой Реальности.",
+    `Глиф Эффарига будет полезен только при наличии правильных эффектов, а Глифы Репликации
+      не так сильны, как Глифы Силы и Времени.`
   ]
 };

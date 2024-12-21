@@ -29,7 +29,7 @@ export default {
     },
     createRealityGlyph() {
       if (GameCache.glyphInventorySpace.value === 0) {
-        Modal.message.show("No available inventory space; Sacrifice some Glyphs to free up space.",
+        Modal.message.show("Нет свободных ячеек; пожертвуйте некоторые глифы, чтобы освободить место.",
           { closeEvent: GAME_EVENT.GLYPHS_CHANGED });
         return;
       }
@@ -39,7 +39,7 @@ export default {
       this.emitClose();
     },
     formatGlyphEffect(effect) {
-      if (this.realityGlyphLevel < effect[0]) return `(Requires Glyph level ${formatInt(effect[0])})`;
+      if (this.realityGlyphLevel < effect[0]) return `(Требуется уровень ${formatInt(effect[0])})`;
       const config = GlyphEffects[effect[1]];
       const value = config.effect(this.realityGlyphLevel, rarityToStrength(100));
       const effectTemplate = config.singleDesc;
@@ -52,20 +52,20 @@ export default {
 <template>
   <ModalWrapper>
     <template #header>
-      Reality Glyph Creation
+      Создание Глифа Реальности
     </template>
     <div class="c-reality-glyph-creation">
       <div>
-        Create a level {{ formatInt(realityGlyphLevel) }} Reality Glyph.
-        Rarity will always be {{ formatPercents(1) }} and
-        level scales on your current Reality Resource amount (which is all consumed). All other Alchemy Resources will
-        be unaffected. Reality Glyphs have unique effects, some of which are only available with higher level Glyphs.
-        Reality Glyphs can also be sacrificed to increase all Memory Chunk gain. Like Effarig Glyphs,
-        you cannot equip more than one at the same time.
+        Создать Глиф Реальности уровня {{ formatInt(realityGlyphLevel) }}.
+        Редкость Глифа Реальности всегда равна {{ formatPercents(1) }},
+        а уровень равен количеству Реальности (которая траится полностью) при создании глифа. Остальные алхимические ресурсы
+        не тратятся. Глифы Реальности имеют уникальные эффекты, каждый из которых разблокируется на определённом уровне.
+        Глифы Реальности могут быть пожертвованы для множителя к получению Кусков Памяти. Подобно Глифам Эффарига,
+        из Глифов Реальности в любой момент времени может действовать лишь один.
       </div>
       <div class="o-available-effects-container">
         <div class="o-available-effects">
-          Available Effects:
+          Эффекты:
         </div>
         <div
           v-for="(effect, index) in possibleEffects"
@@ -78,19 +78,19 @@ export default {
         v-if="isDoomed"
         :enabled="false"
       >
-        You cannot create Reality Glyphs while Doomed
+        Нельзя создавать Глифы Реальности в Обречении
       </PrimaryButton>
       <PrimaryButton
         v-else-if="realityGlyphLevel !== 0"
         @click="createRealityGlyph"
       >
-        Create a Reality Glyph!
+        Создать Глиф Реальности!
       </PrimaryButton>
       <PrimaryButton
         v-else
         :enabled="false"
       >
-        Reality Glyph level must be higher than {{ formatInt(0) }}
+        Уровень Глифа Реальности должен быть выше {{ formatInt(0) }}
       </PrimaryButton>
     </div>
   </ModalWrapper>

@@ -7,22 +7,22 @@ function isEND() {
 }
 
 window.format = function format(value, places = 0, placesUnder1000 = 0) {
-  if (isEND()) return "END";
+  if (isEND()) return "КОНЕЦ";
   return Notations.current.format(value, places, placesUnder1000, 3);
 };
 
 window.formatInt = function formatInt(value) {
-  if (isEND()) return "END";
+  if (isEND()) return "КОНЕЦ";
   // Suppress painful formatting for Standard because it's the most commonly used and arguably "least painful"
   // of the painful notations. Prevents numbers like 5004 from appearing imprecisely as "5.00 K" for example
-  if (Notations.current.isPainful && Notations.current.name !== "Standard") {
+  if (Notations.current.isPainful && Notations.current.name !== "Стандартная") {
     return format(value, 2);
   }
   return formatWithCommas(typeof value === "number" ? value.toFixed(0) : value.toNumber().toFixed(0));
 };
 
 window.formatFloat = function formatFloat(value, digits) {
-  if (isEND()) return "END";
+  if (isEND()) return "КОНЕЦ";
   if (Notations.current.isPainful) {
     return format(value, Math.max(2, digits), digits);
   }
@@ -30,7 +30,7 @@ window.formatFloat = function formatFloat(value, digits) {
 };
 
 window.formatPostBreak = function formatPostBreak(value, places, placesUnder1000) {
-  if (isEND()) return "END";
+  if (isEND()) return "КОНЕЦ";
   const notation = Notations.current;
   // This is basically just a copy of the format method from notations library,
   // with the pre-break case removed.
@@ -79,7 +79,7 @@ window.formatRarity = function formatRarity(value) {
 
 // We assume 2/0, 2/2 decimal places to keep parameter count sensible; this is used very rarely
 window.formatMachines = function formatMachines(realPart, imagPart) {
-  if (isEND()) return "END";
+  if (isEND()) return "КОНЕЦ";
   const parts = [];
   if (Decimal.neq(realPart, 0)) parts.push(format(realPart, 2));
   if (Decimal.neq(imagPart, 0)) parts.push(`${format(imagPart, 2, 2)}i`);
@@ -89,12 +89,12 @@ window.formatMachines = function formatMachines(realPart, imagPart) {
   return parts.join(" + ");
 };
 
-window.timeDisplay = function timeDisplay(ms) {
-  return TimeSpan.fromMilliseconds(ms).toString();
+window.timeDisplay = function timeDisplay(ms, Case) {
+  return TimeSpan.fromMilliseconds(ms).toString(Case);
 };
 
-window.timeDisplayNoDecimals = function timeDisplayNoDecimals(ms) {
-  return TimeSpan.fromMilliseconds(ms).toStringNoDecimals();
+window.timeDisplayNoDecimals = function timeDisplayNoDecimals(ms, Case) {
+  return TimeSpan.fromMilliseconds(ms).toStringNoDecimals(Case);
 };
 
 window.timeDisplayShort = function timeDisplayShort(ms) {
@@ -104,38 +104,9 @@ window.timeDisplayShort = function timeDisplayShort(ms) {
 const commaRegexp = /\B(?=(\d{3})+(?!\d))/gu;
 window.formatWithCommas = function formatWithCommas(value) {
   const decimalPointSplit = value.toString().split(".");
-  decimalPointSplit[0] = decimalPointSplit[0].replace(commaRegexp, ",");
+  if (decimalPointSplit[0].length > 4) decimalPointSplit[0] = decimalPointSplit[0].replace(commaRegexp, " ");
   return decimalPointSplit.join(".");
 };
-
-/**
- * Check if a number or Decimal is equal to 1.
- * @param  {number|Decimal} amount
- * @return {Boolean} - if the {amount} was equal to 1.
- */
-window.isSingular = function isSingular(amount) {
-  if (typeof amount === "number") return amount === 1;
-  if (amount instanceof Decimal) return amount.eq(1);
-  throw `Amount must be either a number or Decimal. Instead, amount was ${amount}`;
-};
-
-// Some letters in the english language pluralize in a different manner than simply adding an 's' to the end.
-// As such, the regex match should be placed in the first location, followed by the desired string it
-// should be replaced with. Note that $ refers to the EndOfLine for regex, and should be included if the plural occurs
-// at the end of the string provided, which will be 99% of times. Not including it is highly likely to cause mistakes,
-// as it will select the first instance that matches and replace that.
-const PLURAL_HELPER = new Map([
-  [/y$/u, "ies"],
-  [/x$/u, "xes"],
-  [/$/u, "s"]
-]);
-
-// Some terms require specific (or no) handling when plural. These terms should be added, in Word Case, to this Map.
-// Words will be added to this Map when a valid plural for it is found on being run through the pluralize function.
-const pluralDatabase = new Map([
-  ["Antimatter", "Antimatter"],
-  ["Dilated Time", "Dilated Time"],
-]);
 
 /**
  * A function that pluralizes a word based on a designated amount
@@ -145,29 +116,70 @@ const pluralDatabase = new Map([
  * @return {string} - if the {amount} is anything other than one, return the {plural} provided or the
  *                    plural form of the input {word}. If the {amount} is singular, return {word}
  */
-window.pluralize = function pluralize(word, amount, plural) {
+window.pluralize = function pluralize(word, amount) {
   if (word === undefined || amount === undefined) throw "Arguments must be defined";
 
-  if (isSingular(amount)) return word;
-  const existingPlural = plural ?? pluralDatabase.get(word);
-  if (existingPlural !== undefined) return existingPlural;
+  words = word.split(" ")
+  if (words.length > 1) return words.map(x => pluralize(x, amount)).join(" ");
 
-  const newWord = generatePlural(word);
-  pluralDatabase.set(word, newWord);
-  return newWord;
-};
-
-/**
- * Creates a new plural based on PLURAL_HELPER and adds it to pluralDatabase
- * @param  {string} word - a word to be pluralized using the regex in PLURAL_HELPER
- * @return {string} - returns the pluralized word. if no pluralized word is found, simply returns the word itself.
- */
-window.generatePlural = function generatePlural(word) {
-  for (const [match, replaceWith] of PLURAL_HELPER.entries()) {
-    const newWord = word.replace(match, replaceWith);
-    if (word !== newWord) return newWord;
+  let n = amount instanceof Decimal ? amount.clampMax(10 ** 9).toNumber() : Math.clampMax(amount, 10 ** 9);
+  let number;
+  if (n !== Math.floor(n)) {
+    number = "dual";
+  } else if (n % 100 < 21 && n % 100 > 4) {
+    number = "plural";
+  } else if (n % 10 === 1) {
+    return word;
+  } else if (n % 10 < 5 && n % 10 > 1) {
+    number = "dual";
+  } else {
+    number = "plural";
   }
-  return word;
+
+  if (word === "") return "";
+  if (["Машина", "Теорема"].includes(word)) return word.slice(0, -1) + (number === "dual" ? "ы" : "");
+  if (word === "раз") return (number === "dual" ? "раза" : "раз");
+  if (word === "Древо") return (number === "dual" ? "Древа" : "Древ");
+  if (word === "год") return (number === "dual" ? "года" : "лет");
+  if (word === "удалён") return "удалено";
+  if (word === "постоянной") return "постоянных";
+  if (word === "осталась") return "осталось";
+  if (word === "Расширением") return "Расширениями";
+  if (word === "галактики") return "галактик";
+  if (word === "действующим") return "действующими";
+  if (word === "года") return "лет";
+  if (word === "дня") return "дней";
+  if (word === "строки") return "строк";
+  if (word === "е") return "х";
+  if (word === "Очка") return "Очков";
+  if (word === "нового") word = "новая";
+  if (word.endsWith("ок") || word === "Очко") word = word.slice(0, -2) + "к";
+  if (word.endsWith("на")) return word.slice(0, -1) + "о";
+  if (word.endsWith("ия")) return word.slice(0, -1) + "й";
+  if (word.endsWith("ен") || word.endsWith("ван")) return word + "о";
+  if (word.endsWith("ень")) word = word.slice(0, -3) + "нь";
+  if (["Машиной", "глифом"].includes(word)) return word.slice(0, -2) + "ами";
+  if (["ая", "ое", "ый", "ий", "ую"].some(ending => word.endsWith(ending))) return word.slice(0, -2) + "ых";
+
+  if (number === "dual") { 
+    if (word.endsWith("ть")) return word.slice(0, -1) + "и";
+    if (word.endsWith("ие")) return word.slice(0, -1) + "я";
+    if (word.endsWith("ь") || word === "поле") return word.slice(0, -1) + "я";
+    if (word.includes("алактик")) return word.slice(0, -1) + "и";
+    if (word.endsWith("ка") || word === "ошибку") return word.slice(0, -2) + "ки";
+    if (word.includes("минут") || word.includes("секунд")) return word.slice(0, -1) + (word.endsWith("ы") ? "" : "ы");
+    if (word.endsWith("а")) return word.slice(0, -1) + "ов";
+    return word + "а";
+  } else {
+    if (word.endsWith("ть")) return word.slice(0, -1) + "ей";
+    if (word.endsWith("ие")) return word.slice(0, -1) + "й";
+    if (word.endsWith("ь") || word === "поле") return word.slice(0, -1) + "ей";
+    if (word.includes("алактик")) return word.slice(0, -1);
+    if (word.endsWith("ка") || word === "ошибку") return word.slice(0, -2) + "ок";
+    if (word.includes("минут") || word.includes("секунд")) return word.slice(0, -1);
+    if (word.endsWith("а")) return word.slice(0, -1) + "ов";
+    return word + "ов";
+  }
 };
 
 /**
@@ -210,8 +222,7 @@ window.quantifyInt = function quantifyInt(name, value) {
 window.makeEnumeration = function makeEnumeration(items) {
   if (items.length === 0) return "";
   if (items.length === 1) return items[0];
-  if (items.length === 2) return `${items[0]} and ${items[1]}`;
   const commaSeparated = items.slice(0, items.length - 1).join(", ");
   const last = items[items.length - 1];
-  return `${commaSeparated}, and ${last}`;
+  return `${commaSeparated} и ${last}`;
 };

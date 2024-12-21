@@ -101,14 +101,14 @@ export default {
           :class="topLevelClassObject('effectCount')"
           ach-tooltip="Number of effects in Specified Effect"
         >
-          Minimum Effects: {{ effectStr }}
+          Минимальное количество эффектов: {{ effectStr }}
         </span>
         <span
           class="c-target-score"
           :class="topLevelClassObject('score')"
           ach-tooltip="Threshold for Effect Score"
         >
-          Score: {{ scoreStr }}
+          Оценка: {{ scoreStr }}
         </span>
       </span>
       <br>
@@ -140,7 +140,7 @@ export default {
       </span>
     </span>
     <span v-else>
-      (No changes)
+      (Без изменений)
     </span>
   </div>
 </template>

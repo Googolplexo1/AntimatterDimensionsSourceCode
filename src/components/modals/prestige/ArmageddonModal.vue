@@ -17,17 +17,17 @@ export default {
   },
   computed: {
     topLabel() {
-      if (!this.isDoomed) return `You are about to Doom your Reality`;
-      return `You are about to perform an Armageddon reset`;
+      if (!this.isDoomed) return `Вы обрекаете Реальность`;
+      return `Вы совершаете армагеддон`;
     },
     message() {
       const isFirstReset = (Currency.remnants.eq(0))
-        ? `which will produce ${format(this.nextRealityShardGain, 2, 2)} Reality Shards/s`
-        : `which will increase your Reality Shards gain from ${format(this.realityShardGain, 2, 2)}/s
-          to ${format(this.nextRealityShardGain, 2, 2)}/s`;
+        ? `станете производить ${format(this.nextRealityShardGain, 2, 2)} Осколка Реальности в секунду`
+        : `увеличите ваше получение Осколков Реальности с ${format(this.realityShardGain, 2, 2)}/c
+          до ${format(this.nextRealityShardGain, 2, 2)}/c`;
 
-      return `Armageddon will start a new Doomed Reality. You will gain
-      ${quantify("Remnant", this.remnantsGain, 2, 0)} ${isFirstReset}`;
+      return `Армагеддон сбросит Обречённую Реальность. Вы получите
+      ${quantify("Останок", this.remnantsGain, 2, 0)} и ${isFirstReset}`;
     }
   },
   methods: {
@@ -57,13 +57,13 @@ export default {
       v-if="!isDoomed"
       class="c-modal-message__text"
     >
-      Dooming your Reality will reset everything except Challenge records, Celestial progress and anything under
-      the General and Reality header on the Statistics tab. You will not gain any rewards from your progress
-      in your current Reality. Dooming your Reality will also purge most of your unprotected Glyphs and disable
-      certain game mechanics.
+      Обречение Реальности сбросит всё, кроме рекордов испытаний, прогресса по Небожителям и статистики в разделах
+      "Общее" и "Реальность". Вы не получите наград за прогресс
+      в текущей реальности. Обречение Реальности также удалит большинство ваших незащищённых глифов и отключит
+      некоторые игровые механики.
       <br>
       <br>
-      Are you sure you want to do this?
+      Вы уверены, что хотите обречь Реальность?
     </div>
     <div
       v-else

@@ -34,9 +34,8 @@ export default {
       };
     },
     questionmarkTooltip() {
-      return `Glyph score is rarity, minus ${formatInt(200)} for every missing effect.
-        Glyphs with less than the specified rarity are sacrificed. Additional effects
-        beyond ones specified will not increase Glyph score.`;
+      return `Глифы не принимаются ниже указанных порогов редкости и количества эффектов.
+        Из всех эффектов глифов только отмеченные влияют на их оценки.`;
     }
   },
   methods: {
@@ -47,6 +46,7 @@ export default {
       const inputValue = event.target.value;
       if (!isNaN(inputValue)) {
         this.autoSacrificeSettings.effectCount = Math.clamp(inputValue, 0, 8);
+        EventHub.dispatch(GAME_EVENT.GLYPH_VISUAL_CHANGE);
       }
     }
   }
@@ -62,7 +62,7 @@ export default {
       >
         ?
       </span>
-      Selected Glyphs will have at least
+      Глифы принимаются при одновременном наличии не менее
       <input
         ref="effectCount"
         type="number"
@@ -72,7 +72,7 @@ export default {
         :value="effectCount"
         @blur="setEffectCount"
       >
-      effects total, which must include <i>all</i> of the following effects:
+      эффектов и наличии <i>всех</i> отмеченных эффектов:
     </div>
     <div
       v-for="effect in effects"
@@ -86,7 +86,7 @@ export default {
         :style="descStyle"
       />
     </div>
-    Click to toggle individual effects on/off
+    Нажмите на эффект, чтобы отметить его или убрать отметку
   </div>
 </template>
 

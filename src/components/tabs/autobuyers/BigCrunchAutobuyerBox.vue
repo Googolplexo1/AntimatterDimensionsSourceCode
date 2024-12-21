@@ -57,21 +57,21 @@ export default {
     modeProps(mode) {
       switch (mode) {
         case AUTO_CRUNCH_MODE.AMOUNT: return {
-          title: "Big Crunch at X IP",
+          title: "Большое Сжатие при X ОБ",
           input: {
             property: "amount",
             type: "decimal"
           },
         };
         case AUTO_CRUNCH_MODE.TIME: return {
-          title: "Seconds between Crunches",
+          title: "Сжатие каждые X секунд",
           input: {
             property: "time",
             type: "float"
           },
         };
         case AUTO_CRUNCH_MODE.X_HIGHEST: return {
-          title: "X times highest IP",
+          title: "При ОБ, в X раз превышающих максимальные",
           input: {
             property: "xHighest",
             type: "decimal"
@@ -92,7 +92,7 @@ export default {
     :autobuyer="autobuyer"
     :show-interval="!postBreak"
     :is-modal="isModal"
-    name="Automatic Big Crunch"
+    name="Автоматика Большого Сжатия"
   >
     <template
       v-if="!hasMaxedInterval"
@@ -110,7 +110,7 @@ export default {
       >
         <template #header>
           <div class="o-primary-btn c-autobuyer-box__mode-select c-autobuyer-box__mode-select-header">
-            ▼ Current Setting: ▼
+            ▼ Текущий режим: ▼
             <br>
             {{ modeName(mode) }}
           </div>
@@ -149,7 +149,7 @@ export default {
           type="checkbox"
           class="o-clickable"
         >
-        Dynamic amount
+        Динамическое значение
       </label>
     </template>
   </AutobuyerBox>

@@ -35,9 +35,9 @@ export default {
       </template>
       <template #dropdown>
         <div class="c-pelle-strike-dropdown">
-          <span>Penalty: {{ strike.penalty }}</span>
+          <span>Наказание: {{ strike.penalty }}</span>
           <br>
-          <span>Reward: {{ strikeReward }}</span>
+          <span>Награда: {{ strikeReward }}</span>
         </div>
       </template>
     </ExpandingControlBox>

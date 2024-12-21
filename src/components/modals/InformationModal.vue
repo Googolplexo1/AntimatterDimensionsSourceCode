@@ -16,22 +16,25 @@ export default {
     <ModalCloseButton @click="emitClose" />
     <div class="l-h2p-header">
       <div class="c-h2p-title">
-        About the game
+        Об игре
       </div>
     </div>
     <div class="c-info-body">
-      Antimatter Dimensions is an Idle Incremental game created by Finnish developer Hevipelle. Originating as a solo
-      project in 2016, it was expanded upon by a large team of developers and testers from then on.
+      "Измерения Антиматерии" (Antimatter Dimensions) - инкрементальная игра, созданная финским разработчиком под псевдонимом Hevipelle. Зародившись как сольный
+      проект в 2016 году, она с тех пор была расширена крупной командой разработчиков и тестировщиков.
       <br>
       <br>
-      The game has unfolding gameplay and multiple prestige layers. The "How to Play" button contains useful
-      information about progressing.
+      Игра обладает развёртывающимся геймплеем и несколькими слоями престижа. Окно "Помощь по игре" содержит полезную
+      информацию о ходе прогресса.
+      <br>
+      <br>
+      В 2024 году переводчик под псевдонимом Googolplexo выпустил русскую локализацию "Измерений Антиматерии", в которую вы сейчас играете.
     </div>
     <div class="l-socials">
       <InformationModalButton
-        name="GitHub repository"
+        name="Репозиторий на GitHub"
         icon="fa-brands fa-github"
-        link="https://github.com/IvarK/AntimatterDimensionsSourceCode"
+        link="https://github.com/Googolplexo1/AntimatterDimensionsSourceCode"
       />
       <InformationModalButton
         name="r/AntimatterDimensions"
@@ -39,27 +42,27 @@ export default {
         link="https://www.reddit.com/r/AntimatterDimensions/"
       />
       <InformationModalButton
-        name="Antimatter Dimensions Discord Server"
+        name="Сервер Antimatter Dimensions в Discord"
         icon="fa-brands fa-discord"
         link="https://discord.gg/ST9NaXa"
       />
       <InformationModalButton
-        name="Antimatter Dimensions on Google Play"
+        name="Antimatter Dimensions в Google Play"
         icon="fa-brands fa-google-play"
         link="https://play.google.com/store/apps/details?id=kajfosz.antimatterdimensions"
       />
       <InformationModalButton
-        name="Antimatter Dimensions on Steam"
+        name="Antimatter Dimensions в Steam"
         icon="fa-brands fa-steam"
         link="https://store.steampowered.com/app/1399720/Antimatter_Dimensions/"
       />
       <InformationModalButton
-        name="Credits"
+        name="Благодарности"
         icon="fa-solid fa-users"
         show-modal="credits"
       />
       <InformationModalButton
-        name="Game Changelog"
+        name="История изменений"
         icon="fa-solid fa-file-lines"
         show-modal="changelog"
       />

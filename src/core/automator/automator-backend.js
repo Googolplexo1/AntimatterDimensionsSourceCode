@@ -170,7 +170,7 @@ export const AutomatorData = {
 
   MAX_ALLOWED_SCRIPT_CHARACTERS: 10000,
   MAX_ALLOWED_TOTAL_CHARACTERS: 60000,
-  MAX_ALLOWED_SCRIPT_NAME_LENGTH: 15,
+  MAX_ALLOWED_SCRIPT_NAME_LENGTH: 20,
   MAX_ALLOWED_SCRIPT_COUNT: 20,
   MAX_ALLOWED_CONSTANT_NAME_LENGTH: 20,
   // Note that a study string with ALL studies in unshortened form without duplicated studies is ~230 characters
@@ -191,7 +191,7 @@ export const AutomatorData = {
   },
   createNewScript(content, name) {
     const newScript = AutomatorScript.create(name, content);
-    GameUI.notify.automator(`Imported Script "${name}"`);
+    GameUI.notify.automator(`Импортирована программа "${name}"`);
     player.reality.automator.state.editorScript = newScript.id;
     AutomatorData.clearUndoData();
     EventHub.dispatch(GAME_EVENT.AUTOMATOR_SAVE_CHANGED);
@@ -274,7 +274,7 @@ export const AutomatorData = {
   // could in principle be combined into one function to reduce boilerplace, but keeping them
   // separate is probably more readable externally
   undoScriptEdit() {
-    if (this.undoBuffer.length === 0 || Tabs.current._currentSubtab.name !== "Automator") return;
+    if (this.undoBuffer.length === 0 || Tabs.current._currentSubtab.name !== "Автоматизатор") return;
 
     const undoContent = this.undoBuffer.pop();
     this.pushRedoData(this.currentScriptText());
@@ -285,7 +285,7 @@ export const AutomatorData = {
     else BlockAutomator.updateEditor(undoContent);
   },
   redoScriptEdit() {
-    if (this.redoBuffer.length === 0 || Tabs.current._currentSubtab.name !== "Automator") return;
+    if (this.redoBuffer.length === 0 || Tabs.current._currentSubtab.name !== "Автоматизатор") return;
 
     const redoContent = this.redoBuffer.pop();
     // We call this with a value which is always higher than said threshold, forcing the current text to be pushed
@@ -782,8 +782,8 @@ export const AutomatorBackend = {
     // and input 3000 comments in a row. If hasJustCompleted is true, then we actually broke out because the end of
     // the script has no-ops and we just looped through them, and therefore shouldn't show these messages
     if (!this.hasJustCompleted) {
-      GameUI.notify.error("Automator halted - too many consecutive no-ops detected");
-      AutomatorData.logCommandEvent("Automator halted due to excessive no-op commands", this.currentLineNumber);
+      GameUI.notify.error("Автоматизатор принудительно остановлен - слишком много выжидательных команд подряд");
+      AutomatorData.logCommandEvent("Автоматизатор принудительно остановлен - слишком много выжидательных команд подряд", this.currentLineNumber);
     }
 
     this.stop();
@@ -831,7 +831,7 @@ export const AutomatorBackend = {
         }
         this.stop();
       } else if (this.stack.top.commandState && this.stack.top.commandState.advanceOnPop) {
-        AutomatorData.logCommandEvent(`Exiting IF block`, this.stack.top.commandState.ifEndLine);
+        AutomatorData.logCommandEvent(`Выход из условного оператора IF`, this.stack.top.commandState.ifEndLine);
         return this.nextCommand();
       }
     } else {
@@ -852,7 +852,7 @@ export const AutomatorBackend = {
   },
 
   _createDefaultScript() {
-    const defaultScript = AutomatorScript.create("New Script");
+    const defaultScript = AutomatorScript.create("Новая программа");
     this._scripts = [defaultScript];
     this.state.topLevelScript = defaultScript.id;
     return defaultScript.id;
@@ -896,12 +896,12 @@ export const AutomatorBackend = {
     // Make sure the new script has a unique name
     const scriptNames = AutomatorBackend._scripts.map(s => s.name);
     let newScript;
-    if (scriptNames.includes("New Script")) {
+    if (scriptNames.includes("Новая программа")) {
       let newIndex = 2;
-      while (scriptNames.includes(`New Script (${newIndex})`)) newIndex++;
-      newScript = AutomatorScript.create(`New Script (${newIndex})`);
+      while (scriptNames.includes(`Новая программа (${newIndex})`)) newIndex++;
+      newScript = AutomatorScript.create(`Новая программа (${newIndex})`);
     } else {
-      newScript = AutomatorScript.create("New Script");
+      newScript = AutomatorScript.create("Новая программа");
     }
 
     this._scripts.push(newScript);

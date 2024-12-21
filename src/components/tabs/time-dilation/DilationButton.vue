@@ -18,7 +18,7 @@ export default {
   computed: {
     disableText() {
       // Doesn't need to be reactive or check strike status; it's always permanent once entered in Doomed
-      return Pelle.isDoomed ? "Dilation is permanent." : "Disable Dilation.";
+      return Pelle.isDoomed ? "Замедление необратимо." : "Выйти из Замедления.";
     }
   },
   methods: {
@@ -54,27 +54,27 @@ export default {
     :class="isUnlocked ? 'o-dilation-btn--unlocked' : 'o-dilation-btn--locked'"
     @click="dilate()"
   >
-    <span v-if="!isUnlocked">Purchase the Dilation Study to unlock.</span>
+    <span v-if="!isUnlocked">Разблокируйте Замедление в Древе Исследований.</span>
     <span v-else-if="!isRunning">
-      Dilate time.
+      Замедлить Время.
       <div v-if="showRequirement">
-        Requires {{ format(remnantRequirement, 2) }} Remnants
+        Требуется {{ format(remnantRequirement, 2) }} Останков.
       </div>
     </span>
     <span v-else-if="canEternity && hasGain">
       {{ disableText }}
       <br>
-      Gain {{ quantify("Tachyon Particle", tachyonGain, 2, 1) }}.
+      Получить {{ quantify("Тахион", tachyonGain, 2) }}.
     </span>
     <span v-else-if="hasGain">
       {{ disableText }}
       <br>
-      Reach {{ quantify("Infinity Point", eternityGoal, 1, 0) }} to Eternity and gain Tachyon Particles.
+      Достигните {{ format(eternityGoal, 1, 1) }} Очков Бесконечности, чтобы совершить вечность и получить Тахионы.
     </span>
     <span v-else>
       {{ disableText }}
       <br>
-      Reach {{ format(requiredForGain, 2, 1) }} antimatter to gain more Tachyon Particles.
+      Достигните {{ format(requiredForGain, 2, 1) }} антиматерии, чтобы получить больше Тахионов.
     </span>
   </button>
 </template>

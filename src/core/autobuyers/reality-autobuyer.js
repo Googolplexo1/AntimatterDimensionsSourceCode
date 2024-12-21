@@ -6,7 +6,7 @@ export class RealityAutobuyerState extends AutobuyerState {
   }
 
   get name() {
-    return `Reality`;
+    return `реальности`;
   }
 
   get isUnlocked() {

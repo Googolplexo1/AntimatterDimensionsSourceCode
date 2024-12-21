@@ -36,10 +36,10 @@ export default {
         const timeToThousand = coeff.times(nextMilestone.divide(replicantiAmount).pow(postScale).minus(1));
         // The calculation seems to choke and return zero if the time is too large, probably because of rounding issues
         const timeEstimateText = timeToThousand.eq(0)
-          ? "an extremely long time"
-          : `${TimeSpan.fromSeconds(timeToThousand.toNumber())}`;
-        this.remainingTimeText = `You are gaining ${formatX(gainFactorPerSecond, 2, 1)} Replicanti per second` +
-          ` (${timeEstimateText} until ${format(nextMilestone)})`;
+          ? " слишком большое, чтобы его можно было вычислить"
+          : `: ${TimeSpan.fromSeconds(timeToThousand.toNumber())}`;
+        this.remainingTimeText = `Количество ваших Репликанти растёт в ${format(gainFactorPerSecond, 2, 1)} раза в секунду` +
+          ` (время, оставшееся до ${format(nextMilestone)}${timeEstimateText})`;
       } else {
         this.remainingTimeText = "";
       }
@@ -70,32 +70,31 @@ export default {
 
       if (this.remainingTimeText === "") {
         if (remainingTime === 0) {
-          this.remainingTimeText = `At Infinite Replicanti (normally takes
-            ${TimeSpan.fromSeconds(secondsPerGalaxy.toNumber())})`;
+          this.remainingTimeText = `Вы достигли ${format(Number.MAX_VALUE, 2, 2)} Репликанти (что в среднем занимает
+            ${TimeSpan.fromSeconds(secondsPerGalaxy.toNumber(), "accusative")})`;
         } else if (replicantiAmount.lt(100)) {
           // Because of discrete replication, we add "Approximately" at very low amounts
-          this.remainingTimeText = `Approximately ${TimeSpan.fromSeconds(remainingTime)} remaining
-            until Infinite Replicanti`;
+          this.remainingTimeText = `Время до ${format(Number.MAX_VALUE, 2, 2)} Репликанти: около ${TimeSpan.fromSeconds(remainingTime, "genitive")}`;
         } else {
-          this.remainingTimeText = `${TimeSpan.fromSeconds(remainingTime)} remaining until Infinite Replicanti`;
+          this.remainingTimeText = `Время до ${format(Number.MAX_VALUE, 2, 2)} Репликанти: ${TimeSpan.fromSeconds(remainingTime)}`;
         }
       }
 
       // If the player can get RG, this text is redundant with text below. It denotes total time from 1 to e308
       if (Replicanti.galaxies.max === 0 && !isAbove308) {
-        this.remainingTimeText += ` (${TimeSpan.fromSeconds(totalTime)} total)`;
+        this.remainingTimeText += ` (всего ${TimeSpan.fromSeconds(totalTime)})`;
       }
 
 
       if (Replicanti.galaxies.max > 0) {
         // If the player has max RGs, don't display the "You are gaining blah" text
         if (player.replicanti.galaxies === Replicanti.galaxies.max) {
-          this.galaxyText = "You have reached the maximum amount of Replicanti Galaxies";
+          this.galaxyText = "Вы достигли максимального количества Галактик Репликанти";
         } else {
-          this.galaxyText = `You are gaining a Replicanti Galaxy every
-            ${TimeSpan.fromSeconds(secondsPerGalaxy.toNumber())}`;
+          this.galaxyText = `Вы получаете Галактику Репликанти примерно раз в
+            ${TimeSpan.fromSeconds(secondsPerGalaxy.toNumber(), "accusative")}`;
           if (galaxiesPerSecond.gte(1)) {
-            this.galaxyText = `You are gaining ${quantify("Replicanti Galaxy", galaxiesPerSecond, 2, 1)} per second`;
+            this.galaxyText = `Вы получаете около ${format(galaxiesPerSecond, 2, 1)} Галактики Репликанти в секунду`;
           }
           // Take the total time from zero replicanti to max RG + e308 replicanti and then subtract away the time which
           // has already elapsed. The time elapsed is calculated from your current RG total (including the current one)
@@ -118,7 +117,7 @@ export default {
             pendingTime += leftPercentAfterGalaxy * secondsPerGalaxy.toNumber();
           }
           const thisGalaxyTime = pending > 0 ? pendingTime : secondsPerGalaxy.toNumber() - remainingTime;
-          this.galaxyText += ` (all Replicanti Galaxies within
+          this.galaxyText += ` (время до максимального количества Галактик Репликанти:
             ${TimeSpan.fromSeconds(Math.clampMin(allGalaxyTime - thisGalaxyTime, 0))})`;
         }
       } else {

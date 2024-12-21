@@ -51,29 +51,29 @@ export default {
       v-if="darkMatter.lt(matterRequirement)"
       class="l-laitela-annihilation-button"
     >
-      Annihilation requires {{ format(matterRequirement, 2) }} Dark Matter
+      Для аннигиляции требуется {{ format(matterRequirement, 2) }} Тёмной Материи
     </button>
     <button
       v-else
       class="l-laitela-annihilation-button c-laitela-annihilation-button"
       @click="annihilate"
     >
-      <b>Annihilate your Dark Matter Dimensions</b>
+      <b>Аннигилировать ваши Измерения Тёмной Материи</b>
     </button>
     <br>
     <br>
     <span v-if="darkMatterMult > 1">
-      Current multiplier to all Dark Matter Dimensions: <b>{{ formatX(darkMatterMult, 2, 2) }}</b>
+      Множитель ко всем Измерениям Тёмной Материи: <b>{{ formatX(darkMatterMult, 2, 2) }}</b>
       <br>
       <br>
-      Annihilation will reset your Dark Matter and Dark Matter Dimension amounts, but also add
-      <b>+{{ format(darkMatterMultGain, 2, 2) }}</b> to your Annihilation multiplier.
+      Аннигиляция сбросит количество ваших Тёмной Материи и Измерений Тёмной Материи, но увеличит
+      ваш множитель аннигиляции на <b>{{ format(darkMatterMultGain, 2, 2) }}</b>.
       <br>
-      (<b>{{ formatX(darkMatterMultRatio, 2, 2) }}</b> from previous multiplier)
+      (умножит на <b>{{ format(darkMatterMultRatio, 2, 2) }}</b>)
       <span v-if="autobuyerUnlocked">
         <br>
         <br>
-        Auto-Annihilate when adding
+        Автоматическая аннигиляция: при увеличении множителя на 
         <input
           v-model="autoAnnihilationInput"
           type="text"
@@ -81,12 +81,12 @@ export default {
           class="c-small-autobuyer-input c-laitela-annihilation-input"
           @change="handleAutoAnnihilationInputChange()"
         >
-        to the multiplier.
+        .
       </span>
     </span>
     <span v-else>
-      Annihilation will reset your Dark Matter and Dark Matter Dimension amounts, but will give a permanent
-      multiplier of <b>{{ formatX(1 + darkMatterMultGain, 2, 2) }}</b> to all Dark Matter Dimensions.
+      Аннигиляция сбросит количество ваших Тёмной Материи и Измерений Тёмной Материи, но даст вам
+      множитель <b>{{ formatX(1 + darkMatterMultGain, 2, 2) }}</b> ко всем ко всем Измерениям Тёмной Материи.
     </span>
   </div>
 </template>

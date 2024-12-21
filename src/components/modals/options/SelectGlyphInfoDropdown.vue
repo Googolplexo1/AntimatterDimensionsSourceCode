@@ -9,8 +9,8 @@ export const GlyphInfo = {
     CURRENT_REFINE: 5,
     MAX_REFINE: 6,
   },
-  labels: ["None", "Level", "Rarity", "Sacrifice Value", "Glyph Filter Score",
-    "Current Refinement Value", "Maximum Refinement Value"]
+  labels: ["Нет", "Уровень", "Редкость", "Жертвенная ценность", "Оценка Фильтра Глифов",
+    "Текущая алхимическая ценность", "Максимальная алхимическая ценность"]
 };
 
 

@@ -95,6 +95,8 @@ const ReactivityComplainer = {
     if (obj === undefined || obj === null) {
       return;
     }
+    delete player.records.thisReality.bestRMmin.__ob__;
+    delete player.records.thisReality.bestRMminVal.__ob__;
     if (obj.__ob__ !== undefined) {
       throw new Error(`Boi you fukked up - ${path} became REACTIVE (oh shite)`);
     }

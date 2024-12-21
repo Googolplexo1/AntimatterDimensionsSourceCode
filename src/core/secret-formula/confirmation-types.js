@@ -1,82 +1,82 @@
 export const confirmationTypes = [
   {
-    name: "Dimension Boost",
+    name: "Расширение Измерений",
     option: "dimensionBoost",
-    isUnlocked: () => PlayerProgress.infinityUnlocked() || player.galaxies > 0 || player.dimensionBoosts > 0,
+    isUnlocked: () => true,
   }, {
-    name: "Antimatter Galaxy",
+    name: "Галактика Антиматерии",
     option: "antimatterGalaxy",
-    isUnlocked: () => PlayerProgress.infinityUnlocked() || player.galaxies > 0,
+    isUnlocked: () => true,
   }, {
-    name: "Sacrifice",
+    name: "Пожертвование Измерений",
     option: "sacrifice",
     isUnlocked: () => Sacrifice.isVisible,
   }, {
-    name: "Big Crunch",
+    name: "Большое Сжатие",
     option: "bigCrunch",
     isUnlocked: () => player.break || PlayerProgress.eternityUnlocked(),
   }, {
-    name: "Challenges",
+    name: "Вход в испытание",
     option: "challenges",
     isUnlocked: () => PlayerProgress.infinityUnlocked(),
   }, {
-    name: "Exit Challenges",
+    name: "Выход из испытания",
     option: "exitChallenge",
     isUnlocked: () => PlayerProgress.infinityUnlocked(),
   }, {
-    name: "Replicanti Galaxy",
+    name: "Галактика Репликанти",
     option: "replicantiGalaxy",
     isUnlocked: () => PlayerProgress.eternityUnlocked() || player.replicanti.unl,
   }, {
-    name: "Eternity",
+    name: "Вечность",
     option: "eternity",
     isUnlocked: () => PlayerProgress.eternityUnlocked(),
   }, {
-    name: "Dilation",
+    name: "Вход в Замедление",
     option: "dilation",
-    isUnlocked: () => PlayerProgress.realityUnlocked() || !Currency.tachyonParticles.eq(0),
+    isUnlocked: () => PlayerProgress.realityUnlocked() || PlayerProgress.dilationUnlocked(),
   }, {
-    name: "Reset Reality",
+    name: "Сброс реальности",
     option: "resetReality",
     isUnlocked: () => PlayerProgress.realityUnlocked(),
   }, {
-    name: "Glyph Replace",
+    name: "Замещение глифа",
     option: "glyphReplace",
     isUnlocked: () => PlayerProgress.realityUnlocked(),
   }, {
-    name: "Glyph Sacrifice",
+    name: "Пожертвование глифа",
     option: "glyphSacrifice",
     isUnlocked: () => GlyphSacrificeHandler.canSacrifice,
   }, {
-    name: "Glyph Purge",
+    name: "Прочистка инвентаря",
     option: "autoClean",
     isUnlocked: () => GlyphSacrificeHandler.canSacrifice,
   }, {
-    name: "Sacrifice All Glyphs",
+    name: "Пожертвование всех глифов",
     option: "sacrificeAll",
     isUnlocked: () => GlyphSacrificeHandler.canSacrifice,
   }, {
-    name: "Glyph Selection",
+    name: "Выбор глифа",
     option: "glyphSelection",
     isUnlocked: () => Autobuyer.reality.isUnlocked,
   }, {
-    name: "Glyph Undo",
+    name: "Деактивация глифа",
     option: "glyphUndo",
     isUnlocked: () => TeresaUnlocks.undo.canBeApplied,
   }, {
-    name: "Switch Automator Editor",
+    name: "Переключение на другой режим редактирования",
     option: "switchAutomatorMode",
     isUnlocked: () => Player.automatorUnlocked,
   }, {
-    name: "Delete Glyph Preset",
+    name: "Удаление сохранённого набора глифов",
     option: "deleteGlyphSetSave",
     isUnlocked: () => EffarigUnlock.setSaves.isUnlocked,
   }, {
-    name: "Glyph Refine",
+    name: "Облагораживание глифов",
     option: "glyphRefine",
     isUnlocked: () => Ra.unlocks.unlockGlyphAlchemy.canBeApplied,
   }, {
-    name: "Armageddon",
+    name: "Армагеддон",
     option: "armageddon",
     isUnlocked: () => Pelle.isDoomed,
   }, {

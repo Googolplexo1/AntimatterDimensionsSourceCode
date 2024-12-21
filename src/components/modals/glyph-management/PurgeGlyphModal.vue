@@ -17,27 +17,25 @@ export default {
       return this.harsh ? 1 : 5;
     },
     extraMessage() {
-      if (this.glyphsDeleted === 0) return `This will Purge no Glyphs.`;
-      if (this.glyphsDeleted === this.glyphsTotal) return `This will Purge all your Glyphs.`;
-      return `${this.harsh ? `Harsh Purging` : `Purging`} will delete
-        ${formatInt(this.glyphsDeleted)}/${formatInt(this.glyphsTotal)}
-      of your Glyphs.`;
+      if (this.glyphsDeleted === 0) return `Ни один глиф не будет удалён.`;
+      if (this.glyphsDeleted === this.glyphsTotal) return `Все глифы будут удалены.`;
+      return `${this.glyphsDeleted} из ${this.glyphsTotal} будет ${pluralize("удалён", this.glyphsDeleted)}.`;
     },
     explanation() {
-      if (this.harsh) return `Harsh Purging deletes Glyphs that are strictly worse than any other Glyph in your
-        inventory. For example, if a Glyph has all the same effects as another Glyph, but the values
-        of ALL of the effects are worse, then it will be deleted.`;
-      return `Purging deletes Glyphs that are strictly worse than other Glyphs, while keeping enough to equip a full
-        set with those effects. This behaves like Harsh Purge, except that regular Purge will not delete any given
-        Glyph unless it finds five Glyphs which are better (instead of only one).`;
+      if (this.harsh) return `Строгая прочистка удаляет все глифы, которые строго хуже любого другого глифа в вашем
+        инвентаре. Например, если глиф имеет те же самые эффекты, что и некоторый другой глиф, но значения
+        ВСЕХ эффектов хуже, то он будет удалён.`;
+      return `Прочистка удаляет все глифы, которые строго хуже других глифов, сохраняя достаточное количество, чтобы занять все слоты
+        глифами с одним и тем же эффектом. Это похоже на строгую прочистку, но обычная прочистка удаляет
+        глиф, лишь если найдётся пять строго лучших глифов (вместо одного).`;
     },
     topLabel() {
-      return `You are about to ${this.harsh ? `Harsh Purge` : `Purge`} your Glyphs`;
+      return `Вы осуществляете ${this.harsh ? `строгую` : ``} прочистку вашего инвентаря`;
     },
 
     // These two don't need to be reactive since the modal force-closes itself whenever glyphs change
     glyphsTotal() {
-      return Glyphs.inventory.filter(slot => slot !== null).length;
+      return quantifyInt("глифа", Glyphs.inventory.filter(slot => slot !== null).length);
     },
     glyphsDeleted() {
       return Glyphs.autoClean(this.threshold, false);
@@ -60,8 +58,8 @@ export default {
       {{ topLabel }}
     </template>
     <div class="c-modal-message__text">
-      This could delete Glyphs in your inventory that are good enough that you might want to use them
-      later. Purging will Purge Glyphs based on your Purge mode. Are you sure you want to do this?
+      Из вашего инвентаря могут быть удалены глифы, достаточно сильные, чтобы вы захотели их использовать
+      впоследствии. Прочистка удалит глифы в зависимости от режима. Вы уверены, что хотите её осуществить?
       <br>
       <br>
       {{ explanation }}

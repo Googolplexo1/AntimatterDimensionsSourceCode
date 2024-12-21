@@ -15,7 +15,7 @@ export const v = {
   mainUnlock: {
     realities: {
       id: 1,
-      name: "Realities",
+      name: "реальностей",
       resource: () => Currency.realities.value,
       requirement: 10000,
       format: x => formatInt(x),
@@ -23,7 +23,7 @@ export const v = {
     },
     eternities: {
       id: 2,
-      name: "Eternities",
+      name: "вечностей",
       resource: () => Currency.eternities.value,
       requirement: 1e70,
       format: x => format(x, 2),
@@ -31,7 +31,7 @@ export const v = {
     },
     infinities: {
       id: 3,
-      name: "Infinities",
+      name: "бесконечностей",
       resource: () => Currency.infinitiesTotal.value,
       requirement: 1e160,
       format: x => format(x, 2),
@@ -39,7 +39,7 @@ export const v = {
     },
     dilatedTime: {
       id: 4,
-      name: "Dilated Time",
+      name: "Замедленного Времени",
       resource: () => player.records.thisReality.maxDT,
       requirement: DC.E320,
       format: x => format(x, 2),
@@ -47,7 +47,7 @@ export const v = {
     },
     replicanti: {
       id: 5,
-      name: "Replicanti",
+      name: "Репликанти",
       resource: () => player.records.thisReality.maxReplicanti,
       requirement: DC.E320000,
       format: x => format(x, 2),
@@ -55,7 +55,7 @@ export const v = {
     },
     realityMachines: {
       id: 6,
-      name: "Reality Machines",
+      name: "Машин Реальности",
       resource: () => Currency.realityMachines.value,
       requirement: 1e60,
       format: x => format(x, 2),
@@ -65,21 +65,21 @@ export const v = {
   runUnlocks: [
     {
       id: 0,
-      name: "Glyph Knight",
-      description: value => `Unlock Reality with at most ${quantifyInt("Glyph", -value)} equipped.`,
+      name: "Рыцарь глифов",
+      description: value => `Разблокируйте Реальность не более чем с ${quantifyInt("действующим глифом", -value)}.`,
       // This achievement has internally negated values since the check is always greater than
       values: [-5, -4, -3, -2, -1, 0],
       condition: () => V.isRunning && TimeStudy.reality.isBought,
       currentValue: () => -Glyphs.activeWithoutCompanion.length,
-      formatRecord: x => (x >= -5 ? formatInt(-x) : "Not reached"),
+      formatRecord: x => (x >= -5 ? formatInt(-x) : "Не выполнено"),
       shardReduction: () => 0,
       maxShardReduction: () => 0,
       mode: V_REDUCTION_MODE.SUBTRACTION
     },
     {
       id: 1,
-      name: "AntiStellar",
-      description: value => `Have ${formatInt(value)} total Galaxies from all types.`,
+      name: "Антистеллар",
+      description: value => `Достигните ${quantifyInt("галактики", value)}.`,
       values: [4000, 4300, 4600, 4900, 5200, 5500],
       condition: () => V.isRunning,
       currentValue: () => Replicanti.galaxies.total + player.galaxies + player.dilation.totalTachyonGalaxies,
@@ -91,8 +91,8 @@ export const v = {
     },
     {
       id: 2,
-      name: "Se7en deadly matters",
-      description: value => `Get ${format(Decimal.pow10(value))} Infinity Points in Eternity Challenge 7.`,
+      name: "Семь смертных материй",
+      description: value => `Достигните ${format(Decimal.pow10(value))} Очков Бесконечности в 7-м Испытании Вечности.`,
       values: [6e5, 7.2e5, 8.4e5, 9.6e5, 1.08e6, 1.2e6],
       condition: () => V.isRunning && EternityChallenge(7).isRunning,
       currentValue: () => Currency.infinityPoints.value.log10(),
@@ -104,9 +104,9 @@ export const v = {
     },
     {
       id: 3,
-      name: "Young Boy",
-      description: value => `Get ${format(Decimal.pow10(value))} Antimatter in Eternity Challenge 12 without
-        unlocking Time Dilation.`,
+      name: "Юный мальчик",
+      description: value => `Достигните ${format(Decimal.pow10(value))} антиматерии в 12-м Испытании Вечности,
+        не разблокировав Замедление Времени.`,
       values: [400e6, 450e6, 500e6, 600e6, 700e6, 800e6],
       condition: () => V.isRunning && EternityChallenge(12).isRunning && !PlayerProgress.dilationUnlocked(),
       currentValue: () => Currency.antimatter.value.log10(),
@@ -118,8 +118,8 @@ export const v = {
     },
     {
       id: 4,
-      name: "Eternal Sunshine",
-      description: value => `Get ${format(Decimal.pow10(value))} Eternity Points.`,
+      name: "Вечное сияние",
+      description: value => `Достигните ${format(Decimal.pow10(value))} Очков Вечности.`,
       values: [7000, 7600, 8200, 8800, 9400, 10000],
       condition: () => V.isRunning,
       currentValue: () => Currency.eternityPoints.value.log10(),
@@ -131,8 +131,8 @@ export const v = {
     },
     {
       id: 5,
-      name: "Matterception",
-      description: value => `Get ${formatInt(value)} Dimension Boosts while Dilated and inside Eternity Challenge 5.`,
+      name: "Материальное начало",
+      description: value => `Достигните ${quantifyInt("Расширения", value)} Измерений в 5-м Испытании Вечности в Замедлении.`,
       values: [51, 52, 53, 54, 55, 56],
       condition: () => V.isRunning && player.dilation.active && EternityChallenge(5).isRunning,
       currentValue: () => DimBoost.purchasedBoosts,
@@ -145,8 +145,8 @@ export const v = {
     },
     {
       id: 6,
-      name: "Requiem for a Glyph",
-      description: value => `Unlock Reality with at most ${formatInt(-value)} Glyphs equipped for the entire Reality.`,
+      name: "Реквием по глифу",
+      description: value => `Разблокируйте Реальность не более чем с ${quantifyInt("действующим глифом", -value)}.`,
       // This achievement has internally negated values since the check is always greater than
       values: [1, 4, 7, 10, 13],
       condition: () => V.isRunning && TimeStudy.reality.isBought,
@@ -159,9 +159,10 @@ export const v = {
     },
     {
       id: 7,
-      name: "Post-destination",
-      description: value => `Get ${formatInt(400000)} Time Theorems with a /${format(Decimal.pow10(value), 2, 2)}
-        Black Hole or slower, without discharging or entering EC12.`,
+      name: "Пункт назначения",
+      description: value => `Достигните ${formatInt(400000)} Теорем Времени в Реальности, на всём протяжении которой
+        инвертированная Чёрная Дыра имела эффект не менее ${format(Decimal.pow10(value), 2, 2)},
+        а вы не разряжали Чёрную Дыру и не начинали ИспВ12.`,
       values: [100, 150, 200, 250, 300],
       condition: () => V.isRunning,
       currentValue: () => (
@@ -169,7 +170,7 @@ export const v = {
         Currency.timeTheorems.gte(400000)
           ? -Math.log10(player.requirementChecks.reality.slowestBH)
           : 0),
-      formatRecord: x => `${formatInt(1)} / ${format(Math.pow(10, x))}`,
+      formatRecord: x => `${format(Math.pow(10, x))}`,
       shardReduction: tiers => 50 * tiers,
       maxShardReduction: goal => goal - 50,
       reductionStepSize: 2,
@@ -179,8 +180,8 @@ export const v = {
     },
     {
       id: 8,
-      name: "Shutter Glyph",
-      description: value => `Reach a Glyph of level ${formatInt(value)}.`,
+      name: "Глиф-затвор",
+      description: value => `Сделайте уровень получаемого глифа не менее ${formatInt(value)}.`,
       values: [6500, 7000, 8000, 9000, 10000],
       condition: () => V.isRunning,
       currentValue: () => gainedGlyphLevel().actualLevel,
@@ -195,45 +196,45 @@ export const v = {
   unlocks: {
     vAchievementUnlock: {
       id: 0,
-      reward: "Unlock V, The Celestial Of Achievements",
-      description: "Meet all the above requirements simultaneously",
+      reward: "Разблокировать Реальность Ви",
+      description: "",
       requirement: () => Object.values(GameDatabase.celestials.v.mainUnlock).every(e => e.progress() >= 1)
     },
     shardReduction: {
       id: 1,
-      reward: `You can spend Perk Points to reduce the goal requirement of all tiers of each V-Achievement.`,
-      description: () => `Have ${formatInt(2)} V-Achievements`,
+      reward: `Разблокировать возможность тратить Очки Умения на понижение целей достижений Ви.`,
+      description: () => `${formatInt(2)} достижения Ви`,
       requirement: () => V.spaceTheorems >= 2
     },
     adPow: {
       id: 2,
-      reward: "Antimatter Dimension power based on total Space Theorems.",
-      description: () => `Have ${formatInt(5)} V-Achievements`,
+      reward: "Множители Измерений Антиматерии возведены в степень в зависимости от общего количества выполненных уровней достижений Ви.",
+      description: () => `${formatInt(5)} достижений Ви`,
       effect: () => 1 + Math.sqrt(V.spaceTheorems) / 100,
       format: x => formatPow(x, 3, 3),
       requirement: () => V.spaceTheorems >= 5
     },
     fastAutoEC: {
       id: 3,
-      reward: "Achievement multiplier reduces Auto-EC completion time.",
-      description: () => `Have ${formatInt(10)} V-Achievements`,
+      reward: "Интервал автоматического выполнения ИспВ разделён на множитель достижений.",
+      description: () => `${formatInt(10)} достижений Ви`,
       effect: () => Achievements.power,
       // Base rate is 60 ECs at 20 minutes each
       format: x => (Ra.unlocks.instantECAndRealityUpgradeAutobuyers.canBeApplied
-        ? "Instant (Ra upgrade)"
-        : `${TimeSpan.fromMinutes(60 * 20 / x).toStringShort()} for full completion`),
+        ? "Мгновенно"
+        : `${TimeSpan.fromMilliseconds(60 * EternityChallenges.autoComplete.interval).toStringShort()} в сумме для выполнения всех`),
       requirement: () => V.spaceTheorems >= 10
     },
     autoAutoClean: {
       id: 4,
-      reward: "Unlock the ability to Automatically Purge Glyphs on Reality.",
-      description: () => `Have ${formatInt(16)} V-Achievements`,
+      reward: "Разблокировать опцию автоматической прочистки инвентаря на реальности.",
+      description: () => `${formatInt(16)} достижений Ви`,
       requirement: () => V.spaceTheorems >= 16
     },
     achievementBH: {
       id: 5,
-      reward: "Achievement multiplier affects Black Hole power.",
-      description: () => `Have ${formatInt(30)} V-Achievements`,
+      reward: "Множитель достижений влияет на силу обеих Чёрных Дыр.",
+      description: () => `${formatInt(30)} достижений Ви`,
       effect: () => Achievements.power,
       format: x => formatX(x, 2, 0),
       requirement: () => V.spaceTheorems >= 30
@@ -241,10 +242,10 @@ export const v = {
     raUnlock: {
       id: 6,
       reward() {
-        return `Reduce the Space Theorem cost of Time Studies by ${formatInt(2)}.
-                Unlock Ra, Celestial of the Forgotten.`;
+        return `Все Исследования Времени стоят на ${formatInt(2)} Теоремы Пространства дешевле.
+                Разблокировать Ра, Небожителя Забвения.`;
       },
-      description: () => `Have ${formatInt(36)} V-Achievements`,
+      description: () => `${formatInt(36)} достижений Ви`,
       effect: 2,
       requirement: () => V.spaceTheorems >= 36
     }

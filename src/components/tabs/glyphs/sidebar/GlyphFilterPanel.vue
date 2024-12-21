@@ -57,13 +57,13 @@ export default {
       };
     },
     questionmarkTooltip() {
-      return `All Glyph choices are given a score and compared to a threshold based on the chosen mode. 
-        The Glyph with the highest score is picked, but will still be Sacrificed if below the threshold.
-        (click for more detail)`;
+      return `Всем генерируемым глифам ставится оценка в зависимости от режима Фильтра, которая сравнивается с определённым порогом принятия глифов. 
+        Фильтр выбирает тот глиф, который получил наивысшую оценку, но если она ниже порога принятия, глиф жертвуется.
+        (нажмите для просмотра более подробной информации)`;
     },
     autoRealityTooltip() {
-      return `If Auto-Reality is on, ignore all other settings and immediately Reality if no upcoming
-        Glyphs would be kept`;
+      return `Совершать реальность немедленно, если автоматика включена и Фильтр
+        отвергает все глифы`;
     },
     unlockedModes() {
       return Object.values(this.modes).filter(idx => this.isUnlocked(idx));
@@ -122,15 +122,18 @@ export default {
     setMode(m) {
       AutoGlyphProcessor.scoreMode = m;
       player.reality.hasCheckedFilter = false;
+      EventHub.dispatch(GAME_EVENT.GLYPH_VISUAL_CHANGE);
     },
     setRarityThreshold(id, value) {
       AutoGlyphProcessor.types[id].rarity = value;
+      EventHub.dispatch(GAME_EVENT.GLYPH_VISUAL_CHANGE);
     },
     setEffectCount(event) {
       const inputValue = event.target.value;
       if (!isNaN(inputValue)) {
         this.effectCount = Math.clamp(inputValue, 0, 8);
         player.reality.glyphs.filter.simple = this.effectCount;
+        EventHub.dispatch(GAME_EVENT.GLYPH_VISUAL_CHANGE);
       }
     },
     filterMode(index) {
@@ -166,7 +169,7 @@ export default {
       this.setRarityThreshold(type, newRarity);
     },
     showFilterHowTo() {
-      ui.view.h2pForcedTab = GameDatabase.h2p.tabs.filter(tab => tab.name === "Advanced Glyph Mechanics")[0];
+      ui.view.h2pForcedTab = GameDatabase.h2p.tabs.filter(tab => tab.name === "Продвинутое управление глифами")[0];
       Modal.h2p.show();
     },
     getSymbol(type) {
@@ -198,12 +201,12 @@ export default {
     <div class="c-glyph-sacrifice-options c-glyph-sacrifice-options-container">
       <div class="c-filter-extra-btns c-top-left">
         <i
-          v-tooltip="'Export filter settings'"
+          v-tooltip="'Экспортировать настройки Фильтра'"
           class="fas fa-file-export l-top-left-btn"
           @click="exportFilterSettings"
         />
         <i
-          v-tooltip="'Import filter settings'"
+          v-tooltip="'Импортировать настройки Фильтра'"
           class="fas fa-file-import l-top-left-btn"
           @click="importFilterSettings"
         />
@@ -221,7 +224,7 @@ export default {
           @click="showFilterHowTo"
         />
       </div>
-      Current Filter Mode:
+      Текущий режим Фильтра:
       <br>
       {{ filterMode(mode) }}
       <br>
@@ -243,18 +246,15 @@ export default {
       class="c-glyph-sacrifice-options__advanced"
     >
       <br>
-      Glyph score is assigned based on type. Priority is given to Glyphs belonging to the type of which you have
-      the least total Glyph Sacrifice value.
+      Выбирает глиф того типа, суммарная ценность пожертвованных глифов которого наименьшая, при этом выбранный глиф всегда жертвуется.
       <br>
-      <br>
-      This mode never keeps Glyphs, but will instead always sacrifice the Glyph it chooses.
     </div>
     <div
       v-if="mode === modes.EFFECT_COUNT"
       class=" c-glyph-sacrifice-options__advanced"
     >
       <br>
-      Glyphs must have at least
+      Глифы принимаются при наличии не менее
       <input
         ref="effectCount"
         type="number"
@@ -264,14 +264,14 @@ export default {
         :value="effectCount"
         @blur="setEffectCount"
       >
-      effects to be chosen. Rarer Glyphs are preferred in ties.
+      эффектов. При количественном равенстве эффектов предпочтение отдаётся глифам более высокой редкости.
     </div>
     <div
       v-if="mode === modes.RARITY_THRESHOLD"
       class="l-glyph-sacrifice-options__rarity-sliders"
     >
       <span class="c-glyph-sacrifice-options__advanced">
-        Any Glyphs with rarity below these thresholds will be sacrificed.
+        Глифы с редкостью ниже выставленного порога для соответствующего типа жертвуются.
       </span>
       <div
         v-for="type in glyphTypes"
@@ -298,7 +298,7 @@ export default {
       class="c-glyph-sacrifice-options__advanced"
     >
       <div>
-        Glyph Type:
+        Типы глифов:
         <span
           v-for="type in glyphTypes"
           :key="type.id"
@@ -339,7 +339,7 @@ export default {
       class="c-glyph-sacrifice-options__advanced"
     >
       <div>
-        Glyph Type:
+        Типы глифов:
         <span
           v-for="type in glyphTypes"
           :key="type.id"
@@ -365,23 +365,16 @@ export default {
       class="c-glyph-sacrifice-options__advanced"
     >
       <br>
-      Glyph score is assigned based on current Alchemy Resource totals. Priority is given to the Glyph type with
-      the lowest associated alchemy resource total.
+      Выбирает глиф, соответствующий тому основному алхимическому ресурсу, которого у вас меньше всего, при этом выбранный глиф всегда облагораживается.
       <br>
-      <br>
-      This mode never keeps Glyphs.
     </div>
     <div
       v-if="mode === modes.ALCHEMY_VALUE"
       class="c-glyph-sacrifice-options__advanced"
     >
       <br>
-      Glyphs will be assigned values based on <i>current</i> refinement value, accounting for the type-specific
-      resource caps. Priority is given to Glyphs which are worth the most alchemy resources; Glyphs which would
-      cause you to hit a cap are effectively worth less.
+      Выбирает глиф наибольшей фактической алхимической ценности <i>с учётом ограничений на количества ресурсов</i>, при этом выбранный глиф всегда облагораживается.
       <br>
-      <br>
-      This mode never keeps Glyphs.
     </div>
   </div>
 </template>
@@ -412,7 +405,6 @@ export default {
 .l-top-left-btn {
   cursor: pointer;
   border: var(--var-border-width, 0.2rem) solid;
-  border-radius: var(--var-border-radius, 0.2rem);
   width: 2.5rem;
   margin: 0.5rem 0 0 0.5rem;
   padding: 0.5rem;
@@ -424,7 +416,6 @@ export default {
   align-items: center;
   cursor: pointer;
   border: var(--var-border-width, 0.2rem) solid;
-  border-radius: var(--var-border-radius, 0.2rem);
   width: 2rem;
   height: 2rem;
   margin: 0.5rem 0.5rem 0 0;

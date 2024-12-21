@@ -22,12 +22,12 @@ export default {
 <template>
   <ModalWrapperOptions class="c-modal-options__large">
     <template #header>
-      Confirmation Options
+      Настройки подтверждений
     </template>
     <div class="c-modal-options__button-container">
       <span v-if="noConfirmations">
-        You do not have anything that requires confirmation,
-        but if you did it would appear here.
+        Вы не разблокировали ничего, что требовало бы подтверждения,
+        но оно появилось бы здесь.
       </span>
       <ConfirmationOptionsEntry
         v-for="entryNumber in count"

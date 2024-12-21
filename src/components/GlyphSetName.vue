@@ -1,46 +1,56 @@
 <script>
 const GLYPH_NAMES = {
   companion: {
-    adjective: "Huggable",
-    noun: "Companion"
+    adjective: "Мил",
+    noun: "Компаньон",
+    gender: "M"
   },
   reality: {
-    adjective: "Real",
-    noun: "Reality"
+    adjective: "Реальн",
+    noun: "Реальность",
+    gender: "F"
   },
   music: {
-    adjective: { high: "Melodic", mid: "Chordal", low: "Tuned" },
+    adjective: { high: "Мелодичн", mid: "Аккордов", low: "Тональн" },
     // This noun is only used in the case of a single companion reskinned as music (resulting in "Huggable Music");
     // otherwise the set's noun will always come from an actual glyph type instead of music
-    noun: "Music"
+    noun: "Музыка",
+    gender: "F"
   },
   effarig: {
-    adjective: { both: "Meta", glyph: "Stable", rm: "Mechanical", none: "Fragmented" },
-    noun: { both: "Effarig", glyph: "Stability", rm: "Mechanism", none: "Fragmentation" }
+    adjective: { both: "Мета-", glyph: "Устойчив", rm: "Механическ", none: "Раздробленн" },
+    noun: { both: "Эффариг", glyph: "Устойчивость", rm: "Механизм", none: "Раздробленность" },
+    gender: { both: "M", glyph: "F", rm: "M", none: "F" }
   },
   cursed: {
-    adjective: { high: "Cursed", mid: "Hexed", low: "Jinxed" },
-    noun: "Curse"
+    adjective: { high: "Проклят", mid: "Околдованн", low: "Заговорённ" },
+    noun: "Проклятие",
+    gender: "N"
   },
   power: {
-    adjective: { high: "Powerful", mid: "Mastered", low: "Potential" },
-    noun: "Power"
+    adjective: { mid: "Освоенн", low: "Потенциальн" },
+    noun: "Сила",
+    gender: "F"
   },
   infinity: {
-    adjective: { high: "Infinite", mid: "Boundless", low: "Immense" },
-    noun: "Infinity"
+    adjective: { mid: "Безграничн", low: "Огромн" },
+    noun: "Бесконечность",
+    gender: "F"
   },
   replication: {
-    adjective: { high: "Replicated", mid: "Simulated", low: "Duplicated" },
-    noun: "Replication"
+    adjective: { mid: "Симулированн", low: "Дублированн" },
+    noun: "Репликация",
+    gender: "F"
   },
   time: {
-    adjective: { high: "Temporal", mid: "Chronal", low: "Transient" },
-    noun: "Time"
+    adjective: { mid: "Хрональн", low: "Эфемерн" },
+    noun: "Время",
+    gender: "N"
   },
   dilation: {
-    adjective: { high: "Dilated", mid: "Attenuated", low: "Diluted" },
-    noun: "Dilation"
+    adjective: { mid: "Ослабленн", low: "Растворённ" },
+    noun: "Замедление",
+    gender: "N"
   },
 };
 
@@ -81,65 +91,58 @@ export default {
     isDoomed: () => Pelle.isDoomed,
     setName() {
       this.sortGlyphList();
-      if (this.sortedGlyphs.length === 0) return "Void";
+      if (this.sortedGlyphs.length === 0) return "Пустота";
       if (this.sortedGlyphs.length === 1) return this.singletonName;
 
       // Figure out the noun part of the name first. If we have basic glyphs, this is generated through examining those
       // specifically. Otherwise, we take the lowest-priority special glyph and turn it into its noun form
-      let adjList, nounPhrase;
+      let adjList, noun, gender;
       if (this.sortedGlyphs.some(t => t.adjOrder === 1)) {
-        adjList = this.sortedGlyphs.filter(t => t.adjOrder !== 1);
-        nounPhrase = this.basicTypePhrase;
+        adjList = this.sortedGlyphs.filter(t => t.adjOrder !== 1).concat(this.basicTypePhrase.adjList);
+        noun = this.basicTypePhrase.noun;
+        gender = this.basicTypePhrase.gender;
       } else {
         adjList = [...this.sortedGlyphs];
-        nounPhrase = this.getNoun(adjList.pop());
+        let mainGlyph = adjList.pop();
+        noun = this.getNoun(mainGlyph);
+        gender = this.getGender(mainGlyph);
       }
 
       const adjectives = [];
       for (const listEntry of adjList) adjectives.push(this.getAdjective(listEntry));
-      return `${adjectives.join(" ")} ${nounPhrase}`;
+      return `${adjectives.map(t => this.genderise(t, gender)).join("")}${noun}`;
     },
     basicTypePhrase() {
       const basicGlyphList = this.sortedGlyphs.filter(t => BASIC_GLYPH_TYPES.includes(t.type) && t.perc !== 0);
       switch (basicGlyphList.length) {
         case 1:
-          return GLYPH_NAMES[basicGlyphList[0].type].noun;
+          return { noun: this.getNoun(basicGlyphList[0]), gender: this.getGender(basicGlyphList[0]), adjList: [] };
         case 2:
           // Call it a mixture if they're equal and apply adjectives of appropriate magnitude
           if (basicGlyphList[0].perc === basicGlyphList[1].perc) {
-            return [this.getAdjective(basicGlyphList[0]),
-              this.getAdjective(basicGlyphList[1]),
-              "Mixture"
-            ].join(" ");
+            return { noun: "Смесь", gender: "F", adjList: [basicGlyphList[0], basicGlyphList[1]] };
           }
           // Otherwise, give it a noun from the largest component
-          return `${this.getAdjective(basicGlyphList[1])} ${this.getNoun(basicGlyphList[0])}`;
+          return { noun: this.getNoun(basicGlyphList[0]), gender: this.getGender(basicGlyphList[0]), adjList: [basicGlyphList[1]] };
         case 3:
           // Give it a noun if there's a clear majority
           if (basicGlyphList[0].perc > basicGlyphList[1].perc) {
-            return [this.getAdjective(basicGlyphList[1]),
-              this.getAdjective(basicGlyphList[2]),
-              this.getNoun(basicGlyphList[0]),
-            ].join(" ");
+            return { noun: this.getNoun(basicGlyphList[0]), gender: this.getGender(basicGlyphList[0]), adjList: [basicGlyphList[1], basicGlyphList[2]] };
           }
           // This is relatively rare; we have 1/1/1, which means that we may also already have 3 other adjectives.
           // In this case we make an exception and shorten the name instead of providing another 4 words
-          if (basicGlyphList[0].perc === basicGlyphList[2].perc) return "Mixed Irregularity";
+          if (basicGlyphList[0].perc === basicGlyphList[2].perc) return { noun: "Смешанная Разнородность", gender: "F", adjList: [] };
           // The only case left is 2/2/1, where we have plenty of room for words
-          return [this.getAdjective(basicGlyphList[0]),
-            this.getAdjective(basicGlyphList[1]),
-            this.getAdjective(basicGlyphList[2]),
-            "Irregularity"
-          ].join(" ");
+          return {noun: "Разнородность", gender: "F", adjList: [basicGlyphList[0], basicGlyphList[1], basicGlyphList[2]] };
         case 4:
           // Don't bother filling the name with excessive adjectives if we have an equal proportion (1/1/1/1),
           // otherwise we take the largest component and ignore all the others (2/1/1/1)
-          if (basicGlyphList[0].perc === basicGlyphList[1].perc) return "Irregular Jumble";
-          return `${this.getAdjective(basicGlyphList[0])} Jumble`;
+          if (basicGlyphList[0].perc === basicGlyphList[1].perc) return { noun: "Разнородная Путаница", gender: "F", adjList: [] };
+          return { noun: "Путаница", gender: "F", adjList: [basicGlyphList[0]] };
         case 5:
           // This is in reference to the achievement name, and can only occur with exactly one of every basic glyph.
           // Due to music glyphs doubling-up contributions, this may result in a "Melodic Royal Flush" or similar
-          return "Royal Flush";
+          return { noun: "Флеш-рояль", gender: "M", adjList: [] };
         default:
           throw new Error("Unexpected glyph set configuration in GlyphSetName");
       }
@@ -153,13 +156,15 @@ export default {
       }
 
       // We want a bit of additional flavor for partially-filled sets
-      const word = GLYPH_NAMES[this.sortedGlyphs[0].type].noun;
+      const word = this.getNoun(this.sortedGlyphs[0]);
       const perc = this.sortedGlyphs[0].perc;
-      if (this.isDoomed) return `Doomed ${word}`;
-      if (perc === 100) return `Full ${word}`;
-      if (perc >= 75) return `Strengthened ${word}`;
-      if (perc >= 40) return `Partial ${word}`;
-      return `Weak ${word}`;
+      const gender = this.getGender(this.sortedGlyphs[0]);
+      let adjective = "Слаб";
+      if (perc >= 40) adjective = "Частичн";
+      if (perc >= 75) adjective = "Усиленн";
+      if (perc === 100) adjective = "Полн";
+      if (this.isDoomed) adjective = "Обречённ";
+      return `${this.genderise(adjective, gender)} ${word}`;
     },
     mainGlyphName() {
       // This returns the type of Glyph that we want for color determinations.
@@ -249,6 +254,22 @@ export default {
     getNoun(listEntry) {
       if (listEntry.type === "effarig") return GLYPH_NAMES.effarig.noun[this.getEffarigProp()];
       return GLYPH_NAMES[listEntry.type].noun;
+    },
+    getGender(listEntry) {
+      if (listEntry.type === "effarig") return GLYPH_NAMES.effarig.gender[this.getEffarigProp()];
+      return GLYPH_NAMES[listEntry.type].gender;
+    },
+    genderise(adjective, gender) {
+      if (adjective == "Мета-") return "Мета-";
+      switch (gender) {
+        case "F":
+          return adjective + "ая ";
+        case "N":
+          return adjective + "ое ";
+        case "M":
+          if (adjective == "Механическ") return "Механический ";
+          return adjective + "ый ";
+      }
     },
   }
 };

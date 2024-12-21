@@ -21,23 +21,23 @@ export default {
     },
     message() {
       const info = this.isFirstInfinity ? this.firstInfinityInfo : ``;
-      return `Upon Infinity, all Dimensions, Dimension Boosts, and Antimatter Galaxies are reset. ${info}`;
+      return `Бесконечность сбрасывает антиматерию, Измерения Антиматерии, ускорители, Расширения Измерений и Галактики Антиматерии.${info}`;
     },
     firstInfinityInfo() {
-      return `In return, you gain an Infinity Point (IP). This allows you to buy multiple upgrades that you can
-        find in the Infinity tab. You will also gain one Infinity, which is the stat shown in the Statistics tab.`;
+      return ` В награду вы получаете Очко Бесконечности (ОБ). Это позволит вам покупать определённые улучшения, которые вы можете
+        найти во вкладке "Бесконечность". Вы также получаете одну бесконечность, которая будет отображена во вкладке "Статистика".`;
     },
     ipGainInfo() {
-      return `You will gain ${quantify("Infinity", this.gainedInfinities, 2, 0)}
-        and ${quantify("Infinity Point", this.gainedInfinityPoints, 2, 0)}.`;
+      return `Вы получите ${quantify("бесконечность", this.gainedInfinities, 2, 0)}
+        and ${quantify("Очко", this.gainedInfinityPoints, 2, 0)} Бесконечности.`;
     },
     startingResources() {
       const gainedResources = [];
-      if (this.startingAM.gte(10)) gainedResources.push(`${quantify("Antimatter", this.startingAM, 2, 1)}`);
-      if (this.startingBoosts > 0) gainedResources.push(`${quantify("Dimension Boost", this.startingBoosts)}`);
-      if (this.willStartWithGalaxy) gainedResources.push(`${quantify("Galaxy", 1)}`);
+      if (this.startingAM.gte(10)) gainedResources.push(`${format(this.startingAM, 2, 1)} антиматерии`);
+      if (this.startingBoosts > 0) gainedResources.push(`${quantify("Расширением", this.startingBoosts)} Измерений`);
+      if (this.willStartWithGalaxy) gainedResources.push(`1 Галактикой Антиматерии`);
 
-      return `You will start your next Infinity with ${makeEnumeration(gainedResources)}.`;
+      return `Вы начнёте новую бесконечность с ${makeEnumeration(gainedResources)}.`;
     }
   },
   methods: {
@@ -52,9 +52,9 @@ export default {
       bigCrunchResetRequest();
       EventHub.ui.offAll(this);
       if (this.isFirstInfinity) {
-        setTimeout(() => Modal.message.show(`This animation will occur after every manually-triggered Infinity. If
-          you would like to disable it, there is a setting to do so in the Options tab. This can be done for any
-          visual animation effect in the game after seeing it for the first time.`, {}, 3), 2000);
+        setTimeout(() => Modal.message.show(`Эта анимация будет воспроизводиться после каждой бесконечности, совершённой вручную. Если
+          вы хотите её отключить, это можно сделать во вкладке "Настройки". Отключить можно и любую другую
+          анимацию в игре, после того как вы увидите её впервые.`, {}, 3), 2000);
       }
     }
   },
@@ -63,7 +63,7 @@ export default {
 
 <template>
   <ResetModal
-    header="You are about to Infinity"
+    header="Вы совершаете бесконечность"
     :message="message"
     :gained-resources="ipGainInfo"
     :starting-resources="startingResources"

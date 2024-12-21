@@ -6,62 +6,63 @@ export default {
 
 <template>
   <div>
-    Welcome to the Antimatter Dimensions Automator!
+    Добро пожаловать в Автоматизатор Измерений Антиматерии!
     <br>
     <br>
-    This page is an introduction page which gives a very broad overview of everything you can do with the Automator.
-    Specific details on various functionality can be found in the How To Play or their respective tabs (when relevant).
+    Это вводная страница, дающая общий обзор всего, что можно делать с Автоматизатором.
+    Подробности по определённой функциональности могут быть найдены в помощи по игре или, в некоторых случаях, на соответствующих страницах Автоматизатора.
     <br>
     <br>
-    <b>Scripting Language:</b> The Automator uses a custom scripting language in order to perform certain game actions
-    for you. Click <div class="fas fa-list c-automator-button-icon" /> to bring up a list of available commands. You can
-    also define constants as shorthand names for various values on the
-    <div class="fas fa-book c-automator-button-icon" /> page.
+    <b>Язык программирования:</b> Автоматизатор использует особый язык программирования, чтобы совершать определённые действия в игре.
+    Нажмите кнопку <div class="fas fa-list c-automator-button-icon" /> для просмотра списка доступных команд. Вы также можете
+    определять постоянные, служащие сокращениями определённых значений, на странице
+    <div class="fas fa-book c-automator-button-icon" />.
     <br>
     <br>
-    <b>Layout:</b> This Automator itself is split up into two halves; the left half contains your script and controls
-    for starting, stopping, and repeating its execution, and the right half contains Automator information. Clicking
-    <div class="fas fa-expand-arrows-alt c-automator-button-icon" /> in the top-right corner will expand the Automator
-    to take up the whole browser page for easier editing.
+    <b>Интерфейс</b> Автоматизатора разделён на две половины; левая половина содержит поле программы и кнопки
+    для запуска, остановки и перезапуска программы, а правая - информацию об Автоматизаторе. Вы можете нажать кнопку
+    <div class="fas fa-expand-arrows-alt c-automator-button-icon" /> в правом верхнем углу, чтобы переключить Автоматизатор
+    в полноэкранный режим для удобства редактирования.
     <br>
     <br>
-    <b>Editor Modes:</b> There are two different editors you can use to write your automator scripts - a block-based
-    editor (default) and a text-based editor. You can swap between the two editor types with the switch in the
-    top-right corner of the left half. Note that scripts with errors may not properly convert between the two modes,
-    which can cause part of your script to be deleted.
+    <b>Режимы редактирования:</b> Существуют два режима, в которых вы можете редактировать программы для Автоматизатора: блочный
+    (по умолчанию) и текстовый. Вы можете переключаться между режимами редактирования с помощью кнопки в
+    правом верхнем углу левой половины интерфейса. Заметьте, что программы, содержащие ошибки, могут быть неправильно преобразованы для другого режима,
+    что может привести к потере части программы. Команды в текстовом режиме вводятся на английском языке, в то время как блоки
+    переведены на русский язык вместе с их параметрами.
     <br>
     <br>
-    <b>Making Scripts:</b> You can switch between multiple scripts or make new scripts using the dropdown on the
-    second row of buttons. The current script can be renamed or deleted with the
-    <div class="fas fa-edit c-automator-button-icon" /> and
-    <div class="fas fa-trash c-automator-button-icon" /> buttons. The Automator will always contain at
-    least one script for you to edit; deleting your last one will automatically create a new blank one.
+    <b>Управление программами:</b> Вы можете переключаться между несколькими программами или создавать новые с помощью раскрывающегося списка во
+    втором ряду кнопок. Текущая программа может быть переименована или удалена с помощью кнопок
+    <div class="fas fa-edit c-automator-button-icon" /> и
+    <div class="fas fa-trash c-automator-button-icon" /> соответственно. У Автоматизатора всегда будет хотя
+    бы одна программа; при удалении последней будет автоматически создана пустая программа.
     <br>
     <br>
-    <b>Writing Scripts:</b> Scripts in the block editor are made by going to the block tab
-    <div class="fas fa-cubes c-automator-button-icon" />, while scripts in the text editor are made by typing into
-    the left half as a text box. In either editor mode, you can also use some smaller premade scripts from the
-    template generator <div class="fas fa-file-code c-automator-button-icon" />. You can undo or redo a limited
-    number of edits using <div class="fas fa-arrow-rotate-left c-automator-button-icon" /> or
-    <div class="fas fa-arrow-rotate-right c-automator-button-icon" />, or by using the respective hotkeys. Edit history
-    is cleared upon switching, converting, or deleting scripts.
+    <b>Редактирование программ:</b> в блочном режиме программы составляются из блоков с панели
+    <div class="fas fa-cubes c-automator-button-icon" />, а в текстовом режиме программы вводятся в
+    левую половину. В обоих режимах редактирования вы также можете генерировать маленький блок кода
+    по шаблону из страницы <div class="fas fa-file-code c-automator-button-icon" />. Вы можете отменять и возвращать ограниченное
+    количество изменений соответственно с помощью кнопок <div class="fas fa-arrow-rotate-left c-automator-button-icon" /> и
+    <div class="fas fa-arrow-rotate-right c-automator-button-icon" /> или соответствующих горячих клавиш. Журнал изменений
+    очищается при переключении на другие программу или режим редактирования или удалении программы.
     <br>
     <br>
-    <b>Debugging:</b> The two main tools you have for fixing your scripts are the Error Log
-    <div class="fas fa-exclamation-triangle c-automator-button-icon" /> for when you can't get your script to run at
-    all, and the Event Log <div class="fas fa-eye c-automator-button-icon" /> for when it runs but doesn't do what you
-    expect it to do.
+    <b>Отладка:</b> Два главных инструмента, данных вам для отладлки ваших программ, - это журнал ошибок
+    <div class="fas fa-exclamation-triangle c-automator-button-icon" />, используемый, когда ваша программа отказывается работать
+    совсем, и журнал событий <div class="fas fa-eye c-automator-button-icon" />, используемый, когда программа работает, но не так, как вы
+    ожидаете.
     <br>
     <br>
-    <b>Importing/Exporting:</b> Automator scripts can be exported and imported in text format by using the
-    <div class="fas fa-file-export c-automator-button-icon" /> and
-    <div class="fas fa-file-import c-automator-button-icon" /> buttons respectively. You can also access additional
-    extended exporting options <div class="fas fa-window-restore c-automator-button-icon" /> if desired.
+    <b>Импорт и экспорт</b> программ для Автоматизатора в текстовой кодировке осуществляется с помощью кнопок
+    <div class="fas fa-file-export c-automator-button-icon" /> и
+    <div class="fas fa-file-import c-automator-button-icon" /> соответственно. Вам также доступны
+    расширенные возможности экспорта на странице <div class="fas fa-window-restore c-automator-button-icon" />.
     <br>
     <br>
-    <b>Script saving:</b> Script changes are not immediately saved to your computer under all conditions;
-    check the Automator How To Play entries for more details. Additionally there are two character limits to reduce lag,
-    shown above the automator panels.
+    <b>Хранение программ:</b> изменения к программам не всегда сразу сохраняются на ваш компьютер;
+    см. подробности в статьях помощи по игре об Автоматизаторе. Кроме того, есть два ограничения на количество символов в программах,
+    показанных прямо над интерфейсом Автоматизатора.
   </div>
 </template>
 

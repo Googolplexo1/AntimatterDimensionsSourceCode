@@ -71,7 +71,7 @@ export default {
           class="o-pelle-button"
           @click="showModal"
         >
-          Show effects in Doomed Reality
+          Раскрыть условия Обречённой Реальности
         </button>
       </div>
       <br>
@@ -84,7 +84,7 @@ export default {
       class="pelle-doom-button"
       @click="enterDoomModal"
     >
-      Doom<br>Your<br>Reality
+      Обречь<br>Реальность
       <div class="pelle-icon-container">
         <span class="pelle-icon">{{ symbol }}</span>
       </div>
@@ -93,13 +93,13 @@ export default {
       v-else
       class="pelle-unlock-requirements"
     >
-      You must have {{ formatInt(totalRows) }} rows of Achievements
-      and all of your Glyph Alchemy Resources capped to unlock Pelle, Celestial of Antimatter.
+      Чтобы разблокировать Пелля, Небожителя Антиматерии, требуется выполнить {{ formatInt(totalRows) }} рядов достижений
+      и получить максимальное количество каждого из алхимических ресурсов.
       <br>
       <br>
-      {{ formatInt(completedRows) }} / {{ formatInt(totalRows) }} Achievement rows completed
+      {{ formatInt(completedRows) }} / {{ formatInt(totalRows) }} рядов достижений выполнено
       <br>
-      {{ formatInt(cappedResources) }} / {{ formatInt(totalAlchemyResources) }} capped Alchemy Resources
+      {{ formatInt(cappedResources) }} / {{ formatInt(totalAlchemyResources) }} алхимического ресурса имеется в максимальном количестве
     </div>
   </div>
 </template>

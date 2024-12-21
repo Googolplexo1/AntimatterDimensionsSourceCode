@@ -29,7 +29,7 @@ export default {
       return this.blackHole.id;
     },
     dischargeText() {
-      return `Discharge: ${timeDisplayShort(this.storedTime)}`;
+      return `Разрядить ЧД: ${timeDisplayShort(this.storedTime)}`;
     },
     hasLongText() {
       return this.dischargeText.length > 15;
@@ -55,12 +55,12 @@ export default {
       this.isAutoReleasing = player.celestials.enslaved.isAutoReleasing;
     },
     pauseButtonText() {
-      if (BlackHoles.arePaused && player.blackHoleNegative < 1) return "Uninvert BH";
-      if (BlackHoles.arePaused) return "Unpause BH";
+      if (BlackHoles.arePaused && player.blackHoleNegative < 1) return "Отменить инверсию ЧД";
+      if (BlackHoles.arePaused) return "Возобновить цикл ЧД";
       const accel = BlackHoles.unpauseAccelerationFactor;
-      if (accel !== 1) return `${formatPercents(accel, 1)} speed`;
-      if (player.blackHoleNegative < 1) return "Invert BH";
-      return "Pause BH";
+      if (accel !== 1) return `${formatPercents(accel, 1)} эффективности`;
+      if (player.blackHoleNegative < 1) return "Инвертировать ЧД";
+      return "Приостановить ЧД";
     },
     timeDisplayShort(ms) {
       return timeDisplayShort(ms);
@@ -92,10 +92,10 @@ export default {
         onclick="Enslaved.toggleStoreBlackHole()"
       >
         <span v-if="isCharging">
-          Stop Charging
+          Прекратить зарядку ЧД
         </span>
         <span v-else>
-          Charge
+          Зарядить ЧД
         </span>
       </PrimaryButton>
     </span>
@@ -124,7 +124,7 @@ export default {
       <PrimaryToggleButton
         v-model="isAutoReleasing"
         class="o-primary-btn--buy-max c-primary-btn--black-hole-header"
-        label="Pulse:"
+        label="Пульсирование:"
       />
     </span>
   </span>
@@ -139,6 +139,7 @@ export default {
 .c-primary-btn--black-hole-header {
   vertical-align: middle;
   margin: 0.2rem;
+  width: 20rem;
 }
 
 .c-black-hole-status-text {

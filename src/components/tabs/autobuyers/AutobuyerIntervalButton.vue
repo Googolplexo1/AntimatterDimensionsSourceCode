@@ -44,15 +44,15 @@ export default {
     :class="classObject"
     @click="upgradeInterval"
   >
-    {{ formatPercents(0.4) }} smaller interval
+    Уменьшить интервал на {{ formatPercents(0.4) }}
     <br>
-    Cost: {{ format(cost, 2) }} IP
+    Цена: {{ format(cost, 2) }} ОБ
   </button>
   <button
     v-else-if="!isMaxed"
     class="o-autobuyer-btn l-autobuyer-box__button o-autobuyer-btn--unavailable"
   >
-    Complete the challenge to upgrade interval
+    Выполните Испытание, чтобы разблокировать возможность уменьшать интервал
   </button>
 </template>
 

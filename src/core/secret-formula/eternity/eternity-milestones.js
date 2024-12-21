@@ -1,26 +1,26 @@
 export const eternityMilestones = {
   autobuyerIPMult: {
     eternities: 1,
-    reward: "Unlock the Infinity Point multiplier autobuyer",
+    reward: "Разблокировать автоматику удвоителей Очков Бесконечности",
     pelleUseless: true
   },
   keepAutobuyers: {
     eternities: 2,
-    reward: "You start Eternity with all Normal Challenges complete, all normal autobuyers, and infinity broken"
+    reward: "Начинать с выполненными Обычными Испытаниями, разблокированной автоматикой Измерений Антиматерии и ускорителей и преодолённой Бесконечностью и сохранять улучшения автоматики"
   },
   autobuyerReplicantiGalaxy: {
     eternities: 3,
-    reward: "Unlock the Replicanti Galaxy Autobuyer"
+    reward: "Разблокировать автоматику Галактик Репликанти"
   },
   keepInfinityUpgrades: {
     eternities: 4,
-    reward: "You start Eternity with all Infinity Upgrades",
+    reward: "Начинать со всеми Улучшениями Бесконечности",
     givenByPelle: () => PelleUpgrade.keepInfinityUpgrades.isBought,
     pelleUseless: true
   },
   bigCrunchModes: {
     eternities: 5,
-    reward: "Unlock more Big Crunch Autobuyer options"
+    reward: "Разблокировать два новых режима автоматики Большого Сжатия"
   },
   autoEP: {
     eternities: 6,
@@ -30,159 +30,157 @@ export const eternityMilestones = {
         EternityMilestone.autoEternities.isReached).gt(0);
       const em1000 = getInfinitiedMilestoneReward(TimeSpan.fromHours(1).totalMilliseconds,
         EternityMilestone.autoInfinities.isReached).gt(0);
-      if (!player.options.offlineProgress) return `This milestone would give offline EP generation, but offline progress
-        is currently disabled`;
-      const effectText = (em200 || em1000) ? "Inactive" : `Currently ${format(EPmin, 2, 2)} EP/min`;
-      return `While offline, gain ${formatPercents(0.25)} of your best Eternity Points per minute from previous
-        Eternities (${effectText})`;
+      if (!player.options.offlineProgress) return "Этот Этап производил бы ОВ, но офлайн-прогресс отключён";
+      const effectText = (em200 || em1000) ? "Не действует" : `Сейчас: ${format(EPmin, 2, 2)} в минуту`;
+      const realityText = PlayerProgress.realityUnlocked() ? "в текущей реальности " : "";
+      const realTime = PlayerProgress.seenAlteredSpeed() ? "(по реальному времяисчислению) " : "";
+      return `Производить ${formatPercents(0.25)} от рекордного прироста Очков Вечности за время
+        ${realTime}${realityText}офлайн (${effectText})`;
     },
     activeCondition: () => (player.options.offlineProgress
-      ? `Active as long as neither of the other offline milestones
-        (${formatInt(200)} or ${formatInt(1000)}) are also active`
+      ? "Действует, только если оба других Этапа, производящих ресурсы офлайн, не действуют."
       : ""),
   },
   autoIC: {
     eternities: 7,
-    reward: `You complete Infinity Challenges as soon as you unlock them,
-      and keep the Dimensional Sacrifice Autobuyer`,
+    reward: `Каждое Испытание Бесконечности автоматически считается выполненнным,
+      как только вы его разблокируете. Автоматика Пожертования Измерений разблокирована всегда`,
     pelleUseless: true
   },
   keepBreakUpgrades: {
     eternities: 8,
-    reward: "You start Eternity with all Break Infinity Upgrades",
+    reward: "Начинать со всеми Улучшениями Преодоления",
     givenByPelle: () => PelleUpgrade.keepBreakInfinityUpgrades.isBought,
     pelleUseless: true
   },
   autobuyMaxGalaxies: {
     eternities: 9,
-    reward: "Unlock the buy max Antimatter Galaxies Autobuyer mode"
+    reward: "Вы можете получать Галактики Антиматерии оптом"
   },
   unlockReplicanti: {
     eternities: 10,
-    reward: "You start with Replicanti unlocked",
+    reward: "Начинать с разблокированными Репликанти",
     givenByPelle: () => PelleUpgrade.replicantiStayUnlocked.isBought,
     pelleUseless: true
   },
   autobuyerID1: {
     eternities: 11,
-    reward: "Unlock the 1st Infinity Dimension Autobuyer",
+    reward: "Разблокировать автоматику 1-х Измерений Бесконечности",
     givenByPelle: () => PelleUpgrade.IDAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerID2: {
     eternities: 12,
-    reward: "Unlock the 2nd Infinity Dimension Autobuyer",
+    reward: "Разблокировать автоматику 2-х Измерений Бесконечности",
     givenByPelle: () => PelleUpgrade.IDAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerID3: {
     eternities: 13,
-    reward: "Unlock the 3rd Infinity Dimension Autobuyer",
+    reward: "Разблокировать автоматику 3-х Измерений Бесконечности",
     givenByPelle: () => PelleUpgrade.IDAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerID4: {
     eternities: 14,
-    reward: "Unlock the 4th Infinity Dimension Autobuyer",
+    reward: "Разблокировать автоматику 4-х Измерений Бесконечности",
     givenByPelle: () => PelleUpgrade.IDAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerID5: {
     eternities: 15,
-    reward: "Unlock the 5th Infinity Dimension Autobuyer",
+    reward: "Разблокировать автоматику 5-х Измерений Бесконечности",
     givenByPelle: () => PelleUpgrade.IDAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerID6: {
     eternities: 16,
-    reward: "Unlock the 6th Infinity Dimension Autobuyer",
+    reward: "Разблокировать автоматику 6-х Измерений Бесконечности",
     givenByPelle: () => PelleUpgrade.IDAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerID7: {
     eternities: 17,
-    reward: "Unlock the 7th Infinity Dimension Autobuyer",
+    reward: "Разблокировать автоматику 7-х Измерений Бесконечности",
     givenByPelle: () => PelleUpgrade.IDAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerID8: {
     eternities: 18,
-    reward: "Unlock the 8th Infinity Dimension Autobuyer",
+    reward: "Разблокировать автоматику 8-х Измерений Бесконечности",
     givenByPelle: () => PelleUpgrade.IDAutobuyers.isBought,
     pelleUseless: true
   },
   autoUnlockID: {
     eternities: 25,
-    reward: "You automatically unlock Infinity Dimensions upon reaching them"
+    reward: "Измерения Бесконечности разблокируются автоматически"
   },
   unlockAllND: {
     eternities: 30,
-    reward: "Start with all Antimatter Dimensions available for purchase"
+    reward: "Начинать со всеми Измерениями Антиматерии доступными к покупке"
   },
   replicantiNoReset: {
     eternities: 40,
-    reward: `Replicanti Galaxies no longer reset Antimatter, Antimatter Dimensions,
-      Tickspeed, Dimensional Sacrifice, or Dimension Boosts`,
+    reward: "При получении Галактик Репликанти ничего не сбрасывается",
     pelleUseless: true
   },
   autobuyerReplicantiChance: {
     eternities: 50,
-    reward: "Unlock the Replicanti Chance Upgrade Autobuyer",
+    reward: "Разблокировать автоматику Улучшения Репликанти, увеличивающего вероятность репликации",
     givenByPelle: () => PelleUpgrade.replicantiAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerReplicantiInterval: {
     eternities: 60,
-    reward: "Unlock the Replicanti Interval Upgrade Autobuyer",
+    reward: "Разблокировать автоматику Улучшения Репликанти, уменьшающего интервал репликации",
     givenByPelle: () => PelleUpgrade.replicantiAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerReplicantiMaxGalaxies: {
     eternities: 80,
-    reward: "Unlock the Max Replicanti Galaxy Upgrade Autobuyer",
+    reward: "Разблокировать автоматику Улучшения Репликанти, увеличивающего максимальное количество Галактик Репликанти",
     givenByPelle: () => PelleUpgrade.replicantiAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerEternity: {
     eternities: 100,
-    reward: "Unlock autobuyer for Eternities"
+    reward: "Разблокировать автоматику вечностей"
   },
   autoEternities: {
     eternities: 200,
     reward: () => {
-      if (!player.options.offlineProgress) return `This milestone would generate eternities offline, but offline
-        progress is currently disabled`;
+      if (!player.options.offlineProgress) return "Этот Этап производил бы вечности, но офлайн-прогресс отключён";
       const eternities = getEternitiedMilestoneReward(TimeSpan.fromHours(1).totalMilliseconds,
         player.eternities.gte(200));
       // As far as I can tell, using templates here as Codefactor wants would lead to nested templates,
       // which seems messy to say the least.
-      const realTime = PlayerProgress.seenAlteredSpeed() ? " real-time" : "";
+      const realTime = PlayerProgress.seenAlteredSpeed() ? " (по реальному времяисчислению)" : "";
+      const realityText = PlayerProgress.realityUnlocked() ? " в текущей реальности" : "";
       // eslint-disable-next-line prefer-template
-      return `While offline, gain Eternities at ${formatPercents(0.5)} the rate of your fastest${realTime} Eternity ` +
-        (eternities.gt(0) ? `(Currently ${format(eternities, 2, 2)}/hour)` : "(Inactive)");
+      return `Производить ${formatPercents(0.5)} от рекордного прироста вечностей за время${realTime}${realityText} ` +
+        (eternities.gt(0) ? `(Сейчас: ${format(eternities, 2, 2)} в час)` : "(Не действует)");
     },
     activeCondition: () => (player.options.offlineProgress
-      ? `Must be outside of all Challenges and Dilation, and the Eternity Autobuyer must be set to Eternity at zero EP.
-        This milestone's effect is capped at ${formatInt(33)}ms.`
+      ? `Действует, только если вы вне всех испытаний, и автоматика вечности включена и выставлена на ${formatInt(0)} ОВ.
+        Все совершённые вечности в вычислениях для этого Этапа считаются длящимися хотя бы ${formatInt(33)}мс.`
       : ""),
       pelleUseless: true
   },
   autoInfinities: {
     eternities: 1000,
     reward: () => {
-      if (!player.options.offlineProgress) return `This milestone would generate infinities offline, but offline
-        progress is currently disabled`;
+      if (!player.options.offlineProgress) return "Этот Этап производил бы вечности, но офлайн-прогресс отключён";
       const infinities = getInfinitiedMilestoneReward(TimeSpan.fromHours(1).totalMilliseconds,
         player.eternities.gte(1000));
+      const realTime = PlayerProgress.seenAlteredSpeed() ? " (по реальному времяисчислению)" : "";
       // eslint-disable-next-line prefer-template
-      return `While offline, gain Infinities equal to ${formatPercents(0.5)}
-        your best Infinities/hour this Eternity ` +
-        (infinities.gt(0) ? `(Currently ${format(infinities, 2, 2)}/hour)` : "(Inactive)");
+      return `Производить ${formatPercents(0.5)} от рекордного прироста бесконечностей за время${realTime} в текущей вечности ` +
+        (infinities.gt(0) ? `(Сейчас: ${format(infinities, 2, 2)} в час)` : "(Не действует)");
     },
     activeCondition: () => (player.options.offlineProgress
-      ? `Must be outside of Normal/Infinity Challenges and outside of EC4 and EC12,
-        the Big Crunch Autobuyer must be turned on and set to time mode with ${formatInt(5)} seconds or less,
-        and the Eternity Autobuyer must be turned off.`
+      ? `Действует, только если вы вне всех Обычных Испытаний, всех Испытаний Бесконечности, ИспВ4 и ИспВ12,
+        автоматика Большого Сжатия включена, действует в режиме времени и выставлена на ${formatInt(5)} секунд или меньше,
+        и автоматика вечности отключена.`
       : ""),
       pelleUseless: true
   }

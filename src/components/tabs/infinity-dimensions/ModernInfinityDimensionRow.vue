@@ -43,34 +43,34 @@ export default {
       return ui.view.shiftDown;
     },
     name() {
-      return `${InfinityDimension(this.tier).shortDisplayName} Infinity Dimension`;
+      return `${this.tier}-е Измерение Бесконечности`;
     },
     costDisplay() {
       if (this.isUnlocked || this.shiftDown) {
-        if (this.isCapped) return "Capped";
-        return this.showCostTitle ? `Cost: ${format(this.cost)} IP` : `${format(this.cost)} IP`;
+        if (this.isCapped) return "Ограничено";
+        return this.showCostTitle ? `Цена: ${format(this.cost)} ОБ` : `${format(this.cost)} ОБ`;
       }
 
       if (this.canUnlock) {
-        return "Unlock";
+        return "Разблокировать";
       }
 
-      return `Reach ${formatPostBreak(InfinityDimension(this.tier).amRequirement)} AM`;
+      return `Достигните ${formatPostBreak(InfinityDimension(this.tier).amRequirement)} антиматерии`;
     },
     hasLongText() {
-      return this.costDisplay.length > 20;
+      return this.costDisplay.length > 15;
     },
     capTooltip() {
-      if (this.enslavedRunning) return `Nameless prevents the purchase of more than ${format(10)} Infinity Dimensions`;
-      if (this.isCapped) return `Cap reached at ${format(this.capIP)} IP`;
-      return `Purchased ${quantifyInt("time", this.purchases)}`;
+      if (this.enslavedRunning) return `В Реальности Безымянных нельзя купить более ${format(10)} Измерений Бесконечности одного уровня`;
+      if (this.isCapped) return `Ограничение достигнуто на ${format(this.capIP)} ОБ`;
+      return `Куплено ${quantifyInt("раз", this.purchases)}`;
     },
     showRow() {
       return this.eternityReached || this.isUnlocked || this.canUnlock || this.amount.gt(0) ||
         this.hasPrevTier;
     },
     showCostTitle() {
-      return this.cost.exponent < 1e5;
+      return this.cost.exponent < 1e6;
     }
   },
   watch: {
@@ -142,7 +142,7 @@ export default {
         v-if="isAutobuyerUnlocked && !isEC8Running"
         v-model="isAutobuyerOn"
         class="o-primary-btn--id-auto"
-        label="Auto:"
+        label="Автоматика:"
       />
       <PrimaryButton
         v-else
@@ -150,7 +150,7 @@ export default {
         class="o-primary-btn--id-auto"
         @click="buyMaxInfinityDimension"
       >
-        Buy Max
+        Купить все
       </PrimaryButton>
     </div>
   </div>

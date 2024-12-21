@@ -35,7 +35,7 @@ export default {
     },
     goalDisplay() {
       const config = this.config;
-      let goal = `Goal: ${this.goalAtCompletions(this.completions)} IP`;
+      let goal = `Цель: ${this.goalAtCompletions(this.completions)} ОБ`;
       if (config.restriction) {
         goal += ` ${config.formatRestriction(config.restriction(this.completions))}`;
       }
@@ -63,7 +63,7 @@ export default {
       };
     },
     name() {
-      return `EC${this.challenge.id}`;
+      return `ИспВ${this.challenge.id}`;
     }
   },
   methods: {
@@ -106,21 +106,23 @@ export default {
       <DescriptionDisplay :config="config" />
     </template>
     <template #bottom>
+      <div class="l-challenge-box__bottom--eternity">
       <div :style="{ visiblity: completions < 5 ? 'visible' : 'hidden' }">
         <div>
-          Completed {{ quantifyInt("time", completions) }}
+          Выполнено {{ quantifyInt("раз", completions) }}
         </div>
         {{ goalDisplay }}
       </div>
       <span v-if="showGoalSpan">
-        Goal Span: {{ firstGoal }} IP - {{ lastGoal }} IP
+        Диапазон целей: {{ firstGoal }} - {{ lastGoal }} ОБ
       </span>
       <span>
-        Reward:
+        Награда:
         <DescriptionDisplay
           :config="config.reward"
           :length="55"
           name="c-challenge-box__reward-description"
+          :capitalizationNeeded="false"
         />
       </span>
       <span>
@@ -132,10 +134,11 @@ export default {
         <EffectDisplay
           v-if="completions < 5"
           :config="nextRewardConfig"
-          label="Next"
+          label="При очередном выполнении"
           :ignore-capped="true"
         />
       </span>
+      </div>
     </template>
   </EternityChallengeBoxWrapper>
 </template>

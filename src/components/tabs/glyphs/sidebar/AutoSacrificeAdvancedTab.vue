@@ -37,7 +37,7 @@ export default {
       };
     },
     questionmarkTooltip() {
-      return "The score of a Glyph is its rarity percentage, plus the specified amount for each effect it has.";
+      return "Оценка глифа вычисляется как сумма его редкости в процентах и указанных баллов за каждый эффект.";
     },
     // This is an absolute value limit (ie. it's allowed to go negative down to negative this value)
     weightInputLimit() {
@@ -65,12 +65,14 @@ export default {
       const inputValue = event.target.value;
       if (!isNaN(inputValue)) {
         this.autoSacrificeSettings.score = this.limitedInput(inputValue);
+        EventHub.dispatch(GAME_EVENT.GLYPH_VISUAL_CHANGE);
       }
     },
     setEffectScore(index, event) {
       const inputValue = event.target.value;
       if (!isNaN(inputValue)) {
         this.autoSacrificeSettings.effectScores[index] = this.limitedInput(inputValue);
+        EventHub.dispatch(GAME_EVENT.GLYPH_VISUAL_CHANGE);
       }
     },
   }
@@ -87,7 +89,7 @@ export default {
         >
           ?
         </div>
-        <b> Threshold score</b> (rarity % + effect scores)
+        <b>Порог принятия глифов</b>
       </div>
       <input
         ref="scoreThreshold"

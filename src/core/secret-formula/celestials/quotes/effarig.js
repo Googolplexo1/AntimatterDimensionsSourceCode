@@ -2,65 +2,65 @@ export const effarigQuotes = {
   initial: {
     id: 0,
     lines: [
-      "Welcome to my humble abode.",
-      "I am Effarig, and I govern Glyphs.",
-      "I am different from Teresa; not as simplistic as you think.",
-      "I use the shards of Glyphs to enforce my will.",
-      "I collect them for the bounty of this realm.",
-      "What are you waiting for? Get started.",
+      "Добро пожаловать в мою скромную обитель.",
+      "Меня зовут Эффариг, и я управляю глифами.",
+      "Я, в отличие от Терезы, не примитивен, как ты мог(ла) подумать.",
+      "Я использую осколки глифов для исполнения своей воли.",
+      "Я собираю их ради моего края.",
+      "Чего же ты ждёшь? Начинай.",
     ]
   },
   unlockWeights: {
     id: 1,
     lines: [
-      "Do you like my little shop? It is not much, but it is mine."
+      "Как тебе мой магазинчик? Пусть он невелик, зато он мой."
     ]
   },
   unlockGlyphFilter: {
     id: 2,
     lines: [
-      "This purchase will help you out."
+      "Это приобретение тебя выручит."
     ]
   },
   unlockSetSaves: {
     id: 3,
     lines: [
-      "Is that too much? I think it is too much."
+      "Не чересчур ли много ты купил(а)? Мне кажется, чересчур."
     ]
   },
   unlockRun: {
     id: 4,
     lines: [
-      "You bought out my entire stock... well, at least I am rich now.",
-      "The heart of my Reality is suffering. Each Layer is harder than the last.",
-      "I hope you never complete it.",
+      "Ты скупил(а) весь мой запас... что ж, по крайней мере, теперь я богат.",
+      "Суть моей Реальности в страданиях. С каждым слоем она всё труднее.",
+      "Надеюсь, ты никогда её не выполнишь.",
     ]
   },
   completeInfinity: {
     id: 5,
     lines: [
-      { text: "You have completed Effarig's Infinity.", showCelestialName: false },
-      "This is the first threshold. It only gets worse from here.",
-      "None but me know enough about my domain to get further.",
+      { text: "Вы выполнили Реальность Эффарига на слое бесконечности.", showCelestialName: false },
+      "Это был всего лишь первый рубеж. Дальше будет только хуже.",
+      "Никто, кроме меня, не знает так хорошо мои владения, чтобы продвинуться дальше.",
     ]
   },
   completeEternity: {
     id: 6,
     lines: [
-      { text: "You have completed Effarig's Eternity.", showCelestialName: false },
-      "This is the limit. I do not want you to proceed past this point.",
-      "You will not finish this in your lifetime.",
-      "I will just wait here until you give up.",
+      { text: "Вы выполнили Реальность Эффарига на слое вечности.", showCelestialName: false },
+      "Ты достиг(ла) предела. Даже не думай переступить через эту границу.",
+      "Тебе не хватит жизни, чтобы выполнить Реальность до конца.",
+      "Я просто подожду, пока ты не будешь вынужден(а) отступить.",
     ]
   },
   completeReality: {
     id: 7,
     lines: [
-      { text: "You have completed Effarig's Reality.", showCelestialName: false },
-      "So this is the diabolical power... what frightened the others...",
-      "Do you think this was worth it? Trampling on what I have done?",
-      "And for what purpose? You could have joined, we could have cooperated.",
-      "But no. It is over. Leave while I cling onto what is left.",
+      { text: "Вы выполнили Реальность Эффарига на слое реальности.", showCelestialName: false },
+      "Так вот что за дьявольская сила... что напугало других...",
+      "Ты думаешь, оно того стоило? Растоптать плоды моего труда?",
+      "И ради какой цели? Мы могли бы дружить, сотрудничать.",
+      "Но нет. Это конец. Уходи, пока я пытаюсь удержаться за то, что осталось.",
     ]
   }
 };

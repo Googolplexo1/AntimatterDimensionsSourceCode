@@ -1,6 +1,6 @@
 export default {
   entries: [{
-    name: "Windows Media Player",
+    name: "Проигрыватель Windows Media",
     action() {
       const links = [
         // Get trolled
@@ -24,7 +24,7 @@ export default {
     image: "desktop--discord-logo.png"
   },
   {
-    name: "Games",
+    name: "Игры",
     action() {
       Modal.s12Games.show();
     },

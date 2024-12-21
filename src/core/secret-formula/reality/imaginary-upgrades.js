@@ -12,156 +12,156 @@ const rebuyable = props => {
 
 export const imaginaryUpgrades = [
   rebuyable({
-    name: "Temporal Intensifier",
+    name: "Временной Обостритель",
     id: 1,
     initialCost: 3,
     costMult: 60,
-    description: () => `Increase Temporal Amplifier multiplier by +${format(0.15, 2, 2)}`,
+    description: () => `Увеличить множитель за покупку Улучшения Реальности "Временной Усилитель" на ${format(0.15, 2, 2)}`,
     effect: 0.15
   }),
   rebuyable({
-    name: "Replicative Intensifier",
+    name: "Репликативный Обостритель",
     id: 2,
     initialCost: 4,
     costMult: 60,
-    description: () => `Increase Replicative Amplifier multiplier by +${format(0.15, 2, 2)}`,
+    description: () => `Увеличить множитель за покупку Улучшения Реальности "Репликативный Усилитель" на ${format(0.15, 2, 2)}`,
     effect: 0.15
   }),
   rebuyable({
-    name: "Eternal Intensifier",
+    name: "Вечный Обостритель",
     id: 3,
     initialCost: 1,
     costMult: 40,
-    description: () => `Increase Eternal Amplifier multiplier by +${format(0.4, 2, 2)}`,
+    description: () => `Увеличить множитель за покупку Улучшения Реальности "Вечный Усилитель" на ${format(0.4, 2, 2)}`,
     effect: 0.4
   }),
   rebuyable({
-    name: "Superluminal Intensifier",
+    name: "Сверхсветовой Обостритель",
     id: 4,
     initialCost: 5,
     costMult: 80,
-    description: () => `Increase Superluminal Amplifier multiplier by +${format(0.15, 2, 2)}`,
+    description: () => `Увеличить множитель за покупку Улучшения Реальности "Сверхсветовой Усилитель" на ${format(0.15, 2, 2)}`,
     effect: 0.15
   }),
   rebuyable({
-    name: "Boundless Intensifier",
+    name: "Безграничный Обостритель",
     id: 5,
     initialCost: 1,
     costMult: 30,
-    description: () => `Increase Boundless Amplifier multiplier by +${format(0.6, 2, 2)}`,
+    description: () => `Увеличить множитель за покупку Улучшения Реальности "Безграничный Усилитель" на ${format(0.6, 2, 2)}`,
     effect: 0.6
   }),
   rebuyable({
-    name: "Elliptic Materiality",
+    name: "Эллиптическая Материальность",
     id: 6,
     initialCost: 1e4,
     costMult: 500,
-    description: () => `Increase the Reality Machine cap by ${formatX(1e100)}`,
+    description: () => `Множитель ${formatX(1e100)} к ограничению на количество Машин Реальности`,
     effect: 1e100,
     formatEffect: value => `${formatX(value)}`,
     isDecimal: true
   }),
   rebuyable({
-    name: "Runic Assurance",
+    name: "Рунное Заверение",
     id: 7,
     initialCost: 2e5,
     costMult: 500,
-    description: () => `Delay Glyph Instability starting level by ${formatInt(200)}`,
+    description: () => `Неустойчивость глифов начинается на ${formatInt(200)} уровней позже`,
     effect: 200,
-    formatEffect: value => `+${formatInt(value)} levels`
+    formatEffect: value => `на ${formatInt(value)} позже`
   }),
   rebuyable({
-    name: "Hyperbolic Apeirogon",
+    name: "Бесконечноугольник Лобачевского",
     id: 8,
     initialCost: 1e7,
     costMult: 800,
-    description: () => `Multiply Infinity Dimensions by ${format("1e100000")}`,
+    description: () => `Множитель ${formatX(DC.E100000)} к Измерениям Бесконечности`,
     effect: DC.E100000,
     formatEffect: value => `${formatX(value)}`,
     isDecimal: true
   }),
   rebuyable({
-    name: "Cosmic Filament",
+    name: "Космическая Нить",
     id: 9,
     initialCost: 1e9,
     costMult: 1000,
-    description: () => `Increase Galaxy strength`,
+    description: () => `Галактики сильнее`,
     effect: 0.03,
     formatEffect: value => `+${formatPercents(value)}`,
   }),
   rebuyable({
-    name: "Entropic Condensing",
+    name: "Энтропийное Сжатие",
     id: 10,
     initialCost: 8e9,
     costMult: 2000,
-    description: () => `Increase Singularity gain`,
+    description: () => `Множитель к получению Сингулярностей`,
     effect: 1,
     formatEffect: value => `${formatX(1 + value, 2)}`
   }),
   {
-    name: "Suspicion of Interference",
+    name: "Подозрительность Интерференции",
     id: 11,
     cost: 5e7,
-    requirement: () => `${format(1e90)} total Relic Shards
-      (You have ${format(player.celestials.effarig.relicShards, 2)})`,
+    requirement: () => `${format(1e90)} Реликтовых Осколков
+      (У вас ${format(player.celestials.effarig.relicShards, 2)})`,
     hasFailed: () => false,
     checkRequirement: () => player.celestials.effarig.relicShards >= 1e90,
     checkEvent: GAME_EVENT.REALITY_RESET_AFTER,
-    description: "Time Dimension power based on total antimatter",
+    description: "Множители Измерений Времени возведены в степень в зависимости от общего количества произведённой антиматерии",
     effect: () => 1 + Math.log10(player.records.totalAntimatter.log10()) / 100,
     formatEffect: value => `${formatPow(value, 0, 4)}`,
     isDisabledInDoomed: true
   },
   {
-    name: "Consequences of Illusions",
+    name: "Последствия Иллюзии",
     id: 12,
     cost: 5e7,
-    requirement: () => `Make a level ${formatInt(9000)} Glyph with a single Glyph level factor weight at
-    ${formatInt(100)}`,
+    requirement: () => `Получите глиф уровня хотя бы ${formatInt(9000)}, когда один из факторов уровня глифа имеет вес
+    ${formatPercents(1)}`,
     hasFailed: () => false,
     checkRequirement: () => Object.values(player.celestials.effarig.glyphWeights).some(w => w === 100) &&
       gainedGlyphLevel().actualLevel >= 9000,
     checkEvent: GAME_EVENT.REALITY_RESET_BEFORE,
-    description: "Gain free Dimboosts based on Imaginary rebuyable count",
+    description: () => `Получать ${formatInt(2e4)} Расширений за каждый купленный уровень повторяемых Мнимых Улучшений`,
     effect: () => 2e4 * ImaginaryUpgrades.totalRebuyables,
     formatEffect: value => `${format(value, 1)}`,
     isDisabledInDoomed: true
   },
   {
-    name: "Transience of Information",
+    name: "Быстротечность Информации",
     id: 13,
     cost: 5e7,
-    requirement: () => `Reach ${format(Number.MAX_VALUE, 2)} projected Reality Machines within
-      The Nameless Ones' Reality`,
+    requirement: () => `Сделайте так, чтобы при отсутствии ограничения вы могли бы получить ${format(Number.MAX_VALUE, 2)}
+      Машин Реальности при завершении Реальности Безымянных`,
     hasFailed: () => !Enslaved.isRunning,
     // This is for consistency with the UI, which displays an amplified "projected RM" value on the reality button
     checkRequirement: () => Enslaved.isRunning &&
       MachineHandler.uncappedRM.times(simulatedRealityCount(false) + 1).gte(Number.MAX_VALUE),
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    description: "Increase Imaginary Machine Cap based on Imaginary Upgrades purchased",
+    description: "Множитель к ограничению на количество Мнимых Машин в зависимости от купленных Мнимых Улучшений",
     effect: () => 1 + ImaginaryUpgrades.totalRebuyables / 20 + ImaginaryUpgrades.totalSinglePurchase / 2,
     formatEffect: value => `${formatX(value, 2, 1)}`,
     isDisabledInDoomed: true
   },
   {
-    name: "Recollection of Intrusion",
+    name: "Восстановление Интервенции",
     id: 14,
     cost: 3.5e8,
     formatCost: x => format(x, 1),
-    requirement: () => `Reach a tickspeed of ${format("1e75000000000")} / sec within Eternity Challenge 5`,
+    requirement: () => `Сделайте скорость тика не менее ${format(Decimal.pow(10, 7.5e10))} в 5-м Испытании Вечности`,
     hasFailed: () => false,
     checkRequirement: () => EternityChallenge(5).isRunning && Tickspeed.perSecond.exponent >= 7.5e10,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    description: () => `Raise all Dimension per-purchase multipliers to ${formatPow(1.5, 0, 1)}`,
+    description: () => `Все множители за покупку измерений возведены в степень ${formatPow(1.5, 0, 1)}`,
     effect: 1.5,
     isDisabledInDoomed: true
   },
   {
-    name: "Fabrication of Ideals",
+    name: "Фальсификация Идеологии",
     id: 15,
     cost: 1e9,
-    requirement: () => `Reach ${format("1e1500000000000")} antimatter without
-      ever having any 1st Infinity Dimensions`,
+    requirement: () => `Достигните ${format(Decimal.pow(10, 1.5e12))} антиматерии, не получив 
+      ни одного 1-го Измерения Бесконечности в текущей реальности`,
     hasFailed: () => player.requirementChecks.reality.maxID1.gt(0),
     checkRequirement: () => player.requirementChecks.reality.maxID1.eq(0) && player.antimatter.exponent >= 1.5e12,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
@@ -171,153 +171,151 @@ export const imaginaryUpgrades = [
     // - Purchasing any ID (edge case: this is acceptable for ID2-8 inside EC2 or EC10)
     // - Purchasing any TD with any amount of EC7 completions (edge case: acceptable within EC1 or EC10)
     // - Entering EC7 with any amount of purchased TD
-    description: () => `${
-      Pelle.isDoomed ? "Unlock" : "Convert Antimatter Dimensions to Continuum and unlock"
-    } Lai'tela, Celestial of Dimensions`,
+    description: "Разблокировать континуум, 1-е Измерение Тёмной Материи и Лайтелу, Небожителя Измерений",
   },
   {
-    name: "Massless Momentum",
+    name: "Невесомый Импульс",
     id: 16,
     cost: 3.5e9,
     formatCost: x => format(x, 1),
-    requirement: () => `Destabilize Lai'tela's Reality in under ${formatInt(30)} seconds twice`,
+    requirement: () => `Дестабилизируйте Реальность Лайтелы дважды`,
     hasFailed: () => false,
     checkRequirement: () => Laitela.maxAllowedDimension <= 6,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    description: "Unlock the 2nd Dark Matter Dimension",
+    description: "Разблокировать 2-е Измерение Тёмной Материи",
   },
   {
-    name: "Chiral Oscillation",
+    name: "Хиральное Колебание",
     id: 17,
     cost: 6e9,
-    requirement: () => `Automatically condense at least ${formatInt(20)} Singularities at once`,
+    requirement: () => `Совершите сжатие не менее чем за ${formatInt(20)} Сингулярностей автоматически`,
     hasFailed: () => false,
     checkRequirement: () => Singularity.singularitiesGained >= 20 &&
       Currency.darkEnergy.gte(Singularity.cap * SingularityMilestone.autoCondense.effectOrDefault(Infinity)),
     checkEvent: GAME_EVENT.SINGULARITY_RESET_BEFORE,
-    description: "Unlock the 3rd Dark Matter Dimension",
+    description: "Разблокировать 3-е Измерение Тёмной Материи",
   },
   {
-    name: "Dimensional Symmetry",
+    name: "Многомерная Симметрия",
     id: 18,
     cost: 1.5e10,
     formatCost: x => format(x, 1),
-    requirement: () => `Have ${formatInt(80000)} total Galaxies`,
+    requirement: () => `Достигните ${formatInt(80000)} галактик`,
     hasFailed: () => false,
     checkRequirement: () => Replicanti.galaxies.total + player.galaxies +
       player.dilation.totalTachyonGalaxies >= 80000,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    description: "Unlock the 4th Dark Matter Dimension",
+    description: "Разблокировать 4-е Измерение Тёмной Материи",
   },
   {
-    name: "Deterministic Radiation",
+    name: "Детерминированная Радиация",
     id: 19,
     cost: 2.8e10,
     formatCost: x => format(x, 1),
-    requirement: () => `Reach ${formatInt(3.85e6)} Tickspeed Continuum without ever having more than
-      ${formatInt(8)} Time Studies in this Reality`,
+    requirement: () => `Сделайте значение континуума ускорителя не менее ${formatInt(3.85e6)}, имея не более
+      ${formatInt(8)} Исследований Времени на протяжении реальности`,
     hasFailed: () => player.requirementChecks.reality.maxStudies > 8,
     checkRequirement: () => player.requirementChecks.reality.maxStudies <= 8 &&
       Tickspeed.continuumValue >= 3.85e6,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     canLock: true,
-    lockEvent: () => `purchase more than ${formatInt(8)} Time Studies`,
-    description: "Unlock Dark Matter Annihilation"
+    lockEvent: () => `купить более ${formatInt(8)} Исследований Времени`,
+    description: "Разблокировать аннигиляцию"
   },
   {
-    name: "Vacuum Acceleration",
+    name: "Вакуумное Ускорение",
     id: 20,
     cost: 3e12,
-    requirement: () => `Have a Continuum increase of at least ${formatPercents(1)}`,
+    requirement: () => `Сделайте эффект Тёмной Материи не менее ${formatPercents(1)}`,
     hasFailed: () => false,
     checkRequirement: () => Laitela.matterExtraPurchaseFactor >= 2,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    description: () => `Unlock Autobuyers for repeatable Imaginary Upgrades and generate Imaginary Machines
-      ${formatInt(10)} times faster`,
+    description: () => `Разблокировать автоматику повторяемых Мнимых Улучшений.
+      Вы производите Мнимые Машины в ${formatInt(10)} раз быстрее`,
     effect: 10,
     isDisabledInDoomed: true
   },
   {
-    name: "Existential Elimination",
+    name: "Экзистенциальное Удаление",
     id: 21,
     cost: 1e13,
-    requirement: () => `Reach ${format("1e7400000000000")} antimatter with Continuum disabled for the entire Reality`,
+    requirement: () => `Достигните ${format(Decimal.pow(10, 7.4e12))} антиматерии с континуумом, выключенным на протяжении реальности`,
     hasFailed: () => !player.requirementChecks.reality.noContinuum,
     checkRequirement: () => player.requirementChecks.reality.noContinuum &&
       Currency.antimatter.value.log10() >= 7.4e12,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     canLock: true,
-    lockEvent: "enable Continuum",
-    description: "Annihilation multiplier gain is improved based on Imaginary Machines",
+    lockEvent: "включить континуум",
+    description: "Множитель к получению множителя аннигиляции в зависимости от количества Мнимых Машин",
     effect: () => Math.clampMin(Math.pow(Math.log10(Currency.imaginaryMachines.value) - 10, 3), 1),
     formatEffect: value => `${formatX(value, 2, 1)}`,
     isDisabledInDoomed: true
   },
   {
-    name: "Total Termination",
+    name: "Полное Завершение",
     id: 22,
     cost: 1.5e14,
     formatCost: x => format(x, 1),
-    requirement: () => `Reach ${format("1e150000000000")} antimatter in Effarig's Reality with
-      at least ${formatInt(4)} Cursed Glyphs equipped`,
+    requirement: () => `Достигните ${format(Decimal.pow(10, 1.5e11))} антиматерии в Реальности Эффарига, имея не менее
+      ${formatInt(4)} действующих Проклятых Глифов на протяжении реальности`,
     // Note: 4 cursed glyphs is -12 glyph count, but equipping a positive glyph in the last slot is allowed
     hasFailed: () => !Effarig.isRunning || player.requirementChecks.reality.maxGlyphs > -10,
     checkRequirement: () => Effarig.isRunning && player.requirementChecks.reality.maxGlyphs < -10 &&
       Currency.antimatter.value.exponent >= 1.5e11,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    description: () => `All Glyph Sacrifice totals are increased to ${format(1e100)}`,
+    description: () => `Увеличить суммарную жетрвенную ценность глифов каждого типа до ограничения в ${format(1e100)}`,
     effect: 1e100,
     isDisabledInDoomed: true
   },
   {
-    name: "Planar Purification",
+    name: "Планарное Очищение",
     id: 23,
     cost: 6e14,
-    requirement: () => `Reach Glyph level ${formatInt(20000)} in Ra's Reality with
-      at most ${formatInt(0)} Glyphs equipped`,
+    requirement: () => `Сделайте уровень получаемого глифа не менее ${formatInt(20000)} в Реальности Ра, имея не более
+      ${formatInt(0)} действующих глифов на протяжении реальности`,
     hasFailed: () => !Ra.isRunning || player.requirementChecks.reality.maxGlyphs > 0,
     checkRequirement: () => Ra.isRunning && player.requirementChecks.reality.maxGlyphs <= 0 &&
       gainedGlyphLevel().actualLevel >= 20000,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    description: "Increase free Dimboost count based on Tesseract count",
+    description: () => `Тессеракты дают множитель к эффекту Мнимого Улучшения "Последствия Иллюзии"`,
     effect: () => Math.floor(0.25 * Math.pow(Tesseracts.effectiveCount, 2)),
     formatEffect: value => `${formatX(value)}`,
     isDisabledInDoomed: true
   },
   {
-    name: "Absolute Annulment",
+    name: "Абсолютное Аннулирование",
     id: 24,
     cost: 6e14,
     // We unfortunately don't have the UI space to be more descriptive on this button without causing text overflow,
     // so hopefully the additional modals (from the upgrade lock) will mostly communicate the idea that this is under
     // the same conditions as hard V's Post-destination
-    requirement: () => `Have ${formatInt(13000)} Antimatter Galaxies in Ra's Reality
-      with a fully inverted Black Hole`,
+    requirement: () => `Достигните ${formatInt(13000)} Галактик Антиматерии в Реальности Ра с Чёрной Дырой, интвертированной
+      на полную мощность на протяжении реальности`,
     hasFailed: () => !Ra.isRunning || player.requirementChecks.reality.slowestBH > 1e-300,
     checkRequirement: () => Ra.isRunning && player.requirementChecks.reality.slowestBH <= 1e-300 &&
       player.galaxies >= 13000,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     canLock: true,
     // Three locking events: uninvert, discharge, and entering (but not auto-completing) EC12
-    description: "Increase free Dimboost strength based on Singularity count",
+    description: `Расширения Измерений от Мнимого Улучшения "Последствия Иллюзии" сильнее в зависимости от количества Сингулярностей`,
     effect: () => Decimal.pow(player.celestials.laitela.singularities, 300),
     formatEffect: value => `${formatX(value, 2, 1)}`,
     isDisabledInDoomed: true
   },
   {
-    name: "Omnipresent Obliteration",
+    name: "Вездесущее Уничтожение",
     id: 25,
     cost: 1.6e15,
     formatCost: x => format(x, 1),
-    requirement: () => `Reach Reality in Lai'tela's Reality with all Dimensions disabled and
-      at least ${formatInt(4)} empty Glyph slots`,
+    requirement: () => `Разблокируйте реальность в полностью дестабилизированной Реальности Лайтелы,
+      имея не более одного действующего глифа без особого учёта Проклятых Глифов на протяжении реальности`,
     hasFailed: () => !Laitela.isRunning || Laitela.maxAllowedDimension !== 0 ||
       Glyphs.activeWithoutCompanion.length > 1,
     checkRequirement: () => Laitela.isRunning && Laitela.maxAllowedDimension === 0 &&
       Glyphs.activeWithoutCompanion.length <= 1 && TimeStudy.reality.isBought,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     canLock: true,
-    lockEvent: "equip another non-Companion Glyph",
-    description: "Unlock Pelle, Celestial of Antimatter",
+    lockEvent: "активировать ещё один глиф",
+    description: "Разблокировать Пелля, Небожителя Антиматерии",
   },
 ];

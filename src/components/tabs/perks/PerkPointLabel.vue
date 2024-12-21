@@ -19,8 +19,7 @@ export default {
       return PerkLayouts[this.treeLayout].buttonText;
     },
     physicsText() {
-      const enableStr = (this.physicsOverride ?? this.physicsEnabled) ? "Enabled" : "Disabled";
-      return `${enableStr}${this.physicsOverride === undefined ? "" : " (fixed)"}`;
+      return (this.physicsOverride ?? this.physicsEnabled) ? "ВКЛ." : "ВЫКЛ.";
     }
   },
   created() {
@@ -70,37 +69,37 @@ export default {
 
 <template>
   <div class="c-perk-tab__header">
-    You have <span class="c-perk-tab__perk-points">{{ format(pp, 2) }}</span> {{ pluralize("Perk Point", pp) }}.
+    У вас <span class="c-perk-tab__perk-points">{{ format(pp, 2) }}</span> {{ pluralize("Очко", pp) }} Умения.
     <br>
-    Perk choices are permanent and cannot be respecced.
+    Навыки невозможно сбросить.
     <br>
-    Diamond-shaped perks also give Automator Points.
+    Квадратные Навыки при покупке дают Очки Автоматизации.
     <br>
     <div class="perk-settings">
       <PrimaryButton
         class="o-primary-btn c-button-perk-layout"
         @click="cycleLayout"
       >
-        Perk Layout: {{ layoutText }}
+        Конфигурация древа: {{ layoutText }}
       </PrimaryButton>
       <PrimaryButton
         :class="physicsClassObject()"
         @click="togglePhysics"
       >
-        Physics: {{ physicsText }}
+        Физика: {{ physicsText }}
       </PrimaryButton>
       <br>
       <PrimaryButton
         class="o-primary-btn"
         @click="centerTree"
       >
-        Center Tree on START
+        Переместить древо с Навыком СТАРТ в центре
       </PrimaryButton>
       <PrimaryButton
         class="o-primary-btn"
         @click="straightenEdges"
       >
-        Straighten Edges
+        Выпрямить рёбра
       </PrimaryButton>
     </div>
   </div>
@@ -112,7 +111,7 @@ export default {
 }
 
 .c-button-perk-layout {
-  width: 30rem;
+  width: 40rem;
   margin-bottom: 1rem;
 }
 

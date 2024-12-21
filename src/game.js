@@ -16,7 +16,26 @@ if (GlobalErrorHandler.handled) {
 }
 GlobalErrorHandler.cleanStart = true;
 
-export function playerInfinityUpgradesOnReset() {
+export function translateGlyph(type) {
+  switch (type) {
+    case "reality":
+      return "Реальности";
+    case "effarig":
+      return "Эффарига";
+    case "power":
+      return "Силы";
+    case "infinity":
+      return "Бесконечности";
+    case "replication":
+      return "Репликации";
+    case "time":
+      return "Времени";
+    case "dilation":
+      return "Замедления";
+  }
+}
+
+export function playerInfinityUpgradesOnReset(reset = true) {
 
   const infinityUpgrades = new Set(
     ["timeMult", "dimMult", "timeMult2",
@@ -28,44 +47,31 @@ export function playerInfinityUpgradesOnReset() {
   );
 
   const breakInfinityUpgrades = new Set(
-    ["timeMult", "dimMult", "timeMult2",
-      "skipReset1", "skipReset2", "unspentBonus",
-      "27Mult", "18Mult", "36Mult", "resetMult",
-      "skipReset3", "passiveGen", "45Mult",
-      "resetBoost", "galaxyBoost", "skipResetGalaxy",
-      "totalMult", "currentMult", "postGalaxy",
+    ["totalMult", "currentMult", "postGalaxy",
       "challengeMult", "achievementMult", "infinitiedMult",
-      "infinitiedGeneration", "autoBuyerUpgrade", "autobuyMaxDimboosts",
-      "ipOffline"]
+      "infinitiedGeneration", "autoBuyerUpgrade", "autobuyMaxDimboosts"]
   );
 
-  if (PelleUpgrade.keepBreakInfinityUpgrades.canBeApplied) {
-    player.infinityUpgrades = new Set([...player.infinityUpgrades].filter(u => breakInfinityUpgrades.has(u)));
-    return;
+  let keptUpgrades = new Set();
+  let keptRebuyables = [0, 0, 0];
+
+  if (PelleUpgrade.keepBreakInfinityUpgrades.canBeApplied || EternityMilestone.keepBreakUpgrades.isReached) {
+    keptUpgrades = breakInfinityUpgrades;
+    keptRebuyables = [8, 7, 10];
   }
 
-  if (PelleUpgrade.keepInfinityUpgrades.canBeApplied) {
-    player.infinityUpgrades = new Set([...player.infinityUpgrades].filter(u => infinityUpgrades.has(u)));
-    player.infinityRebuyables = [0, 0, 0];
-    GameCache.tickSpeedMultDecrease.invalidate();
-    GameCache.dimensionMultDecrease.invalidate();
-    return;
+  if (PelleUpgrade.keepInfinityUpgrades.canBeApplied || EternityMilestone.keepInfinityUpgrades.isReached) {
+    keptUpgrades = keptUpgrades.union(infinityUpgrades);
   }
 
-  if (RealityUpgrade(10).isBought || EternityMilestone.keepBreakUpgrades.isReached) {
-    player.infinityUpgrades = breakInfinityUpgrades;
-    player.infinityRebuyables = [8, 7, 10];
-  } else if (EternityMilestone.keepInfinityUpgrades.isReached) {
-    player.infinityUpgrades = infinityUpgrades;
-    player.infinityRebuyables = [0, 0, 0];
+  if (reset) {
+    player.infinityUpgrades = keptUpgrades;
+    player.infinityRebuyables = keptRebuyables;
   } else {
-    player.infinityUpgrades.clear();
-    player.infinityRebuyables = [0, 0, 0];
-  }
-
-  if (Pelle.isDoomed) {
-    player.infinityUpgrades.clear();
-    player.infinityRebuyables = [0, 0, 0];
+    player.infinityUpgrades = keptUpgrades.union(player.infinityUpgrades);
+    for (let i = 0; i < 3; i++) {
+      player.infinityRebuyables[i] = Math.max(player.infinityRebuyables[i], keptRebuyables[i]);
+    }
   }
 
   GameCache.tickSpeedMultDecrease.invalidate();
@@ -158,6 +164,10 @@ export function requiredIPForEP(epAmount) {
     .clampMin(Number.MAX_VALUE);
 }
 
+export function gainedRealityMachines(amplify) {
+  return MachineHandler.gainedRealityMachines.times(simulatedRealityCount(false, amplify) + 1).clampMax(MachineHandler.distanceToRMCap);
+}
+
 export function gainedGlyphLevel() {
   const glyphState = getGlyphLevelInputs();
   let rawLevel = Math.floor(glyphState.rawLevel);
@@ -185,8 +195,8 @@ export function ratePerMinute(amount, time) {
 // eslint-disable-next-line max-params
 export function addInfinityTime(time, realTime, ip, infinities) {
   let challenge = "";
-  if (player.challenge.normal.current) challenge = `Normal Challenge ${player.challenge.normal.current}`;
-  if (player.challenge.infinity.current) challenge = `Infinity Challenge ${player.challenge.infinity.current}`;
+  if (player.challenge.normal.current) challenge = `${player.challenge.normal.current}-е Обычное Испытание`;
+  if (player.challenge.infinity.current) challenge = `${player.challenge.infinity.current}-е Испытание Бесконечности`;
   player.records.recentInfinities.pop();
   player.records.recentInfinities.unshift([time, realTime, ip, infinities, challenge]);
   GameCache.bestRunIPPM.invalidate();
@@ -214,9 +224,9 @@ export function addEternityTime(time, realTime, ep, eternities) {
   if (player.challenge.eternity.current) {
     const currEC = player.challenge.eternity.current;
     const ec = EternityChallenge(currEC);
-    const challText = player.dilation.active ? "Dilated EC" : "Eternity Challenge";
-    challenge = `${challText} ${currEC} (${formatInt(ec.completions)}/${formatInt(ec.maxCompletions)})`;
-  } else if (player.dilation.active) challenge = "Time Dilation";
+    const challText = player.dilation.active ? "ИспВ${currEC} в Замедлении" : "${currEC}-е Испытание Вечности";
+    challenge = `${challText} (${formatInt(ec.completions)}/${formatInt(ec.maxCompletions)})`;
+  } else if (player.dilation.active) challenge = "Замедление Времени";
   // If we call this function outside of dilation, it uses the existing AM and produces an erroneous number
   const gainedTP = player.dilation.active ? getTachyonGain() : DC.D0;
   player.records.recentEternities.pop();
@@ -257,7 +267,7 @@ export function addRealityTime(time, realTime, rm, level, realities, ampFactor, 
   let reality = "";
   const celestials = [Teresa, Effarig, Enslaved, V, Ra, Laitela];
   for (const cel of celestials) {
-    if (cel.isRunning) reality = cel.displayName;
+    if (cel.isRunning) reality = `Реальность {cel.possessiveName}`;
   }
   const shards = Effarig.shardsGained;
   player.records.recentRealities.pop();
@@ -467,9 +477,11 @@ export function gameLoop(passDiff, options = {}) {
   } else if (!Enslaved.isReleaseTick) {
     Enslaved.nextTickDiff = realDiff;
   }
-  if (Enslaved.isReleaseTick || diff === undefined) {
+  if (diff === undefined) {
     diff = Enslaved.nextTickDiff;
   }
+
+  applyRUPG10(false);
 
   Autobuyers.tick();
   Tutorial.tutorialLoop();
@@ -658,6 +670,12 @@ function updatePrestigeRates() {
     player.records.thisEternity.bestEPminVal = gainedEternityPoints();
   }
 
+  const currentRMmin = gainedRealityMachines(false).dividedBy(Math.clampMin(0.0005, Time.thisRealityRealTime.totalMinutes));
+  if (currentRMmin.gt(player.records.thisReality.bestRMmin) && isRealityAvailable()) {
+    player.records.thisReality.bestRMmin = currentRMmin;
+    player.records.thisReality.bestRMminVal = gainedRealityMachines(false);
+  }
+
   const currentRSmin = Effarig.shardsGained / Math.clampMin(0.0005, Time.thisRealityRealTime.totalMinutes);
   if (currentRSmin > player.records.thisReality.bestRSmin && isRealityAvailable()) {
     player.records.thisReality.bestRSmin = currentRSmin;
@@ -718,6 +736,7 @@ function applyAutoUnlockPerks() {
   }
   if (Perk.autounlockDilation3.canBeApplied) buyDilationUpgrade(DilationUpgrade.ttGenerator.id);
   if (Perk.autounlockReality.canBeApplied) TimeStudy.reality.purchase(true);
+  applyEU1();
   applyEU2();
 }
 
@@ -730,7 +749,7 @@ function laitelaRealityTick(realDiff) {
 
   // Setting entropy to -1 on completion prevents the modal from showing up repeatedly
   if (laitelaInfo.entropy >= 1) {
-    let completionText = `Lai'tela's Reality has been destabilized after ${Time.thisRealityRealTime.toStringShort()}.`;
+    let completionText = `Вы выполнили Реальность Лайтелы за ${Time.thisRealityRealTime.toStringShort()}.`;
     laitelaInfo.entropy = -1;
     const oldInfo = {
       fastestCompletion: laitelaInfo.fastestCompletion,
@@ -751,36 +770,36 @@ function laitelaRealityTick(realDiff) {
       }
     }
     if (Laitela.realityReward > oldInfo.realityReward) {
-      completionText += `<br><br>Dark Matter Multiplier: ${formatX(oldInfo.realityReward, 2, 2)}
+      completionText += `<br><br>Награда: ${formatX(oldInfo.realityReward, 2, 2)}
       ➜ ${formatX(Laitela.realityReward, 2, 2)}`;
       if (oldInfo.fastestCompletion === 3600 || oldInfo.fastestCompletion === 300 && oldInfo.difficultyTier > 0) {
         if (Time.thisRealityRealTime.totalSeconds < 30) {
           // First attempt - destabilising
-          completionText += `<br>Best Completion Time: None ➜ Destabilized
-          <br>Highest Active Dimension: ${formatInt(8 - oldInfo.difficultyTier)} ➜
+          completionText += `<br>Рекорд: Нет ➜ Дестабилизация
+          <br>Действующих уровней измерений: ${formatInt(8 - oldInfo.difficultyTier)} ➜
           ${formatInt(8 - laitelaInfo.difficultyTier)}`;
         } else {
           // First attempt - not destabilising
-          completionText += `<br>Best Completion Time: None ➜
+          completionText += `<br>Рекорд: Нет ➜
             ${TimeSpan.fromSeconds(laitelaInfo.fastestCompletion).toStringShort()}
-            <br>Highest Active Dimension: ${formatInt(8 - laitelaInfo.difficultyTier)}`;
+            <br>Действующих уровней измерений: ${formatInt(8 - laitelaInfo.difficultyTier)}`;
         }
       } else if (Time.thisRealityRealTime.totalSeconds < 30) {
         // Second+ attempt - destabilising
-        completionText += `<br>Best Completion Time: ${TimeSpan.fromSeconds(oldInfo.fastestCompletion).toStringShort()}
-          ➜ Destabilized
-          <br>Highest Active Dimension: ${formatInt(8 - oldInfo.difficultyTier)} ➜
+        completionText += `<br>Рекорд: ${TimeSpan.fromSeconds(oldInfo.fastestCompletion).toStringShort()}
+          ➜ Дестабилизация
+          <br>Действующих уровней измерений: ${formatInt(8 - oldInfo.difficultyTier)} ➜
           ${formatInt(8 - laitelaInfo.difficultyTier)}`;
       } else {
         // Second+ attempt - not destabilising
-        completionText += `<br>Best Completion Time: ${TimeSpan.fromSeconds(oldInfo.fastestCompletion).toStringShort()}
+        completionText += `<br>Рекорд: ${TimeSpan.fromSeconds(oldInfo.fastestCompletion).toStringShort()}
         ➜ ${TimeSpan.fromSeconds(laitelaInfo.fastestCompletion).toStringShort()}
-        <br>Highest Active Dimension: ${formatInt(8 - oldInfo.difficultyTier)}`;
+        <br>Действующих уровней измерений: ${formatInt(8 - oldInfo.difficultyTier)}`;
       }
       player.records.bestReality.laitelaSet = Glyphs.copyForRecords(Glyphs.active.filter(g => g !== null));
     } else {
-      completionText += ` You need to destabilize in faster than
-        ${TimeSpan.fromSeconds(laitelaInfo.fastestCompletion).toStringShort()} to improve your multiplier.`;
+      completionText += ` Чтобы улучшить награду, необходимо выполнить её быстрее, чем за
+        ${TimeSpan.fromSeconds(laitelaInfo.fastestCompletion).toStringShort()}.`;
     }
     if (Laitela.isFullyDestabilized) SpeedrunMilestones(24).tryComplete();
     Modal.message.show(completionText, {}, 2);
@@ -789,20 +808,18 @@ function laitelaRealityTick(realDiff) {
 
 function laitelaBeatText(disabledDim) {
   switch (disabledDim) {
-    case 1: return `<br><br>Lai'tela's Reality will now completely disable production from all Dimensions.
-        The Reality can still be entered, but further destabilization is no longer possible.
-        For completely destabilizing the Reality, you also get an additional ${formatX(8)} to Dark Energy gain.`;
-    case 2: return `<br><br>Lai'tela's Reality will now disable production from all 2nd Dimensions during
-      future runs, but the reward will be ${formatInt(100)} times stronger than before. Completely destabilizing
-      the Reality for the final Dimension will give you an additional ${formatX(8)} to Dark Energy gain.`;
-    case 3: return `<br><br>Lai'tela's Reality will now disable production from all 3rd Dimensions during
-        future runs, but the reward will be ${formatInt(100)} times stronger than before.`;
-    case 8: return `<br><br>Lai'tela's Reality will now disable production from all 8th Dimensions during
-        future runs, but the reward will be ${formatInt(100)} times stronger than before. This boost can be
-        repeated for each remaining Dimension by reaching destabilization within ${formatInt(30)} seconds again.`;
-    default: return `<br><br>Lai'tela's Reality will now disable production from all
-        ${disabledDim}th Dimensions during future runs, but the reward will be
-        ${formatInt(100)} times stronger than before.`;
+    case 1: return `<br><br>Теперь в Реальности Лайтелы отключено производство всех измерений.
+        Её можно запускать, но выполнить не получится.
+        За полную дестабилизацию Реальности вы получаете множитель ${formatX(8)} к производству Тёмной Энергии.`;
+    case 2: return `<br><br>Теперь в Реальности Лайтелы отключено производство 2-х Измерений всех видов,
+      но её выполнение даст ${formatInt(100)}-кратную награду. За следующую, полную дестабилизацию
+      Реальности вы получите множитель ${formatX(8)} к производству Тёмной Энергии.`;
+    case 8: return `<br><br>Теперь в Реальности Лайтелы отключено производство 8-х Измерений всех видов,
+        но её выполнение даст ${formatInt(100)}-кратную награду. Это увеличение награды можно повторять
+        вновь и вновь, <i>дестабилизируя</i> Реальность, то есть выполняя её быстрее, чем за ${formatInt(30)} секунд.`;
+    default: return `<br><br>Теперь в Реальности Лайтелы отключено производство
+        ${disabledDim}-х Измерений всех видов, но её выполнение даст
+        ${formatInt(100)}-кратную награду.`;
   }
 }
 
@@ -994,19 +1011,19 @@ export function simulateTime(seconds, real, fast) {
         asyncEntry: doneSoFar => {
           GameIntervals.stop();
           ui.$viewModel.modal.progressBar = {
-            label: "Offline Progress Simulation",
-            info: () => `The game is being run at a lower accuracy in order to quickly calculate the resources you
-              gained while you were away. See the How To Play entry on "Offline Progress" for technical details. If
-              you are impatient and want to get back to the game sooner, you can click the "Speed up" button to
-              simulate the rest of the time with half as many ticks (down to a minimum of ${formatInt(500)} ticks
-              remaining). The "SKIP" button will instead use all the remaining offline time in ${formatInt(10)}
-              ticks.`,
-            progressName: "Ticks",
+            label: "Симуляция офлайн-прогресса",
+            info: () => `Игра идёт с меньшей точностью, чтобы быстро рассчитать, сколько ресурсов вы должны были
+              получить офлайн. Подробности вы можете найти в статье "Офлайн-прогресс" помощи по игре. Для
+              нетерпеливых игроков у нас есть опция "Ускорить",
+              которая симулирует оставшееся время вдвое меньшим количеством тиков (то есть примерно вдвое быстрее
+              и с точностью, тоже меньшей вдвое). Опция же "Пропустить" симулирует оставшееся время всего ${formatInt(10)}
+              тиками.`,
+            progressName: "Тиков",
             current: doneSoFar,
             max: ticks,
             startTime: Date.now(),
             buttons: [{
-              text: "Speed up",
+              text: "Ускорить",
               condition: (current, max) => max - current > 500,
               click: () => {
                 const newRemaining = Math.clampMin(Math.floor(progress.remaining / 2), 500);
@@ -1020,7 +1037,7 @@ export function simulateTime(seconds, real, fast) {
               }
             },
             {
-              text: "SKIP",
+              text: "Пропустить",
               condition: (current, max) => max - current > 10,
               click: () => {
                 // We jump to 10 from the end (condition guarantees there are at least 10 left).

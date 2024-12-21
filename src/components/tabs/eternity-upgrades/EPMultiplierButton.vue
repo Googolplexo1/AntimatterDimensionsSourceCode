@@ -70,23 +70,23 @@ export default {
       @click="purchaseUpgrade"
     >
       <div :class="{ 'o-pelle-disabled': isDoomed }">
-        Multiply Eternity Points from all sources by {{ formatX(5) }}
+        Множитель {{ formatX(5) }} к получению Очков Вечности
         <br>
-        Currently: {{ formatX(multiplier, 2, 0) }}
+        Сейчас: {{ formatX(multiplier, 2, 0) }}
       </div>
       <br>
-      Cost: {{ quantify("Eternity Point", cost, 2, 0) }}
+      Цена: {{ quantify("Очко", cost, 2, 0) }} Вечности
     </button>
     <PrimaryButton
       class="l--spoon-btn-group__little-spoon o-primary-btn--small-spoon"
       @click="upgrade.buyMax(false)"
     >
-      Max Eternity Point mult
+      Купить все
     </PrimaryButton>
     <PrimaryToggleButton
       v-if="isAutoUnlocked"
       v-model="isAutobuyerActive"
-      label="Autobuy EP mult"
+      label="Автоматика упятерителей ОВ:"
       class="l--spoon-btn-group__little-spoon o-primary-btn--small-spoon"
     />
   </div>

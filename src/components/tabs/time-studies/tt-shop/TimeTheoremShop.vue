@@ -52,25 +52,22 @@ export default {
     },
     TTgenRateText() {
       if (this.theoremGeneration.lt(1 / 3600)) {
-        return `one TT every ${TimeSpan.fromSeconds(
+        return `ТВ, получая по одной каждые ${TimeSpan.fromSeconds(
           this.theoremGeneration.reciprocal().toNumber()).toStringShort(false)}`;
       }
       if (this.theoremGeneration.lt(0.1)) {
-        return `${format(this.theoremGeneration.times(3600), 2, 2)} TT/hour`;
+        return `${format(this.theoremGeneration.times(3600), 2, 2)} ТВ в час`;
       }
-      return `${format(this.theoremGeneration, 2, 2)} TT/sec`;
+      return `${format(this.theoremGeneration, 2, 2)} ТВ в секунду`;
     },
     totalTimeTheoremText() {
-      return `${quantify("total Time Theorem", this.totalTimeTheorems, 2, 2, this.formatTimeTheoremType)}`;
+      return `${quantify("Теорема", this.totalTimeTheorems, 2, 2, this.formatTimeTheoremType)} Времени всего`;
     },
     minimizeArrowStyle() {
       return {
         transform: this.minimized ? "rotate(-180deg)" : "",
         transition: "all 0.25s ease-out"
       };
-    },
-    saveLoadText() {
-      return this.$viewModel.shiftDown ? "Save:" : "Load:";
     },
     shopBottomRowHeightStyle() {
       return {
@@ -91,19 +88,19 @@ export default {
       player.timestudy.shopMinimized = !player.timestudy.shopMinimized;
     },
     formatAM(am) {
-      return `${format(am)} AM`;
+      return `${format(am)} антиматерии`;
     },
     buyWithAM() {
       TimeTheorems.buyOne(false, "am");
     },
     formatIP(ip) {
-      return `${format(ip)} IP`;
+      return `${format(ip)} ОБ`;
     },
     buyWithIP() {
       TimeTheorems.buyOne(false, "ip");
     },
     formatEP(ep) {
-      return `${format(ep, 2, 0)} EP`;
+      return `${format(ep, 2, 0)} ОВ`;
     },
     buyWithEP() {
       TimeTheorems.buyOne(false, "ep");
@@ -155,16 +152,15 @@ export default {
         </button>
         <p class="timetheorems">
           <span class="c-tt-amount">
-            {{ quantify("Time Theorem", theoremAmount, 2, 0, formatTimeTheoremType) }}
+            {{ quantify("Теорема", theoremAmount, 2, 0, formatTimeTheoremType) }} Времени
           </span>
           <span v-if="showST">
             <br>
-            {{ quantifyInt("Space Theorem", STamount) }}
+            {{ quantifyInt("Теорема", STamount) }} Пространства
           </span>
         </p>
         <div class="l-load-tree-area">
           <div class="l-tree-load-button-wrapper">
-            <span class="c-ttshop__save-load-text">{{ saveLoadText }}</span>
             <TimeStudySaveLoadButton
               v-for="saveslot in 6"
               :key="saveslot"
@@ -175,8 +171,8 @@ export default {
             <span
               v-if="hasTTGen"
               class="checkbox-margin"
-              ach-tooltip="This shows TT generation by default and total TT if you hold shift.
-                Check this box to swap this behavior."
+              ach-tooltip="Здесь по умолчанию отображается производство ТВ, а при зажатии клавиши Shift - общее количество ТВ.
+                Эта галочка меняет эти две характеристики местами."
             >
               <input
                 v-model="invertTTgenDisplay"
@@ -187,10 +183,10 @@ export default {
               >
             </span>
             <span v-if="showTTGen">
-              You are gaining {{ TTgenRateText }}.
+              Вы производите {{ TTgenRateText }}.
             </span>
             <span v-else>
-              You have {{ totalTimeTheoremText }}.
+              У вас {{ totalTimeTheoremText }}.
             </span>
           </div>
         </div>
@@ -224,13 +220,13 @@ export default {
             class="o-tt-top-row-button c-tt-buy-button c-tt-buy-button--unlocked"
             @click="buyMaxTheorems"
           >
-            Buy max
+            Купить всё
           </button>
           <PrimaryToggleButton
             v-if="!minimized && hasTTAutobuyer"
             v-model="isAutobuyerOn"
             class="o-tt-autobuyer-button c-tt-buy-button c-tt-buy-button--unlocked"
-            label="Auto:"
+            label="Автоматика:"
           />
         </div>
       </div>

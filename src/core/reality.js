@@ -122,8 +122,8 @@ export function isRealityAvailable() {
 
 // Returns the number of "extra" realities from stored real time or Multiversal effects, should be called
 // with false for checking and true for actual usage, and only "used" once per reality.
-export function simulatedRealityCount(advancePartSimCounters) {
-  const amplifiedSim = Enslaved.boostReality ? Enslaved.realityBoostRatio - 1 : 0;
+export function simulatedRealityCount(advancePartSimCounters, amplify = true) {
+  const amplifiedSim = (Enslaved.boostReality && amplify) ? Enslaved.realityBoostRatio - 1 : 0;
   const multiversalSim = AlchemyResource.multiversal.effectValue;
   const simCount = (multiversalSim + 1) * (amplifiedSim + 1) + player.partSimulatedReality - 1;
   if (advancePartSimCounters) {
@@ -144,7 +144,7 @@ export function requestManualReality() {
     return;
   }
   if (GameCache.glyphInventorySpace.value === 0) {
-    Modal.message.show("No available inventory space; free up space by shift-clicking Glyphs to get rid of them.",
+    Modal.message.show("В инвентаре нет места для новых глифов. Чтобы удалить глиф и освободить ячейку, нажмите на него, зажав клавишу Shift.",
       { closeEvent: GAME_EVENT.GLYPHS_CHANGED });
     return;
   }
@@ -328,11 +328,11 @@ function giveRealityRewards(realityProps) {
     const current = Teresa.runRewardMultiplier;
     const newMultiplier = Teresa.rewardMultiplier(player.antimatter);
     const isHigher = newMultiplier > current;
-    const modalText = `You have completed Teresa's Reality! ${isHigher
-      ? `Since you gained more Antimatter, you increased your
-      Glyph Sacrifice multiplier from ${format(current, 2, 2)} to ${format(newMultiplier, 2, 2)}`
-      : `You did not gain more Antimatter during this run, so the Glyph Sacrifice multiplier
-      from Teresa did not increase`}.`;
+    const modalText = `Вы выполнили Реальность Терезы! ${isHigher
+      ? `Поскольку вы достигли большего количества антиматерии, награда
+      возросла с ${format(current, 2, 2)} до ${format(newMultiplier, 2, 2)}`
+      : `Поскольку вы не достигли большего количества антиматерии, награда
+      не возросла`}.`;
     Modal.message.show(modalText, {}, 2);
     if (Currency.antimatter.gt(player.celestials.teresa.bestRunAM)) {
       player.celestials.teresa.bestRunAM = Currency.antimatter.value;
@@ -478,20 +478,20 @@ export function beginProcessReality(realityProps) {
       asyncEntry: doneSoFar => {
         GameIntervals.stop();
         ui.$viewModel.modal.progressBar = {
-          label: "Simulating Amplified Reality",
-          info: () => `The game is currently calculating all the resources you would gain from repeating the
-            Reality you just completed ${formatInt(glyphsToProcess)} more times. Pressing "Quick Glyphs" with
-            more than ${formatInt(glyphsToSample)} Glyphs remaining will speed up the calculation by automatically
-            sacrificing all the remaining Glyphs you would get. Pressing "Skip Glyphs" will ignore all resources
-            related to Glyphs and stop the simulation after giving all other resources.
-            ${Ra.unlocks.unlockGlyphAlchemy.canBeApplied ? `Pressing either button to speed up
-            simulation will not update any resources within Glyph Alchemy.` : ""}`,
-          progressName: "Realities",
+          label: "Симуляция усиленной реальности",
+          info: () => `Игра вычисляет, какие глифы вы получили бы, если бы повторили
+            эту реальность ${quantifyInt("раз", glyphsToProcess)}. Опция "Быстрые глифы"
+            ускоряет вычисления,
+            но при этом все оставшиеся глифы автоматически жертвуются. Опция "Пропустить"
+            завершит симуляцию, но вы не получите ни оставшиеся глифы, ни их жертвенную ценность.
+            ${Ra.unlocks.unlockGlyphAlchemy.canBeApplied ? `При использовании любой из этих опций
+            вы не получите алхимическую ценность оставшихся глифов.` : ""}`,
+          progressName: "Глифов",
           current: doneSoFar,
           max: glyphsToProcess,
           startTime: Date.now(),
           buttons: [{
-            text: "Quick Glyphs",
+            text: "Быстрые глифы",
             condition: (current, max) => max - current > glyphsToSample,
             click: () => {
               // This changes the simulating function to one that just takes a representative sample of 10000 random
@@ -507,7 +507,7 @@ export function beginProcessReality(realityProps) {
             }
           },
           {
-            text: "Skip Glyphs",
+            text: "Пропустить",
             condition: () => true,
             click: () => {
               // Shortcut to the end since we're ignoring all glyph-related resources
@@ -622,8 +622,8 @@ export function finishProcessReality(realityProps) {
 
   Currency.infinities.reset();
   Currency.infinitiesBanked.reset();
-  player.records.bestInfinity.time = 999999999999;
-  player.records.bestInfinity.realTime = 999999999999;
+  player.records.bestInfinity.time = Number.MAX_VALUE;
+  player.records.bestInfinity.realTime = Number.MAX_VALUE;
   player.records.thisInfinity.time = 0;
   player.records.thisInfinity.lastBuyTime = 0;
   player.records.thisInfinity.realTime = 0;
@@ -644,8 +644,8 @@ export function finishProcessReality(realityProps) {
   if (!PelleUpgrade.eternitiesNoReset.canBeApplied) Currency.eternities.reset();
   player.records.thisEternity.time = 0;
   player.records.thisEternity.realTime = 0;
-  player.records.bestEternity.time = 999999999999;
-  player.records.bestEternity.realTime = 999999999999;
+  player.records.bestEternity.time = Number.MAX_VALUE;
+  player.records.bestEternity.realTime = Number.MAX_VALUE;
   if (!PelleUpgrade.keepEternityUpgrades.canBeApplied) player.eternityUpgrades.clear();
   player.totalTickGained = 0;
   if (!PelleUpgrade.keepEternityChallenges.canBeApplied) player.eternityChalls = {};
@@ -717,6 +717,8 @@ export function finishProcessReality(realityProps) {
   player.records.thisEternity.bestIPMsWithoutMaxAll = DC.D0;
   player.records.bestEternity.bestEPminReality = DC.D0;
   player.records.thisReality.bestEternitiesPerMs = DC.D0;
+  player.records.thisReality.bestRMmin = DC.D0;
+  player.records.thisReality.bestRMminVal = DC.D0;
   player.records.thisReality.bestRSmin = 0;
   player.records.thisReality.bestRSminVal = 0;
   resetTimeDimensions();
@@ -768,15 +770,17 @@ function restoreCelestialRuns(celestialRunState) {
 
 // This is also called when the upgrade is purchased, be aware of potentially having "default" values overwrite values
 // which might otherwise be higher. Most explicit values here are the values of upgrades at their caps.
-export function applyRUPG10() {
-  NormalChallenges.completeAll();
-  if (PelleUpgrade.replicantiStayUnlocked.canBeApplied) {
+export function applyRUPG10(real = true) {
+  if (real && !Pelle.isDoomed) Currency.eternities.bumpTo(100);
+  playerInfinityUpgradesOnReset(false);
+  if (player.eternities.gte(2)) NormalChallenges.completeAll();
+  if (PelleUpgrade.replicantiStayUnlocked.canBeApplied || (!Pelle.isDoomed && player.eternities.gte(10))) {
     Replicanti.amount = Replicanti.amount.clampMin(1);
     Replicanti.unlock(true);
   }
   if (Pelle.isDisabled("rupg10")) return;
 
-  player.auto.antimatterDims.all = player.auto.antimatterDims.all.map(current => ({
+  if (player.eternities.gte(2)) player.auto.antimatterDims.all = player.auto.antimatterDims.all.map(current => ({
     isUnlocked: true,
     // These costs are approximately right; if bought manually all dimensions are slightly different from one another
     cost: 1e14,
@@ -785,19 +789,16 @@ export function applyRUPG10() {
     mode: current.mode,
     priority: current.priority,
     isActive: current.isActive,
-    lastTick: player.records.realTimePlayed
+    lastTick: current.lastTick ?? player.records.realTimePlayed
   }));
 
-  for (const autobuyer of Autobuyers.all) {
+  if (player.eternities.gte(2)) for (const autobuyer of Autobuyers.all) {
     if (autobuyer.data.interval !== undefined) autobuyer.data.interval = 100;
   }
 
-  player.dimensionBoosts = Math.max(4, player.dimensionBoosts);
-  player.galaxies = Math.max(1, player.galaxies);
-  player.break = true;
-  Currency.eternities.bumpTo(100);
-  Replicanti.amount = Replicanti.amount.clampMin(1);
-  Replicanti.unlock(true);
+  if (player.eternities.gte(4)) player.dimensionBoosts = Math.max(4, player.dimensionBoosts);
+  if (player.eternities.gte(4)) player.galaxies = Math.max(1, player.galaxies);
+  if (player.eternities.gte(2)) player.break = true;
 
   applyEU1();
 }

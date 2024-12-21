@@ -19,7 +19,7 @@ export default {
 <template>
   <ModalWrapperOptions class="l-wrapper">
     <template #header>
-      Away Progress Options
+      Настройки отображения офлайн-прогресса
     </template>
     <div class="c-modal-options__button-container">
       <AwayProgressOptionsEntry
@@ -28,7 +28,7 @@ export default {
         :name="name"
       />
     </div>
-    Note: Selected resources will only show if they've increased.
+    Примечание: выбранные ресурсы будут показаны, только если их количество увеличилось.
   </ModalWrapperOptions>
 </template>
 

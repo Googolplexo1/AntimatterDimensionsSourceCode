@@ -48,18 +48,18 @@ export default {
       const shadowsPrototype = ["constructor", "hasOwnProperty", "isPrototypeOf", "propertyIsEnumerable",
         "toLocaleString", "toString", "toValueOf"].some(p => this.aliasString.match(p));
 
-      if (!isValidName) return "Constant name must be alphanumeric without spaces and cannot start with a number";
-      if (alreadyExists) return "You have already defined a constant with this name";
-      if (hasCommandConflict) return "Constant name conflicts with a command key word";
-      if (shadowsPrototype) return "Constant name cannot shadow a built-in Javascript prototype prop";
+      if (!isValidName) return "Имя постоянной может содержать только цифры и буквы английского алфавита и не может начинаться с цифры";
+      if (alreadyExists) return "Вы уже определили постоянную с таким же именем";
+      if (hasCommandConflict) return "Имя постоянной не может совпадать с ключевым словом команды";
+      if (shadowsPrototype) return "Имя постоянной не может начинаться со встроенного в Javascript свойства прототипа";
 
-      if (!this.valueString) return "Constant value cannot be empty";
+      if (!this.valueString) return "Значение постоянной не может быть пустой строкой";
 
       const isNumber = this.valueString.match(/^-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d+)?$/u);
       // Note: Does not do validation for studies existing
       const isStudyString = TimeStudyTree.isValidImportString(this.valueString);
 
-      if (!isNumber && !isStudyString) return "Constant value must either be a number or Time Study string";
+      if (!isNumber && !isStudyString) return "Значение постоянной должно быть либо числом, либо кодом Древа Исследований";
       return null;
     },
     errorTooltip() {
@@ -105,7 +105,7 @@ export default {
       v-model="aliasString"
       class="c-define-textbox c-alias"
       :class="{ 'l-limit-textbox' : aliasString.length === maxNameLength }"
-      placeholder="New constant..."
+      placeholder="Имя новой постоянной..."
       :maxlength="maxNameLength"
       @focusin="handleFocus(true)"
       @focusout="handleFocus(false)"
@@ -122,14 +122,14 @@ export default {
       v-model="valueString"
       class="c-define-textbox c-value"
       :class="{ 'l-limit-textbox' : valueString && valueString.length === maxValueLength }"
-      placeholder="Value for constant..."
+      placeholder="Значение новой постоянной..."
       :maxlength="maxValueLength"
       @focusin="handleFocus(true)"
       @focusout="handleFocus(false)"
     >
     <button
       v-if="aliasString"
-      v-tooltip="'Delete this constant'"
+      v-tooltip="'Удалить эту постоянную'"
       class="c-delete-button fas fa-eraser"
       @click="deleteConstant"
     />

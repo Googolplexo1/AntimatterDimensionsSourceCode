@@ -34,11 +34,11 @@ export default {
       return this.fullScreen ? "fa-compress-arrows-alt" : "fa-expand-arrows-alt";
     },
     intervalText() {
-      const speedupText = `Each Reality makes it run ${formatPercents(0.006, 1)} faster, up to a maximum of
-        ${formatInt(1000)} per second.`;
+      const speedupText = `С каждой реальностью он работает на ${formatPercents(0.006, 1)} быстрее, с ограничением в
+        ${formatInt(1000)} команд в секунду.`;
       return this.interval === 1
-        ? `The Automator is running at max speed (${formatInt(1000)} commands per real-time second).`
-        : `The Automator is running ${quantify("command", 1000 / this.interval, 2, 2)} per real-time second.
+        ? `Автоматизатор работает с максимальной скоростью (${formatInt(1000)} команд в секунду по реальному времяисчислению).`
+        : `Автоматизатор выполняет ${format(1000 / this.interval, 2, 2)} команды в секунду.
           ${speedupText}`;
     },
     maxScriptChars() {
@@ -70,18 +70,18 @@ export default {
         {{ intervalText }}
       </div>
       <span :class="{ 'c-overlimit': currentChars > maxScriptChars }">
-        This script: {{ formatInt(currentChars) }} / {{ formatInt(maxScriptChars) }}
+        Текущая программа: {{ formatInt(currentChars) }} / {{ formatInt(maxScriptChars) }}
       </span>
       |
       <span :class="{ 'c-overlimit': totalChars > maxTotalChars }">
-        Across all scripts: {{ formatInt(totalChars) }} / {{ formatInt(maxTotalChars) }}
+        По всем программам: {{ formatInt(totalChars) }} / {{ formatInt(maxTotalChars) }}
       </span>
       <br>
       <span
         v-if="!withinLimit"
         class="c-overlimit"
       >
-        (Your changes will not be saved due to being over a character limit!)
+        (Изменения не будут сохранены, так как превышено ограничение на количесвто символов!)
       </span>
       <div class="c-automator-split-pane">
         <SplitPane

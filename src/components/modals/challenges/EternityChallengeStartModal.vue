@@ -20,29 +20,29 @@ export default {
       return this.challenge.isFullyCompleted;
     },
     message() {
-      return `You will Eternity (if possible) and start a new Eternity within the Challenge, with all the
-        Challenge-specific restrictions and modifiers active.
-        To complete the Challenge${this.challengeIsCompleted ? "" : " and gain its reward"},
-        you must reach the Challenge goal of
-        ${format(this.challenge.currentGoal)} Infinity Points. You can complete Eternity Challenges up to
-        ${formatInt(5)} times, with increasing goals and bonuses.`;
+      return `Вы совершите вечность (по возможности) и начнёте новую внутри Испытания, с
+        соответствующим условием испытания.
+        Чтобы выполнить Испытание${this.challengeIsCompleted ? "" : " и получить награду за него"},
+        вы должны достичь цели Испытания в
+        ${format(this.challenge.currentGoal)} Очков Бесконечности. Испытания Вечности могут быть выполнены до
+        ${formatInt(5)} раз; при выполнении увеличивается как цель испытания, так и награда.`;
     },
     entranceLabel() {
-      return `You are about to enter Eternity Challenge ${this.id}`;
+      return `Вы запускаете ${this.id}-е Испытание Вечности`;
     },
     reward() {
       let rewardDescription = this.challenge._config.reward.description;
       if (typeof rewardDescription === "function") {
         rewardDescription = rewardDescription();
       }
-      return `The reward for completing this challenge is: ${rewardDescription}`;
+      return `Награда за выполнение этого Испытания следующая: ${rewardDescription}`;
     },
     condition() {
       let conditionOfChallenge = this.challenge._config.description;
       if (typeof conditionOfChallenge === "function") {
         conditionOfChallenge = conditionOfChallenge();
       }
-      return `Inside this Eternity Challenge, ${conditionOfChallenge}`;
+      return `В этом Испытаниии Вечности действует следующее условие: ${conditionOfChallenge}`;
     }
   },
   created() {
@@ -79,7 +79,7 @@ export default {
       {{ reward }}
     </div>
     <template #confirm-text>
-      Begin
+      Начать
     </template>
   </ModalWrapperChoice>
 </template>

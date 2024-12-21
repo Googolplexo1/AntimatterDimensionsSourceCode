@@ -13,8 +13,8 @@ export function vUnlockProgress(index) {
 
 export function vUnlockLegendLabel(complete, index) {
   const db = Object.values(GameDatabase.celestials.v.mainUnlock).find(e => e.id === index);
-  if (complete >= 1) return `${db.name} condition for V`;
-  return `Reach ${db.format(db.resource())} / ${db.format(db.requirement)} ${db.name}.`;
+  if (complete >= 1) return `${db.name} набрано`;
+  return `${db.format(db.resource())} / ${db.format(db.requirement)} ${db.name}.`;
 }
 
 // Angle is defined/rescaled so that 0 is the first rift, 4 is the last one, and all 5 are equally spaced around
@@ -179,7 +179,7 @@ function pelleRiftFill(name, index, textAngle, fillType) {
       forceLegend: () => legendFn(),
       legend: {
         text: () => [
-          `${formatPercents(percentFn(), 1)} ${wordShift.wordCycle(PelleRifts[name.toLowerCase()].name)}`
+          `${wordShift.wordCycle(PelleRifts[name.toLowerCase()].name)}: ${formatPercents(percentFn(), 1)}`
         ],
         angle: textAngle,
         diagonal: 30,
@@ -217,7 +217,7 @@ export const celestialNavigation = {
         rMinor: 64,
       },
       legend: {
-        text: "Teresa",
+        text: "Тереза",
         angle: 135,
         diagonal: 32,
         horizontal: 16,
@@ -241,7 +241,7 @@ export const celestialNavigation = {
         text: () => {
           const rm = Teresa.pouredAmount;
           const cost = TeresaUnlocks.run.price;
-          return `Pour ${format(rm, 2)} / ${format(cost, 2)} RM`;
+          return `${format(rm, 2)} / ${format(cost, 2)} Машин Реальности залито`;
         },
         angle: 135,
         diagonal: 16,
@@ -277,7 +277,7 @@ export const celestialNavigation = {
       },
       alwaysShowLegend: true,
       legend: {
-        text: "Teresa's Reality",
+        text: "Реальность Терезы",
         angle: -135,
         diagonal: 96,
         horizontal: 16,
@@ -299,12 +299,12 @@ export const celestialNavigation = {
       },
       legend: {
         text: complete => {
-          if (complete >= 1) return "Teresa's Perk Point Shop";
+          if (complete >= 1) return "Магазин Терезы";
           const rm = Teresa.pouredAmount;
           const cost = TeresaUnlocks.shop.price;
           return [
-            "Teresa's Perk Point Shop",
-            `Pour ${format(rm, 2)} / ${format(cost, 2)} Reality Machines`
+            "Магазин Терезы",
+            `${format(rm, 2)} / ${format(cost, 2)} Машин Реальности залито`
           ];
         },
         angle: -35,
@@ -334,12 +334,12 @@ export const celestialNavigation = {
       },
       legend: {
         text: complete => {
-          if (complete >= 1) return "Effarig's Shop";
+          if (complete >= 1) return "Эффариг";
           const rm = Teresa.pouredAmount;
           const cost = TeresaUnlocks.effarig.price;
           return [
-            "Effarig",
-            `Pour ${format(rm, 2)} / ${format(cost, 2)} Reality Machines`
+            "Эффариг",
+            `${format(rm, 2)} / ${format(cost, 2)} Машин Реальности залито`
           ];
         },
         angle: -135,
@@ -371,12 +371,12 @@ export const celestialNavigation = {
       },
       legend: {
         text: complete => {
-          if (complete >= 1) return "Unlock Effarig's Reality";
+          if (complete >= 1) return "Реальность Эффарига";
           const rs = Currency.relicShards.value;
           const cost = EffarigUnlock.run.cost;
           return [
-            "Unlock Effarig's Reality",
-            `Reach ${format(rs, 2)} / ${format(cost, 2)} Relic Shards`
+            "Реальность Эффарига",
+            `${format(rs, 2)} / ${format(cost, 2)} Реликтовых Осколков`
           ];
         },
         angle: 75,
@@ -410,13 +410,12 @@ export const celestialNavigation = {
       },
       legend: {
         text: complete => {
-          if (complete >= 1) return "Effarig's Infinity";
-          if (complete === 0) return "Unlock Effarig's Reality";
+          if (complete >= 1) return "Слой бесконечности";
+          if (complete === 0) return "Реальность Эффарига не разблокирована";
           const am = Effarig.isRunning ? Currency.antimatter.value : 0;
           return [
-            "Effarig's Infinity",
-            `Reach ${format(am, 2)} / ${format(Number.MAX_VALUE, 2)}`,
-            "Antimatter inside Effarig's Reality."
+            "Слой бесконечности",
+            `${format(am, 2)} / ${format(Number.MAX_VALUE, 2)} антиматерии`,
           ];
         },
         angle: 0,
@@ -452,12 +451,11 @@ export const celestialNavigation = {
       },
       legend: {
         text: complete => {
-          if (complete >= 1) return "Effarig's Eternity";
+          if (complete >= 1) return "Слой вечности";
           const ip = Effarig.isRunning ? Currency.infinityPoints.value : 0;
           return [
-            "Effarig's Eternity",
-            `Reach ${format(ip, 2)} / ${format(Number.MAX_VALUE, 2)}`,
-            "Infinity Points inside Effarig's Reality."
+            "Слой вечности",
+            `${format(ip, 2)} / ${format(Number.MAX_VALUE, 2)} Очков Бесконечности`,
           ];
         },
         angle: -45,
@@ -503,13 +501,12 @@ export const celestialNavigation = {
       alwaysShowLegend: true,
       legend: {
         text: complete => {
-          if (complete >= 1) return "Effarig's Reality";
+          if (complete >= 1) return "Слой реальности";
           const ep = Effarig.isRunning ? Currency.eternityPoints.value : 0;
           const goal = DC.E4000;
           return [
-            "Effarig's Reality",
-            `Reach ${format(ep, 2)} / ${format(goal, 2)}`,
-            "Eternity Points inside Effarig's Reality."
+            "Слой реальности",
+            `${format(ep, 2)} / ${format(goal, 2)} Очков Вечности`,
           ];
         },
         angle: -120,
@@ -550,7 +547,7 @@ export const celestialNavigation = {
       },
       alwaysShowLegend: false,
       legend: {
-        text: "Nameless",
+        text: "Безымянные",
         angle: -90,
         diagonal: 20,
         horizontal: 16,
@@ -582,11 +579,10 @@ export const celestialNavigation = {
       },
       legend: {
         text: complete => {
-          if (complete >= 1) return "Glyph level chain has been broken";
           const goal = 5000;
+          if (complete >= 1) return `Глиф уровня хотя бы ${formatInt(goal)} получен`;
           return [
-            "Break a chain",
-            `Reach Glyph level ${formatInt(Math.min(player.records.bestReality.glyphLevel, goal))}/${formatInt(goal)}`
+            `Рекордный уровень глифа: ${formatInt(Math.min(player.records.bestReality.glyphLevel, goal))} / ${formatInt(goal)}`
           ];
         },
         angle: -45,
@@ -627,11 +623,10 @@ export const celestialNavigation = {
       },
       legend: {
         text: complete => {
-          if (complete >= 1) return "Glyph rarity chain has been broken";
+          if (complete >= 1) return "Космический глиф получен";
           const goal = 100;
           return [
-            "Break a chain",
-            `Reach Glyph rarity ${formatPercents(complete * goal / 100, 1)}/${formatPercents(goal / 100, 1)}`
+            `Рекордная редкость глифа: ${formatPercents(complete * goal / 100, 1)} / ${formatPercents(goal / 100, 1)}`
           ];
         },
         angle: 45,
@@ -670,13 +665,12 @@ export const celestialNavigation = {
       alwaysShowLegend: true,
       legend: {
         text: complete => {
-          if (complete >= 1) return "The Nameless Ones' Reality";
+          if (complete >= 1) return "Реальность Безымянных";
           const ep = Enslaved.isRunning ? Currency.eternityPoints.value : 0;
           const goal = DC.E4000;
           return [
-            "The Nameless Ones' Reality",
-            `Reach ${format(ep, 2)} / ${format(goal, 2)}`,
-            "Eternity Points inside The Nameless Ones' Reality."
+            "Реальность Безымянных",
+            `${format(ep, 2)} / ${format(goal, 2)} Очков Вечности`,
           ];
         },
         angle: 45,
@@ -715,12 +709,12 @@ export const celestialNavigation = {
       legend: {
         text: complete => {
           const goal = 800;
-          if (complete >= 1) return "V's Reality";
+          if (complete >= 1) return "Реальность Ви";
           const galaxies = player.requirementChecks.infinity.noAD8 ? player.galaxies : 0;
           return [
-            "V's unlock Achievement",
-            `Reach ${formatInt(galaxies)} / ${formatInt(goal)} Antimatter Galaxies without buying`,
-            "8th Antimatter Dimensions in your current Infinity"
+            "Достижение 151, разблокирующее Ви",
+            `${formatInt(galaxies)} / ${formatInt(goal)} Галактик Антиматерии`,
+            "без 8-х Измерений Антиматерии"
           ];
         },
         angle: 135,
@@ -921,11 +915,11 @@ export const celestialNavigation = {
       legend: {
         text: complete => {
           const name = VRunUnlocks.all[0].config.name;
-          if (complete >= 1) return `V-Achievement "${name}"`;
+          if (complete >= 1) return `Достижение Ви "${name}"`;
           const completions = VRunUnlocks.all[0].completions;
           return [
-            "V-Achievement",
-            `Reach ${formatInt(completions)} / ${formatInt(6)} completions in ${name}.`
+            "Достижение Ви",
+            `"${name}": ${formatInt(completions)} / ${formatInt(6)}.`
           ];
         },
         angle: -135,
@@ -957,11 +951,11 @@ export const celestialNavigation = {
       legend: {
         text: complete => {
           const name = VRunUnlocks.all[1].config.name;
-          if (complete >= 1) return `V-Achievement "${name}"`;
+          if (complete >= 1) return `Достижение Ви "${name}"`;
           const completions = VRunUnlocks.all[1].completions;
           return [
-            "V-Achievement",
-            `Reach ${formatInt(completions)} / ${formatInt(6)} completions in ${name}.`
+            "Достижение Ви",
+            `"${name}": ${formatInt(completions)} / ${formatInt(6)}.`
           ];
         },
         angle: 20,
@@ -993,11 +987,11 @@ export const celestialNavigation = {
       legend: {
         text: complete => {
           const name = VRunUnlocks.all[2].config.name;
-          if (complete >= 1) return `V-Achievement "${name}"`;
+          if (complete >= 1) return `Достижение Ви "${name}"`;
           const completions = VRunUnlocks.all[2].completions;
           return [
-            "V-Achievement",
-            `Reach ${formatInt(completions)} / ${formatInt(6)} completions in ${name}.`
+            "Достижение Ви",
+            `"${name}": ${formatInt(completions)} / ${formatInt(6)}.`
           ];
         },
         angle: 315,
@@ -1029,11 +1023,11 @@ export const celestialNavigation = {
       legend: {
         text: complete => {
           const name = VRunUnlocks.all[3].config.name;
-          if (complete >= 1) return `V-Achievement "${name}"`;
+          if (complete >= 1) return `Достижение Ви "${name}"`;
           const completions = VRunUnlocks.all[3].completions;
           return [
-            "V-Achievement",
-            `Reach ${formatInt(completions)} / ${formatInt(6)} completions in ${name}.`
+            "Достижение Ви",
+            `"${name}": ${formatInt(completions)} / ${formatInt(6)}.`
           ];
         },
         angle: 135,
@@ -1065,11 +1059,11 @@ export const celestialNavigation = {
       legend: {
         text: complete => {
           const name = VRunUnlocks.all[4].config.name;
-          if (complete >= 1) return `V-Achievement "${name}"`;
+          if (complete >= 1) return `Достижение Ви "${name}"`;
           const completions = VRunUnlocks.all[4].completions;
           return [
-            "V-Achievement",
-            `Reach ${formatInt(completions)} / ${formatInt(6)} completions in ${name}.`
+            "Достижение Ви",
+            `"${name}": ${formatInt(completions)} / ${formatInt(6)}.`
           ];
         },
         angle: 60,
@@ -1101,11 +1095,11 @@ export const celestialNavigation = {
       legend: {
         text: complete => {
           const name = VRunUnlocks.all[5].config.name;
-          if (complete >= 1) return `V-Achievement "${name}"`;
+          if (complete >= 1) return `Достижение Ви "${name}"`;
           const completions = VRunUnlocks.all[5].completions;
           return [
-            "V-Achievement",
-            `Reach ${formatInt(completions)} / ${formatInt(6)} completions in ${name}.`
+            "Достижение Ви",
+            `"${name}": ${formatInt(completions)} / ${formatInt(6)}.`
           ];
         },
         angle: 260,
@@ -1138,7 +1132,7 @@ export const celestialNavigation = {
       },
       alwaysShowLegend: true,
       legend: {
-        text: "Ra's Reality",
+        text: "Реальность Ра",
         angle: 230,
         diagonal: 85,
         horizontal: 16,
@@ -1161,10 +1155,9 @@ export const celestialNavigation = {
       legend: {
         text: () => {
           const level = Ra.pets.teresa.level;
-          if (level === 25) return `Ra's Teresa Memories have all been returned`;
+          if (level === 25) return `Тереза полностью восстановлена в памяти`;
           return [
-            "Ra's Teresa Memory level",
-            `${formatInt(level)} / ${formatInt(25)}`
+            `Уровень Терезы ${formatInt(level)} / ${formatInt(25)}`
           ];
         },
         angle: 142,
@@ -1211,11 +1204,10 @@ export const celestialNavigation = {
         text: complete => {
           const unlocked = Ra.pets.teresa.level;
           const level = Ra.pets.effarig.level;
-          if (complete < 1) return `Ra's Teresa Memory level ${unlocked} / ${formatInt(8)}`;
-          if (level === 25) return `Ra's Effarig Memories have all been returned`;
+          if (complete < 1) return `Память Эффарига не разблокирована`;
+          if (level === 25) return `Эффариг полностью восстановлен в памяти`;
           return [
-            "Ra's Effarig Memory level",
-            `${formatInt(level)} / ${formatInt(25)}`
+            `Уровень Эффарига ${formatInt(level)} / ${formatInt(25)}`
           ];
         },
         angle: 142,
@@ -1262,11 +1254,10 @@ export const celestialNavigation = {
         text: complete => {
           const unlocked = Ra.pets.effarig.level;
           const level = Ra.pets.enslaved.level;
-          if (complete < 1) return `Ra's Effarig Memory level ${unlocked} / ${formatInt(8)}`;
-          if (level === 25) return `Ra's Nameless Memories have all been returned`;
+          if (complete < 1) return `Память Безымянных не разблокирована`;
+          if (level === 25) return `Безымянные полностью восстановлены в памяти`;
           return [
-            "Ra's Nameless Memory level",
-            `${formatInt(level)} / ${formatInt(25)}`
+            `Уровень Безымянных ${formatInt(level)} / ${formatInt(25)}`
           ];
         },
         angle: 142,
@@ -1313,11 +1304,10 @@ export const celestialNavigation = {
         text: complete => {
           const unlocked = Ra.pets.enslaved.level;
           const level = Ra.pets.v.level;
-          if (complete < 1) return `Ra's Nameless Memory level ${unlocked} / ${formatInt(8)}`;
-          if (level === 25) return `Ra's V Memories have all been returned`;
+          if (complete < 1) return `Память Ви не разблокирована`;
+          if (level === 25) return `Ви полностью восстановлен в памяти`;
           return [
-            "Ra's V Memory level",
-            `${formatInt(level)} / ${formatInt(25)}`
+            `Уровень Ви ${formatInt(level)} / ${formatInt(25)}`
           ];
         },
         angle: 142,
@@ -1447,7 +1437,7 @@ export const celestialNavigation = {
       alwaysShowLegend: true,
       legend: {
         text: complete => {
-          const realityName = "Lai'tela's Reality";
+          const realityName = "Реальность Лайтелы";
           if (complete >= 1) return [realityName];
 
           if (!MachineHandler.isIMUnlocked) {
@@ -1455,23 +1445,22 @@ export const celestialNavigation = {
             const realityMachineCap = MachineHandler.baseRMCap;
             return [
               realityName,
-              "The limits of Reality Machines bind you",
-              `${format(realityMachines)} / ${format(realityMachineCap)}`
+              `${format(realityMachines)} / ${format(realityMachineCap)} Машин Реальности`
             ];
           }
 
           const hasIDs = player.requirementChecks.reality.maxID1.neq(0);
           if (hasIDs) return [
             realityName,
-            "The Power of Infinity Dimensions",
-            "blocks your path."
+            "Измерения Бесконечности",
+            "стоят у вас на пути."
           ];
 
           const antimatter = Currency.antimatter.value;
           const amGoal = DC.E1_5E12;
           return [
             realityName,
-            `${format(antimatter)} / ${format(amGoal)}`
+            `${format(antimatter)} / ${format(amGoal)} антиматерии`
           ];
         },
         angle: 260,
@@ -1508,31 +1497,20 @@ export const celestialNavigation = {
       },
       legend: {
         text: complete => {
-          const dmdText = "2nd Dark Matter Dimension";
+          const dmdText = "2-е Измерение Тёмной Материи";
           const dim = DarkMatterDimension(2);
-          if (dim.isUnlocked) return [dmdText];
-
-          const goal = dim.adjustedStartingCost;
-          if (complete >= 1) return [
-            dmdText,
-            `Dark Matter ${format(Currency.darkMatter.max.min(goal), dim.isUnlocked ? 0 : 2)} / ${format(goal)}`
-          ];
+          if (complete >= 1) return [dmdText];
 
           const upgrade = dim.unlockUpgrade;
           if (upgrade.isAvailableForPurchase) return [
             dmdText,
-            `Imaginary Machines
-            ${format(Math.min(upgrade.currency.value, upgrade.cost), upgrade.canBeBought ? 1 : 2)}
-            / ${format(upgrade.cost, 1)}`
+            `${format(Math.min(upgrade.currency.value, upgrade.cost), upgrade.canBeBought ? 1 : 2)}
+            / ${format(upgrade.cost, 1)} Мнимых Машин`
           ];
 
-          if (player.celestials.laitela.fastestCompletion > 30 && Laitela.difficultyTier < 0) return [
-            dmdText,
-            `Beat Lai'tela's Reality in less that ${format(30)} seconds`
-          ];
           return [
             dmdText,
-            `Beat Lai'tela's Reality`
+            `Дестабилизируйте Реальность Лайтелы`
           ];
         },
         angle: 135,
@@ -1564,13 +1542,13 @@ export const celestialNavigation = {
       },
       legend: {
         text: complete => {
-          if (complete >= 1) return ["Obtain a Singularity"];
+          if (complete >= 1) return ["Сингулярность"];
           const darkEnergy = Currency.darkEnergy.value;
           const singularityGoal = Singularity.cap;
           return [
-            "Condense your Dark Energy",
-            "Into a Singularity",
-            `${format(darkEnergy)} / ${format(singularityGoal)}`
+            "Сожмите всю Тёмную",
+            "Энергию в Сингулярность",
+            `${format(darkEnergy)} / ${format(singularityGoal)} Тёмной Энергии`
           ];
         },
         angle: 45,
@@ -1606,34 +1584,28 @@ export const celestialNavigation = {
       },
       legend: {
         text: complete => {
-          const dmdText = "3rd Dark Matter Dimension";
+          const dmdText = "3-е Измерение Тёмной Материи";
           const dim = DarkMatterDimension(3);
-          if (dim.isUnlocked) return [dmdText];
-
-          const goal = dim.adjustedStartingCost;
-          if (complete >= 1) return [
-            dmdText,
-            `Dark Matter ${format(Currency.darkMatter.max.min(goal), dim.isUnlocked ? 0 : 2)} / ${format(goal)}`
-          ];
+          if (complete >= 1) return [dmdText];
 
           const upgrade = dim.unlockUpgrade;
           if (upgrade.isAvailableForPurchase) return [
             dmdText,
-            `Imaginary Machines
-            ${format(Math.min(upgrade.currency.value, upgrade.cost), upgrade.canBeBought ? 0 : 2)}
-            / ${format(upgrade.cost)}`
+            `${format(Math.min(upgrade.currency.value, upgrade.cost), upgrade.canBeBought ? 0 : 2)}
+            / ${format(upgrade.cost)} Мнимых Машин`
           ];
 
           if (!player.auto.singularity.isActive) return [
             dmdText,
-            "Unlock Automatic Singularities",
-            `${format(Currency.singularities.value)} / ${format(SingularityMilestone.autoCondense.start)}`
+            "Разблокируйте автоматику сжатия",
+            `${format(Currency.singularities.value)} / ${format(SingularityMilestone.autoCondense.start)} Сингулярностей`
           ];
 
           return [
             dmdText,
-            `Automatically Condense ${format(20)} Singularities at once`,
-            `${format(Math.clampMax(Singularity.singularitiesGained, 20))} / ${format(20)}`
+            "Совершите сжатие",
+            `автоматически за ${format(20)} Сингулярностей`,
+            `Сейчас: ${format(Math.clampMax(Singularity.singularitiesGained, 20))} / ${format(20)}`
           ];
         },
         angle: 15,
@@ -1678,29 +1650,21 @@ export const celestialNavigation = {
       },
       legend: {
         text: complete => {
-          const dmdText = "4th Dark Matter Dimension";
+          const dmdText = "4-е Измерение Тёмной Материи";
           const dim = DarkMatterDimension(4);
-          if (dim.isUnlocked) return [dmdText];
-
-          const goal = dim.adjustedStartingCost;
-          if (complete >= 1) return [
-            dmdText,
-            `Dark Matter ${format(Currency.darkMatter.max.min(goal), dim.isUnlocked ? 0 : 2)} / ${format(goal)}`
-          ];
+          if (complete >= 1) return [dmdText];
 
           const upgrade = dim.unlockUpgrade;
           if (upgrade.isAvailableForPurchase) return [
             dmdText,
-            `Imaginary Machines
-            ${format(Math.min(upgrade.currency.value, upgrade.cost), upgrade.canBeBought ? 1 : 2)}
-            / ${format(upgrade.cost, 1)}`
+            `${format(Math.min(upgrade.currency.value, upgrade.cost), upgrade.canBeBought ? 1 : 2)}
+            / ${format(upgrade.cost, 1)} Мнимых Машин`
           ];
 
           const allGalaxies = Replicanti.galaxies.total + player.galaxies + player.dilation.totalTachyonGalaxies;
           return [
             dmdText,
-            `Have ${format(80000)} total Galaxies`,
-            `${format(Math.clampMax(allGalaxies, 80000))} / ${format(80000)}`
+            `${format(Math.clampMax(allGalaxies, 80000))} / ${format(80000)} галактик`
           ];
         },
         angle: 225,
@@ -1736,10 +1700,7 @@ export const celestialNavigation = {
         rMajor: 8,
       },
       legend: {
-        text: () => [
-          "Annihilate your",
-          "Dark Matter Dimensions"
-        ],
+        text: () => ["Аннигиляция"],
         angle: 315,
         diagonal: 30,
         horizontal: 16,
@@ -1770,14 +1731,11 @@ export const celestialNavigation = {
       legend: {
         text: complete => {
           if (complete < 1) return [
-            "Destabilize Lai'tela's Reality",
-            "To the point where you cannot",
-            "use any Dimensions",
-            `${format(Laitela.difficultyTier)} / ${format(8)} Dimensions disabled`
+            `${format(Laitela.difficultyTier)} / ${format(8)} дестабилизаций`
           ];
           return [
-            "Completely destabilized",
-            "Lai'tela's Reality",
+            "Реальность Лайтелы",
+            "полностью дестабилизирована",
           ];
         },
         angle: 180,
@@ -1808,7 +1766,7 @@ export const celestialNavigation = {
     complete: () => {
       if (Pelle.isUnlocked) return 1;
       const imCost = Math.clampMax(emphasizeEnd(Math.log10(Currency.imaginaryMachines.value) / Math.log10(1.6e15)), 1);
-      let laitelaProgress = Laitela.isRunning ? Math.min(Currency.eternityPoints.value.log10() / 4000, 0.99) : 0;
+      let laitelaProgress = Laitela.isRunning ? Math.min(Currency.eternityPoints.value.log10() / 4000, 1) : 0;
       if (Laitela.difficultyTier !== 8 || Glyphs.activeWithoutCompanion.length > 1) laitelaProgress = 0;
       else if (ImaginaryUpgrade(25).isAvailableForPurchase) laitelaProgress = 1;
       return (imCost + laitelaProgress) / 2;
@@ -1824,21 +1782,20 @@ export const celestialNavigation = {
       legend: {
         text: complete => {
           if (complete === 1) {
+            return ["Пелль"];
+          }
+          let laitelaString = `${format(Currency.eternityPoints.value)} / ${format("1e4000")} Очков Вечности`;
+          if (!Laitela.isRunning || Laitela.difficultyTier !== 8 || Glyphs.activeWithoutCompanion.length > 1) {
+            laitelaString = `${format(0)} / ${format("1e4000")} Очков Вечности`;
+          }
+          if (ImaginaryUpgrade(25).isAvailableForPurchase) {
             return [
-              "Unlock Pelle",
-              "The Celestial of Antimatter"
+              "Пелль",
+              `${format(Currency.imaginaryMachines.value, 2)} / ${format(1.6e15, 2)} Мнимых Машин`
             ];
           }
-          let laitelaString = `${format(Currency.eternityPoints.value)} / ${format("1e4000")} EP`;
-          if (!Laitela.isRunning || Laitela.difficultyTier !== 8 || Glyphs.activeWithoutCompanion.length > 1) {
-            laitelaString = "Lai'tela's Reality is still intact";
-          } else if (ImaginaryUpgrade(25).isAvailableForPurchase) {
-            laitelaString = "Lai'tela's Reality has been destroyed";
-          }
           return [
-            "Unlock Pelle",
-            "The Celestial of Antimatter",
-            `${format(Currency.imaginaryMachines.value, 2)} / ${format(1.6e15, 2)} iM`,
+            "Пелль",
             laitelaString
           ];
         },
@@ -1878,13 +1835,13 @@ export const celestialNavigation = {
       forceLegend: () => Pelle.isUnlocked && !Pelle.hasGalaxyGenerator,
       legend: {
         text: complete => {
-          if (complete >= 1) return Pelle.isDoomed ? "Doomed Reality" : "Doom your Reality";
+          if (complete >= 1) return "Обречённая Реальность";
           const achievements = [Achievements.prePelleRows.countWhere(r => r.every(a => a.isUnlocked)),
             Achievements.prePelleRows.length];
           const alchemy = [AlchemyResources.all.countWhere(r => r.capped), AlchemyResources.all.length];
           return [
-            `Complete ${formatInt(achievements[0])} / ${formatInt(achievements[1])} rows of Achievements`,
-            `Fill ${formatInt(alchemy[0])} / ${formatInt(alchemy[1])} Alchemy Resources`,
+            `${formatInt(achievements[0])} / ${formatInt(achievements[1])} рядов достижений`,
+            `${formatInt(alchemy[0])} / ${formatInt(alchemy[1])} алхимического ресурса`,
           ];
         },
         angle: 290,
@@ -1920,8 +1877,8 @@ export const celestialNavigation = {
       alwaysShowLegend: true,
       legend: {
         text: () => [
-          "Galaxy Generator:",
-          `${format(GalaxyGenerator.generatedGalaxies, 2)} / ${format(GalaxyGenerator.generationCap, 2)} Galaxies`
+          "Генератор Галактик",
+          `${format(GalaxyGenerator.generatedGalaxies, 2)} / ${format(GalaxyGenerator.generationCap, 2)} галактик произведено`
         ],
         angle: 290,
         diagonal: 40,

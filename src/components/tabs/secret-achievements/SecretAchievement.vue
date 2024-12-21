@@ -86,12 +86,12 @@ export default {
       type="achievements"
       class="l-hint-text--achievement"
     >
-      S{{ id }}
+      С{{ id }}
     </HintText>
     <div class="o-achievement__tooltip">
       <template v-if="isMouseOver">
         <div class="o-achievement__tooltip__name">
-          {{ config.name }} (S{{ id }})
+          {{ config.name }} (С{{ id }})
         </div>
         <div
           v-if="isUnlocked"

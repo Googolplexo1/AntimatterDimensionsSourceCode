@@ -2,30 +2,30 @@ export const teresaQuotes = {
   initial: {
     id: 0,
     lines: [
-      "We have been observing you.",
-      "You have shown promise with your bending of Reality.",
-      "We are the Celestials, and we want you to join us.",
-      "My name is Teresa, the Celestial Of Reality.",
-      "Prove your worth.",
+      "Мы наблюдали за тобой.",
+      "Твоё обращение с реальностями выглядит многообещающе.",
+      "Мы Небожители, и мы хотим, чтобы ты к нам присоединил(ась)[ся].",
+      "Меня зовут Тереза, и я Небожитель Реальности.",
+      "Докажи своё достоинство.",
     ]
   },
   unlockReality: {
     id: 1,
     lines: [
-      "I will let you inside my Reality, mortal. Do not get crushed by it."
+      "Я впущу тебя в свою Реальность, смертн(ая)[ый]. Смотри, чтобы она тебя не убила."
     ]
   },
   completeReality: {
     id: 2,
     lines: [
-      "Why are you still here... you were supposed to fail."
+      "Почему ты ещё здесь... ты долж[е]н(а) был(а) потерпеть неудачу."
     ]
   },
   effarig: {
     id: 3,
     lines: [
-      "You are still no match for us.",
-      "I hope the others succeed where I have failed."
+      "Ты всё ещё недосто(йна)[ин] быть одн(ой)[им] из нас.",
+      "Надеюсь, другие смогут сделать то, что не смогла я."
     ]
   }
 };

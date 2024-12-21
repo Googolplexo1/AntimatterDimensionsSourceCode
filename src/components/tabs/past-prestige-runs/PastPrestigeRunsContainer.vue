@@ -51,7 +51,7 @@ export default {
     },
     points() {
       const rawText = this.layer.currency;
-      return rawText === "RM" && this.hasIM ? "iM Cap" : rawText;
+      return rawText === "МР" && this.hasIM ? "Предел ММ" : rawText;
     },
     condition() {
       return this.layer.condition();
@@ -80,7 +80,8 @@ export default {
       this.hasIM = MachineHandler.currentIMCap > 0;
 
       // We have 4 different "useful" stat pairings we could display, but this ends up being pretty boilerplatey
-      const names = [this.points, `${this.points} Rate`, this.plural, `${this.singular} Rate`];
+      const rateString = this.points === "Предел ММ" ? "-" : `Прирост ${this.points} за время`;
+      const names = [this.points, rateString, this.layer.uppercase, `Прирост ${this.plural} за время`];
       switch (this.resourceType) {
         case RECENT_PRESTIGE_RESOURCE.ABSOLUTE_GAIN:
           this.selectedResources = [0, 2];
@@ -121,9 +122,9 @@ export default {
     },
     infoArray(run, index) {
       let name;
-      if (index === 0) name = "Last";
-      else if (index === 10) name = "Average";
-      else name = `${formatInt(index + 1)} ago`;
+      if (index === 0) name = "Последняя";
+      else if (index === 10) name = "Среднее";
+      else name = `${formatInt(index + 1)}-я с конца`;
 
       const cells = [name, this.gameTime(run)];
       if (this.hasRealTime) cells.push(this.realTime(run));
@@ -145,10 +146,10 @@ export default {
       return cells;
     },
     infoCol() {
-      const cells = ["Run", this.hasRealTime ? "Game Time" : "Time in Run"];
-      if (this.hasRealTime) cells.push("Real Time");
+      const cells = ["Номер", this.hasRealTime ? "Игровое время" : "Время"];
+      if (this.hasRealTime) cells.push("Реальное время");
       cells.push(...this.resourceTitles);
-      if (this.hasChallenges) cells.push("Challenge");
+      if (this.hasChallenges) cells.push("Испытание");
 
       for (let index = 0; index < this.layer.extra?.length && cells.length <= this.longestRow; index++) {
         if (!this.layer.showExtra[index]()) continue;
@@ -165,14 +166,14 @@ export default {
       return timeDisplayShort(run[1]);
     },
     prestigeCurrencyGain(run) {
-      if (this.hasIM && this.layer.name === "Reality") return `${format(run[7], 2)} iM`;
+      if (this.hasIM && this.layer.name === "реальность") return `${format(run[7], 2)} ММ`;
       return `${format(run[2], 2)} ${this.points}`;
     },
     prestigeCountGain(run) {
       return quantify(this.singular, run[3]);
     },
     prestigeCurrencyRate(run) {
-      if (this.hasIM && this.layer.name === "Reality") return "N/A";
+      if (this.hasIM && this.layer.name === "реальность") return "-";
       return this.rateText(run, run[2]);
     },
     prestigeCountRate(run) {
@@ -182,13 +183,12 @@ export default {
       const time = run[1];
       const rpm = ratePerMinute(amount, time);
       return Decimal.lt(rpm, 1)
-        ? `${format(Decimal.mul(rpm, 60), 2, 2)} per hour`
-        : `${format(rpm, 2, 2)} per min`;
+        ? `${format(Decimal.mul(rpm, 60), 2, 2)} в час`
+        : `${format(rpm, 2, 2)} в минуту`;
     },
     challengeText(run) {
       // Special-case Nameless reality in order to keep this column small and not force a linebreak
-      const rawText = run[4];
-      return rawText === "The Nameless Ones" ? "Nameless" : rawText;
+      return run[4];
     },
     toggleShown() {
       player.shownRuns[this.singular] = !player.shownRuns[this.singular];
@@ -198,16 +198,16 @@ export default {
       switch (col) {
         case 0:
           // "X ago" is really short
-          width = "7rem";
+          width = "10rem";
           break;
         case 3:
         case 4:
           // Prestige currency is long, but the reality table can be shorter due to smaller numbers
-          width = this.layer.name === "Reality" ? "15rem" : "20rem";
+          width = "21rem";
           break;
         case 5:
           // Challenges can potentially be very long, but this is glyph level in the reality table
-          width = this.layer.name === "Reality" ? "10rem" : "20rem";
+          width = this.layer.name === "реальность" ? "10rem" : "20rem";
           break;
         default:
           width = "13rem";
@@ -236,7 +236,7 @@ export default {
         <i :class="dropDownIconClass" />
       </span>
       <span>
-        <h3>Last {{ formatInt(10) }} {{ plural }}:</h3>
+        <h3>{{ formatInt(10) }} последних {{ plural }}:</h3>
       </span>
     </div>
     <div v-show="shown">
@@ -258,11 +258,10 @@ export default {
           class="c-empty-row"
         >
           <i v-if="index === 10">
-            An average cannot be calculated with no {{ plural }}.
+            Невозможно вычислить среднее нуля {{ plural }}.
           </i>
           <i v-else>
-            You have not done {{ formatInt(index + 1) }}
-            {{ index === 0 ? singular : plural }} yet.
+            Вы ещё не совершили {{ quantifyInt(singular, index + 1) }}.
           </i>
         </span>
         <span

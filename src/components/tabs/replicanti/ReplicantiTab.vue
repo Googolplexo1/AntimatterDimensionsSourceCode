@@ -48,8 +48,8 @@ export default {
     replicantiChanceSetup() {
       return new ReplicantiUpgradeButtonSetup(
         ReplicantiUpgrade.chance,
-        value => `Replicate chance: ${formatPercents(value)}`,
-        cost => `+${formatPercents(0.01)} Costs: ${format(cost)} IP`
+        value => `Вероятность: ${formatPercents(value)}`,
+        cost => `+${formatPercents(0.01)}; Цена: ${format(cost)} ОБ`
       );
     },
     replicantiIntervalSetup() {
@@ -65,16 +65,16 @@ export default {
           // Checking isCapped() prevents text overflow when formatted as "__ ➜ __"
           return TimeSpan.fromMilliseconds(intervalNum).toStringShort(false);
         }
-        if (actualInterval.lt(0.01)) return `< ${format(0.01, 2, 2)}ms`;
+        if (actualInterval.lt(0.01)) return `< ${format(0.01, 2, 2)}мс`;
         if (actualInterval.gt(1000))
-          return `${format(actualInterval.div(1000), 2, 2)}s`;
-        return `${format(actualInterval, 2, 2)}ms`;
+          return `${format(actualInterval.div(1000), 2, 2)}с`;
+        return `${format(actualInterval, 2, 2)}мс`;
       }
       return new ReplicantiUpgradeButtonSetup(
         upgrade,
-        value => `Interval: ${formatInterval(value)}`,
+        value => `Интервал: ${formatInterval(value)}`,
         cost =>
-          `➜ ${formatInterval(upgrade.nextValue)} Costs: ${format(cost)} IP`
+          `➜ ${formatInterval(upgrade.nextValue)}; Цена: ${format(cost)} ОБ`
       );
     },
     maxGalaxySetup() {
@@ -82,7 +82,7 @@ export default {
       return new ReplicantiUpgradeButtonSetup(
         upgrade,
         value => {
-          let description = `Max Replicanti Galaxies: `;
+          let description = `Максимальное количество Галактик Репликанти: `;
           const extra = upgrade.extra;
           if (extra > 0) {
             const total = value + extra;
@@ -92,35 +92,34 @@ export default {
           }
           return description;
         },
-        cost => `+${formatInt(1)} Costs: ${format(cost)} IP`
+        cost => `+${formatInt(1)}; Цена: ${format(cost)} ОБ`
       );
     },
     boostText() {
       const boostList = [];
-      boostList.push(`a <span class="c-replicanti-description__accent">${formatX(this.mult, 2, 2)}</span>
-        multiplier on all Infinity Dimensions`);
+      boostList.push(`множитель <span class="c-replicanti-description__accent">${formatX(this.mult, 2, 2)}</span>
+        ко всем Измерениям Бесконечности`);
       if (this.hasTDMult) {
-        boostList.push(`a <span class="c-replicanti-description__accent">${formatX(this.multTD, 2, 2)}</span>
-          multiplier on all Time Dimensions from a Dilation Upgrade`);
+        boostList.push(`множитель <span class="c-replicanti-description__accent">${formatX(this.multTD, 2, 2)}</span>
+          ко всем Измерениям Времени (Улучшение Замедления)`);
       }
       if (this.hasDTMult) {
-        const additionalEffect = GlyphAlteration.isAdded("replication") ? "and Replicanti speed " : "";
-        boostList.push(`a <span class="c-replicanti-description__accent">${formatX(this.multDT, 2, 2)}</span>
-          multiplier to Dilated Time ${additionalEffect}from Glyphs`);
+        const additionalEffect = GlyphAlteration.isAdded("replication") ? "и скорости репликации " : "";
+        boostList.push(`множитель <span class="c-replicanti-description__accent">${formatX(this.multDT, 2, 2)}</span>
+          к производству Замедленного Времени ${additionalEffect}(глифы)`);
       }
       if (this.hasIPMult) {
-        boostList.push(`a <span class="c-replicanti-description__accent">${formatX(this.multIP)}</span>
-          multiplier to Infinity Points from Glyph Alchemy`);
+        boostList.push(`множитель <span class="c-replicanti-description__accent">${formatX(this.multIP)}</span>
+          к получению Очков Бесконечности (алхимия)`);
       }
       if (boostList.length === 1) return `${boostList[0]}.`;
-      if (boostList.length === 2) return `${boostList[0]}<br> and ${boostList[1]}.`;
-      return `${boostList.slice(0, -1).join(",<br>")},<br> and ${boostList[boostList.length - 1]}.`;
+      return `${boostList.slice(0, -1).join(",<br>")}<br> и ${boostList[boostList.length - 1]}.`;
     },
     hasMaxText: () => PlayerProgress.realityUnlocked() && !Pelle.isDoomed,
     toMaxTooltip() {
       if (this.amount.lte(this.replicantiCap)) return null;
       return this.estimateToMax.lt(0.01)
-        ? "Currently Increasing"
+        ? "Возрастает"
         : TimeSpan.fromSeconds(this.estimateToMax.toNumber()).toStringShort();
     }
   },
@@ -155,7 +154,7 @@ export default {
       if (this.hasRaisedCap) {
         const mult = this.replicantiCap.div(Decimal.NUMBER_MAX_VALUE);
         this.capMultText = TimeStudy(31).canBeApplied
-          ? `Base: ${formatX(mult.pow(1 / TimeStudy(31).effectValue), 2)}; after TS31: ${formatX(mult, 2)}`
+          ? `по умолчанию: ${formatX(mult.pow(1 / TimeStudy(31).effectValue), 2)}; с учётом ИсслВ31: ${formatX(mult, 2)}`
           : formatX(mult, 2);
       }
       this.distantRG = ReplicantiUpgrade.galaxies.distantRGStart;
@@ -170,7 +169,7 @@ export default {
       this.estimateToMax = this.calculateEstimate();
     },
     vacuumText() {
-      return wordShift.wordCycle(PelleRifts.vacuum.name);
+      return wordShift.wordCycle(["Вакуума", "Полости", "Пустоты"]);
     },
     // This is copied out of a short segment of ReplicantiGainText with comments and unneeded variables stripped
     calculateEstimate() {
@@ -195,33 +194,33 @@ export default {
       class="o-primary-btn--replicanti-unlock"
       onclick="Replicanti.unlock();"
     >
-      Unlock Replicanti
+      Разблокировать Репликанти
       <br>
-      Cost: {{ format(unlockCost) }} IP
+      Цена: {{ format(unlockCost) }} ОБ
     </PrimaryButton>
     <template v-else>
       <div
         v-if="isDoomed"
         class="modified-cap"
       >
-        Your Replicanti cap has been removed due to the second {{ scrambledText }} milestone.
+        Второй этап {{ scrambledText }} снимает ограничение на количество Репликанти.
       </div>
       <div
         v-else-if="hasRaisedCap"
         class="modified-cap"
       >
-        Completion of Effarig's Infinity is giving you the following rewards:
+        Награда за Реальность Эффарига на слое бесконечности:
         <br>
-        Your Replicanti cap without TS192 is now {{ format(replicantiCap, 2) }}
+        Ограничение на Репликанти без ИсслВ192 увеличено до {{ format(replicantiCap, 2) }}
         ({{ capMultText }})
         <br>
-        {{ quantifyInt("extra Replicanti Galaxy", effarigInfinityBonusRG) }}
-        (Next Replicanti Galaxy at {{ format(nextEffarigRGThreshold, 2) }} cap)
+        {{ quantifyInt("дополнительная", effarigInfinityBonusRG) }} {{ pluralize("Галактика", effarigInfinityBonusRG) }} Репликанти
+        (следующая на ограничении в {{ format(nextEffarigRGThreshold, 2) }})
       </div>
       <p class="c-replicanti-description">
-        You have
+        У вас
         <span class="c-replicanti-description__accent">{{ format(amount, 2, 0) }}</span>
-        Replicanti, translated to
+        Репликанти, которые дают вам
         <br>
         <span v-html="boostText" />
       </p>
@@ -229,7 +228,7 @@ export default {
         v-if="hasMaxText"
         class="c-replicanti-description"
       >
-        Your maximum Replicanti reached this Reality is
+        Рекордное количество Репликанти в текущей реальности:
         <span
           v-tooltip="toMaxTooltip"
           class="max-accent"
@@ -237,7 +236,7 @@ export default {
       </div>
       <br>
       <div v-if="isInEC8">
-        You have {{ quantifyInt("purchase", ec8Purchases) }} left within Eternity Challenge 8.
+        {{ quantifyInt("покупка осталась", ec8Purchases) }} (см. условие 8-го Испытания Вечности).
       </div>
       <div class="l-replicanti-upgrade-row">
         <ReplicantiUpgradeButton :setup="replicantiChanceSetup" />
@@ -245,10 +244,10 @@ export default {
         <ReplicantiUpgradeButton :setup="maxGalaxySetup" />
       </div>
       <div>
-        The Max Replicanti Galaxy upgrade can be purchased endlessly, but costs increase
+        Улучшение, увеличивающее максимальное количество Галактик Репликанти, можно покупать сколь угодно много раз,
         <br>
-        more rapidly above {{ formatInt(distantRG) }} Replicanti Galaxies
-        and even more so above {{ formatInt(remoteRG) }} Replicanti Galaxies.
+        но оно дорожает быстрее после {{ quantifyInt("Галактики", distantRG) }} Репликанти,
+        а после {{ quantifyInt("Галактики", remoteRG) }} Репликанти - принципиально быстрее.
       </div>
       <br><br>
       <ReplicantiGainText />

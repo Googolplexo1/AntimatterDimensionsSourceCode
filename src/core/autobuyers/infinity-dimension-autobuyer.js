@@ -10,11 +10,11 @@ export class InfinityDimensionAutobuyerState extends IntervaledAutobuyerState {
   }
 
   get name() {
-    return this.dimension.shortDisplayName;
+    return `${this.tier}-х`;
   }
 
   get fullName() {
-    return `${this.name} Infinity Dimension`;
+    return `${this.tier}-х Измерений Бесконечности`;
   }
 
   get data() {
@@ -47,7 +47,7 @@ export class InfinityDimensionAutobuyerState extends IntervaledAutobuyerState {
   }
 
   static get entryCount() { return 8; }
-  static get autobuyerGroupName() { return "Infinity Dimension"; }
+  static get autobuyerGroupName() { return "Измерений Бесконечности"; }
   static get isActive() { return player.auto.infinityDims.isActive; }
   static set isActive(value) { player.auto.infinityDims.isActive = value; }
 }

@@ -31,14 +31,14 @@ export default {
         return this.challenge.config;
       }
       return {
-        description: `Infinity ${formatInt(this.challenge.config.lockedAt)} times to unlock.`
+        description: `Разблокируется на ${formatInt(this.challenge.config.lockedAt)} бесконечностях.`
       };
     },
     name() {
-      return `C${this.challenge.id}`;
+      return `Исп${this.challenge.id}`;
     },
     overrideLabel() {
-      return this.isBroken ? "Broken" : "";
+      return this.isBroken ? "Сломано" : "";
     },
   },
   methods: {
@@ -67,10 +67,12 @@ export default {
     @start="challenge.requestStart()"
   >
     <template #top>
-      <DescriptionDisplay :config="descriptionDisplayConfig" />
+      <DescriptionDisplay
+        :config="descriptionDisplayConfig"
+      />
     </template>
     <template #bottom>
-      <span :class="{ 'o-pelle-disabled': isDisabled }">Reward: {{ challenge.config.reward }}</span>
+      <span :class="{ 'o-pelle-disabled': isDisabled }">Награда: разблокировать {{ challenge.config.reward }}</span>
     </template>
   </ChallengeBox>
 </template>

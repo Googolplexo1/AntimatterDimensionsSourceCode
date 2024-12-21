@@ -26,13 +26,13 @@ export default {
 
 <template>
   <div class="o-primary-btn o-primary-btn--option o-primary-btn--input l-options-grid__button">
-    <b>Save file name:</b>
-    <span ach-tooltip="Set a custom name (up to 16 alphanumeric characters, including space and hyphen)">
+    <b>Имя сохранения:</b>
+    <span ach-tooltip="Выставить имя сохранения (должно состоять только из букв английского алфавита, цифр, пробелов и дефисов, максимальная длина 16 символов)">
       <input
         class="c-custom-save-name__input"
         type="text"
         maxlength="16"
-        placeholder="Custom save name"
+        placeholder="Имя сохранения"
         :value="saveFileName"
         @change="handleChange"
       >

@@ -59,7 +59,8 @@ export default {
       <CostDisplay
         v-if="!isCapped"
         :config="upgrade.config"
-        name="Perk Point"
+        name="Очко"
+        postName="Умения"
       />
     </button>
   </div>

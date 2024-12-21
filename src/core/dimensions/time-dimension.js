@@ -15,8 +15,8 @@ export function buySingleTimeDimension(tier, auto = false) {
   if (Enslaved.isRunning && dim.bought > 0) return false;
   if (ImaginaryUpgrade(15).isLockingMechanics && EternityChallenge(7).completions > 0) {
     if (!auto) {
-      ImaginaryUpgrade(15).tryShowWarningModal(`purchase a Time Dimension,
-        which will produce Infinity Dimensions through EC7`);
+      ImaginaryUpgrade(15).tryShowWarningModal(`купить Измерение Времени,
+        что запустит производство ИБ1 благодаря награде ИспВ7`);
     }
     return false;
   }
@@ -61,8 +61,8 @@ export function buyMaxTimeDimension(tier, portionToSpend = 1, isMaxAll = false) 
   }
   if (ImaginaryUpgrade(15).isLockingMechanics && EternityChallenge(7).completions > 0) {
     if (!isMaxAll) {
-      ImaginaryUpgrade(15).tryShowWarningModal(`purchase a Time Dimension,
-        which will produce Infinity Dimensions through EC7`);
+      ImaginaryUpgrade(15).tryShowWarningModal(`купить Измерение Времени,
+        что запустит производство ИБ1 благодаря награде ИспВ7`);
     }
     return false;
   }
@@ -109,7 +109,6 @@ export function timeDimensionCommonMultiplier() {
       TimeStudy(103),
       TimeStudy(151),
       TimeStudy(221),
-      TimeStudy(301),
       EternityChallenge(1).reward,
       EternityChallenge(10).reward,
       EternityUpgrade.tdMultAchs,

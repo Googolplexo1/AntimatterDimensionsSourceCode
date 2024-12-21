@@ -2,369 +2,358 @@ import { DC } from "../constants";
 
 export const catchupResources = [
   {
-    name: "Antimatter Dimensions",
+    name: "Измерения Антиматерии",
     id: 0,
     requiredStage: PROGRESS_STAGE.PRE_INFINITY,
-    description: `Every Antimatter Dimension continuously produces Dimensions of the next tier down. The lowest
-      Antimatter Dimension produces antimatter.`
+    description: () => `каждое следующее Измерение Антиматерии непрерывно производит предыдущее. 1-е
+      Измерение Антиматерии производит антиматерию.`
   },
   {
-    name: "Tickspeed Upgrades",
+    name: "Ускорители",
     id: 1,
-    openH2pEntry: "Tickspeed",
     requiredStage: PROGRESS_STAGE.PRE_INFINITY,
-    description: `Tickspeed Upgrades make Antimatter Dimensions produce other Antimatter Dimensions or antimatter
-      as if time were passing faster.`
+    description: `улучшения, которые ускоряют производство
+      всех Измерений Антиматерии.`
   },
   {
-    name: "Autobuyers",
+    name: "Автоматика",
     id: 2,
     requiredStage: PROGRESS_STAGE.PRE_INFINITY,
-    description: `Autobuyers are a built-in feature to the game which purchases upgrades for your Antimatter
-      Dimensions automatically when you can afford them.`
+    description: `встроенная в игру система, которая автоматически покупает Измерения
+      Антиматерии и ускорители, когда это возможно.`
   },
   {
-    name: "Dimension Boosts",
+    name: "Расширения Измерений",
     id: 3,
     requiredStage: PROGRESS_STAGE.PRE_INFINITY,
-    description: `Dimension Boosts are gained by resetting all your Antimatter Dimensions and tickspeed after
-      reaching a certain amount of the highest available Antimatter Dimension. They provide a multiplier to your
-      Antimatter Dimensions.`
+    description: `получаются путём сброса ваших Измерений Антиматерии, ускорителей и антиматерии по
+      достижении определённого количества наивысшего доступного Измерения Антиматерии. Дают множитель к
+      Измерениям Антиматерии.`
   },
   {
-    name: "Antimatter Galaxies",
+    name: "Галактики Антиматерии",
     id: 4,
     requiredStage: PROGRESS_STAGE.PRE_INFINITY,
-    description: `Antimatter Galaxies are gained by resetting your Antimatter Dimensions and Dimension Boosts. They
-      improve the effectiveness of your Tickspeed Upgrades in a compounding way.`
+    description: `получаются путём сброса ваших Расширений Измерений, Измерений Антиматерии, ускорителей и антиматерии.
+      Усиливают ускорители.`
   },
   {
-    name: "Infinity",
+    name: "Бесконечность",
     id: 5,
     requiredStage: PROGRESS_STAGE.EARLY_INFINITY,
-    description: () => `Infinity is the first main reset layer. Reaching ${format(Number.MAX_VALUE, 2)} antimatter
-      allows you to reset everything up to this point in exchange for unlocking new content and resources.`
+    description: () => `первый полноценный слой престижа в игре. Достигая ${format(Number.MAX_VALUE, 2)} антиматерии,
+      вы можете сбросить весь предыдущий прогресс и разблокировать новые ресурсы и контент.`
   },
   {
-    name: "Infinity Points",
+    name: "Очки Бесконечности",
     id: 6,
-    openH2pEntry: "Infinity",
+    openH2pEntry: "Бесконечность",
     requiredStage: PROGRESS_STAGE.EARLY_INFINITY,
-    description: `Infinity Points are the primary resource after completing your first Infinity. They can be spent on
-      features which persist through Infinity resets.`
+    description: `основной ресурс после достижения бесконечности. Тратятся
+      на улучшения, которые не сбрасываются на бесконечности.`
   },
   {
-    name: "Normal Challenges",
+    name: "Обычные Испытания",
     id: 7,
-    openH2pEntry: "Normal Challenges",
     requiredStage: PROGRESS_STAGE.EARLY_INFINITY,
-    description: () => `Challenges require you to reach ${format(Number.MAX_VALUE, 2)} antimatter under more difficult
-      conditions. Completing challenges allows you to upgrade your Autobuyers.`
+    description: () => `выполняются путём достижения ${format(Number.MAX_VALUE, 2)} антиматерии при особых
+      условиях. При выполнении испытаний вы разблокируете возможность улучшать автоматику.`
   },
   {
-    name: "Break Infinity",
+    name: "Преодоление Бесконечности",
     id: 8,
     requiredStage: PROGRESS_STAGE.BREAK_INFINITY,
-    description: () => `Upgrading your Big Crunch Autobuyer to the maximum allows you to surpass
-      ${format(Number.MAX_VALUE, 2)} antimatter, giving increasing amounts of Infinity Points with more antimatter.`
+    description: () => `Улучшив автоматику Большого Сжатия до предела, вы можете набирать больше
+      ${format(Number.MAX_VALUE, 2)} антиматерии, и чем больше у вас антиматерии, тем больше Очков Бесконечности вы получаете.`
   },
   {
-    name: "Infinity Dimensions",
+    name: "Измерения Бесконечности",
     id: 9,
     requiredStage: PROGRESS_STAGE.BREAK_INFINITY,
-    description: `Infinity Dimensions Produce in a cascading fashion like Antimatter Dimensions. The lowest tier of
-      Infinity Dimension produces Infinity Power, which applies a large multiplier to all Antimatter Dimensions.`
+    description: () => `производят друг друга, как Измерения Антиматерии. 1-е
+      Измерение Бесконечности производит Силу Бесконечности, которая даёт большой множитель ко всем Измерениям Антиматерии.`
   },
   {
-    name: "Infinity Challenges",
+    name: "Испытания Бесконечности",
     id: 10,
     requiredStage: PROGRESS_STAGE.BREAK_INFINITY,
-    description: () => `Infinity Challenges are new challenges with an antimatter goal above
-      ${format(Number.MAX_VALUE, 2)}. Completing them rewards upgrades and production boosts.`
+    description: () => `новый набор испытаний, цели которых выше
+      ${format(Number.MAX_VALUE, 2)} антиматерии. Дают уникальные награды при выполнении.`
   },
   {
-    name: "Replicanti",
+    name: "Репликанти",
     id: 11,
     requiredStage: PROGRESS_STAGE.REPLICANTI,
-    description: () => `Replicanti is a resource which produces itself over time, giving a multiplier to all
-      Infinity Dimensions. At ${format(Number.MAX_VALUE, 2)} Replicanti, they can be reset to ${formatInt(1)} for an
-      additional Galaxy which does not increase the cost of Antimatter Galaxies. They also reset after every Infinity.`
+    description: () => `производит себя со временем и даёт множитель ко всем
+      Измерениям Бесконечности. Достигая ${format(Number.MAX_VALUE, 2)} Репликанти, вы можете сбросить их до ${formatInt(1)} за
+      дополнительную Галактику, не влияющую на цены Галактик Антиматерии. Репликанти сбрасываются на бесконечности.`
   },
   {
-    name: "Eternity",
+    name: "Вечность",
     id: 12,
     requiredStage: PROGRESS_STAGE.EARLY_ETERNITY,
-    description: () => `Eternity is the second main reset layer. Reaching ${format(Number.MAX_VALUE, 2)} Infinity Points
-      allows you to reset everything up to this point for access to new content and resources.`
+    description: () => `второй полноценный слой престижа в игре. Достигая ${format(Number.MAX_VALUE, 2)} Очков Бесконечности,
+      вы можете сбросить весь предыдущий прогресс и разблокировать новые ресурсы и контент.`
   },
   {
-    name: "Eternity Points",
+    name: "Очки Вечности",
     id: 13,
-    openH2pEntry: "Eternity",
+    openH2pEntry: "Вечность",
     requiredStage: PROGRESS_STAGE.EARLY_ETERNITY,
-    description: `Eternity Points are the primary resource after completing your first Eternity, and scale based on your
-      Infinity Points at the time you complete the Eternity.`
+    description: `основной ресурс после достижения вечности. Их получение зависит от вашего количества
+      Очков Бесконечности в момент совершения вечности.`
   },
   {
-    name: "Time Studies",
+    name: "Исследования Времени",
     id: 14,
     requiredStage: PROGRESS_STAGE.EARLY_ETERNITY,
-    description: `Time Studies are a set of upgrades akin to a skill tree, and can be freely re-allocated after every
-      Eternity with no resource loss. Some sections of the tree have restrictions which forbid you from choosing
-      particular studies simultaneously.`
+    description: `улучшения, которые расположены в форме Древа, покупаются по порядку в соответствии с его структурой и могут быть свободно
+      сброшены на вечности с возвращением потраченных на них ресурсов. Существуют запреты на
+      одновременную покупку определённых наборов Исследований.`
   },
   {
-    name: "Eternity Milestones",
+    name: "Этапы Вечности",
     id: 15,
     requiredStage: PROGRESS_STAGE.EARLY_ETERNITY,
-    description: `Eternity Milestones are forms of built-in automation and convenience which are unlocked simply by
-      completing more Eternities. Unlocking them does not require spending any resources.`
+    description: `формы встроенных в игру удобств и автоматики, которые получаются путём
+      достижения определённого количества вечностей без траты каких-либо ресурсов.`
   },
   {
-    name: "Time Dimensions",
+    name: "Измерения Времени",
     id: 16,
     requiredStage: PROGRESS_STAGE.EARLY_ETERNITY,
-    description: `Time Dimensions also produce each other in a cascading manner, with the lowest tier producing Time
-      Shards. Time Shards give you additional Tickspeed Upgrades which do not increase the cost of the Tickspeed
-      Upgrades purchased with antimatter.`
+    description: () => `производят друг друга, как прошлые два вида Измерений. 1-е Измерение Времени производит Осколки
+      Времени, дающие дополнительные ускорители, которые не влияют на цены
+      ускорителей, покупаемых за антиматерию.`
   },
   {
-    name: "Eternity Challenges",
+    name: "Испытания Вечности",
     id: 17,
     requiredStage: PROGRESS_STAGE.ETERNITY_CHALLENGES,
-    description: `Eternity Challenges are modified Eternities with an Infinity Point goal which must be reached for
-      completion. They can be completed up to five times, getting more difficult each repetition in exchange for
-      increasingly powerful rewards.`
+    description: () => `выполняются путём достижения определённого количества Очков Бесконечности в отдельной вечности
+      с особыми условиями. Каждое Испытание Вечности может быть выполнено до ${formatInt(5)} раз, причём с каждым разом как цель,
+      так и награда растут.`
   },
   {
-    name: "Time Dilation",
+    name: "Замедление Времени",
     id: 18,
     requiredStage: PROGRESS_STAGE.EARLY_DILATION,
-    description: () => `Time Dilation is a modified Eternity where tickspeed and all Dimension multipliers are
-      severely reduced. Completing Dilated Eternities gives Tachyon Particles.`
+    description: `уникальное испытание, представляющее собой вечность, в которой сильно уменьшены
+      множители всех Измерений и скорость тика. При завершении вечности в Замедлении вы получаете Тахионы.`
   },
   {
-    name: "Tachyon Particles",
+    name: "Тахионы",
     id: 19,
-    openH2pEntry: "Time Dilation",
+    openH2pEntry: "Замедление Времени",
     requiredStage: PROGRESS_STAGE.EARLY_DILATION,
-    description: () => `Tachyon Particles are a resource which cannot be farmed and require you to get a higher amount
-      of antimatter in a Dilated Eternity in order to increase your amount. Tachyon Particles produce Dilated Time.`
+    description: `ресурс, который невозможно копить, а вместо этого получается путём достижения
+      большего количества антиматерии в Замедлении. Производят Замедленное Время.`
   },
   {
-    name: "Reality",
+    name: "Реальность",
     id: 20,
     requiredStage: PROGRESS_STAGE.EARLY_REALITY,
-    description: () => `Reality is the third and final main reset layer. Reaching ${format(DC.E4000)} Eternity Points
-      gives you the option to reset everything up to this point in exchange for unlocking new content and gaining
-      access to new resources.`
+    description: () => `третий и последний полноценный слой престижа. Достигая ${format(DC.E4000)} Очков Вечности,
+      вы можете сбросить весь предыдущий прогресс и разблокировать новые ресурсы и контент.`
   },
   {
-    name: "Reality Machines",
+    name: "Машины Реальности",
     id: 21,
-    openH2pEntry: "Reality",
+    openH2pEntry: "Реальность",
     requiredStage: PROGRESS_STAGE.EARLY_REALITY,
-    description: `Reality Machines are the primary resource after completing your first Reality. They are given based
-      on Eternity Points at the time of completing a Reality.`
+    description: `основной ресурс после достижения реальности. Их получение зависит от вашего количества
+      Очков Вечности в момент совершения реальности.`
   },
   {
-    name: "Perks",
+    name: "Навыки",
     id: 22,
     requiredStage: PROGRESS_STAGE.EARLY_REALITY,
-    description: `Perks are unlockable features similar to Eternity Milestones which primarily focus on convenience and
-      automation. They are purchased using Perk Points, which are gained after every Reality.`
+    description: `улучшения, которые, как Этапы Вечности, дают удобства и
+      автоматику. Покупаются за Очки Умения, которые вы получаете на реальности.`
   },
   {
-    name: "Glyphs",
+    name: "Глифы",
     id: 23,
     requiredStage: PROGRESS_STAGE.EARLY_REALITY,
-    description: `Glyphs are equippable upgrades which can only be unequipped between Realities. Every Reality you are
-      allowed to choose one of multiple new random Glyphs to receive; the average quality of your available choices
-      is determined by how high some of your resources reached in that Reality.`
+    description: `предметы с эффектами, которые можно активировать в ограниченном количестве, а деактивировать лишь на реальности. Каждую реальность
+      вы выбираете один из нескольких случайно генерированных глифов; их среднее качество
+      зависит от рекордного количества определённых ресурсов в текущей реальности.`
   },
   {
-    name: "Automator",
+    name: "Автоматизатор",
     id: 24,
-    openH2pEntry: "Automator Overview",
+    openH2pEntry: "Обзор автоматизатора",
     requiredStage: PROGRESS_STAGE.EARLY_REALITY,
-    description: `The Automator is a built-in feature that uses a scripting language that allows you to eventually
-      finish Realities completely hands-off with enough upgrades and perks.`
+    description: `встроенная в игру автоматическая система, которая позволяет себя запрограммировать, так что
+      при наличии необходимых Навыков и Улучшений Реальности вы сможете полностью автоматизировать реальности.`
   },
   {
-    name: "Black Hole",
+    name: "Чёрная Дыра",
     id: 25,
     requiredStage: PROGRESS_STAGE.EARLY_REALITY,
-    description: `The Black Hole runs the entire game faster in a periodic cycle. This affects everything in the game up
-      to this point and will give similar results to leaving the game open for an equivalent amount of time.`
+    description: `периодически ускоряет игру на короткое время, что влияет на все разблокированные
+      к этому моменту механики.`
   },
   {
-    name: "Teresa",
+    name: "Тереза",
     id: 26,
     requiredStage: PROGRESS_STAGE.TERESA,
-    description: `Teresa is the first Celestial, who has a more difficult Reality which gives a massive boost to Glyph
-      Sacrifice depending upon completion. They unlock upgrades which focus on testing and automating Realities more
-      easily.`
+    description: `первый Небожитель. Выполнение её Реальности даёт огромный множитель к
+      жертвенной ценности глифов. Другие бонусы от Терезы ещё больше автоматизируют и ускоряют реальности,
+      что упрощает тестирование глифов.`
   },
   {
-    name: "Effarig",
+    name: "Эффариг",
     id: 27,
     requiredStage: PROGRESS_STAGE.EFFARIG,
-    description: `Effarig is the second Celestial, whose Reality limits your Glyphs and has scaling nerfs but gives
-      rewards for each new reset layer reached. They unlock upgrades which focus on automatically selecting and
-      filtering the large number of Glyphs you are receiving, purchased with a new resource called Relic Shards.`
+    description: `второй Небожитель. В его Реальности фактические уровни глифов ограничены. Каждый достигнутый в ней
+      слой престижа даёт свою награду. Также Эффариг разблокирует улучшения, покупаемые за новый ресурс - Реликтовые Осколки, - 
+      которые автоматизируют выбор и упорядочивание глифов, получаемых вами в большом количестве.`
   },
   {
-    name: "The Nameless Ones",
+    name: "Безымянные",
     id: 28,
-    openH2pEntry: "Nameless Ones",
     requiredStage: PROGRESS_STAGE.ENSLAVED,
-    description: `The Nameless Ones are the third Celestial, whose Reality is extremely punishing with a long list of
-      nerfs, but unlocks Tesseracts for those who can figure out how to prevail. They also modify your Black Hole to
-      allow it to store time.`
+    description: `третий Небожитель. Их Реальность чрезвычайно сурова и нетривиальна, зато 
+      её выполнение разблокирует Тессеракты. Безымянные также разблокируют хранение времени.`
   },
   {
-    name: "Stored Time",
+    name: "Хранение времени",
     id: 29,
-    openH2pEntry: "Nameless Ones",
+    openH2pEntry: "Безымянные",
     requiredStage: PROGRESS_STAGE.ENSLAVED,
-    description: `Your Black Hole has the ability to store time in two ways. Charging it allows you to hold on to
-      sped-up time and release it later as a single skip-forward burst. Storing real time lets you use actual time
-      to simulate Realities (giving you the resources of that Reality but multiplied), or as a stand-in for
-      offline progress.`
+    description: `существует в двух вариантах. Хранение игрового времени осуществляется путём зарядки Чёрной Дыры, что
+      позволяет вам сосредоточить и использовать всю её силу в любом моменте времени. Хранение же реального времени позволяет
+      усилить реальность, умножая все награды за неё, как если бы вы в течение сохранённого времени повторили эту реальность многократно.
+      Эту опцию можно использовать вместо офлайн-прогресса.`
   },
   {
-    name: "Tesseracts",
+    name: "Тессеракты",
     id: 30,
     requiredStage: PROGRESS_STAGE.ENSLAVED,
-    description: `Infinity Dimensions cannot be purchased indefinitely and all but the 8th have a hard limit for how
-      many times they can be purchased. Each Tesseract permanently increases this limit by a large amount.`
+    description: () => `как известно, количество покупок всех Измерений Бесконечности, кроме 8-го,
+      ограничено. Тессеракты увеличивают это ограничение.`
   },
   {
-    name: "V",
+    name: "Ви",
     id: 31,
     requiredStage: PROGRESS_STAGE.V,
-    description: `V is the fourth Celestial, with a modified Reality which is similar to Teresa's Reality but only gives
-      rewards by reaching certain milestones of resources within. They give a new resource called Space Theorems, which
-      allow you to purchase additional Time Studies without path restrictions.`
+    description: `четвёртый Небожитель. Имеет ряд особых достижений, которые могут быть выполнены
+      только внутри его Реальности. За это вы получаете новый ресурс - Теоремы Пространства,
+      которые тратятся на покупку взаимоисключающих Исследований Времени.`
   },
   {
-    name: "Ra",
+    name: "Ра",
     id: 32,
     requiredStage: PROGRESS_STAGE.RA,
-    description: `Ra is the fifth Celestial, with a modified Reality which produces a resource called Memory Chunks
-      based on your resource totals within. They focus highly on taking older upgrades and themes from the previous
-      four Celestials and improving upon them, as well as filling out some final gaps in automation and convenience.`
+    description: `пятый Небожитель. Внутри его Реальности производятся особые ресурсы - Куски Памяти разных видов -
+      в зависимости от определённых параметров. Бонусы, которые даёт Ра, связаны в основном либо с качественным преобразованием
+      контента предыдущих Небожителей, либо с заполнением пробелов в системе автоматики и других удобств.`
   },
   {
-    name: "Memories",
+    name: "Память Небожителей",
     id: 33,
-    openH2pEntry: "Ra",
+    openH2pEntry: "Ра",
     requiredStage: PROGRESS_STAGE.RA,
-    description: `Ra has the previous four Celestials under their control, producing Memories over time based on Memory
-      Chunk count. These Memories are used to level up the previous Celestials, providing upgrades when certain levels
-      are reached.`
+    description: `особые ресурсы разных видов, каждый из которых производится со временем соответствующим видом Кусков
+      Памяти. Каждый вид соответсвует одному из прошлых Небожителей. Тратится на повышение Уровней Небожителей, которые
+      дают определённые бонусы.`
   },
   {
-    name: "Charged Infinity Upgrades",
+    name: "Заряженные Улучшения Бесконечности",
     id: 34,
-    openH2pEntry: "Ra",
+    openH2pEntry: "Эффекты от Ра",
     requiredStage: PROGRESS_STAGE.RA,
-    description: `Teresa's Memories allow you to charge your Infinity Upgrades, maintaining a similar effect but
-      strengthening them significantly. Which upgrades are charged can only be changed between Realities.`
+    description: `разблокируются Уровнями Терезы. Замещают обычные Улучшения Бесконечности. Аналогичны им по эффекту,
+      но гораздо сильнее. Могут быть свободно сброшены на реальности.`
   },
   {
-    name: "Glyph Alchemy",
+    name: "Алхимия",
     id: 35,
     requiredStage: PROGRESS_STAGE.RA,
-    description: `Effarig's Memories unlock Glyph Alchemy, which gives many minor boosts using a modified version of
-      Glyph Sacrifice. The resources gained from giving up Glyphs in this way must be combined together in reactions
-      in order to fully upgrade their effects.`
+    description: `разблокируется Уровнями Эффарига. Требует облагораживать глифы для получения бонусов, аналогично Пожертвованию Глифов.
+      Ресурсы, полученные таким путём, можно комбинировать в реакциях для получения других ресурсов, которые дают другие бонусы.`
   },
   {
-    name: "Amplified Black Hole",
+    name: "Тройственные Исследования",
     id: 36,
-    openH2pEntry: "Ra",
+    openH2pEntry: "Эффекты от Ра",
     requiredStage: PROGRESS_STAGE.RA,
-    description: `Nameless's Memories amplify charging so that the amount of game time stored is larger than the actual
-      game time elapsed. Discharging can now also be done repeatedly and automatically.`
+    description: `разблокируются Уровнями Ви. Находятся в Древе Исследований и покупаются за Теоремы Пространства. 
+      Чтобы заработать их, нужно выполнять новый набор достижений Ви - супердостижения Ви.`
   },
   {
-    name: "Harder V",
+    name: "Мнимые Машины",
     id: 37,
-    openH2pEntry: "Ra",
-    requiredStage: PROGRESS_STAGE.RA,
-    description: `V's Memories unlocks a modified version of V's original Reality with even harder goals and a new set
-      of Time Studies called Triad Studies.`
-  },
-  {
-    name: "Imaginary Machines",
-    id: 38,
+    openH2pEntry: "Мнимые Улучшения",
     requiredStage: PROGRESS_STAGE.IMAGINARY_MACHINES,
-    description: () => `Imaginary Machines are a new resource unlocked when reaching ${format(DC.E1000)} Reality
-      Machines. They are produced passively up to a cap determined by how many Reality Machines you would have gotten
-      in your farthest Reality ever.`
+    description: () => `новый ресурс, для получения которого необходимо достичь теоретического получения ${format(DC.E1000)}
+      Машин Реальности. Производятся, экспоненциально приближаясь к своему ограничению, которое зависит от рекордного
+      теоретического получения Машин Реальности.`
   },
   {
-    name: "Lai'tela",
+    name: "Лайтела",
+    id: 38,
+    requiredStage: PROGRESS_STAGE.LAITELA,
+    description: `шестой Небожитель. Награда за её Реальность зависит от того, как быстро вы её выполнили.
+      Лайтела разблокирует несколько новых ресурсов, главный среди которых - Тёмная Материя.`
+  },
+  {
+    name: "Континуум",
     id: 39,
     requiredStage: PROGRESS_STAGE.LAITELA,
-    description: `Lai'tela is the sixth Celestial, whose Reality has a modified completion condition and gives a
-      scaling reward based on how quickly you can reach it. They unlock new features largely related to a resource
-      called Dark Matter.`
+    description: `замещает покупку Измерений Антиматерии и ускорителей, вместо этого непрерывно изменяясь по той же формуле,
+      что и количество покупок, и давая тот же бонус, но сильнее.`
   },
   {
-    name: "Continuum",
+    name: "Измерения Тёмной Материи",
     id: 40,
     requiredStage: PROGRESS_STAGE.LAITELA,
-    description: `Continuum is a modified type of production which allows your Antimatter Dimensions to produce as if
-      they could purchase fractional amounts of upgrades, without actually purchasing them.`
+    description: () => `производят друг друга, как прошлые два вида Измерений, с той лишь разницей, что делают это дискретно.
+      1-е Измерение Тёмной Материи производит Тёмную Материю.`
   },
   {
-    name: "Dark Matter Dimensions",
+    name: "Аннигиляция",
     id: 41,
-    openH2pEntry: "Lai'tela",
+    openH2pEntry: "Измерения Тёмной Материи",
     requiredStage: PROGRESS_STAGE.LAITELA,
-    description: `Dark Matter Dimensions are cascading production which operate on a tick-based system instead of
-      continuously. The lowest tier produces Dark Matter and all tiers produce Dark Energy.`
+    description: `сбрасывает все Измерения Тёмной Материи, но даёт множитель к ним.`
   },
   {
-    name: "Dimension Reset Mechanics",
+    name: "Вознесение",
     id: 42,
-    openH2pEntry: "Lai'tela",
+    openH2pEntry: "Измерения Тёмной Материи",
     requiredStage: PROGRESS_STAGE.LAITELA,
-    description: `Dark Matter Dimensions can be reset in two ways. Annihilation resets all your Dimensions in exchange
-      for a permanent multiplier to all Dark Matter Dimensions. Ascension increases production but resets the interval
-      of a single Dimension.`
+    description: `совершается при улучшении интервала Измерения Тёмной Материи до предела.
+      Интервал при этом сбрасывается, но это Измерение получает множитель.`
   },
   {
-    name: "Singularities",
+    name: "Сингулярности",
     id: 43,
     requiredStage: PROGRESS_STAGE.LAITELA,
-    description: `Dark Energy can be used to produce Singularities, which give boosts based on their total amount.
-      When producing Singularities, any extra Dark Energy above the condensing threshold is wasted.`
+    description: `получаются путём сброса Тёмной Энергии при наличии её в достаточном количестве.
+      Этапы Сингулярности выдаются бесплатно по достижении определённого количества Сингулярностей и дают разнообразные бонусы.`
   },
   {
-    name: "Pelle",
+    name: "Пелль",
     id: 44,
     requiredStage: PROGRESS_STAGE.PELLE,
-    description: `Pelle is the seventh and final Celestial, who permanently Dooms your game, throwing you into a very
-      difficult modified Reality which you cannot escape.`
+    description: `седьмой и последний Небожитель. Имеет экстремально суровую Обречённую Реальность,
+      из которой невозможно выйти.`
   },
   {
-    name: "Armageddon",
+    name: "Армагеддон",
     id: 45,
-    openH2pEntry: "Pelle",
     requiredStage: PROGRESS_STAGE.PELLE,
-    description: `Armageddon is a Pelle-specific reset which you can perform at any time. This resets your progress to
-      the beginning of the Doomed Reality, but gives Remnants which produce Reality Shards.`
+    description: `сброс, подобный реальности, который вы можете совершить в Обречении в любой момент.
+      Даёт Останки, производящие Осколки Реальности, которые можно тратить на различные улучшения.`
   },
   {
-    name: "Pelle Strikes and Rifts",
+    name: "Разломы и Удары Пелля",
     id: 46,
-    openH2pEntry: "Pelle Strikes",
     requiredStage: PROGRESS_STAGE.PELLE,
-    description: `Upon reaching certain progress milestones within Pelle, a Strike may occur which permanently applies
-      another nerf to the Doomed Reality. Accompanying every Strike is a Rift, which is a mechanic which lets you drain
-      a different resource in exchange for a boost. These are permanent and remain unlocked after Armageddon.`
+    description: `При достижении определённых стадий прогресса в Обречённой Реальности вы получаете Удары Пелля,
+      представляющие собой необратимые ослабления. Зато каждый Удар Пелля разблокирует свой Разлом, который можно
+      заполнять определённым ресурсом за определённый бонус. Разломы и Удары Пелля не сбрасываются при армагеддоне.`
   },
 ];

@@ -17,7 +17,7 @@ export default {
   },
   computed: {
     sacrificeTooltip() {
-      return `Boosts 8th Antimatter Dimension by ${formatX(this.sacrificeBoost, 2, 2)}`;
+      return `Множитель ${formatX(this.sacrificeBoost, 2, 2)} к 8-му Измерению Антиматерии`;
     },
   },
   methods: {
@@ -50,10 +50,10 @@ export default {
       @click="sacrifice"
     >
       <span v-if="isSacrificeAffordable">
-        Dimensional Sacrifice ({{ formatX(sacrificeBoost, 2, 2) }})
+        Пожертвование Измерений ({{ formatX(sacrificeBoost, 2, 2) }})
       </span>
       <span v-else>
-        Dimensional Sacrifice Disabled ({{ disabledCondition }})
+        Пожертвование Измерений недоступно ({{ disabledCondition }})
       </span>
     </PrimaryButton>
     <PrimaryButton

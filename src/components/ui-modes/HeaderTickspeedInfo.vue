@@ -17,12 +17,12 @@ export default {
   },
   computed: {
     tickspeedDisplay() {
-      return `Total Tickspeed: ${format(this.tickspeed, 2, 3)} / sec`;
+      return `Скорость тика: ${format(this.tickspeed, 2, 3)}`;
     },
     perUpgrade() {
-      if (InfinityChallenge(3).isRunning) return `Tickspeed upgrades give
-        ${formatX(1.05 + this.galaxyCount * 0.005, 3, 3)} to all ADs`;
-      return `ADs produce ${formatX(this.mult.reciprocal(), 2, 3)} faster per Tickspeed upgrade`;
+      if (InfinityChallenge(3).isRunning) return `Каждый ускоритель даёт множитель
+        ${formatX(1.05 + this.galaxyCount * 0.005, 3, 3)} ко всем ИА`;
+      return `ИА производят в ${format(this.mult.reciprocal(), 2, 3)} раза за ускоритель быстрее`;
     },
   },
   methods: {

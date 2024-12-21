@@ -21,6 +21,8 @@ export class BreakdownEntryInfo {
     this._isDilated = createGetter(dbEntry.isDilated, args);
     this._isBase = createGetter(dbEntry.isBase, args);
     this._ignoresNerfPowers = createGetter(dbEntry.ignoresNerfPowers, args);
+    this._isNotARealThing = createGetter(dbEntry.isNotARealThing, args);
+    this._dimCount = createGetter(dbEntry.dimCount, args);
     this.data = Vue.observable({
       mult: new Decimal(0),
       pow: 0,
@@ -81,6 +83,14 @@ export class BreakdownEntryInfo {
 
   get ignoresNerfPowers() {
     return this._ignoresNerfPowers() ?? false;
+  }
+
+  get isNotARealThing() {
+    return this._isNotARealThing() ?? false;
+  }
+
+  get dimCount() {
+    return this._dimCount() ?? 1;
   }
 
   get isVisible() {

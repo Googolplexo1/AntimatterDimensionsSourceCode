@@ -37,18 +37,18 @@ export default {
     @confirm="handleYesClick"
   >
     <template #header>
-      Delete this Glyph Set
+      Удалить набор глифов
     </template>
     <div class="c-modal-message__text">
-      Please confirm your desire to delete this Glyph Set:
+      Пожалуйста, подтвердите ваше намерение удалить этот набор глифов:
       <GlyphSetPreview
         :is-in-modal="true"
         :glyphs="glyphSet"
       />
-      This will not affect your actual Glyphs, only the saved preset.
+      Собственно глифы не будут удалены, только сохранённая комбинация.
     </div>
     <template #confirm-text>
-      Delete
+      Удалить
     </template>
   </ModalWrapperChoice>
 </template>

@@ -13,8 +13,8 @@ export const EFFARIG_STAGES = {
 };
 
 export const Effarig = {
-  displayName: "Effarig",
-  possessiveName: "Effarig's",
+  displayName: "Эффариг",
+  possessiveName: "Эффарига",
   initializeRun() {
     clearCelestialRuns();
     player.celestials.effarig.run = true;
@@ -39,12 +39,12 @@ export const Effarig = {
   get currentStageName() {
     switch (this.currentStage) {
       case EFFARIG_STAGES.INFINITY:
-        return "Infinity";
+        return "Бесконечность";
       case EFFARIG_STAGES.ETERNITY:
-        return "Eternity";
+        return "Вечность";
       case EFFARIG_STAGES.REALITY:
       default:
-        return "Reality";
+        return "Реальность";
     }
   },
   get eternityCap() {
@@ -112,7 +112,9 @@ export const Effarig = {
     // Will return 0 if Effarig Infinity is uncompleted
     return Math.floor(replicantiCap().pLog10() / LOG10_MAX_VALUE - 1);
   },
-  quotes: Quotes.effarig,
+  get quotes() {
+    return Quotes().effarig;
+  },
   symbol: "Ϙ"
 };
 

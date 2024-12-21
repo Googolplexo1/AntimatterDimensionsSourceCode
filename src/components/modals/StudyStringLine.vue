@@ -13,13 +13,13 @@ export default {
   },
   computed: {
     importDestString() {
-      return this.intoEmpty ? "into an empty Tree" : "with your current Tree";
+      return this.intoEmpty ? "при пустом Древе" : "при текущем Древе";
     }
   },
   methods: {
     formatTheoremCost(tt, st) {
-      const strTT = `${formatWithCommas(tt)} TT`;
-      const strST = `${formatWithCommas(st)} ST`;
+      const strTT = `${formatWithCommas(tt)} ТВ`;
+      const strST = `${formatWithCommas(st)} ТП`;
       return st === 0 ? strTT : `${strTT} + ${strST}`;
     }
   },
@@ -29,13 +29,13 @@ export default {
 <template>
   <div class="l-modal-import-tree__tree-info-line">
     <div v-if="tree.timeTheorems === 0 && tree.spaceTheorems === 0">
-      <i>Importing this {{ importDestString }} will not purchase any new Time Studies.</i>
+      <i>Данный импорт {{ importDestString }} не приведёт к покупке каких-либо новых Исследований Времени.</i>
     </div>
     <div v-else>
-      Importing {{ importDestString }} will purchase:
+      Данный импорт {{ importDestString }} приведёт к покупке следующих Исследований:
       <br>
       {{ tree.newStudies }}
-      (Cost: {{ formatTheoremCost(tree.timeTheorems, tree.spaceTheorems) }})
+      (Цена: {{ formatTheoremCost(tree.timeTheorems, tree.spaceTheorems) }})
     </div>
     <br>
   </div>

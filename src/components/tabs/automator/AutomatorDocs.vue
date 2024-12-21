@@ -66,14 +66,14 @@ export default {
       return this.fullScreen ? "fa-compress-arrows-alt" : "fa-expand-arrows-alt";
     },
     fullScreenTooltip() {
-      return this.fullScreen ? "Exit full screen" : "Expand to full screen";
+      return this.fullScreen ? "Выйти из полноэкранного режима" : "Полноэкранный режим";
     },
     errorTooltip() {
-      return `Your script has ${quantify("error", this.errorCount)}`;
+      return `Ваша программа содержит ${quantifyInt("ошибку", this.errorCount)}`;
     },
     nameTooltip() {
       return this.isNameTooLong
-        ? `Names cannot be longer than ${formatInt(AutomatorData.MAX_ALLOWED_SCRIPT_NAME_LENGTH)} characters!`
+        ? `Название программы не может быть длиннее ${quantifyInt("символа", AutomatorData.MAX_ALLOWED_SCRIPT_NAME_LENGTH)}!`
         : "";
     },
     currentScriptID: {
@@ -107,8 +107,8 @@ export default {
     },
     importTooltip() {
       return this.canMakeNewScript
-        ? "Import single automator script or data"
-        : "You have too many scripts to import another!";
+        ? "Импорт отдельной программы или данных для Автоматизатора"
+        : "У вас слишком много программ, чтобы импортировать ещё!";
     },
     currentEditorScriptName() {
       return this.scripts.find(s => s.id === this.currentScriptID).name;
@@ -143,9 +143,9 @@ export default {
       const toExport = AutomatorBackend.exportCurrentScriptContents();
       if (toExport) {
         copyToClipboard(toExport);
-        GameUI.notify.automator("Exported current Automator script to your clipboard");
+        GameUI.notify.automator("Текущая программа экспортирована в буфер обмена");
       } else {
-        GameUI.notify.error("Could not export blank Automator script!");
+        GameUI.notify.error("Пустая программа не может быть экспортирована!");
       }
     },
     importScript() {
@@ -179,7 +179,7 @@ export default {
       // suppress the error modal instead
       if (this.isBlock && BlockAutomator.hasUnparsableCommands(this.currentScript) && this.currentScript !== "") {
         AutomatorBackend.changeModes(this.currentScriptID);
-        Modal.message.show("Some script commands were unrecognizable - defaulting to text editor.");
+        Modal.message.show("Некоторые команды в программе не удалось распознать - редактирование переключено в текстовый режим.");
       }
 
       this.$nextTick(() => {
@@ -242,13 +242,13 @@ export default {
     <div class="c-automator__controls l-automator__controls">
       <div class="l-automator-button-row">
         <AutomatorButton
-          v-tooltip="'Automator Introduction'"
+          v-tooltip="'Введение в Автоматизатор'"
           class="fa-circle-info"
           :class="activePanelClass(panelEnum.INTRO_PAGE)"
           @click="infoPaneID = panelEnum.INTRO_PAGE"
         />
         <AutomatorButton
-          v-tooltip="'Scripting Information'"
+          v-tooltip="'Информация о программировании'"
           class="fa-list"
           :class="activePanelClass(panelEnum.COMMANDS)"
           @click="infoPaneID = panelEnum.COMMANDS"
@@ -261,32 +261,32 @@ export default {
           @click="infoPaneID = panelEnum.ERRORS"
         />
         <AutomatorButton
-          v-tooltip="'Extended Data Transfer'"
+          v-tooltip="'Расширенный обмен данными'"
           class="fa-window-restore"
           :class="activePanelClass(panelEnum.DATA_TRANSFER)"
           @click="infoPaneID = panelEnum.DATA_TRANSFER"
         />
         <AutomatorButton
-          v-tooltip="'View recently executed commands'"
+          v-tooltip="'Просмотр недавно выполненных команд'"
           class="fa-eye"
           :class="activePanelClass(panelEnum.EVENTS)"
           @click="infoPaneID = panelEnum.EVENTS"
         />
         <AutomatorButton
-          v-tooltip="'Modify defined constants'"
+          v-tooltip="'Изменение определённых постоянных'"
           class="fa-book"
           :class="activePanelClass(panelEnum.CONSTANTS)"
           @click="infoPaneID = panelEnum.CONSTANTS"
         />
         <AutomatorButton
-          v-tooltip="'Template Creator List'"
+          v-tooltip="'Создание блока кода по шаблону'"
           class="fa-file-code"
           :class="activePanelClass(panelEnum.TEMPLATES)"
           @click="infoPaneID = panelEnum.TEMPLATES"
         />
         <AutomatorButton
           v-if="isBlock"
-          v-tooltip="'Command menu for Block editor mode'"
+          v-tooltip="'Меню команд для блочного режима редактирования'"
           class="fa-cubes"
           :class="activePanelClass(panelEnum.BLOCKS)"
           @click="infoPaneID = panelEnum.BLOCKS"
@@ -296,7 +296,7 @@ export default {
           class="c-automator__status-text c-automator__status-text--small"
           :class="{ 'c-automator__status-text--error' : totalChars > maxTotalChars }"
         >
-          Across all scripts: {{ formatInt(totalChars) }}/{{ formatInt(maxTotalChars) }}
+          По всем программам: {{ formatInt(totalChars) }}/{{ formatInt(maxTotalChars) }}
         </span>
         <AutomatorButton
           v-tooltip="fullScreenTooltip"
@@ -307,7 +307,7 @@ export default {
       </div>
       <div class="l-automator-button-row">
         <AutomatorButton
-          v-tooltip="'Export single automator script'"
+          v-tooltip="'Экспорт отдельной программы для Автоматизатора'"
           class="fa-file-export"
           @click="exportScript"
         />
@@ -325,7 +325,7 @@ export default {
             >
               <template #header>
                 <div class="c-automator-docs-script-select">
-                  ▼ Current Script: {{ currentEditorScriptName }}
+                  ▼ Текущая программа: {{ currentEditorScriptName }}
                 </div>
               </template>
               <template #dropdown>
@@ -333,7 +333,7 @@ export default {
               </template>
             </ExpandingControlBox>
             <AutomatorButton
-              v-tooltip="'Rename script'"
+              v-tooltip="'Переименовать программу'"
               class="far fa-edit"
               @click="rename"
             />
@@ -349,7 +349,7 @@ export default {
           >
         </div>
         <AutomatorButton
-          v-tooltip="'Delete this script'"
+          v-tooltip="'Удалить эту программу'"
           class="fas fa-trash"
           @click="deleteScript"
         />

@@ -8,7 +8,7 @@ export const ENSLAVED_UNLOCKS = {
     id: 0,
     price: TimeSpan.fromYears(1e35).totalMilliseconds,
     secondaryRequirement: () => true,
-    description: () => `Increase the softcap to Tickspeed upgrades from Time Dimensions by ${formatInt(1e5)}`,
+    description: () => `Отсрочить вторую наценку на ускорители от Осколков Времени на ${formatInt(1e5)}`,
   },
   RUN: {
     id: 1,
@@ -21,15 +21,15 @@ export const ENSLAVED_UNLOCKS = {
     description() {
       const hasLevelRequirement = player.records.bestReality.glyphLevel >= 5000;
       const hasRarityRequirement = strengthToRarity(player.records.bestReality.glyphStrength) >= 100;
-      return `Unlock The Nameless Ones' Reality (requires ${hasLevelRequirement ? "[✓]" : "[✗]"} a level
-      ${formatInt(5000)} Glyph and ${hasRarityRequirement ? "[✓]" : "[✗]"} a ${formatRarity(100)} rarity Glyph)`;
+      return `Разблокировать Реальность Безымянных (требуется ${hasLevelRequirement ? "[✓]" : "[✗]"} глиф уровня хотя бы
+      ${formatInt(5000)} и ${hasRarityRequirement ? "[✓]" : "[✗]"} глиф редкости ${formatRarity(100)})`;
     }
   }
 };
 
 export const Enslaved = {
-  displayName: "The Nameless Ones",
-  possessiveName: "The Nameless Ones'",
+  displayName: "Безымянные",
+  possessiveName: "Безымянных",
   boostReality: false,
   BROKEN_CHALLENGES: [2, 3, 4, 5, 7, 8, 10, 11, 12],
   nextTickDiff: 50,
@@ -114,7 +114,7 @@ export const Enslaved = {
     if (!this.canRelease(autoRelease)) return;
     const maxInversion = player.requirementChecks.reality.slowestBH <= 1e-300;
     if (ImaginaryUpgrade(24).isLockingMechanics && Ra.isRunning && maxInversion) {
-      if (!autoRelease) ImaginaryUpgrade(24).tryShowWarningModal("discharge your Black Hole");
+      if (!autoRelease) ImaginaryUpgrade(24).tryShowWarningModal("разрядить Чёрную Дыру");
       return;
     }
     player.requirementChecks.reality.slowestBH = 1;
@@ -153,15 +153,6 @@ export const Enslaved = {
     player.celestials.enslaved.hasSecretStudy = false;
     this.feltEternity = false;
 
-    // Re-validation needs to be done here because this code gets called after the automator attempts to start.
-    // This is a special case for Nameless because it's one of the only two cases where a command becomes locked
-    // again (the other being Pelle entry, which just force-stops the automator entirely).
-    AutomatorData.recalculateErrors();
-    if (AutomatorBackend.state.mode === AUTOMATOR_MODE.RUN && AutomatorData.currentErrors().length) {
-      AutomatorBackend.stop();
-      GameUI.notify.error("This Reality forbids Black Holes! (Automator stopped)");
-    }
-
     this.quotes.startRun.show();
   },
   get isRunning() {
@@ -193,14 +184,14 @@ export const Enslaved = {
   },
   feelEternity() {
     if (this.feltEternity) {
-      Modal.message.show(`You have already exposed this crack in the Reality. Time in this Eternity is being multiplied
-        by your Eternity count, up to a maximum of ${formatX(1e66)}.`,
+      Modal.message.show(`Вы уже нашли эту трещину. Фактическая длительность текущей вечности
+        умножается на ваше количество вечностей с ограничением в ${formatX(1e66)}.`,
       { closeEvent: GAME_EVENT.REALITY_RESET_AFTER }, 1);
     } else {
       EnslavedProgress.feelEternity.giveProgress();
       this.feltEternity = true;
-      Modal.message.show(`Time in this Eternity will be multiplied by your Eternity count,
-        up to a maximum of ${formatX(1e66)}.`, { closeEvent: GAME_EVENT.REALITY_RESET_AFTER }, 1);
+      Modal.message.show(`Фактическая длительность текущей вечности будет умножаться на ваше количество вечностей
+        с ограничением в ${formatX(1e66)}.`, { closeEvent: GAME_EVENT.REALITY_RESET_AFTER }, 1);
     }
   },
   get feltEternity() {
@@ -226,7 +217,9 @@ export const Enslaved = {
     }
     return true;
   },
-  quotes: Quotes.enslaved,
+  get quotes() {
+    return Quotes().enslaved;
+  },
   // Unicode f0c1.
   symbol: "\uf0c1"
 };
@@ -255,7 +248,7 @@ class EnslavedProgressState extends BitUpgradeState {
     // Bump the last hint time appropriately if the player found the hint
     if (this.hasHint && !this.hasProgress) {
       player.celestials.enslaved.zeroHintTime -= Math.log(2) / Math.log(3) * TimeSpan.fromDays(1).totalMilliseconds;
-      GameUI.notify.success("You found a crack in The Nameless Ones' Reality!", 10000);
+      GameUI.notify.success("Вы нашли трещину в Реальности Безымянных!", 10000);
     }
     player.celestials.enslaved.progressBits |= (1 << this.id);
   }

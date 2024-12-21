@@ -42,14 +42,14 @@ export default {
       const boostList = [];
 
       const dimMultList = [];
-      dimMultList.push("Antimatter");
-      if (this.achMultToIDS) dimMultList.push("Infinity");
-      if (this.achMultToTDS) dimMultList.push("Time");
-      boostList.push(`${makeEnumeration(dimMultList)} Dimensions: ${achievementPower}`);
+      dimMultList.push("Антиматерии");
+      if (this.achMultToIDS) dimMultList.push("Бесконечности");
+      if (this.achMultToTDS) dimMultList.push("Времени");
+      boostList.push(`Измерениям ${makeEnumeration(dimMultList)}: ${achievementPower}`);
 
-      if (this.achMultToTP) boostList.push(`Tachyon Particles: ${achTPEffect}`);
-      if (this.achMultToBH) boostList.push(`Black Hole Power: ${achievementPower}`);
-      if (this.achMultToTT) boostList.push(`Time Theorem production: ${achievementPower}`);
+      if (this.achMultToTP) boostList.push(`Получению Тахионов: ${achTPEffect}`);
+      if (this.achMultToBH) boostList.push(`Силе Чёрных Дыр: ${achievementPower}`);
+      if (this.achMultToTT) boostList.push(`Производству Теорем Времени: ${achievementPower}`);
       return `${boostList.join("<br>")}`;
     },
   },
@@ -134,43 +134,43 @@ export default {
       <PrimaryToggleButton
         v-model="hideCompletedRows"
         class="o-primary-btn--subtab-option"
-        label="Hide completed rows:"
+        label="Скрыть полностью выполненные ряды:"
       />
       <PrimaryToggleButton
         v-if="showAutoAchieve"
         v-model="isAutoAchieveActive"
         class="o-primary-btn--subtab-option"
-        label="Auto Achievements:"
+        label="Автоматическое восстановление достижений:"
       />
     </div>
     <div class="c-achievements-tab__header c-achievements-tab__header--multipliers">
       <span v-if="isDoomed">
-        All Achievement multipliers have been disabled<SwapAchievementImagesButton />
+        Множитель достижений отключён<SwapAchievementImagesButton />
       </span>
       <span v-else>
-        Achievements provide a multiplier to<SwapAchievementImagesButton />
+        Достижения дают множитель к<SwapAchievementImagesButton />
         <div v-html="boostText" />
       </span>
     </div>
     <div class="c-achievements-tab__header">
-      Achievements with a <i class="fas fa-star" /> icon also give an additional reward.
+      Достижения со значком <i class="fas fa-star" /> дают дополнительную награду.
     </div>
     <div
       v-if="showAutoAchieve"
       class="c-achievements-tab__header"
     >
       <div v-if="achCountdown > 0">
-        Automatically gain the next missing Achievement in
-        {{ timeDisplayNoDecimals(achCountdown) }}<span v-if="!isAutoAchieveActive"> once Auto is turned on</span>.
-        (left-to-right, top-to-bottom)
+        Следующее недостающее достижение будет восстановлено через
+        {{ timeDisplayNoDecimals(achCountdown, "accusative") }}.
+        (достижения восстанавливаются в порядке по строкам сверху вниз слева направо)
       </div>
       <div v-else-if="missingAchievements !== 0">
-        Automatically gain the next missing Achievement as soon as you enable Auto Achievements.
-        (left-to-right, top-to-bottom)
+        Следующее недостающее достижение будет восстановлено, как только вы включите соответствующую опцию.
+        (достижения восстанавливаются в порядке по строкам сверху вниз слева направо)
       </div>
       <div v-if="totalCountdown > 0">
-        You will regain all remaining achievements after {{ timeDisplayNoDecimals(totalCountdown) }} if Auto
-        Achievement <span v-if="isAutoAchieveActive">stays enabled</span><span v-else>is turned on</span>.
+        Все оставшиеся достижения будут восстановлены за {{ timeDisplayNoDecimals(totalCountdown, "accusative") }},
+        если соответствующая опция будет включена.
       </div>
       <br>
     </div>

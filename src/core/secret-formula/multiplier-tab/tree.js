@@ -7,7 +7,7 @@ const dynamicGenProps = ["TP", "DT", "infinities", "eternities", "gamespeed", "r
 const propList = {
   AD: ["purchase", "dimboost", "sacrifice", "achievementMult", "achievement", "infinityUpgrade",
     "breakInfinityUpgrade", "infinityPower", "infinityChallenge", "timeStudy", "eternityChallenge", "glyph", "v",
-    "alchemy", "pelle", "iap", "effectNC", "nerfIC", "nerfV", "nerfCursed", "nerfPelle"],
+    "alchemy", "pelle", "iap", "effectNC", "nerfIC", "nerfV", "nerfCursed", "nerfPelle", "pelleStrike"],
   ID: ["purchase", "achievementMult", "achievement", "replicanti", "infinityChallenge", "timeStudy", "eternityUpgrade",
     "eternityChallenge", "glyph", "alchemy", "imaginaryUpgrade", "pelle", "iap", "nerfV", "nerfCursed", "nerfPelle"],
   TD: ["purchase", "achievementMult", "achievement", "timeStudy", "eternityUpgrade", "eternityChallenge",
@@ -48,7 +48,7 @@ function getProps(resource, tier) {
 // specification, all children props are dynamically added based on the arrays in the helper functions above
 export const multiplierTabTree = {
   AM_total: [
-    ["AD_total", "tickspeed_total", "AM_effarigAM"]
+    ["AD_total", "tickspeed_total_AD"]
   ],
   AD_total: [
     getProps("AD"),
@@ -128,7 +128,7 @@ const targetedEffects = {
     checkFn: MultiplierTabHelper.timeStudyDimCheck,
     AD: [71, 91, 101, 161, 193, 214, 234],
     ID: [72, 82, 92, 102, 162],
-    TD: [11, 73, 93, 103, 151, 221, 227, 301],
+    TD: [11, 73, 93, 103, 151, 221, 227],
     IP: [41, 51, 141, 142, 143],
     EP: [61, 121, 122, 123],
     replicanti: [62, 132, 213],
@@ -151,12 +151,6 @@ for (const dim of dimTypes) {
   multiplierTabTree[`${dim}_total`][1].push(`${dim}_highestDim`);
 }
 
-// EC7 also needs a special case for tickspeed, since it doesn't appear on the multipliers themselves
-for (const dim of ["ID", "TD"]) {
-  multiplierTabTree[`${dim}_total`][0].push(`${dim}_tickspeed`);
-  multiplierTabTree[`${dim}_total`][1].push(`${dim}_tickspeed`);
-}
-
 // Dynamically generate all values from existing values, but broken down by dimension
 for (const res of dimTypes) {
   for (const prop of getProps(res)) multiplierTabTree[prop] = [append8(prop)];
@@ -168,8 +162,8 @@ for (const res of dimTypes) {
 const removedRegexes = ["AD_sacrifice", "AD_breakInfinityUpgrade", "AD_nerfIC", "AD_infinityUpgrade", "AD_v",
   "ID_replicanti", "ID_infinityChallenge", "ID_eternityUpgrades",
   "TD_achievement", "TD_eternityUpgrade", "TD_dilationUpgrade", "TD_realityUpgrade",
-  ".._achievementMult", ".._glyph", ".._alchemy", ".._imaginaryUpgrade", ".._iap",
-  ".._nerfV", ".._nerfCursed", ".._nerfPelle", ".._pelle"
+  ".._achievementMult", ".._eternityUpgrade", ".._glyph", ".._alchemy", ".._imaginaryUpgrade", ".._iap",
+  ".._nerfV", ".._nerfCursed", ".._nerfPelle", ".._pelle", ".._gamespeed", ".._pelleStrike"
 ];
 const removedProps = Object.keys(multiplierTabTree)
   .filter(key => removedRegexes.some(regex => key.match(regex)));
@@ -183,22 +177,6 @@ multiplierTabTree.AD_infinityPower = [["ID_total", "ID_powerConversion"]];
 for (let dim = 1; dim <= 8; dim++) {
   multiplierTabTree[`AD_infinityPower_${dim}`] = [["ID_total", "ID_powerConversion"]];
 }
-
-// Tesseracts are added one layer deep, but we don't want to override the existing ID_purchase entry
-multiplierTabTree.ID_purchase.unshift(["ID_basePurchase", "ID_tesseractPurchase",
-  "ID_infinityGlyphSacrifice", "ID_powPurchase"]);
-for (let dim = 1; dim <= 7; dim++) {
-  multiplierTabTree[`ID_purchase_${dim}`] = [[`ID_basePurchase_${dim}`, `ID_tesseractPurchase_${dim}`,
-    "ID_powPurchase"]];
-}
-multiplierTabTree.ID_purchase_8 = [[`ID_basePurchase_8`, `ID_infinityGlyphSacrifice`, "ID_powPurchase"]];
-
-// These are also added one layer deep
-for (let dim = 1; dim <= 7; dim++) {
-  multiplierTabTree[`TD_purchase_${dim}`] = [[`TD_basePurchase_${dim}`, `TD_powPurchase_${dim}`]];
-}
-multiplierTabTree.TD_purchase.push(["TD_basePurchase", "TD_timeGlyphSacrifice", "TD_powPurchase"]);
-multiplierTabTree.TD_purchase_8 = [["TD_basePurchase_8", "TD_timeGlyphSacrifice", "TD_powPurchase"]];
 
 // Dynamically fill effects which only affect certain dimensions, as noted in targetedEffects
 for (const res of dimTypes) {
@@ -230,10 +208,11 @@ for (const res of singleRes) {
   }
 }
 
-// Fill in eternity upgrade entries
-multiplierTabTree.ID_eternityUpgrade = [[`ID_eu1`, `ID_eu2`, `ID_eu3`]];
-multiplierTabTree.TD_eternityUpgrade = [[`TD_eu1`, `TD_eu2`]];
-for (let dim = 1; dim <= 8; dim++) {
-  multiplierTabTree[`ID_eternityUpgrade_${dim}`] = [[`ID_eu1_${dim}`, `ID_eu2_${dim}`, `ID_eu3_${dim}`]];
-  multiplierTabTree[`TD_eternityUpgrade_${dim}`] = [[`TD_eu1_${dim}`, `TD_eu2_${dim}`]];
+for (const dim of ["ID", "TD"]) {
+  multiplierTabTree[`${dim}_total`][0].push(`tickspeed_total_${dim}`);
+  multiplierTabTree[`${dim}_total`][1].push(`tickspeed_total_${dim}`);
+  multiplierTabTree[`${dim}_total`][0].push(`gamespeed_total_${dim}`);
+  multiplierTabTree[`${dim}_total`][1].push(`gamespeed_total_${dim}`);
 }
+
+multiplierTabTree["DT_total"][0].push("gamespeed_total");

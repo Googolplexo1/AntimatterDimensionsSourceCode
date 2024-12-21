@@ -38,31 +38,31 @@ export default {
       return description ? description() : "";
     },
     topLabel() {
-      return `${this.name} Reality`;
+      return `Реальность ${this.name}`;
     },
     message() {
-      return `Perform a Reality reset and enter ${this.name} Reality, in which:`;
+      return `Совершить реальность и запустить Реальность ${this.name}, в которой:`;
     },
     extraLine() {
       switch (this.number) {
         case 0:
           return this.teresaBestAM.eq(1)
-            ? `You have not unlocked the reward for Teresa's Reality yet. Unlocking the reward requires
-              purchasing the Reality study and completing the Reality for the first time.`
-            : `Your highest Teresa completion was for ${format(this.teresaBestAM, 2, 2)} antimatter,
-              gaining you a ${formatX(this.teresaRunMult, 2)} multiplier to Glyph Sacrifice power.`;
+            ? `Вы ещё не разблокировали награду за Реальность Терезы. Требуется
+              купить соответствующее Исследование и завершить Реальность впервые.`
+            : `Вы достигли ${format(this.teresaBestAM, 2, 2)} антиматерии в Реальности Терезы,
+              что даёт вам множитель ${formatX(this.teresaRunMult, 2)} к жертвенной ценности глифов.`;
         case 1: return this.effarigDone
-          ? "Effarig is completed!"
-          : `You are currently on the ${this.effarigLayer} Layer.`;
+          ? "Реальность Эффарига полностью завершена!"
+          : `Вы на слое ${this.effarigLayer} в Реальности Эффарига.`;
         case 2: return this.enslavedDone
-          ? "Have... we... not helped enough..."
-          : "We... can help... Let us... help...";
+          ? "Разве... нашей помощи... мало?"
+          : "Мы... поможем... Позволь нам... помочь...";
         case 3: return "";
-        case 4: return `Within Ra's Reality, some resources will generate Memory Chunks
-          for Celestial Memories based on their amounts:`;
+        case 4: return `В Реальности Ра производятся разные типы Кусков Памяти
+          в зависимости от определённых параметров:`;
         case 5: return this.laitelaFastest >= 300
-          ? "You have not completed Lai'tela at this tier."
-          : `Your fastest completion on this tier is ${this.laitelaTime}.`;
+          ? "Вы не выполнили Реальность Лайтелы на этом слое."
+          : `Рекорд Реальности Лайтелы на этом слое: ${this.laitelaTime}.`;
         case 6: return "";
         default: throw new Error(`Attempted to start an Unknown Celestial in Celestial Modal Confirmation.`);
       }
@@ -74,7 +74,7 @@ export default {
       this.teresaRunMult = Teresa.runRewardMultiplier;
       const effarigStage = Effarig.currentStage;
       this.effarigDone = effarigStage === EFFARIG_STAGES.COMPLETED;
-      this.effarigLayer = [null, "Infinity", "Eternity", "Reality"][effarigStage];
+      this.effarigLayer = [null, "бесконечности", "вечности", "реальности"][effarigStage];
       this.enslavedDone = Enslaved.isCompleted;
       this.laitelaFastest = player.celestials.laitela.fastestCompletion;
       this.laitelaTime = TimeSpan.fromSeconds(this.laitelaFastest).toStringShort();
@@ -136,7 +136,7 @@ export default {
       </span>
     </div>
     <template #confirm-text>
-      Begin
+      Начать
     </template>
   </ModalWrapperChoice>
 </template>

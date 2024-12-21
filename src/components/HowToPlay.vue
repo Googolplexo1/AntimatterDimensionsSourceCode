@@ -26,6 +26,7 @@ export default {
     },
     showH2P() {
       Modal.h2p.show();
+      GameKeyboard.stopSpins();
     },
     showInfo() {
       Modal.information.show();
@@ -46,7 +47,7 @@ export default {
         v-if="hasTutorial"
         class="h2p-tooltip"
       >
-        Click for info
+        Нажмите для просмотра информации
       </div>
     </div>
     <div

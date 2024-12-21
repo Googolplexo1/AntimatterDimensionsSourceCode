@@ -8,11 +8,11 @@ export class AntimatterDimensionAutobuyerState extends UpgradeableAutobuyerState
   }
 
   get name() {
-    return AntimatterDimension(this.tier).shortDisplayName;
+    return `${this.tier}-х`;
   }
 
   get fullName() {
-    return `${this.name} Antimatter Dimension`;
+    return `${this.tier}-х Измерений Антиматерии`;
   }
 
   get data() {
@@ -151,7 +151,7 @@ export class AntimatterDimensionAutobuyerState extends UpgradeableAutobuyerState
   }
 
   static get entryCount() { return 8; }
-  static get autobuyerGroupName() { return "Antimatter Dimension"; }
+  static get autobuyerGroupName() { return "Измерений Антиматерии"; }
 
   // These are toggled on and off from the group autobuyer checkbox
   static get isActive() { return player.auto.antimatterDims.isActive; }

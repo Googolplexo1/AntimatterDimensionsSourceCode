@@ -42,6 +42,7 @@ export default {
         "c-pelle-useless--bought": this.isUseless && this.isBought,
         "c-pelle-useless--unavailable": this.isUseless && !this.isBought,
         "o-pseudo-time-study--small": this.setup.isSmall,
+        "o-pseudo-time-study--challenge": this.study.type === TIME_STUDY_TYPE.ETERNITY_CHALLENGE,
         "o-time-study--unavailable": !this.isBought && !this.isUseless,
         "o-time-study--bought": this.isBought && !this.isUseless,
         "o-time-study--new-import": this.isNewFromImport && !this.isBought
@@ -78,7 +79,7 @@ export default {
     studyString() {
       switch (this.study.type) {
         case TIME_STUDY_TYPE.NORMAL: case TIME_STUDY_TYPE.TRIAD: return `${this.study.id}`;
-        case TIME_STUDY_TYPE.ETERNITY_CHALLENGE: return `EC${this.study.id}`;
+        case TIME_STUDY_TYPE.ETERNITY_CHALLENGE: return `ИспВ${this.study.id}`;
       }
       return "";
     }
@@ -119,6 +120,10 @@ export default {
 
 .o-pseudo-time-study--small {
   width: 1.8rem;
+}
+
+.o-pseudo-time-study--challenge {
+  font-size: 0.7rem;
 }
 
 .o-time-study-dark--bought {

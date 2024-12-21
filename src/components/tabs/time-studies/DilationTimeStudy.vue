@@ -31,20 +31,20 @@ export default {
     },
     requirement() {
       if (this.id === 1) {
-        return `Requirement: ${formatInt(5)} EC11 and EC12 completions
-          and ${formatInt(this.maxTT)}/${formatInt(TimeStudy.dilation.totalTimeTheoremRequirement)}
-          total Time Theorems`;
+        return `Требование: по ${formatInt(5)} выполнений ИспВ11 и ИспВ12
+          и ${formatInt(TimeStudy.dilation.totalTimeTheoremRequirement)}
+          Теорем Времени (у вас ${formatInt(this.maxTT)})`;
       }
       if (this.id === 6) {
-        const achRows = Perk.firstPerk.isBought ? "" : ` and ${formatInt(13)} rows of Achievements`;
-        return `Requirement: ${format("1e4000")} Eternity Points${achRows}`;
+        const achRows = Perk.firstPerk.isBought ? "" : ` и первые ${formatInt(13)} рядов достижений`;
+        return `Требование: ${format("1e4000")} Очков Вечности${achRows}`;
       }
       return "";
     },
     theoremTimeEstimate() {
       if (this.study.isBought || !this.study.cost || this.ttGen.eq(0)) return null;
       const time = Decimal.sub(this.study.cost, this.currTT).dividedBy(this.ttGen);
-      return time.gt(0) ? `Enough TT in ${TimeSpan.fromSeconds(time.toNumber()).toStringShort()}` : null;
+      return time.gt(0) ? `Время до необходимого количества ТВ: ${TimeSpan.fromSeconds(time.toNumber()).toStringShort()}` : null;
     }
   },
   methods: {

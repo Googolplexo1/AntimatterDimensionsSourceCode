@@ -17,19 +17,18 @@ export default {
       return Ra.pets.all[this.petId];
     },
     name() {
-      return this.pet.name;
+      return this.pet.nameNormal;
     },
     color() {
       return `color: ${this.pet.color}`;
     },
     gainText() {
-      // We need to special-case the grammar for Nameless
-      const isPlural = this.pet.id === "enslaved";
-      const gain = isPlural ? "gain" : "gains";
-      const has = isPlural ? "have" : "has";
+      let endings = ["", "е"];
+      if (this.pet.id === "enslaved") endings = ["ы", "ю"];
+      if (this.pet.id === "teresa") endings = ["а", "е"];
       return this.pet.level === 25
-        ? `${has} regained all Memories`
-        : `${gain} Memory Chunks based on ${this.chunkGain}`;
+        ? `полностью восстановлен${endings[0]} в памяти`
+        : `получа${endings[1]}т Куски Памяти в зависимости от ${this.chunkGain}`;
     },
     chunkGain() {
       return this.pet.chunkGain;

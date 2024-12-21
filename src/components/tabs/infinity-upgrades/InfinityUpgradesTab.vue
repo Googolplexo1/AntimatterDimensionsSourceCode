@@ -127,20 +127,20 @@ export default {
         :class="disChargeClassObject"
         @click="disCharge = !disCharge"
       >
-        Respec Charged Infinity Upgrades on next Reality
+        Сбросить Заряженные Улучшения Бесконечности на реальности
       </PrimaryButton>
     </div>
     <div v-if="chargeUnlocked">
-      You have charged {{ formatInt(chargesUsed) }}/{{ formatInt(totalCharges) }} Infinity Upgrades.
-      Charged Infinity Upgrades have their effect altered.
+      Вы зарядили {{ formatInt(chargesUsed) }}/{{ quantifyInt("Улучшения", totalCharges) }} Бесконечности.
+      При зарядке Улучшения Бесконечности его эффект меняется.
       <br>
-      Hold shift to show Charged Infinity Upgrades. You can freely respec your choices on Reality.
+      Зажмите клавишу Shift, чтобы показать Заряженные Улучшения Бесконечности. Вы можете сбросить их на реальности.
     </div>
     <div v-if="isUseless">
-      You cannot Charge Infinity Upgrades while Doomed.
+      Заряженные Улучшения Бесконечности недоступны в Обречении.
     </div>
     <br>
-    Within each column, the upgrades must be purchased from top to bottom.
+    В каждом столбце улучшения покупаются по порядку сверху вниз.
     <br>
     <div class="l-infinity-upgrade-grid l-infinity-upgrades-tab__grid">
       <div
@@ -171,10 +171,10 @@ export default {
       />
     </div>
     <div v-if="eternityUnlocked && bottomRowUnlocked">
-      The Infinity Point multiplier becomes more expensive
+      Удвоитель Очков Бесконечности дорожает быстрее
       <br>
-      above {{ formatPostBreak(ipMultSoftCap) }} Infinity Points, and cannot be purchased past
-      {{ formatPostBreak(ipMultHardCap) }} Infinity Points.
+      после {{ formatPostBreak(ipMultSoftCap) }} Очков Бесконечности и не может быть куплен после
+      {{ formatPostBreak(ipMultHardCap) }} Очков Бесконечности.
     </div>
   </div>
 </template>

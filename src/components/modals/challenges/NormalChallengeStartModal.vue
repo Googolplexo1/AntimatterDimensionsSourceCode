@@ -20,24 +20,24 @@ export default {
       return this.challenge.isCompleted;
     },
     message() {
-      return `You will Big Crunch (if possible) and start a new Infinity within the Challenge with all the
-        Challenge-specific restrictions and modifiers active.
-        To complete the Challenge${this.challengeIsCompleted ? "" : " and gain its reward"},
-        you must reach Infinity again.
-        You do not start with any Dimension Boosts or Galaxies, regardless of upgrades.`;
+      return `Вы совершите Большое Сжатие (по возможности) и начнёте новую бесконечность внутри Испытания, с
+        соответствующим условием испытания.
+        Чтобы выполнить Испытание${this.challengeIsCompleted ? "" : " и получить награду за него"},
+        вы должны вновь достичь бесконечности.
+        У вас не будет начальных Расширений Измерений или Галактик вне зависимости от ваших улучшений.`;
     },
     entranceLabel() {
-      return `You are about to enter Challenge ${this.id}`;
+      return `Вы запускаете ${this.id}-е Обычное Испытание`;
     },
     reward() {
-      return `The reward for completing this challenge is: ${this.challenge._config.reward}`;
+      return `Награда за выполнение этого Испытания следующая: ${this.challenge._config.reward}`;
     },
     condition() {
       let conditionOfChallenge = this.challenge._config.description;
       if (typeof conditionOfChallenge === "function") {
         conditionOfChallenge = conditionOfChallenge();
       }
-      return `Inside this Challenge, ${conditionOfChallenge}`;
+      return `В этом Испытаниии действует следующее условие: ${conditionOfChallenge}`;
     }
   },
   created() {
@@ -73,7 +73,7 @@ export default {
       {{ reward }}
     </div>
     <template #confirm-text>
-      Begin
+      Начать
     </template>
   </ModalWrapperChoice>
 </template>

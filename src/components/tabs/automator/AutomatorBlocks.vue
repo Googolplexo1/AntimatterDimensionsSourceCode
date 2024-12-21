@@ -33,7 +33,7 @@ const AUTOMATOR_BLOCKS_COMPARISON_OPERATORS = ["<", ">", ">=", "<="];
 const AUTOMATOR_BLOCKS_COMPARISON_CURRENCIES = [
   "AM", "IP", "EP", "RM", "INFINITIES", "BANKED INFINITIES", "ETERNITIES", "REALITIES",
   "PENDING IP", "PENDING EP", "PENDING TP", "PENDING RM", "PENDING GLYPH LEVEL",
-  "DT", "TP", "RG", "REP", "TT", "TOTAL TT", "SPENT TT", "TOTAL COMPLETIONS", "PENDING COMPLETIONS",
+  "DT", "TP", "RG", "REP", "TT", "TOTAL TT", "TOTAL COMPLETIONS", "PENDING COMPLETIONS",
   "EC1 COMPLETIONS", "EC2 COMPLETIONS", "EC3 COMPLETIONS", "EC4 COMPLETIONS",
   "EC5 COMPLETIONS", "EC6 COMPLETIONS", "EC7 COMPLETIONS", "EC8 COMPLETIONS",
   "EC9 COMPLETIONS", "EC10 COMPLETIONS", "EC11 COMPLETIONS", "EC12 COMPLETIONS",
@@ -60,10 +60,10 @@ const AUTOMATOR_BLOCKS_RESETS = ["INFINITY", "ETERNITY", "REALITY"];
 export const automatorBlocks = [
   {
     cmd: "STUDIES RESPEC",
-    alias: "RESPEC TIME STUDIES"
+    alias: "СБРОСИТЬ ИССЛЕДОВАНИЯ ВРЕМЕНИ"
   }, {
     cmd: "STUDIES LOAD",
-    alias: "LOAD STUDY PRESET",
+    alias: "ЗАГРУЗИТЬ СОХРАНЁННОЕ ДРЕВО",
     allowedPatterns: ["AB"],
     A: ["ID", "NAME"],
     B: ["*"],
@@ -71,25 +71,29 @@ export const automatorBlocks = [
     canWait: true
   }, {
     cmd: "STUDIES PURCHASE",
-    alias: "PURCHASE STUDIES",
+    alias: "КУПИТЬ ИССЛЕДОВАНИЯ",
     allowedPatterns: ["A"],
     A: ["*"],
     targets: ["singleTextInput"],
     canWait: true
   }, {
     cmd: "INFINITY",
+    alias: "БЕСКОНЕЧНОСТЬ",
     canWait: true
   }, {
     cmd: "ETERNITY",
+    alias: "ВЕЧНОСТЬ",
     canRespec: true,
     canWait: true
   }, {
     cmd: "REALITY",
+    alias: "РЕАЛЬНОСТЬ",
     canRespec: true,
     canWait: true,
     isUnlocked: () => RealityUpgrade(25).isBought
   }, {
     cmd: "UNLOCK",
+    alias: "РАЗБЛОКИРОВАТЬ",
     allowedPatterns: ["AB", "C"],
     A: ["EC"],
     B: ["*"],
@@ -98,6 +102,7 @@ export const automatorBlocks = [
     canWait: true
   }, {
     cmd: "START",
+    alias: "ЗАПУСТИТЬ",
     allowedPatterns: ["AB", "C"],
     A: ["EC"],
     B: ["*"],
@@ -105,40 +110,40 @@ export const automatorBlocks = [
     targets: ["singleSelectionInput", "singleTextInput"],
   }, {
     cmd: "AUTO",
-    alias: "CHANGE AUTOBUYER SETTING",
+    alias: "АВТОМАТИКА",
     allowedPatterns: ["AB"],
     A: AUTOMATOR_BLOCKS_RESETS,
     B: ["ON", "OFF", "* AUTOBUYER SETTING"],
     targets: ["singleSelectionInput", "singleTextInput"],
   }, {
     cmd: "BLACK HOLE",
-    alias: "TURN BLACK HOLE",
+    alias: "ЧЁРНАЯ ДЫРА",
     allowedPatterns: ["A"],
     A: ["ON", "OFF"],
     targets: ["singleSelectionInput"],
     isUnlocked: () => BlackHole(1).isUnlocked
   }, {
     cmd: "STORE GAME TIME",
-    alias: "SET GAME TIME STORAGE TO",
+    alias: "ХРАНЕНИЕ ИГРОВОГО ВРЕМЕНИ",
     allowedPatterns: ["A"],
     A: ["ON", "OFF", "USE"],
     targets: ["singleSelectionInput"],
     isUnlocked: () => Enslaved.isUnlocked
   }, {
     cmd: "NOTIFY",
-    alias: "GAME NOTIFICATION:",
+    alias: "ИГРОВОЕ УВЕДОМЛЕНИЕ:",
     allowedPatterns: ["A"],
     A: ["*"],
     targets: ["singleTextInput"],
   }, {
     cmd: "COMMENT",
-    alias: "NOTE:",
+    alias: "КОММЕНТАРИЙ:",
     allowedPatterns: ["A"],
     A: ["*"],
     targets: ["singleTextInput"],
   }, {
     cmd: "WAIT",
-    alias: "PAUSE AUTOMATOR UNTIL",
+    alias: "ПРИОСТАНОВИТЬ АВТОМАТИЗАТОР, ДО ТЕХ ПОР КАК",
     allowedPatterns: ["A", "DE", "BCB"],
     A: AUTOMATOR_BLOCKS_RESETS,
     B: [...AUTOMATOR_BLOCKS_COMPARISON_CURRENCIES, "* SPECIFIED CONSTANT"],
@@ -148,13 +153,13 @@ export const automatorBlocks = [
     targets: ["genericInput1", "compOperator", "genericInput2"]
   }, {
     cmd: "PAUSE",
-    alias: "PAUSE AUTOMATOR FOR",
+    alias: "ПРИОСТАНОВИТЬ АВТОМАТИЗАТОР НА",
     allowedPatterns: ["A"],
     A: ["*"],
     targets: ["singleTextInput"],
   }, {
     cmd: "IF",
-    alias: "ENTER BLOCK IF",
+    alias: "ВЫПОЛНИТЬ БЛОК, ЕСЛИ",
     allowedPatterns: ["ABA"],
     A: [...AUTOMATOR_BLOCKS_COMPARISON_CURRENCIES, "* SPECIFIED CONSTANT"],
     B: AUTOMATOR_BLOCKS_COMPARISON_OPERATORS,
@@ -162,7 +167,7 @@ export const automatorBlocks = [
     nested: true
   }, {
     cmd: "UNTIL",
-    alias: "REPEAT BLOCK UNTIL",
+    alias: "ПОВТОРЯТЬ БЛОК, ДО ТЕХ ПОР КАК",
     allowedPatterns: ["A", "BCB"],
     A: AUTOMATOR_BLOCKS_RESETS,
     B: [...AUTOMATOR_BLOCKS_COMPARISON_CURRENCIES, "* SPECIFIED CONSTANT"],
@@ -171,17 +176,18 @@ export const automatorBlocks = [
     nested: true
   }, {
     cmd: "WHILE",
-    alias: "REPEAT BLOCK WHILE",
+    alias: "ПОВТОРЯТЬ БЛОК, ПОКА",
     allowedPatterns: ["ABA"],
     A: [...AUTOMATOR_BLOCKS_COMPARISON_CURRENCIES, "* SPECIFIED CONSTANT"],
     B: AUTOMATOR_BLOCKS_COMPARISON_OPERATORS,
     targets: ["genericInput1", "compOperator", "genericInput2"],
     nested: true
   }, {
-    cmd: "BLOB"
+    cmd: "BLOB",
+    alias: "КЛЯКСА"
   }, {
     cmd: "STOP",
-    alias: "STOP EXECUTION"
+    alias: "ОСТАНОВИТЬ ВЫПОЛНЕНИЕ"
   }
 ];
 const AUTOMATOR_BLOCKS_BLACKLIST = ["BLOB"];
@@ -197,20 +203,20 @@ export const automatorBlocksMap = automatorBlocks.mapToObject(b => b.cmd, b => b
     draggable=".draggable-blocks"
   >
     <p>
-      Drag and drop these blocks to the area on the left! The blocks have names matching the commands in the reference
-      page, but may change appearance after being placed to describe what they do in a more natural-sounding manner.
-      If a block changes in this way, the alternate text will be shown as a tooltip when going to drag it over.
+      Перетягивайте эти блоки в поле слева! Названия блоков соответствуют ключевым словам команд,
+      но после размещения их в коде на них будет отображён текст на русском языке, описывающий их функции.
+      Это описание также будет отображено при наведении курсора мыши на блок во всплывающей подсказке.
     </p>
     <br>
     <p>
-      Inputs with a <span class="c-automator-input-optional">brown</span> color are optional, while inputs with a
-      <span class="c-automator-input-required">teal</span> color are required.
-      <span class="c-automator-block-row-error">Red</span> inputs are causing errors and must be changed before the
-      script can be run. For more details, check the Scripting Information pane.
+      Поля ввода <span class="c-automator-input-optional">коричневого</span> цвета не требуют заполнения, в то время как поля
+      <span class="c-automator-input-required">бирюзового</span> цвета обязательны к заполнению.
+      Данные, выделенные <span class="c-automator-block-row-error">красным</span> цветом, порождают ошибки и должны быть изменены, прежде чем
+      программа может быть выполнена. Подробности приведены в панели "Информация о программировании".
     </p>
     <p>
-      Options in dropdown menus which start with a * will be replaced with a text box. This can be turned back into a
-      dropdown by clicking the <i class="fa-solid fa-circle-xmark" /> on the right side of the text box.
+      Опции в раскрывающихся списках, начинающиеся на *, будут замещены полем ввода. Оно может быть вновь замещено раскрывающимся
+      списком путём нажатия на <i class="fa-solid fa-circle-xmark" /> справа в поле ввода.
     </p>
     <draggable
       class="block-container"
@@ -229,7 +235,7 @@ export const automatorBlocksMap = automatorBlocks.mapToObject(b => b.cmd, b => b
       </div>
     </draggable>
     <p>
-      Note: Blocks and their contents count towards the character limits as if the command was typed in text mode.
+      Примечание: блоки занимают столько символов из доступного количества, сколько заняли бы эквивалентные им текстовые команды.
     </p>
   </draggable>
 </template>

@@ -86,52 +86,52 @@ export default {
 <template>
   <ModalWrapperOptions class="c-modal-options__large">
     <template #header>
-      Info Display Options
+      Настройки отображения дополнительной информации
     </template>
     <div class="c-modal-options__button-container">
       <ModalOptionsToggleButton
         v-model="showPercentage"
-        text="Show % gain:"
+        text="Относительный прирост:"
       />
       <ModalOptionsToggleButton
         v-model="achievements"
-        text="Achievement IDs:"
+        text="Номера достижений:"
       />
       <ModalOptionsToggleButton
         v-model="achievementUnlockStates"
-        text="Achievement unlock state indicators:"
+        text="Индикаторы состояний достижений:"
       />
       <ModalOptionsToggleButton
         v-if="infinityUnlocked"
         v-model="challenges"
-        text="Challenge IDs:"
+        text="Номера испытаний:"
       />
       <ModalOptionsToggleButton
         v-if="eternityUnlocked"
         v-model="studies"
-        text="Time Study IDs:"
+        text="Номера Исследовний Времени:"
       />
       <ModalOptionsToggleButton
         v-if="realityUnlocked"
         v-model="glyphEffectDots"
-        text="Glyph effect dots:"
+        text="Точки эффектов глифов:"
       />
       <ModalOptionsToggleButton
         v-if="realityUnlocked"
         v-model="realityUpgrades"
-        text="Reality Upgrade names:"
+        text="Названия Улучшений Реальности:"
       />
       <ModalOptionsToggleButton
         v-if="realityUnlocked"
         v-model="perks"
-        text="Perk IDs:"
+        text="Названия Навыков:"
       />
       <ModalOptionsToggleButton
         v-if="alchemyUnlocked"
         v-model="alchemy"
-        text="Alchemy resource amounts:"
+        text="Количества алхимических ресурсов:"
       />
     </div>
-    Note: All types of additional info above will always display when holding shift.
+    Примечание: вся вышеперечисленная дополнительная информация будет показана в любом случае при нажатии клавиши Shift.
   </ModalWrapperOptions>
 </template>

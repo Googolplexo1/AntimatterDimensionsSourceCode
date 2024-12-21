@@ -135,13 +135,14 @@ export default {
         v-if="!isBought && !isCapped"
         br
         :config="upgrade.config"
-        name="Dilated Time"
+        name=""
+        postName="Замедленного Времени"
       />
     </button>
     <PrimaryToggleButton
       v-if="isRebuyable && isAutoUnlocked"
       v-model="isAutobuyerOn"
-      label="Auto:"
+      label="Автоматика:"
       class="l--spoon-btn-group__little-spoon o-primary-btn--dilation-upgrade-toggle"
     />
   </div>
@@ -149,7 +150,7 @@ export default {
 
 <style scoped>
 .o-dilation-upgrade {
-  width: 19rem;
+  width: 21rem;
   height: 9rem;
   font-family: Typewriter, serif;
   font-size: 1rem;

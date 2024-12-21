@@ -53,8 +53,7 @@ export default {
       return Enslaved.storedTimeInsideEnslaved(this.storedBlackHole);
     },
     realityTitle() {
-      if (this.isRunning) return "You are inside The Nameless Ones' Reality";
-      return "Start The Nameless Ones' Reality";
+      return "Запустить Реальность Безымянных";
     },
     runButtonClassObject() {
       return {
@@ -68,9 +67,9 @@ export default {
       return GameDatabase.celestials.descriptions[2].effects().split("\n");
     },
     realTimeButtonText() {
-      if (!this.offlineEnabled) return "Offline Progress is disabled";
-      if (this.autoStoreReal) return "Offline time stored";
-      return "Offline time used for production";
+      if (!this.offlineEnabled) return "Офлайн-прогресс отключён";
+      if (this.autoStoreReal) return "Время, проведённое офлайн, будет сохраняться";
+      return "Время, проведённое офлайн, будет использовано";
     },
     // Use this here since Nameless has a fairly non-standard character, and SFCs don't support using \uf0c1
     enslavedSymbol: () => Enslaved.symbol,
@@ -168,7 +167,7 @@ export default {
     },
     startRun() {
       if (this.isDoomed) return;
-      Modal.celestials.show({ name: "The Nameless Ones'", number: 2 });
+      Modal.celestials.show({ name: "Безымянных", number: 2 });
     },
     hasUnlock(info) {
       return Enslaved.has(info);
@@ -210,7 +209,7 @@ export default {
       <PrimaryToggleButton
         v-model="autoRelease"
         class="o-primary-btn--subtab-option"
-        label="Pulse Black Hole:"
+        label="Пульсирование Чёрной Дыры:"
       />
     </div>
     <div class="l-enslaved-celestial-tab--inner">
@@ -224,7 +223,7 @@ export default {
               {{ realityTitle }}
             </div>
             <div v-if="completed">
-              <b>(Completed)</b>
+              <b>(Выполнена)</b>
             </div>
             <div
               :class="runButtonClassObject"
@@ -247,8 +246,8 @@ export default {
             >
               {{ line }}
             </div>
-            <b>Reward: Unlock Tesseracts, which let you increase Infinity Dimension caps
-              (see Infinity Dimension tab)</b>
+            <b>Награда: разблокировать Тессеракты, увеличивающие ограничение на покупку Измерений Бесконечности
+              (во вкладке "Измерения Бесконечности")</b>
           </div>
         </div>
       </div>
@@ -258,13 +257,13 @@ export default {
           class="o-primary-btn"
           onclick="Modal.enslavedHints.show()"
         >
-          Examine the Reality more closely...
+          Ближе присмотреться к Реальности...
         </PrimaryButton>
         <div class="l-enslaved-top-container">
           <div class="l-enslaved-top-container__half">
-            While charging, game speed multipliers are {{ hasAutoRelease ? "decreased" : "disabled" }},
-            and the lost speed is converted into stored game time. Discharging the Black Hole allows you to skip
-            forward in time. Stored game time is also used to unlock certain upgrades.
+            Во время зарядки Чёрной Дыры множители ко скорости игры {{ hasAutoRelease ? "уменьшены" : "отключены" }},
+            и теряемая скорость преобразуется в сохранённое игровое время. Разрядка Чёрной Дыры позволяет вам перепрыгнуть
+            на это время. Сохранённое игровое время используется также для покупки определённых улучшений.
             <button
               :class="storeGameTimeClass"
               @click="toggleStoreBlackHole"
@@ -276,23 +275,23 @@ export default {
                 {{ timeDisplayShort(storedBlackHole) }}
               </div>
               <div>
-                {{ isStoringBlackHole ? "Charging Black Hole": "Charge Black Hole" }}
+                {{ isStoringBlackHole ? "Чёрная Дыра заряжается": "Зарядить Чёрную Дыру" }}
               </div>
             </button>
             <button
               :class="dischargeClass"
               @click="useStored"
             >
-              <span>Discharge Black Hole</span>
+              <span>Разрядить Чёрную Дыру</span>
               <p v-if="isRunning">
-                {{ timeDisplayShort(nerfedBlackHoleTime) }} in this Reality
+                {{ timeDisplayShort(nerfedBlackHoleTime) }} в Реальности этого Небожителя
               </p>
             </button>
           </div>
           <div class="l-enslaved-top-container__half">
-            Storing real time completely halts all production, setting game speed to {{ formatInt(0) }}.
-            You can use stored real time to "amplify" a Reality, simulating repeated runs of it.
-            Amplified Realities give all the rewards that normal Realities do.
+            Хранение реального времени полностью останавливает всё производство, выставляя скорость игры на {{ formatInt(0) }}.
+            Сохранённое реальное время можно использовать, чтобы усилить реальность, многократно симулируя её повторно.
+            При этом вы получаете все те же награды, что и от обычной реальности.
             <button
               :class="[storeRealTimeClass,
                        {'l-fixed-setting': hasReachedCurrentCap}]"
@@ -302,7 +301,7 @@ export default {
                 {{ timeDisplayShort(storedReal) }}
               </div>
               <div>
-                {{ isStoringReal ? "Storing real time": "Store real time" }}
+                {{ isStoringReal ? "Реальное время сохраняется": "Сохранять реальное время" }}
               </div>
             </button>
             <button
@@ -315,10 +314,10 @@ export default {
               {{ realTimeButtonText }}
             </button>
             <div>
-              Efficiency: {{ storedRealEfficiencyDesc }}
+              Эффективность: {{ storedRealEfficiencyDesc }}
             </div>
             <div>
-              Maximum stored real time: {{ storedRealCapDesc }}
+              Ограничение на сохранённое реальное время: {{ storedRealCapDesc }}
             </div>
           </div>
         </div>
@@ -334,10 +333,10 @@ export default {
           >
             {{ unlock.description() }}
             <div v-if="!hasUnlock(unlock)">
-              Costs: {{ timeDisplayShort(unlock.price) }}
+              Цена: {{ timeDisplayShort(unlock.price).replace("года", "лет") }}
             </div>
             <span v-if="isStoringBlackHole && !hasUnlock(unlock) && timeUntilBuy(unlock.price) > 0">
-              Time to obtain: {{ timeDisplayShort(timeUntilBuy(unlock.price)) }}
+              Время зарядки: {{ timeDisplayShort(timeUntilBuy(unlock.price)) }}
             </span>
           </button>
         </div>

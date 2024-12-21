@@ -38,11 +38,10 @@ export default {
       if (!this.hasEffarig && !this.hasReality) return "";
       const uniqueGlyphs = [];
       if (this.hasEffarig) uniqueGlyphs.push(
-        `<span style="color: ${GlyphAppearanceHandler.getBorderColor("effarig")};">Effarig</span>`);
+        `<span style="color: ${GlyphAppearanceHandler.getBorderColor("effarig")};">Эффарига</span>`);
       if (this.hasReality) uniqueGlyphs.push(
-        `<span style="animation: a-reality-glyph-description-cycle 10s infinite;">Reality</span>`);
-      return `You cannot have more than one ${uniqueGlyphs.join(" or ")}
-        Glyph equipped${uniqueGlyphs.length > 1 ? " each." : "."}`;
+        `<span style="animation: a-reality-glyph-description-cycle 10s infinite;">Реальности</span>`);
+      return `Вы можете активировать не более ${uniqueGlyphs.length > 1 ? "чем по одному глифу" : "одного глифа"} ${uniqueGlyphs.join(" и ")}.`;
     },
     noEffects() {
       return !this.effects.length;
@@ -50,11 +49,14 @@ export default {
     glyphSet() {
       return Glyphs.activeList;
     },
-    pelleGlyphText() {
-      return Pelle.isDoomed
-        ? `Glyph Rarity is set to ${formatPercents(strengthToRarity(Pelle.glyphStrength))}
-          and Level is capped at ${formatInt(Pelle.glyphMaxLevel)}`
-        : "";
+    showPelleGlyphText() {
+      return Pelle.isDoomed;
+    },
+    pelleStrengthText() {
+      return formatPercents(strengthToRarity(Pelle.glyphStrength));
+    },
+    pelleLevelText() {
+      return formatInt(Pelle.glyphMaxLevel);
     },
     showChaosText() {
       return this.pelleChaosEffect.isUnlocked && !this.noEffects;
@@ -92,11 +94,13 @@ export default {
 
 <template>
   <div class="c-current-glyph-effects l-current-glyph-effects">
-    <div class="pelle-current-glyph-effects">
-      {{ pelleGlyphText }}
+    <div v-if="showPelleGlyphText" class="pelle-current-glyph-effects">
+      Редкость глифов выставлена на {{ pelleStrengthText }},
+      <br>
+      а их фактические уровни имеют ограничение в {{ pelleLevelText }}
     </div>
     <div class="c-current-glyph-effects__header">
-      Currently active Glyph effects:
+      Действующие эффекты глифов:
     </div>
     <GlyphSetName :glyph-set="glyphSet" />
     <br v-if="isSoftcapActive || hasEffarig || hasReality">
@@ -105,12 +109,12 @@ export default {
       v-if="isSoftcapActive"
       class="l-current-glyph-effects__capped-header"
     >
-      <span class="c-current-glyph-effects__effect--capped">Italic</span> effects have been slightly reduced
-      due to a softcap
+      Эффекты, выделенные <span class="c-current-glyph-effects__effect--capped">курсивом</span>, достигли
+      мягкого ограничения
     </div>
     <br>
     <div v-if="noEffects">
-      None (equip Glyphs to get their effects)
+      Нет (активируйте глифы, чтобы их эффекты вступили в силу)
     </div>
     <CurrentGlyphEffect
       v-for="effect in effects"

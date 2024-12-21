@@ -24,8 +24,8 @@ export default {
       return Glyphs.findByInventoryIndex(this.idx);
     },
     message() {
-      return `Do you really want to sacrifice this Glyph? Your total power of sacrificed ${this.glyph.type}
-      Glyphs will increase from ${format(this.currentGlyphSacrifice, 2, 2)} to
+      return `Вы действительно хотите пожертвовать этот глиф? Ваша суммарная ценность пожертвованных Глифов ${translateGlyph(this.glyph.type)}
+      увеличится с ${format(this.currentGlyphSacrifice, 2, 2)} до
       ${format(this.currentGlyphSacrifice + this.gain, 2, 2)}.`;
     }
   },
@@ -43,7 +43,7 @@ export default {
         // the sac will break things so this is the best I could do. - Scar
 
         this.emitClose();
-        Modal.message.show("The selected Glyph changed position or was otherwise changed!");
+        Modal.message.show("Выбранный глиф был перемещён или изменён иначе!");
       }
     },
     handleYesClick() {
@@ -60,7 +60,7 @@ export default {
     @confirm="handleYesClick"
   >
     <template #header>
-      You are about to sacrifice a Glyph
+      Вы жертвуете глиф
     </template>
     <div class="c-modal-message__text">
       {{ message }}

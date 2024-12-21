@@ -61,14 +61,14 @@ export default {
     infinityCountString() {
       const num = this.infinity.count;
       return num.gt(0)
-        ? `${this.formatDecimalAmount(num)} ${pluralize("Infinity", num.floor())}`
-        : "no Infinities";
+        ? `${this.formatDecimalAmount(num)} ${pluralize("бесконечность", num.floor())}`
+        : "нет бесконечностей";
     },
     eternityCountString() {
       const num = this.eternity.count;
       return num.gt(0)
-        ? `${this.formatDecimalAmount(num)} ${pluralize("Eternity", num.floor())}`
-        : "no Eternities";
+        ? `${this.formatDecimalAmount(num)} ${pluralize("вечность", num.floor())}`
+        : "нет вечностей";
     },
     fullGameCompletions() {
       return player.records.fullGameCompletions;
@@ -77,7 +77,7 @@ export default {
       return Time.toDateTimeString(player.records.gameCreatedTime);
     },
     saveAge() {
-      return TimeSpan.fromMilliseconds(this.timeSinceCreation);
+      return TimeSpan.fromMilliseconds(this.timeSinceCreation, "accusative");
     },
   },
   methods: {
@@ -85,11 +85,12 @@ export default {
       const records = player.records;
       this.totalAntimatter.copyFrom(records.totalAntimatter);
       this.realTimePlayed.setFrom(records.realTimePlayed);
-      this.fullTimePlayed = TimeSpan.fromMilliseconds(records.previousRunRealTime + records.realTimePlayed);
+      this.fullTimePlayed = TimeSpan.fromMilliseconds(records.previousRunRealTime + records.realTimePlayed, "accusative");
       this.uniqueNews = NewsHandler.uniqueTickersSeen;
       this.totalNews = player.news.totalSeen;
       this.secretAchievementCount = SecretAchievements.all.filter(a => a.isUnlocked).length;
       this.timeSinceCreation = Date.now() - player.records.gameCreatedTime;
+      this.seenAlteredSpeed = PlayerProgress.seenAlteredSpeed();
 
       const progress = PlayerProgress.current;
       const isInfinityUnlocked = progress.isInfinityUnlocked;
@@ -104,7 +105,7 @@ export default {
           TimeStudy(191)
         );
         infinity.bankRate = infinity.projectedBanked.div(Math.clampMin(33, records.thisEternity.time)).times(60000);
-        infinity.hasBest = bestInfinity.time < 999999999999;
+        infinity.hasBest = bestInfinity.time < Number.MAX_VALUE;
         infinity.best.setFrom(bestInfinity.time);
         infinity.this.setFrom(records.thisInfinity.time);
         infinity.bestRate.copyFrom(bestInfinity.bestIPminEternity);
@@ -116,7 +117,7 @@ export default {
       eternity.isUnlocked = isEternityUnlocked;
       if (isEternityUnlocked) {
         eternity.count.copyFrom(Currency.eternities);
-        eternity.hasBest = bestEternity.time < 999999999999;
+        eternity.hasBest = bestEternity.time < Number.MAX_VALUE;
         eternity.best.setFrom(bestEternity.time);
         eternity.this.setFrom(records.thisEternity.time);
         eternity.bestRate.copyFrom(bestEternity.bestEPminReality);
@@ -172,39 +173,39 @@ export default {
   <div class="c-stats-tab">
     <div>
       <PrimaryButton onclick="Modal.catchup.show(0)">
-        View Content Summary
+        Просмотреть краткое изложение контента
       </PrimaryButton>
       <div class="c-stats-tab-title c-stats-tab-general">
-        General
+        Общее
       </div>
       <div class="c-stats-tab-general">
-        <div>You have made a total of {{ format(totalAntimatter, 2, 1) }} antimatter.</div>
-        <div>You have played for {{ realTimePlayed }}. (real time)</div>
-        <div v-if="reality.isUnlocked">
-          Your existence has spanned {{ reality.totalTimePlayed }} of time. (game time)
+        <div>Вы произвели {{ format(totalAntimatter, 2, 1) }} антиматерии всего.</div>
+        <div>Вы играли {{ realTimePlayed.toString("accusative") }}<span v-if="seenAlteredSpeed"> (по реальному времяисчислению)</span>.</div>
+        <div v-if="seenAlteredSpeed">
+          Ваше существование продлилось {{ reality.totalTimePlayed.toString("accusative") }} (по игровому времяисчислению).
         </div>
         <div>
-          Your save was created on {{ startDate }} ({{ saveAge }} ago)
+          Ваше текущее сохранение было создано {{ startDate }} ({{ saveAge }} назад).
         </div>
         <br>
         <div>
-          You have seen {{ quantifyInt("news message", totalNews) }} in total.
+          Вы просмотрели {{ quantifyInt("новость", totalNews) }}.
         </div>
         <div>
-          You have seen {{ quantifyInt("unique news message", uniqueNews) }}.
+          Вы увидели {{ quantifyInt("новость", uniqueNews) }} без учёта повторений.
         </div>
         <div>
-          You have unlocked {{ quantifyInt("Secret Achievement", secretAchievementCount) }}.
+          Вы выполнили {{ quantifyInt("секретное достижение", secretAchievementCount) }}.
         </div>
         <div v-if="paperclips">
-          You have {{ quantifyInt("useless paperclip", paperclips) }}.
+          У вас {{ quantifyInt("бесполезная скрепка", paperclips) }}.
         </div>
         <div v-if="fullGameCompletions">
           <br>
           <b>
-            You have completed the entire game {{ quantifyInt("time", fullGameCompletions) }}.
+            Вы завершили игру целиком {{ quantifyInt("раз", fullGameCompletions) }}.
             <br>
-            You have played for {{ fullTimePlayed }} across all playthroughs.
+            Вы играли {{ fullTimePlayed }} в сумме по всем забегам.
           </b>
         </div>
       </div>
@@ -228,31 +229,25 @@ export default {
       class="c-stats-tab-subheader c-stats-tab-general"
     >
       <div class="c-stats-tab-title c-stats-tab-infinity">
-        Infinity
+        Бесконечность
       </div>
       <div>
-        You have {{ infinityCountString }}<span v-if="eternity.isUnlocked"> this Eternity</span>.
+        У вас {{ infinityCountString }}<span v-if="eternity.isUnlocked"> в текущей вечности</span>.
       </div>
       <div v-if="infinity.banked.gt(0)">
-        You have {{ formatDecimalAmount(infinity.banked.floor()) }}
-        {{ pluralize("Banked Infinity", infinity.banked.floor()) }}.
+        У вас {{ formatDecimalAmount(infinity.banked.floor()) }}
+        {{ pluralize("сохранённая бесконечность", infinity.banked.floor()) }}.
       </div>
       <div v-if="infinity.hasBest">
-        Your fastest Infinity was {{ infinity.best.toStringShort() }}.
-      </div>
-      <div v-else>
-        You have no fastest Infinity<span v-if="eternity.isUnlocked"> this Eternity</span>.
+        Рекорд бесконечности<span v-if="eternity.isUnlocked"> в текущей вечности</span>: {{ infinity.best.toStringShort() }}.
       </div>
       <div>
-        You have spent {{ infinity.this.toStringShort() }} in this Infinity.
-        <span v-if="reality.isUnlocked">
-          ({{ infinity.thisReal.toStringShort() }} real time)
-        </span>
+        Текущая бесконечность длится {{ infinity.this.toStringShort() }}<span v-if="reality.isUnlocked">
+          ({{ infinity.thisReal.toStringShort() }} по реальному времяисчислению)</span>.
       </div>
       <div>
-        Your best Infinity Points per minute
-        <span v-if="eternity.count.gt(0)">this Eternity </span>
-        is {{ format(infinity.bestRate, 2, 2) }}.
+        Рекордный прирост Очков Бесконечности за время<span v-if="eternity.count.gt(0)"> в текущей вечности</span>:
+        {{ format(infinity.bestRate, 2, 2) }} в минуту.
       </div>
       <br>
     </div>
@@ -261,35 +256,26 @@ export default {
       class="c-stats-tab-subheader c-stats-tab-general"
     >
       <div class="c-stats-tab-title c-stats-tab-eternity">
-        Eternity
+        Вечность
       </div>
       <div>
-        You have {{ eternityCountString }}<span v-if="reality.isUnlocked"> this Reality</span>.
+        У вас {{ eternityCountString }}<span v-if="reality.isUnlocked"> в текущей реальности</span>.
       </div>
       <div v-if="infinity.projectedBanked.gt(0)">
-        You will gain {{ formatDecimalAmount(infinity.projectedBanked.floor()) }}
-        {{ pluralize("Banked Infinity", infinity.projectedBanked.floor()) }} on Eternity
-        ({{ formatDecimalAmount(infinity.bankRate) }} per minute).
-      </div>
-      <div v-else-if="infinity.banked.gt(0)">
-        You will gain no Banked Infinities on Eternity.
+        Вы получите {{ formatDecimalAmount(infinity.projectedBanked.floor()) }}
+        {{ pluralize("сохранённую бесконечность", infinity.projectedBanked.floor()) }} на вечности
+        ({{ formatDecimalAmount(infinity.bankRate) }} в минуту).
       </div>
       <div v-if="eternity.hasBest">
-        Your fastest Eternity was {{ eternity.best.toStringShort() }}.
-      </div>
-      <div v-else>
-        You have no fastest Eternity<span v-if="reality.isUnlocked"> this Reality</span>.
+        Рекорд вечности<span v-if="reality.isUnlocked"> в текущей реальности</span>: {{ eternity.best.toStringShort() }}.
       </div>
       <div>
-        You have spent {{ eternity.this.toStringShort() }} in this Eternity.
-        <span v-if="reality.isUnlocked">
-          ({{ eternity.thisReal.toStringShort() }} real time)
-        </span>
+        Текущая вечность длится {{ eternity.this.toStringShort() }}<span v-if="reality.isUnlocked">
+          ({{ eternity.thisReal.toStringShort() }} по реальному времяисчислению)</span>.
       </div>
       <div>
-        Your best Eternity Points per minute
-        <span v-if="reality.isUnlocked">this Reality </span>
-        is {{ format(eternity.bestRate, 2, 2) }}.
+        Рекордный прирост Очков Вечности за время<span v-if="reality.isUnlocked"> в текущей реальности</span>:
+        {{ format(eternity.bestRate, 2, 2) }} в минуту.
       </div>
       <br>
     </div>
@@ -298,26 +284,26 @@ export default {
       class="c-stats-tab-subheader c-stats-tab-general"
     >
       <div :class="realityClassObject()">
-        {{ isDoomed ? "Doomed Reality" : "Reality" }}
+        {{ isDoomed ? "Обречённая Реальность" : "Реальность" }}
       </div>
-      <div>You have {{ quantifyInt("Reality", reality.count) }}.</div>
-      <div>Your fastest game-time Reality was {{ reality.best.toStringShort() }}.</div>
-      <div>Your fastest real-time Reality was {{ reality.bestReal.toStringShort() }}.</div>
+      <div>У вас {{ quantifyInt("реальность", reality.count) }}.</div>
+      <div>Рекорд реальности по игровому времяисчислению: {{ reality.best.toStringShort() }}.</div>
+      <div>Рекорд реальности по реальному времяисчислению: {{ reality.bestReal.toStringShort() }}.</div>
       <div :class="{ 'c-stats-tab-doomed' : isDoomed }">
-        You have spent {{ reality.this.toStringShort() }}
-        in this {{ isDoomed ? "Armageddon" : "Reality" }}.
-        ({{ reality.thisReal.toStringShort() }} real time)
+        {{ isDoomed ? "Текущий армагеддон" : "Текущая реальность" }} длится
+        {{ reality.this.toStringShort() }}
+        ({{ reality.thisReal.toStringShort() }} по реальному времяисчислению).
       </div>
       <div
         v-if="isDoomed"
         class="c-stats-tab-doomed"
       >
-        You have been Doomed for {{ realTimeDoomed.toStringShort() }}, real time.
+        Вы обрекли Реальность {{ realTimeDoomed.toStringShort() }} назад по реальному времяисчислению.
       </div>
       <div>
-        Your best Reality Machines per minute is {{ format(reality.bestRate, 2, 2) }}.
+        Рекордный прирост Машин Реальности за время: {{ format(reality.bestRate, 2, 2) }} в минуту.
       </div>
-      <div>Your best Glyph rarity is {{ formatRarity(reality.bestRarity) }}.</div>
+      <div>Рекордная редкость глифа: {{ formatRarity(reality.bestRarity) }}.</div>
       <br>
     </div>
   </div>

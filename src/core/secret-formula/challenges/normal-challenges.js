@@ -12,11 +12,11 @@ export const normalChallenges = [
     isQuickResettable: false,
     description() {
       return PlayerProgress.eternityUnlocked()
-        ? "reach Infinity for the first time outside of a challenge."
-        : "reach Infinity for the first time.";
+        ? "достигните бесконечности вне всех испытаний."
+        : "достигните бесконечности.";
     },
     name: "1st Antimatter Dimension Autobuyer",
-    reward: "Upgradeable 1st Antimatter Dimension Autobuyer",
+    reward: "возможность улучшать автоматику 1-х Измерений Антиматерии",
     lockedAt: DC.D0,
   },
   {
@@ -24,10 +24,10 @@ export const normalChallenges = [
     legacyId: 2,
     isQuickResettable: false,
     description:
-      () => "buying Antimatter Dimensions or Tickspeed upgrades halts production of all Antimatter Dimensions. " +
-      `Production gradually returns to normal over ${formatInt(3)} minutes.`,
+      () => "при покупке Измерений Антиматерии или ускорителей производство останавливается и " +
+      `постепенно восстанавливается в течение ${formatInt(3)} минут.`,
     name: "2nd Antimatter Dimension Autobuyer",
-    reward: "Upgradeable 2nd Antimatter Dimension Autobuyer",
+    reward: "возможность улучшать автоматику 2-х Измерений Антиматерии",
     lockedAt: DC.D0,
   },
   {
@@ -35,20 +35,19 @@ export const normalChallenges = [
     legacyId: 3,
     isQuickResettable: false,
     description:
-      `the 1st Antimatter Dimension is heavily weakened, but gets an uncapped exponentially increasing multiplier.
-        This multiplier resets after Dimension Boosts and Antimatter Galaxies.`,
-    name: "3rd Antimatter Dimension",
-    reward: "Upgradeable 3rd Antimatter Dimension Autobuyer",
+      `1-е Измерение Антиматерии получает множитель, который изначально мал, зато неограниченно экспоненциально возрастает,
+        но сбрасывается при получении Расширений Измерений и Галактик Антиматерии.`,
+    name: "3rd Antimatter Dimension Autobuyer",
+    reward: "возможность улучшать автоматику 3-х Измерений Антиматерии",
     lockedAt: DC.D0,
   },
   {
     id: 4,
     legacyId: 8,
     isQuickResettable: false,
-    description: "buying an Antimatter Dimension automatically erases all lower tier Antimatter Dimensions, " +
-      "like a sacrifice without the boost.",
+    description: "при покупке Измерения Антиматерии количества измерений более низких уровней сбрасываются.",
     name: "4th Antimatter Dimension Autobuyer",
-    reward: "Upgradeable 4th Antimatter Dimension Autobuyer",
+    reward: "возможность улучшать автоматику 4-х Измерений Антиматерии",
     lockedAt: DC.D0,
   },
   {
@@ -56,19 +55,19 @@ export const normalChallenges = [
     legacyId: 6,
     isQuickResettable: false,
     description:
-      () => `the Tickspeed purchase multiplier starts at ${formatX(1.080, 0, 3)} instead of ${formatX(1.1245, 0, 3)}.`,
+      () => `ускорители слабее.`,
     name: "5th Antimatter Dimension Autobuyer",
-    reward: "Upgradeable 5th Antimatter Dimension Autobuyer",
+    reward: "возможность улучшать автоматику 5-х Измерений Антиматерии",
     lockedAt: DC.D0,
   },
   {
     id: 6,
     legacyId: 10,
     isQuickResettable: false,
-    description: () => `upgrading each Antimatter Dimension costs the Antimatter Dimension ${formatInt(2)} tiers ` +
-      "below it instead of antimatter. Antimatter Dimension prices are modified.",
+    description: () => "каждое Измерение Антиматерии, начиная с 3-го, покупается за измерение двумя уровнями ниже " +
+      "по другим ценам.",
     name: "6th Antimatter Dimension Autobuyer",
-    reward: "Upgradeable 6th Antimatter Dimension Autobuyer",
+    reward: "возможность улучшать автоматику 6-х Измерений Антиматерии",
     lockedAt: DC.D0,
   },
   {
@@ -76,61 +75,62 @@ export const normalChallenges = [
     legacyId: 9,
     isQuickResettable: false,
     description: () =>
-      `the multiplier from buying ${formatInt(10)} Antimatter Dimensions is reduced to ${formatX(1)}. This increases by
-        ${formatX(0.2, 1, 1)} per Dimension Boost, to a maximum of ${formatX(2)}, and is unaffected by any upgrades.`,
+      `множитель за покупку ${formatInt(10)} Измерений Антиматерии снижен до ${formatX(1)}, но возрастает на
+        ${format(0.2, 1, 1)} за каждое Расширение Измерений, вплоть до ${formatX(2)}, и никак иначе не меняется.`,
     name: "7th Antimatter Dimension Autobuyer",
-    reward: "Upgradeable 7th Antimatter Dimension Autobuyer",
+    reward: "возможность улучшать автоматику 7-х Измерений Антиматерии",
     lockedAt: DC.D0,
   },
   {
     id: 8,
     legacyId: 11,
     isQuickResettable: false,
-    description: `Dimension Boosts provide no multiplier and Antimatter Galaxies cannot be bought. Dimensional
-      Sacrifice resets antimatter and all Antimatter Dimensions, but also gives a significantly stronger multiplier.`,
+    description: `Галактики Антиматерии недоступны. Вы можете купить не более пяти Расширений Измерений, и они не дают
+      множителей. Пожертвование Измерений сбрасывает количество антиматерии и Измерения Антиматерии, но становится гораздо сильнее.`,
     name: "8th Antimatter Dimension Autobuyer",
-    reward: "Upgradeable 8th Antimatter Dimension Autobuyer",
+    reward: "возможность улучшать автоматику 8-х Измерений Антиматерии",
     lockedAt: DC.D0,
   },
   {
     id: 9,
     legacyId: 5,
     isQuickResettable: true,
-    description: () => `whenever you buy Tickspeed upgrades or ${formatInt(10)} of an Antimatter Dimension, ` +
-      "everything else of equal cost will increase to its next cost step.",
+    description: () => `при покупке ускорителя или десятки Измерений Антиматерии возрастает не только соответствующая цена, ` +
+      "но и все равные ей цены.",
     name: "Tickspeed Autobuyer",
-    reward: "Upgradeable Tickspeed Autobuyer",
+    reward: "возможность улучшать автоматику ускорителей",
     lockedAt: DC.D0,
   },
   {
     id: 10,
     legacyId: 4,
     isQuickResettable: false,
-    description: () => `there are only ${formatInt(6)} Antimatter Dimensions. Dimension Boost ` +
-      "and Antimatter Galaxy costs are modified.",
+    description: () => `вам доступны только первые ${formatInt(6)} Измерений Антиматерии. Расширения Измерений ` +
+      "и Галактики Антиматерии покупаются за 6-е Измерения Антиматерии по другим ценам.",
     name: "Automated Dimension Boosts",
-    reward: "Dimension Boosts Autobuyer",
+    reward: "автоматику Расширений Измерений",
     lockedAt: DC.D16,
   },
   {
     id: 11,
     legacyId: 12,
     isQuickResettable: true,
-    description: () => `there is normal matter which rises once you have at least ${formatInt(1)} 2nd Antimatter ` +
-      "Dimension. If it exceeds your antimatter, it will Dimension Boost without giving the bonus.",
+    description: () => "существует материя, количество которой растёт экспоненциально, как только у вас появляется " +
+      "2-е Измерение Антиматерии, причём тем быстрее, чем у вас больше Расширений Измерений и Галактик Антиматерии. " +
+      "Если оно превысит количество антиматерии, всё сбросится, как при Расширении Измерений.",
     name: "Automated Antimatter Galaxies",
-    reward: "Antimatter Galaxies Autobuyer",
+    reward: "автоматику Галактик Антиматерии",
     lockedAt: DC.D16,
   },
   {
     id: 12,
     legacyId: 7,
     isQuickResettable: false,
-    description: () => `each Antimatter Dimension produces the Dimension ${formatInt(2)} tiers below it
-      instead of ${formatInt(1)}. Both 1st and 2nd Dimensions produce antimatter.
-      The 2nd, 4th, and 6th Dimensions are made stronger to compensate.`,
+    description: () => `каждое Измерение Антиматерии, начиная с 3-го, производит измерение двумя уровнями ниже
+      вместо предыдущего, а 2-е Измерение Антиматерии производит антиматерию вместо 1-го Измерения,
+      зато 2-е, 4-е и 6-е Измерения сильнее.`,
     name: "Automated Big Crunches",
-    reward: "Big Crunches Autobuyer",
+    reward: "автоматику Большого Сжатия",
     lockedAt: DC.D16,
   }
 ];

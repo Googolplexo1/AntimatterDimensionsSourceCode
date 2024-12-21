@@ -25,12 +25,12 @@ export default {
   computed: {
     isDoomed: () => Pelle.isDoomed,
     singularityFormText() {
-      const formText = this.singularitiesGained === 1 ? "all Dark Energy into a Singularity"
-        : `all Dark Energy into ${quantify("Singularity", this.singularitiesGained, 2)}`;
+      const formText = this.singularitiesGained === 1 ? "всю Тёмную Энергию в Сингулярность"
+        : `всю Тёмную Энергию в ${quantify("Сингулярность", this.singularitiesGained, 2)}`;
       if (this.canPerformSingularity) {
-        return `Condense ${formText}`;
+        return `Сжать ${formText}`;
       }
-      return `Reach ${format(this.singularityCap)} Dark Energy to condense ${formText}`;
+      return `Достигните ${format(this.singularityCap, 2, 2)} Тёмной Энергии, чтобы сжать ${formText}`;
     },
     singularityWaitText() {
       let singularityTime = this.currentTimeToSingularity;
@@ -38,10 +38,10 @@ export default {
         singularityTime += this.extraTimeAfterSingularity;
         if (!this.isAutoEnabled) return "";
         return singularityTime > 0
-          ? `(Auto-condensing in ${TimeSpan.fromSeconds(singularityTime).toStringShort()})`
-          : "(Will immediately auto-condense)";
+          ? `(Автоматическое сжатие: через ${TimeSpan.fromSeconds(singularityTime).toStringShort()})`
+          : "(Автоматическое сжатие: немедленно при включении)";
       }
-      return `(Enough Dark Energy in ${TimeSpan.fromSeconds(singularityTime).toStringShort()})`;
+      return `(Осталось ${TimeSpan.fromSeconds(singularityTime).toStringShort()})`;
     },
     baseSingularityTime() {
       return TimeSpan.fromSeconds(this.baseTimeToSingularity).toStringShort();
@@ -54,21 +54,21 @@ export default {
       return this.formatRate(this.singularitiesGained / totalTime);
     },
     autoSingularityRate() {
-      if (this.hasAutoSingularity && !this.isAutoEnabled) return "Auto-Singularity is OFF";
+      if (this.hasAutoSingularity && !this.isAutoEnabled) return "Автоматика сжатия выключена";
       const totalTime = this.baseTimeToSingularity + this.extraTimeAfterSingularity;
       return this.formatRate(this.singularitiesGained / totalTime);
     },
     decreaseTooltip() {
-      if (this.singularityCapIncreases === 0) return "You cannot decrease the cap any further!";
+      if (this.singularityCapIncreases === 0) return "Цель не может быть уменьшена!";
       const singularities = this.singularitiesGained / this.perStepFactor;
       return this.willCondenseOnDecrease
-        ? `Decreasing the cap will immediately auto-condense for
-          ${quantify("Singularity", singularities, 2)}!`
+        ? `При уменьшении цели автоматически произойдёт сжатие за
+          ${quantify("Сингулярность", singularities, 2)}!`
         : null;
     },
     increaseTooltip() {
       return this.singularityCapIncreases >= 50
-        ? "You cannot increase the cap any further!"
+        ? "Цель не может быть увеличена!"
         : null;
     }
   },
@@ -103,9 +103,9 @@ export default {
       Singularity.decreaseCap();
     },
     formatRate(rate) {
-      if (rate < 1 / 60) return `${format(3600 * rate, 2, 3)} per hour`;
-      if (rate < 1) return `${format(60 * rate, 2, 3)} per minute`;
-      return `${format(rate, 2, 3)} per second`;
+      if (rate < 1 / 60) return `${format(3600 * rate, 2, 3)} в час`;
+      if (rate < 1) return `${format(60 * rate, 2, 3)} в минуту`;
+      return `${format(rate, 2, 3)} в секунду`;
     },
     condenseClassObject() {
       return {
@@ -123,7 +123,7 @@ export default {
   <div class="c-laitela-singularity-container">
     <div>
       <h2>
-        You have {{ quantify("Singularity", singularities, 2) }}
+        У вас {{ quantify("Сингулярность", singularities, 2) }}
       </h2>
       <button
         :class="condenseClassObject()"
@@ -140,7 +140,7 @@ export default {
     </div>
     <div v-if="singularities !== 0">
       <div class="o-laitela-matter-amount">
-        You have {{ format(darkEnergy, 2, 4) }} Dark Energy. (+{{ format(darkEnergyGainPerSecond, 2, 4) }}/s)
+        У вас {{ format(darkEnergy, 2, 4) }} Тёмной Энергии. (+{{ format(darkEnergyGainPerSecond, 2, 4) }}/с)
       </div>
       <div v-if="unlockedBulkSingularity">
         <button
@@ -149,7 +149,7 @@ export default {
           :ach-tooltip="decreaseTooltip"
           @click="decreaseCap"
         >
-          Decrease Singularity cap.
+          Уменьшить целевое количество ТЭ.
         </button>
         <button
           class="c-laitela-singularity__cap-control"
@@ -157,32 +157,32 @@ export default {
           :ach-tooltip="increaseTooltip"
           @click="increaseCap"
         >
-          Increase Singularity cap.
+          Увеличить целевое количество ТЭ.
         </button>
         <br>
-        Each step increases the required Dark Energy by {{ formatX(10) }},
+        В то время как целевое количество Тёмной Энергии меняется в {{ format(10) }} раз,
         <br>
-        but also increases gained Singularities by {{ formatX(perStepFactor) }}.
+        оптовое получение Сингулярностей меняется в {{ format(perStepFactor) }} раз.
       </div>
       <div v-else>
         <br>
-        Reach {{ format(10) }} Singularities
+        Достигните {{ format(10) }} Сингулярностей,
         <br>
-        to unlock Bulk Singularities.
+        чтобы разблокировать опт Сингулярностей.
         <br>
       </div>
       <br>
-      Total time to <span v-if="hasAutoSingularity">(auto-)</span>condense:
+      Времени до <span v-if="hasAutoSingularity">(автоматического)</span> сжатия:
       {{ baseSingularityTime }}
       <span v-if="hasAutoSingularity && autoSingularityFactor !== 1">
         (+{{ additionalSingularityTime }})
       </span>
       <br>
-      <span v-if="hasAutoSingularity && autoSingularityFactor !== 1">Manual </span>
-      Singularity gain rate: {{ manualSingularityRate }}
+      Скорость получения сингулярностей
+      <span v-if="hasAutoSingularity && autoSingularityFactor !== 1"> вручную </span>: {{ manualSingularityRate }}
       <br>
       <span v-if="hasAutoSingularity && autoSingularityFactor !== 1">
-        Automatic Singularity gain rate: {{ autoSingularityRate }}
+        Скорость получения сингулярностей автоматически: {{ autoSingularityRate }}
       </span>
     </div>
   </div>

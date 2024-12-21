@@ -77,14 +77,14 @@ export default {
     },
     buttonText() {
       if (this.overrideLabel.length) return this.overrideLabel;
-      if (this.isRunning) return "Running";
+      if (this.isRunning) return "Запущено";
       if (this.isCompleted) {
-        if (this.isUnlocked) return "Redo";
-        return "Completed";
+        if (this.isUnlocked) return "Перезапустить";
+        return "Выполнено";
       }
-      if (this.isUnlocked) return "Start";
-      if (this.canBeUnlocked) return "Unlock";
-      return "Locked";
+      if (this.isUnlocked) return "Начать";
+      if (this.canBeUnlocked) return "Разблокировать";
+      return "Заблокировано";
     }
   }
 };

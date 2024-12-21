@@ -3,7 +3,7 @@ import { DC } from "../../constants";
 export const effarigUnlocks = {
   adjuster: {
     id: 0,
-    description: "Adjustable Glyph level factor weights",
+    description: "Разблокировать корректировку весов факторов уровня глифа",
     cost: 1e7,
     onPurchased: () => {
       Effarig.quotes.unlockWeights.show();
@@ -13,7 +13,7 @@ export const effarigUnlocks = {
   },
   glyphFilter: {
     id: 1,
-    description: "Glyph Filtering",
+    description: "Разблокировать Фильтр Глифов",
     cost: 2e8,
     onPurchased: () => {
       Effarig.quotes.unlockGlyphFilter.show();
@@ -22,7 +22,7 @@ export const effarigUnlocks = {
   },
   setSaves: {
     id: 2,
-    description: "Glyph Presets",
+    description: "Разблокировать возможность сохранять наборы глифов",
     cost: 3e9,
     onPurchased: () => {
       Effarig.quotes.unlockSetSaves.show();
@@ -31,7 +31,7 @@ export const effarigUnlocks = {
   },
   run: {
     id: 3,
-    description: "Effarig's Reality",
+    description: "Разблокировать Реальность Эффарига",
     cost: 5e11,
     onPurchased: () => {
       Effarig.quotes.unlockRun.show();
@@ -39,28 +39,25 @@ export const effarigUnlocks = {
   },
   infinity: {
     id: 4,
-    label: "Infinity",
+    label: "Бесконечность",
     get description() {
-      return ` Replicanti cap is multiplied by a value based on Infinities
-        Infinities increase your max Replicanti Galaxies
-        Base Infinity Point gain is capped at ${format(DC.E200)} in Effarig's Reality
-        Each type of Infinity Point multiplier is capped at ${format(DC.E50)} in Effarig's Reality`;
+      return ` Ограничение на количество Репликанти увеличено в зависимости от количества бесконечностей
+        Получать дополнительные Галактики Репликанти в зависимости от количества бесконечностей`;
     },
   },
   eternity: {
     id: 5,
-    label: "Eternity",
+    label: "Вечность",
     get description() {
-      return ` Eternities generates Infinities
-        Infinity Points are no longer limited in any way in Effarig's Reality
-        You have unlocked The Nameless Ones`;
+      return ` Вечности производят по столько бесконечностей в секунду, сколько вы получили бы при Большом Сжатии
+        Разблокировать Безымянных, Небожителя Времени`;
     },
   },
   reality: {
     id: 6,
-    label: "Reality",
+    label: "Реальность",
     get description() {
-      return " You have unlocked Effarig Glyphs (You may equip at most one and some effects are mutually exclusive)";
+      return " Разблокировать глифы нового типа - Глифы Эффарига (см. одноимённую статью помощи по игре)";
     },
   }
 };

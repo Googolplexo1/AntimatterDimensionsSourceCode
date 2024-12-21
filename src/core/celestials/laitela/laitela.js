@@ -4,8 +4,8 @@ import { Quotes } from "../quotes";
 import { DarkMatterDimensions } from "./dark-matter-dimension";
 
 export const Laitela = {
-  displayName: "Lai'tela",
-  possessiveName: "Lai'tela's",
+  displayName: "Лайтела",
+  possessiveName: "Лайтелы",
   get celestial() {
     return player.celestials.laitela;
   },
@@ -120,7 +120,9 @@ export const Laitela = {
     this.celestial.difficultyTier = 0;
     this.celestial.singularityCapIncreases = 0;
   },
-  quotes: Quotes.laitela,
+  get quotes() {
+    return Quotes().laitela;
+  },
   symbol: "ᛝ"
 };
 

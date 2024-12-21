@@ -171,7 +171,7 @@ export function getBaseTP(antimatter, requireEternity) {
     : Ra.unlocks.unlockDilationStartingTP.effectOrDefault(antimatter);
   let baseTP = Decimal.pow(Decimal.log10(am) / 400, 1.5);
   if (Enslaved.isRunning) baseTP = baseTP.pow(Enslaved.tachyonNerf);
-  return baseTP;
+  return baseTP.floor();
 }
 
 // Returns the TP that would be gained this run
@@ -182,12 +182,12 @@ export function getTP(antimatter, requireEternity) {
 // Returns the amount of TP gained, subtracting out current TP; used for displaying gained TP, text on the
 // "exit dilation" button (saying whether you need more antimatter), and in last 10 eternities
 export function getTachyonGain(requireEternity) {
-  return getTP(Currency.antimatter.value, requireEternity).minus(Currency.tachyonParticles.value).clampMin(0);
+  return getTP(player.records.thisEternity.maxAM, requireEternity).minus(Currency.tachyonParticles.value).clampMin(0);
 }
 
 // Returns the minimum antimatter needed in order to gain more TP; used only for display purposes
 export function getTachyonReq() {
-  let effectiveTP = Currency.tachyonParticles.value.dividedBy(tachyonGainMultiplier());
+  let effectiveTP = Currency.tachyonParticles.value.dividedBy(tachyonGainMultiplier()).plus(1);
   if (Enslaved.isRunning) effectiveTP = effectiveTP.pow(1 / Enslaved.tachyonNerf);
   return Decimal.pow10(
     effectiveTP
@@ -206,7 +206,7 @@ export function getDilationTimeEstimate(goal) {
     const drain = Pelle.riftDrainPercent;
     const goalNetRate = rawDTGain.minus(Decimal.multiply(goal, drain));
     const currNetRate = rawDTGain.minus(currentDT.times(drain));
-    if (goalNetRate.lt(0)) return "Never affordable due to Rift drain";
+    if (goalNetRate.lt(0)) return "Цена недостижима ввиду заполнения Разлома";
     return TimeSpan.fromSeconds(currNetRate.div(goalNetRate).ln() / drain).toTimeEstimate();
   }
   return TimeSpan.fromSeconds(Decimal.sub(goal, currentDT)

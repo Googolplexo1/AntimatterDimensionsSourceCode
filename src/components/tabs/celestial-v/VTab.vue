@@ -111,13 +111,13 @@ export default {
     },
     startRun() {
       if (this.isDoomed) return;
-      Modal.celestials.show({ name: "V's", number: 3 });
+      Modal.celestials.show({ name: "Ви", number: 3 });
     },
     has(info) {
       return info.isUnlocked;
     },
     mode(hex) {
-      return hex.config.mode === V_REDUCTION_MODE.SUBTRACTION ? "reduced" : "divided";
+      return hex.config.mode === V_REDUCTION_MODE.SUBTRACTION ? "уменьш" : "раздел";
     },
     reductionValue(hex) {
       return hex.config.mode === V_REDUCTION_MODE.SUBTRACTION
@@ -137,8 +137,8 @@ export default {
       V.checkForUnlocks();
     },
     reductionTooltip(hex) {
-      return `Spend ${quantify("Perk Point", hex.reductionCost, 2, 0)}
-        to reduce goal by ${format(hex.config.perReductionStep)}`;
+      return `Потратить ${quantify("Очко", hex.reductionCost, 2, 0)} Умения
+        и ${this.mode(hex)}ить цель на ${format(hex.config.perReductionStep)}`;
     },
     hexColor(hex) {
       const completions = hex.completions;
@@ -190,33 +190,33 @@ export default {
           class="o-primary-btn--subtab-option"
           @click="toggleFlipped"
         >
-          <span v-if="wantsFlipped">Hide</span>
-          <span v-else>Show</span>
-          Hard V
+          <span v-if="wantsFlipped">Скрыть</span>
+          <span v-else>Показать</span>
+          супердостижения Ви
         </PrimaryButton>
         <PrimaryButton
           class="o-primary-btn--subtab-option l-cursed-glyph-creation"
           @click="createCursedGlyph"
         >
-          Create a Cursed Glyph
+          Создать Проклятый Глиф
         </PrimaryButton>
         <br>
-        Cursed Glyphs can be created here or in the Effarig tab.
+        Проклятые Глифы могут быть созданы отсюда или из вкладки Эффарига.
         <br>
-        Cursed Glyphs count as {{ formatInt(-3) }} Glyphs for the purposes of all requirements related to Glyph count.
+        Каждый Проклятый Глиф считается за {{ formatInt(-3) }} глифа при подсчёте количества действующих глифов.
         <br>
-        <span v-if="!isDoomed">The Black Hole can now be used to slow down time if they are both permanent.</span>
+        <span v-if="!isDoomed">Чёрные Дыры теперь способны замедлять время, при условии что они обе действуют беспрерывно.</span>
         <br><br>
-        Each Hard V-Achievement counts as two V-Achievements and will award {{ formatInt(2) }} Space Theorems
-        instead of {{ formatInt(1) }}.
+        Каждое выполнение супердостижения Ви приравнивается к двум выполнениям обычных достижений Ви
+        (и, в частности, даёт две Теоремы Пространства, а не одну).
         <br>
-        Goal reduction is significantly more expensive for Hard V-Achievements.
+        Цены на понижение целей супердостижений Ви растут на {{ formatPercents(0.15) }} каждую покупку.
       </div>
       <div
         v-if="showReduction"
         class="c-v-info-text"
       >
-        You have {{ quantify("Perk Point", pp, 2, 0) }}.
+        У вас {{ quantify("Очко", pp, 2, 0) }} Умения.
       </div>
       <div class="l-v-unlocks-container">
         <li
@@ -240,14 +240,14 @@ export default {
               v-if="has(runMilestones[0][0]) && hex.isReduced"
               class="o-v-unlock-goal-reduction"
             >
-              Goal has been {{ mode(hex) }} by {{ reductionValue(hex) }}
+              Цель была {{ mode(hex) }}ена на {{ reductionValue(hex) }}
             </p>
             <p class="o-v-unlock-amount">
-              {{ formatInt(hex.completions) }}/{{ formatInt(hex.config.values.length) }} done
+              {{ formatInt(hex.completions) }}/{{ formatInt(hex.config.values.length) }} выполнений
             </p>
             <div v-if="showRecord(hex)">
               <p class="o-v-unlock-record">
-                Best: {{ hex.config.formatRecord(runRecords[hex.id]) }}
+                Рекорд: {{ hex.config.formatRecord(runRecords[hex.id]) }}
               </p>
               <p>
                 <GlyphSetPreview
@@ -278,9 +278,7 @@ export default {
               class="o-v-start-text"
               :class="{ 'o-pelle-disabled': isDoomed }"
             >
-              <span v-if="isRunning">You are in </span>
-              <span v-else>Start </span>
-              V's Reality.
+              Запустить Реальность Ви
             </b>
             <br>
             <div :style="{ 'font-size': hasAlchemy ? '1.2rem' : '' }">
@@ -296,16 +294,16 @@ export default {
         </li>
       </div>
       <div class="c-v-info-text">
-        V-Achievements can only be completed within V's Reality, but are permanent and do not reset upon leaving
-        and re-entering the Reality.
+        Достижения Ви могут быть выполнены лишь внутри Реальности Ви, зато их награды действуют
+        в том числе и вне неё.
       </div>
       <div class="c-v-info-text">
-        You have {{ formatInt(totalUnlocks) }} V-Achievements done.
+        Вы выполнили {{ quantifyInt("уровень", totalUnlocks) }} достижений Ви в сумме.
         <span v-if="!isDoomed">
-          You gain {{ formatInt(1) }} Space Theorem for each completion,
-          allowing you to purchase Time Studies which are normally locked.
+          За выполнения достижений Ви вы получаете по одной Теореме Пространства,
+          которые могут быть потрачены на покупку наборов взаимоисключающих Исследований Времени.
           <br>
-          Space Theorems can also be used as a Currency in the Automator.
+          Автоматизатор также имеет доступ к количеству ваших Теорем Пространства.
         </span>
       </div>
       <br>
@@ -324,9 +322,9 @@ export default {
           >
             <div :class="{ 'o-pelle-disabled': isDoomed }">
               <p>{{ milestone.description }}</p>
-              <p>Reward: {{ milestone.rewardText }}</p>
+              <p>Награда: {{ milestone.rewardText }}</p>
               <p v-if="milestone.formattedEffect">
-                Currently: <b>{{ milestone.formattedEffect }}</b>
+                Сейчас: <b>{{ milestone.formattedEffect }}</b>
               </p>
             </div>
           </div>

@@ -24,7 +24,7 @@ export default {
     };
   },
   computed: {
-    resetTerm() { return this.isDoomed ? "Armageddon" : "Reality"; },
+    resetTerm() { return this.isDoomed ? "текущий Армагеддон будет перезапущен" : "текущая Реальность будет перезапущена"; },
   },
   methods: {
     update() {
@@ -46,8 +46,8 @@ export default {
     @confirm="handleYesClick"
   >
     <template #header>
-      You are about to replace a Glyph
+      Вы заменяете глиф
     </template>
-    Replacing a Glyph will restart this {{ resetTerm }}.
+    При замене глифа {{ resetTerm }}.
   </ModalWrapperChoice>
 </template>

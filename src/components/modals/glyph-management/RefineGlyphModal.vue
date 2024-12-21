@@ -30,7 +30,7 @@ export default {
       return GlyphSacrificeHandler.glyphAlchemyResource(this.glyph);
     },
     resourceName() {
-      return this.resource.name;
+      return translateGlyph(this.glyph.type);
     },
   },
   methods: {
@@ -49,7 +49,7 @@ export default {
         // Why is confirmedRefine here: refer to SacrificeGlyphModal.vue
 
         this.emitClose();
-        Modal.message.show("The selected Glyph changed position or was otherwise changed!");
+        Modal.message.show("Выбранный глиф был перемещён или изменён иначе!");
       }
     },
     handleYesClick() {
@@ -66,24 +66,24 @@ export default {
     @confirm="handleYesClick"
   >
     <template #header>
-      You are about to refine a Glyph
+      Вы облагораживаете глиф
     </template>
     <div
       v-if="resourceUnlocked"
       class="c-modal-message__text"
     >
-      Refining a Glyph will remove the Glyph from your inventory, and in return,
-      you will increase your {{ resourceName }} Alchemy resource from
-      {{ format(resourceAmount, 2, 2) }} to {{ format(after, 2, 2) }}.
-      This Glyph can raise your {{ resourceName }} resource to at most {{ format(cap, 2, 2) }}.
+      Глиф будет удалён из инвентаря, взамен чего
+      ваше количество {{ resourceName }} в алхимии возрастёт с
+      {{ format(resourceAmount, 2, 2) }} до {{ format(after, 2, 2) }}.
+      Этот глиф может повысить количество {{ resourceName }} не более чем до {{ format(cap, 2, 2) }}.
     </div>
     <div
       v-else
       class="c-modal-message__text"
     >
-      You cannot gain any {{ resourceName }} alchemy resource because you have not
-      unlocked this Glyph's resource yet. You can still refine it anyway, but nothing
-      will happen. Consider sacrificing the Glyph instead.
+      Вы не получите {{ resourceName }}, так как вы
+      ещё не разблокировали этот алхимический ресурс. Вы всё равно можете облагородить этот глиф, но ничего
+      не произойдёт. Вместо этого лучше пожертвовать глиф.
     </div>
   </ModalWrapperChoice>
 </template>

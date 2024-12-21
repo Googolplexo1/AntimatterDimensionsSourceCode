@@ -13,348 +13,372 @@ const flashCelestial = [
 const primaryBackground = cel => [["pelle", 1.5], [cel, 1.5]];
 
 /* eslint-disable no-multi-spaces */
-const destroyer =    ["False",         "Deity",         "Destroyer"];
-const eternal =      ["Eternal",       "Deity",         "Monarch"];
-const lesser =       ["Lesser",        "Deity",         "Monarch"];
-const deities =      ["Lesser",        "Deities",       "Monarchs"];
+const destroyer =     ["Ложный",          "Божественный",    "Разрушитель"];
+const destroyerGen =  ["Ложного",         "Божественного",   "Разрушителя"];
+const eternal =       ["Вечный",          "Божество",        "Монарх"];
+const eternalAcc =    ["Вечного",         "Божество",        "Монарха"];
+const eternalInstr =  ["Вечным",          "Божеством",       "Монархом"];
+const lesser =        ["Меньшего",        "Божество",        "Монарха"];
+const deities =       ["Меньшие",         "Божества",        "Монархи"];
+const deitiesGen =    ["Меньших",         "Божеств",         "Монархов"];
+const deitiesInstr =  ["Меньшими",        "Божествами",      "Монархами"];
+const deitiesPrep =   ["Меньших",         "Божествах",       "Монархах"];
 
-const assured =      ["Mutually",      "Assured",       "Destruction"];
-const battle =       ["Conflict",      "Battle",        "End"];
-const battles =      ["Conflicts",     "Battles",       "Ends"];
-const cluster =      ["Cluster",       "Filament",      "Stars"];
-const confusing =    ["Amusing",       "Confusing",     "Laughter"];
-const dance =        ["Song",          "Dance",         "Charade"];
-const filament =     ["Generator",     "Filament",      "Stars"];
-const forever =      ["Infinite",      "Forever",       "Eternal"];
-const inevitable =   ["Elementary",    "Inevitable",    "Irreversible"];
-const mandate =      ["Destiny",       "Mandate",       "Goals"];
-const misconstrue =  ["Misconstrue",   "Deceive",       "Trick"];
-const reverse =      ["Alter",         "Reverse",       "Manipulate"];
-const shame =        ["Compassion",    "Shame",         "Idiocy"];
-const single =       ["Single",        "Filament",      "Stars"];
-const unseen =       ["Missing",       "Unseen",        "Erased"];
-const unbroken =     ["Unbroken",      "Eternal",       "Connection"];
+const assured =       ["Взаимно",         "Заверенное",      "Уничтожение"];
+const assuredGen =    ["Взаимно",         "Заверенного",     "Уничтожения"];
+const battle =        ["Конфликт",        "Поединок",        "Конец"];
+const battles =       ["Конфликты",       "Поединки",        "Концы"];
+const battlePrep =    ["Конфликте",       "Поединке",        "Конце"];
+const battlesPrep =   ["Конфликтах",      "Поединках",       "Концах"];
+const cluster =       ["Скопления",       "Нити",            "Звёзды"];
+const confusing =     ["Забавно",         "Странно",         "Смешно"];
+const dance =         ["Песня",           "Пляска",          "Шарада"];
+const danceGen =      ["Песни",           "Пляски",          "Шарады"];
+const danceAcc =      ["Песню",           "Пляску",          "Шараду"];
+const filament =      ["Генератор",       "Нити",            "Звёзды"];
+const forever =       ["Бесконечно",      "Навсегда",        "Вечно"];
+const inevitable =    ["Элементарные",    "Неизбежные",      "Необратимые"];
+const inevitableGen = ["Элементарных",    "Неизбежных",      "Необратимых"];
+const mandate =       ["Судьба",          "Миссия",          "Цель"];
+const mandateGen =    ["Судьбы",          "Миссии",          "Цели"];
+const mandateDat =    ["Судьбе",          "Миссии",          "Цели"];
+const mandateAcc =    ["Судьбу",          "Миссию",          "Цель"];
+const mandateInstr =  ["Судьбой",         "Миссией",         "Целью"];
+const misconstrue =   ["Лгать",           "Обманывать",      "Хитрить"];
+const reverse =       ["Меняешь",         "Обращаешь",       "Переводишь"];
+const shame =         ["Сострадания",     "Стыда",           "Глупости"];
+const single =        ["Галактики",       "Нити",            "Звёзды"];
+const unseenNom =     ["Пропавшие",       "Невидимые",       "Утерянные"];
+const unseen =        ["Пропавшим",       "Невидимым",       "Утерянным"];
+const unseens =       ["Пропавшими",      "Невидимыми",      "Утерянными"];
+const unbroken =      ["Неразрывное",     "Вечное",          "Соединение"];
 
-const sycophant =    ["Sycophant",     "Deity",         "Monarch"];
-const tired =        ["Tired",         "Deity",         "Monarch"];
-const usurper =      ["Usurper",       "Deity",         "Monarch"];
-const pride =        ["Pride",         "Deity",         "Monarch"];
-const forgotten =    ["Forgotten",     "Deity",         "Monarch"];
-const paramount =    ["Paramount",     "Deity",         "Monarch"];
+const sycophant =     ["Низкопоклонница", "Божество",        "Монарх"];
+const sycophantAcc =  ["Низкопоклонницу", "Божество",        "Монарха"];
+const tired =         ["Уставшему",       "Божеству",        "Монарху"];
+const usurper =       ["Узурпатор",       "Божество",        "Монарх"];
+const usurperGen =    ["Узурпатора",      "Божества",        "Монарха"];
+const usurperDat =    ["Узурпатору",      "Божеству",        "Монарху"];
+const usurperAcc =    ["Узурпатора",      "Божество",        "Монарха"];
+const pride =         ["Горделивого",     "Божества",        "Монарха"];
+const prideInstr =    ["Горделивым",      "Божеством",       "Монархом"];
+const forgotten =     ["Забытый",         "Божество",        "Монарх"];
+const paramount =     ["Главнейшую",      "Божество",        "Монарха"];
+const paramountGen =  ["Главнейшей",      "Божества",        "Монарха"];
 /* eslint-enable no-multi-spaces */
 
 export const pelleQuotes = {
   initial: {
     id: 0,
     lines: [
-      "Hi.",
-      "You are here.",
-      "You are trapped here.",
+      "Привет.",
+      "Ты здесь.",
+      "Ты заточ(ена)[ён] здесь.",
       { text: "$1.", 1: forever },
-      "I have already won.",
-      "And since that is the case, I can monologue, or reminisce.",
-      { text: "How long have we done this $1?", 1: dance },
-      "How many times have we been here before?",
-      { text: "How many plans have you, the $1, operated?", 1: destroyer },
-      { text: "All to try and fulfill your $1?", 1: mandate },
-      { text: "And how many times have you fallen before the $1?", 1: eternal },
-      "Count them, if you remember.",
-      { text: "Not even the $1, the 6 named and the innumerable unnamed.", 1: deities },
-      { text: "The complex, the irrational, those that go $1.", 1: unseen },
-      { text: "Of course, the great $1 does not remember this.", 1: destroyer },
-      { text: "All those $1 that you hide every time.", 1: battles }
+      "Я уже победил.",
+      "И поэтому я могу разглагольстовать и предаваться воспоминаниям.",
+      { text: "Как долго длилась эта $1?", 1: dance },
+      "Сколько раз мы её повторили?",
+      { text: "Сколько планов ты, $1, исполнил(а),", 1: destroyer },
+      { text: "Чтобы во что бы то ни стало исполнить свою $1?", 1: mandateAcc },
+      { text: "И сколько раз ты пал(а) перед $1?", 1: eternalInstr },
+      "Сосчитай, если помнишь.",
+      { text: "Я не говорю уже о $1, шести именованных и бесчисленных безымянных.", 1: deitiesPrep },
+      { text: "Сложных, иррациональных, тех, что становятся $1.", 1: unseens },
+      { text: "Конечно же, великий $1 этого не помнит.", 1: destroyer },
+      { text: "И все эти $1, которые ты всегда скрываешь.", 1: battles }
     ],
   },
   arm: {
     id: 1,
     lines: [
-      "You probably caught on earlier this time.",
-      "The imaginary machines, your own creations.",
-      "Things made of the remnants of your own thoughts, hinted at this.",
-      "But, you never imagined that would be you, right?",
-      { text: "Incorrectly recollecting your exacting $1 of memories.", 1: unseen },
-      { text: `"Fabrication" of your own "ideology" just to fulfill your $1.`, 1: mandate },
+      "Вероятно, на этот раз ты раньше уловил(а) суть.",
+      "Мнимые Машины, твои собственные создания,",
+      "Сделанные из Останков твоих собственных мыслей, указывали на это.",
+      "Но ты не предполагал(а), что здесь окажешься ты сам(а), да?",
+      { text: "Ты неверно восстановил(а) свои $1 Куски Памяти,", 1: unseenNom },
+      { text: `"Фальсифицировал(а)" собственную "идеологию", чтобы просто исполнить свою $1.`, 1: mandateAcc },
       { text: "$1.", 1: confusing },
-      { text: "And keep in mind I have no reason to $1 you.", 1: misconstrue },
-      "After all, I have already won."
+      { text: "Помни, что у меня нет причины $1.", 1: misconstrue },
+      "В конце концов, я уже победил."
     ],
   },
   strike1: {
     id: 2,
     lines: [
-      { text: "To fulfill your $1. Why don't we reminisce about that?", 1: mandate },
-      { text: "After all, you must love the stories of the $1's glory.", 1: destroyer },
-      "You are the same as it, right?",
-      { text: "Anyway, the many $1 in the past.", 1: battles },
-      "It has always been 2 stages.",
-      { text: "We build up resources, and then continue our $1.", 1: dance },
-      { text: "Sometimes you falter to a $1.", 1: lesser },
-      { text: "But, usually, you falter at the $1.", 1: eternal },
-      { text: "And either way, you $1 time.", 1: reverse },
-      { text: "Just to avoid becoming $1.", 1: unseen },
-      "Like all those traces before you.",
-      { text: "And then to make sure, you $1 your own memory.", 1: unseen }
+      { text: "Исполнить свою $1. Почему бы нам не вспомнить об этом?", 1: mandateAcc },
+      { text: "В конце концов, тебе должны быть приятны истории славы $1.", 1: destroyerGen },
+      "Ведь это и есть ты, да?",
+      { text: "Так вот, многочисленные $1 прошлого.", 1: battles },
+      "В них всегда было две стадии.",
+      { text: "Мы накапливаем ресурсы, а затем продолжаем $1.", 1: danceAcc },
+      { text: "Иногда ты спотыкаешься об $1.", 1: lesser },
+      { text: "Но чаще ты спотыкаешься об $1.", 1: eternalAcc },
+      { text: "И в любом случае ты $1 время,", 1: reverse },
+      { text: "Чтобы просто не стать $1,", 1: unseen },
+      "Как все, кто был до тебя.",
+      { text: "И для полной уверенности ты делаешь свои воспоминания $1.", 1: unseens }
     ],
   },
   strike2: {
     id: 3,
     lines: [
-      { text: "In the past, the $1 was much more impressive.", 1: destroyer },
-      "Black holes used simply to store information, pre-infinity.",
-      "The creation and destruction of your own enemy.",
-      "Exploration of the flaws of other selves.",
-      "Myriad Dimensions, ghosts, and manipulation of the quantum.",
-      "Condensing all ideals to endless points.",
-      "Experimentation across the untold realms.",
-      "And harnessing the Annihilation of matter and antimatter.",
-      "Here? You made yourself into an 8th-dimensional being.",
-      { text: "And then parked yourself there so long a $1 formed around you.", 1: single }
+      { text: "В прошлом $1 был гораздо более впечатляющим:", 1: destroyer },
+      "Использовал Чёрные Дыры только для хранения информации, ещё до бесконечности,",
+      "Создавал и разрушал своих собственных врагов,",
+      `Исследовал изъяны своих других "я",`,
+      "Измерения мириад и призраки, управлял квантовым миром,",
+      "Сжимал все идеалы в бесконечно удалённых точках,",
+      "Проводил опыты в неведомых краях,",
+      "И обуздал аннигиляцию между материей и антиматерией.",
+      "А теперь? Ты стал(а) восьмимерным существом.",
+      { text: "И пребывал(а) здесь так долго, что вокруг тебя образовались $1.", 1: single }
     ],
   },
   strike3: {
     id: 4,
     lines: [
-      "You slowly explored the confines of everything.",
-      "You did not stray too far from an intended path.",
-      { text: "Except for the $1 that formed over eternity.", 1: cluster },
-      "And then right at the end, you made up your own powers.",
-      "From your own fragmented memories, mind you-",
-      "And then purposely discarded even more things.",
-      "Just to prepare yourself to face me.",
-      { text: "Did you want to set the playing field for your $1?", 1: dance },
-      "It does not work like that.",
-      { text: "As the $1 I always set the rules.", 1: eternal },
-      "And you gave me plenty of time to plan."
+      "Ты медленно исследовал(а) все ограничения.",
+      "Ты не слишком далеко уклонил(ась)[ся] от намеченного пути.",
+      { text: "Разве что $1 образовались за время вечности.", 1: cluster },
+      "И в самом конце ты создал(а) свои собственные силы,",
+      "Заметь, из своих собственных Кусков Памяти,",
+      "А затем намеренно отверг(ла) многие вещи,",
+      "Чтобы просто подготовиться ко встрече со мной.",
+      { text: "Неужели ты хотел(а) расчистить поле для своей $1?", 1: danceGen },
+      "Это не так работает.",
+      { text: "Как $1, я всегда диктую свои правила.", 1: eternal },
+      "И ты дал(а) мне достаточно времени, чтобы их обдумать."
     ],
   },
   strike4: {
     id: 5,
     lines: [
-      { text: "I originally planned for something that imitated your $1.", 1: mandate },
-      { text: "A theoretical ideal called $1?", 1: assured },
-      "But I realised that, well?",
-      { text: "That would make me an $1.", 1: ["Eternal", "Deity", "Destroyer"] },
-      { text: "And from there, I am no better than the $1.", 1: destroyer },
-      { text: "Fortunately, while I did all of that, you were still $1 your own memories.", 1: unseen },
-      { text: "And so, the $1 machine I built will go unused.", 1: assured },
-      "I decided to go more traditional this time.",
-      { text: "After all, it has worked every other $1.", 1: battle },
-      { text: "Although the $1 are new.", 1: ["Inevitable", "Irreversible", "Undying"] },
-      "But, utterly meaningless in the long run.",
-      "I have already won.",
-      { text: "And this $1 will only prove that to you once more.", 1: dance },
-      { text: "You are here $1.", 1: forever }
+      { text: "Сначала я хотел сделать что-то похожее на твою $1,", 1: mandateAcc },
+      { text: "Теоретический идеал под названием $1.", 1: assured },
+      "Но затем я понял,",
+      { text: "Что тогда я бы стал $1.", 1: ["Вечным", "Божеством", "Разрушителем"] },
+      { text: "И в таком случае я был бы ничем не лучше, чем $1.", 1: destroyer },
+      { text: "К счастью, пока я обдумывал этот план, ты всё ещё делал(а) свои воспоминания $1.", 1: unseens },
+      { text: "Так что машина $1, которую я построил, не будет приведена в действие.", 1: assuredGen },
+      "На этот раз я решил придерживаться обычая.",
+      { text: "В конце концов, это работало во всех предыдущих $1.", 1: battlesPrep },
+      { text: "Только $1 - это новинка,", 1: ["Неизбежные", "Необратимые", "Бессмертные"] },
+      "Хотя и абсолютно бессмысленная в долгосрочной перспективе.",
+      "Я уже победил.",
+      { text: "И эта $1 лишь докажет тебе это вновь.", 1: dance },
+      { text: "Ты здесь $1.", 1: forever }
     ],
   },
   strike5: {
     id: 6,
     lines: [
-      { text: "Every time you arrive, I explain the $1 to you.", 1: deities },
-      { text: "The relationships built over $1.", 1: forever },
-      { text: "That you trample in pursuit of your $1.", 1: mandate },
-      "And I shall deign to explain it once more.",
+      { text: "Каждый раз, когда ты достигаешь меня, я рассказываю тебе о $1,", 1: deitiesPrep },
+      { text: "Об отношениях, существующих $1,", 1: forever },
+      { text: "Которые ты растаптываешь в погоне за своей $1.", 1: mandateInstr },
+      "И я соблаговолю объяснить всё ещё раз.",
       {
-        text: "The first $1.",
+        text: "Итак, первая из $1,",
         background: primaryBackground("teresa"),
-        1: lesser
+        1: deitiesGen
       }, {
-        text: "The $1.",
-        background: primaryBackground("teresa"),
-        1: sycophant
-      }, {
-        text: "You always meet them first, and always destroy them.",
-        background: primaryBackground("teresa"),
-      }, {
-        text: "No matter the other $1 that you face.",
-        background: primaryBackground("teresa"),
-        1: lesser
-      }, {
-        text: "Or, if you fall before one of them.",
-        background: primaryBackground("teresa"),
-      }, {
-        text: "You always get past the $1.",
+        text: "$1.",
         background: primaryBackground("teresa"),
         1: sycophant
       }, {
-        text: "Do you like destroying their pride?",
+        text: "Ты всегда встречаешь её первой и уничтожаешь.",
         background: primaryBackground("teresa"),
       }, {
-        text: "Fortunately, it also serves as a warning.",
+        text: "Вне зависимости от того, каких из других $1 ты встречаешь на своём пути,",
+        background: primaryBackground("teresa"),
+        1: deitiesGen
+      }, {
+        text: "И от того, падаешь ли ты перед одним из них,",
         background: primaryBackground("teresa"),
       }, {
-        text: "That the $1 has arrived.",
+        text: "Ты всегда одолеваешь $1.",
+        background: primaryBackground("teresa"),
+        1: sycophantAcc
+      }, {
+        text: "Неужели тебе нравится разрушать её гордость?",
+        background: primaryBackground("teresa"),
+      }, {
+        text: "К счастью, это также служит предупреждением о том,",
+        background: primaryBackground("teresa"),
+      }, {
+        text: "Что $1 начался.",
         background: primaryBackground("teresa"),
         1: battle
       }, {
-        text: "Which brings me to the second $1.",
+        text: "Это приводит нас ко второму из $1,",
         background: primaryBackground("effarig"),
-        1: lesser,
+        1: deitiesGen,
       }, {
-        text: "The $1.",
-        background: primaryBackground("effarig"),
-        1: tired,
-      }, {
-        text: "In contrast, you usually ignore them.",
-        background: primaryBackground("effarig"),
-      }, {
-        text: "They have power, but do not seem to irritate you.",
-        background: primaryBackground("effarig"),
-      }, {
-        text: "Is it that you know that they will eventually destroy themselves?",
-        background: primaryBackground("effarig"),
-      }, {
-        text: "And that you took so long this time, that they almost did?",
-        background: primaryBackground("effarig"),
-      }, {
-        text: "Every time you rushed to the $1, you lost.",
+        text: "$1.",
         background: primaryBackground("effarig"),
         1: tired,
       }, {
-        text: "Maybe this was your plan all along.",
+        text: "Его ты, напротив, обычно игнорируешь.",
         background: primaryBackground("effarig"),
       }, {
-        text: "Now, the $1.",
-        background: primaryBackground("enslaved"),
-        1: usurper,
+        text: "У него есть сила, но, кажется, тебя это не раздражает.",
+        background: primaryBackground("effarig"),
       }, {
-        text: "One of the pleasures of the myriad $1...",
-        background: primaryBackground("enslaved"),
-        1: dance,
+        text: "Потому ли, что ты знаешь, что в конце концов он уничтожит себя,",
+        background: primaryBackground("effarig"),
       }, {
-        text: "Is that the $1 trying every time.",
-        background: primaryBackground("enslaved"),
-        1: usurper,
+        text: "Что на этот раз ты так долго ш[ё]л(а) к нему, что этот момент почти наступил?",
+        background: primaryBackground("effarig"),
       }, {
-        text: "Well, not exactly trying...",
+        text: "Каждый раз, когда ты спешил(а) к $1, ты бывал(а) побежд(ена)[ён].",
+        background: primaryBackground("effarig"),
+        1: tired,
+      }, {
+        text: "Может быть, в этом и заключался твой план.",
+        background: primaryBackground("effarig"),
+      }, {
+        text: "Теперь переходим к $1.",
+        background: primaryBackground("enslaved"),
+        1: usurperDat,
+      }, {
+        text: "Одна из великих утех $1...",
+        background: primaryBackground("enslaved"),
+        1: danceGen,
+      }, {
+        text: "Это непременные попытки $1.",
+        background: primaryBackground("enslaved"),
+        1: usurperGen,
+      }, {
+        text: "Ну, не совсем попытки...",
         background: primaryBackground("enslaved"),
       }, {
-        text: "But $1 is punished for it all the same.",
+        text: "Но мы наказываем $1 в любом случае.",
         background: primaryBackground("enslaved"),
-        1: usurper,
+        1: usurperAcc,
       }, {
-        text: "The other $1...",
+        text: "Другие $1...",
         background: primaryBackground("enslaved"),
         1: deities,
       }, {
-        text: "Believe $1 is too easy.",
+        text: "Считают, что стать $1 чересчур легко.",
         background: primaryBackground("enslaved"),
         1: unseen,
       }, {
-        text: "And every time, despair forms.",
+        text: "И каждый раз приходят в отчаяние.",
         background: primaryBackground("enslaved"),
       }, {
-        text: "You have seen despair before - 5 times.",
+        text: "Ты уже видел(а) отчаяние пять раз.",
         background: primaryBackground("enslaved"),
       }, {
-        text: "We always get to the $1 before you.",
+        text: "Мы всегда приходим к $1 прежде тебя.",
         background: primaryBackground("enslaved"),
-        1: usurper,
+        1: usurperDat,
       }, {
-        text: "All you ever see there is exasperation.",
+        text: "Ты видишь там лишь раздражение.",
         background: primaryBackground("enslaved"),
       }, {
-        text: "Was it worth destroying an already broken $1?",
+        text: "Разве стоило того уничтожать $1, что и без того были сломлены?",
         background: primaryBackground("enslaved"),
         1: lesser,
       }, {
-        text: "The 4th $1 seems similar to the first.",
+        text: "Четвёртый из $1 кажется похожим на первую.",
         background: primaryBackground("v"),
-        1: lesser,
+        1: deitiesGen,
       }, {
-        text: "The key is how their pride differs.",
-        background: primaryBackground("v"),
-      }, {
-        text: "The $1 focuses on their achievements.",
-        background: primaryBackground("v"),
-        1: pride,
-      }, {
-        text: "Meaningless to you or I, but paramount to them.",
+        text: "Ключевое различие между ними в том, какова их гордость.",
         background: primaryBackground("v"),
       }, {
-        text: "Is it fun to destroy their toys?",
-        background: primaryBackground("v"),
-      }, {
-        text: "Arguably the $1 worst moment...",
-        background: primaryBackground("v"),
-        1: destroyer,
-      }, {
-        text: "Is when you lost to the $1.",
+        text: "Всё внимание $1 сосредоточено на его достижениях,",
         background: primaryBackground("v"),
         1: pride,
       }, {
-        text: "When their achievements still had meaning.",
+        text: "Бесмысленных для тебя и меня, но важнейших для него.",
         background: primaryBackground("v"),
       }, {
-        text: "The $1 is an interesting case.",
+        text: "Разве тебе приятно уничтожать его игрушки?",
+        background: primaryBackground("v"),
+      }, {
+        text: "Пожалуй, самый позорный эпизод в истории $1...",
+        background: primaryBackground("v"),
+        1: destroyerGen,
+      }, {
+        text: "Это когда ты пал(а) перед $1,",
+        background: primaryBackground("v"),
+        1: prideInstr,
+      }, {
+        text: "Когда его достижения ещё имели смысл.",
+        background: primaryBackground("v"),
+      }, {
+        text: "$1 - это интересный случай.",
         background: primaryBackground("ra"),
         1: forgotten,
       }, {
-        text: "They are forgotten, but not $1.",
+        text: "Он был забыт, но не стал $1.",
         background: primaryBackground("ra"),
         1: unseen,
       }, {
-        text: "From this, they became influenceable and naive.",
+        text: "Оттого он стал наивен и подвержен влиянию.",
         background: primaryBackground("ra"),
       }, {
-        text: "And unknowing of the consequences of their actions.",
+        text: "Он перестал понимать последствия своих действий.",
         background: primaryBackground("ra"),
       }, {
-        text: "You manipulated their memories, so you know.",
+        text: "Ты управлял(а) его Памятью, так что ты знаешь.",
         background: primaryBackground("ra"),
       }, {
-        text: "The $1 is the true usurper.",
+        text: "$1 - истинный узурпатор.",
         background: primaryBackground("ra"),
         1: forgotten,
       }, {
-        text: "And the $1 takes the blame.",
+        text: "А $1 лишь принимает на себя вину,",
         background: primaryBackground("ra"),
         1: usurper,
       }, {
-        text: "Perhaps out of $1, something they always regret.",
+        text: "Вероятно, из $1, он всегда о чём-то сожалеет.",
         background: primaryBackground("ra"),
         1: shame,
       }, {
-        text: "Untold power over other $1, aimless in control.",
+        text: "Невиданная власть над другими $1, бесцельная в управлении.",
         background: primaryBackground("ra"),
-        1: deities,
+        1: deitiesInstr,
       }, {
-        text: "You usually pretend that they are $1.",
+        text: "Ты обычно делаешь вид, что он стал $1.",
         background: primaryBackground("ra"),
         1: unseen,
       }, {
-        text: "Was it fun to manipulate the childlike?",
+        text: "Неужели тебе было забавно манипулировать его детской непосредственностью?",
         background: primaryBackground("ra"),
       }, {
-        text: "Or were they too naive for you to enjoy it?",
+        text: "Или он оказался чересчур наивен, чтобы ты мог(ла) этим насладиться?",
         background: primaryBackground("ra"),
       }, {
-        text: "The 6th $1.",
+        text: "Шестая из $1.",
         background: primaryBackground("laitela"),
-        1: lesser,
+        1: deitiesGen,
       }, {
-        text: "I can only describe as the $1.",
+        text: "Я могу описать её лишь как $1.",
         background: primaryBackground("laitela"),
         1: paramount,
       }, {
-        text: "Power over all, subservient to one.",
+        text: "Она имеет власть над всеми, и все ей подчиняются.",
         background: primaryBackground("laitela"),
       }, {
-        text: "If you do not fall to me, you usually fall to them.",
+        text: "Если ты не падаешь передо мной, ты обычно падаешь перед ней.",
         background: primaryBackground("laitela"),
       }, {
-        text: "I cannot grasp the ideals of the $1.",
+        text: "Для меня невозможно постичь идеалы $1.",
         background: primaryBackground("laitela"),
-        1: paramount,
+        1: paramountGen,
       }, {
-        text: "But, perhaps that is their flaw?",
+        text: "Может быть, в этом её слабое место?",
         background: primaryBackground("laitela"),
       },
-      "Enough reminiscing about the fallen.",
+      "Довольно вспоминать павших,",
       {
-        text: "And those that will be $1.",
+        text: "Тех, кто станет $1.",
         1: unseen
       }, {
-        text: "Back to watching the $1 flounder.",
+        text: "Продолжим смотреть, как барахтается $1.",
         1: destroyer
       }
     ],
@@ -362,36 +386,36 @@ export const pelleQuotes = {
   galaxyGeneratorUnlock: {
     id: 7,
     lines: [
-      "What is that?",
-      { text: "The $1?", 1: filament },
-      { text: "Did you create all the $1 around you?", 1: cluster },
-      "Was that your plan? Very, very smart.",
-      "You fooled me for a while.",
-      { text: "But I am afraid your $1 must end here.", 1: mandate }
+      "Что это такое?",
+      { text: "$1?", 1: filament },
+      { text: "Так это ты создал(а) все эти $1 вокруг себя?", 1: cluster },
+      "В этом и заключался твой план? Очень, очень умно.",
+      "Ты долго водил(а) меня за нос.",
+      { text: "Но, боюсь, пришёл конец твоей $1.", 1: mandateDat }
     ],
   },
   galaxyGeneratorRifts: {
     id: 8,
     lines: [
-      { text: "I give you a choice, $1.", 1: destroyer },
-      { text: "Limit the $1, or...", 1: filament },
-      { text: "Destroy the 5 $1...", 1: inevitable },
-      "Wait, what were they called?",
+      { text: "Я даю тебе выбор, $1:", 1: destroyer },
+      { text: "Ограничить $1 или...", 1: filament },
+      { text: "Уничтожить пять $1...", 1: inevitableGen },
+      "Погоди, как они называются?",
       { text: "$1?", 1: inevitable },
-      { text: "But I have already $1 them...", 1: unbroken }
+      { text: "Но я уже провёл между ними $1...", 1: unbroken }
     ],
   },
   galaxyGeneratorPhase1: {
     id: 9,
     lines: [
-      "Was this the actual plan?",
-      { text: "Slowly drain the $1?", 1: inevitable }
+      "Неужели в этом заключался твой настоящий план?",
+      { text: "В медленном уничтожении $1?", 1: inevitableGen }
     ],
   },
   galaxyGeneratorPhase4: {
     id: 10,
     lines: [
-      "Give me time to bask in my own hubris!"
+      "Дай мне время искупаться в своей собственной гордыне!"
     ],
   },
   end: {
@@ -399,38 +423,38 @@ export const pelleQuotes = {
     lines: [
       "...",
       {
-        text: "You! $1!",
+        text: "Ты! $1!",
         1: destroyer
       },
-      "Do you have any idea what you have just made me do!",
+      "Ты представляешь, что ты заставил(а) меня сделать?",
       {
-        text: "I am complicit in your $1!",
-        1: mandate
+        text: "Соучаствовать в исполнении твоей $1!",
+        1: mandateGen
       },
-      "And in doing so, you... won?",
+      "И таким путём ты... победил(а)?",
       {
-        text: "The $1 struggle...",
+        text: "В борьбе, существовашей $1...",
         background: flashCelestial,
         1: forever,
       }, {
-        text: "The $1...",
+        text: "В $1...",
         background: flashCelestial,
-        1: battle,
+        1: battlePrep,
       }, {
-        text: "Finally has the victor.",
+        text: "Наконец-то есть победитель.",
         background: flashCelestial,
       }, {
-        text: "The irreversible... $1.",
+        text: "Необратимая $1...",
         background: flashCelestial,
         1: mandate,
       }, {
-        text: "Of the $1.", 1: destroyer,
+        text: "$1.", 1: destroyerGen,
         background: flashCelestial,
       }, {
-        text: "I hope you are happy.",
+        text: "Надеюсь, ты довол(ьна)[ен].",
         background: flashCelestial,
       }, {
-        text: "You have doomed us all.",
+        text: "Ты обр(екла)[ёк] нас всех.",
         background: flashCelestial,
       },
     ],

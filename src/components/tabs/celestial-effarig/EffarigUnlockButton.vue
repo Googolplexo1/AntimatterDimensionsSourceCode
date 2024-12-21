@@ -53,11 +53,9 @@ export default {
     <CostDisplay
       v-if="!isBought"
       :config="config"
-      name="Relic Shard"
+      name=""
       label=""
+      postName="Реликтовых Осколков"
     />
-    <div v-else>
-      (Unlocked)
-    </div>
   </button>
 </template>

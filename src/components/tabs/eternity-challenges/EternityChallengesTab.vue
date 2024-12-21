@@ -34,13 +34,13 @@ export default {
     },
     nextECText() {
       return this.untilNextEC.totalMilliseconds === 0 && !this.autoEC
-        ? "Immediately upon unpausing"
-        : `${this.untilNextEC} (real time)`;
+        ? "немедленно при включении автоматики"
+        : `через ${this.untilNextEC.toStringNoDecimals("accusative")} (по реальному времяисчислению)`;
     },
     allECText() {
       return this.untilAllEC.totalMilliseconds === 0 && !this.autoEC
-        ? "Immediately upon unpausing"
-        : `After ${this.untilAllEC} (real time)`;
+        ? "немедленно при включении автоматики"
+        : `через ${this.untilAllEC.toStringNoDecimals("accusative")} (по реальному времяисчислению)`;
     }
   },
   methods: {
@@ -77,8 +77,7 @@ export default {
   <div class="l-challenges-tab">
     <ChallengeTabHeader />
     <div v-if="isAutoECVisible">
-      Eternity Challenges are automatically completed sequentially, requiring all previous
-      Eternity Challenges to be fully completed before any progress is made.
+      Испытания Вечности выполняются по порядку от первого к последнему по одному выполнению за раз.
     </div>
     <div
       v-if="isAutoECVisible && remainingECTiers > 0"
@@ -89,30 +88,30 @@ export default {
           v-if="hasUpgradeLock"
           class="l-emphasis"
         >
-          Auto EC is currently disabled because of the "{{ upgradeLockNameText }}" upgrade requirement lock.
+          Автоматическое выполнение Испытаний Вечности отключено проверкой требования Улучшения "{{ upgradeLockNameText }}".
         </span>
         <span v-if="remainingECTiers > 0">
-          Next Auto Eternity Challenge completion: {{ nextECText }}
+          Следующее автоматическое выполнение Испытания Вечности произойдёт {{ nextECText }}.
         </span>
         <span>
-          All Auto Eternity Challenge completions: {{ allECText }}
+          Все Испытания Вечности будут автоматически выполнены {{ allECText }}.
         </span>
         <br>
       </div>
     </div>
     <div>
-      Complete Eternity Challenges again for a bigger reward, maximum of {{ formatInt(5) }} times.<br>
-      The rewards are applied permanently with no need to have the respective Eternity Challenge Time Study purchased.
+      Каждое Испытание Вечности может быть выполнено до {{ formatInt(5) }} раз, и при каждом выполнении его цель и награда растут.<br>
+      Награды действуют вне зависимости от того, есть ли у вас Исследования Времени, разблокирующие соответствующие Испытания Вечности.
     </div>
     <div v-if="!hasECR">
-      When you respec out of an unlocked Eternity Challenge, you don't need to redo the secondary requirement<br>
-      in order to unlock it again until you complete it; only the Time Theorems are required.
+      Однажды разблокировав Испытание Вечности, вы освобождаетесь от необходимости выполнять его вторичное требование,
+      чтобы разблокировать его вновь, до тех пор пока вы не выполните его; вам требуется лишь соответствующее количество Теорем Времени.
     </div>
     <div v-if="unlockedCount !== 12">
-      You have seen {{ formatInt(unlockedCount) }} out of {{ formatInt(12) }} Eternity Challenges.
+      Вы узнали {{ formatInt(unlockedCount) }} из {{ formatInt(12) }} Испытаний Вечности.
     </div>
     <div v-else>
-      You have seen all {{ formatInt(12) }} Eternity Challenges.
+      Вы узнали все {{ formatInt(12) }} Испытаний Вечности.
     </div>
     <ChallengeGrid
       v-slot="{ challenge }"

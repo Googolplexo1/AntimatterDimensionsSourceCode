@@ -2,7 +2,7 @@ export const sidebarResources = [
   // Note: ID 0 is interpreted in the Vue component as "the largest unlocked ID" - do not use ID 0
   {
     id: 1,
-    optionName: "Blob",
+    optionName: "Клякса",
     isAvailable: () => Themes.available().map(t => t.name).includes("S11"),
     // This is a dummy value to prevent vue errors
     value: () => new Decimal(1),
@@ -11,7 +11,7 @@ export const sidebarResources = [
   },
   {
     id: 2,
-    optionName: "Antimatter",
+    optionName: "Антиматерия",
     isAvailable: () => true,
     value: () => Currency.antimatter.value,
     formatValue: x => format(x, 2, 1),
@@ -19,7 +19,7 @@ export const sidebarResources = [
   },
   {
     id: 3,
-    optionName: "Infinity Points",
+    optionName: "Очки Бесконечности",
     isAvailable: () => PlayerProgress.infinityUnlocked(),
     value: () => Currency.infinityPoints.value.floor(),
     formatValue: x => format(x, 2),
@@ -27,7 +27,7 @@ export const sidebarResources = [
   },
   {
     id: 4,
-    optionName: "Replicanti",
+    optionName: "Репликанти",
     isAvailable: () => Replicanti.areUnlocked || PlayerProgress.eternityUnlocked(),
     value: () => Replicanti.amount,
     formatValue: x => format(x, 2),
@@ -35,7 +35,7 @@ export const sidebarResources = [
   },
   {
     id: 5,
-    optionName: "Eternity Points",
+    optionName: "Очки Вечности",
     isAvailable: () => PlayerProgress.eternityUnlocked(),
     value: () => Currency.eternityPoints.value.floor(),
     formatValue: x => format(x, 2),
@@ -43,7 +43,7 @@ export const sidebarResources = [
   },
   {
     id: 6,
-    optionName: "Total TT",
+    optionName: "Теоремы Времени (всего)",
     isAvailable: () => PlayerProgress.eternityUnlocked(),
     value: () => player.timestudy.theorem.plus(TimeTheorems.calculateTimeStudiesCost()),
     formatValue: x => format(x, 2),
@@ -51,7 +51,7 @@ export const sidebarResources = [
   },
   {
     id: 7,
-    optionName: "Tachyon Particles",
+    optionName: "Тахионы",
     isAvailable: () => PlayerProgress.dilationUnlocked() || PlayerProgress.realityUnlocked(),
     value: () => Currency.tachyonParticles.value,
     formatValue: x => format(x, 2),
@@ -59,7 +59,7 @@ export const sidebarResources = [
   },
   {
     id: 8,
-    optionName: "Dilated Time",
+    optionName: "Замедленное Время",
     isAvailable: () => PlayerProgress.dilationUnlocked() || PlayerProgress.realityUnlocked(),
     value: () => Currency.dilatedTime.value,
     formatValue: x => format(x, 2),
@@ -67,7 +67,7 @@ export const sidebarResources = [
   },
   {
     id: 9,
-    optionName: "Reality Machines",
+    optionName: "Машины Реальности",
     isAvailable: () => PlayerProgress.realityUnlocked(),
     value: () => Currency.realityMachines.value,
     formatValue: x => format(x, 2),
@@ -75,7 +75,7 @@ export const sidebarResources = [
   },
   {
     id: 10,
-    optionName: "Relic Shards",
+    optionName: "Реликтовые Осколки",
     isAvailable: () => TeresaUnlocks.effarig.isUnlocked,
     value: () => new Decimal(Currency.relicShards.value),
     formatValue: x => format(x, 2),
@@ -83,7 +83,7 @@ export const sidebarResources = [
   },
   {
     id: 11,
-    optionName: "Imaginary Machines",
+    optionName: "Мнимые Машины",
     isAvailable: () => MachineHandler.isIMUnlocked,
     value: () => new Decimal(Currency.imaginaryMachines.value),
     formatValue: x => format(x, 2),
@@ -91,41 +91,31 @@ export const sidebarResources = [
   },
   {
     id: 12,
-    optionName: "All Machines",
-    resourceName: "Machines",
-    isAvailable: () => MachineHandler.isIMUnlocked,
-    // This is a dummy value to prevent vue errors
-    value: () => Currency.realityMachines.value,
-    formatValue: () => formatMachines(Currency.realityMachines.value, Currency.imaginaryMachines.value),
-    formatClass: "o-sidebar-currency--reality",
-  },
-  {
-    id: 13,
-    optionName: "Dark Matter",
+    optionName: "Тёмная Материя",
     isAvailable: () => Laitela.isUnlocked,
     value: () => Currency.darkMatter,
     formatValue: x => format(x, 2),
     formatClass: "o-sidebar-currency--laitela",
   },
   {
-    id: 14,
-    optionName: "Dark Energy",
+    id: 13,
+    optionName: "Тёмная Энергия",
     isAvailable: () => Laitela.isUnlocked,
     value: () => new Decimal(Currency.darkEnergy.value),
     formatValue: x => format(x, 2, 2),
     formatClass: "o-sidebar-currency--laitela",
   },
   {
-    id: 15,
-    optionName: "Singularities",
+    id: 14,
+    optionName: "Сингулярности",
     isAvailable: () => Laitela.isUnlocked,
     value: () => new Decimal(Currency.singularities.value),
     formatValue: x => format(x, 2),
     formatClass: "o-sidebar-currency--laitela",
   },
   {
-    id: 16,
-    optionName: "Reality Shards",
+    id: 15,
+    optionName: "Осколки Реальности",
     isAvailable: () => Pelle.isDoomed,
     value: () => Currency.realityShards,
     formatValue: x => format(x, 2),

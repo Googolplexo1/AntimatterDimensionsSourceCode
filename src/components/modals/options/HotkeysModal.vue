@@ -19,16 +19,16 @@ export default {
     moreShiftKeyInfo() {
       const shiftKeyFunctions = [];
       if (this.timeStudyUnlocked) {
-        shiftKeyFunctions.push("while buying Time Studies to buy all up until that point");
-        shiftKeyFunctions.push("to save Time Study Trees");
+        shiftKeyFunctions.push(", нажимая на Исследование Времени, чтобы купить вместе с ним и все предшествующие ему");
+        shiftKeyFunctions.push("чтобы сохранять Древа Исследований");
       }
       if (this.glyphSacUnlocked) {
-        shiftKeyFunctions.push("to purge Glyphs");
+        shiftKeyFunctions.push("чтобы удалять глифы");
       }
       const shiftKeyInfo = makeEnumeration(shiftKeyFunctions);
       return (shiftKeyInfo === "")
         ? ""
-        : `You can hold Shift ${shiftKeyInfo}.`;
+        : `Вы можете зажать клавишу Shift ${shiftKeyInfo}.`;
     },
     hotkeyCount() {
       return shortcuts.length;
@@ -81,16 +81,16 @@ export default {
 <template>
   <ModalWrapper>
     <template #header>
-      Hotkey List
+      Список горячих клавиш
     </template>
     <span class="c-modal-hotkeys l-modal-hotkeys">
       <div class="l-modal-hotkeys__column">
         <div class="l-modal-hotkeys-row">
-          <span class="c-modal-hotkeys-row__name l-modal-hotkeys-row__name">Buy 1 Dimension</span>
+          <span class="c-modal-hotkeys-row__name l-modal-hotkeys-row__name">Купить 1 измерение</span>
           <kbd>SHIFT</kbd><kbd>1</kbd>-<kbd>SHIFT</kbd><kbd>8</kbd>
         </div>
         <div class="l-modal-hotkeys-row">
-          <span class="c-modal-hotkeys-row__name l-modal-hotkeys-row__name">Buy 10 Dimensions</span>
+          <span class="c-modal-hotkeys-row__name l-modal-hotkeys-row__name">Купить до 10 измерений</span>
           <kbd>1</kbd>-<kbd>8</kbd>
         </div>
         <div
@@ -113,65 +113,65 @@ export default {
       </div>
       <div class="l-modal-hotkeys__column l-modal-hotkeys__column--right">
         <div class="l-modal-hotkeys-row">
-          <span class="c-modal-hotkeys-row__name l-modal-hotkeys-row__name">Modifier Key</span>
+          <span class="c-modal-hotkeys-row__name l-modal-hotkeys-row__name">Корректировочная клавиша</span>
           <kbd>SHIFT</kbd>
         </div>
         <span class="c-modal-hotkeys__shift-description">
-          Shift is a modifier key that shows additional information on certain things
-          and adjusts the function of certain buttons.
+          Shift - корректировочная клавиша, служащая для отображения дополнительной информации
+          и для изменения функций определённых кнопок.
           <br>
           {{ moreShiftKeyInfo }}
         </span>
         <br>
         <div class="l-modal-hotkeys-row">
-          <span class="c-modal-hotkeys-row__name l-modal-hotkeys-row__name">Autobuyer Controls</span>
+          <span class="c-modal-hotkeys-row__name l-modal-hotkeys-row__name">Управление автоматикой</span>
           <kbd>ALT</kbd>
         </div>
         <span class="c-modal-hotkeys__shift-description">
-          Alt is a modifier key that, when pressed in conjunction with any key that has a corresponding autobuyer,
-          will toggle said autobuyer.
+          Alt - корректировочная клавиша, которая, будучи нажата вместе с любой клавишей, действие которой также совершает некоторая автоматика,
+          переключает эту автоматику.
           <br>
-          When pressing both Alt and Shift, you can toggle buying singles or buying max for the Antimatter Dimension
-          and Tickspeed Autobuyers instead.
+          Одновременным нажатием клавиш Alt и Shift вы можете переключать оптовую покупку у автоматики Измерений Антиматерии
+          и ускорителя.
         </span>
         <br>
         <div class="l-modal-hotkeys-row">
-          <span class="c-modal-hotkeys-row__name l-modal-hotkeys-row__name">Tab Movement</span>
+          <span class="c-modal-hotkeys-row__name l-modal-hotkeys-row__name">Перемещение по игре</span>
           <div>
             <kbd>←</kbd><kbd>↓</kbd><kbd>↑</kbd><kbd>→</kbd>
           </div>
         </div>
         <span class="c-modal-hotkeys__shift-description">
-          Using the Arrow Keys will cycle you through the game's pages.
-          The Up and Down arrows cycle you through tabs,
-          and the Left and Right arrows cycle you through that tab's subtabs.
+          С помощью клавиш со стрелками вы можете перемещаться по страницам игры.
+          Клавиши со стрелками вверх и вниз циклически перемещают вас между вкладками,
+          а клавиши со стрелками влево и вправо - между отделами текущей вкладки.
         </span>
         <br>
         <div class="l-modal-hotkeys-row">
-          <span class="c-modal-hotkeys-row__name l-modal-hotkeys-row__name">Numpad Support</span>
+          <span class="c-modal-hotkeys-row__name l-modal-hotkeys-row__name">Поддержка цифровой клавиатуры</span>
         </div>
         <span class="c-modal-hotkeys__shift-description">
-          Due to technical reasons, pressing a numpad key will purchase 10 of a Dimension if possible, but pressing
-          a numpad key with <kbd>SHIFT</kbd> will not buy a single Dimension. It may instead, depending on your device,
-          cause the page to scroll or change game tabs. <kbd>ALT</kbd> will still work as expected.
+          По техническим причинам нажатие клавиши цифровой клавиатуры вызывает покупку десятки измерений по возможности, но нажатие
+          клавиши цифровой клавиатуры вместе с клавишей <kbd>SHIFT</kbd> не вызывает единичную покупку измерения. Вместо этого, в зависимости от вашего устройства, оно может
+          вызвать прокрутку страницы или перемещение на другую вкладку. Клавиша <kbd>ALT</kbd> работает нормально.
         </span>
         <template v-if="isElectron">
           <br>
           <div class="l-modal-hotkeys-row">
-            <span class="c-modal-hotkeys-row__name l-modal-hotkeys-row__name">Window Zoom</span>
+            <span class="c-modal-hotkeys-row__name l-modal-hotkeys-row__name">Масштабирование окна</span>
             <kbd>-</kbd><kbd>0</kbd><kbd>+</kbd>
           </div>
           <span class="c-modal-hotkeys__shift-description">
-            To adjust zoom level, hold <kbd>ctrl</kbd> and press either <kbd>-</kbd> or <kbd>+</kbd> to decrease or
-            increase zoom. <kbd>ctrl</kbd><kbd>0</kbd> will reset zoom to 100%.
+            Чтобы изменить масштаб, зажмите <kbd>ctrl</kbd> и нажмите либо <kbd>-</kbd>, либо <kbd>+</kbd> для уменьшения или
+            увеличения масштаба соответственно. Нажатие <kbd>ctrl</kbd><kbd>0</kbd> выставит масштаб обратно на 100%.
           </span>
           <br>
           <div class="l-modal-hotkeys-row">
-            <span class="c-modal-hotkeys-row__name l-modal-hotkeys-row__name">Fullscreen</span>
+            <span class="c-modal-hotkeys-row__name l-modal-hotkeys-row__name">Полноэкранный режим</span>
             <kbd>F10</kbd>
           </div>
           <span class="c-modal-hotkeys__shift-description">
-            To enter or exit fullscreen, press <kbd>F10</kbd>.
+            Чтобы переключить полноэкранный режим, нажмите <kbd>F10</kbd>.
           </span>
         </template>
       </div>

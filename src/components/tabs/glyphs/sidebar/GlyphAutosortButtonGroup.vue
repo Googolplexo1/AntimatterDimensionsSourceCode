@@ -21,15 +21,12 @@ export default {
   computed: {
     sortModes() {
       // These are the keys for AUTO_SORT_MODE, with SCORE only added conditionally if unlocked
-      const availableSortModes = ["NONE", "LEVEL", "POWER", "EFFECT"];
-      if (this.showScoreFilter) availableSortModes.push("SCORE");
+      const availableSortModes = ["НЕТ", "УРОВЕНЬ", "МОЩНОСТЬ", "ЭФФЕКТЫ"];
+      if (this.showScoreFilter) availableSortModes.push("ОЦЕНКА");
       return availableSortModes;
     },
     questionMarkTooltip() {
-      return `The automatic settings below will apply after every Reality`;
-    },
-    keepTooltip() {
-      return "If set to ON, Glyphs which your filter accepts will never be auto-purged even if they are worse";
+      return `Автоматическая уборка инвентаря осуществляется каждую реальность`;
     }
   },
   watch: {
@@ -68,32 +65,30 @@ export default {
       >
         ?
       </div>
-      Auto Glyph Arrangement:
+      Автоматическая уборка инвентаря:
     </div>
     <ButtonCycle
       v-model="autoSort"
       class="c-glyph-inventory-option"
-      text="Auto-sort Mode:"
+      text="Параметр сортировки глифов:"
       :labels="sortModes"
     />
     <ToggleButton
       v-model="autoCollapse"
       class="c-glyph-inventory-option"
-      label="Auto-collapse space:"
+      label="Перемещать глифы наверх:"
     />
     <ToggleButton
       v-if="showAutoAutoClean"
       v-model="autoAutoClean"
       class="c-glyph-inventory-option"
-      label="Auto-purge on Realities:"
+      label="Автоматическая прочистка:"
     />
     <ToggleButton
       v-if="showAutoAutoClean"
       v-model="applyFilterToPurge"
       class="c-glyph-inventory-option"
-      label="Never Auto-purge Glyphs accepted by filter:"
-      tooltip-class="c-glyph-inventory-option__tooltip"
-      :tooltip-content="keepTooltip"
+      label="Защищать глифы, принимаемые Фильтром, от автоматической прочистки:"
     />
   </div>
 </template>

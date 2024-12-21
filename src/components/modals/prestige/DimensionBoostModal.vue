@@ -14,16 +14,19 @@ export default {
   },
   computed: {
     topLabel() {
-      return `You are about to do a Dimension Boost Reset`;
+      return `Вы получаете Расширение Измерений`;
     },
     message() {
-      const keepDimensions = Perk.antimatterNoReset.canBeApplied || Achievement(111).canBeApplied ||
-        PelleUpgrade.dimBoostResetsNothing.isBought
-        ? `not actually reset anything due to an upgrade you have which prevents Antimatter and Antimatter Dimensions
-          from being reset in this situation. You will still gain the multiplier from the Boost, as usual.`
-        : `reset your Antimatter and Antimatter Dimensions. Are you sure you want to do this?`;
-
-      return `This will ${keepDimensions}`;
+      const canKeepDimensions = Pelle.isDoomed
+        ? PelleUpgrade.dimBoostResetsNothing.canBeApplied
+        : Perk.antimatterNoReset.canBeApplied;
+      const canKeepAntimatter = Pelle.isDoomed
+        ? PelleUpgrade.dimBoostResetsNothing.canBeApplied
+        : (Achievement(111).isUnlocked || Perk.antimatterNoReset.canBeApplied);
+      return canKeepDimensions
+        ? `Поскольку у вас есть улучшение, предотвращающее сброс антиматерии, Измерений Антиматерии и ускорителей
+          в этой ситуации, они не будут сброшены. Как обычно, вы получите множитель от Расширения.`
+        : `Ваши ${canKeepAntimatter ? "" : "антиматерия, "}Измерения Антиматерии и ускорители будут сброшены. Вы уверены, что хотите получить Расширение?`;
     },
   },
   methods: {

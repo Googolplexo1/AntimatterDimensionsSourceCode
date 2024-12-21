@@ -419,6 +419,16 @@ export const migrations = {
 
       // This update has a rebalance that assumes the 3rd dilation repeatable is unpurchasable in cel7
       if (player.celestials.pelle.doomed) player.dilation.rebuyables[3] = 0;
+    },
+    50: player => {
+      player.secretUnlocks.themes = new Set();
+      player.celestials.ra.petWithRemembrance = "";
+      if (player.records.bestInfinity.time === 999999999999) player.records.bestInfinity.time = Number.MAX_VALUE;
+      if (player.records.bestInfinity.realTime === 999999999999) player.records.bestInfinity.realTime = Number.MAX_VALUE;
+      if (player.records.bestEternity.time === 999999999999) player.records.bestEternity.time = Number.MAX_VALUE;
+      if (player.records.bestEternity.realTime === 999999999999) player.records.bestEternity.realTime = Number.MAX_VALUE;
+      delete player.options.multiplierTab.replacePowers;
+      player.options.notation = "Смешанная научная";
     }
   },
 

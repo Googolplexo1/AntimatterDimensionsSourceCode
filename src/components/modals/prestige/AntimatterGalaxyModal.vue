@@ -22,32 +22,32 @@ export default {
   },
   computed: {
     topLabel() {
-      if (this.bulk) return `You are about to purchase ${quantifyInt("Antimatter Galaxy", this.newGalaxies)}`;
-      return `You are about to purchase an Antimatter Galaxy`;
+      if (this.bulk) return `Вы получаете ${quantifyInt("Галактику", this.newGalaxies)} Антиматерии`;
+      return `Вы получаете Галактику Антиматерии`;
     },
     message() {
       const resetResouces = [];
-      if (Pelle.isDoomed) resetResouces.push("Antimatter", "Antimatter Dimensions", "Tickspeed");
-      if (!this.perkANRBought) resetResouces.push("Antimatter Dimensions", "Tickspeed");
-      if (!this.keepDimBoost) resetResouces.push("Dimension Boosts");
-      if (!this.keepAntimatter && !this.perkANRBought) resetResouces.push("Antimatter");
+      if (Pelle.isDoomed) resetResouces.push("антиматерии", "Измерений Антиматерии", "ускорителей");
+      if (!this.perkANRBought) resetResouces.push("Измерений Антиматерии", "ускорителей");
+      if (!this.keepDimBoost) resetResouces.push("Расширений Измерений");
+      if (!this.keepAntimatter && !this.perkANRBought) resetResouces.push("антиматерии");
       const resetList = makeEnumeration(resetResouces);
       let tickspeedFixed = "";
       if (InfinityChallenge(3).isRunning) {
-        tickspeedFixed = `Infinity Challenge ${InfinityChallenge(3).id}`;
+        tickspeedFixed = `3-ем Испытании Бесконечности}`;
       } else if (Ra.isRunning) {
-        tickspeedFixed = `${Ra.displayName}'s Reality`;
+        tickspeedFixed = `Реальности Ра`;
       }
       const tickspeedInfo = (tickspeedFixed === "")
-        ? "you will receive a small boost to Tickspeed Upgrades."
-        : `you will not receive a boost to Tickspeed Upgrades, because you are in ${tickspeedFixed}.`;
+        ? "ускорители станут немного сильнее."
+        : `ускорители не станут сильнее, так как вы в ${tickspeedFixed}.`;
       const message = (resetList === "")
-        ? `This will reset nothing, and ${tickspeedInfo}`
-        : `This will reset your ${resetList}. However, ${tickspeedInfo}`;
+        ? `Ничего не будет сброшено, и ${tickspeedInfo}`
+        : `Будет сброшено ваше количество ${resetList}. Однако ${tickspeedInfo}`;
 
-      if (this.bulk) return `Are you sure you want to purchase
-      ${quantifyInt("Antimatter Galaxy", this.newGalaxies)}? ${message}`;
-      return `Are you sure you want to purchase an Antimatter Galaxy? ${message}`;
+      if (this.bulk) return `Вы уверены, что хотите получить
+      ${quantifyInt("Галактику", this.newGalaxies)} Антиматерии? ${message}`;
+      return `Вы уверены, что хотите получить Галактику Антиматерии? ${message}`;
     }
   },
   created() {

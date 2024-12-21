@@ -20,7 +20,14 @@ export default {
   },
   computed: {
     name() {
-      return this.type.capitalize();
+      switch (this.type) {
+        case "cursed":
+          return "Проклятых Глифов";
+        case "music":
+          return "музыкальных глифов";
+        default:
+          return `Глифов ${translateGlyph(this.type)}`;
+      }
     },
     symbols() {
       return GlyphAppearanceHandler.availableSymbols;
@@ -38,10 +45,10 @@ export default {
       v-if="glyphId === -1"
       class="c-name"
     >
-      Appearance Options for {{ name }} Glyphs
+      Настройки внешнего вида для {{ name }}
     </span>
     <div v-if="type === 'companion'">
-      Companion Glyphs cannot have their symbol modified.
+      Символ Глифа-компаньона не может быть изменён.
     </div>
     <GlyphCustomizationSlidingWindow
       v-else

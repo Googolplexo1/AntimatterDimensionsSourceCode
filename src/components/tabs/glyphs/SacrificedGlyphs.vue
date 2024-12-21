@@ -23,8 +23,8 @@ export default {
     types: () => GLYPH_TYPES.filter(type => type !== "cursed" && type !== "companion"),
     lastMachines() {
       return this.lastMachinesTeresa.lt(DC.E10000)
-        ? `${quantify("Reality Machine", this.lastMachinesTeresa, 2)}`
-        : `${quantify("Imaginary Machine", this.lastMachinesTeresa.dividedBy(DC.E10000), 2)}`;
+        ? `${quantify("Машиной", this.lastMachinesTeresa, 2)} Реальности`
+        : `${format(this.lastMachinesTeresa.dividedBy(DC.E10000), 2)} Мнимой Машины`;
     },
     dropDownIconClass() {
       return this.hideAlteration ? "far fa-plus-square" : "far fa-minus-square";
@@ -121,11 +121,11 @@ export default {
         v-if="isDoomed"
         class="pelle-current-glyph-effects"
       >
-        You cannot sacrifice Glyphs while Doomed.
+        Вы не можете жертвовать глифы в Обречении.
       </span>
       <span v-else>
-        <div>Drag Glyphs here or shift-click to Sacrifice.</div>
-        <div>The confirmation can be disabled in Options or by holding Ctrl.</div>
+        <div>Чтобы пожертвовать глиф, перетяните его сюда или нажмите на него, зажав клавишу Shift.</div>
+        <div>Подтверждение пожертвования можно отключить во вкладке "Настройки" или путём зажатия клавиши Ctrl.</div>
       </span>
     </div>
     <div v-if="hasAlteration">
@@ -134,37 +134,37 @@ export default {
         @click="toggleAlteration"
       >
         <i :class="dropDownIconClass" />
-        <b> Altered Glyphs</b>
+        <b> Расширение Глифов</b>
       </span>
       <br>
       <div v-if="hideAlteration">
-        (Details hidden, click to unhide)
+        (Нажмите, чтобы показать подробности)
       </div>
       <div v-else>
-        Glyph types will have one of their effects improved<br>
-        when their Glyph type's total sacrifice value is above:
+        У каждого типа глифов будет улучшен один из эффектов,<br>
+        когда суммарная ценность пожертвованных глифов этого типа превысит:
         <br><br>
         <b>
-          <span :style="addStyle">{{ format(addThreshold) }} - an additional secondary effect</span>
+          <span :style="addStyle">{{ format(addThreshold) }} - добавление второго эффекта</span>
           <br>
-          <span :style="empowerStyle">{{ format(empowerThreshold) }} - formula drastically improved</span>
+          <span :style="empowerStyle">{{ format(empowerThreshold) }} - принципиальное улучшение формулы</span>
           <br>
-          <span :style="boostStyle">{{ format(boostThreshold) }} - a boost depending on Glyph Sacrifice</span>
+          <span :style="boostStyle">{{ format(boostThreshold) }} - усиление в зависимости от суммарной ценности пожертвованных глифов этого типа</span>
         </b>
         <br><br>
-        All effects from Glyph Sacrifice can no longer be increased once they reach {{ format(maxSacrifice) }}.
+        Суммарная ценность пожертвованных глифов одного типа имеет ограничение, равное {{ format(maxSacrifice) }}.
       </div>
     </div>
     <br>
     <div class="c-sacrificed-glyphs__header">
-      Glyph Sacrifice Boosts:
+      Эффекты Пожертвования Глифов:
     </div>
     <div v-if="anySacrifices && !isDoomed">
       <div v-if="teresaMult > 1">
-        Glyph sacrifice values are multiplied by {{ formatX(teresaMult, 2, 2) }};
-        Teresa was last done at {{ lastMachines }}.
+        Награда за Реальность Терезы даёт множитель {{ formatX(teresaMult, 2, 2) }}
+        к жертвенной ценности глифов; достигнута с {{ lastMachines }}.
         <span v-if="hasSeenRealityGlyph">
-          Reality Glyphs are unaffected by this multiplier and have no altered effects.
+          На Глифы Реальности не влияет ни этот множитель, ни Расширение Глифов.
         </span>
       </div>
       <template v-for="type in types">
@@ -179,10 +179,10 @@ export default {
       v-else-if="isDoomed"
       class="pelle-current-glyph-effects"
     >
-      All boosts from Glyph Sacrifice are disabled while Doomed, including changes to effects due to Altered Glyphs.
+      Все эффекты Пожертвования и Расширения Глифов отключены в Обречении.
     </div>
     <div v-else>
-      You haven't Sacrificed any Glyphs yet!
+      Вы ещё не пожетрвовали ни одного глифа!
     </div>
   </div>
 </template>

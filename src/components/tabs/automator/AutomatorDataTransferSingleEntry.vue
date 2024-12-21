@@ -37,9 +37,9 @@ export default {
       const toExport = AutomatorBackend.exportFullScriptData(id);
       if (toExport) {
         copyToClipboard(toExport);
-        GameUI.notify.automator(`Exported all data associated with "${this.script.name}" to your clipboard`, 6000);
+        GameUI.notify.automator(`Все данные, связанные с программой "${this.script.name}", экспортированы в буфер обмена`, 6000);
       } else {
-        GameUI.notify.error("Could not export data from blank Automator script!");
+        GameUI.notify.error("Невозможно экспортировать данные пустой программы!");
       }
     }
   }
@@ -49,35 +49,35 @@ export default {
 <template>
   <div class="l-entry-padding">
     <button
-      v-tooltip="'Export Full Script Data'"
+      v-tooltip="'Экспорт полных данных программы'"
       class="l-button-margin fas fa-file-export"
       @click="exportData(script.id)"
     />
-    <b>Script name: {{ script.name }}</b>
+    <b>Название программы: {{ script.name }}</b>
     <br>
     <span v-if="hasPresets">
       <span
         :class="iconClass(hidePresets)"
         @click="hidePresets = !hidePresets"
       />
-      References {{ quantifyInt("recognized study preset", presets.length) }}
+      Использует {{ quantifyInt("опознанное сохранённое Древо", presets.length) }}
       <span v-if="!hidePresets">
         <div
           v-for="id in presets"
           :key="id"
         >
-          <span v-if="presetData[id].name">"{{ presetData[id].name }}" (slot {{ id + 1 }}):</span>
-          <span v-else>Preset slot {{ id + 1 }}:</span>
+          <span v-if="presetData[id].name">"{{ presetData[id].name }}" (слот {{ id + 1 }}):</span>
+          <span v-else>Слот для Древа {{ id + 1 }}:</span>
           <br>
           <div class="l-value-padding">
             <span v-if="presetData[id].studies">{{ presetData[id].studies }}</span>
-            <i v-else>Empty Study Preset</i>
+            <i v-else>Пустое Древо</i>
           </div>
         </div>
       </span>
     </span>
     <span v-else>
-      Does not reference any study presets.
+      Не использует сохранённых Древ.
     </span>
     <br>
     <span v-if="hasConstants">
@@ -85,7 +85,7 @@ export default {
         :class="iconClass(hideConstants)"
         @click="hideConstants = !hideConstants"
       />
-      References {{ quantifyInt("defined constant", constants.length) }}
+      Использует {{ quantifyInt("определённую постоянную", constants.length) }}
       <span v-if="!hideConstants">
         <div
           v-for="name in constants"
@@ -100,7 +100,7 @@ export default {
       </span>
     </span>
     <span v-else>
-      Does not reference any defined constants.
+      Не использует определённых постоянных.
     </span>
   </div>
 </template>

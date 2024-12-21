@@ -18,6 +18,7 @@ export default {
   },
   computed: {
     tabs: () => Tabs.currentUIFormat,
+    ending: () => player.options.genderMale ? "ен" : "на",
   },
   methods: {
     update() {
@@ -38,29 +39,29 @@ export default {
 <template>
   <ModalWrapperOptions class="l-wrapper">
     <template #header>
-      Modify Visible Tabs
+      Изменить отображаемые вкладки
     </template>
     <div class="c-modal--short">
-      Click a button to toggle showing a tab on/off.
+      Нажмите на кнопку, чтобы переключить отображение вкладки.
       <br>
-      Some tabs cannot be hidden, and you cannot hide your current tab.
+      Некоторые вкладки нельзя скрыть, как и текущую.
       <br>
-      Unhiding a tab in which all subtabs are hidden will also unhide all subtabs,
-      and hiding all subtabs will also hide the tab.
+      При раскрытии вкладки, все отделы которой скрыты, каждый из них также будет показан,
+      а при скрытии всех отделов вкладки она также будет скрыта.
       <br>
       <div v-if="isAlmostEnd">
-        You cannot hide your tabs after unlocking the Galaxy Generator.
+        Вы не можете скрыть вкладки после разблокировки Генератора Галактик.
       </div>
       <div v-if="isEnslaved">
         <br>
-        <i>You must... see everywhere...</i>
+        <i>Ты долж{{ ending }}... смотреть всюду...</i>
         <br>
-        (You cannot hide your tabs within this Reality)
+        (Вы не можете скрыть вкладки в этой Реальности)
       </div>
       <PrimaryButton
         @click="showAllTabs"
       >
-        Show all tabs
+        Показать все вкладки
       </PrimaryButton>
       <HiddenTabGroup
         v-for="(tab, index) in tabs"

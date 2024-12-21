@@ -66,13 +66,13 @@ export default {
     },
     showNextScalingUpgrade() {
       switch (this.pet.name) {
-        case "Teresa":
+        case "Терезы":
           return Math.min(12, Math.floor(this.level / 2)) !== Math.min(12, Math.floor((this.level + 1) / 2));
-        case "Effarig":
+        case "Эффарига":
           return AlchemyResources.all.filter(res => res.unlockedAt === this.level + 1).length > 0;
-        case "Enslaved":
+        case "Безымянных":
           return true;
-        case "V":
+        case "Ви":
           return Math.min(Math.floor(this.level / 6), 4) !== Math.min(Math.floor((this.level + 1) / 6), 4);
         default:
           return false;
@@ -81,15 +81,15 @@ export default {
     nextScalingUpgrade() {
       const effarigAlchemyResource = AlchemyResources.all.filter(res => res.unlockedAt === this.level + 1)[0];
       switch (this.pet.name) {
-        case "Teresa":
-          return "You can charge an additional Infinity Upgrade";
-        case "Effarig":
-          return `Unlock the ${effarigAlchemyResource.name} resource in Glyph Alchemy, which
+        case "Терезы":
+          return "Вы можете заряжать на одно Улучшение Бесконечности больше";
+        case "Эффарига":
+          return `Разблокировать алхимический ресурс "${effarigAlchemyResource.name}", который
           ${effarigAlchemyResource.description}`;
-        case "Enslaved":
-          return `${formatX(20)} to stored game time, and you can store an additional hour of real time`;
-        case "V":
-          return "You can purchase an additional Triad Study";
+        case "Безымянных":
+          return `Множитель ${formatX(20)} к сохранённому игровому времени, и вы можете сохранить на час реального времени больше`;
+        case "Ви":
+          return "Разблокировать новое Тройственное Исследование";
         default:
           return "false";
       }
@@ -130,7 +130,7 @@ export default {
       <span class="fas fa-arrow-up" />
       <div class="c-ra-pet-upgrade__tooltip">
         <div class="c-ra-pet-upgrade__tooltip__name">
-          Level {{ pet.name }} to {{ formatInt(level + 1) }}
+          Увеличить уровень {{ pet.name }} до {{ formatInt(level + 1) }}
         </div>
         <div class="c-ra-pet-upgrade__tooltip__description">
           {{ reward }}
@@ -142,7 +142,7 @@ export default {
           </div>
         </div>
         <div class="c-ra-pet-upgrade__tooltip__footer">
-          Cost: {{ quantify("Memory", requiredMemories, 2, 2) }}
+          Цена: {{ format(requiredMemories, 2, 2) }} Памяти
           <span v-if="memories <= requiredMemories">{{ nextLevelEstimate }}</span>
         </div>
       </div>

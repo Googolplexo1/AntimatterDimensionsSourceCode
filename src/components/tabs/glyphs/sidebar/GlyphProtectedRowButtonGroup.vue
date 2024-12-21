@@ -14,8 +14,8 @@ export default {
   },
   computed: {
     questionMarkTooltip() {
-      return `Protected slots are unaffected by anything which may move or purge Glyphs.
-        New Glyphs will never be inserted into these slots.`;
+      return `Глифы в защищённых ячейках никогда не удаляются и не перемещаются.
+        Новые глифы никогда не помещаются в защищённые ячейки.`;
     }
   },
   watch: {
@@ -62,30 +62,30 @@ export default {
       >
         ?
       </div>
-      Protected Slots: ({{ quantifyInt("row", protectedRows) }})
+      Защищённые ячейки: ({{ quantifyInt("ряд", protectedRows) }})
     </div>
     <button
       :class="addRowButtonClass()"
       @click="addRow"
     >
-      Add a protected row
+      Добавить защищённый ряд
       <div
         v-if="isProtectedRowsMax()"
         class="c-glyph-inventory-option__tooltip"
       >
-        One row is permanently un-protected for new Glyphs
+        Необходимо оставить незащищённый ряд для новых глифов
       </div>
     </button>
     <button
       :class="removeRowButtonClass()"
       @click="removeRow"
     >
-      Remove a protected row
+      Убрать незащищённый ряд
     </button>
     <ToggleButton
       v-model="moveGlyphs"
       class="c-glyph-inventory-option"
-      label="Move Glyphs on changing row count:"
+      label="Перемещать глифы при изменении количества защищённых рядов:"
     />
   </div>
 </template>

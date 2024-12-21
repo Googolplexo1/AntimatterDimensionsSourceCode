@@ -40,7 +40,7 @@ export default {
     }"
     @click="show"
   >
-    {{ possessiveForm }} Quotes
+    Речи {{ possessiveForm }}
   </button>
 </template>
 

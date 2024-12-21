@@ -173,7 +173,7 @@ export default {
       };
     },
     showAlchemyHowTo() {
-      ui.view.h2pForcedTab = GameDatabase.h2p.tabs.filter(tab => tab.name === "Glyph Alchemy")[0];
+      ui.view.h2pForcedTab = GameDatabase.h2p.tabs.filter(tab => tab.name === "Алхимия")[0];
       Modal.h2p.show();
     },
     toggleAllReactions() {
@@ -199,21 +199,21 @@ export default {
         class="o-primary-btn--subtab-option"
         @click="showAlchemyHowTo"
       >
-        Click for alchemy info
+        Нажмите для просмотра информации об алхимии
       </PrimaryButton>
       <PrimaryButton
         v-if="!isDoomed"
         class="o-primary-btn--subtab-option"
         @click="toggleAllReactions"
       >
-        {{ allReactionsDisabled ? "Enable" : "Disable" }} all reactions
+        {{ allReactionsDisabled ? "Включить" : "Отключить" }} все реакции
       </PrimaryButton>
       <PrimaryButton
         v-if="realityCreationVisible"
         :class="realityGlyphCreationClass"
         onclick="Modal.realityGlyph.show()"
       >
-        View Reality Glyph creation
+        Просмотреть создание Глифа Реальности
       </PrimaryButton>
     </div>
     <AlchemyResourceInfo
@@ -221,12 +221,11 @@ export default {
       :resource="infoResource"
     />
     <br>
-    Glyphs can now be refined using your Glyph filter in the Glyphs tab.
+    Глифы могут быть облагорожены с помощью Фильтра Глифов.
     <br>
-    When refining a Glyph, it will only give you resources up to a cap
-    of {{ formatX(capFactor) }} its highest refinement value.
+    Каждый из основных алхимических ресурсов ограничен в зависимости от наибольшего из уровней облагороженных глифов соответствующего типа.
     <span v-if="reactionsAvailable">
-      Reactions trigger once every time you Reality, unaffected by amplification from stored real time.
+      Реакции происходят скачками каждую реальность, на что не влияет усиление реальности сохранённым реальным временем.
     </span>
     <div
       class="l-alchemy-circle"

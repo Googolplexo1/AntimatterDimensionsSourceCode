@@ -22,14 +22,14 @@ export default {
   computed: {
     resetActionDisplay() {
       return this.isDivideUnlocked && !Pelle.isDoomed
-        ? `Divide Replicanti by ${format(Number.MAX_VALUE, 1, 1)}`
-        : "Reset Replicanti amount";
+        ? `Разделить количество Репликанти на ${format(Number.MAX_VALUE, 1, 1)}`
+        : "Сбросить ваши Репликанти";
     },
     galaxyCountDisplay() {
       const bought = this.boughtGalaxies;
       const extra = this.extraGalaxies;
       const galaxyCount = extra > 0 ? `${formatInt(bought)}+${formatInt(extra)}` : formatInt(bought);
-      return `Currently: ${galaxyCount}`;
+      return `Имеется: ${galaxyCount}`;
     },
     autobuyer() {
       return Autobuyer.replicantiGalaxy;
@@ -37,7 +37,7 @@ export default {
     autobuyerTextDisplay() {
       const auto = this.isAutoActive;
       const disabled = !this.isAutoEnabled;
-      return `Auto Galaxy ${auto ? "ON" : "OFF"}${disabled ? " (disabled)" : ""}`;
+      return `Автоматика Галактик Репликанти: ${auto ? "ВКЛ." : "ВЫКЛ."}${disabled ? " (отключена)" : ""}`;
     },
   },
   methods: {
@@ -70,7 +70,7 @@ export default {
       class="o-primary-btn--replicanti-galaxy"
       @click="handleClick"
     >
-      {{ resetActionDisplay }} for a Replicanti Galaxy
+      {{ resetActionDisplay }} за Галактику Репликанти
       <br>
       {{ galaxyCountDisplay }}
     </PrimaryButton>

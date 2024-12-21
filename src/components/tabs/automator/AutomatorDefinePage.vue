@@ -54,27 +54,27 @@ export default {
 
 <template>
   <div class="l-panel-padding">
-    This panel allows you to define case-sensitive constant values which can be used in place of numbers or Time Study
-    import strings. These definitions are shared across all of your scripts and are limited to a maximum of
-    {{ maxConstantCount }} defined constants. Additionally, constant names and values are limited to lengths of
-    {{ maxNameLength }} and {{ maxValueLength }} characters respectively. Changes made to constants will not apply
-    until any currently running scripts are restarted.
+    Эта панель позволяет вам определять постоянные, которые могут быть использованы вместо чисел или кодов Древ Исследований.
+    Постоянные общие для всех ваших программ. Вы не можете определить более
+    {{ quantifyInt("постоянной", maxConstantCount) }}. Кроме того, имена и значения постоянных не могут быть длиннее
+    {{ maxNameLength }} и {{ quantifyInt("символа", maxValueLength) }} соответственно. Изменение постоянных не будет учтено,
+    пока текущая программа не будет перезапущена или не завершит свою работу.
     <br>
     <br>
-    As a usage example, defining
-    <b>first 🠈 11,21,22,31,32,33</b>
-    allows you to use
+    Например, вы можете определить
+    <b>first 🠈 11,21,22,31,32,33</b>,
+    чтобы использовать команду
     <b>studies purchase first</b>
-    in order to purchase all of the studies in the first three rows.
+    для покупки всех Исследований в первых трёх рядах.
     <br>
     <br>
     <PrimaryButton
-      v-tooltip="hasConstants ? null : 'You have no valid constants to delete!'"
+      v-tooltip="hasConstants ? null : 'У вас нет определённых постоянных, которые можно было бы удалить!'"
       class="c-delete-margin o-primary-btn--subtab-option"
       :class="{ 'o-primary-btn--disabled' : !hasConstants }"
       @click="deleteAllConstants"
     >
-      Delete all constants
+      Удалить все постоянные
     </PrimaryButton>
     <br>
     <br>
@@ -82,7 +82,7 @@ export default {
       class="c-delete-margin o-primary-btn--subtab-option"
       @click="importPresets"
     >
-      Import Time Study Presets
+      Импортировать сохранённые Древа Исследований
     </PrimaryButton>
     <div
       :key="count + refreshConstants"

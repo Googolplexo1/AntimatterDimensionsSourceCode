@@ -53,6 +53,8 @@ export default {
       isTextInput: false,
       dropdownOptions: [],
       dropdownSelection: "",
+      dropdownOptionsRussian: [],
+      dropdownSelectionRussian: "",
       textContents: "",
       pathRef: {},
       currentNodeOnPath: "",
@@ -101,6 +103,8 @@ export default {
     if (this.isBoolTarget) {
       this.dropdownOptions = [this.blockTarget.toUpperCase()];
       this.dropdownSelection = this.block[this.blockTarget] ? this.blockTarget.toUpperCase() : "";
+      this.dropdownOptionsRussian = this.translate(this.dropdownOptions.at(-1));
+      this.dropdownSelectionRussian = this.dropdownOptionsRussian[this.dropdownOptions.indexOf(this.dropdownSelection)];
       return;
     }
 
@@ -117,10 +121,13 @@ export default {
       }
       this.calculatePath();
     }
+    
+    this.dropdownOptionsRussian = this.translate(this.dropdownOptions.at(-1));
 
     // Set the initial display state properly
     if (this.dropdownOptions.includes(this.initialSelection)) {
       this.dropdownSelection = this.initialSelection;
+      this.dropdownSelectionRussian = this.dropdownOptionsRussian[this.dropdownOptions.indexOf(this.dropdownSelection)];
     } else if (this.initialSelection) {
       this.isTextInput = true;
       this.textContents = this.initialSelection;
@@ -234,9 +241,12 @@ export default {
       this.updateFunction(this.block, this.block.id);
       if (this.blockTarget) {
         let newValue;
-        if (this.isBoolTarget) newValue = this.dropdownSelection !== "";
+        if (this.isBoolTarget) newValue = this.dropdownSelectionRussian !== "";
         else if (this.isTextInput) newValue = this.textContents;
-        else newValue = this.dropdownSelection;
+        else {
+          newValue = this.dropdownOptions[this.dropdownOptionsRussian.indexOf(this.dropdownSelectionRussian)];
+          this.dropdownSelection = newValue;
+        }
 
         // eslint-disable-next-line vue/no-mutating-props
         this.block[this.blockTarget] = newValue;
@@ -303,6 +313,44 @@ export default {
       this.isTextInput = false;
       this.dropdownSelection = "";
       this.textContents = "";
+    },
+    translate(lastOption) {
+      switch (lastOption) {
+        case "NAME":
+          return ["НОМЕР", "ПОД НАЗВАНИЕМ"];
+        case "DILATION":
+          return ["ИСПВ", "ЗАМЕДЛЕНИЕ"];
+        case "REALITY":
+          return ["БЕСКОНЕЧНОСТИ", "ВЕЧНОСТИ", "РЕАЛЬНОСТИ"];
+        case "* AUTOBUYER SETTING":
+          return ["ВКЛ.", "ВЫКЛ.", "* НАСТРОЙКА АВТОМАТИКИ"];
+        case "OFF":
+          return ["ВКЛ.", "ВЫКЛ."];
+        case "USE":
+          return ["ВКЛ.", "ВЫКЛ.", "РАЗРЯДИТЬ"];
+        case "* SPECIFIED CONSTANT":
+          let optionList = [];
+          if (this.dropdownOptions[0] === "INFINITY") optionList = ["БЕСКОНЕЧНОСТЬ", "ВЕЧНОСТЬ", "РЕАЛЬНОСТЬ"];
+          if (this.dropdownOptions.includes("BLACK HOLE")) optionList.push("ЧЁРНАЯ ДЫРА");
+          return optionList.concat([
+            "АНТИМАТЕРИИ", "ОБ", "ОВ", "МР", "БЕСКОНЕЧНОСТЕЙ", "СОХРАНЁННЫХ БЕСКОНЕЧНОСТЕЙ", "ВЕЧНОСТЕЙ", "РЕАЛЬНОСТЕЙ",
+            "ПОЛУЧАЕМЫХ ОБ", "ПОЛУЧАЕМЫХ ОВ", "ПОЛУЧАЕМЫХ ТАХИОНОВ", "ПОЛУЧАЕМЫХ МР", "УРОВЕНЬ ПОЛУЧАЕМОГО ГЛИФА",
+            "ЗВ", "ТАХИОНОВ", "ГР", "РЕПЛИКАНТИ", "ТВ", "ТВ ВСЕГО", "ВЫПОЛНЕНИЙ ИСПВ ВСЕГО", "ПОЛУЧАЕМЫХ ВЫПОЛНЕНИЙ ИСПВ",
+            "ВЫПОЛНЕНИЙ ИСПВ1", "ВЫПОЛНЕНИЙ ИСПВ2", "ВЫПОЛНЕНИЙ ИСПВ3", "ВЫПОЛНЕНИЙ ИСПВ4",
+            "ВЫПОЛНЕНИЙ ИСПВ5", "ВЫПОЛНЕНИЙ ИСПВ6", "ВЫПОЛНЕНИЙ ИСПВ7", "ВЫПОЛНЕНИЙ ИСПВ8",
+            "ВЫПОЛНЕНИЙ ИСПВ9", "ВЫПОЛНЕНИЙ ИСПВ10", "ВЫПОЛНЕНИЙ ИСПВ11", "ВЫПОЛНЕНИЙ ИСПВ12", "* ЗАДАННОЕ ЧИСЛО"
+          ]);
+        case "<=":
+          return ["<", ">", ">=", "<="];
+        case "BLACK HOLE":
+          return ["ЧЁРНАЯ ДЫРА"];
+        case "BH2":
+          return ["ВЫКЛ.", "ЧД1", "ЧД2"];
+        case "NOWAIT":
+          return ["БЕЗ ОЖИДАНИЯ"];
+        case "RESPEC":
+          return ["СО СБРОСОМ"];
+      }
     }
   }
 };
@@ -337,12 +385,12 @@ export default {
     </div>
     <select
       v-else
-      v-model="dropdownSelection"
+      v-model="dropdownSelectionRussian"
       :class="dropdownClassObject()"
       @change="changeBlock()"
     >
       <option
-        v-for="target in ['', ...dropdownOptions]"
+        v-for="target in ['', ...dropdownOptionsRussian]"
         :key="target"
         :value="target"
       >

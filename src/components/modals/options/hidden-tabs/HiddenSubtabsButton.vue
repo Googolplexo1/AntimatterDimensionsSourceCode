@@ -38,6 +38,9 @@ export default {
     isModernUI() {
       return this.$viewModel.newUI;
     },
+    tooltip() {
+      return this.hidable ? this.isCurrentSubtab ? 'Нельзя скрыть текущую вкладку' : '' : 'Нельзя скрыть вкладку "Настройки" или её отделы';
+    },
   },
   methods: {
     update() {
@@ -54,7 +57,7 @@ export default {
 
 <template>
   <div
-    v-tooltip="hidable ? isCurrentSubtab ? 'You cannot hide the tab you are on' : '' : 'Options tabs cannot be hidden'"
+    v-tooltip="tooltip"
     :class="classObject"
     @click="toggleVisibility"
   >

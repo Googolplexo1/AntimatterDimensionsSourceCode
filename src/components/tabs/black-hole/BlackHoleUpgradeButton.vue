@@ -80,13 +80,14 @@ export default {
       <CostDisplay
         v-if="!isCapped"
         :config="costConfig"
-        name="Reality Machine"
+        name="Машина"
+        postName="Реальности"
       />
     </button>
     <PrimaryToggleButton
       v-if="isAutoUnlocked"
       v-model="isAutobuyerOn"
-      label="Auto:"
+      label="Автоматика:"
       class="l--spoon-btn-group__little-spoon-reality-btn o-primary-btn--reality-upgrade-toggle"
     />
   </div>

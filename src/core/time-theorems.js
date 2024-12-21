@@ -111,8 +111,8 @@ TimeTheoremPurchaseType.ep = new class extends TimeTheoremPurchaseType {
 export const TimeTheorems = {
   checkForBuying(auto) {
     if (PlayerProgress.realityUnlocked() || TimeDimension(1).bought) return true;
-    if (!auto) Modal.message.show(`You need to buy at least ${formatInt(1)} Time Dimension before you can purchase
-      Time Theorems.`, { closeEvent: GAME_EVENT.REALITY_RESET_AFTER });
+    if (!auto) Modal.message.show(`Прежде чем покупать Теоремы Времени, необходимо купить
+      хотя бы одно Измерение Времени.`, { closeEvent: GAME_EVENT.REALITY_RESET_AFTER });
     return false;
   },
 

@@ -17,30 +17,30 @@ export default {
   computed: {
     message() {
       return PlayerProgress.eternityUnlocked()
-        ? `Eternity will reset everything except Achievements, Challenge records, and anything under the General header
+        ? `Вечность сбросит всё, кроме достижений, рекордов испытаний и статистики в разделе "Общее".
           on the Statistics tab.`
-        : `Eternity will reset everything except Achievements, Challenge records, and anything under the General header
-          on the Statistics tab. You will also gain an Eternity Point and unlock various upgrades.`;
+        : `Вечность сбросит всё, кроме достижений, рекордов испытаний и статистики в разделе "Общее".
+          Вы также получите Очко Вечности и разблокируете различные улучшения.`;
     },
     gainedEPOnEternity() {
-      return `You will gain ${quantify("Eternity", this.gainedEternities, 2)} 
-      and ${quantify("Eternity Point", this.gainedEternityPoints, 2)} on Eternity.`;
+      return `Вы получите ${quantify("вечность", this.gainedEternities, 2)} 
+      и ${quantify("Очко", this.gainedEternityPoints, 2)} Вечности.`;
     },
     startWithIP() {
       return this.startingIP.gt(0)
-        ? `You will start your next Eternity with ${quantify("Infinity Point", this.startingIP, 2)}.`
+        ? `Вы начнёте следующую вечность с ${format(this.startingIP, 2)} Очков Бесконечности.`
         : ``;
     },
     eternityChallenge() {
       const ec = EternityChallenge.current;
       if (ec.isFullyCompleted) {
-        return `Eternity Challenge ${ec.id} is already fully completed.`;
+        return `${ec.id}-е Испытание Вечности уже полностью выполнено.`;
       }
       if (!Perk.studyECBulk.isBought) {
-        return `You will gain one completion of Eternity Challenge ${ec.id}.`;
+        return `Вы получите одно выполнение ${ec.id}-го Испытания Вечности.`;
       }
       const gainedCompletions = ec.gainedCompletionStatus.gainedCompletions;
-      return `You will gain ${quantifyInt("completion", gainedCompletions)} for Eternity Challenge ${ec.id}.`;
+      return `Вы получите ${quantifyInt("выполнение", gainedCompletions)} ${ec.id}-го Испытания Вечности.`;
     }
   },
   methods: {
@@ -60,7 +60,7 @@ export default {
 
 <template>
   <ResetModal
-    :header="exitingEC ? 'Complete Eternity Challenge' : 'You are about to Eternity'"
+    :header="exitingEC ? 'Вы завершаете Испытание Вечности' : 'Вы совершаете вечность'"
     :message="message"
     :gained-resources="gainedEPOnEternity"
     :starting-resources="startWithIP"

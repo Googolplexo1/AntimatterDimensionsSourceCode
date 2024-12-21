@@ -25,10 +25,10 @@ export default {
         "o-tab-btn": true,
         "o-tab-btn--secondary": true,
         "o-subtab-btn--active": this.isCurrentSubtab,
-        "o-tab-btn--infinity": this.parentName === "Infinity",
-        "o-tab-btn--eternity": this.parentName === "Eternity",
-        "o-tab-btn--reality": this.parentName === "Reality",
-        "o-tab-btn--celestial": this.parentName === "Celestials"
+        "o-tab-btn--infinity": this.parentName === "Бесконечность",
+        "o-tab-btn--eternity": this.parentName === "Вечность",
+        "o-tab-btn--reality": this.parentName === "Реальность",
+        "o-tab-btn--celestial": this.parentName === "Небожители"
       };
     },
   },

@@ -13,25 +13,25 @@ export default {
   },
   computed: {
     removeString() {
-      if (this.isRefining) return "Refine";
-      if (this.glyphSacrificeUnlocked) return "Sacrifice";
-      return "Delete";
+      if (this.isRefining) return "Облагородить";
+      if (this.glyphSacrificeUnlocked) return "Пожертвовать";
+      return "Удалить";
     },
     autoCleanTooltip() {
-      return `${this.removeString} Glyphs that are worse in every way than
-        enough other Glyphs${this.hasPerkShop ? " (ignores customized Glyphs)" : ""}`;
+      return `${this.removeString} глифы${this.hasPerkShop ? " (кроме музыкальных)" : ""}, которые строго хуже, чем
+        достаточное количество других глифов`;
     },
     harshAutoCleanTooltip() {
-      return `${this.removeString} Glyphs that are worse in every way than
-        ANY other Glyph${this.hasPerkShop ? " (includes customized Glyphs)" : ""}`;
+      return `${this.removeString} глифы${this.hasPerkShop ? " (кроме музыкальных)" : ""}, которые строго хуже, чем
+        ЛЮБОЙ другой глиф`;
     },
     deleteRejectedTooltip() {
       const negativeWarning = AutoGlyphProcessor.hasNegativeEffectScore()
-        ? " You also have some negative Effect Filter scores; this may remove some Glyphs you normally want to keep!"
+        ? " Поскольку некоторые веса эффектов для Фильтра Глифов отрицательные, вы можете потерять глифы, которые вы хотите сохранить!"
         : "";
       return this.removeCount === 0
-        ? `This will not remove any Glyphs, adjust your Filter settings to remove some.`
-        : `This will remove ${quantifyInt("Glyph", this.removeCount)}!${negativeWarning}`;
+        ? `Настройки Фильтра Глифов таковы, что ни один глиф не будет удалён.`
+        : `${quantifyInt("глиф", this.removeCount)} будет ${pluralize("удалён", this.removeCount)}!${negativeWarning}`;
     }
   },
   methods: {
@@ -87,13 +87,13 @@ export default {
     class="o-glyph-inventory-management-group"
   >
     <div class="l-glyph-sacrifice-options__header">
-      Remove weaker Glyphs:
+      Удаление слабых глифов:
     </div>
     <button
       class="c-glyph-inventory-option"
       @click="autoClean"
     >
-      Purge Glyphs
+      Прочистка инвентаря
       <div class="c-glyph-inventory-option__tooltip">
         {{ autoCleanTooltip }}
       </div>
@@ -102,7 +102,7 @@ export default {
       class="c-glyph-inventory-option"
       @click="harshAutoClean"
     >
-      Harsh Purge Glyphs
+      Строгая прочистка инвентаря
       <div class="c-glyph-inventory-option__tooltip">
         {{ harshAutoCleanTooltip }}
       </div>
@@ -111,14 +111,14 @@ export default {
       class="c-glyph-inventory-option"
       @click="deleteAllUnprotected"
     >
-      {{ removeString }} all unprotected Glyphs
+      {{ removeString }} все незащищённые глифы
     </button>
     <button
       v-if="hasFilter"
       class="c-glyph-inventory-option"
       @click="deleteAllRejected"
     >
-      {{ removeString }} all Glyphs rejected by filtering
+      {{ removeString }} все глифы, отвергнутые Фильтром
       <div
         class="c-glyph-inventory-option__tooltip l-rejected-tooltip"
       >

@@ -20,29 +20,29 @@ export default {
       return this.challenge.isCompleted;
     },
     message() {
-      return `You will Big Crunch (if possible) and start a new Infinity within the Challenge with all the
-        Challenge-specific restrictions and modifiers active.
-        To complete the Challenge${this.challengeIsCompleted ? "" : " and gain its reward"},
-        you must reach the Challenge goal of
-        ${format(InfinityChallenge(this.id).goal)} Antimatter.
-        You do not start with any Dimension Boosts or Galaxies, regardless of upgrades.`;
+      return `Вы совершите Большое Сжатие (по возможности) и начнёте новую бесконечность внутри Испытания, с
+        соответствующим условием испытания.
+        Чтобы выполнить Испытание${this.challengeIsCompleted ? "" : " и получить награду за него"},
+        вы должны достичь цели Испытания в
+        ${format(InfinityChallenge(this.id).goal)} антиматерии.
+        У вас не будет начальных Расширений Измерений или Галактик вне зависимости от ваших улучшений.`;
     },
     entranceLabel() {
-      return `You are about to enter Infinity Challenge ${this.id}`;
+      return `Вы запускаете ${this.id}-е Испытание Бесконечности`;
     },
     reward() {
       let rewardDescription = this.challenge._config.reward.description;
       if (typeof rewardDescription === "function") {
         rewardDescription = rewardDescription();
       }
-      return `The reward for completing this challenge is: ${rewardDescription}`;
+      return `Награда за выполнение этого Испытания следующая: ${rewardDescription}`;
     },
     condition() {
       let conditionOfChallenge = this.challenge._config.description;
       if (typeof conditionOfChallenge === "function") {
         conditionOfChallenge = conditionOfChallenge();
       }
-      return `Inside this Infinity Challenge, ${conditionOfChallenge}`;
+      return `В этом Испытаниии Бесконечности действует следующее условие: ${conditionOfChallenge}`;
     }
   },
   created() {
@@ -78,7 +78,7 @@ export default {
       {{ reward }}
     </div>
     <template #confirm-text>
-      Begin
+      Начать
     </template>
   </ModalWrapperChoice>
 </template>

@@ -15,16 +15,16 @@ export default {
   computed: {
     message() {
       if (Achievement(118).isUnlocked && !Pelle.isDoomed) {
-        return `Dimensional Sacrifice will give you a boost to the 8th Antimatter Dimension based on the amount of
-          1st Antimatter Dimensions you had at the time of Sacrificing.`;
+        return `Пожертвование Измерений даст вам множитель к 8-м Измерениям Антиматерии в зависимости от количества
+          1-х Измерений Антиматерии при Пожертвовании.`;
       }
-      return `Dimensional Sacrifice will remove all of your 1st through 7th Antimatter Dimensions
-        (with the cost and multiplier unchanged), for a boost to the 8th Antimatter Dimension based on the total
-        amount of 1st Antimatter Dimensions sacrificed. It will take time to regain production.`;
+      return `Пожертвование Измерений уничтожит все ваши Измерения Антиматерии с 1-го по 7-е
+        (не меняя их цены и множители), но даст множитель к 8-м Измерениям Антиматерии в зависимости от общего
+        количества пожертвованных 1-х Измерений Антиматерии. Восстановление производства займёт некоторое время.`;
     },
     multiplierText() {
-      return `Multiplier is currently ${formatX(this.currentMultiplier, 2, 2)} and will increase to
-        ${formatX(this.nextMultiplier, 2, 2)} on Dimensional Sacrifice.`;
+      return `Множитель в данный момент равен ${formatX(this.currentMultiplier, 2, 2)} и возрастёт до
+        ${formatX(this.nextMultiplier, 2, 2)} при Пожертвовании Измерений.`;
     },
   },
   methods: {
@@ -45,7 +45,7 @@ export default {
     @confirm="handleYesClick"
   >
     <template #header>
-      Dimensional Sacrifice
+      Пожертвование Измерений
     </template>
     <div class="c-modal-message__text">
       {{ message }}

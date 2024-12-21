@@ -37,7 +37,7 @@ export default {
       };
     },
     // Show EP/min below this threshold, color the EP number above it (1e40 is roughly when TS181 is attainable)
-    rateThreshold: () => 1e40,
+    rateThreshold: () => 1e100,
     amountStyle() {
       if (!this.headerTextColored || this.currentEP.lt(this.rateThreshold)) return {
         "transition-duration": "0s"
@@ -195,72 +195,76 @@ const EP_BUTTON_DISPLAY_TYPE = {
   >
     <!-- Cannot Eternity -->
     <template v-if="type === -1">
-      Reach {{ format(eternityGoal, 2, 2) }}
+      Достигните {{ format(eternityGoal, 2, 2) }}
       <br>
-      Infinity Points
+      Очков Бесконечности
     </template>
 
     <!-- First time -->
     <template v-else-if="type === 0">
-      Other times await... I need to become Eternal
+      Иные времена ждут...
+      <br>
+      Пора стать Вечным
     </template>
 
     <!-- Normal -->
     <template v-else-if="type === 1">
-      Eternity for
+      Совершить вечность за <br v-if="!showEPRate">
       <span :style="amountStyle">{{ format(gainedEP, 2) }}</span>
-      <span v-if="showEPRate"> EP</span>
-      <span v-else> Eternity {{ pluralize("Point", gainedEP) }}</span>
+      <span v-if="showEPRate"> ОВ</span>
+      <span v-else> {{ pluralize("Очко", gainedEP) }} Вечности</span>
       <br>
       <template v-if="showEPRate">
-        Current: {{ format(currentEPRate, 2, 2) }} EP/min
+        Текущий прирост: {{ format(currentEPRate, 2, 2) }} ОВ/мин
         <br>
-        Peak: {{ format(peakEPRate, 2, 2) }} EP/min
+        Пик: {{ format(peakEPRate, 2, 2) }} ОВ/мин
         <br>
-        at {{ format(peakEPRateVal, 2, 2) }} EP
+        при {{ format(peakEPRateVal, 2, 2) }} ОВ
       </template>
     </template>
 
     <!-- Challenge -->
     <template v-else-if="type === 2 || (type === 6 && !canEternity)">
-      Other challenges await... I need to become Eternal
+      Иные испытания ждут...
+      <br>
+      Пора стать Вечным
     </template>
 
     <!-- Dilation -->
     <template v-else-if="type === 3">
-      Eternity for <span :style="tachyonAmountStyle">{{ format(gainedTachyons, 2, 1) }}</span>
-      {{ pluralize("Tachyon Particle", gainedTachyons) }}
+      Совершить вечность за <span :style="tachyonAmountStyle">{{ format(gainedTachyons, 2, 1) }}</span>
+      {{ pluralize("Тахион", gainedTachyons) }}
     </template>
 
     <!-- New content available -->
     <template v-else-if="type === 4 || type === 5">
       <template v-if="type === 4">
-        Eternity for <span :style="amountStyle">{{ format(gainedEP, 2, 2) }}</span> EP
+        Совершить вечность за <span :style="amountStyle">{{ format(gainedEP, 2, 2) }}</span> ОВ
       </template>
       <template v-else>
-        Eternity for <span :style="tachyonAmountStyle">{{ format(gainedTachyons, 2, 1) }}</span> TP
+        Совершить вечность за <span :style="tachyonAmountStyle">{{ format(gainedTachyons, 2, 1) }}</span> {{ pluralize("Тахион", gainedTachyons) }}
       </template>
       <br>
-      You should explore a bit and look at new content before clicking me!
+      Обратите внимание на новый контент!
     </template>
 
     <!-- Challenge with multiple completions -->
     <template v-else-if="type === 6">
-      Other challenges await...
+      Иные испытания ждут...
       <template v-if="fullyCompleted">
         <br>
-        (This challenge is already fully completed)
+        (Это Испытание уже полностью завершено)
       </template>
       <template v-else>
         <br>
-        {{ quantifyInt("completion", gainedCompletions) }} on Eternity
+        {{ quantifyInt("выполнение", gainedCompletions) }} на вечности
         <template v-if="failedRestriction">
           <br>
           {{ failedRestriction }}
         </template>
         <template v-else-if="hasMoreCompletions">
           <br>
-          Next goal at {{ format(nextGoalAt) }} IP
+          Следующая цель: {{ format(nextGoalAt) }} ОБ
         </template>
       </template>
     </template>

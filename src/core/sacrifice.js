@@ -14,27 +14,27 @@ export class Sacrifice {
   }
 
   static get disabledCondition() {
-    if (NormalChallenge(10).isRunning) return "8th Dimensions are disabled";
-    if (EternityChallenge(3).isRunning) return "Eternity Challenge 3";
-    if (DimBoost.purchasedBoosts < 5) return `Requires ${formatInt(5)} Dimension Boosts`;
-    if (AntimatterDimension(8).totalAmount.eq(0)) return "No 8th Antimatter Dimensions";
-    if (this.nextBoost.lte(1)) return `${formatX(1)} multiplier`;
-    if (Player.isInAntimatterChallenge) return "Challenge goal reached";
-    return "Need to Crunch";
+    if (NormalChallenge(10).isRunning) return "8-е Измерение недоступно";
+    if (EternityChallenge(3).isRunning) return "3-е Испытание Вечности";
+    if (DimBoost.purchasedBoosts < 5) return `требуется ${formatInt(5)} Расширений Измерений`;
+    if (AntimatterDimension(8).totalAmount.eq(0)) return "нет 8-х Измерений Антиматерии";
+    if (this.nextBoost.lte(1)) return `множитель пренебрежимо мал`;
+    if (Player.isInAntimatterChallenge) return "цель Испытания достигнута";
+    return "вы обязаны совершить Большое Сжатие";
   }
 
   static getSacrificeDescription(changes) {
     const f = (name, condition) => (name in changes ? changes[name] : condition);
     let factor = 2;
     let places = 1;
-    let base = `(log₁₀(AD1)/${formatInt(10)})`;
+    let base = `(log₁₀(ИА1)/${formatInt(10)})`;
     if (f("Challenge8isRunning", NormalChallenge(8).isRunning)) {
       factor = 1;
       base = "x";
     } else if (f("InfinityChallenge2isCompleted", InfinityChallenge(2).isCompleted)) {
       factor = 1 / 120;
       places = 3;
-      base = "AD1";
+      base = "ИА1";
     }
 
     const exponent = (1 +

@@ -21,28 +21,28 @@ export default {
     suggestions() {
       const arr = [];
       if (this.purchasableTS > 0) {
-        arr.push(`Purchase more Time Studies (${formatInt(this.purchasableTS)} available)`);
+        arr.push(`Купить оставшиеся Исследования Времени (${formatInt(this.purchasableTS)} доступно)`);
       }
       if (this.missingAchievements > 0) {
-        arr.push(`Complete the rest of your Achievements (${formatInt(this.missingAchievements)} left)`);
+        arr.push(`Выполнить оставшиеся достижения из первых тринадцати рядов (${formatInt(this.missingAchievements)} осталось)`);
       }
       if (this.unpurchasedDilationUpgrades > 0) {
-        arr.push(`Purchase the remaining Dilation Upgrades (${formatInt(this.unpurchasedDilationUpgrades)} left)`);
+        arr.push(`Купить оставшиеся Улучшения Замедления (${formatInt(this.unpurchasedDilationUpgrades)} доступно)`);
       }
       if (this.currLog10EP > 1.3 * this.cheapestLog10TD) {
-        arr.push(`Purchase more TDs (cheapest: ${format(Decimal.pow10(this.cheapestLog10TD))} EP)`);
+        arr.push(`Купить оставшиеся Измерения Времени (наименьшая цена: ${format(Decimal.pow10(this.cheapestLog10TD))} ОВ)`);
       }
       if (this.currLog10EP > 1.3 * this.multEPLog10Cost) {
-        arr.push(`Purchase more ${formatX(5)} EP (cost: ${format(Decimal.pow10(this.multEPLog10Cost))} EP)`);
+        arr.push(`Купить оставшиеся упятерители ОВ (цена: ${format(Decimal.pow10(this.multEPLog10Cost))} ОВ)`);
       }
       if (this.ecCount < 60) {
-        arr.push(`Finish the rest of your ECs (Done: ${formatInt(this.ecCount)}/${formatInt(60)})`);
+        arr.push(`Выполнить оставшиеся ИспВ (выполнено ${formatInt(this.ecCount)}/${formatInt(60)})`);
       }
       if (!this.hasDilated) {
-        arr.push("Perform a Dilated Eternity");
+        arr.push("Совершить вечность в Замедлении");
       }
       if (this.availableCharges > 0) {
-        arr.push(`Charge more Infinity Upgrades (${formatInt(this.availableCharges)} available)`);
+        arr.push(`Зарядить больше Улучшений Бесконечности (ещё ${formatInt(this.availableCharges)})`);
       }
       return arr;
     },
@@ -59,7 +59,7 @@ export default {
       };
     },
     clickText() {
-      return `(click to ${this.isExpanded ? "collapse" : "expand"})`;
+      return `(нажмите, чтобы ${this.isExpanded ? "скрыть" : "показать"})`;
     },
     realityReminderClass() {
       return {
@@ -108,15 +108,15 @@ export default {
     @click="clicked"
   >
     <span v-if="!canReality">
-      You still need to unlock Reality in the Time Study Tree.
+      Вы ещё не разблокировали реальность в Древе Исследований.
     </span>
     <span v-else-if="suggestions.length === 0">
-      Ready to Reality! You have unlocked every available upgrade within this Reality.
+      Вы совершили все необходимые действия для максимизации наград и готовы совершить реальность!
     </span>
     <span v-else>
       <i :class="dropDownIconClass" />
-      You have {{ quantifyInt("thing", suggestions.length) }}
-      you may want to do before Reality. {{ clickText }}
+      Есть {{ quantifyInt("действие", suggestions.length) }},
+      что вам рекомендуется совершить в текущей реальности {{ clickText }}:
       <div
         v-if="isExpanded"
         class="l-suggestions"

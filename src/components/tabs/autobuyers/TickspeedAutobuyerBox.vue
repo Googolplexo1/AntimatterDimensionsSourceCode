@@ -18,8 +18,8 @@ export default {
     autobuyer: () => Autobuyer.tickspeed,
     modeDisplay() {
       switch (this.mode) {
-        case AUTOBUYER_MODE.BUY_SINGLE: return "Buys singles";
-        case AUTOBUYER_MODE.BUY_MAX: return "Buys max";
+        case AUTOBUYER_MODE.BUY_SINGLE: return "Покупает по одному";
+        case AUTOBUYER_MODE.BUY_MAX: return "Покупает все";
       }
       throw "Unknown tickspeed autobuyer mode";
     }
@@ -40,7 +40,7 @@ export default {
 <template>
   <AutobuyerBox
     :autobuyer="autobuyer"
-    name="Tickspeed Autobuyer"
+    name="Автоматика ускорителей"
     show-interval
   >
     <template #intervalSlot>
@@ -58,7 +58,7 @@ export default {
         v-else
         class="o-autobuyer-btn o-autobuyer-btn--unavailable"
       >
-        Complete the challenge to change mode
+        Выполните Испытание, чтобы изменить режим
       </button>
     </template>
   </AutobuyerBox>

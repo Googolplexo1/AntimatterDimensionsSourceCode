@@ -107,8 +107,7 @@ export default {
       if (this.canModifySeed) {
         Modal.modifySeed.show();
       } else {
-        Modal.message.show(`You cannot modify your seed any more. Glyph RNG has already been used to generate
-          at least one Glyph on this run.`);
+        Modal.message.show(`Вы больше не можете менять зерно. Первый набор предлагаемых глифов уже генрирован.`);
       }
     }
   }
@@ -124,21 +123,21 @@ export default {
           :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
           onclick="GameStorage.export()"
         >
-          Export save
+          Экспортировать сохранение
         </OptionsButton>
         <OptionsButton
           class="o-primary-btn--option_font-x-large"
           :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
           onclick="Modal.import.show()"
         >
-          Import save
+          Импортировать сохранение
         </OptionsButton>
         <OptionsButton
           class="o-primary-btn--option_font-x-large"
           :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
           onclick="Modal.hardReset.show()"
         >
-          RESET THE GAME
+          СБРОСИТЬ ЭТО СОХРАНЕНИЕ
         </OptionsButton>
       </div>
       <div class="l-options-grid__row">
@@ -147,14 +146,14 @@ export default {
           :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
           onclick="GameStorage.save(false, true)"
         >
-          Save game
+          Сохранить игру
         </OptionsButton>
         <OptionsButton
           class="o-primary-btn--option_font-x-large"
           :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
           onclick="Modal.loadGame.show()"
         >
-          Choose save
+          Выбрать сохранение
         </OptionsButton>
         <AutosaveIntervalSlider
           :min="10"
@@ -167,7 +166,7 @@ export default {
           :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
           onclick="GameStorage.exportAsFile()"
         >
-          Export save as file
+          Экспортировать сохранение в виде файла
         </OptionsButton>
         <OptionsButton
           class="c-file-import-button"
@@ -179,21 +178,27 @@ export default {
             accept=".txt"
             @change="importAsFile"
           >
-          <label for="file">Import save from file</label>
+          <label for="file">Импортировать сохранение из файла</label>
         </OptionsButton>
         <PrimaryToggleButton
           v-model="showTimeSinceSave"
           class="o-primary-btn--option l-options-grid__button"
           :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
-          label="Display time since save:"
+          label="Отображать время с момента последнего сохранения:"
         />
       </div>
       <div class="l-options-grid__row">
         <OptionsButton
           :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
+          onclick="GameStorage.export(true)"
+        >
+          Экспортировать сохранение на оригинал игры
+        </OptionsButton>
+        <OptionsButton
+          :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
           onclick="Modal.backupWindows.show()"
         >
-          Open Automatic Save Backup Menu
+          Раскрыть меню автоматических резервных сохранений
         </OptionsButton>
         <SaveFileName />
       </div>
@@ -204,7 +209,7 @@ export default {
           :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
           onclick="Modal.enterSpeedrun.show()"
         >
-          Start Speedrun
+          Начать спидран
         </OptionsButton>
         <OptionsButton
           v-if="inSpeedrun"
@@ -214,7 +219,7 @@ export default {
           }"
           @click="openSeedModal()"
         >
-          Change Glyph RNG Seed
+          Изменить зерно для генерации глифов
         </OptionsButton>
       </div>
       <OpenModalHotkeysButton />

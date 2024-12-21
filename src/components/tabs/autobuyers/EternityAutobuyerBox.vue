@@ -51,21 +51,21 @@ export default {
     modeProps(mode) {
       switch (mode) {
         case AUTO_ETERNITY_MODE.AMOUNT: return {
-          title: "Eternity at X EP",
+          title: "Совершать вечность при X ОВ",
           input: {
             property: "amount",
             type: "decimal"
           },
         };
         case AUTO_ETERNITY_MODE.TIME: return {
-          title: "Seconds between Eternities",
+          title: "Вечность каждые X секунд",
           input: {
             property: "time",
             type: "float"
           },
         };
         case AUTO_ETERNITY_MODE.X_HIGHEST: return {
-          title: "X times highest EP",
+          title: "При ОВ, в X раз превышающих максимальные",
           input: {
             property: "xHighest",
             type: "decimal"
@@ -85,7 +85,7 @@ export default {
   <AutobuyerBox
     :autobuyer="autobuyer"
     :is-modal="isModal"
-    name="Automatic Eternity"
+    name="Автоматика вечности"
   >
     <template #intervalSlot>
       <ExpandingControlBox
@@ -94,7 +94,7 @@ export default {
       >
         <template #header>
           <div class="o-primary-btn c-autobuyer-box__mode-select c-autobuyer-box__mode-select-header">
-            ▼ Current Setting: ▼
+            ▼ Текущий режим: ▼
             <br>
             {{ modeName(mode) }}
           </div>
@@ -128,7 +128,7 @@ export default {
           type="checkbox"
           class="o-clickable"
         >
-        Dynamic amount
+        Динамическое значение
       </label>
     </template>
   </AutobuyerBox>

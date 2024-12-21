@@ -110,29 +110,29 @@ export default {
           class="o-primary-btn--option"
           onclick="Modal.confirmationOptions.show()"
         >
-          Open Confirmation Options
+          Раскрыть настройки подтверждений
         </OptionsButton>
         <PrimaryToggleButton
           v-model="hotkeys"
           class="o-primary-btn--option l-options-grid__button"
-          label="Hotkeys:"
-          on="Enabled"
-          off="Disabled"
+          label="Горячие клавиши:"
+          on="ВКЛ."
+          off="ВЫКЛ."
         />
         <PrimaryToggleButton
           v-model="automaticTabSwitching"
           class="o-primary-btn--option l-options-grid__button l-toggle-button"
-          label="Switch tabs on some events (e.g. entering challenges):"
+          label="Переключаться на другую вкладку при некоторых событиях (в частности, при запуске испытаний):"
         />
       </div>
       <div class="l-options-grid__row">
         <PrimaryToggleButton
           v-model="offlineProgress"
           class="o-primary-btn--option l-options-grid__button"
-          label="Offline progress:"
+          label="Офлайн-прогресс:"
         />
         <div class="o-primary-btn o-primary-btn--option o-primary-btn--slider l-options-grid__button">
-          <b>Offline ticks: {{ formatInt(offlineTicks) }}</b>
+          <b>Офлайн-тиков: {{ formatInt(offlineTicks) }}</b>
           <SliderComponent
             class="o-primary-btn--slider__slider"
             v-bind="sliderPropsOfflineTicks"
@@ -143,7 +143,7 @@ export default {
         <PrimaryToggleButton
           v-model="hibernationCatchup"
           class="o-primary-btn--option l-options-grid__button"
-          label="Run suspended time as offline:"
+          label="Симулировать прогресс за время остановки вкладки:"
         />
       </div>
       <div class="l-options-grid__row">
@@ -151,7 +151,7 @@ export default {
           v-if="automatorUnlocked"
           class="o-primary-btn o-primary-btn--option o-primary-btn--slider l-options-grid__button"
         >
-          <b>Automator Log Max: {{ formatInt(parseInt(automatorLogSize)) }}</b>
+          <b>Размер журнала Автоматизатора: {{ formatInt(parseInt(automatorLogSize)) }}</b>
           <SliderComponent
             class="o-primary-btn--slider__slider"
             v-bind="sliderPropsAutomatorLogSize"

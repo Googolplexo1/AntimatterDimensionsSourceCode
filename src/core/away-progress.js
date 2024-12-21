@@ -33,11 +33,7 @@ class AwayProgress {
   }
 
   get formatName() {
-    if (this.forcedName) return this.forcedName;
-    // Format the camelCase name to Title Case, with spaces added before the capital letters
-    return this.name
-      .replace(/[A-Z]/gu, match => ` ${match}`)
-      .replace(/^\w/u, c => c.toUpperCase());
+    return this.forcedName;
   }
 
   // Pass in player object. Navigate to there using each reference point. Return the place you arrived at.

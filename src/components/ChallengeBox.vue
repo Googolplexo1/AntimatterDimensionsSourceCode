@@ -45,11 +45,11 @@ export default {
       const challengeLocked = !(this.isCompleted || this.isRunning || this.inC1 || this.isUnlocked);
       // It's important to disable the cursor for Normal Challenge 1, challenges that are running, or
       // for challenges unable to be unlocked and not unlocked.
-      const challengeNotEnterable = !this.isUnlocked || this.isRunning || this.name === "C1";
+      const challengeNotEnterable = !this.isUnlocked || this.isRunning || this.name === "Исп1";
       return {
         "o-challenge-btn": true,
-        "o-challenge-btn--broken": this.overrideLabel.length > 0 && this.name !== "C10",
-        "o-challenge-btn--broken-alt": this.overrideLabel.length > 0 && this.name === "C10",
+        "o-challenge-btn--broken": this.overrideLabel.length > 0 && this.name !== "Исп10",
+        "o-challenge-btn--broken-alt": this.overrideLabel.length > 0 && this.name === "Исп10",
         "o-challenge-btn--running": this.isRunning || this.inC1,
         "o-challenge-btn--completed": this.isCompleted && this.isUnlocked,
         "o-challenge-btn--unlocked": !this.isCompleted && this.isUnlocked,
@@ -59,18 +59,18 @@ export default {
     },
     buttonText() {
       if (this.overrideLabel.length > 0) return this.overrideLabel;
-      if (this.isRunning || this.inC1) return "Running";
-      if (this.isCompleted) return "Completed";
-      if (this.isUnlocked) return "Start";
+      if (this.isRunning || this.inC1) return "Запущено";
+      if (this.isCompleted) return "Выполнено";
+      if (this.isUnlocked) return "Начать";
       const lockedText = this.lockedAt === undefined
         ? ""
         : ` (${formatInt(this.infinities)}/${formatInt(this.lockedAt)})`;
-      return `Locked${lockedText}`;
+      return `Недоступно${lockedText}`;
     }
   },
   methods: {
     update() {
-      this.inC1 = this.name === "C1" && !this.isCompleted && !Player.isInAntimatterChallenge;
+      this.inC1 = this.name === "Исп1" && !this.isCompleted && !Player.isInAntimatterChallenge;
       this.infinities.copyFrom(Currency.infinities);
     },
   }

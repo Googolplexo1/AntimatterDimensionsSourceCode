@@ -477,7 +477,7 @@ export default {
         case typeEnum.SAC_VALUE:
           return format(this.sacrificeReward, 2, 2);
         case typeEnum.FILTER_SCORE:
-          return format(AutoGlyphProcessor.filterValue(this.glyph), 1, 1);
+          return format(AutoGlyphProcessor.glyphScore(this.glyph), 1, 1);
         case typeEnum.CURRENT_REFINE:
           return `${format(this.refineReward, 2, 2)} ${this.symbol}`;
         case typeEnum.MAX_REFINE:
@@ -782,7 +782,7 @@ export default {
       v-if="isNew"
       class="l-corner-icon l-new-glyph"
     >
-      New!
+      Новый!
     </div>
     <div
       v-else-if="isUnequipped"

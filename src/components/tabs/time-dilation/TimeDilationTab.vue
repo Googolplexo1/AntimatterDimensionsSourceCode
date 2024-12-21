@@ -69,7 +69,7 @@ export default {
       return DilationUpgrade.ttGenerator;
     },
     baseGalaxyText() {
-      return `${formatInt(this.baseGalaxies)} Base`;
+      return `${formatInt(this.baseGalaxies)} по умолчанию`;
     },
     hasMaxText: () => PlayerProgress.realityUnlocked() && !Pelle.isDoomed,
     allRebuyables() {
@@ -116,8 +116,8 @@ export default {
       this.maxDT.copyFrom(player.records.thisReality.maxDT);
 
       const estimateText = getDilationTimeEstimate(this.maxDT);
-      if (this.dilatedTimeIncome.lte(0)) this.toMaxTooltip = "No DT gain";
-      else this.toMaxTooltip = estimateText.startsWith("<") ? "Currently Increasing" : estimateText;
+      if (this.dilatedTimeIncome.lte(0)) this.toMaxTooltip = "Вы не получаете ЗВ";
+      else this.toMaxTooltip = estimateText.startsWith("<") ? "Возрастает" : estimateText;
     }
   }
 };
@@ -126,9 +126,9 @@ export default {
 <template>
   <div class="l-dilation-tab">
     <span>
-      You have
-      <span class="c-dilation-tab__tachyons">{{ format(tachyons, 2, 1) }}</span>
-      {{ pluralize("Tachyon Particle", tachyons) }}.
+      У вас
+      <span class="c-dilation-tab__tachyons">{{ format(tachyons, 2, 0) }}</span>
+      {{ pluralize("Тахион", tachyons) }}.
     </span>
     <div
       @mouseover="isHovering = true"
@@ -137,28 +137,28 @@ export default {
       <DilationButton />
     </div>
     <span>
-      You have
+      У вас
       <span class="c-dilation-tab__dilated-time">{{ format(dilatedTime, 2, 1) }}</span>
-      Dilated Time.
-      <span class="c-dilation-tab__dilated-time-income">{{ dilatedTimeGainText }}/s</span>
+      Замедленного Времени.
+      <span class="c-dilation-tab__dilated-time-income">{{ dilatedTimeGainText }}/с</span>
     </span>
     <span>
-      Next
-      <span v-if="tachyonGalaxyGain > 1">{{ formatInt(tachyonGalaxyGain) }}</span>
-      {{ pluralize("Tachyon Galaxy", tachyonGalaxyGain) }} at
-      <span
-        class="c-dilation-tab__galaxy-threshold"
-        :ach-tooltip="galaxyTimeEstimate"
-      >{{ format(galaxyThreshold, 2, 1) }}</span>
-      Dilated Time, gained total of
+      У вас
       <span
         class="c-dilation-tab__galaxies"
         :ach-tooltip="baseGalaxyText"
       >{{ formatInt(totalGalaxies) }}</span>
-      {{ pluralize("Tachyon Galaxy", totalGalaxies) }}
+      {{ pluralize("Тахионная Галактика", totalGalaxies) }}.
+      <span v-if="tachyonGalaxyGain > 2">Следующие {{ quantifyInt("Тахионная Галактика", tachyonGalaxyGain) }}</span>
+      <span v-else>Следующая <span v-if="tachyonGalaxyGain === 2">пара Тахионных Галактик</span><span v-else>Тахионная Галактика</span></span> на
+      <span
+        class="c-dilation-tab__galaxy-threshold"
+        :ach-tooltip="galaxyTimeEstimate"
+      >{{ format(galaxyThreshold, 2, 1) }}</span>
+      Замедленного Времени.
     </span>
     <span v-if="hasMaxText">
-      Your maximum Dilated Time reached this Reality is
+      Рекордное количество Замедленного Времени в текущей реальности:
       <span
         v-tooltip="toMaxTooltip"
         class="max-accent"

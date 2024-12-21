@@ -23,7 +23,7 @@ export default {
       return this.newestFirst ? sorted.reverse() : sorted;
     },
     clearTooltip() {
-      return `Clear all entries (Max. ${this.maxEntries})`;
+      return `Очистить журнал`;
     },
     buttonClassObject() {
       return "c-automator-docs--button fas";
@@ -86,12 +86,12 @@ export default {
         case AUTOMATOR_EVENT_TIMESTAMP_MODE.DISABLED:
           return "";
         case AUTOMATOR_EVENT_TIMESTAMP_MODE.THIS_REALITY:
-          return `, ${TimeSpan.fromSeconds(entry.thisReality).toStringShort()} (real-time) in Reality`;
+          return `, ${TimeSpan.fromSeconds(entry.thisReality).toStringShort()} реального времени с начала реальности`;
         case AUTOMATOR_EVENT_TIMESTAMP_MODE.RELATIVE_NOW:
-          return `, ${TimeSpan.fromMilliseconds(this.currentTime - entry.timestamp).toStringShort()} ago`;
+          return `, ${TimeSpan.fromMilliseconds(this.currentTime - entry.timestamp).toStringShort()} назад`;
         case AUTOMATOR_EVENT_TIMESTAMP_MODE.RELATIVE_PREV:
-          if (entry.timegap === entry.timestamp) return `, first logged event`;
-          return `, ${TimeSpan.fromMilliseconds(entry.timegap).toStringShort()} after previous event`;
+          if (entry.timegap === entry.timestamp) return `, первое записанное событие`;
+          return `, через ${TimeSpan.fromMilliseconds(entry.timegap).toStringShort()} после прошлого события`;
         case AUTOMATOR_EVENT_TIMESTAMP_MODE.DATE_TIME:
           return `, ${Time.toDateTimeString(entry.timestamp)}`;
         default:
@@ -117,24 +117,24 @@ const AUTOMATOR_EVENT_TIMESTAMP_MODE = {
 <template>
   <div class="c-automator-docs-page">
     <div>
-      This panel keeps a running event log of all the commands which the automator has recently executed, with a little
-      extra info on some of the commands. It may be useful to help you find problems if you find your automator is
-      getting stuck in certain spots.
+      В этой панели вы можете просмотреть журнал команд, недавно выполненных Автоматизатором, с небольшим количеством
+      дополнительной информации о некоторых командах. Он может пригодиться вам для обнаружения проблем с программой, если Автоматизатор
+      застрянет в её определённой части.
       <br>
       <br>
-      While your settings are kept within your savefile, the actual events are not and will disappear on refresh.
+      Хотя настройки журнала находятся в вашем сохранении, самих событий там нет, и журнал очищается при закрытии игры.
       <br>
       <br>
-      <b>Entry Sorting:</b>
+      <b>Сортировка записей:</b>
       <button
-        v-tooltip="'Oldest results first'"
+        v-tooltip="'Сначала старые'"
         :style="sortStyle(!newestFirst)"
         :class="buttonClassObject"
         class="fa-angle-down"
         @click="newestFirst = false"
       />
       <button
-        v-tooltip="'Newest results first'"
+        v-tooltip="'Сначала новые'"
         :style="sortStyle(newestFirst)"
         :class="buttonClassObject"
         class="fa-angle-up"
@@ -147,14 +147,14 @@ const AUTOMATOR_EVENT_TIMESTAMP_MODE = {
         @click="clearLog"
       />
       <button
-        v-tooltip="'Clear event log every Reality'"
+        v-tooltip="'Очищать журнал на реальности'"
         :style="clearRealityStyle()"
         :class="buttonClassObject"
         class="fa-eraser"
         @click="clearOnReality = !clearOnReality"
       />
       <button
-        v-tooltip="'Clear event log on script restart'"
+        v-tooltip="'Очищать журнал при перезапуске программы'"
         :style="clearRestartStyle()"
         :class="buttonClassObject"
         class="fa-backspace"
@@ -162,37 +162,37 @@ const AUTOMATOR_EVENT_TIMESTAMP_MODE = {
       />
     </div>
     <div>
-      <b>Timestamp style:</b>
+      <b>Формат временных меток:</b>
       <button
-        v-tooltip="'No timestamps'"
+        v-tooltip="'Скрыть'"
         :style="timestampStyle('DISABLED')"
         :class="buttonClassObject"
         class="fa-ban"
         @click="setTimestampMode('DISABLED')"
       />
       <button
-        v-tooltip="'Current time this Reality'"
+        v-tooltip="'Реальное время в текущей реальности'"
         :style="timestampStyle('THIS_REALITY')"
         :class="buttonClassObject"
         class="fa-stopwatch"
         @click="setTimestampMode('THIS_REALITY')"
       />
       <button
-        v-tooltip="'Time elapsed since event'"
+        v-tooltip="'Время, прошедешее с момента события'"
         :style="timestampStyle('RELATIVE_NOW')"
         :class="buttonClassObject"
         class="fa-clock"
         @click="setTimestampMode('RELATIVE_NOW')"
       />
       <button
-        v-tooltip="'Time since last event'"
+        v-tooltip="'Время от прошлого события до данного'"
         :style="timestampStyle('RELATIVE_PREV')"
         :class="buttonClassObject"
         class="fa-arrow-left"
         @click="setTimestampMode('RELATIVE_PREV')"
       />
       <button
-        v-tooltip="'Date and time'"
+        v-tooltip="'Дата и время'"
         :style="timestampStyle('DATE_TIME')"
         :class="buttonClassObject"
         class="fa-user-clock"
@@ -203,9 +203,9 @@ const AUTOMATOR_EVENT_TIMESTAMP_MODE = {
       v-for="(event, id) in events"
       :key="id"
     >
-      <b>Line {{ event.line }}{{ timestamp(event) }}:</b>
+      <b>Строка {{ event.line }}{{ timestamp(event) }}:</b>
       <button
-        v-tooltip="'Jump to line'"
+        v-tooltip="'Перейти к этой строке'"
         :class="buttonClassObject"
         class="fa-arrow-circle-right"
         @click="scrollToLine(event.line)"

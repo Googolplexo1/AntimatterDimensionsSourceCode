@@ -83,8 +83,7 @@ export default {
 }
 
 .c-s12-desktop-icon {
-  overflow: hidden;
-  width: 7rem;
+  width: 10rem;
   height: var(--total-icon-height);
   position: relative;
   z-index: 0;

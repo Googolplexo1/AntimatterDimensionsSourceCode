@@ -34,7 +34,7 @@ export default {
       }
     },
     otherMode() {
-      return this.isCurrentlyBlocks ? "Text" : "Block";
+      return this.isCurrentlyBlocks ? "тесктовый" : "блочный";
     }
   },
   methods: {
@@ -56,38 +56,37 @@ export default {
     @confirm="toggleAutomatorMode"
   >
     <template #header>
-      Change Automator to {{ otherMode }} editor
+      Переключить редактирование программм для Автоматизатора на {{ otherMode }} режим
     </template>
     <div class="c-modal-message__text">
-      This will stop your current script if it is running!
+      Если у вас есть запущеннная программа, она будет остановлена!
       <div v-if="errorCount">
         <br>
-        Your script has some errors which may not get converted properly to {{ otherMode }} mode. Continuing on will
-        make the Automator attempt to parse these lines anyway, although some information may get lost or not be
-        converted properly.
+        Ваша программа содержит ошибки, которые могут быть неправильно переведены в {{ otherMode }} режим. Если вы решите продолжить,
+        Автоматизатор всё равно попытается интерпретировать их, хотя некоторая информация может быть утрачена или
+        неправильно перведена.
       </div>
       <!-- Note: this can only ever appear on text-to-block -->
       <b v-if="lostBlocks">
         <br>
-        Warning: Your script also currently has some lines which cannot interpreted as particular commands. These
-        lines will end up being deleted since there is no block they can be converted into.
-        If an error occurs at the start of a loop or IF, this may end up deleting large portions of your script!
+        Внимание: ваша программа содержит строки, которые не могут быть интерпретированы как команды. Они
+        будут удалены, так как не существует блока, в который их можно было бы преобразовать.
+        Если ошибка будет в начале цикла или условного оператора, вы можете потерять крупные части вашей программы!
         <span class="l-lost-text">
-          Changing editor modes right now will cause {{ quantifyInt("line", lostBlocks) }} of code to be irreversibly
-          lost!
+          Переключение режима редактирования прямо сейчас приведёт к необратимой потере {{ quantifyInt("строки", lostBlocks) }} кода!
         </span>
       </b>
       <br>
       <span class="l-lost-text">
-        Hiding this confirmation is not recommended, as it may cause parts of scripts to be immediately and irreversibly
-        lost if your script has errors when attempting to switch modes.
+        Скрывать эту информацию не рекомендуется, так как это может привести к тому, что части программы будут немедленно и безвозвратно
+        утрачены, если она содержала ошибки во время попытки переключения режима редактирования.
       </span>
       <br>
       <br>
-      Are you sure you want to change to the {{ otherMode }} editor?
+      Вы уверены, что хотите переключиться на {{ otherMode }} режим редактирования?
     </div>
     <template #confirm-text>
-      Change Modes
+      Подтвердить
     </template>
   </ModalWrapperChoice>
 </template>

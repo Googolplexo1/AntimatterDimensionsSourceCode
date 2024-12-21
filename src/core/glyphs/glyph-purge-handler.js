@@ -102,7 +102,12 @@ export const GlyphSacrificeHandler = {
     return this.glyphRawRefinementGain(glyph) / this.glyphRefinementEfficiency;
   },
   attemptRefineGlyph(glyph, force) {
-    if (glyph.type === "reality") return;
+    if (glyph.type === "reality") {
+      if (force) return;
+      if (AutoGlyphProcessor.sacMode === AUTO_GLYPH_REJECT.REFINE) SecretAchievement(33).unlock();
+      else this.sacrificeGlyph(glyph);
+      return;
+    }
     if (glyph.type === "cursed") {
       Glyphs.removeFromInventory(glyph);
       return;
@@ -110,7 +115,8 @@ export const GlyphSacrificeHandler = {
     const decoherence = AlchemyResource.decoherence.isUnlocked;
     if (!Ra.unlocks.unlockGlyphAlchemy.canBeApplied ||
         (this.glyphRefinementGain(glyph) === 0 && !decoherence) ||
-        (decoherence && AlchemyResources.base.every(x => x.data.amount >= Ra.alchemyResourceCap))) {
+        (decoherence && AlchemyResources.base.every(x => x.data.amount >= Ra.alchemyResourceCap)) ||
+        Pelle.isDoomed) {
       this.sacrificeGlyph(glyph, force);
       return;
     }

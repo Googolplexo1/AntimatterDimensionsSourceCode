@@ -25,18 +25,18 @@ export default {
   computed: {
     autobuyStr() {
       return this.maxAutobuy === 4
-        ? "ON (all DMD)"
-        : `ON (max. DMD ${this.maxAutobuy})`;
+        ? "ВКЛ. (все ИТМ)"
+        : `ВКЛ. (до ИТМ${this.maxAutobuy})`;
     },
     autoAscendStr() {
       return this.maxAutoAscend === 4
-        ? "ON (all DMD)"
-        : `ON (max. DMD ${this.maxAutoAscend})`;
+        ? "ВКЛ. (все ИТМ)"
+        : `ВКЛ. (до ИТМ${this.maxAutoAscend})`;
     },
     autoSingularityStr() {
       return this.autoSingularityFactor === 1
-        ? "At Cap"
-        : `Cap ${formatX(this.autoSingularityFactor, 2, 2)}`;
+        ? "При требуемом количестве ТЭ"
+        : `При количестве ТЭ в ${format(this.autoSingularityFactor, 2, 2)} раза больше требуемого`;
     },
   },
   watch: {
@@ -82,28 +82,28 @@ export default {
       v-if="hasDimension"
       v-model="dimension"
       class="c-laitela-automation-toggle"
-      label="Auto-buy DMD:"
+      label="Автоматика ИТМ:"
       :on="autobuyStr"
     />
     <PrimaryToggleButton
       v-if="hasAscension"
       v-model="ascension"
       class="c-laitela-automation-toggle"
-      label="Auto-Ascend:"
+      label="Автоматика вознесения:"
       :on="autoAscendStr"
     />
     <PrimaryToggleButton
       v-if="hasSingularity"
       v-model="singularity"
       class="c-laitela-automation-toggle"
-      label="Auto-Singularity:"
+      label="Автоматика сжатия:"
       :on="autoSingularityStr"
     />
     <PrimaryToggleButton
       v-if="hasAnnihilated"
       v-model="annihilation"
       class="c-laitela-automation-toggle"
-      label="Auto-Annihilation:"
+      label="Автоматика аннигиляции:"
     />
   </div>
 </template>

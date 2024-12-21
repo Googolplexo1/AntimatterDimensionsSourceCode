@@ -56,13 +56,14 @@ export default {
       :config="upgrade.config"
     />
     <div v-if="!isBought && hasEU2">
-      Auto: {{ format(upgrade.config.cost / 1e10) }} Eternity Points
+      Требование: {{ format(upgrade.config.cost / 1e10) }} Очков Вечности
     </div>
     <CostDisplay
       v-else-if="!isBought"
       br
       :config="upgrade.config"
-      name="Eternity Point"
+      name="Очко"
+      postName="Вечности"
     />
   </button>
 </template>

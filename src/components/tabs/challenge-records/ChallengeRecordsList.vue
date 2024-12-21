@@ -2,8 +2,8 @@
 export default {
   name: "ChallengeRecordsList",
   props: {
-    name: {
-      type: String,
+    names: {
+      type: Array,
       required: true
     },
     start: {
@@ -24,12 +24,7 @@ export default {
     }
   },
   methods: {
-    timeDisplayShort,
-    completionString(time) {
-      return time < Number.MAX_VALUE
-        ? `record time: ${timeDisplayShort(time)}`
-        : "has not yet been completed";
-    }
+    timeDisplayShort
   }
 };
 </script>
@@ -41,14 +36,15 @@ export default {
       v-for="(time, i) in times"
       :key="i"
     >
-      <span>{{ name }} {{ start + i }} {{ completionString(time) }}</span>
+      <span v-if="time < Number.MAX_VALUE">Рекорд {{ start + i }}-го {{ names[0] }}: {{ timeDisplayShort(time) }}</span>
+      <span v-else>Вы ещё не выполнили {{ start + i }}-е {{ names[1] }}</span>
     </div>
     <br>
     <div v-if="completedAllChallenges">
-      Sum of {{ name }} record times: {{ timeDisplayShort(timeSum) }}
+      Сумма рекордов {{ names[2] }}: {{ timeDisplayShort(timeSum) }}
     </div>
     <div v-else>
-      You have not completed all {{ name }}s yet.
+      У вас есть невыполненное {{ names[1] }}.
     </div>
   </div>
 </template>

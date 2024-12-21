@@ -17,7 +17,7 @@ export default {
     },
     realityInvalidate() {
       this.emitClose();
-      Modal.message.show("Glyph Undo can only undo with a Reality!",
+      Modal.message.show("Деактивация глифов может быть произведена только на реальности!",
         { closeEvent: GAME_EVENT.REALITY_RESET_AFTER });
     },
     handleYesClick() {
@@ -34,26 +34,26 @@ export default {
     @confirm="handleYesClick"
   >
     <template #header>
-      You are about to undo equipping a Glyph
+      Вы деактивируете глиф
     </template>
     <div
       class="c-modal-message__text c-text-wrapper"
     >
-      The last equipped Glyph will be removed.
-      Reality will be reset, but some things will be restored to what they were when it was equipped:
+      Последний активированный глиф будет убран из своего слота в инвентарь.
+      Реальность сбросится, но некоторые параметры будут выставлены на те значения, которые они имели при активации глифа:
       <br>
       <div class="c-text-wrapper">
-        <br>- Antimatter, Infinity Points, and Eternity Points
-        <br>- Dilation Upgrades, Tachyon Particles, and Dilated Time
-        <br>- Time Theorems and Eternity Challenge completions
-        <br>- Time Dimension and Reality unlocks
-        <br>- Time in current Infinity/Eternity/Reality
+        <br>- Количества антиматерии, Очков Бесконечности и Очков Вечности
+        <br>- Улучшения Замедления и количества Тахионов и Замедленного Времени
+        <br>- Количество Теорем Времени и выполнения Испытаний Вечности
+        <br>- Разблокировка Измерений Времени и Реальности
+        <br>- Время в текущей Бесконечности/Вечности/Реальности
         <span v-if="showStoredGameTime"><br>- Stored game time</span>
       </div>
       <br>
-      Note that if you invalidate special requirements for certain things (such as the achievement for completing
-      a Reality without producing antimatter), they will remain invalid even after undoing. In those cases, you will
-      need to complete the conditions in a single Reality without using undo.
+      Обратите внимание: если вы нарушили определённые требования (например, условие достижения совершить
+      реальность, не производя антиматерию), они сохранят статус нарушенных при деактивации глифа. Вам
+      придётся выполнить такие требования, не деактивируя глифы в текущей реальности.
     </div>
   </ModalWrapperChoice>
 </template>

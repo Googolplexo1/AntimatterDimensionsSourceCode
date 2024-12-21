@@ -69,8 +69,8 @@ export default {
       return ALCHEMY_BASIC_GLYPH_TYPES.filter(t => !GlyphTypes.locked.map(e => e.id).includes(t));
     },
     settingTooltipText() {
-      return `Mouseover each box for more details. ✔ and ✘ symbols denote an effect
-        selected/unselected for Specified Effect mode.`;
+      return `Наводите мышь на клетки для просмотра подробностей. Символы ✔ и ✘ означают
+        выбранный/не выбранный эффект в режиме "Заданные эффекты".`;
     }
   },
   mounted() {
@@ -88,6 +88,7 @@ export default {
       if (this.parsedSettings === null) return;
       this.emitClose();
       player.reality.glyphs.filter = this.parsedSettings;
+      EventHub.dispatch(GAME_EVENT.GLYPH_VISUAL_CHANGE);
     },
   },
 };
@@ -99,11 +100,11 @@ export default {
     :show-confirm="false"
   >
     <template #header>
-      Import Glyph filter settings
+      Импортировать настройки Фильтра Глифов
     </template>
-    Note: Importing Glyph filter options will overwrite settings
+    Примечание: настройки Фильтра будут перезаписаны
     <br>
-    in all filter modes, not just the currently-selected one.
+    во всех режимах, а не только в выбранном в данный момент.
     <input
       ref="input"
       v-model="input"
@@ -115,13 +116,13 @@ export default {
     <div class="c-modal-import__save-info">
       <div v-if="!input" />
       <div v-else-if="inputIsValid">
-        <b>Selection mode:</b> {{ selectStr }}
+        <b>Режим фильтрации:</b> {{ selectStr }}
         <br>
-        <b>Effect Count ("Number of Effects"):</b> {{ basicCountStr }}
+        <b>"Количество эффектов":</b> {{ basicCountStr }}
         <br>
-        <b>Rejected Glyphs:</b> {{ trashStr }}
+        <b>Отвергаемые глифы:</b> {{ trashStr }}
         <br>
-        <u><b>Type-specific Settings</b></u> <span :ach-tooltip="settingTooltipText">
+        <u><b>Настройки, разделённые по типам</b></u> <span :ach-tooltip="settingTooltipText">
           <i class="fas fa-question-circle" />
         </span>
         <br>
@@ -135,7 +136,7 @@ export default {
         />
       </div>
       <div v-else>
-        Not a valid Glyph filter string
+        Недопустимая кодировка настроек Фильтра Глифов
       </div>
     </div>
 
@@ -144,7 +145,7 @@ export default {
       class="o-primary-btn--width-medium c-modal-message__okay-btn c-modal__confirm-btn"
       @click="importFilter"
     >
-      Import
+      Импортировать
     </PrimaryButton>
   </ModalWrapperChoice>
 </template>

@@ -42,7 +42,7 @@ export default {
       type="studies"
       class="l-hint-text--time-study"
     >
-      {{ id }} Triad
+      {{ id }} Тройственное
     </HintText>
     <DescriptionDisplay :config="study.config" />
     <EffectDisplay

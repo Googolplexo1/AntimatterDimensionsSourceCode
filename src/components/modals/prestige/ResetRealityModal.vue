@@ -13,7 +13,7 @@ export default {
     };
   },
   computed: {
-    resetTerm() { return this.isDoomed ? "Armageddon" : "Reality"; },
+    resetTerm() { return this.isDoomed ? "армагеддон" : "реальность"; },
   },
   methods: {
     update() {
@@ -34,26 +34,25 @@ export default {
     @confirm="handleYesClick"
   >
     <template #header>
-      You are about to reset your {{ resetTerm }}
+      Вы сбрасываете {{ resetTerm }}
     </template>
     <div class="c-modal-message__text">
-      This will reset you to the start of your {{ resetTerm }},
-      giving you no rewards from your progress in your current {{ resetTerm }}.
+      Вы полностью сбросите {{ resetTerm }} без получения наград за прогресс.
       <br>
       <br>
-      Are you sure you want to do this?
+      Вы уверены, что хотите сбросить {{ resetTerm }}?
       <div
         v-if="canReality"
         class="c-has-rewards"
       >
         <br>
-        You can currently complete a Reality for all its normal rewards, which you will not receive if you
-        Reset here. To get rewards, use the "Make a new Reality" button.
+        В данный момент вы можете совершить реальность, получая все награды за прогресс в ней, однако вы их не получите, если вы сбросите
+        реальность. Чтобы получить их, нажмите на кнопку "Создать новую реальность".
       </div>
       <br>
     </div>
     <template #confirm-text>
-      Reset
+      Сбросить
     </template>
   </ModalWrapperChoice>
 </template>

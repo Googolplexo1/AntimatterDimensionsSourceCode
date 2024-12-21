@@ -2,129 +2,129 @@ export const raQuotes = {
   unlock: {
     id: 0,
     lines: [
-      "A... visitor?",
-      "I am here! I am the one you are looking for... I think...",
-      "What even was I again?",
-      "Oh right, the Celestial of Memories.",
+      "Посетитель?",
+      "Я здесь! Я тот, кого ты ищешь... наверное...",
+      "Кто же я такой?",
+      "Ах да, Небожитель Памяти.",
     ]
   },
   realityEnter: {
     id: 1,
     lines: [
-      "I have not seen the others in so long...",
-      "Can you help me remember them?",
-      "I could give you powers in exchange.",
+      "Я так долго не видел других...",
+      "Помоги мне вспомнить их.",
+      "Взамен я дам тебе силу.",
     ]
   },
   teresaStart: {
     id: 2,
     requirement: () => Ra.pets.teresa.level >= 2,
     lines: [
-      "Te... re... sa...",
-      "I think I remember.",
+      "Те... ре... за...",
+      "Кажется, я вспомнил.",
     ]
   },
   teresaLate: {
     id: 3,
     requirement: () => Ra.pets.teresa.level >= 15,
     lines: [
-      "Teresa dealt with machines, I believe.",
-      "I remember visiting Teresa’s shop a few times.",
-      "Wait, someone else had a shop too, right?",
+      "Кажется, Тереза имела дело с Машинами.",
+      "Помню, как я иногда заходил в магазин Терезы.",
+      "Погоди, у кого-то ещё был магазин, да?",
     ]
   },
   effarigStart: {
     id: 4,
     requirement: () => Ra.pets.effarig.level >= 2,
     lines: [
-      "Eff... a... rig",
-      "I remember Effarig being friendly.",
+      "Эфф... а... риг",
+      "Помню, Эффариг был дружелюбным.",
     ]
   },
   effarigLate: {
     id: 5,
     requirement: () => Ra.pets.effarig.level >= 15,
     lines: [
-      "Effarig was very particular?",
-      "And I also remember a frightening Reality...",
-      "It was about... suffering?",
+      "Эффариг был очень особенным?",
+      "И ещё я вспомнил ужасную Реальность...",
+      "Её суть была в... страданиях?",
     ]
   },
   enslavedStart: {
     id: 6,
     requirement: () => Ra.pets.enslaved.level >= 2,
     lines: [
-      "I cannot remember this one completely...",
+      "Этих я не могу вспомнить окончательно...",
     ]
   },
   enslavedLate: {
     id: 7,
     requirement: () => Ra.pets.enslaved.level >= 15,
     lines: [
-      "I am starting to remember...",
-      "Why I am here...",
-      "Why I am alone...",
-      "Help me.",
+      "Я начинаю вспомниать...",
+      "Почему я здесь...",
+      "Почему я одинок...",
+      "Помоги.",
     ]
   },
   vStart: {
     id: 8,
     requirement: () => Ra.pets.v.level >= 2,
     lines: [
-      "Had I met this one?",
-      "So lonely, yet willingly so...",
+      "Разве я встречал его?",
+      "Такой одинокий, но добровольно...",
     ]
   },
   vLate: {
     id: 9,
     requirement: () => Ra.pets.v.level >= 15,
     lines: [
-      "I think I met V once...",
-      "I can remember the achievements.",
+      "Кажется, я видел Ви один раз...",
+      "Я помню достижения.",
     ]
   },
   remembrance: {
     id: 10,
     requirement: () => Ra.remembrance.isUnlocked,
     lines: [
-      "I remembered something!",
-      "Watch this!",
-      "Remembrance!",
-      "I can focus even harder on remembering them now!",
+      "Я кое-что вспомнил!",
+      "Смотри!",
+      "Напоминание!",
+      "Теперь я могу сосредоточиться ещё сильнее на том, чтобы вспоминать их!",
     ]
   },
   midMemories: {
     id: 11,
     requirement: () => Ra.totalPetLevel >= 50,
     lines: [
-      "Realities are my homes, yet I cannot make my own Reality.",
-      "I can only copy the ones of my friends.",
-      "But... why am I hearing voices?",
-      "Are they asking for help?",
+      "Реальности - моя обитель, но я не могу создать свою собственную Реальность.",
+      "Я могу лишь копировать Реальности моих друзей.",
+      "Но... почему я слышу голоса?",
+      "Они зовут на помощь?",
     ]
   },
   lateMemories: {
     id: 12,
     requirement: () => Ra.totalPetLevel >= 80,
     lines: [
-      "I think they are telling me to stop.",
-      "You... whatever you are?",
-      "What is happening?",
-      "Am I doing something wrong?",
+      "Кажется, мне говорят, чтобы я перестал.",
+      "Ты... кем бы ты ни был(а),",
+      "Что происходит?",
+      "Разве я делаю что-то плохое?",
     ]
   },
   maxLevels: {
     id: 13,
     requirement: () => Ra.totalPetLevel === Ra.maxTotalPetLevel,
     lines: [
-      "Finally, I remember everything.",
-      "This darkness that banished me.",
-      "Lai'tela...",
-      "They were right to banish me.",
-      "My powers...",
-      "They steal, they corrupt.",
-      "Please leave.",
-      "I do not want to hurt you too.",
+      "Наконец-то я вспомнил всё.",
+      "Эта Тьма, изгнавшая меня,",
+      "Лайтела...",
+      "Она была права.",
+      "Моя сила...",
+      "Крадёт и развращает.",
+      "Пожалуйста, уходи.",
+      "Я не хочу, чтобы и ты пострадал(а).",
     ]
   },
 };

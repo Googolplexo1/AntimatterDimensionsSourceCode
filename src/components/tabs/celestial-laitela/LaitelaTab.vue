@@ -70,7 +70,7 @@ export default {
       Laitela.maxAllDMDimensions(4);
     },
     showLaitelaHowTo() {
-      ui.view.h2pForcedTab = GameDatabase.h2p.tabs.filter(tab => tab.name === "Lai'tela")[0];
+      ui.view.h2pForcedTab = GameDatabase.h2p.tabs.filter(tab => tab.name === "Лайтела")[0];
       Modal.h2p.show();
     },
   }
@@ -85,35 +85,35 @@ export default {
         class="o-primary-btn--subtab-option"
         @click="showLaitelaHowTo()"
       >
-        Click for Lai'tela info
+        Нажмите для просмотра информации о Лайтеле
       </PrimaryButton>
       <PrimaryButton
         class="o-primary-btn--subtab-option"
         @click="maxAll"
       >
-        Max all Dark Matter Dimensions
+        Купить все Измерения Тёмной Материи
       </PrimaryButton>
     </div>
     <div class="o-laitela-matter-amount">
-      You have
+      У вас
       <span :style="styleObject">{{ format(darkMatter, 2) }}</span>
-      Dark Matter<span v-if="isDMCapped"> (capped)</span>.
-      <span v-if="!isDMCapped">(Average: {{ format(darkMatterGain, 2, 2) }}/s)</span>
+      Тёмной Материи<span v-if="isDMCapped"> (ограничено)</span>.
+      <span v-if="!isDMCapped">(Средний прирост: {{ format(darkMatterGain, 2, 2) }}/с)</span>
     </div>
     <div class="o-laitela-matter-amount">
-      Your maximum Dark Matter ever is
+      Количество вашей Тёмной Материи достигало максимума в
       <span :style="styleObject">{{ format(maxDarkMatter, 2) }}</span><span v-if="!isDoomed">,
-        giving {{ formatPercents(matterExtraPurchasePercentage, 2) }} more purchases from Continuum</span>.
+        что увеличивает ваши значения континуума на {{ formatPercents(matterExtraPurchasePercentage, 2) }}</span>.
     </div>
     <div class="o-laitela-matter-amount">
-      Dark Matter Dimensions are unaffected by storing real time.
+      На Измерения Тёмной Материи не влияет хранение реального времени.
     </div>
     <h2
       v-if="!singularitiesUnlocked"
       class="c-laitela-singularity-container"
     >
-      Unlock Singularities in {{ singularityWaitTime }}.
-      ({{ format(darkEnergy, 2, 2) }}/{{ format(singularityCap, 2) }} Dark Energy)
+      Сингулярность разблокируется через {{ singularityWaitTime }}.
+      ({{ format(darkEnergy, 2, 2) }}/{{ format(singularityCap, 2) }} Тёмной Энергии)
     </h2>
     <SingularityPane v-if="singularitiesUnlocked" />
     <LaitelaAutobuyerPane v-if="autobuyersUnlocked" />

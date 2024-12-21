@@ -53,7 +53,7 @@ export default {
     />
     <div class="c-ra-pet-upgrade__tooltip">
       <div class="c-ra-pet-upgrade__tooltip__name">
-        {{ petName }} Level {{ formatInt(level) }}
+        {{ formatInt(level) }}-й уровень {{ petName }}
       </div>
       <div
         class="c-ra-pet-upgrade__tooltip__description"

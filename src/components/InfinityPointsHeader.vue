@@ -21,9 +21,9 @@ export default {
     v-show="isVisible"
     class="c-infinity-tab__header"
   >
-    You have
+    У вас
     <span class="c-infinity-tab__infinity-points">{{ format(infinityPoints, 2) }}</span>
-    {{ pluralize("Infinity Point", infinityPoints) }}.
+    {{ pluralize("Очко", infinityPoints) }} Бесконечности.
   </div>
 </template>
 

@@ -1,4 +1,4 @@
-import * as ADNotations from "@antimatter-dimensions/notations";
+import { Settings } from "../../ad-notations.esm"
 
 import { DEV } from "@/env";
 import { devMigrations } from "./dev-migrations";
@@ -18,43 +18,43 @@ export const AutoBackupSlots = [
   {
     id: 1,
     type: BACKUP_SLOT_TYPE.ONLINE,
-    intervalStr: () => `${formatInt(1)} minute`,
+    intervalStr: () => `минуту`,
     interval: 60,
   },
   {
     id: 2,
     type: BACKUP_SLOT_TYPE.ONLINE,
-    intervalStr: () => `${formatInt(5)} minutes`,
+    intervalStr: () => `${formatInt(5)} минут`,
     interval: 5 * 60,
   },
   {
     id: 3,
     type: BACKUP_SLOT_TYPE.ONLINE,
-    intervalStr: () => `${formatInt(20)} minutes`,
+    intervalStr: () => `${formatInt(20)} минут`,
     interval: 20 * 60,
   },
   {
     id: 4,
     type: BACKUP_SLOT_TYPE.ONLINE,
-    intervalStr: () => `${formatInt(1)} hour`,
+    intervalStr: () => `час`,
     interval: 3600,
   },
   {
     id: 5,
     type: BACKUP_SLOT_TYPE.OFFLINE,
-    intervalStr: () => `${formatInt(10)} minutes`,
+    intervalStr: () => `${formatInt(10)} минут`,
     interval: 10 * 60,
   },
   {
     id: 6,
     type: BACKUP_SLOT_TYPE.OFFLINE,
-    intervalStr: () => `${formatInt(1)} hour`,
+    intervalStr: () => `час`,
     interval: 3600,
   },
   {
     id: 7,
     type: BACKUP_SLOT_TYPE.OFFLINE,
-    intervalStr: () => `${formatInt(5)} hours`,
+    intervalStr: () => `${formatInt(5)} часов`,
     interval: 5 * 3600,
   },
   {
@@ -147,7 +147,7 @@ export const GameStorage = {
     Tabs.all.find(t => t.id === player.options.lastOpenTab).show(false);
     Modal.hideAll();
     Cloud.resetTempState();
-    GameUI.notify.info("Game loaded");
+    GameUI.notify.info("Сохранение загружено");
     Achievements.updateSteamStatus();
   },
 
@@ -157,7 +157,7 @@ export const GameStorage = {
     }
     const newPlayer = GameSaveSerializer.deserialize(saveData);
     if (this.checkPlayerObject(newPlayer) !== "") {
-      Modal.message.show("Could not load the save (format unrecognized or invalid).");
+      Modal.message.show("Не удалось импортировать сохранение.");
       return;
     }
     this.oldBackupTimer = player.backupTimer;
@@ -176,7 +176,7 @@ export const GameStorage = {
     // You can doom your reality even if you haven't unlocked infinity yet if you import while the Pelle tab
     // is showing
     Tab.options.subtabs[0].show();
-    GameUI.notify.info("Game imported");
+    GameUI.notify.info("Сохранение импортировано");
     Achievements.updateSteamStatus();
   },
 
@@ -202,10 +202,10 @@ export const GameStorage = {
   checkPlayerObject(save) {
     // Sometimes save is the output of GameSaveSerializer.deserialize, and if that function fails then it will result
     // in the input parameter here being undefined
-    if (save === undefined || save === null) return "Save decoding failed (invalid format)";
+    if (save === undefined || save === null) return "Сохранение не удалось раскодировать";
     // Right now all we do is check for the existence of an antimatter prop, but if we wanted to do further save
     // verification then here's where we'd do it
-    if (save.money === undefined && save.antimatter === undefined) return "Save does not have antimatter property";
+    if (save.money === undefined && save.antimatter === undefined) return "Сохранение не содержит данных о количестве антиматерии";
 
     // Recursively check for any NaN props and add any we find to an array
     const invalidProps = [];
@@ -237,7 +237,7 @@ export const GameStorage = {
     checkNaN(save, "player");
 
     if (invalidProps.length === 0) return "";
-    return `${quantify("NaN player property", invalidProps.length)} found:
+    return `Найдены данные со значением NaN:
       ${invalidProps.join(", ")}`;
   },
 
@@ -260,7 +260,7 @@ export const GameStorage = {
       saves: this.saves
     };
     localStorage.setItem(this.localStorageKey, GameSaveSerializer.serialize(root));
-    if (!silent) GameUI.notify.info("Game saved");
+    if (!silent) GameUI.notify.info("Игра сохранена");
   },
 
   // Saves a backup, updates save timers (this is called before nextBackup is updated), and then saves the timers too.
@@ -345,9 +345,9 @@ export const GameStorage = {
     this.saveToBackup(targetSlot, player.backupTimer);
   },
 
-  export() {
-    copyToClipboard(this.exportModifiedSave());
-    GameUI.notify.info("Exported current savefile to your clipboard");
+  export(toVanilla = false) {
+    copyToClipboard(this.exportModifiedSave(toVanilla));
+    GameUI.notify.info("Сохранение экспортировано в буфер обмена");
   },
 
   get exportDateString() {
@@ -362,12 +362,12 @@ export const GameStorage = {
     if (!this.canSave()) return;
     player.options.exportedFileCount++;
     this.save(true);
-    const saveFileName = player.options.saveFileName ? ` - ${player.options.saveFileName},` : "";
+    const saveFileName = player.options.saveFileName ? ` - "${player.options.saveFileName}",` : "";
     const save = this.exportModifiedSave();
     download(
-      `AD Save, Slot ${GameStorage.currentSlot + 1}${saveFileName} #${player.options.exportedFileCount} \
+      `ИА, слот №${GameStorage.currentSlot + 1}${saveFileName}, сохранение №${player.options.exportedFileCount} \
 (${this.exportDateString}).txt`, save);
-    GameUI.notify.info("Successfully downloaded current save file to your computer");
+    GameUI.notify.info("Сохранение экспортировано в виде файла");
   },
 
   exportBackupsAsFile() {
@@ -379,30 +379,22 @@ export const GameStorage = {
     }
     backupData.time = GameSaveSerializer.deserialize(localStorage.getItem(this.backupTimeKey(this.currentSlot)));
     download(
-      `AD Save Backups, Slot ${GameStorage.currentSlot + 1} #${player.options.exportedFileCount} \
+      `ИА, слот №${GameStorage.currentSlot + 1}, резервное сохранение №${player.options.exportedFileCount} \
 (${this.exportDateString}).txt`, GameSaveSerializer.serialize(backupData));
-    GameUI.notify.info("Successfully downloaded save file backups to your computer");
-  },
-
-  importBackupsFromFile(importText) {
-    const backupData = GameSaveSerializer.deserialize(importText);
-    localStorage.setItem(this.backupTimeKey(this.currentSlot), GameSaveSerializer.serialize(backupData.time));
-    for (const backupKey of Object.keys(backupData)) {
-      if (backupKey === "time") continue;
-      const id = Number(backupKey);
-      const storageKey = this.backupDataKey(this.currentSlot, id);
-      localStorage.setItem(storageKey, GameSaveSerializer.serialize(backupData[backupKey]));
-      this.backupTimeData[id] = {
-        backupTimer: backupData.time[id].backupTimer,
-        date: backupData.time[id].date,
-      };
-    }
-    this.resetBackupTimer();
-    GameUI.notify.info("Successfully imported save file backups from file");
+    GameUI.notify.info("Резервное сохранение экспортировано в виде файла");
   },
 
   // There are a couple props which may need to export with different values, so we handle that here
-  exportModifiedSave() {
+  exportModifiedSave(toVanilla = false) {
+    if (toVanilla) {
+      player.secretUnlocks.themes = new Set();
+      player.celestials.ra.petWithRemembrance = "";
+      player.options.multiplierTab.replacePowers = false;
+      player.options.notation = "Mixed scientific";
+      player.options.themeModern = "Normal";
+      player.options.themeClassic = "Normal";
+    }
+
     // Speedrun segmented is exported as true
     const segmented = player.speedrun.isSegmented;
     Speedrun.setSegmented(true);
@@ -483,8 +475,8 @@ export const GameStorage = {
     Glyphs.unseen = [];
     Glyphs.unequipped = [];
     Notations.find(player.options.notation).setAsCurrent(true);
-    ADNotations.Settings.exponentCommas.min = 10 ** player.options.notationDigits.comma;
-    ADNotations.Settings.exponentCommas.max = 10 ** player.options.notationDigits.notation;
+    Settings.exponentCommas.min = 10 ** player.options.notationDigits.comma;
+    Settings.exponentCommas.max = 10 ** player.options.notationDigits.notation;
 
     EventHub.dispatch(GAME_EVENT.GAME_LOAD);
     AutomatorBackend.initializeFromSave();

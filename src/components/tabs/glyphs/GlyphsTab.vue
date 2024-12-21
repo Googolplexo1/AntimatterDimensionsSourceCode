@@ -71,7 +71,7 @@ export default {
       if (!Enslaved.isRunning) return;
       const haveBoost = Glyphs.activeWithoutCompanion.find(e => e.level < Enslaved.glyphLevelMin) !== undefined;
       if (haveBoost) {
-        this.enslavedHint = "done... what little... I can... with Glyphs...";
+        this.enslavedHint = "сделали... всё... что можем... с глифами...";
       }
     },
     toggleAutoRestartCelestial() {
@@ -124,7 +124,7 @@ export default {
           />
           <ResetRealityButton :class="buttonGroupClass()" />
         </div>
-
+        <br>
         <div
           v-if="isInCelestialReality"
           class="l-celestial-auto-restart-checkbox"
@@ -141,7 +141,7 @@ export default {
             for="autoRestart"
             class="o-clickable"
           >
-            Repeat this Celestial's Reality
+            Перезапустить Реальность этого Небожителя
           </label>
         </div>
 
@@ -151,16 +151,16 @@ export default {
 
         <div v-if="showInstability">
           <br>
-          Glyphs are becoming unstable.
+          Глифы теряют устойчивость.
           <br>
-          Glyph levels higher than {{ formatInt(instabilityThreshold) }} are harder to reach.
+          С уровня {{ formatInt(instabilityThreshold) }} действует мягкое ограничение.
           <br>
-          This effect is even stronger above level {{ formatInt(hyperInstabilityThreshold) }}.
+          Оно становится жёстче на уровне {{ formatInt(hyperInstabilityThreshold) }}.
         </div>
         <SingleGlyphCustomzationPanel />
         <ExpandingControlBox
           width-source="content"
-          label="Glyph Level Factors"
+          label="Факторы уровня получаемого глифа"
           container-class="c-glyph-level-factors-dropdown-header"
           class="l-glyph-level-factors"
         >
@@ -199,13 +199,13 @@ export default {
                 :class="glyphInfoClass(!sacrificeDisplayed)"
                 @click="setInfoState(false)"
               >
-                Current Glyph effects
+                Действующие эффекты глифов
               </button>
               <button
                 :class="glyphInfoClass(sacrificeDisplayed)"
                 @click="setInfoState(true)"
               >
-                Glyph Sacrifice totals
+                Пожертвование Глифов
               </button>
             </div>
             <SacrificedGlyphs v-if="sacrificeUnlocked && sacrificeDisplayed" />

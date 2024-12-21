@@ -20,12 +20,12 @@ export default {
       };
     },
     tooltip() {
-      if (this.isEnslaved) return "...eons stacked on eons stacked on eons stacked on eons stacked on ...";
+      if (this.isEnslaved) return "...вечность за вечностью, эпоха за эпохой...";
       return undefined;
     },
     text() {
-      if (this.isEnslaved) return "FEEL ETERNITY";
-      return this.isBroken ? "INFINITY IS BROKEN" : "BREAK INFINITY";
+      if (this.isEnslaved) return "ПОЧУВСТВОВАТЬ ВЕЧНОСТЬ";
+      return this.isBroken ? "БЕСКОНЕЧНОСТЬ ПРЕОДОЛЕНА" : "ПРЕОДОЛЕТЬ БЕСКОНЕЧНОСТЬ";
     }
   },
   methods: {

@@ -60,10 +60,13 @@ export default {
       return this.pet.unlocks;
     },
     chunkTooltip() {
-      return `Based on ${this.pet.chunkGain}`;
+      return `Зависит от ${this.pet.chunkGain}`;
     },
     memoryGainTooltip() {
-      return `Based on ${this.pet.memoryGain}`;
+      return `Зависит от ${this.pet.memoryGain}`;
+    },
+    v() {
+      return this.pet.name === "Ви";
     },
   },
   methods: {
@@ -138,8 +141,9 @@ export default {
     >
       <div class="c-ra-pet-title">
         <!-- The full name doesn't fit here, so we shorten it as a special case -->
-        {{ pet.id === "enslaved" ? "Nameless" : name }} Level {{ formatInt(level) }}/{{ formatInt(levelCap) }}
+        Уровень {{ name }} {{ formatInt(level) }}/{{ formatInt(levelCap) }}
       </div>
+      <br v-if="v">
       <div
         v-if="showScalingUpgrade"
         :key="level"
@@ -149,7 +153,7 @@ export default {
       <br v-else>
       <div v-if="!isCapped">
         <div>
-          {{ name }} {{ pet.id === "enslaved" ? "have" : "has" }} {{ quantify("Memory", memories, 2) }}
+          У вас {{ format(memories, 2) }} Памяти {{ name }}.
         </div>
       </div>
       <div
@@ -168,18 +172,18 @@ export default {
                 class="c-ra-pet-upgrade__tooltip"
               >
                 <div class="c-ra-pet-upgrade__tooltip__name">
-                  {{ name }}'s Recollection
+                  Воспоминание {{ name }}
                 </div>
                 <div class="c-ra-pet-upgrade__tooltip__description">
-                  Gain {{ formatPercents(0.3) }} more Memories
+                  Получать на {{ formatPercents(0.3) }} больше Памяти
                 </div>
                 <div class="c-ra-pet-upgrade__tooltip__footer">
-                  Cost: {{ quantify("Memory", memoryUpgradeCost, 2, 2) }}
+                  Цена: {{ format(memoryUpgradeCost, 2, 2) }} Памяти
                   <span v-if="memories <= memoryUpgradeCost">
                     {{ nextMemoryUpgradeEstimate }}
                   </span>
                   <br>
-                  Currently: {{ formatX(currentMemoryMult, 2, 2) }}
+                  Сейчас: {{ formatX(currentMemoryMult, 2, 2) }}
                 </div>
               </div>
               <div
@@ -187,10 +191,10 @@ export default {
                 class="c-ra-pet-upgrade__tooltip"
               >
                 <div class="c-ra-pet-upgrade__tooltip__name">
-                  {{ name }}'s Recollection
+                  Воспоминание {{ name }}
                 </div>
                 <div class="c-ra-pet-upgrade__tooltip__description">
-                  Capped: {{ formatX(currentMemoryMult, 2, 2) }}
+                  Ограничено: {{ formatX(currentMemoryMult, 2, 2) }}
                 </div>
               </div>
             </div>
@@ -212,18 +216,18 @@ export default {
                 class="c-ra-pet-upgrade__tooltip"
               >
                 <div class="c-ra-pet-upgrade__tooltip__name">
-                  {{ name }}'s Fragmentation
+                  Разделение {{ name }}
                 </div>
                 <div class="c-ra-pet-upgrade__tooltip__description">
-                  Gain {{ formatPercents(0.5) }} more Memory Chunks
+                  Получать на {{ formatPercents(0.5) }} больше Кусков Памяти
                 </div>
                 <div class="c-ra-pet-upgrade__tooltip__footer">
-                  Cost: {{ quantify("Memory", chunkUpgradeCost, 2, 2) }}
+                  Цена: {{ format(chunkUpgradeCost, 2, 2) }} Памяти
                   <span v-if="memories <= chunkUpgradeCost">
                     {{ nextMemoryChunkUpgradeEstimate }}
                   </span>
                   <br>
-                  Currently: {{ formatX(currentChunkMult, 2, 2) }}
+                  Сейчас: {{ formatX(currentChunkMult, 2, 2) }}
                 </div>
               </div>
               <div
@@ -231,10 +235,10 @@ export default {
                 class="c-ra-pet-upgrade__tooltip"
               >
                 <div class="c-ra-pet-upgrade__tooltip__name">
-                  {{ name }}'s Fragmentation
+                  Разделение {{ name }}
                 </div>
                 <div class="c-ra-pet-upgrade__tooltip__description">
-                  Capped: {{ formatX(currentChunkMult, 2, 2) }}
+                  Ограничено: {{ formatX(currentChunkMult, 2, 2) }}
                 </div>
               </div>
             </div>
@@ -253,17 +257,17 @@ export default {
       </div>
       <div v-if="!isCapped">
         <div>
-          {{ quantify("Memory Chunk", memoryChunks, 2, 2) }}, {{ quantify("Memory", memoriesPerSecond, 2, 2) }}/sec
+          {{ format(memoryChunks, 2, 2) }} Куска Памяти, +{{ format(memoriesPerSecond, 2, 2) }} Памяти в секунду
         </div>
         <div>
-          Gaining {{ quantify("Memory Chunk", memoryChunksPerSecond, 2, 2) }}/sec
+          Вы получаете {{ format(memoryChunksPerSecond, 2, 2) }} Куска Памяти в секунду
           <span :ach-tooltip="chunkTooltip">
             <i class="fas fa-question-circle" />
           </span>
         </div>
       </div>
       <div v-if="memoryMultiplier > 1 && !isRaCapped">
-        Multiplying all Memory production by {{ format(memoryMultiplier, 2, 3) }}
+        Получение всей Памяти увеличено в {{ format(memoryMultiplier, 2, 3) }} раз
         <span :ach-tooltip="memoryGainTooltip">
           <i class="fas fa-question-circle" />
         </span>
@@ -277,7 +281,7 @@ export default {
       <div class="l-ra-pet-milestones">
         <!-- This choice of key forces a UI update every level up -->
         <RaUpgradeIcon
-          v-for="(unlock, i) in unlocks"
+          v-for="(unlock, i) in unlocks.filter(x => x.reward !== '')"
           :key="25 * level + i"
           :unlock="unlock"
         />

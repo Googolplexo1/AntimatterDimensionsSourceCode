@@ -420,19 +420,20 @@ class AntimatterDimensionState extends DimensionState {
    */
   get rateOfChange() {
     const tier = this.tier;
+
+    let toGain;
     if (tier === 8 ||
       (tier > 3 && EternityChallenge(3).isRunning) ||
       (tier > 6 && NormalChallenge(12).isRunning)) {
-      return DC.D0;
-    }
-
-    let toGain;
-    if (tier === 7 && EternityChallenge(7).isRunning) {
-      toGain = InfinityDimension(1).productionPerSecond.times(10);
+      toGain = DC.D0;
     } else if (NormalChallenge(12).isRunning) {
       toGain = AntimatterDimension(tier + 2).productionPerSecond;
     } else {
       toGain = AntimatterDimension(tier + 1).productionPerSecond;
+    }
+
+    if (tier === 7 && EternityChallenge(7).isRunning) {
+      toGain = toGain.plus(InfinityDimension(1).productionPerSecond.times(10));
     }
     return toGain.times(10).dividedBy(this.amount.max(1)).times(getGameSpeedupForDisplay());
   }

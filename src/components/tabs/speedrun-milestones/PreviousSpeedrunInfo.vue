@@ -17,13 +17,13 @@ export default {
     segmentAttr() {
       return {
         icon: `fas o-icon ${this.prevRunInfo.isSegmented ? "fa-stopwatch-20" : "fa-stopwatch"}`,
-        text: this.prevRunInfo.isSegmented ? "Segmented" : "Single Segment",
+        text: this.prevRunInfo.isSegmented ? "Сегментированный" : "Непрерывный",
       };
     },
     stdAttr() {
       return {
         icon: `fas fa-coins o-icon ${this.prevRunInfo.usedSTD ? "l-icon-on" : "l-icon-off"}`,
-        text: this.prevRunInfo.usedSTD ? "Used STD Upgrades" : "No STDs used",
+        text: this.prevRunInfo.usedSTD ? "Использованы внутриигровые покупки" : "Без внутриигровых покупок",
       };
     },
     offlineAttr() {
@@ -35,7 +35,7 @@ export default {
       else symbol = "fa-power-off";
       return {
         icon: `fas o-icon ${symbol}`,
-        text: `${offlineFrac === 0 ? "No" : formatPercents(offlineFrac, 1)} Offline Time`,
+        text: offlineFrac === 0 ? "Офлайн-прогресс не использован" : `${formatPercents(offlineFrac, 1)} времени проведено офлайн`,
       };
     },
     seedAttr() {
@@ -80,7 +80,7 @@ export default {
     v-if="prevRunInfo"
     class="c-icon-container"
   >
-    <span>Run {{ index }}</span>
+    <span>Забег №{{ index }}</span>
     <span>{{ prevRunInfo.name }}</span>
     <span
       v-for="attr in iconAttrs"
@@ -88,14 +88,14 @@ export default {
       v-tooltip="attr.text"
       :class="attr.icon"
     />
-    <span>Started: {{ startDate }}</span>
-    <span>Final Time: {{ finalTime }}</span>
+    <span>Дата начала: {{ startDate }}</span>
+    <span>Время: {{ finalTime }}</span>
   </div>
   <div
     v-else
     class="c-no-record"
   >
-    No speedrun records found for run {{ index }}.
+    Данные забега №{{ index }} не найдены.
   </div>
 </template>
 

@@ -81,7 +81,7 @@ export default {
       @click="toggleGroup"
     />
     <div class="l-autobuyer-box__title">
-      {{ name }}<br>Autobuyers
+      Автоматика<br>{{ name }}
       <!-- If we're showing as a group, then all attributes are the same and we can arbitrarily take the first one -->
       <AutobuyerIntervalLabel
         v-if="displayLabelAsGroup"
@@ -111,9 +111,9 @@ export default {
     v-else-if="isADBox && continuumActive"
     class="c-autobuyer-box-row"
   >
-    Continuum replaces your Antimatter Dimension and Tickspeed Autobuyers, as your production multipliers
+    Континуум замещает вашу автоматику Измерений Антиматерии и ускорителей, так как множители от них
     <br>
-    now automatically and continuously scale based on how many purchases you would have had otherwise.
+    теперь автоматически непрерывно меняются в соответствии с количеством, которое вы могли бы купить.
   </span>
 </template>
 

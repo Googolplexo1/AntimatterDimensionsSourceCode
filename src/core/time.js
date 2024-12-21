@@ -7,6 +7,35 @@ export const DeltaTimeState = {
   }
 };
 
+function translate(month) {
+  switch (month) {
+    case "Jan":
+      return "января";
+    case "Feb":
+      return "февраля";
+    case "Mar":
+      return "марта";
+    case "Apr":
+      return "апреля";
+    case "May":
+      return "мая";
+    case "Jun":
+      return "июня";
+    case "Jul":
+      return "июля";
+    case "Aug":
+      return "августа";
+    case "Sep":
+      return "сентября";
+    case "Oct":
+      return "октября";
+    case "Nov":
+      return "ноября";
+    case "Dec":
+      return "декабря";
+  }
+}
+
 export const Time = {
   /**
    * @param {Function} getValue
@@ -30,7 +59,8 @@ export const Time = {
    * @returns {string}
    */
   toDateTimeString(timestamp) {
-    return new Date(timestamp).toString().replace(/^.{4}(.*:..:..).*$/u, "$1");
+    let parts = new Date(timestamp).toString().split(" ");
+    return `${parts[2]} ${translate(parts[1])} ${parts[3]} года в ${parts[4]}`;
   },
 
   /**

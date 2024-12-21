@@ -36,8 +36,8 @@ class Validator extends BaseVisitor {
         startLine: err.line,
         startOffset: err.offset,
         endOffset: err.offset + err.length,
-        info: `Unexpected characters: ${this.rawText.substr(err.offset, err.length)}`,
-        tip: `${this.rawText.substr(err.offset, err.length)} cannot be part of a command, remove them`
+        info: `Недопустимые символы: ${this.rawText.substr(err.offset, err.length)}`,
+        tip: `удалите эти сиволы`
       });
     }
   }
@@ -64,12 +64,12 @@ class Validator extends BaseVisitor {
       const isEndToken = parseError.token.tokenType.name === "EOF" || parseError.token.tokenType.name === "EOL";
       if (parseError.name === "NoViableAltException") {
         if (!isEndToken) {
-          err.info = `Unexpected input ${parseError.token.image}`;
-          err.tip = `Remove ${parseError.token.image}`;
+          err.info = `Недопустимый параметр: ${parseError.token.image}`;
+          err.tip = `удалите этот параметр`;
         }
       } else if (parseError.name === "EarlyExitException") {
-        err.info = "Unexpected end of command";
-        err.tip = "Complete the command by adding the other parameters";
+        err.info = "Неполная команда";
+        err.tip = "допишите в команду недостающие параметры";
       }
       this.errors.push(err);
     }
@@ -146,21 +146,43 @@ class Validator extends BaseVisitor {
       }
 
       if (err.info.match(/EOF but found.*\}/gu)) {
-        err.info = err.info.replaceAll("--> ", "[").replaceAll(" <--", "]");
-        err.tip = "Remove }. Parser halted at this line and may miss errors farther down the script.";
+        err.info = err.info.replaceAll("--> ", "[").replaceAll(" <--", "]").replace;
+        err.tip = `удалите символ "}". Интерпретатор остановился на этой строке и может не обнаружить ошибки на последующих строках`;
       } else if (err.info.match(/found.*\}/gu)) {
         err.info = err.info.replaceAll("--> ", "[").replaceAll(" <--", "]");
-        err.tip = "Remove }";
+        err.tip = `удалите символ "}"`;
       } else if (err.info.match(/Expecting/gu)) {
         err.info = err.info.replaceAll("--> ", "[").replaceAll(" <--", "]");
-        err.tip = "Use the appropriate type of data in the command as specified in the command help";
+        err.tip = "введите данные подходящего типа, как указано в инструкции";
       } else if (err.info.match(/End of line/gu)) {
-        err.tip = "Provide the remaining arguments to complete the incomplete command";
+        err.tip = "допишите в команду недостающие параметры";
       } else if (err.info.match(/EOF but found:/gu)) {
-        err.tip = "Remove extra command argument";
+        err.tip = "удалите лишний параметр";
       } else {
-        err.tip = "This error's cause is unclear";
+        err.tip = "причина этой ошибки неясна, мы не можем вам помочь";
       }
+      err.info = err.info.toString()
+        .replace(/'/gu, `"`)
+        .replace(/\]/gu, `].`)
+        .replace("Expecting", "Требуется")
+        .replace("but found", "Обнаружено")
+        .replace("End of line", "перенос строки")
+        .replace("EOF", "конец данных.")
+        .replace("Redundant input, expecting", "Лишний параметр, требуется")
+        .replace("token of type", "параметр типа")
+        .replace("one of these possible Token sequences", "параметр одного из следующих типов")
+        .replace("Id", "номер сохранённого Древа")
+        .replace("Name", "название сохранённого Древа")
+        .replace("Number", "число")
+        .replace("StudyPath", "путь в развилке Древа Исследований")
+        .replace("Identifier", "постоянная")
+        .replace("PrestigeEvent", "престиж")
+        .replace("On", "ВКЛ.")
+        .replace("Off", "ВЫКЛ.")
+        .replace("Use", "разрядить")
+        .replace("StringLiteral", "строка, ограниченная кавычками")
+        .replace("StringLiteralSingleQuote", "строка, ограниченная апострофами")
+        .replace("entifier", "");
       modifiedErrors.push(err);
       lastLine = err.startLine;
     }
@@ -181,8 +203,8 @@ class Validator extends BaseVisitor {
   checkTimeStudyNumber(token) {
     const tsNumber = parseFloat(token.image);
     if (!TimeStudy(tsNumber) || (TimeStudy(tsNumber).isTriad && !Ra.canBuyTriad)) {
-      this.addError(token, `Invalid Time Study identifier ${tsNumber}`,
-        `Make sure you copied or typed in your time study IDs correctly`);
+      this.addError(token, `Недопустимый номер Исследования Времени (${tsNumber})`,
+        `укажите допустимый номер Исследования Времени`);
       return 0;
     }
     return tsNumber;
@@ -193,8 +215,8 @@ class Validator extends BaseVisitor {
     const varInfo = {};
     const constants = player.reality.automator.constants;
     if (!Object.keys(constants).includes(varName)) {
-      this.addError(identifier, `Variable ${varName} has not been defined`,
-        `Use the definition panel to define ${varName} in order to reference it, or check for typos`);
+      this.addError(identifier, `Постоянная ${varName} не определена`,
+        `определите ${varName} или укажите существующую постоянную`);
       return undefined;
     }
     const value = constants[varName];
@@ -246,12 +268,12 @@ class Validator extends BaseVisitor {
   duration(ctx) {
     if (ctx.$value) return ctx.$value;
     if (!ctx.TimeUnit || ctx.TimeUnit[0].isInsertedInRecovery) {
-      this.addError(ctx, "Missing time unit", "Provide a unit of time (eg. seconds or minutes)");
+      this.addError(ctx, "Пропущена единица измерения времени", `укажите единцу измерения времени, например, "s" (секунда)`);
       return undefined;
     }
     const value = parseFloat(ctx.NumberLiteral[0].image) * ctx.TimeUnit[0].tokenType.$scale;
     if (isNaN(value)) {
-      this.addError(ctx, "Error parsing duration", "Provide a properly-formatted number for time");
+      this.addError(ctx, "Не удалось интерпретировать временной параметр", "укажите временной параметр в правильном формате");
       return undefined;
     }
     ctx.$value = value;
@@ -261,7 +283,7 @@ class Validator extends BaseVisitor {
   xHighest(ctx) {
     if (ctx.$value) return ctx.$value;
     if (!ctx.NumberLiteral || ctx.NumberLiteral[0].isInsertedInRecovery) {
-      this.addError(ctx, "Missing multiplier", "Provide a multiplier to set the autobuyer to");
+      this.addError(ctx, "Пропущен параметр", "укажите параметр");
       return undefined;
     }
     ctx.$value = new Decimal(ctx.NumberLiteral[0].image);
@@ -271,7 +293,7 @@ class Validator extends BaseVisitor {
   currencyAmount(ctx) {
     if (ctx.$value) return ctx.$value;
     if (!ctx.NumberLiteral || ctx.NumberLiteral[0].isInsertedInRecovery) {
-      this.addError(ctx, "Missing amount", "Provide a threshold to set the autobuyer to");
+      this.addError(ctx, "Пропущен параметр", "укажите параметр");
       return undefined;
     }
     ctx.$value = new Decimal(ctx.NumberLiteral[0].image);
@@ -281,8 +303,8 @@ class Validator extends BaseVisitor {
   studyRange(ctx, studiesOut) {
     if (!ctx.firstStudy || ctx.firstStudy[0].isInsertedInRecovery ||
       !ctx.lastStudy || ctx.lastStudy[0].isInsertedInRecovery) {
-      this.addError(ctx, "Missing Time Study number in range",
-        "Provide starting and ending IDs for Time Study number ranges");
+      this.addError(ctx, "Пропущен номер Исследования Времени в диапазоне",
+        "укажите начало и конец диапазона Исследований Времени");
       return;
     }
     const first = this.checkTimeStudyNumber(ctx.firstStudy[0]);
@@ -300,7 +322,7 @@ class Validator extends BaseVisitor {
     }
     if (ctx.NumberLiteral) {
       if (ctx.NumberLiteral[0].isInsertedInRecovery) {
-        this.addError(ctx, "Missing Time Study number", "Provide a Time Study ID to purchase");
+        this.addError(ctx, "Пропущен номер Исследования Времени", "укажите номер Исследования Времени");
         return;
       }
       const id = this.checkTimeStudyNumber(ctx.NumberLiteral[0]);
@@ -327,13 +349,13 @@ class Validator extends BaseVisitor {
     };
     if (ctx.ECNumber) {
       if (ctx.ECNumber.isInsertedInRecovery) {
-        this.addError(ctx.Pipe[0], "Missing Eternity Challenge number",
-          "Specify which Eternity Challenge is being referred to");
+        this.addError(ctx.Pipe[0], "Пропущен номер Испытания Вечности",
+          "укажите номер Испытания Вечности");
       }
       const ecNumber = parseFloat(ctx.ECNumber[0].image);
       if (!Number.isInteger(ecNumber) || ecNumber < 0 || ecNumber > 12) {
-        this.addError(ctx.ECNumber, `Invalid Eternity Challenge ID ${ecNumber}`,
-          `Eternity Challenge ${ecNumber} does not exist, use an integer between ${format(1)} and ${format(12)}`);
+        this.addError(ctx.ECNumber, `Недопустимый номер Испытания Вечности (${ecNumber})`,
+          `введите допустмиый (от ${format(1)} до ${format(12)}) номер Испытания Вечности`);
       }
       ctx.$cached.ec = ecNumber;
     }
@@ -346,8 +368,8 @@ class Validator extends BaseVisitor {
       ctx.$value = new Decimal(ctx.NumberLiteral[0].image);
     } else if (ctx.Identifier) {
       if (!this.isValidVarFormat(ctx.Identifier[0], AUTOMATOR_VAR_TYPES.NUMBER)) {
-        this.addError(ctx, `Constant ${ctx.Identifier[0].image} cannot be used for comparison`,
-          `Ensure that ${ctx.Identifier[0].image} contains a properly-formatted number and not a Time Study string`);
+        this.addError(ctx, `Постоянная ${ctx.Identifier[0].image} не может быть использована в сравнении`,
+          `сохраните в ${ctx.Identifier[0].image} число в правильном формате`);
       }
       const varLookup = this.lookupVar(ctx.Identifier[0], AUTOMATOR_VAR_TYPES.NUMBER);
       if (varLookup) ctx.$value = ctx.Identifier[0].image;
@@ -358,23 +380,23 @@ class Validator extends BaseVisitor {
     super.comparison(ctx);
     if (!ctx.compareValue || ctx.compareValue[0].recoveredNode ||
       ctx.compareValue.length !== 2 || ctx.compareValue[1].recoveredNode) {
-      this.addError(ctx, "Missing value for comparison", "Ensure that the comparison has two values");
+      this.addError(ctx, "Пропущен аргумент сравнения", "укажите аргумент сравнения");
     }
     if (!ctx.ComparisonOperator || ctx.ComparisonOperator[0].isInsertedInRecovery) {
-      this.addError(ctx, "Missing comparison operator (<, >, <=, >=)", "Insert the appropriate comparison operator");
+      this.addError(ctx, "Пропущен знак сравнения (<, >, <=, >=)", "укажите знак сравнения");
       return;
     }
     if (ctx.ComparisonOperator[0].tokenType === T.OpEQ || ctx.ComparisonOperator[0].tokenType === T.EqualSign) {
-      this.addError(ctx, "Please use an inequality comparison (>, <, >=, <=)",
-        "Comparisons cannot be done with equality, only with inequality operators");
+      this.addError(ctx, "Автоматизатор не может проверять равенство",
+        "используйте знак неравенства (>, <, >=, <=)");
     }
   }
 
   badCommand(ctx) {
     const firstToken = ctx.badCommandToken[0].children;
     const firstTokenType = Object.keys(firstToken)[0];
-    this.addError(firstToken[firstTokenType][0], `Unrecognized command "${firstToken[firstTokenType][0].image}"`,
-      "Check to make sure you have typed in the command name correctly");
+    this.addError(firstToken[firstTokenType][0], `Недопустимая команда "${firstToken[firstTokenType][0].image}"`,
+      "введите допустимое ключевое слово команды");
   }
 
   eternityChallenge(ctx) {
@@ -386,13 +408,13 @@ class Validator extends BaseVisitor {
       ecNumber = parseFloat(ctx.NumberLiteral[0].image);
       errToken = ctx.NumberLiteral[0];
     } else {
-      this.addError(ctx, "Missing Eternity Challenge number",
-        "Specify which Eternity Challenge is being referred to");
+      this.addError(ctx, "Пропущен номер Испытания Вечности",
+        "укажите номер Испытания Вечности");
       return;
     }
     if (!Number.isInteger(ecNumber) || ecNumber < 1 || ecNumber > 12) {
-      this.addError(errToken, `Invalid Eternity Challenge ID ${ecNumber}`,
-        `Eternity Challenge ${ecNumber} does not exist, use an integer between ${format(1)} and ${format(12)}`);
+      this.addError(errToken, `Недопустимый номер Испытания Вечности (${ecNumber})`,
+          `введите допустмиый (от ${format(1)} до ${format(12)}) номер Испытания Вечности`);
     }
     ctx.$ecNumber = ecNumber;
   }
@@ -400,13 +422,13 @@ class Validator extends BaseVisitor {
   checkBlock(ctx, commandToken) {
     let hadError = false;
     if (!ctx.RCurly || ctx.RCurly[0].isInsertedInRecovery) {
-      this.addError(commandToken[0], "Missing closing }",
-        "This loop has mismatched brackets, add a corresponding } on another line to close the loop");
+      this.addError(commandToken[0], "Пропущена скобка }",
+        "введите скобку } на другой строке, чтобы закрыть блок команд");
       hadError = true;
     }
     if (!ctx.LCurly || ctx.LCurly[0].isInsertedInRecovery) {
-      this.addError(commandToken[0], "Missing opening {",
-        "This line has an extra } closing a loop which does not exist, remove the }");
+      this.addError(commandToken[0], "Пропущена скобка {",
+        "в этой строке есть скобка }, которая ничего не закрывает, удалите её");
       hadError = true;
     }
     return !hadError;

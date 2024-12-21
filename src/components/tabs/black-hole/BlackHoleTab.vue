@@ -19,7 +19,6 @@ export default {
       isUnlocked: false,
       isPaused: false,
       isEnslaved: false,
-      isLaitela: false,
       pauseMode: 0,
       detailedBH2: "",
       isPermanent: false,
@@ -33,11 +32,11 @@ export default {
     pauseModeString() {
       switch (this.pauseMode) {
         case BLACK_HOLE_PAUSE_MODE.NO_PAUSE:
-          return "Do not pause";
+          return "отключено";
         case BLACK_HOLE_PAUSE_MODE.PAUSE_BEFORE_BH1:
-          return this.hasBH2 ? "Before BH1" : "Before activation";
+          return this.hasBH2 ? "перед активацией ЧД1" : "перед активацией";
         case BLACK_HOLE_PAUSE_MODE.PAUSE_BEFORE_BH2:
-          return "Before BH2";
+          return "перед активацией ЧД2";
         default:
           throw new Error("Unrecognized BH offline pausing mode");
       }
@@ -60,7 +59,6 @@ export default {
         this.startAnimation();
       }
       this.isEnslaved = Enslaved.isRunning;
-      this.isLaitela = Laitela.isRunning;
       this.isPermanent = BlackHoles.arePermanent;
       this.pauseMode = player.blackHoleAutoPauseMode;
       this.hasBH2 = BlackHole(2).isUnlocked;
@@ -68,8 +66,8 @@ export default {
         BlackHole(2).duration / BlackHole(2).cycleLength];
       this.detailedBH2 = this.bh2Status();
 
-      if (player.blackHoleNegative < 1 && !this.isLaitela) this.stateChange = this.isPaused ? "Uninvert" : "Invert";
-      else this.stateChange = this.isPaused ? "Unpause" : "Pause";
+      if (player.blackHoleNegative < 1) this.stateChange = this.isPaused ? "Отменить инверсию ЧД" : "Инвертировать ЧД";
+      else this.stateChange = this.isPaused ? "Возобновить цикл ЧД" : "Приостановить ЧД";
     },
     bh2Status() {
       const bh1Remaining = BlackHole(1).timeWithPreviousActiveToNextStateChange;
@@ -78,14 +76,14 @@ export default {
       // Both BH active
       if (BlackHole(1).isActive && BlackHole(2).isActive) {
         const bh2Duration = Math.min(bh1Remaining, bh2Remaining);
-        return `Black Hole 2 is active for the next ${TimeSpan.fromSeconds(bh2Duration).toStringShort()}!`;
+        return `2-я Чёрная Дыра будет действовать в течение ${TimeSpan.fromSeconds(bh2Duration).toStringShort()}!`;
       }
 
       // BH1 active, BH2 will trigger before BH1 runs out
       if (BlackHole(1).isActive && (bh2Remaining < bh1Remaining)) {
         const bh2Duration = Math.min(bh1Remaining - bh2Remaining, BlackHole(2).duration);
-        return `Black Hole 2 will activate before Black Hole 1 deactivates,
-          for ${TimeSpan.fromSeconds(bh2Duration).toStringShort()}`;
+        return `2-я Чёрная Дыра активируется, прежде чем деактивируется 1-я Чёрная Дыра,
+          на ${TimeSpan.fromSeconds(bh2Duration).toStringShort()}`;
       }
 
       // BH2 won't start yet next cycle
@@ -93,20 +91,20 @@ export default {
         const cycleCount = BlackHole(1).isActive
           ? Math.floor((bh2Remaining - bh1Remaining) / BlackHole(1).duration) + 1
           : Math.floor(bh2Remaining / BlackHole(1).duration);
-        return `Black Hole 2 will activate after ${quantifyInt("more active cycle", cycleCount)} of Black Hole 1.`;
+        return `2-я Чёрная Дыра активируется через ${quantifyInt("цикл", cycleCount)} активности 1-й Чёрной Дыры.`;
       }
 
       // BH1 inactive, BH2 ready to go when BH1 activates
       if (BlackHole(2).isCharged) {
         const bh2Duration = Math.min(BlackHole(1).duration, bh2Remaining);
-        return `Black Hole 2 will activate with Black Hole 1,
-          for ${TimeSpan.fromSeconds(bh2Duration).toStringShort()}.`;
+        return `2-я Чёрная Дыра активируется вместе с 1-й Чёрной Дырой
+          на ${TimeSpan.fromSeconds(bh2Duration).toStringShort()}.`;
       }
 
       // BH1 inactive, BH2 starts at some point after BH1 activates
       const bh2Duration = Math.min(BlackHole(1).duration - bh2Remaining, BlackHole(2).duration);
-      return `Black Hole 2 will activate ${TimeSpan.fromSeconds(bh2Remaining).toStringShort()} after
-        Black Hole 1, for ${TimeSpan.fromSeconds(bh2Duration).toStringShort()}.`;
+      return `2-я Чёрная Дыра активируется через ${TimeSpan.fromSeconds(bh2Remaining).toStringShort()} после
+        активации 1-й Чёрной Дыры на ${TimeSpan.fromSeconds(bh2Duration).toStringShort()}.`;
     },
     togglePause() {
       BlackHoles.togglePause();
@@ -154,22 +152,22 @@ export default {
       class="c-black-hole-disabled-description"
     >
       <i v-if="isEnslaved">
-        You must... seek... other methods...
+        Ты должен... искать... другие пути...
         <br>
       </i>
-      The physics of this Reality do not allow the existence of Black Holes.
+      Физика этой реальности несовместима с существованием Чёрных Дыр.
     </div>
     <div
       v-else-if="!isUnlocked"
       class="l-pre-unlock-text"
     >
       <BlackHoleUnlockButton @blackholeunlock="startAnimation" />
-      The Black Hole makes the entire game run significantly faster for a short period of time.
+      Чёрная Дыра значительно ускоряет всю игру на короткий промежуток времени.
       <br>
-      Starts at {{ formatX(180) }} faster for {{ formatInt(10) }} seconds, once per hour.
+      (По умолчанию: ускорение в {{ formatInt(180) }} раз на {{ formatInt(10) }} секунд раз в час.)
       <br>
       <br>
-      Unlocking the Black Hole also gives {{ formatInt(10) }} Automator Points.
+      Разблокировка Чёрной Дыры также даёт {{ formatInt(10) }} Очков Автоматизации.
     </div>
     <template v-else>
       <div class="c-subtab-option-container">
@@ -177,14 +175,14 @@ export default {
           class="o-primary-btn o-primary-btn--subtab-option"
           @click="togglePause"
         >
-          {{ stateChange }} Black Hole
+          {{ stateChange }}
         </button>
         <button
           v-if="!isPermanent"
-          class="o-primary-btn o-primary-btn--subtab-option l-auto-pause-button"
+          class="o-primary-btn o-primary-btn--subtab-option"
           @click="changePauseMode"
         >
-          Auto-pause: {{ pauseModeString }}
+          Автоматически останавливать ЧД: {{ pauseModeString }}
         </button>
       </div>
       <canvas
@@ -202,22 +200,18 @@ export default {
         <span v-if="hasBH2 && !isPermanent">
           <b>{{ detailedBH2 }}</b>
           <br>
-          The timer for Black Hole 2 only advances while Black Hole 1 is active.
+          Цикл активности 2-й Чёрной Дыры продвигается, только пока действует 1-я Чёрная Дыра.
           <br>
-          Upgrades affect the internal timer; the header shows real time until next activation.
+          Улучшения влияют на внутренний таймер; в заглавии показано реальное время, оставшееся до перехода в другую фазу.
         </span>
         <br>
         <div v-if="!isPermanent">
-          Black holes become permanently active when they are active for more than {{ formatPercents(0.9999, 2) }}
-          of the time.
+          Каждая Чёрная Дыра начинает действовать беспрерывно, когда доля её действующей фазы по времени достигает {{ formatPercents(0.9999, 2) }}.
           <br>
-          Active time percent: {{ formatPercents(blackHoleUptime[0], 3) }}
-          <span v-if="hasBH2">and {{ formatPercents(blackHoleUptime[1], 3) }}</span>
+          Доля времени действующей фазы: {{ formatPercents(blackHoleUptime[0], 3) }}
+          <span v-if="hasBH2">и {{ formatPercents(blackHoleUptime[1], 3) }} для 1-й и 2-й Чёрных Дыр соответственно</span>
         </div>
-        <BlackHoleChargingSliders
-          v-if="!isLaitela"
-          class="l-enslaved-shop-container"
-        />
+        <BlackHoleChargingSliders class="l-enslaved-shop-container" />
       </div>
       <div :class="gridStyle()">
         <BlackHoleUpgradeRow

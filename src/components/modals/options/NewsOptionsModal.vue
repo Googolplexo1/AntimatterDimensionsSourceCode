@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     newsOnOffLabel() {
-      return `News: ${this.enabled ? "On" : "Off"}`;
+      return `Новости: ${this.enabled ? "ВКЛ." : "ВЫКЛ."}`;
     },
     sliderPropsRepeatBuffer() {
       return {
@@ -98,7 +98,7 @@ export default {
 <template>
   <ModalWrapperOptions>
     <template #header>
-      News Options
+      Настройки новостей
     </template>
     <PrimaryButton
       class="o-primary-btn o-primary-btn--option-wide"
@@ -106,8 +106,8 @@ export default {
     >
       {{ newsOnOffLabel }}
     </PrimaryButton>
-    <div class="o-primary-btn o-primary-btn--option-wide o-primary-btn--slider">
-      <b>{{ formatInt(parseInt(repeatBuffer)) }} message repeat buffer</b>
+    <div class="o-primary-btn o-primary-btn--slider o-primary-btn--news-option">
+      <b>{{ quantifyInt("сообщение", parseInt(repeatBuffer)) }} подряд без повторений гарантировано</b>
       <SliderComponent
         class="o-primary-btn--slider__slider"
         v-bind="sliderPropsRepeatBuffer"
@@ -116,7 +116,7 @@ export default {
       />
     </div>
     <div class="o-primary-btn o-primary-btn--option-wide o-primary-btn--slider">
-      <b>{{ formatPercents(parseFloat(AIChance)) }} AI messages</b>
+      <b>{{ formatPercents(parseFloat(AIChance)) }} сообщений от ИИ</b>
       <SliderComponent
         class="o-primary-btn--slider__slider"
         v-bind="sliderPropsAIChance"
@@ -125,7 +125,7 @@ export default {
       />
     </div>
     <div class="o-primary-btn o-primary-btn--option-wide o-primary-btn--slider">
-      <b>{{ formatPercents(parseFloat(speed)) }} scroll speed</b>
+      <b>{{ formatPercents(parseFloat(speed)) }} скорости прокрутки</b>
       <SliderComponent
         class="o-primary-btn--slider__slider"
         v-bind="sliderPropsSpeed"
@@ -136,7 +136,7 @@ export default {
     <ModalOptionsToggleButton
       v-model="includeAnimated"
       class="o-primary-btn o-primary-btn--option-wide"
-      text="Animation Effects:"
+      text="Анимации:"
     />
   </ModalWrapperOptions>
 </template>

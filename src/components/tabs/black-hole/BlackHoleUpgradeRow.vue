@@ -21,30 +21,27 @@ export default {
     };
   },
   computed: {
-    blackHoleDescription() {
-      return this.blackHole.description(false);
-    },
     intervalConfig() {
       return {
         upgrade: this.blackHole.intervalUpgrade,
-        description: () => `Reduce ${this.blackHoleDescription}'s inactive time by ${formatPercents(0.2)}`,
-        effectTitle: "Current interval",
+        description: () => `Укоротить фазу бездействия ${this.blackHole.description()} на ${formatPercents(0.2)}`,
+        effectTitle: "Сейчас",
         formatEffect: () => `${TimeSpan.fromSeconds(this.blackHole.rawInterval).toStringShort(false)}`
       };
     },
     powerConfig() {
       return {
         upgrade: this.blackHole.powerUpgrade,
-        description: () => `Make ${this.blackHoleDescription} ${formatPercents(0.35)} stronger`,
-        effectTitle: "Current power",
+        description: () => `Усилить эффект ${this.blackHole.description()} на ${formatPercents(0.35)}`,
+        effectTitle: "Сейчас",
         formatEffect: value => `${formatX(value, 2, 2)}`
       };
     },
     durationConfig() {
       return {
         upgrade: this.blackHole.durationUpgrade,
-        description: () => `Extend ${this.blackHoleDescription}'s duration by ${formatPercents(0.3)}`,
-        effectTitle: "Current duration",
+        description: () => `Удлинить фазу действия ${this.blackHole.description()} на ${formatPercents(0.3)}`,
+        effectTitle: "Сейчас",
         formatEffect: () => `${TimeSpan.fromSeconds(this.blackHole.duration).toStringShort(false)}`
       };
     }

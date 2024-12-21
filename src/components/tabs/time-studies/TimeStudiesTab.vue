@@ -141,19 +141,19 @@ export default {
         class="o-primary-btn--subtab-option"
         @click="exportStudyTree"
       >
-        Export tree
+        Экспортировать Древо
       </PrimaryButton>
       <PrimaryButton
         :class="respecClassObject"
         @click="respec = !respec"
       >
-        Respec Time Studies on next Eternity
+        Сбросить Исследования Времени на вечности
       </PrimaryButton>
       <PrimaryButton
         class="o-primary-btn--subtab-option"
         onclick="Modal.studyString.show({ id: -1 })"
       >
-        Import tree
+        Импортировать Древо
       </PrimaryButton>
     </div>
     <div

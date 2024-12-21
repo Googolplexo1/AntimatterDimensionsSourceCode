@@ -13,30 +13,43 @@ export default {
     };
   },
   computed: {
-    refiningSacrificingOrDeleting() {
-      if (this.isRefining) return `Refine`;
-      if (this.isSacrificing) return `Sacrifice`;
-      return `delete`;
+    refiningSacrificingOrDeleting1() {
+      if (this.isRefining) return `облагораживаете`;
+      if (this.isSacrificing) return `жертвуете`;
+      return `удаляете`;
+    },
+    refiningSacrificingOrDeleting2() {
+      if (this.isRefining) return `облагородить`;
+      if (this.isSacrificing) return `пожертвовать`;
+      return `удалить`;
+    },
+    refiningSacrificingOrDeleting3() {
+      if (this.isRefining) return `облагорожен`;
+      if (this.isSacrificing) return `пожертвован`;
+      return `удалён`;
+    },
+    refiningSacrificingOrDeleting4() {
+      if (this.isRefining) return `облагорожены`;
+      if (this.isSacrificing) return `пожертвованы`;
+      return `удалены`;
     },
     topLabel() {
-      return `You are about to ${this.refiningSacrificingOrDeleting} all unprotected Glyphs`;
+      return `Вы ${this.refiningSacrificingOrDeleting1} все незащищённые глифы`;
     },
     message() {
-      return `Are you sure you want to ${this.refiningSacrificingOrDeleting} all unprotected Glyphs
-        in your inventory?`;
+      return `Вы уверены, что хотите ${this.refiningSacrificingOrDeleting2} все незащищённые глифы?`;
     },
     extraMessage() {
-      if (this.glyphsDeleted === 0) return `This will ${this.refiningSacrificingOrDeleting} no Glyphs.`;
+      if (this.glyphsDeleted === 0) return `Ни один глиф не будет ${this.refiningSacrificingOrDeleting3}.`;
       if (this.glyphsDeleted === this.glyphsTotal) {
-        return `This will ${this.refiningSacrificingOrDeleting} all your Glyphs.`;
+        return `Все глифы будут ${this.refiningSacrificingOrDeleting4}.`;
       }
-      return `This will ${this.refiningSacrificingOrDeleting} 
-        ${formatInt(this.glyphsDeleted)}/${formatInt(this.glyphsTotal)} of your Glyphs.`;
+      return `${formatInt(this.glyphsDeleted)} из ${this.glyphsTotal} будет ${pluralize(this.refiningSacrificingOrDeleting3, this.glyphsDeleted)}.`;
     },
 
     // These two don't need to be reactive since the modal force-closes itself whenever glyphs change
     glyphsTotal() {
-      return Glyphs.inventory.filter(slot => slot !== null).length;
+      return quantifyInt("глифа", Glyphs.inventory.filter(slot => slot !== null).length);
     },
     glyphsDeleted() {
       return Glyphs.autoClean(0, false);

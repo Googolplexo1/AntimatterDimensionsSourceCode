@@ -82,8 +82,8 @@ class VRunUnlockState extends GameMechanicState {
     Decimal.gte(playerData.runRecords[this.id], this.conditionValue)) {
       if (!V.isFlipped && this.config.isHard) continue;
       this.completions++;
-      GameUI.notify.success(`You have unlocked V-Achievement
-        '${this.config.name}' tier ${formatInt(this.completions)}`);
+      GameUI.notify.success(`Вы выполнили
+        ${formatInt(this.completions)}-й уровень достижения Ви "${this.config.name}"`);
 
       V.updateTotalRunUnlocks();
 
@@ -153,8 +153,8 @@ export const VUnlocks = mapGameDataToObject(
 );
 
 export const V = {
-  displayName: "V",
-  possessiveName: "V's",
+  displayName: "Ви",
+  possessiveName: "Ви",
   spaceTheorems: 0,
   checkForUnlocks() {
     for (const unl of VUnlocks.all) {
@@ -178,7 +178,7 @@ export const V = {
   },
   unlockCelestial() {
     player.celestials.v.unlockBits |= (1 << VUnlocks.vAchievementUnlock.id);
-    GameUI.notify.success("You have unlocked V, The Celestial Of Achievements!", 10000);
+    GameUI.notify.success("Вы разблокировали Ви, Небожителя Достижений!", 10000);
     V.quotes.unlock.show();
   },
   initializeRun() {
@@ -225,7 +225,9 @@ export const V = {
   nextHardReductionCost(currReductionSteps) {
     return 1000 * Math.pow(1.15, currReductionSteps);
   },
-  quotes: Quotes.v,
+  get quotes() {
+    return Quotes().v;
+  },
   symbol: "⌬"
 };
 

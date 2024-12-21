@@ -122,19 +122,18 @@ export const AutoGlyphProcessor = {
   wouldKeep(glyph) {
     return this.filterValue(glyph) >= this.thresholdValue(glyph);
   },
+  // We want to make sure to account for when glyphs are compared to different thresholds based on their type, or
+  // else we end up always picking the rarest glyph despite all filter settings. However, we need to special-case
+  // modes which never keep glyphs, or else they all become the same value and it ends up picking pseudo-randomly
+  glyphScore(glyph) {
+    const filter = this.filterValue(glyph);
+    const threshold = this.thresholdValue(glyph);
+    return threshold === Number.MAX_VALUE ? filter : filter - threshold;
+  },
   // Given a list of glyphs, pick the one with the highest score
   pick(glyphs) {
-    // We want to make sure to account for when glyphs are compared to different thresholds based on their type, or
-    // else we end up always picking the rarest glyph despite all filter settings. However, we need to special-case
-    // modes which never keep glyphs, or else they all become the same value and it ends up picking pseudo-randomly
-    const glyphScore = glyph => {
-      const filter = this.filterValue(glyph);
-      const threshold = this.thresholdValue(glyph);
-      return threshold === Number.MAX_VALUE ? filter : filter - threshold;
-    };
-
     return glyphs
-      .map(g => ({ glyph: g, score: glyphScore(g) }))
+      .map(g => ({ glyph: g, score: this.glyphScore(g) }))
       .reduce((x, y) => (x.score > y.score ? x : y))
       .glyph;
   },
@@ -171,19 +170,19 @@ export const AutoGlyphProcessor = {
   filterModeName(id) {
     switch (id) {
       case AUTO_GLYPH_SCORE.LOWEST_SACRIFICE:
-        return "Lowest Total Glyph Sacrifice";
+        return "Справедливое пожертвование";
       case AUTO_GLYPH_SCORE.EFFECT_COUNT:
-        return "Number of Effects";
+        return "Количество эффектов";
       case AUTO_GLYPH_SCORE.RARITY_THRESHOLD:
-        return "Rarity Threshold";
+        return "Редкость";
       case AUTO_GLYPH_SCORE.SPECIFIED_EFFECT:
-        return "Specified Effect";
+        return "Указанные эффекты";
       case AUTO_GLYPH_SCORE.EFFECT_SCORE:
-        return "Effect Score";
+        return "Взвешенные эффекты";
       case AUTO_GLYPH_SCORE.LOWEST_ALCHEMY:
-        return "Lowest Alchemy Resource";
+        return "Справедливое облагораживание";
       case AUTO_GLYPH_SCORE.ALCHEMY_VALUE:
-        return "Refinement Value";
+        return "Жадное облагораживание";
       default:
         return "Invalid Glyph filter mode";
     }
@@ -191,11 +190,11 @@ export const AutoGlyphProcessor = {
   trashModeDesc(id) {
     switch (id) {
       case AUTO_GLYPH_REJECT.SACRIFICE:
-        return "Always sacrifice";
+        return "Всегда жертвовать";
       case AUTO_GLYPH_REJECT.REFINE:
-        return "Always refine";
+        return "Всегда облагораживать";
       case AUTO_GLYPH_REJECT.REFINE_TO_CAP:
-        return "Refine to cap, then sacrifice";
+        return "Облагораживать до ограничения, затем жертвовать";
       default:
         return "Invalid Glyph trash mode";
     }
@@ -248,25 +247,25 @@ function getGlyphLevelSources() {
   const eterBase = Effects.max(1, RealityUpgrade(18));
   return {
     ep: {
-      name: "EP",
+      name: "ОВ",
       value: epBase,
       coeff: epCoeff,
       exp: 0.5,
     },
     repl: {
-      name: "Replicanti",
+      name: "Репликанти",
       value: replBase,
       coeff: replCoeff,
       exp: replPow,
     },
     dt: {
-      name: "DT",
+      name: "ЗВ",
       value: dtBase,
       coeff: dtCoeff,
       exp: dtPow,
     },
     eternities: {
-      name: "Eternities",
+      name: "Вечности",
       value: eterBase,
       // These are copied from Reality Upgrade 18's gameDB entry
       coeff: 0.45,

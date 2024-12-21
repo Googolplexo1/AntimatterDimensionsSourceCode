@@ -2,22 +2,22 @@ import { automatorTemplates } from "../script-templates";
 
 export const automator = {
   categoryNames: [
-    "Time Studies",
-    "Event Triggers",
-    "Alter Settings",
-    "Information",
-    "Script Flow",
+    "Управление Исследованиями Времени",
+    "Совершение действий",
+    "Изменение настроек",
+    "Информация",
+    "Контроль потока команд",
   ],
   commands: [
     {
       id: 0,
       isUnlocked: () => true,
-      keyword: "STUDIES RESPEC",
+      keyword: "STUDIES RESPEC (сброс ИсслВ)",
       category: 0,
       syntax: `<b>studies respec</b>`,
-      description: `This command turns on the respec option, which will respec your Time Studies on the next manual or
-        automatic Eternity. Note that this does not actually perform an Eternity on its own; make sure your Autobuyer
-        is on or you manually run the ETERNITY command (although ETERNITY has its own built-in respec option).`,
+      description: `Переключает опцию "Сбросить Исследования Времени на вечности".
+        Обратите внимание, что эта команда не совершает вечность, и если вы хотите сбросить Исследования Времени,
+        то вы должны совершить вечность отдельно, например, с помощью команды ETERNITY (хотя она может сбрасывать ИсслВ сама).`,
       examples: [
         `studies respec`,
       ]
@@ -25,32 +25,32 @@ export const automator = {
     {
       id: 1,
       isUnlocked: () => true,
-      keyword: "STUDIES LOAD",
+      keyword: "STUDIES LOAD (загрузка Древа ИсслВ)",
       category: 0,
-      syntax: `<b>studies</b> [nowait] <b>load id</b> <u>selector</u><br>
-        <b>studies</b> [nowait] <b>load name</b> <u>name</u>`,
-      description: `Loads a Time Study preset, as if you had clicked on the button in the Time Study tab.`,
+      syntax: `<b>studies</b> [nowait] <b>load id</b> <u>номер</u><br>
+        <b>studies</b> [nowait] <b>load name</b> <u>название</u>`,
+      description: `Загружает Древо Исследований, сохранённое в один из слотов на панели в нижней части экрана во вкладке "Исследования Времени".`,
       sections: [
         {
-          name: "INPUTS",
+          name: "ПАРАМЕТРЫ",
           items: [
             {
               header: "<i>nowait</i>",
               description: `
-                If present, the Automator will purchase as many studies as possible before continuing onward. By default
-                (ie. without "nowait") this command will repeat this line indefinitely until all of the studies in the
-                preset are bought; this may cause the Automator to get stuck indefinitely if you are not careful.
+                При наличии этого параметра Автоматизатор купит лишь те Исследования Времени, которые возможно купить в данный момент, и перейдёт к следующей команде.
+                Иначе Автоматизатор будет пытаться купить все Исследования из загружаемого Древа снова и снова, пока
+                Древо не будет выкуплено полностью, что может привести к застреванию программы на этой строке.
               `
             },
             {
-              header: "<i>selector</i>",
+              header: "<i>номер</i>",
               description: `
-                Finds and loads the specified Time Study preset by its slot number. This is numbered one through six,
-                ordered from left to right.`
+                Номер слота, из которого необходимо загрузить Древо Исследований. Слоты нумеруются числами от одного до шести
+                по порядку слева направо.`
             },
             {
-              header: "<i>name</i>",
-              description: "Finds and loads the specified Time Study preset by its given name. This is case-sensitive."
+              header: "<i>название</i>",
+              description: "Название Древа Исследований, которое необходимо загрузить. Обратите внимание, что регистр важен."
             },
           ]
         }
@@ -64,31 +64,38 @@ export const automator = {
     {
       id: 2,
       isUnlocked: () => true,
-      keyword: "STUDIES PURCHASE",
+      keyword: "STUDIES PURCHASE (покупка ИсслВ)",
       category: 0,
-      syntax: `<b>studies</b> [nowait] <b>purchase <u>study_list</u></b>`,
-      description: "Purchase Time Studies specified from a list of Time Studies.",
+      syntax: `<b>studies</b> [nowait] <b>purchase</b> <u>список ИсслВ</u>`,
+      description: "Покупает Исследования Времени из указанного списка.",
       sections: [
         {
-          name: "INPUTS",
+          name: "ПАРАМЕТРЫ",
           items: [
             {
               header: "<i>nowait</i>",
               description: `
-                If present, the Automator will purchase as many studies as possible before continuing onward. By default
-                (ie. without "nowait") this command will repeat this line indefinitely until all of the studies in the
-                preset are bought; this may cause the Automator to get stuck indefinitely if you are not careful.
+                При наличии этого параметра Автоматизатор купит лишь те Исследования Времени, которые возможно купить в данный момент, и перейдёт к следующей команде.
+                Иначе Автоматизатор будет пытаться купить все Исследования из указанного списка снова и снова, пока
+                список не будет выкуплен полностью, что может привести к застреванию программы на этой строке.
               `
             },
             {
-              header: "<i>study_list</i>",
+              header: "<i>список ИсслВ</i>",
               description: `
-                The exported Time Study tree format is supported here, which is simply a list of Time Study IDs
-                separated by commas. This command also supports a more flexible formatting, additionally allowing
-                ranges of studies (for example, <u>11-62</u>) and the following aliases:<br>
-                <blockquote><b>antimatter, infinity, time, active, passive, idle, light, dark</b></blockquote>
-                A variable name may be used in place of the entire Time Study list as well (see the definition panel),
-                although in that case the shorthand ranges and aliases are not allowed.`
+                Записывается в формате Древа Исследований, то есть путём перечисления всех Исследований Времени
+                через запятую. Также разрешается обозначать несколько последовательных Исследований Времени
+                через дефис (например, <u>11-62</u>) и использовать следующие сокращения для обозначения определённых групп Исследований Времени:<br>
+                <blockquote>
+                <b>antimatter</b> - путь Измерений Антиматерии;<br>
+                <b>infinity</b> - путь Измерений Бесконечности;<br>
+                <b>time</b> - путь Измерений Времени;<br>
+                <b>active</b> - Активный путь;<br>
+                <b>passive</b> - Средний путь;<br>
+                <b>idle</b> - Пассивный путь;<br>
+                <b>light</b> - Светлые;<br>
+                <b>dark</b> - Тёмные.</blockquote>
+                Вы также можете использовать постоянную вместо этого параметра.`
             },
           ]
         }
@@ -102,33 +109,30 @@ export const automator = {
     {
       id: 3,
       isUnlocked: () => true,
-      keyword: "PRESTIGE",
+      keyword: "Сбросы престижа",
       category: 1,
       syntax: `
         <b>infinity</b> [nowait]<br>
         <b>eternity</b> [nowait] [respec]<br>
         <b>reality</b> [nowait] [respec]`,
-      description: `Triggers an Infinity, Eternity, or Reality reset if possible, otherwise the automator will wait at
-        this command until it becomes possible. If you find that your script often gets stuck on this command, an
-        Autobuyer may be triggering a prestige before the Automator reaches this line - consider using <i>nowait</i> or
-        adjusting your Autobuyer settings using AUTO.`,
+      description: `Эти три команды пытаются совершить бесконечность, вечность или реальность соответственно.
+        Если программа застревает на такой команде, то, вероятно, причина в том, что соответствующее действие совершает автоматика,
+        вследствие чего Автоматизатор оказывается неспособен совершить его вновь. Используйте параметр <i>nowait</i> или
+        команду AUTO.`,
       sections: [
         {
-          name: "MODIFIERS",
+          name: "ПАРАМЕТРЫ",
           items: [
             {
               header: "<i>nowait</i>",
               description: `
-                If present, the Automator will move on to the next command instead of repeatedly trying on this
-                command in situations where the prestige is not possible (eg. within an EC below the goal).
+                При наличии этого параметра Автоматизатор перейдёт к следующей команде, если совершить сброс престижа в данный момент невозможно, а не будет продолжать попытки.
               `
             },
             {
               header: "<i>respec</i>",
               description: `
-                For non-Infinity prestiges, also does the related respec action when triggering prestige.
-                Eternity: Respec Time Studies and Eternity.<br>
-                Reality: Unequip Glyphs and Reality.
+                С командой ETERNITY сбрасывает Исследования Времени, а с командой REALITY - деактивирует глифы.
               `
             },
           ]
@@ -143,19 +147,26 @@ export const automator = {
     {
       id: 4,
       isUnlocked: () => true,
-      keyword: "UNLOCK",
+      keyword: "UNLOCK (разблокировка испытаний)",
       category: 1,
-      syntax: "<b>unlock</b> [nowait] <u>feature</u>",
-      description: "Unlocks the specified Eternity Challenge or Time Dilation.",
+      syntax: `
+        <b>unlock</b> [nowait] <b>ec</b><u>номер</u><br>
+        <b>unlock</b> [nowait] <b>dilation</b>`,
+      description: "Эти две команды разблокируют Испытание Вечности с указанным номером и Замедление Времени соответственно.",
       sections: [
         {
-          name: "MODIFIERS",
+          name: "ПАРАМЕТРЫ",
           items: [
             {
               header: "<i>nowait</i>",
               description: `
-                If present, the Automator will move on to the next command even if unlocking the feature fails. By
-                default, the Automator will keep running this command until the unlock succeeds.
+                При наличии этого параметра Автоматизатор перейдёт к следующей команде, если разблокировать испытание в данный момент невозможно, а не будет продолжать попытки.
+              `
+            },
+            {
+              header: "<i>номер</i>",
+              description: `
+                Номер Испытания Вечности, которое необходимо разблокировать.
               `
             },
           ]
@@ -169,15 +180,25 @@ export const automator = {
     {
       id: 5,
       isUnlocked: () => true,
-      keyword: "START",
+      keyword: "START (запуск испытаний)",
       category: 1,
       syntax: `
-        <b>start</b> ec<u>N</u><br>
+        <b>start</b> ec<u>номер</u><br>
         <b>start</b> dilation`,
-      description: `Start a specified Eternity Challenge or a Dilated Eternity. This command will also attempt
-        to unlock the EC if not unlocked, but will not do the same for Dilation (use UNLOCK command to do that).
-        If you are already in the specified EC or Dilated Eternity, running this command again will do nothing;
-        otherwise, the Automator will keep attempting to start the Eternity until it succeeds.`,
+      description: "Эти две команды запускают Испытание Вечности с указанным номером и Замедление Времени соответственно. Если соответствующее Испытание Вечности не разблокировано, Автоматизатор разблокирует его.",
+      sections: [
+        {
+          name: "ПАРАМЕТРЫ",
+          items: [
+            {
+              header: "<i>номер</i>",
+              description: `
+                Номер Испытания Вечности, которое необходимо запустить.
+              `
+            },
+          ]
+        }
+      ],
       examples: [
         "start ec12",
         "start dilation"
@@ -186,37 +207,60 @@ export const automator = {
     {
       id: 6,
       isUnlocked: () => true,
-      keyword: "AUTO",
+      keyword: "AUTO (изменение настроек автоматики)",
       category: 2,
-      syntax: `<b>auto infinity</b> [setting]<br>
-        <b>auto eternity</b> [setting]<br>
-        <b>auto reality</b> [setting]`,
-      description: `Turns prestige Autobuyers on or off and allows you to change their settings. If the setting option
-        is not present, this command will toggle the Autobuyer state, turning it off if it is on and turning it on if
-        it is off. <b>This command will not work if you try to modify an Autobuyer or setting you do not have.</b>`,
+      syntax: `<b>auto infinity</b> [параметр]<br>
+        <b>auto eternity</b> [параметр]<br>
+        <b>auto reality</b> [параметр]`,
+      description: `Эти три команды изменяют настройки автоматики бесконечности, вечности или реальности соответственно в соответствии с параметром.
+        При его отсутствии Автоматизатор переключает соответствующую автоматику.
+        Обращение к неразблокированной автоматике приведёт к ошибке.`,
       sections: [
         {
-          name: "SETTINGS",
+          name: "ПАРАМЕТРЫ",
           items: [
             {
-              header: "<i>on</i> | <i>off</i>",
-              description: "Turns specified Autobuyer on or off.",
+              header: "<b>on</b> или <b>off</b>",
+              description: "Эти два параметра включают и выключают соответствующую автоматику соответственно.",
             },
             {
-              header: "<u><i>number</i></u> <u><i>time units</i></u>",
-              description: `Usable with Infinity and Eternity only.
-                Turns the Autobuyer on and set it to trigger at the given interval.`
+              header: "<u><i>число</i></u> <u><i>единица измерения времени</i></u>",
+              description: `Выставляет соответствующую автоматику на режим совершения сброса через указанное время.`
             },
             {
-              header: "<u><i>number</i></u> x highest",
-              description: `Usable with Infinity and Eternity only. Turns the Autobuyer on and sets it to
-                "X times highest" mode.`
+              header: "<u><i>число</i></u><b>x highest</b>",
+              description: `Выставляет соответствующую автоматику на режим совершения сброса при получении валюты престижа, в указанное число раз превышающем максимальное количество.`
             },
             {
-              header: "<i><u>number</u> <u>currency</u></i>",
-              description: `Turns the Autobuyer on and sets it to trigger at a specific amount. The currency must
-                match the autobuyer type (IP, EP, or RM). This will select "Reality Machines" mode for the Reality
-                Autobuyer. Glyph Level mode cannot be changed or set via the Automator, only manually.`,
+              header: "<i><u>число</u> <u>валюта</u></i>",
+              description: `Выставляет соответствующую автоматику на режим совершения сброса при указанном получении валюты престижа.`,
+            },
+          ]
+        },
+        {
+          name: "ЕДИНИЦЫ ИЗМЕРЕНИЯ ВРЕМЕНИ",
+          items: [
+            {
+              header: "",
+              description: `<blockquote>
+                <b>h</b> - час<br>
+                <b>m</b> - минута<br>
+                <b>s</b> - секунда<br>
+                <b>ms</b> - миллисекунда<br>
+                </blockquote>`,
+            },
+          ]
+        },
+        {
+          name: "ВАЛЮТЫ ПРЕСТИЖА",
+          items: [
+            {
+              header: "",
+              description: `<blockquote>
+                <b>ip</b> - Очки Бесконечности<br>
+                <b>ep</b> - Очки Вечности<br>
+                <b>rm</b> - Машины Реальности<br>
+                </blockquote>`,
             },
           ]
         }
@@ -224,20 +268,18 @@ export const automator = {
       examples: [
         "auto infinity on",
         "auto eternity off",
-        "auto infinity 30s",
-        "auto eternity 10 seconds",
-        "auto eternity 1e100 x highest"
+        "auto infinity 30 s",
+        "auto eternity 1e100x highest"
       ]
     },
     {
       id: 7,
       isUnlocked: () => BlackHole(1).isUnlocked,
-      keyword: "BLACK HOLE",
+      keyword: "BLACK HOLE (переключение цикла активности Чёрной Дыры)",
       category: 2,
-      syntax: "<b>black hole</b> <u>state</u>",
-      description: `Toggles the speedup effect from the Black Hole on or off. Turning the Black Hole on via the
-        Automator does not bypass the gradual acceleration from off to max speed which occurs before they are
-        permanent.`,
+      syntax: `<b>black hole on</b><br>
+        <b>black hole off</b>`,
+      description: `Эти две команды возобновляет и приостанавливает соответственно цикл активности Чёрной Дыры.`,
       examples: [
         "black hole on",
         "black hole off",
@@ -246,29 +288,12 @@ export const automator = {
     {
       id: 8,
       isUnlocked: () => Enslaved.isUnlocked,
-      keyword: "STORE GAME TIME",
+      keyword: "STORE GAME TIME (управление сохранением игрового времени)",
       category: 2,
-      syntax: "<b>store game time</b> <u>action</u>",
-      description: `Changes whether or not the Black Hole is storing time. Also allows usage of stored time.`,
-      sections: [
-        {
-          name: "ACTIONS",
-          items: [
-            {
-              header: "<i>on</i> | <i>off</i>",
-              description: `
-                Turns storing game time on or off.
-              `
-            },
-            {
-              header: "<i>use</i>",
-              description: `
-                Uses all stored game time. Does not alter the on/off state of time storage.
-              `
-            }
-          ]
-        }
-      ],
+      syntax: `<b>store game time on</b><br>
+        <b>store game time off</b><br>
+        <b>store game time use</b>`,
+      description: `Эти три команды запускает и прекращает зарядку Чёрной Дыры и разряжает её соответственно.`,
       examples: [
         "store game time on",
         "store game time off",
@@ -278,93 +303,109 @@ export const automator = {
     {
       id: 9,
       isUnlocked: () => true,
-      keyword: "NOTIFY",
+      keyword: "NOTIFY (уведомление)",
       category: 3,
-      syntax: "<b>notify</b> \"<u>text</u>\"",
-      description: `Takes the specified text and posts it in the top-right corner as
-        a text notification, in the same spot and style as other notifications such as auto-save
-        and achievement/upgrade unlocks. Can be useful for seeing automator status while
-        on tabs other than the Automator tab.`,
-      examples: [
-        "notify \"Dilation reached\"",
-        "notify \"ECs completed\""
-      ]
-    },
-    {
-      id: 10,
-      isUnlocked: () => true,
-      keyword: "Adding Comments",
-      category: 3,
-      syntax: "<b>#</b> text<br><b>//</b> text",
-      description: `Allows you to leave a note to yourself within your script. This may be
-        useful for organizing or keeping track of which parts of your script do various things,
-        in a way that appears more readable than just the commands. These commands mainly serve as a tool to
-        help you keep the steps of your scripts easier to follow if desired.`,
+      syntax: "<b>notify</b> \"<u>текст</u>\"",
+      description: `Посылает уведомление в правый верхний угол экрана с указанным текстом, подобное уведомлению о выполнении достижения.`,
       sections: [
         {
-          name: "NOTES",
+          name: "ПАРАМЕТРЫ",
           items: [
             {
-              header: "<i>Inline comments</i>",
+              header: "<i>текст</i>",
               description: `
-                The Automator does not support comments which are placed after an already functional
-                line of code, on the same line. As an example, the single line "studies load name TDI // Load push"
-                will be an invalid command. In this case, you will need to move the comment to a separate line
-                in the automator.
-              `
-            },
-            {
-              header: "<i>Execution speed</i>",
-              description: `
-                Having comments will not slow down your script, as they are completely skipped during
-                execution and do not count as a command for the purposes of running. For example, even if you have
-                a really long explanation in the form of comments on lines 20-40, the Automator will still
-                <i>immediately</i> skip from line 19 to 41 during execution.
+                Текст, который необходимо показать.
               `
             },
           ]
         }
       ],
       examples: [
-        "# get 1e20 before starting ec1",
-        "// this loop alternates dilation and pushing"
+        "notify \"Замедление разблокировано\"",
+        "notify \"ИспВ выполнены\""
+      ]
+    },
+    {
+      id: 10,
+      isUnlocked: () => true,
+      keyword: "Комментарии",
+      category: 3,
+      syntax: "<b>#</b> комментарий<br><b>//</b> комментарий",
+      description: `Одним из двух приведённых выше способов вы можете оформить комментарий внутри программы.
+        Они не влияют на работу программы и служат лишь как заметки для её оформления. Комментарий должен занимать отдельную строку.
+        Автоматизатор при выполнении программы пропускает комментарии, не тратя на это времени.`,
+      examples: [
+        "# накопим 1e20 прежде чем начать испв1",
+        "// этот цикл чередует замедления с обычными вечностями"
       ]
     },
     {
       id: 11,
       isUnlocked: () => true,
-      keyword: "WAIT",
+      keyword: "WAIT (ожидание выполнения условия)",
       category: 4,
-      syntax: "<b>wait</b> <u>condition</u>",
-      description: `Forces Automator to wait for some condition or event. To wait for a certain duration of time,
-        use the PAUSE command instead.`,
+      syntax: "<b>wait</b> <u>условие</u>",
+      description: `Приостанавливает выполнение программы, до тех пор пока не будет выполнено указанное условие.`,
       sections: [
         {
-          name: "POSSIBLE CONDITIONS",
+          name: "ПАРАМЕТРЫ",
           items: [
             {
-              header: "<i>comparison</i>",
+              header: "<i>условие</i>",
               description: `
-                Wait until the comparison statement is true. Check the entry for "Formatting Comparisons" for details
-                on how to properly input this option.
+                Условие, выполнения которого необходимо дождаться.
+              `
+            },
+          ]
+        },
+        {
+          name: "УСЛОВИЯ",
+          items: [
+            {
+              header: "<i>сравнение</i>",
+              description: `
+                Заставляет Автоматизатор ждать, пока не будет выполнено некоторое неравенство на игровые параметры.
+                Подробности о форматировании сравнений см. в соответствующей статье.
               `
             },
             {
-              header: "<i>prestige</i>",
+              header: "<i>престиж</i>",
               description: `
-                Wait until the specified prestige (Infinity, Eternity, or Reality) has been triggered by its respective
-                Autobuyer. This must happen <i>after</i> this command is reached; if the Autobuyer triggers
-                <i>before</i> the command is reached, your script may get stuck.
+                Заставляет Автоматизатор ждать, пока не произойдёт соответствующий сброс престижа.
               `
             },
             {
-              header: "<i>black hole (state)</i>",
+              header: "<i><b>black hole</b> фаза Чёрных Дыр</i>",
               description: `
-                Wait until the Black Hole(s) are in the specified state. Valid inputs for state are
-                "off", "bh1", and "bh2", corresponding to no active Black Hole(s), at least the first Black Hole active,
-                and both Black Holes active.
+                Заставляет Автоматизатор ждать, пока Чёрные Дыры не придут в соответствующую фазу.
               `
             }
+          ]
+        },
+        {
+          name: "ФАЗЫ ЧЁРНЫХ ДЫР",
+          items: [
+            {
+              header: "",
+              description: `<blockquote>
+                <b>bh1</b> - только 1-я Чёрная Дыра действует<br>
+                <b>bh2</b> - обе Чёрные Дыры действуют<br>
+                <b>off</b> - ни одна из Чёрных Дыр не действует<br>
+                </blockquote>`,
+            },
+          ]
+        },
+        {
+          name: "ПРЕСТИЖИ",
+          items: [
+            {
+              header: "",
+              description: `<blockquote>
+                <b>infinity</b> - бесконечность<br>
+                <b>eternity</b> - вечность<br>
+                <b>reality</b> - реальность<br>
+                </blockquote>`,
+            },
           ]
         }
       ],
@@ -379,55 +420,27 @@ export const automator = {
     {
       id: 12,
       isUnlocked: () => true,
-      keyword: "PAUSE",
+      keyword: "PAUSE (приостановка выполнения программы)",
       category: 4,
-      syntax: "<b>pause</b> <u>interval</u>",
-      description: `Tells the automator to stop moving forward and executing commands for a certain amount of time.
-        Note that if the pause duration is shorter than the automator's execution speed, the automator will wait until
-        the next execution tick before moving on.`,
+      syntax: "<b>pause</b> <u>число</u> <u>единица измерения времени</u>",
+      description: `Приостанавливает выполнение программы на указанное время.`,
       examples: [
-        "pause 10s",
-        "pause 1 minute",
-        "pause 34 seconds"
+        "pause 10 s",
+        "pause 1 m",
       ],
       sections: [
         {
-          name: "INTERVAL FORMATTING",
+          name: "ЕДИНИЦЫ ИЗМЕРЕНИЯ ВРЕМЕНИ",
           items: [
             {
-              header: "<i>Specified Interval</i>",
-              description: `This command accepts time units of milliseconds ("ms"), seconds ("s", "sec", or "seconds"),
-                minutes ("m", "min", or "minutes"), and hours ("h" or "hours"). You cannot provide just a number and
-                nothing else; a unit of time must be specified.`,
+              header: "",
+              description: `<blockquote>
+                <b>h</b> - час<br>
+                <b>m</b> - минута<br>
+                <b>s</b> - секунда<br>
+                <b>ms</b> - миллисекунда<br>
+                </blockquote>`,
             },
-            {
-              header: "<i>Defined Constant</i>",
-              description: `A defined constant may be used instead, see the definition panel. The defined value will
-                be assumed to be in units of seconds.`
-            },
-          ]
-        },
-        {
-          name: "OTHER",
-          items: [
-            {
-              header: "<i>Offline Side-effects</i>",
-              description: `This command may behave undesirably when it runs during offline progress due to limited
-                tick count. A 1-second pause that is usually 20-30 ticks might be only 1 game tick when processing
-                hours of offline progress, which might not be enough for the resources needed for the rest of the
-                script.`,
-            },
-            {
-              header: "<i>Alternatives</i>",
-              description: `Using another command like 'WAIT' will allow you to set it for a certain resource amount,
-                in order to ensure that the game has the proper state before moving onward.`
-            },
-            {
-              header: "<i>Manual Skip</i>",
-              description: `You can manually force the Automator to continue execution past a PAUSE command without
-                waiting the entire specified time by stepping forward one line (to put it on the next one) and then
-                resuming execution. If you find yourself doing this regularly, consider modifying your script.`
-            }
           ]
         }
       ]
@@ -435,14 +448,33 @@ export const automator = {
     {
       id: 13,
       isUnlocked: () => true,
-      keyword: "IF",
+      keyword: "IF (условный оператор)",
       category: 4,
-      syntax: `<b>if</b> <u>condition</u> {<br>
-        <blockquote>commands</blockquote>
+      syntax: `<b>if</b> <u>сравнение</u> {<br>
+        <blockquote><u>тело условного оператора</u></blockquote>
         }`,
-      description: `Defines an inner block of block of the automator script which will only be executed if the specified
-        comparison is true when this line is reached. If the comparison is false, the automator will instead skip to the
-        first line after the block and continue execution from there.`,
+      description: `Проверяет указанное неравенство на игровые параметры. Если оно верно, то выполняется указанный блок команд,
+        иначе Автоматизатор пропускает его.`,
+      sections: [
+        {
+          name: "ПАРАМЕТРЫ",
+          items: [
+            {
+              header: "<i>сравнение</i>",
+              description: `
+                Неравенство на игровые параметры, которое необходимо проверить.
+                Подробности о форматировании сравнений см. в соответствующей статье.
+              `
+            },
+            {
+              header: "<i>тело условного оператора</i>",
+              description: `
+                Блок команд, который выполняется при истинности сравнения.
+              `
+            },
+          ]
+        }
+      ],
       examples: [
         "if ec10 completions < 5",
         "if ep > 1e6000"
@@ -451,21 +483,58 @@ export const automator = {
     {
       id: 14,
       isUnlocked: () => true,
-      keyword: "UNTIL",
+      keyword: "UNTIL (цикл \"до тех пор пока\")",
       category: 4,
-      syntax: `<b>until</b> <u>comparison</u> {<br>
-        <blockquote>commands</blockquote>
-        }<br><b>until</b> <u>prestige_event</u> {<br>
-          <blockquote>commands</blockquote>
+      syntax: `<b>until</b> <u>сравнение</u> {<br>
+        <blockquote><u>тело цикла</u></blockquote>
+        }<br><b>until</b> <u>престиж</u> {<br>
+          <blockquote><u>тело цикла</u></blockquote>
         }`,
-      description: `Defines an inner block of the script where commands are repeated; the comparison is checked at the
-        start and every time the loop repeats. If the condition is true when the UNTIL statement is first reached, the
-        inner block of commands will be skipped entirely.
-        <br><br>
-        If an prestige event (ie. Infinity, Eternity, or Reality) is specified instead of a condition, then the block
-        will always be entered and the commands within the block will repeat until the event occurs for the first time
-        <i>after</i> entering the block. Note that the Automator will finish the rest of the loop and then exit after
-        the prestige event occurs - it will not immediately exit the loop in the middle.`,
+      description: `Проверяет указанное условие. Если оно неверно, то выполняется указанный блок команд, после чего
+        условие проверяется вновь. В случае ложности условия вновь выполняется блок команд, и так далее. Когда условие
+        впервые становится верным, блок команд пропускается.`,
+      sections: [
+        {
+          name: "ПАРАМЕТРЫ",
+          items: [
+            {
+              header: "<i>сравнение</i>",
+              description: `
+                Неравенство на игровые параметры, которое необходимо проверить.
+                Подробности о форматировании сравнений см. в соответствующей статье.
+              `
+            },
+            {
+              header: "<i>престиж</i>",
+              description: `
+                Престиж, сброса которого необходимо дождаться. При использовании этого параметра условием выполнения
+                цикла будет наличие хотя бы одного происшествия сброса указанного престижа, с тех пор как Автоматиазтор
+                впервые вошёл в тело цикла. Обратите внимание, что Автоматизатор не выйдет из цикла немедленно по совершении
+                сброса указанного престижа, а завершит выполнение команд внутри него и только затем проверит условие и покинет цикл.
+              `
+            },
+            {
+              header: "<i>тело цикла</i>",
+              description: `
+                Блок команд, который выполняется при ложности условия.
+              `
+            },
+          ]
+        },
+        {
+          name: "ПРЕСТИЖИ",
+          items: [
+            {
+              header: "",
+              description: `<blockquote>
+                <b>infinity</b> - бесконечность<br>
+                <b>eternity</b> - вечность<br>
+                <b>reality</b> - реальность<br>
+                </blockquote>`,
+            },
+          ]
+        }
+      ],
       examples: [
         "until ep > 1e500",
         "until reality",
@@ -474,14 +543,34 @@ export const automator = {
     {
       id: 15,
       isUnlocked: () => true,
-      keyword: "WHILE",
+      keyword: "WHILE (цикл \"пока\")",
       category: 4,
-      syntax: `<b>while</b> <u>comparison</u> {<br>
-        <blockquote>commands</blockquote>
+      syntax: `<b>while</b> <u>сравнение</u> {<br>
+        <blockquote><u>тело цикла</u></blockquote>
       }`,
-      description: `Defines an inner block of the script where commands are repeated; the comparison is checked at the
-        start and every time the loop repeats. If the condition is false when the WHILE statement is first reached, the
-        inner block of commands will be skipped entirely.`,
+      description: `Проверяет указанное неравенство на игровые параметры. Если оно верно, то выполняется указанный блок команд,
+        после чего условие проверяется вновь. В случае истинности условия вновь выполняется блок команд, и так далее. Когда условие
+        впервые становится неверным, блок команд пропускается.`,
+      sections: [
+        {
+          name: "ПАРАМЕТРЫ",
+          items: [
+            {
+              header: "<i>сравнение</i>",
+              description: `
+                Неравенство на игровые параметры, которое необходимо проверить.
+                Подробности о форматировании сравнений см. в соответствующей статье.
+              `
+            },
+            {
+              header: "<i>тело цикла</i>",
+              description: `
+                Блок команд, который выполняется при истинности условия.
+              `
+            },
+          ]
+        }
+      ],
       examples: [
         `while ep < 1e500`,
         `while myThreshold > am`,
@@ -490,15 +579,12 @@ export const automator = {
     {
       id: 16,
       isUnlocked: () => true,
-      keyword: "STOP",
+      keyword: "STOP (полная остановка выполнения программы)",
       category: 4,
       syntax: `<b>stop</b>`,
-      description: `When the Automator runs this line, it will stop execution as if you clicked the
-        <i class="fas fa-stop"></i> button on the control panel in the top-left of the Automator. This
-        does not need to be placed at the end of every script in order to stop them, as turning off the
-        <i class="fas fa-sync-alt"></i> option on the left panel will do this automatically.
-        This command may be useful when used inside of an IF command, in order to stop execution
-        only under certain conditions.`,
+      description: `Полностью останавливает выполнение программы. Обратите внимание, что эту команду не нужно писать
+        в конец каждой программы, так как они останавливаются сами по достижении последней строки. Но эта команда может быть полезна,
+        если вы хотите остановить выполнение программы только при определённом условии.`,
       examples: [
         `stop`,
       ]
@@ -506,42 +592,40 @@ export const automator = {
     {
       id: 17,
       isUnlocked: () => true,
-      keyword: "Currency List",
+      keyword: "Список игровых параметров",
       category: 4,
-      syntax: "<i>You can use these in any IF, WHILE, UNTIL, or WAIT command</i>",
+      syntax: "<i>Используются в сравнениях</i>",
       description: () => {
         const filterText = EffarigUnlock.glyphFilter.isUnlocked
-          ? `<b>filter score</b> - Glyph filter score of the Glyph which your filter will select this Reality<br>`
+          ? `<b>filter score</b> - лучшая из оценок выбираемых глифов от Фильтра Глифов<br>`
           : "";
         const stText = V.spaceTheorems > 0
-          ? `<b>space theorems</b> - Current unspent Space Theorem amount<br>
-            <b>total space theorems</b> - TOTAL Space Theorems, including ones spent on current Studies<br>`
+          ? `<b>space theorems</b> - количество Теорем Пространства<br>
+            <b>total space theorems</b> - общее количество Теорем Пространтсва (в том числе потраченных)<br>`
           : "";
-        return `This is a list of "currencies" or numbers that you can use within the Automator.<br>
-          Note that when used, most currencies will need to be in scientific notation.<br>
-          <b>am</b> - Current Antimatter amount  <br>
-          <b>ip</b> - Current Infinity Point amount  <br>
-          <b>ep</b> - Current Eternity Point amount  <br>
-          <b>rm</b> - Current Reality Machine amount  <br>
-          <b>infinities</b> - Current Infinity amount <br>
-          <b>banked infinities</b> - Current Banked Infinity amount <br>
-          <b>eternities</b> - Current Eternity amount <br>
-          <b>realities</b> - Current Reality amount <br>
-          <b>pending ip</b> - IP gained on Infinity (0 if not available)<br>
-          <b>pending ep</b> - EP gained on Eternity (0 if not available)<br>
-          <b>pending tp</b> - TP gained on exiting Dilation<br>
-          <b>pending rm</b> - RM gained on Reality (0 if not available)<br>
-          <b>pending glyph level</b> - Glyph Level gained on Reality (0 if not available)<br>
-          <b>dt</b> - Current Dilated Time amount <br>
-          <b>tp</b> - Current Tachyon Particle amount<br>
-          <b>rg</b> - Current Replicanti Galaxy amount (does not use scientific)<br>
-          <b>rep</b> - Current Replicanti amount <br>
-          <b>tt</b> - Current Time Theorem amount <br>
-          <b>total tt</b> - TOTAL Time Theorems, includes all forms of generated TT and any spent on Studies <br>
-          <b>spent tt</b> - Time Theorems currently spent on all Time Studies <br>
-          <b>total completions</b> - Total completions of all Eternity Challenges <br>
-          <b>pending completions</b> - Total completions of current EC at Eternity <br>
-          <b>ec<u>X</u> completions</b> - Amount of EC completions for a certain EC (eg. "ec6 completions")<br>
+        return `
+          <b>am</b> - количество антиматерии<br>
+          <b>ip</b> - количество Очков Бесконечности<br>
+          <b>ep</b> - количество Очков Вечности<br>
+          <b>rm</b> - количество Машин Реальности<br>
+          <b>infinities</b> - количество бесконечностей<br>
+          <b>banked infinities</b> - количество сохранённых бесконечностей<br>
+          <b>eternities</b> - количество вечностей<br>
+          <b>realities</b> - количество реальностей<br>
+          <b>pending ip</b> - количество ОБ, которое вы могли бы получить на бесконечности (при невозможности совершить бесконечность приравнивается к нулю)<br>
+          <b>pending ep</b> - количество ОВ, которое вы могли бы получить на вечности (при невозможности совершить вечность приравнивается к нулю)<br>
+          <b>pending tp</b> - количество Тахионов, которое вы могли бы получить на вечности<br>
+          <b>pending rm</b> - количество МР, которое вы могли бы получить на реальности (при невозможности совершить реальность приравнивается к нулю)<br>
+          <b>pending glyph level</b> - уровень глифа, который вы могли бы получить на реальности (при невозможности совершить реальность приравнивается к нулю)<br>
+          <b>dt</b> - количество Замедленного Времени<br>
+          <b>tp</b> - количество Тахионов<br>
+          <b>rg</b> - количество Галактик Репликанти<br>
+          <b>rep</b> - количество Репликанти<br>
+          <b>tt</b> - количество Теорем Времени<br>
+          <b>total tt</b> - общее количество Теорем Пространтсва (в том числе потраченных)<br>
+          <b>total completions</b> - общее количество выполнений Испытаний Вечности<br>
+          <b>pending completions</b> - количество выполнений текущего Испытания Вечности, которое вы могли бы получить на вечности<br>
+          <b>ec<u>X</u> completions</b> - количество выполнений <b>X</b>-го Испытания Вечности (<b>X</b> - целое число от 1 до 12)<br>
           ${filterText}
           ${stText}
         `;
@@ -550,32 +634,26 @@ export const automator = {
     {
       id: 18,
       isUnlocked: () => true,
-      keyword: "Formatting Comparisons",
+      keyword: "Форматирование сравнений",
       category: 4,
-      syntax: "<u>resource1</u> <u>condition</u> <u>resource2</u>",
-      description: `
-        Comparisons are used within certain commands, which allow you to control the behavior of the automator based
-        on the game's current state. They have a standard format with two value inputs and a comparison operator, but
-        the value inputs can be anything as long as it is formatted correctly overall.`,
+      syntax: "<u>параметр</u> <u>знак</u> <u>параметр</u>",
+      description: `Возвращает истинность указанного неравенства на игровые параметры для использования в условном операторе IF, цикле или команде WAIT.`,
       sections: [
         {
-          name: "CONDITIONS",
+          name: "ПАРАМЕТРЫ",
           items: [
             {
-              header: "<i>resource</i>",
+              header: "<i>параметр</i>",
               description: `
-                This can be any Automator Currency, a defined constant, or a number which must be formatted in
-                scientific notation (eg. 1000, 1e100, 1.8e308). Unlike more general programming languages, this must
-                be a single value (ie. math expressions such as "ip + pending ip" are not allowed).
+                Это либо неотрицательное число, записанное арабскими цифрами или в Научной нотации, либо игровой параметр, то есть некоторая
+                характеристика текущего состояния игры. Список разрешённых игровых параметров приведён в соответствующей статье.
               `
             },
             {
-              header: "<i>condition</i>",
+              header: "<i>знак</i>",
               description: `
-                This must be an inequality operator (<, <=, >, >=), which takes on its typical mathematical meaning.
-                Equality operators (==, !=) are not allowed, as the nature of the game means that numbers will often
-                never be exactly equal and thus checking based on direct equality may lead to unexpected script
-                behavior.
+                Знак неравенства (<, <=, > или >=), несущий свой обычный математический смысл.
+                Обратите внимание, что Автоматизатор не позволяет проверять игровые параметры на равенство.
               `
             },
           ]
@@ -585,54 +663,19 @@ export const automator = {
         "ep < 1e20",
         "total tt > 14000",
       ]
-    },
-    {
-      id: 19,
-      isUnlocked: () => true,
-      keyword: "Commands with inner blocks",
-      category: 4,
-      syntax: `<b>header_command</b> {<br>
-        <blockquote>inner_commands</blockquote>
-        }`,
-      description: `Some commands are associated with an "inner block" of commands. This inner block can contain still
-        contain any other valid command, but may or may not actually get executed based on what the state of the game is
-        when <b>header_command</b> is executed. This allows you to repeat some commands over and over (eg. Time Study
-        purchasing), or to skip them entirely (eg. not entering an EC if it already has full completions). These blocks
-        can be nested if desired, with inner blocks being placed within one another.
-        <br><br>
-        In the text editor mode: Specify the inner block with curly braces, with the opening brace { on the same line as
-        the comparison and the closing brace } on its own line after the last line you want inside the block. Inner
-        commands do not need to be indented, although it may be visually helpful to do so.
-        <br><br>
-        In the block editor mode: These commands come with an empty dotted rectangle which indicates which commands are
-        within the inner block. Subsequent blocks can then be dragged inside the dotted rectangle.
-        `,
-      examples: [
-        `if ec10 completions < 5 {<br>
-          <blockquote>
-          unlock ec10<br>
-          start ec10</blockquote>
-        }`,
-        `until ep > 1e8 {<br>
-          <blockquote>
-          studies nowait purchase 11-62<br>
-          pause 10s<br>
-          eternity respec</blockquote>
-        }`
-      ]
-    },
+    }
   ],
   otherAutomatorPoints: [
     {
-      name: "Reality Count",
+      name: "Реальности",
       automatorPoints: () => 2 * Math.clampMax(Currency.realities.value, 50),
-      shortDescription: () => `+${formatInt(2)} per Reality, up to ${formatInt(50)} Realities`,
+      shortDescription: () => `Вы получаете ${formatInt(2)} ОА каждую реальность`,
       symbol: "Ϟ",
     },
     {
-      name: "Black Hole",
+      name: "Чёрная Дыра",
       automatorPoints: () => (BlackHole(1).isUnlocked ? 10 : 0),
-      shortDescription: () => `Unlocking gives ${formatInt(10)} AP`,
+      shortDescription: () => `Разблокировка Чёрной Дыры даёт ${formatInt(10)} ОА`,
       symbol: "<i class='fas fa-circle'></i>",
     },
   ],

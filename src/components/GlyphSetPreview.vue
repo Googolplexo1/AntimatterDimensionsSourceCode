@@ -56,7 +56,7 @@ export default {
     noneText: {
       type: String,
       required: false,
-      default: "(No Glyphs equipped)"
+      default: "(Нет действующих глифов)"
     },
     sort: {
       type: Boolean,

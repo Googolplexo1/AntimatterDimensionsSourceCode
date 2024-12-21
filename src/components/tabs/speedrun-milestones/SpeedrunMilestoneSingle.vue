@@ -21,16 +21,10 @@ export default {
     displayName() {
       return this.display ? this.milestone.name : "???";
     },
-    description() {
-      if (!this.display) return "";
-      return typeof this.milestone.description === "function"
-        ? this.milestone.description()
-        : this.milestone.description;
-    },
     timeDisplay() {
       return this.time
-        ? `Completed in ${TimeSpan.fromMilliseconds(this.time).toStringShort(true, true)}`
-        : "Not reached yet";
+        ? `Достигнуто за ${TimeSpan.fromMilliseconds(this.time).toStringShort(true, true)}`
+        : "Ещё не достигнуто";
     },
     classObject() {
       return {
@@ -45,7 +39,6 @@ export default {
 <template>
   <div :class="classObject">
     <b>{{ displayName }}</b>
-    <i>{{ description }}</i>
     {{ timeDisplay }}
   </div>
 </template>

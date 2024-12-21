@@ -1,35 +1,34 @@
 export const secretAchievements = [
   {
     id: 11,
-    name: "The first one's always free",
-    description: "Click on this Achievement."
+    name: "Первое всегда бесплатное",
+    description: "Нажмите на это достижение."
   },
   {
     id: 12,
-    name: "Just in case",
-    get description() { return `Save ${formatInt(100)} times without refreshing.`; }
+    name: "На всякий случай",
+    get description() { return `Сохраните игру ${formatInt(100)} раз на протяжении одного сеанса.`; }
   },
   {
     id: 13,
-    name: "It pays to have respect",
-    description: "Pay respects."
+    name: "Почтение необходимо",
+    description: "Почтите память."
   },
   {
     id: 14,
-    name: "So do I",
-    description: "Say something naughty."
+    name: "Я тоже",
+    description: "Скажите что-нибудь пошлое."
   },
   {
     id: 15,
-    name: "Do a barrel roll!",
-    description: "Do a barrel roll.",
+    name: "Сделай бочку!",
+    description: "Сделайте бочку.",
   },
   {
     id: 16,
-    name: "Do you enjoy pain?",
+    name: "Тебе нравится боль?",
     get description() {
-      return `Use a "painful" notation for ${formatInt(10)} real-time minutes
-      after doing an Eternity.`;
+      return `Играйте на болезненной нотации в течение ${formatInt(10)} минут реального времени всего после первой вечности.`;
     },
     checkRequirement: () => AchievementTimers.pain
       .check(PlayerProgress.eternityUnlocked() && Notations.current.isPainful, 600),
@@ -37,49 +36,49 @@ export const secretAchievements = [
   },
   {
     id: 17,
-    name: "30 Lives",
-    description: "Input the konami code."
+    get name() { return `${formatInt(30)} жизней` },
+    description: "Введите код Konami."
   },
   {
     id: 18,
-    name: "Do you feel lucky? Well do ya punk?",
+    name: "Чувствуешь себя везунчиком? Да, сопляк?",
     get description() {
-      return `You have a ${formatInt(1)}/${formatInt(1e5)} chance of getting this achievement every second.`;
+      return `Каждую секунду вы с вероятностью ${formatInt(1)}/${formatInt(1e5)} выполняете это достижение.`;
     }
   },
   {
     id: 21,
-    name: "Go study in real life instead",
-    description: "Purchase the secret Time Study."
+    name: "Лучше иди исследуй реальную жизнь",
+    description: "Купите секретное Исследование Времени."
   },
   {
     id: 22,
-    name: "Deep fried",
-    get description() { return `Buy ${formatInt(1e5)} Antimatter Galaxies in total while using emoji notation.`; },
+    name: "Глубоко прожаренный",
+    get description() { return `Купите ${formatInt(1e5)} Галактик Антиматерии на нотации "Эмодзи" всего.`; },
     checkRequirement: () => player.requirementChecks.permanent.emojiGalaxies >= 1e5,
     checkEvent: GAME_EVENT.GALAXY_RESET_AFTER
   },
   {
     id: 23,
-    name: "Stop right there criminal scum!",
-    description: "Open the console."
+    name: "Стой на месте, преступный элемент!",
+    description: "Откройте консоль."
   },
   {
     id: 24,
-    name: "Real news",
-    description: "Click on a news ticker message that does something when you click on it."
+    name: "Настоящие новости",
+    description: "Нажмите на новость, которая как-нибудь реагирует на нажатие."
   },
   {
     id: 25,
-    name: "Shhh... It's a secret",
-    description: "Discover a secret theme."
+    name: "Шшшш... Это секрет",
+    description: "Найдите секретную тему."
   },
   {
     id: 26,
-    name: "You're a failure",
+    name: "Ты неудачник",
     get description() {
-      return `Fail Eternity Challenges ${formatInt(10)} times without refreshing.
-      What are you doing with your life...`;
+      return `Провалите Испытание Вечности ${formatInt(10)} раз на протяжении одного сеанса.
+      Что вы делаете со своей жизнью...`;
     },
     checkRequirement: (function() {
       let count = 0;
@@ -89,26 +88,26 @@ export const secretAchievements = [
   },
   {
     id: 27,
-    name: "It's not called matter dimensions is it?",
-    description: "Get Infinite matter.",
+    name: `Разве эта игра называется "Измерения Материи"?`,
+    get description() { return `Достигните ${formatPostBreak(Decimal.NUMBER_MAX_VALUE, 1, 1)} материи.`; },
     checkRequirement: () => Currency.matter.gte(Decimal.NUMBER_MAX_VALUE),
     checkEvent: GAME_EVENT.GAME_TICK_AFTER
   },
   {
     id: 28,
-    name: "Nice.",
-    description: "Don't act like you don't know what you did."
+    name: "Красиво.",
+    description: "Не делайте вид, словно не знаете, что сделали."
   },
   {
     id: 31,
-    name: "You should download some more RAM",
-    get description() { return `Set your update rate to ${formatInt(200)}ms.`; }
+    name: "Тебе стоит загрузить побольше оперативной памяти",
+    get description() { return `Выставите интервал обновления на ${formatInt(200)}мс.`; }
   },
   {
     id: 32,
-    name: "Less than or equal to 0.001",
+    get name() { return `Меньше или равно ${format(0.001, 3, 3)}` },
     get description() {
-      return `Get a fastest infinity or eternity time of less than or equal to ${format(0.001, 3, 3)} seconds.`;
+      return `Совершите бесконечность или вечность за ${format(0.001, 3, 3)} секунды или быстрее.`;
     },
     checkRequirement: () =>
       Time.bestInfinity.totalMilliseconds <= 1 ||
@@ -117,79 +116,79 @@ export const secretAchievements = [
   },
   {
     id: 33,
-    name: "A sound financial decision",
-    description: "Click on the button to purchase STD coins."
+    name: "Алхимик высшей категории",
+    description: "Попытайтесь облагородить Глиф Реальности."
   },
   {
     id: 34,
-    name: "You do know how these work, right?",
-    description: "Respec with an empty Time Study Tree."
+    name: "Ты знаешь, как это работает, да?",
+    description: "Сбросьте пустое Древо Исследований."
   },
   {
     id: 35,
-    name: "Should we tell them about buy max...",
-    get description() { return `Buy single Tickspeed upgrades ${formatInt(1e5)} times.`; },
+    name: `Может, скажем им про кнопку "Купить все"...`,
+    get description() { return `Купите ${formatInt(1e5)} одиночных ускорителей.`; },
     checkRequirement: () => player.requirementChecks.permanent.singleTickspeed >= 1e5,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER
   },
   {
     id: 36,
-    name: "While you were away... Nothing happened.",
-    description: "See nothing happen while you were away."
+    name: "Пока тебя не было... Ничего не произошло.",
+    description: "Сделайте так, чтобы игра сообщила вам, что пока вас не было, ничего не произошло."
   },
   {
     id: 37,
-    name: "You followed the instructions",
-    description: "Follow instructions."
+    name: "Ты следовал инструкции",
+    description: "Следуйте инструкции."
   },
   {
     id: 38,
-    name: "Knife's edge",
-    description: "Close the Hard Reset modal after typing in the confirmation."
+    name: "Лезвие ножа",
+    description: "Закройте окно подтверждения полного сброса сохранения, введя подтвердительную фразу."
   },
   {
     id: 41,
-    name: "That dimension doesn’t exist",
-    description: "Try to purchase the 9th dimension."
+    name: "Этого измерения не существует",
+    description: "Попытайтесь купить девятое измерение."
   },
   {
     id: 42,
-    name: "SHAME ON ME",
-    description: "Try to use EC12 to speed up time."
+    name: "КАКОЙ ПОЗОР",
+    description: "Попытайтесь использовать ИспВ12 для ускорения времени."
   },
   {
     id: 43,
-    name: "A cacophonous chorus",
-    description: "Have all equipped Glyphs be Music Glyphs.",
+    name: "Несогласованный хор",
+    description: "Имейте пять действующих музыкальных глифов.",
     checkRequirement: () => Glyphs.active.length && Glyphs.active.every(x => Glyphs.isMusicGlyph(x)),
     checkEvent: GAME_EVENT.GLYPHS_EQUIPPED_CHANGED
   },
   {
     id: 44,
-    name: "Are you statisfied now?",
-    get description() { return `Stare intently at the statistics tab for ${formatInt(15)} real-time minutes.`; },
+    name: "Ну что, доволен?",
+    get description() { return `Сосредоточенно созерцайте вкладку "Статистика" в течение ${formatInt(15)} минут реального времени подряд.`; },
     checkRequirement: () => AchievementTimers.stats.check(Tab.statistics.isOpen, 900),
     checkEvent: GAME_EVENT.GAME_TICK_AFTER
   },
   {
     id: 45,
-    name: "This dragging is dragging on",
-    description: "Drag the Perks around for a minute.",
+    name: "Что-то подёргивание затянулось",
+    description: "Дёргайте Навык в течение минуты реального времени подряд.",
     checkRequirement: () => player.requirementChecks.permanent.perkTreeDragging++ / 100 >= 60
   },
   {
     id: 46,
-    name: "For a rainy day",
-    description: "Store a day of real time."
+    name: "На чёрный день",
+    description: "Сохраните день реального времени."
   },
   {
     id: 47,
     name: "ALT+",
-    description: "Hide every possible tab."
+    description: "Скройте как можно больше вкладок."
   },
   {
     id: 48,
-    name: "Stack overflow",
-    description: "Have more Automator errors than lines."
+    name: "Stack Overflow",
+    description: "Сделайте так, чтобы в текущей программе для Автоматизатора было больше ошибок, чем строк."
   },
 ];

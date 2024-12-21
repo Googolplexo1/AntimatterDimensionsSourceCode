@@ -106,16 +106,15 @@ export default {
       };
     },
     description() {
-      const glyphName = `${this.type.capitalize()}`;
       switch (this.type) {
         case "companion":
-          return "Companion Glyph";
+          return "Глиф-компаньон";
         case "cursed":
-          return "Cursed Glyph";
+          return "Проклятый Глиф";
         case "reality":
-          return `Pure Glyph of ${glyphName}`;
+          return "Чистый Глиф Реальности";
         default:
-          return `${this.rarityInfo.name} Glyph of ${glyphName}`;
+          return `${this.rarityInfo.nameRussian} Глиф ${translateGlyph(this.type)}`;
       }
     },
     isLevelCapped() {
@@ -127,7 +126,7 @@ export default {
     rarityText() {
       if (!GlyphTypes[this.type].hasRarity) return "";
       const strength = Pelle.isDoomed ? Pelle.glyphStrength : this.strength;
-      return `| Rarity:
+      return `| Редкость:
         <span style="color: ${this.descriptionStyle.color}">${formatRarity(strengthToRarity(strength))}</span>`;
     },
     levelText() {
@@ -140,7 +139,7 @@ export default {
       const color = this.isLevelCapped
         ? "#ff4444"
         : (this.isLevelBoosted ? "#44FF44" : undefined);
-      return `Level: <span style="color: ${color}">
+      return `Уровень: <span style="color: ${color}">
               ${arrow}${formatInt(this.effectiveLevel)}${arrow}
               </span>`;
     },
@@ -231,7 +230,7 @@ export default {
       const powerText = `${format(this.sacrificeReward, 2, 2)}`;
       const isCurrentAction = this.currentAction === "sacrifice";
       return `<span style="font-weight: ${isCurrentAction ? "bold" : ""};">
-              Sacrifice: ${powerText}
+              Жертвенная ценность: ${powerText}
               </span>`;
     },
     refineText() {
@@ -239,18 +238,18 @@ export default {
       if (!AlchemyResource[this.type].isUnlocked) return "";
       let refinementText = `${format(this.uncappedRefineReward, 2, 2)} ${GLYPH_SYMBOLS[this.type]}`;
       if (this.uncappedRefineReward !== this.refineReward) {
-        refinementText += ` (Actual value due to cap: ${format(this.refineReward, 2, 2)} ${GLYPH_SYMBOLS[this.type]})`;
+        refinementText += ` (Фактическая ценность с учётом ограничения: ${format(this.refineReward, 2, 2)} ${GLYPH_SYMBOLS[this.type]})`;
       }
       const isCurrentAction = this.currentAction === "refine";
       return `<span style="font-weight: ${isCurrentAction ? "bold" : ""};">
-              Refine: ${refinementText}
+              Алхимическая ценность: ${refinementText}
               </span>`;
     },
     scoreText() {
       if (this.type === "companion" || this.type === "cursed" || this.type === "reality") return "";
-      const showFilterScoreModes = [AUTO_GLYPH_SCORE.SPECIFIED_EFFECT, AUTO_GLYPH_SCORE.EFFECT_SCORE];
+      const showFilterScoreModes = [AUTO_GLYPH_SCORE.RARITY_THRESHOLD, AUTO_GLYPH_SCORE.SPECIFIED_EFFECT, AUTO_GLYPH_SCORE.EFFECT_SCORE];
       if (!showFilterScoreModes.includes(this.scoreMode)) return "";
-      return `Score: ${format(AutoGlyphProcessor.filterValue(this.$parent.glyph), 1, 1)}`;
+      return `Оценка Фильтра: ${format(AutoGlyphProcessor.glyphScore(this.$parent.glyph), 1, 1)}`;
     }
   }
 };

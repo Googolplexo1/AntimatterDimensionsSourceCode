@@ -63,8 +63,8 @@ export default {
     lastOpened() {
       const ms = Date.now() - this.player.lastUpdate;
       return this.isFromFuture
-        ? `This save is from ${TimeSpan.fromMilliseconds(-ms).toString()} in the future.`
-        : `This save was last opened ${TimeSpan.fromMilliseconds(ms).toString()} ago.`;
+        ? `Это сохранение из будущего через ${TimeSpan.fromMilliseconds(-ms).toString("accusative")}.`
+        : `Это сохранение в последний раз было открыто ${TimeSpan.fromMilliseconds(ms).toString("accusative")} назад.`;
     },
     offlineType() {
       // We update here in the computed method instead of elsewhere because otherwise it initializes the text
@@ -73,26 +73,26 @@ export default {
 
       switch (this.offlineImport) {
         case OFFLINE_PROGRESS_TYPE.IMPORTED:
-          return "Using imported save settings";
+          return "Согласно настройкам импортируемого сохранения";
         case OFFLINE_PROGRESS_TYPE.LOCAL:
-          return "Using existing save settings";
+          return "Согласно настройкам существующего сохранения";
         case OFFLINE_PROGRESS_TYPE.IGNORED:
-          return "Will not simulate offline time";
+          return "Без симуляции офлайн-прогресса";
         default:
           throw new Error("Unrecognized offline progress setting for importing");
       }
     },
     offlineDetails() {
       if (this.offlineImport === OFFLINE_PROGRESS_TYPE.IGNORED) {
-        return `Save will be imported without offline progress.`;
+        return `Сохранение будет импортировано без офлайн-прогресса.`;
       }
-      if (!GameStorage.offlineEnabled) return "This setting will not apply any offline progress after importing.";
-      if (this.isFromFuture) return "Offline progress cannot be simulated due to an inconsistent system clock time.";
+      if (!GameStorage.offlineEnabled) return "Эта настройка не позволит симулировать офлайн-прогресс при импортировании.";
+      if (this.isFromFuture) return "Офлайн-прогресс не может быть симулирован из-за несогласованности системного времени.";
 
       const durationInMs = Date.now() - this.player.lastUpdate;
       const ticks = GameStorage.maxOfflineTicks(durationInMs);
-      return `After importing, will simulate ${formatInt(ticks)} ticks of duration
-        ${TimeSpan.fromMilliseconds(durationInMs / ticks).toStringShort()} each.`;
+      return `При импортировании будет ${quantifyInt("симулирован", ticks)} ${quantifyInt("тик", ticks)}, каждый продолжительностью в 
+        ${TimeSpan.fromMilliseconds(durationInMs / ticks).toStringShort()}.`;
     },
     willLoseCosmetics() {
       const currSets = player.reality.glyphs.cosmetics.unlockedFromNG;
@@ -147,7 +147,7 @@ export default {
     :show-confirm="false"
   >
     <template #header>
-      Input your save
+      Введите ваше сохранение
     </template>
     <input
       ref="input"
@@ -163,23 +163,23 @@ export default {
       </div>
       <template v-else-if="inputIsValidSave">
         <div v-if="fileName">
-          File name: {{ fileName }}
+          Имя файла: {{ fileName }}
         </div>
-        <div>Antimatter: {{ formatPostBreak(antimatter, 2, 1) }}</div>
+        <div>Антиматерии: {{ formatPostBreak(antimatter, 2, 1) }}</div>
         <div v-if="progress.isInfinityUnlocked">
-          Infinities: {{ formatPostBreak(infinities, 2) }}
+          Бесконечностей: {{ formatPostBreak(infinities, 2) }}
         </div>
         <div v-if="progress.isEternityUnlocked">
-          Eternities: {{ formatPostBreak(player.eternities, 2) }}
+          Вечностей: {{ formatPostBreak(player.eternities, 2) }}
         </div>
         <div v-if="progress.isRealityUnlocked">
-          Realities: {{ formatPostBreak(player.realities, 2) }}
+          Реальностей: {{ formatPostBreak(player.realities, 2) }}
         </div>
         <div v-if="progress.hasFullCompletion">
-          Full game completions: {{ formatInt(player.records.fullGameCompletions) }}
+          Полных прохождений игры: {{ formatInt(player.records.fullGameCompletions) }}
         </div>
         <div class="c-modal-import__warning">
-          (Your current save file will be overwritten!)
+          (Ваше текущее сохранение будет замещено!)
         </div>
         <br>
         <div>
@@ -188,13 +188,13 @@ export default {
             class="o-primary-btn"
             @click="changeOfflineSetting"
           >
-            Offline Progress: {{ offlineType }}
+            Офлайн-прогресс: {{ offlineType }}
           </div>
           <span v-html="offlineDetails" />
         </div>
       </template>
       <div v-else-if="hasInput">
-        Not a valid save:
+        Недопустимое сохранение:
         <br>
         {{ saveCheckString }}
       </div>
@@ -204,13 +204,13 @@ export default {
       >
         <div v-if="willLoseCosmetics">
           <br>
-          Glyph cosmetic sets from completing the game are tied to your save.
+          Косметические наборы глифов, данные за прохождение игры, привязаны к вашему сохранению.
           <br>
-          Importing this save will cause you to lose some sets.
+          Импорт этого сохранения приведёт к потере некоторых наборов.
         </div>
         <div v-if="willLoseSpeedrun">
           <br>
-          You will lose the ability to do a Speedrun, as this save does not have it unlocked.
+          Вы потеряете возможность начать спидран, так как она не разблокирована на этом сохранении.
         </div>
       </div>
     </div>
@@ -220,7 +220,7 @@ export default {
       class="o-primary-btn--width-medium c-modal-message__okay-btn c-modal__confirm-btn"
       @click="importSave"
     >
-      Import
+      Импортировать
     </PrimaryButton>
   </ModalWrapperChoice>
 </template>

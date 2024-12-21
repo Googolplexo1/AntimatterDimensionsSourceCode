@@ -19,8 +19,8 @@ export default {
   },
   computed: {
     completionTime() {
-      if (this.tierNotCompleted) return "Not completed at this tier";
-      return `Fastest Completion: ${TimeSpan.fromSeconds(this.realityTime).toStringShort()}`;
+      if (this.tierNotCompleted) return "Не выполнена на этом слое";
+      return `Рекордное время выполнения: ${TimeSpan.fromSeconds(this.realityTime).toStringShort()}`;
     },
     runEffects() {
       return GameDatabase.celestials.descriptions[5].effects().split("\n");
@@ -42,7 +42,7 @@ export default {
     },
     startRun() {
       if (this.isDoomed) return;
-      Modal.celestials.show({ name: "Lai'tela's", number: 5 });
+      Modal.celestials.show({ name: "Лайтелы", number: 5 });
     },
     classObject() {
       return {
@@ -65,7 +65,7 @@ export default {
 <template>
   <button :class="classObject()">
     <span :class="{ 'o-pelle-disabled': isDoomed }">
-      <b>Start Lai'tela's Reality</b>
+      <b>Запустить Реальность Лайтелы</b>
     </span>
     <div
       :class="runButtonClassObject()"
@@ -73,19 +73,19 @@ export default {
     />
     <div v-if="realityReward > 1">
       <b>
-        All Dark Matter multipliers are {{ formatX(realityReward, 2, 2) }} higher.
+        Множитель {{ formatX(realityReward, 2, 2) }} ко всем Измерениям Тёмной Материи.
       </b>
       <span v-if="maxDimTier > 0">
         <br><br>
         {{ completionTime }}
         <br>
         <span v-if="maxDimTier <= 7">
-          <b>Highest active dimension: {{ formatInt(maxDimTier) }}</b>
+          <b>Действующих уровней измерений: {{ formatInt(maxDimTier) }}</b>
         </span>
         <br><br>
-        Glyph Set:
+        Лучший набор глифов:
         <GlyphSetPreview
-          text="Fastest Destabilization Glyph Set"
+          text="Глифы, использованные при рекордном выполнении Реальности Лайтелы"
           :text-hidden="true"
           :force-name-color="false"
           :glyphs="bestSet"
@@ -94,10 +94,10 @@ export default {
       <span v-else>
         <br>
         <b>
-          You also gain an additional {{ formatX(8) }} Dark Energy.
+          Также вы получили множитель {{ formatX(8) }} к производству Тёмной Энергии.
         </b>
         <br><br>
-        Lai'tela's Reality has been fully destabilized and cannot have its reward further improved.
+        Реальность Лайтелы полностью дестабилизирована. Улучшить полученную за неё награду невозможно.
       </span>
       <br>
     </div>

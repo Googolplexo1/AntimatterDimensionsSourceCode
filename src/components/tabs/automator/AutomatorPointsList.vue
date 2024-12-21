@@ -31,17 +31,17 @@ export default {
 <template>
   <div>
     <div class="l-header">
-      You have {{ formatInt(totalPoints) }} / {{ formatInt(pointsForAutomator) }}
-      Automator Points towards unlocking the Automator.
+      У вас {{ formatInt(totalPoints) }} из {{ formatInt(pointsForAutomator) }}
+      Очков Автоматизации, необходимых для разблокировки Автоматизатора.
       <br>
-      You gain Automator Points from the following sources:
+      Вы получаете Очки Автоматизации из следующих источников:
     </div>
     <div class="l-automator-points-list-container">
       <div class="l-automator-points-list-side-col c-automator-points-list-col">
         <span class="c-automator-points-list-symbol fas fa-project-diagram" />
-        <span class="c-automator-points-list-ap--large">{{ formatInt(fromPerks) }} AP</span>
+        <span class="c-automator-points-list-ap--large">{{ formatInt(fromPerks) }} ОА</span>
         <span class="l-large-text">
-          Perks
+          Навыки
         </span>
         <div
           v-for="perk in perkSources"
@@ -51,7 +51,7 @@ export default {
         >
           <span class="c-automator-points-list-perk-label">{{ perk.label }}</span>
           - {{ perk.shortDescription }}
-          <span class="c-automator-points-list-ap">{{ formatInt(perk.automatorPoints) }} AP</span>
+          <span class="c-automator-points-list-ap">{{ formatInt(perk.automatorPoints) }} ОА</span>
         </div>
       </div>
       <div class="l-automator-points-list-center-col">
@@ -60,7 +60,7 @@ export default {
           :key="source.name"
           class="c-automator-points-list-cell"
         >
-          <span class="c-automator-points-list-ap--large">{{ formatInt(source.automatorPoints()) }} AP</span>
+          <span class="c-automator-points-list-ap--large">{{ formatInt(source.automatorPoints()) }} ОА</span>
           <span class="l-large-text">
             {{ source.name }}
           </span>
@@ -77,9 +77,9 @@ export default {
       </div>
       <div class="l-automator-points-list-side-col c-automator-points-list-col">
         <span class="c-automator-points-list-symbol fas fa-arrow-up" />
-        <span class="c-automator-points-list-ap--large">{{ formatInt(fromUpgrades) }} AP</span>
+        <span class="c-automator-points-list-ap--large">{{ formatInt(fromUpgrades) }} ОА</span>
         <span class="l-large-text">
-          Reality Upgrades
+          Улучшения Реальности
         </span>
         <div
           v-for="upgrade in upgradeSources"
@@ -88,7 +88,7 @@ export default {
           :style="textColor(upgrade.isBought)"
         >
           <b>{{ upgrade.name }}</b>
-          <span class="c-automator-points-list-ap">{{ formatInt(upgrade.automatorPoints) }} AP</span>
+          <span class="c-automator-points-list-ap">{{ formatInt(upgrade.automatorPoints) }} ОА</span>
           <br>
           {{ upgrade.shortDescription }}
         </div>
@@ -96,14 +96,14 @@ export default {
     </div>
     <br>
     <div>
-      The Automator allows (amongst other things) buying full Time Study Trees, entering Eternity Challenges,
-      or starting Dilation.
+      Автоматизатор может, между прочим, покупать Исследования Времени и запускать Испытания Вечности
+      и Замедление.
       <br>
-      It can also force prestige events on certain conditions independently from your Autobuyers or modify
-      some of your Autobuyer settings.
+      Он также может совершать бесконечность и вечность при определённых условиях независимо от автоматики и изменять
+      некоторые настройки автоматики.
       <br>
-      The speed of the Automator gradually increases as you get more Realities. If unlocked right now,
-      it would run {{ format(1000 / automatorInterval, 2, 2) }} commands per real-time second.
+      Скорость работы Автоматизатора постепенно растёт каждую реальность. Если бы вы разблокировали Автоматизатор прямо сейчас,
+      он бы мог выполнять {{ format(1000 / automatorInterval, 2, 2) }} команды в секунду по реальному времяисчислению.
     </div>
   </div>
 </template>
@@ -168,8 +168,8 @@ export default {
 
 .c-automator-points-list-perk-label {
   display: inline-block;
-  width: 3rem;
-  max-width: 3rem;
+  width: 5rem;
+  max-width: 5rem;
   font-weight: bold;
 }
 

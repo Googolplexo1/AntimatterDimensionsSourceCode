@@ -43,16 +43,6 @@ export default {
     toggleOffline() {
       this.ignoreOffline = !this.ignoreOffline;
     },
-    importAsFile(event) {
-      // This happens if the file dialog is canceled instead of a file being selected
-      if (event.target.files.length === 0) return;
-
-      const reader = new FileReader();
-      reader.onload = function() {
-        GameStorage.importBackupsFromFile(reader.result);
-      };
-      reader.readAsText(event.target.files[0]);
-    },
   }
 };
 </script>
@@ -60,13 +50,13 @@ export default {
 <template>
   <ModalWrapper>
     <template #header>
-      Automatic Backup Saves
+      Автоматические резервные сохранения
     </template>
     <div class="c-info c-modal--short">
-      The game makes automatic backups based on time you have spent online or offline.
-      Timers for online backups only run when the game is open, and offline backups only save to the slot
-      with the longest applicable timer.
-      Additionally, your current save is saved into the last slot any time a backup from here is loaded.
+      Игра автоматически делает резервные сохранения в зависимости от времени, проведённого онлайн или офлайн.
+      Таймеры онлайн-сохранений идут только при открытой игре, а офлайн-сохранения помещаются в слот
+      для самых редких подходящих сохранений.
+      Кроме того, ваше текущее сохранене помещается в последний слот каждый раз, когда вы загружаете резервное сохранение.
       <div
         class="c-modal__confirmation-toggle"
         @click="toggleOffline"
@@ -78,7 +68,7 @@ export default {
           />
         </div>
         <span class="c-modal__confirmation-toggle__text">
-          Load with offline progress disabled
+          Загрузить без офлайн-прогресса
         </span>
       </div>
       <div class="c-entry-container">
@@ -89,27 +79,18 @@ export default {
           :slot-data="slot"
         />
       </div>
-      These backups are still stored in the same place as your game save and can still be lost if you do anything
-      external to the game which would delete your save itself, such as {{ deleteText }}. You can import/export
-      all backups at once as files, using these buttons:
+      Эти резервы хранятся в том же месте, где и текущее сохранение, и могут быть утрачены, если вы совершите
+      любое внешнее действие, которое удалит ваше сохранение, например, очистите файлы cookie в вашем браузере. Вы можете экспортировать
+      резервные сохранения в файлы.
       <div class="c-backup-file-ops">
         <PrimaryButton
           class="o-btn-file-ops"
           onclick="GameStorage.exportBackupsAsFile()"
         >
-          Export as file
-        </PrimaryButton>
-        <PrimaryButton class="o-btn-file-ops">
-          <input
-            class="c-file-import"
-            type="file"
-            accept=".txt"
-            @change="importAsFile"
-          >
-          <label for="file">Import from file</label>
+          Экспорт в файл
         </PrimaryButton>
       </div>
-      Each of your three save slots has its own separate set of backups.
+      Все три ваши текущие сохранения имеют свои наборы резервов.
     </div>
   </ModalWrapper>
 </template>

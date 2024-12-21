@@ -11,10 +11,10 @@ export default {
   },
   computed: {
     resetText() {
-      if (this.isDoomed) return "Start this Armageddon over";
-      if (this.isInCelestialReality && !this.resetCelestial) return "Exit this Celestial early";
-      if (this.isInCelestialReality && this.resetCelestial) return "Restart this Celestial";
-      return "Start this Reality over";
+      if (this.isDoomed) return "Перезапустить текущий армагеддон";
+      if (this.isInCelestialReality && !this.resetCelestial) return "Покинуть Реальность этого Небожителя";
+      if (this.isInCelestialReality && this.resetCelestial) return "Перезапустить Реальность этого Небожителя";
+      return "Перезапустить текущую реальность";
     },
   },
   methods: {
@@ -29,8 +29,8 @@ export default {
       if (GameEnd.creditsClosed) return;
       if (this.isInCelestialReality) {
         if (confirms.exitChallenge) Modal.exitChallenge.show({
-          challengeName: "a Celestial Reality",
-          normalName: "Reality",
+          challengeName: "Реальность этого Небожителя",
+          normalName: "реальности",
           hasHigherLayers: false,
           exitFn: () => beginProcessReality(getRealityProps(true))
         });

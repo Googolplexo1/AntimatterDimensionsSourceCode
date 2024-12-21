@@ -34,9 +34,9 @@ export default {
 
 <template>
   <div class="l-eternity-milestone-grid">
-    <div>You have {{ quantify("Eternity", eternityCount, 3) }}.</div>
+    <div>У вас {{ quantify("вечность", eternityCount, 3) }}.</div>
     <div>
-      Offline generation milestones are only active under certain conditions, mouse-over to see these conditions.
+      Этапы Вечности, генерирующие ресурсы офлайн, действуют лишь при выполнении определённых условий, которые вы можете просмотреть, наведя курсор на них.
     </div>
     <div
       v-for="row in rows"

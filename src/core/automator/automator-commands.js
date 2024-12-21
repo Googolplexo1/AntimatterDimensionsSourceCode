@@ -26,15 +26,15 @@ function compileConditionLoop(evalComparison, commands, ctx, isUntil) {
     run: () => {
       const loopStr = isUntil ? "UNTIL" : "WHILE";
       if (!evalComparison()) {
-        AutomatorData.logCommandEvent(`Checked ${parseConditionalIntoText(ctx)} (${isUntil}),
-          exiting loop at line ${AutomatorBackend.translateLineNumber(ctx.RCurly[0].startLine + 1) - 1}
-          (end of ${loopStr} loop)`, ctx.startLine);
+        AutomatorData.logCommandEvent(`Проверено условие ${parseConditionalIntoText(ctx)} (${isUntil ? "ИСТИНА" : "ЛОЖЬ"}),
+          выход из цикла на строке ${AutomatorBackend.translateLineNumber(ctx.RCurly[0].startLine + 1) - 1}
+          (конец цикла ${loopStr})`, ctx.startLine);
         return AUTOMATOR_COMMAND_STATUS.NEXT_TICK_NEXT_INSTRUCTION;
       }
       AutomatorBackend.push(commands);
-      AutomatorData.logCommandEvent(`Checked ${parseConditionalIntoText(ctx)} (${!isUntil}),
-        moving to line ${AutomatorBackend.translateLineNumber(ctx.LCurly[0].startLine + 1) - 1}
-        (start of ${loopStr} loop)`, ctx.startLine);
+      AutomatorData.logCommandEvent(`Проверено условие ${parseConditionalIntoText(ctx)} (${isUntil ? "ЛОЖЬ" : "ИСТИНА"}),
+        перемещение на строку ${AutomatorBackend.translateLineNumber(ctx.LCurly[0].startLine + 1) - 1}
+        (начало цикла ${loopStr})`, ctx.startLine);
       return AUTOMATOR_COMMAND_STATUS.SAME_INSTRUCTION;
     },
     blockCommands: commands,
@@ -45,7 +45,21 @@ function compileConditionLoop(evalComparison, commands, ctx, isUntil) {
 function parseConditionalIntoText(ctx) {
   const comp = ctx.comparison[0].children;
   const getters = comp.compareValue.map(cv => {
-    if (cv.children.AutomatorCurrency) return () => cv.children.AutomatorCurrency[0].image;
+    if (cv.children.AutomatorCurrency) return () => [
+      "АНТИМАТЕРИИ", "ОБ", "ОВ", "МР", "БЕСКОНЕЧНОСТЕЙ", "СОХРАНЁННЫХ БЕСКОНЕЧНОСТЕЙ", "ВЕЧНОСТЕЙ", "РЕАЛЬНОСТЕЙ",
+      "ПОЛУЧАЕМЫХ ОБ", "ПОЛУЧАЕМЫХ ОВ", "ПОЛУЧАЕМЫХ ТАХИОНОВ", "ПОЛУЧАЕМЫХ МР", "УРОВЕНЬ ПОЛУЧАЕМОГО ГЛИФА",
+      "ЗВ", "ТАХИОНОВ", "ГР", "РЕПЛИКАНТИ", "ТВ", "ТВ ВСЕГО", "ВЫПОЛНЕНИЙ ИСПВ ВСЕГО", "ПОЛУЧАЕМЫХ ВЫПОЛНЕНИЙ ИСПВ",
+      "ВЫПОЛНЕНИЙ ИСПВ1", "ВЫПОЛНЕНИЙ ИСПВ2", "ВЫПОЛНЕНИЙ ИСПВ3", "ВЫПОЛНЕНИЙ ИСПВ4",
+      "ВЫПОЛНЕНИЙ ИСПВ5", "ВЫПОЛНЕНИЙ ИСПВ6", "ВЫПОЛНЕНИЙ ИСПВ7", "ВЫПОЛНЕНИЙ ИСПВ8",
+      "ВЫПОЛНЕНИЙ ИСПВ9", "ВЫПОЛНЕНИЙ ИСПВ10", "ВЫПОЛНЕНИЙ ИСПВ11", "ВЫПОЛНЕНИЙ ИСПВ12",
+    ][[
+      "AM", "IP", "EP", "RM", "INFINITIES", "BANKED INFINITIES", "ETERNITIES", "REALITIES",
+      "PENDING IP", "PENDING EP", "PENDING TP", "PENDING RM", "PENDING GLYPH LEVEL",
+      "DT", "TP", "RG", "REP", "TT", "TOTAL TT", "TOTAL COMPLETIONS", "PENDING COMPLETIONS",
+      "EC1 COMPLETIONS", "EC2 COMPLETIONS", "EC3 COMPLETIONS", "EC4 COMPLETIONS",
+      "EC5 COMPLETIONS", "EC6 COMPLETIONS", "EC7 COMPLETIONS", "EC8 COMPLETIONS",
+      "EC9 COMPLETIONS", "EC10 COMPLETIONS", "EC11 COMPLETIONS", "EC12 COMPLETIONS",
+    ].indexOf(cv.children.AutomatorCurrency[0].image)];
     const val = cv.children.$value;
     if (typeof val === "string") return () => val;
     return () => format(val, 2, 2);
@@ -59,15 +73,15 @@ function findLastPrestigeRecord(layer) {
   let addedECs, gainedEP;
   switch (layer) {
     case "INFINITY":
-      return `${format(player.records.recentInfinities[0][1], 2)} IP`;
+      return `${format(player.records.recentInfinities[0][1], 2)} ОБ`;
     case "ETERNITY":
       addedECs = AutomatorData.lastECCompletionCount;
-      gainedEP = `${format(player.records.recentEternities[0][1], 2)} EP`;
+      gainedEP = `${format(player.records.recentEternities[0][1], 2)} ОВ`;
       return addedECs === 0
         ? `${gainedEP}`
-        : `${gainedEP}, ${addedECs} completions`;
+        : `${gainedEP}, ${addedECs} выполнений`;
     case "REALITY":
-      return `${format(player.records.recentRealities[0][1], 2)} RM`;
+      return `${format(player.records.recentRealities[0][1], 2)} МР`;
     default:
       throw Error(`Unrecognized prestige ${layer} in Automator event log`);
   }
@@ -96,8 +110,8 @@ export const AutomatorCommands = [
         const desired$ = ctx.PrestigeEvent[0].tokenType.$prestigeCurrency;
         const specified$ = ctx.currencyAmount[0].children.AutomatorCurrency[0].tokenType.name;
         if (desired$ !== specified$) {
-          V.addError(ctx.currencyAmount, `AutomatorCurrency doesn't match prestige (${desired$} vs ${specified$})`,
-            `Use ${desired$} for the specified prestige resource`);
+          V.addError(ctx.currencyAmount, `Валюта не соответсвует престижу`,
+            `замените ${specified$} на ${desired$}`);
           return false;
         }
       }
@@ -107,42 +121,40 @@ export const AutomatorCommands = [
       // Do not change to switch statement; T.XXX are Objects, not primitive values
       if (ctx.PrestigeEvent[0].tokenType === T.Infinity) {
         if (!Autobuyer.bigCrunch.isUnlocked) {
-          V.addError(ctx.PrestigeEvent, "Infinity autobuyer is not unlocked",
-            "Complete the Big Crunch Autobuyer challenge to use this command");
+          V.addError(ctx.PrestigeEvent, "Автоматика Большого Сжатия недоступна",
+            "выполните 12-е Обычное Испытание, чтобы использовать эту команду");
           return false;
         }
         if (advSetting && !EternityMilestone.bigCrunchModes.isReached) {
           V.addError((ctx.duration || ctx.xHighest)[0],
-            "Advanced Infinity autobuyer settings are not unlocked",
-            `Reach ${quantifyInt("Eternity", EternityMilestone.bigCrunchModes.config.eternities)}
-            to use this command`);
+            "Расширенные настройки для автоматики Большого Сжатия недоступны",
+            `достигните ${formatInt(5)} вечностей, чтобы использовать эту команду`);
           return false;
         }
       }
       if (ctx.PrestigeEvent[0].tokenType === T.Eternity) {
         if (!EternityMilestone.autobuyerEternity.isReached) {
-          V.addError(ctx.PrestigeEvent, "Eternity autobuyer is not unlocked",
-            `Reach ${quantifyInt("Eternity", EternityMilestone.autobuyerEternity.config.eternities)}
-            to use this command`);
+          V.addError(ctx.PrestigeEvent, "Автоматика вечности недоступна",
+            `достигните ${formatInt(100)} вечностей, чтобы использовать эту команду`);
           return false;
         }
         if (advSetting && !RealityUpgrade(13).isBought) {
           V.addError((ctx.duration || ctx.xHighest)[0],
-            "Advanced Eternity autobuyer settings are not unlocked",
-            "Purchase the Reality Upgrade which unlocks advanced Eternity autobuyer settings");
+            "Расширенные настройки для автоматики вечности недоступны",
+            `купите Улучшение Реальности "Телемеханический Процесс", чтобы использовать эту команду`);
           return false;
         }
       }
       if (ctx.PrestigeEvent[0].tokenType === T.Reality) {
         if (!RealityUpgrade(25).isBought) {
-          V.addError(ctx.PrestigeEvent, "Reality autobuyer is not unlocked",
-            "Purchase the Reality Upgrade which unlocks the Reality autobuyer");
+          V.addError(ctx.PrestigeEvent, "Автоматика реальности недоступна",
+            `купите Улучшение Реальности "Непринуждённое Существование", чтобы использовать эту команду`);
           return false;
         }
         if (advSetting) {
           V.addError((ctx.duration || ctx.xHighest)[0],
-            "Auto Reality cannot be set to a duration or x highest",
-            "Use RM for Auto Reality");
+            "Автоматизатор может выставить автоматику реальности только на реальность при фиксированном количестве МР",
+            "замените второй параметр команды на <число>RM");
           return false;
         }
       }
@@ -166,26 +178,26 @@ export const AutomatorCommands = [
           autobuyer.mode = durationMode;
           autobuyer.time = duration / 1000;
           // Can't do the units provided in the script because it's been parsed away like 4 layers up the call stack
-          currSetting = `${autobuyer.time > 1000 ? formatInt(autobuyer.time) : quantify("second", autobuyer.time)}`;
+          currSetting = `каждые ${quantify("секунд", autobuyer.time)}`;
         } else if (xHighest !== undefined) {
           autobuyer.mode = xHighestMode;
           autobuyer.xHighest = new Decimal(xHighest);
-          currSetting = `${format(xHighest, 2, 2)} times highest`;
+          currSetting = `при ${ctx.PrestigeEvent[0].image === "infinity" ? "ОБ" : "ОВ"}, в ${format(xHighest, 2, 2)} раз превышающих максимальные`;
         } else if (fixedAmount !== undefined) {
           autobuyer.mode = fixedMode;
           if (isReality) {
             autobuyer.rm = new Decimal(fixedAmount);
-            currSetting = `${format(autobuyer.rm, 2)} RM`;
+            currSetting = `при ${format(autobuyer.rm, 2)} МР`;
           } else {
             autobuyer.amount = new Decimal(fixedAmount);
-            currSetting = `${fixedAmount} ${ctx.PrestigeEvent[0].image === "infinity" ? "IP" : "EP"}`;
+            currSetting = `при ${fixedAmount} ${ctx.PrestigeEvent[0].image === "infinity" ? "ОБ" : "ОВ"}`;
           }
         }
         // Settings are drawn from the actual automator text; it's not feasible to parse out all the settings
         // for every combination of autobuyers when they get turned off
-        const settingString = (autobuyer.isActive && currSetting !== "") ? `(Setting: ${currSetting})` : "";
-        AutomatorData.logCommandEvent(`Automatic ${ctx.PrestigeEvent[0].image}
-          turned ${autobuyer.isActive ? "ON" : "OFF"} ${settingString}`, ctx.startLine);
+        const settingString = (autobuyer.isActive && currSetting !== "") ? ` (Setting: ${currSetting})` : "";
+        AutomatorData.logCommandEvent(`Автоматика ${isReality ? "реальности" : (ctx.PrestigeEvent[0].image === "infinity" ? "Большого Сжатия" : "вечности")}
+          ${autobuyer.isActive ? "включена" : "выключена"}${settingString}`, ctx.startLine);
         return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
       };
     },
@@ -232,11 +244,11 @@ export const AutomatorCommands = [
         if (on === BlackHoles.arePaused) BlackHoles.togglePause();
         let blackHoleEvent;
         if (BlackHole(1).isUnlocked) {
-          blackHoleEvent = `Black Holes toggled ${ctx.On ? "ON" : "OFF"}`;
+          blackHoleEvent = `${ctx.On ? "Цикл Чёрных Дыр возобновлён" : "Чёрные Дыры приостановлены"}`;
         } else if (Enslaved.isRunning || Pelle.isDisabled("blackhole")) {
-          blackHoleEvent = "Black Hole command ignored because BH is disabled in your current Reality";
+          blackHoleEvent = "Команда переключения цикла Чёрных Дыр игнорирована, так как они отключены в Реальности этого Небожителя";
         } else {
-          blackHoleEvent = "Black Hole command ignored because BH is not unlocked";
+          blackHoleEvent = "Команда переключения цикла Чёрных Дыр игнорирована, так как вы ещё не разблокировали их";
         }
         AutomatorData.logCommandEvent(blackHoleEvent, ctx.startLine);
         return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
@@ -305,13 +317,13 @@ export const AutomatorCommands = [
             ifEndLine: ctx.RCurly[0].startLine
           };
           if (!evalComparison()) {
-            AutomatorData.logCommandEvent(`Checked ${parseConditionalIntoText(ctx)} (false),
-              skipping to line ${AutomatorBackend.translateLineNumber(ctx.RCurly[0].startLine + 1)}`, ctx.startLine);
+            AutomatorData.logCommandEvent(`Проверено условие ${parseConditionalIntoText(ctx)} (ЛОЖЬ),
+              перемещение на строку ${AutomatorBackend.translateLineNumber(ctx.RCurly[0].startLine + 1)}`, ctx.startLine);
             return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
           }
           AutomatorBackend.push(commands);
-          AutomatorData.logCommandEvent(`Checked ${parseConditionalIntoText(ctx)} (true),
-            entering IF block`, ctx.startLine);
+          AutomatorData.logCommandEvent(`Проверено условие ${parseConditionalIntoText(ctx)} (ИСТИНА),
+            вход в условный оператор IF`, ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.SAME_INSTRUCTION;
         },
         blockCommands: commands,
@@ -346,8 +358,8 @@ export const AutomatorCommands = [
     compile: ctx => {
       const notifyText = ctx.StringLiteral || ctx.StringLiteralSingleQuote;
       return () => {
-        GameUI.notify.automator(`Automator: ${notifyText[0].image}`);
-        AutomatorData.logCommandEvent(`NOTIFY call: ${notifyText[0].image}`, ctx.startLine);
+        GameUI.notify.automator(`Автоматизатор: ${notifyText[0].image}`);
+        AutomatorData.logCommandEvent(`Игровое уведомление: ${notifyText[0].image}`, ctx.startLine);
         return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
       };
     },
@@ -371,9 +383,9 @@ export const AutomatorCommands = [
       let duration;
       if (ctx.Identifier) {
         if (!V.isValidVarFormat(ctx.Identifier[0], AUTOMATOR_VAR_TYPES.DURATION)) {
-          V.addError(ctx, `Constant ${ctx.Identifier[0].image} is not a valid time duration constant`,
-            `Ensure that ${ctx.Identifier[0].image} is a number of seconds less than
-            ${format(Number.MAX_VALUE / 1000)}`);
+          V.addError(ctx, `Постоянная ${ctx.Identifier[0].image} не может быть использована как временной параметр`,
+            `выставьте ${ctx.Identifier[0].image} на значение, меньшее
+            ${format(Number.MAX_VALUE / 1000, 2)}`);
           return false;
         }
         const lookup = V.lookupVar(ctx.Identifier[0], AUTOMATOR_VAR_TYPES.DURATION);
@@ -387,23 +399,15 @@ export const AutomatorCommands = [
     compile: ctx => {
       const duration = ctx.$duration;
       return S => {
-        let timeString;
-        if (ctx.duration) {
-          const c = ctx.duration[0].children;
-          timeString = `${c.NumberLiteral[0].image} ${c.TimeUnit[0].image}`;
-        } else {
-          // This is the case for a defined constant; its value was parsed out during validation
-          timeString = TimeSpan.fromMilliseconds(duration);
-        }
         if (S.commandState === null) {
           S.commandState = { timeMs: 0 };
-          AutomatorData.logCommandEvent(`Pause started (waiting ${timeString})`, ctx.startLine);
+          AutomatorData.logCommandEvent(`Автоматизатор приостановлен на ${TimeSpan.fromMilliseconds(duration, "accusative")}`, ctx.startLine);
         } else {
           S.commandState.timeMs += Math.max(Time.unscaledDeltaTime.totalMilliseconds, AutomatorBackend.currentInterval);
         }
         const finishPause = S.commandState.timeMs >= duration;
         if (finishPause) {
-          AutomatorData.logCommandEvent(`Pause finished (waited ${timeString})`, ctx.startLine);
+          AutomatorData.logCommandEvent(`${TimeSpan.fromMilliseconds(duration)} прошло, Автоматизатор продолжает работу`, ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
         return AUTOMATOR_COMMAND_STATUS.NEXT_TICK_SAME_INSTRUCTION;
@@ -433,23 +437,15 @@ export const AutomatorCommands = [
     validate: (ctx, V) => {
       ctx.startLine = ctx.PrestigeEvent[0].startLine;
 
-      if (ctx.PrestigeEvent && ctx.PrestigeEvent[0].tokenType === T.Eternity &&
-        !EternityMilestone.autobuyerEternity.isReached) {
-        V.addError(ctx.PrestigeEvent, "Eternity autobuyer is not unlocked",
-          `Reach ${quantifyInt("Eternity", EternityMilestone.autobuyerEternity.config.eternities)}
-          to use this command`);
-        return false;
-      }
-
       if (ctx.PrestigeEvent && ctx.PrestigeEvent[0].tokenType === T.Reality && !RealityUpgrade(25).isBought) {
-        V.addError(ctx.PrestigeEvent, "Reality autobuyer is not unlocked",
-          "Purchase the Reality Upgrade which unlocks the Reality autobuyer");
+        V.addError(ctx.PrestigeEvent, "Эта команда недоступна",
+          `купите Улучшение Реальности "Непринуждённое существование", чтобы использовать эту команду`);
         return false;
       }
 
       if (ctx.PrestigeEvent && ctx.PrestigeEvent[0].tokenType === T.Infinity && ctx.Respec) {
-        V.addError(ctx.Respec, "There's no 'respec' for infinity",
-          "Remove 'respec' from the command");
+        V.addError(ctx.Respec, "Команда INFINITY не имеет параметров",
+          "удалите RESPEC");
       }
       return true;
     },
@@ -459,21 +455,21 @@ export const AutomatorCommands = [
       const prestigeToken = ctx.PrestigeEvent[0].tokenType;
       return () => {
         const available = prestigeToken.$prestigeAvailable();
+        const prestigeName = ctx.PrestigeEvent[0].image === "reality" ? "Реальность" : (ctx.PrestigeEvent[0].image === "infinity" ? "Бесконечность" : "Вечность");
         if (!available) {
           if (!nowait) return AUTOMATOR_COMMAND_STATUS.NEXT_TICK_SAME_INSTRUCTION;
-          AutomatorData.logCommandEvent(`${ctx.PrestigeEvent.image} attempted, but skipped due to NOWAIT`,
+          AutomatorData.logCommandEvent(`Совершить ${prestigeName} было невозможно, команда пропущена`,
             ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
         if (respec) prestigeToken.$respec();
         prestigeToken.$prestige();
-        const prestigeName = ctx.PrestigeEvent[0].image.toUpperCase();
-        AutomatorData.logCommandEvent(`${prestigeName} triggered (${findLastPrestigeRecord(prestigeName)})`,
+        AutomatorData.logCommandEvent(`${prestigeName} совершена (${findLastPrestigeRecord(ctx.PrestigeEvent[0].image.toUpperCase())})`,
           ctx.startLine);
         // In the prestigeToken.$prestige() line above, performing a reality reset has code internal to the call
         // which makes the automator restart. However, in that case we also need to update the execution state here,
         // or else the restarted automator will immediately advance lines and always skip the first command
-        return (prestigeName === "REALITY" && AutomatorBackend.state.forceRestart)
+        return (prestigeName === "reality" && AutomatorBackend.state.forceRestart)
           ? AUTOMATOR_COMMAND_STATUS.RESTART
           : AUTOMATOR_COMMAND_STATUS.NEXT_TICK_NEXT_INSTRUCTION;
       };
@@ -498,12 +494,12 @@ export const AutomatorCommands = [
     },
     compile: ctx => () => {
       if (player.dilation.active) {
-        AutomatorData.logCommandEvent(`Start Dilation encountered but ignored due to already being dilated`,
+        AutomatorData.logCommandEvent(`Замедление уже было запущено, команда пропущена`,
           ctx.startLine);
         return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
       }
       if (startDilatedEternity(true)) {
-        AutomatorData.logCommandEvent(`Dilation entered`, ctx.startLine);
+        AutomatorData.logCommandEvent(`Замедление Времени запущено`, ctx.startLine);
         return AUTOMATOR_COMMAND_STATUS.NEXT_TICK_NEXT_INSTRUCTION;
       }
       return AUTOMATOR_COMMAND_STATUS.NEXT_TICK_SAME_INSTRUCTION;
@@ -525,7 +521,7 @@ export const AutomatorCommands = [
       return () => {
         const ec = EternityChallenge(ecNumber);
         if (ec.isRunning) {
-          AutomatorData.logCommandEvent(`Start EC encountered but ignored due to already being in the specified EC`,
+          AutomatorData.logCommandEvent(`Указанное ИспВ уже было запущено, команда пропущена`,
             ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
@@ -535,7 +531,7 @@ export const AutomatorCommands = [
           }
         }
         if (ec.start(true)) {
-          AutomatorData.logCommandEvent(`Eternity Challenge ${ecNumber} started`, ctx.startLine);
+          AutomatorData.logCommandEvent(`${ecNumber}-е Испытание Вечности запущено`, ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_TICK_NEXT_INSTRUCTION;
         }
         return AUTOMATOR_COMMAND_STATUS.NEXT_TICK_SAME_INSTRUCTION;
@@ -560,27 +556,23 @@ export const AutomatorCommands = [
     validate: (ctx, V) => {
       ctx.startLine = ctx.StoreGameTime[0].startLine;
       if (!Enslaved.isUnlocked) {
-        V.addError(ctx.StoreGameTime[0], "You do not yet know how to store game time",
-          "Unlock the ability to store game time");
+        V.addError(ctx.StoreGameTime[0], "Эта команда недоступна",
+          "разблокируйте сохранение игрового времени");
         return false;
       }
       return true;
     },
     compile: ctx => {
       if (ctx.Use) return () => {
-        if (Enslaved.isUnlocked) {
-          Enslaved.useStoredTime(false);
-          AutomatorData.logCommandEvent(`Stored game time used`, ctx.startLine);
-        } else {
-          AutomatorData.logCommandEvent(`Attempted to use stored game time, but failed (not unlocked yet)`,
-            ctx.startLine);
-        }
+        Enslaved.useStoredTime(false);
+        AutomatorData.logCommandEvent(`Чёрная Дыра разряжена`, ctx.startLine);
         return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
       };
       const on = Boolean(ctx.On);
       return () => {
         if (on !== player.celestials.enslaved.isStoring) Enslaved.toggleStoreBlackHole();
-        AutomatorData.logCommandEvent(`Storing game time toggled ${ctx.On ? "ON" : "OFF"}`, ctx.startLine);
+        if (Enslaved.isRunning) AutomatorData.logCommandEvent(`Команда переключения зарядки Чёрных Дыр игнорирована, так как они отключены в Реальности этого Небожителя`, ctx.startLine);
+        else AutomatorData.logCommandEvent(`Хранение игрового времени ${ctx.On ? "включено" : "выключено"}`, ctx.startLine);
         return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
       };
     },
@@ -605,8 +597,8 @@ export const AutomatorCommands = [
       ctx.startLine = ctx.Studies[0].startLine;
       if (ctx.Identifier) {
         if (!V.isValidVarFormat(ctx.Identifier[0], AUTOMATOR_VAR_TYPES.STUDIES)) {
-          V.addError(ctx, `Constant ${ctx.Identifier[0].image} is not a valid Time Study constant`,
-            `Ensure that ${ctx.Identifier[0].image} is a properly-formatted Time Study string`);
+          V.addError(ctx, `Постоянная ${ctx.Identifier[0].image} не является допустимым Древом Исследований`,
+            `сохраните в ${ctx.Identifier[0].image} допусимое Древо Исследований`);
           return false;
         }
         const varInfo = V.lookupVar(ctx.Identifier[0], AUTOMATOR_VAR_TYPES.STUDIES);
@@ -630,17 +622,17 @@ export const AutomatorCommands = [
         }
         if (prePurchasedStudies + purchasedStudies < studies.normal.length) {
           if (prePurchasedStudies + purchasedStudies === 0) {
-            AutomatorData.logCommandEvent(`Could not purchase any of the specified Time Studies`, ctx.startLine);
+            AutomatorData.logCommandEvent(`Не удалось купить ни одного из указанных Исследований Времени`, ctx.startLine);
           }
           if (purchasedStudies > 0 && finalPurchasedTS) {
-            AutomatorData.logCommandEvent(`Purchased ${quantifyInt("Time Study", purchasedStudies)} and stopped at
-            Time Study ${finalPurchasedTS}, waiting to attempt to purchase more Time Studies`, ctx.startLine);
+            AutomatorData.logCommandEvent(`Куплено ${quantifyInt("Исследование", purchasedStudies)} Времени (до
+            ИсслВ${finalPurchasedTS}), Автоматизатор ожидает возможности купить остальные`, ctx.startLine);
           }
           return AUTOMATOR_COMMAND_STATUS.NEXT_TICK_SAME_INSTRUCTION;
         }
         const hasEC = studies.ec ? TimeStudy.eternityChallenge(studies.ec).isBought : false;
         if (!studies.ec || (hasEC && !studies.startEC)) {
-          AutomatorData.logCommandEvent(`Purchased all specified Time Studies`, ctx.startLine);
+          AutomatorData.logCommandEvent(`Все указанные Исследования Времени куплены`, ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
         const unlockedEC = TimeStudy.eternityChallenge(studies.ec).purchase(true);
@@ -648,15 +640,15 @@ export const AutomatorCommands = [
           if (studies.startEC) {
             EternityChallenge(studies.ec).start(true);
             if (EternityChallenge(studies.ec).isRunning) {
-              AutomatorData.logCommandEvent(`Purchased all specified Time Studies, then unlocked and started running
-                Eternity Challenge ${studies.ec}`, ctx.startLine);
+              AutomatorData.logCommandEvent(`Все указанные Исследования Времени куплены,
+                ${studies.ec}-е Испытание Вечности разблокировано и запущено`, ctx.startLine);
             } else {
-              AutomatorData.logCommandEvent(`Purchased all specified Time Studies and unlocked Eternity Challenge
-                ${studies.ec}, but failed to start it`, ctx.startLine);
+              AutomatorData.logCommandEvent(`Все указанные Исследования Времени куплены,
+                ${studies.ec}-е Испытание Вечности разблокировано, но не может быть запущено`, ctx.startLine);
             }
           } else {
-            AutomatorData.logCommandEvent(`Purchased all specified Time Studies and unlocked Eternity Challenge
-              ${studies.ec}`, ctx.startLine);
+            AutomatorData.logCommandEvent(`Все указанные Исследования Времени куплены,
+              ${studies.ec}-е Испытание Вечности разблокировано`, ctx.startLine);
           }
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
@@ -695,15 +687,15 @@ export const AutomatorCommands = [
         const split = idSplitter.exec(ctx.Id[0].image);
 
         if (!split || ctx.Id[0].isInsertedInRecovery) {
-          V.addError(ctx, "Missing preset id",
-            "Provide the id of a saved study preset slot from the Time Studies page");
+          V.addError(ctx, "Пропущен номер сохранённого Древа",
+            `укажите номер Древа Исследований, сохранённого во вкладке "Исследования Времени"`);
           return false;
         }
 
         const id = parseInt(split[1], 10);
         if (id < 1 || id > 6) {
-          V.addError(ctx.Id[0], `Could not find a preset with an id of ${id}`,
-            "Type in a valid id (1 - 6) for your study preset");
+          V.addError(ctx.Id[0], `Недопустимый номер сохранённого Древа (${id})`,
+            "введите допустимый номер Древа Исследований (от 1 до 6)");
           return false;
         }
         ctx.$presetIndex = id;
@@ -714,16 +706,16 @@ export const AutomatorCommands = [
         const split = presetSplitter.exec(ctx.Name[0].image);
 
         if (!split || ctx.Name[0].isInsertedInRecovery) {
-          V.addError(ctx, "Missing preset name",
-            "Provide the name of a saved study preset from the Time Studies page");
+          V.addError(ctx, "Пропущено название сохранённого Древа",
+            `укажите название Древа Исследований, сохранённого во вкладке "Исследования Времени"`);
           return false;
         }
 
         // If it's a name, we check to make sure it exists:
         const presetIndex = player.timestudy.presets.findIndex(e => e.name === split[1]) + 1;
         if (presetIndex === 0) {
-          V.addError(ctx.Name[0], `Could not find preset named ${split[1]} (Note: Names are case-sensitive)`,
-            "Check to make sure you typed in the correct name for your study preset");
+          V.addError(ctx.Name[0], `Древо Исследований "${split[1]}" не найдено (обратите внимание, что в названиях Древ регистр важен)`,
+            "введите правильное название сохранённого Древа");
           return false;
         }
         ctx.$presetIndex = presetIndex;
@@ -743,13 +735,13 @@ export const AutomatorCommands = [
         const missingStudyCount = imported.purchasedStudies
           .filter(s => !GameCache.currentStudyTree.value.purchasedStudies.includes(s)).length;
 
-        const presetRepresentation = ctx.Name ? ctx.Name[0].image : ctx.Id[0].image;
+        const presetRepresentation = ctx.Name ? `"${ctx.Name[0].image}"` : `№${ctx.Id[0].image}`;
 
         if (missingStudyCount === 0) {
-          AutomatorData.logCommandEvent(`Fully loaded study preset ${presetRepresentation}`, ctx.startLine);
+          AutomatorData.logCommandEvent(`Древо ${presetRepresentation} загружено целиком`, ctx.startLine);
         } else if (afterCount > beforeCount) {
-          AutomatorData.logCommandEvent(`Partially loaded study preset ${presetRepresentation}
-            (missing ${quantifyInt("study", missingStudyCount)})`, ctx.startLine);
+          AutomatorData.logCommandEvent(`Древо ${presetRepresentation} загружено частично
+            (не удалось купить ${quantifyInt("Исследование", missingStudyCount)} Времени)`, ctx.startLine);
         }
         return ctx.Nowait !== undefined || missingStudyCount === 0
           ? AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION
@@ -775,7 +767,7 @@ export const AutomatorCommands = [
     },
     compile: ctx => () => {
       player.respec = true;
-      AutomatorData.logCommandEvent(`Turned study respec ON`, ctx.startLine);
+      AutomatorData.logCommandEvent(`Сброс Исследований Времени включён`, ctx.startLine);
       return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
     },
     blockify: () => automatorBlocksMap["STUDIES RESPEC"]
@@ -795,16 +787,16 @@ export const AutomatorCommands = [
       const nowait = ctx.Nowait !== undefined;
       return () => {
         if (PlayerProgress.dilationUnlocked()) {
-          AutomatorData.logCommandEvent(`Skipped dilation unlock due to being already unlocked`, ctx.startLine);
+          AutomatorData.logCommandEvent(`Замедление уже было разблокировано`, ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
         const unlockedThisTick = TimeStudy.dilation.purchase(true);
         if (unlockedThisTick) {
-          AutomatorData.logCommandEvent(`Unlocked Dilation`, ctx.startLine);
+          AutomatorData.logCommandEvent(`Замедление Времени разблокировано`, ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
         if (nowait) {
-          AutomatorData.logCommandEvent(`Skipped dilation unlock due to lack of requirements (NOWAIT)`,
+          AutomatorData.logCommandEvent(`Разблокировать Замедление было невозможно, команда пропущена`,
             ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
@@ -833,16 +825,16 @@ export const AutomatorCommands = [
       const ecNumber = ctx.eternityChallenge[0].children.$ecNumber;
       return () => {
         if (EternityChallenge(ecNumber).isUnlocked) {
-          AutomatorData.logCommandEvent(`Skipped EC ${ecNumber} unlock due to being already unlocked`, ctx.startLine);
+          AutomatorData.logCommandEvent(`ИспВ${ecNumber} уже было разблокировано`, ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
         if (nowait) {
-          AutomatorData.logCommandEvent(`EC ${ecNumber} unlock failed and skipped (NOWAIT)`, ctx.startLine);
+          AutomatorData.logCommandEvent(`Разблокировать ИспВ${ecNumber} было невозможно, команда пропущена`, ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
         const purchased = TimeStudy.eternityChallenge(ecNumber).purchase(true);
         if (purchased) {
-          AutomatorData.logCommandEvent(`EC ${ecNumber} unlocked`, ctx.startLine);
+          AutomatorData.logCommandEvent(`${ecNumber}-е Испытание Вечности разблокировано`, ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
         return AUTOMATOR_COMMAND_STATUS.NEXT_TICK_SAME_INSTRUCTION;
@@ -882,13 +874,13 @@ export const AutomatorCommands = [
       let prestigeName;
       switch (ctx.PrestigeEvent[0].tokenType) {
         case T.Infinity:
-          prestigeName = "Infinity";
+          prestigeName = "Бесконечность";
           break;
         case T.Eternity:
-          prestigeName = "Eternity";
+          prestigeName = "Вечность";
           break;
         case T.Reality:
-          prestigeName = "Reality";
+          prestigeName = "Реальность";
           break;
         default:
           throw Error("Unrecognized prestige layer in until loop");
@@ -899,12 +891,12 @@ export const AutomatorCommands = [
             S.commandState = { prestigeLevel: 0 };
           }
           if (S.commandState.prestigeLevel >= prestigeLevel) {
-            AutomatorData.logCommandEvent(`${prestigeName} prestige has occurred, exiting until loop`,
+            AutomatorData.logCommandEvent(`${prestigeName} совершена, выход из цикла UNTIL`,
               ctx.startLine);
             return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
           }
           AutomatorBackend.push(commands);
-          AutomatorData.logCommandEvent(`${prestigeName} prestige has not occurred yet, moving to line
+          AutomatorData.logCommandEvent(`${prestigeName} пока не совершена, перемещение на строку
             ${AutomatorBackend.translateLineNumber(ctx.LCurly[0].startLine + 1)} (start of until loop)`,
           ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.SAME_INSTRUCTION;
@@ -948,17 +940,17 @@ export const AutomatorCommands = [
       if (doneWaiting) {
         const timeWaited = TimeSpan.fromMilliseconds(Date.now() - AutomatorData.waitStart).toStringShort();
         if (AutomatorData.isWaiting) {
-          AutomatorData.logCommandEvent(`Continuing after WAIT
-            (${parseConditionalIntoText(ctx)} is true, after ${timeWaited})`, ctx.startLine);
+          AutomatorData.logCommandEvent(`Ожидание завершено
+            (${parseConditionalIntoText(ctx)} = ИСТИНА спустя ${timeWaited})`, ctx.startLine);
         } else {
-          AutomatorData.logCommandEvent(`WAIT skipped (${parseConditionalIntoText(ctx)} is already true)`,
+          AutomatorData.logCommandEvent(`Ожидание пропущено (${parseConditionalIntoText(ctx)} = ИСТИНА)`,
             ctx.startLine);
         }
         AutomatorData.isWaiting = false;
         return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
       }
       if (!AutomatorData.isWaiting) {
-        AutomatorData.logCommandEvent(`Started WAIT for ${parseConditionalIntoText(ctx)}`, ctx.startLine);
+        AutomatorData.logCommandEvent(`Автоматизатор ожидает условие: ${parseConditionalIntoText(ctx)}`, ctx.startLine);
         AutomatorData.waitStart = Date.now();
       }
       AutomatorData.isWaiting = true;
@@ -994,16 +986,16 @@ export const AutomatorCommands = [
           S.commandState = { prestigeLevel: 0 };
         }
         const prestigeOccurred = S.commandState.prestigeLevel >= prestigeLevel;
-        const prestigeName = ctx.PrestigeEvent[0].image.toUpperCase();
+        const prestigeName = ctx.PrestigeEvent[0].image === "reality" ? "реальность" : (ctx.PrestigeEvent[0].image === "infinity" ? "бесконечность" : "вечность");
         if (prestigeOccurred) {
           const timeWaited = TimeSpan.fromMilliseconds(Date.now() - AutomatorData.waitStart).toStringShort();
-          AutomatorData.logCommandEvent(`Continuing after WAIT (${prestigeName} occurred for
-            ${findLastPrestigeRecord(prestigeName)}, after ${timeWaited})`, ctx.startLine);
+          AutomatorData.logCommandEvent(`Ожидание завершено (${prestigeName} совершена
+            ${findLastPrestigeRecord(prestigeName)} спустя ${timeWaited})`, ctx.startLine);
           AutomatorData.isWaiting = false;
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
         if (!AutomatorData.isWaiting) {
-          AutomatorData.logCommandEvent(`Started WAIT for ${prestigeName}`, ctx.startLine);
+          AutomatorData.logCommandEvent(`Автоматизатор ожидает ${prestigeName}`, ctx.startLine);
           AutomatorData.waitStart = Date.now();
         }
         AutomatorData.isWaiting = true;
@@ -1034,16 +1026,16 @@ export const AutomatorCommands = [
       // This input has the format "bh#"
       const holeID = ctx.BlackHoleStr ? Number(ctx.BlackHoleStr[0].image.charAt(2)) : 0;
       const bhCond = off ? !BlackHole(1).isActive : BlackHole(holeID).isActive;
-      const bhStr = off ? "inactive Black Holes" : `active Black Hole ${holeID}`;
+      const bhStr = off ? "Чёрные Дыры вступили в фазу бездействия" : `${holeID}-я Чёрная дыра вступила в действующую фазу`;
       if (bhCond) {
         const timeWaited = TimeSpan.fromMilliseconds(Date.now() - AutomatorData.waitStart).toStringShort();
-        AutomatorData.logCommandEvent(`Continuing after WAIT (waited ${timeWaited} for ${bhStr})`,
+        AutomatorData.logCommandEvent(`Ожидание завершено (${bhStr} спустя ${timeWaited})`,
           ctx.startLine);
         AutomatorData.isWaiting = false;
         return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
       }
       if (!AutomatorData.isWaiting) {
-        AutomatorData.logCommandEvent(`Started WAIT for ${bhStr}`, ctx.startLine);
+        AutomatorData.logCommandEvent(`Автоматизатор ожидает, чтобы ${bhStr}`, ctx.startLine);
         AutomatorData.waitStart = Date.now();
       }
       AutomatorData.isWaiting = true;
@@ -1095,7 +1087,7 @@ export const AutomatorCommands = [
       return true;
     },
     compile: ctx => () => {
-      AutomatorData.logCommandEvent(`Automator execution stopped with STOP command`, ctx.startLine);
+      AutomatorData.logCommandEvent(`Автоматизатор остановлен`, ctx.startLine);
       return AUTOMATOR_COMMAND_STATUS.HALT;
     },
     blockify: () => ({

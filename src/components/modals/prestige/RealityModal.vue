@@ -31,46 +31,46 @@ export default {
   },
   computed: {
     firstRealityText() {
-      return `Reality will reset everything except Challenge records and anything under the General header on the
-        Statistics tab. The first ${formatInt(13)} rows of Achievements are also reset,
-        but you will automatically get one Achievement back every
-        ${timeDisplayNoDecimals(30 * 60000)}. You will also gain Reality Machines based on your Eternity Points, a
-        Glyph with a level based on your Eternity Points, Replicanti, and Dilated Time, a Perk Point to spend
-        on quality of life upgrades, and unlock various upgrades.`;
+      return `Реальность сбросит всё, кроме рекордов испытаний и статистики в разделе "Общее".
+        Достижения в первых ${formatInt(13)} рядах также будут сброшены,
+        но они будут восстанавливаться по одному раз в 30 минут.
+        Вы также получите определённое количество Машин Реальности в зависимости от максимального количества ваших Очков Вечности,
+        глиф, уровень которого зависит от максимального количества ваших Очков Вечности, Репликанти и Замедленного Времени в этой реальности, и Очко Умения, которое можно потратить
+        на улучшения, связанные с автоматизацией, и разблокируете различные улучшения.`;
     },
     canSacrifice() {
       return RealityUpgrade(19).isEffectActive;
     },
     warnText() {
       if (!this.hasChoice) {
-        return `You currently only have a single option for new Glyphs every
-          Reality. You can unlock the ability to choose from multiple Glyphs by canceling out of this modal and
-          purchasing the START Perk.`;
+        return `В данный момент вы не можете выбирать глиф, который вы получите
+          на реальности. Вы можете разблокировать такую возможность, закрыв это окно и
+          купив Навык СТАРТ.`;
       }
 
       if (this.hasFilter && this.selectedGlyph === undefined) {
-        return `If you do not choose a Glyph, one will be automatically selected using your Glyph filter.`;
+        return `Если вы не выберете глиф, один из них будет автоматически выбран в соответствии с Фильтром Глифов.`;
       }
       return this.selectedGlyph === undefined
-        ? `You must select a Glyph in order to continue.`
+        ? `Вы должны выбрать глиф.`
         : null;
     },
     gained() {
       const gainedResources = [];
-      gainedResources.push(`${quantifyInt("Reality", this.simRealities)}`);
-      gainedResources.push(`${quantifyInt("Perk Point", this.simRealities)}`);
-      gainedResources.push(`${quantify("Reality Machine", this.realityMachines, 2)}`);
+      gainedResources.push(`${quantifyInt("реальность", this.simRealities)}`);
+      gainedResources.push(`${quantifyInt("Очко", this.simRealities)} Умения`);
+      gainedResources.push(`${quantify("Машина", this.realityMachines, 2)} Реальности`);
       if (this.effarigUnlocked) {
-        gainedResources.push(`${quantify("Relic Shard", this.shardsGained, 2)}`);
+        gainedResources.push(`${quantify("Реликтовый Осколок", this.shardsGained, 2)}`);
       }
-      return `You will gain ${makeEnumeration(gainedResources)}`;
+      return `Вы получите ${makeEnumeration(gainedResources)}`;
     },
     levelStats() {
       // Bit annoying to read due to needing >, <, and =, with = needing a different format.
-      return `You will get a level ${formatInt(this.level)} Glyph on Reality, which is
-        ${this.level === this.bestLevel ? "equal to" : `
-        ${quantifyInt("level", this.levelDifference)}
-        ${this.level > this.bestLevel ? "higher" : "lower"} than`} your best.`;
+      return `При реальности вы получите глиф уровня ${formatInt(this.level)}, то есть 
+        ${this.level === this.bestLevel ? "такого же, как" : `на
+        ${formatInt(this.levelDifference)}
+        ${this.level > this.bestLevel ? "выше" : "ниже"}, чем`} максимальный ранее достигнутый.`;
     },
     confirmationToDisable() {
       return ConfirmationTypes.glyphSelection.isUnlocked() ? "glyphSelection" : undefined;
@@ -141,7 +141,7 @@ export default {
     @confirm="confirmModal(false)"
   >
     <template #header>
-      You are about to Reality
+      Вы совершаете реальность
     </template>
     <div
       v-if="firstReality"
@@ -177,33 +177,33 @@ export default {
     </div>
     <div v-if="simRealities > 1">
       <br>
-      After choosing this Glyph the game will simulate the rest of your Realities,
+      После того как вы выберете глиф из этих вариантов, игра симулирует оставшиеся реальности,
       <br>
-      automatically choosing another {{ quantifyInt("Glyph", simRealities - 1) }}
-      based on your Glyph filter settings.
+      автоматически выбирая ещё {{ quantifyInt("глиф", simRealities - 1) }}
+      согласно Фильтру Глифов.
     </div>
     <div v-if="willAutoPurge">
       <br>
-      Auto-purge is currently enabled; your selected Glyph
+      Автоматическая прочистка в данный момент включена; выбранный вами глиф
       <br>
-      may not appear in your inventory after it triggers.
+      может не появиться в вашем инвентаре, так как будет удалён.
     </div>
     <div
       v-if="!hasSpace"
       class="o-warning"
     >
       <span v-if="simRealities > 1">
-        You will be simulating more Realities than you have open inventory space for;
-        this may result in some Glyphs being Sacrificed.
+        Вы симулируете больше реальностей, чем в вашем инвентаре свободных ячеек;
+        вследствие этого некоторые выбираемые глифы могут быть пожертвованы.
       </span>
       <span v-else>
-        You do not have any free inventory space - your selected Glyph will be automatically
-        {{ canSacrifice ? "Sacrificed" : "deleted" }}!
+        В вашем интвентаре нет свободных ячеек - выбранный вами глиф будет автоматически
+        {{ canSacrifice ? "пожертвован" : "удалён" }}!
       </span>
     </div>
     <div v-if="confirmationToDisable">
       <br>
-      You can force this modal to appear (even if disabled) by Shift-clicking the Reality button.
+      Вы можете вынудить это окно открыться (даже если оно отключено) при нажатии кнопки реальности, зажав клавишу Shift.
     </div>
     <template
       v-if="canSacrifice && canConfirm"
@@ -213,7 +213,7 @@ export default {
         class="o-primary-btn--width-medium c-modal-message__okay-btn"
         @click="confirmModal(true)"
       >
-        Sacrifice
+        Пожертвовать
       </PrimaryButton>
     </template>
   </ModalWrapperChoice>

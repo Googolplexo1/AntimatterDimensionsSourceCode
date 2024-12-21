@@ -53,7 +53,7 @@ export default {
     :autobuyer="autobuyer"
     :is-modal="isModal"
     :show-interval="!isBuyMaxUnlocked"
-    name="Automatic Dimension Boosts"
+    name="Автоматика Расширений Измерений"
   >
     <template
       v-if="!hasMaxedInterval"
@@ -69,7 +69,7 @@ export default {
         class="c-autobuyer-box__small-text"
       >
         <br>
-        Activates every X seconds:
+        Срабатывает раз в X секунд:
       </div>
       <AutobuyerInput
         :autobuyer="autobuyer"
@@ -89,7 +89,7 @@ export default {
           type="checkbox"
           class="o-clickable"
         >
-        Limit Dimension Boosts to:
+        Максимум Расширений Измерений:
       </label>
       <AutobuyerInput
         :autobuyer="autobuyer"
@@ -107,12 +107,12 @@ export default {
           class="o-clickable"
         >
         <span v-if="isBuyMaxUnlocked">
-          Only Dimboost to unlock new<br>
-          Dimensions until X Galaxies:
+          Получать Расширения лишь для разблокировки<br>
+          новых измерений до X Галактик:
         </span>
         <span v-else>
-          Galaxies required to always<br>
-          Dimboost, ignoring the limit:
+          Требуется X Галактик, чтобы всегда получать<br>
+          Расширения, игнорируя настройку максимума:
         </span>
       </label>
       <AutobuyerInput

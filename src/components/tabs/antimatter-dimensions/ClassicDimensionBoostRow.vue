@@ -25,7 +25,7 @@ export default {
   computed: {
     isDoomed: () => Pelle.isDoomed,
     dimName() {
-      return AntimatterDimension(this.requirement.tier).displayName;
+      return `${this.requirement.tier}-${pluralize("е", this.requirement.amount)}`;
     },
     boostCountText() {
       if (this.requirementText) return this.requirementText;
@@ -72,8 +72,8 @@ export default {
 <template>
   <div class="c-dimension-row c-antimatter-dim-row c-antimatter-prestige-row">
     <div class="l-dim-row__prestige-text c-dim-row__label c-dim-row__label--amount">
-      Dimension Boost ({{ boostCountText }}):
-      requires {{ formatInt(requirement.amount) }} {{ dimName }} Dimensions
+    Расширения Измерений ({{ boostCountText }})
+    <span>Требуется: {{ formatInt(requirement.amount) }} {{ dimName }} ИА</span>
     </div>
     <PrimaryButton
       :enabled="isBuyable"

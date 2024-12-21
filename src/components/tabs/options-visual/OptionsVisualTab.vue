@@ -26,21 +26,22 @@ export default {
       notation: "",
       sidebarResource: "",
       headerTextColored: true,
+      gender: "",
     };
   },
   computed: {
     sidebarDB: () => GameDatabase.sidebarResources,
     themeLabel() {
-      return `Theme: ${Themes.find(this.theme).displayName()}`;
+      return `Тема: ${Themes.find(this.theme).displayName()}`;
     },
     notationLabel() {
-      return `Notation: ${this.notation}`;
+      return `Нотация: ${this.notation}`;
     },
     sidebarLabel() {
-      return `Sidebar (Modern UI): ${this.sidebarResource}`;
+      return `Левый верхний угол (в Современном интерфейсе): ${this.sidebarResource}`;
     },
     UILabel() {
-      return `UI: ${this.$viewModel.newUI ? "Modern" : "Classic"}`;
+      return `Интерфейс: ${this.$viewModel.newUI ? "Современный" : "Классический"}`;
     }
   },
   watch: {
@@ -54,9 +55,10 @@ export default {
       this.theme = Theme.currentName();
       this.notation = options.notation;
       this.sidebarResource = player.options.sidebarResourceID === 0
-        ? "Latest Resource"
+        ? "Новейший ресурс"
         : this.sidebarDB.find(e => e.id === player.options.sidebarResourceID).optionName;
       this.headerTextColored = options.headerTextColored;
+      this.gender = options.genderMale ? "Мужской" : "Женский";
     },
   }
 };
@@ -67,7 +69,7 @@ export default {
     <div class="l-options-grid">
       <div class="l-options-grid__row">
         <OptionsButton
-          class="o-primary-btn--option_font-large"
+          class="o-primary-btn--option"
           onclick="GameOptions.toggleUI()"
         >
           {{ UILabel }}
@@ -77,7 +79,7 @@ export default {
           class="o-primary-btn--option"
           onclick="Modal.newsOptions.show();"
         >
-          Open News Options
+          Раскрыть настройки новостей
         </OptionsButton>
       </div>
       <div class="l-options-grid__row">
@@ -103,7 +105,7 @@ export default {
           class="o-primary-btn--option"
           onclick="Modal.notation.show();"
         >
-          Open Exponent Notation Options
+          Раскрыть настройки записи порядка
         </OptionsButton>
       </div>
       <div class="l-options-grid__row">
@@ -111,19 +113,19 @@ export default {
           class="o-primary-btn--option"
           onclick="Modal.animationOptions.show();"
         >
-          Open Animation Options
+          Раскрыть настройки анимаций
         </OptionsButton>
         <OptionsButton
           class="o-primary-btn--option"
           onclick="Modal.infoDisplayOptions.show()"
         >
-          Open Info Display Options
+          Раскрыть настройки отображения дополнительной информации
         </OptionsButton>
         <OptionsButton
           class="o-primary-btn--option"
           onclick="Modal.awayProgressOptions.show()"
         >
-          Open Away Progress Options
+          Раскрыть настройки отображения офлайн-прогресса
         </OptionsButton>
       </div>
       <div class="l-options-grid__row">
@@ -131,12 +133,12 @@ export default {
           class="o-primary-btn--option"
           onclick="Modal.hiddenTabs.show()"
         >
-          Modify Visible Tabs
+          Изменение отображаемых вкладок
         </OptionsButton>
         <PrimaryToggleButton
           v-model="headerTextColored"
           class="o-primary-btn--option l-options-grid__button"
-          label="Relative prestige gain text coloring:"
+          label="Цветовое отображение относительного прироста валюты престижа:"
         />
         <ExpandingControlBox
           v-if="$viewModel.newUI"
@@ -148,6 +150,14 @@ export default {
             <SelectSidebarDropdown />
           </template>
         </ExpandingControlBox>
+      </div>
+      <div class="l-options-grid__row">
+        <OptionsButton
+          class="o-primary-btn--option"
+          onclick="GameOptions.toggleGender()"
+        >
+          Ваш пол: {{ gender }}
+        </OptionsButton>
       </div>
       <OpenModalHotkeysButton />
     </div>

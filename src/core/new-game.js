@@ -1,4 +1,4 @@
-import * as ADNotations from "@antimatter-dimensions/notations";
+import { Settings } from "../ad-notations.esm"
 
 export const NG = {
   startNewGame() {
@@ -90,8 +90,8 @@ export const NG = {
     });
     Themes.find(Theme.currentName()).set();
     Notations.all.find(n => n.name === player.options.notation).setAsCurrent();
-    ADNotations.Settings.exponentCommas.min = 10 ** player.options.notationDigits.comma;
-    ADNotations.Settings.exponentCommas.max = 10 ** player.options.notationDigits.notation;
+    Settings.exponentCommas.min = 10 ** player.options.notationDigits.comma;
+    Settings.exponentCommas.max = 10 ** player.options.notationDigits.notation;
     player.lastUpdate = Date.now();
   }
 };

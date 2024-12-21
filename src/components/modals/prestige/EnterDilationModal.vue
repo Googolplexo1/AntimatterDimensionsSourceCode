@@ -10,23 +10,23 @@ export default {
   },
   computed: {
     message() {
-      return `Dilating time will start a new Eternity, and all Dimension multiplier's exponents and
-        tickspeed multiplier's exponent will be reduced to ${formatPow(0.75, 2, 2)}. If you can Eternity while Dilated,
-        your Tachyon Particles will be increased to a value based on your highest antimatter and any Tachyon Particle
-        multipliers you have.`;
+      return `Замедление Времени начнёт новую вечность, в которой порядки всех множителей Измерений и
+        скорости тика будут возведены в степень ${formatPow(0.75, 2, 2)}. Если вы совершите вечность в Замедлении,
+        количество ваших Тахионов возрастёт до определённого значения в зависимости от максимального
+        количества антиматерии, достигнутого вами в Замедлении.`;
     },
     entranceLabel() {
-      return `You are about to enter Dilation`;
+      return `Вы замедляете Время`;
     },
     EPSinceLabel() {
       if (player.dilation.lastEP.eq(-1)) {
-        return "This is your first Dilation";
+        return "Это ваше первое Замедление";
       }
       if (!isInCelestialReality() && Ra.unlocks.unlockDilationStartingTP.canBeApplied) {
-        return `You already have the maximum feasible amount of Tachyon Particles you can attain due to
-          Teresa's Level ${formatInt(25)} reward.`;
+        return `Вы уже получили достаточное количество Тахионов от этапа за
+          ${formatInt(25)}-й Уровень Терезы.`;
       }
-      return `You last completed Dilation at ${format(player.dilation.lastEP, 2, 2)} Eternity Points.`;
+      return `У вас было ${quantify("Очко", player.dilation.lastEP)} Вечности на момент завершения последнего Замедления.`;
     }
   },
   methods: {
@@ -59,7 +59,7 @@ export default {
       {{ message }}
     </div>
     <template #confirm-text>
-      Enter
+      Начать
     </template>
   </ModalWrapperChoice>
 </template>

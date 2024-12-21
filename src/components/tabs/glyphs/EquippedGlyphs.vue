@@ -29,21 +29,21 @@ export default {
       return this.slotCount + 1;
     },
     respecTooltip() {
-      const reset = Pelle.isDoomed ? "Armageddon" : "Reality";
+      const reset = Pelle.isDoomed ? "армагеддоне" : "реальности";
       return this.respec
-        ? `Respec is active and will place your currently - equipped Glyphs into your inventory after ${reset}.`
-        : `Your currently-equipped Glyphs will stay equipped on ${reset}.`;
+        ? `Действующие глифы будут возвращены в инвентарь на ${reset}.`
+        : `Глифы продолжат действовать на ${reset}.`;
     },
     undoTooltip() {
-      if (!this.undoSlotsAvailable) return "You do not have available inventory space to unequip Glyphs to";
+      if (!this.undoSlotsAvailable) return "В инвентаре нет мест для деактивируемых глифов";
       return this.undoAvailable
-        ? ("Unequip the last equipped Glyph and rewind Reality to when you equipped it." +
-          " (Most resources will be fully reset)")
-        : "Undo is only available for Glyphs equipped during this Reality";
+        ? ("Деактивировать последний активированный глиф и отбросить прогресс в текущей реальности на момент его активации." +
+          " (Большинство ресурсов будут сброшены)")
+        : "Деактивировать можно лишь те глифы, которые были активированы в текущей реальности";
     },
     unequipText() {
-      if (Pelle.isDoomed) return "Unequip Glyphs on Armageddon";
-      return "Unequip Glyphs on Reality";
+      if (Pelle.isDoomed) return "Деактивировать глифы на армагеддоне";
+      return "Деактивировать глифы на реальности";
     },
     isDoomed() {
       return Pelle.isDoomed;
@@ -137,7 +137,7 @@ export default {
       // If there aren't any glyphs equipped, the array is full of nulls which get filtered out by x => x
       if (this.glyphs.filter(x => x).length === 0) return;
       Modal.glyphShowcasePanel.show({
-        name: "Equipped Glyphs",
+        name: "Действующие глифы",
         glyphSet: this.glyphs,
         closeEvent: GAME_EVENT.GLYPHS_EQUIPPED_CHANGED,
       });
@@ -204,23 +204,23 @@ export default {
         :ach-tooltip="undoTooltip"
         @click="undo"
       >
-        <span>Rewind to <b>undo</b> the last equipped Glyph</span>
+        <span><b>Деактивировать</b> последний активированный глиф</span>
       </button>
       <button
         class="l-glyph-equip-button c-reality-upgrade-btn"
         @click="toggleRespecIntoProtected"
       >
-        Unequip Glyphs to:
+        Помещать деактивированные глифы в
         <br>
-        <span v-if="respecIntoProtected">Protected slots</span>
-        <span v-else>Main inventory</span>
+        <span v-if="respecIntoProtected">Защищённые ячейки</span>
+        <span v-else>Незащищённые ячейки</span>
       </button>
       <button
-        class="l-glyph-equip-button-short c-reality-upgrade-btn"
+        class="l-glyph-equip-button c-reality-upgrade-btn"
         :class="{'tutorial--glow': cosmeticGlow}"
         @click="showOptionModal"
       >
-        Open Glyph Visual Options
+        Раскрыть настройки отображения глифов
       </button>
     </div>
   </div>
@@ -232,13 +232,13 @@ export default {
 }
 
 .l-glyph-equip-button {
-  width: 100%;
+  width: 110%;
   height: 3.5rem;
   margin: 0.25rem 0.5rem;
 }
 
 .l-glyph-equip-button-short {
-  width: 100%;
+  width: 110%;
   height: 2.5rem;
   margin: 0.25rem 0.5rem;
 }

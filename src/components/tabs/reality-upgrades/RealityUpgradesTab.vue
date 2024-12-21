@@ -8,12 +8,12 @@ export default {
   },
   computed: {
     upgrades: () => RealityUpgrades.all,
-    costScalingTooltip: () => `Prices start increasing faster above ${format(1e30)} RM and then even faster
-      above ${format(Decimal.NUMBER_MAX_VALUE, 1)} RM`,
-    possibleTooltip: () => `Checkered upgrades are impossible to unlock this Reality. Striped upgrades are
-      still possible.`,
-    lockTooltip: () => `This will only function if you have not already failed the condition or
-      unlocked the upgrade.`,
+    costScalingTooltip: () => `Цены растут принципиально быстрее после ${format(1e30)} МР,
+      а после ${format(Decimal.NUMBER_MAX_VALUE, 1)} МР - кардинально быстрее`,
+    possibleTooltip: () => `Улучшения, раскрашенные в красную клетку, невозможно разблокировать в текущей реальности,
+      а раскрашенные в жёлтую полоску - возможно.`,
+    lockTooltip: () => `Проверка будет работать, только если вы ещё не разблокировали улучшение, но ещё можете
+      разблокировать его в текущей реальности.`,
   },
   methods: {
     id(row, column) {
@@ -26,30 +26,28 @@ export default {
 <template>
   <div class="l-reality-upgrade-grid">
     <div class="c-reality-upgrade-infotext">
-      Mouseover <i class="fas fa-question-circle" /> icons for additional information.
+      Наводите курсор на иконки <i class="fas fa-question-circle" /> для просмотра дополнительной информации.
       <br>
-      The first row of upgrades can be purchased endlessly for increasing costs
+      Улучшения из верхнего ряда можно покупать сколь угодно много раз за экспоненциально растущие цены
       <span :ach-tooltip="costScalingTooltip">
         <i class="fas fa-question-circle" />
-      </span>
-      and the rest are single-purchase.
+      </span>, а остальные - по одному.
       <br>
-      Single-purchase upgrades also have requirements which, once completed, permanently unlock the ability
-      to purchase the upgrades at any point.
+      Последние имеют требования, которые, будучи однажды выполнены, навсегда разблокируют возможность купить эти улучшения.
       <span :ach-tooltip="possibleTooltip">
         <i class="fas fa-question-circle" />
       </span>
       <br>
-      Locked upgrades show their requirement and effect by default; unlocked ones show
-      their effect, current bonus, and cost. Hold shift to swap this behavior.
+      Заблокированные улучшения по умолчанию показывают свои требования и эффекты, а разблокированные -
+      эффекты, их значения и цены. При зажатии клавиши Shift они меняются ролями.
       <br>
-      You can shift-click upgrades with <i class="fas fa-lock-open" /> to make the game prevent you
-      from doing anything this Reality which would cause you to fail their unlock condition.
+      Вы можете нажать на улучшение, имеющее значок <i class="fas fa-lock-open" />, зажав клавишу Shift, чтобы игра предотвращала
+      все действия, которые приведут к тому, что вы не сможете разблокировать это улучшение в текущей реальности.
       <span :ach-tooltip="lockTooltip">
         <i class="fas fa-question-circle" />
       </span>
       <br>
-      Every completed row of purchased upgrades increases your Glyph level by {{ formatInt(1) }}.
+      Уровень получаемых глифов увеличивается на количество рядов, из которых вы купили все улучшения.
     </div>
     <div
       v-for="row in 5"

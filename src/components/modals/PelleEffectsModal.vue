@@ -12,50 +12,50 @@ export default {
     nerfs() {
       return [
         // Numerical nerfs and disabled boosts
-        "Anything unlocked through a Pelle upgrade cannot be unlocked normally",
-        "All pre-Doomed IP and EP multipliers are disabled",
-        "IP generation based on fastest infinity speed is disabled",
-        "All pre-Doomed Replicanti speed multipliers are disabled",
-        `Replicanti slows down more drastically above ${format(Number.MAX_VALUE, 2)}`,
-        "Most Eternity Challenges are harder",
-        `All Galaxies are only ${formatPercents(0.5)} as effective`,
-        `Antimatter Dimension multiplier is divided by ${formatInt(10)}`,
-        "Achievement multiplier and many achievement rewards are disabled",
-        "All Infinity and Eternity multipliers and generation are disabled",
-        "Black Holes are disabled",
-        `Reality Upgrade "Temporal Transcendence" is disabled`,
+        "Всё, что разблокируется Улучшениями Пелля, не может быть разблокировано обычным способом",
+        "Все множители к получению ОБ и ОВ, разблокированные до Обречения, отключены",
+        "Улучшение Бесконечности, производящее ОБ, отключено",
+        "Все множители к скорости репликации, разблокированные до Обречения, отключены",
+        `Рост Репликанти после ${format(Number.MAX_VALUE, 2)} замедляется ещё сильнее`,
+        "У большинства Испытаний Вечности повышены цели",
+        `Все галактики на ${formatPercents(0.5)} слабее`,
+        `Множители Измерений Антиматерии в ${formatInt(10)} раз меньше`,
+        "Множитель достижений и многие награды за достижения отключены",
+        "Все множители к получению бесконечностей и вечностей и их производство отключены",
+        `Вы получаете в ${formatInt(100000)} раз меньше Замедленного Времени`,
+        "Чёрные Дыры отключены",
+        `Улучшение Реальности "Временная Трансцендентность" отключено`,
 
         // Initial QoL and automation
-        "All rewards which increase your starting resources except Achievement 21 are disabled",
-        "All rewards which prevent resources from being reset are disabled",
-        "Perk rewards which reduce unlock costs have been disabled, excluding the ECR group",
-        "Automatic Infinity and Eternity Challenges are disabled",
-        "All Dimension and pre-Infinity Autobuyers are disabled until reacquired through Pelle",
-        "The Time Theorem Autobuyer is disabled",
-        "All Automation related to Time Dilation or later is disabled",
+        "Все эффекты, кроме награды за достижение 21, увеличивающие начальное количество ресурсов, отключены",
+        "Все эффекты, предотвращающие сброс ресурсов, отключены",
+        "Навыки ТИБ и ТЗВ отключены",
+        "Автоматическое выполнение Испытаний Бесконечности и Вечности отключено",
+        "Автоматика Теорем Времени отключена",
+        "Вся автоматика механик, разблокированных не ранее Замедления Времени, отключена",
 
         // Time studies + Dilation
-        "Eternity Upgrade to Time Dimensions based on days played is based on this Armageddon time",
-        `All pre-Doomed Dilated Time multipliers are disabled except the ${formatX(2)} buyable`,
-        "All Tachyon Particle multipliers are disabled",
-        "All pre-Doomed Time Theorem generation effects are disabled except the Dilation upgrade",
+        "Улучшение Вечности, зависящее от времени игры, вместо этого зависит от времени текущего армагеддона",
+        `Все множители к получению Замедленного Времени, разблокированные до Обречения, кроме удвоителя ЗВ, отключены`,
+        "Все множители к получению Тахионов отключены",
+        "Все производители Теорем Времени, разблокированные до Обречения, кроме соответствующего Улучшения Замедления, отключены",
 
         // Glyphs
-        "Glyph equipping is disabled until reacquired",
-        `Glyph levels are lowered and rarity is set to ${formatPercents(0)}`,
-        "Effects from Glyph Sacrifice, Alteration, and Alchemy are all disabled",
+        "Активация глифов невозможна, до тех пор пока она не будет разрешена Пеллем",
+        `Фактические уровни глифов понижены, а их редкость выставлена на ${formatPercents(0)}`,
+        "Эффекты от Пожертвования и Расширения Глифов и алхимических ресурсов отключены",
 
         // Celestial features
-        "You cannot enter any other Celestial Realities",
-        "Music Glyphs cannot be bought",
-        "All rewards from Effarig are disabled",
-        "All features related to storing time are disabled",
-        "All rewards from V are disabled",
-        `The Teresa Level ${formatInt(1)} effect from Ra is disabled`,
-        "Infinity Upgrades cannot be charged",
-        "Triad Studies and Space Theorems are disabled",
-        "Imaginary Upgrades are disabled excluding those relating to DMD's and Celestial unlocks",
-        "Continuum and Singularity rewards are disabled"
+        "Нельзя запускать Реальности других Небожителей",
+        "Покупать музыкальные глифы нельзя",
+        "Награды за все слои Реальности Эффарига отключены",
+        "Все механики, связанные с хранением времени, отключены",
+        "Все этапы Ви отключены",
+        `Эффект от ${formatInt(1)}-го уровня Терезы отключён`,
+        "Заряжать Улучшения Бесконечности нельзя",
+        "Ваши Теоремы Пространства конфискованы",
+        "Мнимые Улучшения, кроме тех, которые разблокируют ИТМ и Небожителей, отключены",
+        "Эффект от континуума и Этапы Сингулярности отключены"
       ];
     }
   }
@@ -65,7 +65,7 @@ export default {
 <template>
   <ModalWrapper>
     <template #header>
-      List of disabled and nerfed effects in Doomed
+      Условия Обречённой Реальности
     </template>
     <div class="pelle-effects-container">
       <p
@@ -79,7 +79,7 @@ export default {
       class="o-primary-btn--width-medium c-modal-message__okay-btn c-modal__confirm-btn"
       @click="emitClose"
     >
-      Okay
+      OK
     </PrimaryButton>
   </ModalWrapper>
 </template>

@@ -9,11 +9,11 @@ export default {
   computed: {
     listEntries() {
       return [
-        `Many more game events now have animations. If these impact your performance or gameplay, they can be
-        disabled in the Visual Options tab.`,
-        `New confirmation windows have replaced the default Javascript alert windows. These can be disabled in the
-        Gameplay Options tab.`,
-        "The game now also has a new sleek layout which was designed with more Modern design practices in mind."
+        `Больше игровых событий анимированы. Если это влияет на ваши производительность или геймплей, анимации могут быть
+        отключены в отделе "Внешний вид" вкладки "Настройки".`,
+        `Новые окна подтверждения пришли на замену встроенным в Javascript окнам оповещения. Они могут быть отключены в
+        отделе "Геймплей" вкладки "Настройки".`,
+        "Игра теперь обладает более изящным оформлением, созданным по современным принципам дизайна."
       ];
     }
   },
@@ -28,10 +28,10 @@ export default {
 <template>
   <ModalWrapperChoice @confirm="handleYesClick">
     <template #header>
-      Visual Changes
+      Внешние изменения
     </template>
     <div class="c-modal-message__text">
-      We noticed that you've loaded an old save; a few visual changes have been made since older versions of the game:
+      Мы заметили, что вы загрузили старое сохранение; со времени старых версий внешний вид игры претерпел несколько изменений:
       <br>
       <br>
       <div class="c-visual-change-list">
@@ -46,14 +46,14 @@ export default {
       </div>
       <br>
       <br>
-      You can change between the Classic UI which older versions of the game used and the newer Modern UI in the Visual
-      Options tab at any time. Would you like to swap to the Modern UI now?
+      Вы можете свободно переключаться между Классическим интерфейсом, который использовался в старых версиях игры, и новейшим Современным интерфейсом в отделе "Внешний вид"
+      вкладки "Настройки". Хотели ли бы вы переключиться на Современный интерфейс прямо сейчас?
     </div>
     <template #cancel-text>
-      Remain
+      Нет
     </template>
     <template #confirm-text>
-      Swap
+      Да
     </template>
   </ModalWrapperChoice>
 </template>

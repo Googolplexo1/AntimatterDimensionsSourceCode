@@ -38,9 +38,9 @@ export default {
     class="c-prestige-button-container"
   >
     <div class="c-infinity-points">
-      You have
+      У вас
       <span class="c-game-header__ip-amount">{{ format(infinityPoints, 2) }}</span>
-      {{ pluralize("Infinity Point", infinityPoints) }}.
+      {{ pluralize("Очко", infinityPoints) }} Бесконечности.
       <span
         v-if="isTesseractUnlocked"
         v-html="tesseractText"
@@ -54,5 +54,6 @@ export default {
 .c-infinity-points {
   font-size: 1.2rem;
   padding-bottom: 0.5rem;
+  width: 27rem;
 }
 </style>

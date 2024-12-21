@@ -41,8 +41,15 @@ export default {
     type() {
       return this.glyph.type;
     },
-    typeCapitalized() {
-      return this.type.capitalize();
+    typeText() {
+      switch (this.type) {
+        case "cursed":
+          return "Проклятый";
+        case "companion":
+          return "Компаньон";
+        default:
+          return translateGlyph(this.type);
+      }
     },
     level() {
       return this.glyph.level;
@@ -150,7 +157,7 @@ export default {
 <template>
   <div>
     <div class="c-glyph-choice-icon">
-      <span :style="typeStyle">{{ typeCapitalized }}</span>
+      <span :style="typeStyle">{{ typeText }}</span>
       <div
         v-if="showLevel"
         v-html="levelText"

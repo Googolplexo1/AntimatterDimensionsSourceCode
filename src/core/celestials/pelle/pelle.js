@@ -56,7 +56,7 @@ const disabledMechanicUnlocks = {
 export const Pelle = {
   symbol: "♅",
   // Suppress the randomness for this form
-  possessiveName: "Pelle's",
+  possessiveName: "Пелля",
 
   // This is called upon initial Dooming and after every Armageddon when using the modal
   initializeRun() {
@@ -68,15 +68,15 @@ export const Pelle = {
     Glyphs.harshAutoClean();
     if (!Glyphs.unequipAll()) {
       Modal.hideAll();
-      Modal.message.show(`Dooming your Reality will unequip your Glyphs. Some of your
-        Glyphs could not be unequipped due to lack of inventory space.`, 1);
+      Modal.message.show(`При Обречении Реальности глифы должны быть деактивированы,
+        но для этого в инвентаре оказалось недостаточно свободных ячеек.`, 1);
       return;
     }
     Glyphs.harshAutoClean();
     if (Glyphs.freeInventorySpace < 5) {
       Modal.hideAll();
-      Modal.message.show(`You must have enough empty unprotected Glyph slots for
-        ${formatInt(5)} additional Glyphs in order to Doom your Reality.`, 1);
+      Modal.message.show(`При Обречении Реальности у вас в инвентаре должно быть
+        ${formatInt(5)} свободных незащищённых ячеек для новых глифов.`, 1);
       return;
     }
     for (const type of BASIC_GLYPH_TYPES) Glyphs.addToInventory(GlyphGenerator.doomedGlyph(type));
@@ -121,7 +121,7 @@ export const Pelle = {
   },
 
   get displayName() {
-    return Date.now() % 4000 > 500 ? "Pelle" : wordShift.randomCrossWords("Pelle");
+    return Date.now() % 4000 > 500 ? "Пелль" : wordShift.randomCrossWords("Пелль");
   },
 
   get isUnlocked() {
@@ -234,28 +234,28 @@ export const Pelle = {
   getSpecialGlyphEffectDescription(type) {
     switch (type) {
       case "infinity":
-        return `Infinity Point gain ${player.challenge.eternity.current <= 8
+        return `Множитель ${player.challenge.eternity.current <= 8
           ? formatX(Currency.infinityPoints.value.plus(1).pow(0.2), 2)
-          : formatX(DC.D1, 2)} (based on current IP)`;
+          : formatX(DC.D1, 2)} к получению Очков Бесконечности (зависит от количества ОБ)`;
       case "time":
-        return `Eternity Point gain ${formatX(Currency.eternityPoints.value.plus(1).pow(0.3), 2)}
-          (based on current EP)`;
+        return `Множитель ${formatX(Currency.eternityPoints.value.plus(1).pow(0.3), 2)}
+          к получению Очков Вечности (зависит от количества ОВ)`;
       case "replication":
-        return `Replication speed ${formatX(10 ** 53 ** (PelleRifts.vacuum.percentage), 2)} \
-        (based on ${wordShift.wordCycle(PelleRifts.vacuum.name)})`;
+        return `Множитель ${formatX(10 ** 53 ** (PelleRifts.vacuum.percentage), 2)} \
+        к скорости репликации (зависит от заполнения ${wordShift.wordCycle(["Вакуума", "Полости", "Пустоты"])})`;
       case "dilation":
-        return `Dilated Time gain ${formatX(Decimal.pow(player.dilation.totalTachyonGalaxies, 1.5).max(1), 2)}
-          (based on Tachyon Galaxies)`;
+        return `Множитель ${formatX(Decimal.pow(player.dilation.totalTachyonGalaxies, 1.5).max(1), 2)}
+          к производству Замедленного Времени (зависит от колтчества Тахионных Галктик)`;
       case "power":
-        return `Galaxies are ${formatPercents(0.02)} stronger`;
+        return `Галактики на ${formatPercents(0.02)} сильнее`;
       case "companion":
-        return `You feel ${formatPercents(0.34)} better`;
+        return `Вы чувствуете себя на ${formatPercents(0.34)} лучше`;
       // Undefined means that there is no glyph equipped, needs to be here since this function is used in
       // both Current Glyph Effects and Glyph Tooltip
       case undefined:
         return "No Glyph equipped!";
       default:
-        return "You cannot equip this Glyph while Doomed!";
+        return "Нельзя активировать этот глиф в Обречении!";
     }
   },
 
@@ -294,7 +294,7 @@ export const Pelle = {
       (Math.log10(am + 2) + Math.log10(ip + 2) + Math.log10(ep + 2)) / 1.64
     ) ** 7.5;
 
-    return gain < 1 ? gain : Math.floor(gain - this.cel.remnants);
+    return Math.floor(gain - this.cel.remnants);
   },
 
   realityShardGain(remnants) {
@@ -354,9 +354,11 @@ export const Pelle = {
     return zalgo(str, Math.floor(stage ** 2 * 7));
   },
 
-  endTabNames: "End Is Nigh Destruction Is Imminent Help Us Good Bye Forever".split(" "),
+  endTabNames: "Конец близок . Разрушение неизбежно . Помоги . Прощай навсегда ё".split(" "),
 
-  quotes: Quotes.pelle,
+  get quotes() {
+    return Quotes().pelle;
+  },
 };
 
 EventHub.logic.on(GAME_EVENT.ARMAGEDDON_AFTER, () => {

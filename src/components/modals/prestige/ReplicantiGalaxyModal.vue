@@ -15,17 +15,17 @@ export default {
   },
   computed: {
     topLabel() {
-      return `You are about to purchase ${quantifyInt("Replicanti Galaxy", this.canBeBought)}`;
+      return `Вы получаете ${quantifyInt("Галактику", this.canBeBought)} Репликанти`;
     },
     message() {
       const reductionString = this.divideReplicanti
-        ? `divide your Replicanti by ${format(Number.MAX_VALUE, 2, 2)} for each Replicanti Galaxy purchased
-          (${format(this.replicanti, 2, 2)} to
+        ? `разделено на ${format(Number.MAX_VALUE, 2, 2)} за каждую полученную Галактику Репликанти
+          (${format(this.replicanti, 2, 2)} ➜
           ${format(this.replicanti.divide(Decimal.NUMBER_MAX_VALUE.pow(this.canBeBought)), 2, 2)})`
-        : `reset your Replicanti to ${formatInt(1)}`;
-      return `A Replicanti Galaxy boosts Tickspeed the same way an Antimatter Galaxy does. However, it does not
-        increase the cost of Antimatter Galaxies, nor is it affected by multipliers to Antimatter Galaxies specifically.
-        It will ${reductionString}.`;
+        : `сброшено до ${formatInt(1)}`;
+      return `Галактики Репликанти усиливают ускорители так же, как Галактики Антиматерии. Однако их получение не
+        увеличивает цену Галактики Антиматерии, и эффекты, влияющие на Галактики Антиматерии, по умолчанию не влияют на Галактики Репликанти.
+        Количество ваших Репликанти будет ${reductionString}.`;
     }
   },
   methods: {

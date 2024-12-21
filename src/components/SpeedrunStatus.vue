@@ -22,24 +22,24 @@ export default {
   },
   computed: {
     statusText() {
-      if (this.isComplete) return `<span style="color: var(--color-good)">Finished!</span>`;
+      if (this.isComplete) return `<span style="color: var(--color-good)">Завершён!</span>`;
       return this.hasStarted
-        ? `<span style="color: var(--color-good)">Running!</span>`
-        : `<span style="color: var(--color-bad)">Not Started Yet</span>`;
+        ? `<span style="color: var(--color-good)">Запущен!</span>`
+        : `<span style="color: var(--color-bad)">Не начат</span>`;
     },
     segmentText() {
-      return this.isSegmented ? "Segmented Speedrun (imported save)" : "Single-segment Speedrun (no save import)";
+      return this.isSegmented ? "Сегментированный забег (импортированное сохранение)" : "Непрерывный забег (без импорта сохранения)";
     },
     iapText() {
-      return this.usedSTD ? "IAPs have been used" : "No IAPs Used";
+      return this.usedSTD ? "Использованы внутриигровые покупки" : "Без внутриигровых покупок";
     },
     offlineText() {
       const stateText = this.offlineProgress
-        ? `<span style="color: var(--color-good)">Enabled</span>`
-        : `<span style="color: var(--color-bad)">Disabled</span>`;
+        ? `<span style="color: var(--color-good)">Включён</span>`
+        : `<span style="color: var(--color-bad)">Отключён</span>`;
       const fractionText = this.offlineFraction === 0
-        ? "(No offline time used)"
-        : `(${formatPercents(this.offlineFraction, 2)} time spent offline)`;
+        ? "(Офлайн-прогресс не использован)"
+        : `(${formatPercents(this.offlineFraction, 2)} времени проведено офлайн)`;
       return `${stateText} ${fractionText}`;
     },
     collapseIcon() {
@@ -80,7 +80,7 @@ export default {
       Modal.changeName.show();
     },
     collapseText() {
-      return this.isCollapsed ? "Expand" : `Click to collapse Speedrun info`;
+      return this.isCollapsed ? "Раскрыть" : `Нажмите, чтобы скрыть информацию о спидране`;
     },
     toggleCollapse() {
       player.speedrun.hideInfo = !this.isCollapsed;
@@ -99,13 +99,13 @@ export default {
     class="c-speedrun-status"
   >
     <div v-if="!isCollapsed">
-      <b>Speedrun Status (<span v-html="statusText" />)</b>
+      <b>Статус спидрана (<span v-html="statusText" />)</b>
       <br>
       <span
         :class="{ 'c-speedrun-status--can-change': !hasStarted }"
         @click="changeName"
       >
-        Player Name: {{ saveName }}
+        Имя игрока: {{ saveName }}
       </span>
       <br>
       <i>{{ segmentText }}</i>
@@ -117,11 +117,11 @@ export default {
         @click="openSeedModal()"
       >{{ seedText }}</span>
       <br>
-      Total real playtime since start: {{ timePlayedStr }}
+      Общее реальное время: {{ timePlayedStr }}
       <br>
-      Offline Progress: <span v-html="offlineText" />
+      Офлайн-прогресс: <span v-html="offlineText" />
       <br>
-      Most Recent Milestone: {{ milestoneName(mostRecent) }} <span v-if="mostRecent">({{ timeSince }} ago)</span>
+      Последняя достигнутая стадия: {{ milestoneName(mostRecent) }} <span v-if="mostRecent">({{ timeSince }} назад)</span>
       <br>
     </div>
     <div

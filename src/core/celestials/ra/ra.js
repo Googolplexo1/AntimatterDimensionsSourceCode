@@ -13,13 +13,6 @@ class RaUnlockState extends BitUpgradeState {
     return this.isUnlocked && !this.disabledByPelle;
   }
 
-  get requirementText() {
-    const pet = this.pet.name;
-    return this.level === 1
-      ? `Unlock ${pet}`
-      : `Get ${pet} to level ${this.level}`;
-  }
-
   get reward() {
     return typeof this.config.reward === "function"
       ? this.config.reward()
@@ -59,6 +52,10 @@ class RaPetState extends GameMechanicState {
 
   get name() {
     return this.config.name;
+  }
+
+  get nameNormal() {
+    return this.config.nameNormal;
   }
 
   get chunkGain() {
@@ -226,8 +223,8 @@ const pets = mapGameDataToObject(
 );
 
 export const Ra = {
-  displayName: "Ra",
-  possessiveName: "Ra's",
+  displayName: "Ра",
+  possessiveName: "Ра",
   unlocks,
   pets,
   remembrance: {
@@ -264,12 +261,10 @@ export const Ra = {
     for (const pet of Ra.pets.all) {
       if (pet.memoryProductionMultiplier !== 1) boostList.push(pet.memoryGain);
     }
-    if (Achievement(168).isUnlocked) boostList.push("Achievement 168");
-    if (Ra.unlocks.continuousTTBoost.canBeApplied) boostList.push("current TT");
+    if (Ra.unlocks.continuousTTBoost.canBeApplied) boostList.push("количества ТВ");
 
     if (boostList.length === 1) return `${boostList[0]}`;
-    if (boostList.length === 2) return `${boostList[0]} and ${boostList[1]}`;
-    return `${boostList.slice(0, -1).join(", ")}, and ${boostList[boostList.length - 1]}`;
+    return `${boostList.slice(0, -1).join(", ")} и ${boostList[boostList.length - 1]}`;
   },
   // This is the exp required ON "level" in order to reach "level + 1"
   requiredMemoriesForLevel(level) {
@@ -290,7 +285,7 @@ export const Ra = {
       ? -c / b
       : (Math.sqrt(Math.pow(b, 2) - 4 * a * c) - b) / (2 * a);
     if (Number.isFinite(estimate)) {
-      return `in ${TimeSpan.fromSeconds(estimate).toStringShort()}`;
+      return `через ${TimeSpan.fromSeconds(estimate).toStringShort()}`;
     }
     return "";
   },
@@ -379,7 +374,9 @@ export const Ra = {
     const hoursFromUnlock = TimeSpan.fromMilliseconds(player.celestials.ra.momentumTime).totalHours;
     return Math.clampMax(1 + 0.005 * hoursFromUnlock, AlchemyResource.momentum.effectValue);
   },
-  quotes: Quotes.ra,
+  get quotes() {
+    return Quotes().ra;
+  },
   symbol: "<i class='fas fa-sun'></i>"
 };
 

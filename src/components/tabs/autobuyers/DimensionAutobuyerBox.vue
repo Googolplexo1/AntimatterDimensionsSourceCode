@@ -26,12 +26,12 @@ export default {
       return Autobuyer.antimatterDimension(this.tier);
     },
     name() {
-      return `${AntimatterDimension(this.tier).shortDisplayName} Dimension Autobuyer`;
+      return `Автоматика ${this.tier}-х Измерений Антиматерии`;
     },
     modeDisplay() {
       switch (this.mode) {
-        case AUTOBUYER_MODE.BUY_SINGLE: return "Buys singles";
-        case AUTOBUYER_MODE.BUY_10: return "Buys max";
+        case AUTOBUYER_MODE.BUY_SINGLE: return "Покупает по одному";
+        case AUTOBUYER_MODE.BUY_10: return "Покупает все";
       }
       throw "Unknown Dimension Autobuyer mode";
     }

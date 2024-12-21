@@ -21,18 +21,18 @@ export default {
 <template>
   <div class="c-automator-docs-page">
     <div v-if="errors.length === 0">
-      No script errors found!
+      Программа не содержит ошибок!
     </div>
     <div v-else>
-      <b>Your script has the following {{ quantify("error", errors.length) }}:</b>
+      <b>В вашей программе {{ pluralize("найдена", errors.length) }} {{ quantify("ошибка", errors.length) }}:</b>
       <br>
       <span
         v-for="(error, i) in errors"
         :key="i"
       >
-        <b>On line {{ error.startLine }}:</b>
+        <b>В строке {{ error.startLine }}:</b>
         <button
-          v-tooltip="'Jump to line'"
+          v-tooltip="'Перейти к этой строке'"
           class="c-automator-docs--button fas fa-arrow-circle-right"
           @click="scrollToLine(error.startLine)"
         />
@@ -40,16 +40,16 @@ export default {
           {{ error.info }}
         </div>
         <div class="c-automator-docs-page__indented">
-          <i>Suggested fix: {{ error.tip }}</i>
+          <i>Предлагаемый способ устранения: {{ error.tip }}</i>
         </div>
       </span>
       <i>
-        Note: Sometimes errors may cause the automator to be unable to scan the rest of the script properly.
-        This may result in some errors "disappearing" due to other errors occurring in earlier lines, or
-        errors in a command which has an inner block (eg. commands like IF or WHILE) causing errors to appear
-        on correctly-formatted later commands.
-        Additionally, some of the suggested fixes may be potentially misleading due to the cause of
-        the error being unclear.
+        Примечание: иногда Автоматизатор не может правильно интерпретировать часть программы после ошибки.
+        Это может привести к тому, что некоторые ошибки "исчезнут" из-за ошибки на одной из предыдущих строк, или
+        ошибка в команде, имеющей внутренний блок кода (например, IF, WHILE), приведёт к отображению ошибки
+        на одной из следующих строк, даже если она на самом деле не содержит ошибку.
+        Кроме того, иногда предлагаемый способ устранения ошибки может навредить программе, так как причина появления
+        ошибки неясна.
       </i>
     </div>
   </div>

@@ -39,13 +39,13 @@ export default {
       const effarigSettings = this.effarigSettings;
       if (effarigSettings.RM && effarigSettings.glyph &&
         (this.effect.id === "effarigrm" || this.effect.id === "effarigglyph")) {
-        return "RM multiplier and Glyph instability cannot occur together on the same Glyph!";
+        return "Множитель к получению МР и отсрочка неустойчивости глифов не могут сосуществовать в одном глифе!";
       }
       if (this.effect.id === "effarigrm" && effarigSettings.glyph) {
-        return "This effect is mutually exclusive with Glyph instability!";
+        return "Этот эффект несовместим с отсрочкой неустойчивости глифов!";
       }
       if (this.effect.id === "effarigglyph" && effarigSettings.RM) {
-        return "This effect is mutually exclusive with RM multiplier!";
+        return "Этот эффект несовместим с множителем к получению МР!";
       }
       return "";
     },
@@ -72,11 +72,13 @@ export default {
     },
     toggleSelection() {
       AutoGlyphProcessor.types[this.glyphType].specifiedMask ^= 1 << this.effect.bitmaskIndex;
+      EventHub.dispatch(GAME_EVENT.GLYPH_VISUAL_CHANGE);
     },
     setEffectCount(event) {
       const inputValue = event.target.value;
       if (!isNaN(inputValue)) {
         this.autoSacrificeSettings.effectCount = Math.clamp(inputValue, 0, 8);
+        EventHub.dispatch(GAME_EVENT.GLYPH_VISUAL_CHANGE);
       }
     },
   }

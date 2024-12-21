@@ -6,19 +6,18 @@ import { MultiplierTabIcons } from "./icons";
 // See index.js for documentation
 export const IP = {
   total: {
-    name: "Total IP Gained on Infinity",
+    name: "Получение ОБ",
     displayOverride: () => (Player.canCrunch
       ? format(gainedInfinityPoints(), 2, 2)
-      : "Cannot Crunch"),
+      : "Совершить Большое Сжатие невозможно"),
     // This effectively hides everything if the player can't actually gain any
     multValue: () => (Player.canCrunch ? gainedInfinityPoints() : 1),
     isActive: () => PlayerProgress.infinityUnlocked() || Player.canCrunch,
     dilationEffect: () => (Laitela.isRunning ? 0.75 * Effects.product(DilationUpgrade.dilationPenalty) : 1),
-    isDilated: true,
     overlay: ["∞", "<i class='fa-solid fa-layer-group' />"],
   },
   base: {
-    name: "Base Infinity Points",
+    name: "По умолчанию",
     isBase: true,
     fakeValue: DC.D5,
     multValue: () => {
@@ -29,31 +28,27 @@ export const IP = {
     icon: MultiplierTabIcons.CONVERT_FROM("AM"),
   },
   antimatter: {
-    name: "Infinity Points from Antimatter",
-    displayOverride: () => `${format(player.records.thisInfinity.maxAM, 2, 2)} AM`,
+    name: "Антиматерия",
+    displayOverride: () => `${format(player.records.thisInfinity.maxAM, 2, 2)} антиматерии`,
     // Just needs to match the value in base and be larger than 1
     multValue: DC.D5,
     isActive: () => player.break,
     icon: MultiplierTabIcons.ANTIMATTER,
   },
   divisor: {
-    name: "Formula Improvement",
-    displayOverride: () => {
-      const div = Effects.min(308, Achievement(103), TimeStudy(111));
-      return `log(AM)/${formatInt(308)} ➜ log(AM)/${format(div, 2, 1)}`;
-    },
+    name: () => (TimeStudy(111).isBought ? "Исследование Времени 111" : "Награда за достижение 103"),
     powValue: () => 308 / Effects.min(308, Achievement(103), TimeStudy(111)),
     isActive: () => Achievement(103).canBeApplied || TimeStudy(111).isBought,
-    icon: MultiplierTabIcons.DIVISOR("IP"),
+    icon: () => (TimeStudy(111).isBought ? MultiplierTabIcons.TIME_STUDY : MultiplierTabIcons.ACHIEVEMENT),
   },
   infinityUpgrade: {
-    name: () => `Infinity Upgrade - Repeatable ${formatX(2)} IP`,
+    name: "Удвоитель ОБ",
     multValue: () => InfinityUpgrade.ipMult.effectOrDefault(1),
     isActive: () => player.break && !Pelle.isDoomed,
     icon: MultiplierTabIcons.UPGRADE("infinity"),
   },
   achievement: {
-    name: "Achievements",
+    name: "Награды за достижения",
     multValue: () => DC.D1.timesEffectsOf(
       Achievement(85),
       Achievement(93),
@@ -65,7 +60,7 @@ export const IP = {
     icon: MultiplierTabIcons.ACHIEVEMENT,
   },
   timeStudy: {
-    name: "Time Studies",
+    name: "Иссследования Времени",
     multValue: () => DC.D1.timesEffectsOf(
       TimeStudy(41),
       TimeStudy(51),
@@ -77,26 +72,26 @@ export const IP = {
     icon: MultiplierTabIcons.TIME_STUDY,
   },
   dilationUpgrade: {
-    name: "Dilation Upgrade - IP multiplier based on DT",
+    name: "Улучшение Замедления",
     multValue: () => DilationUpgrade.ipMultDT.effectOrDefault(1),
     isActive: () => DilationUpgrade.ipMultDT.canBeApplied,
     icon: MultiplierTabIcons.UPGRADE("dilation"),
   },
   glyph: {
-    name: "Equipped Glyphs",
+    name: "Глифы Бесконечности",
     multValue: () => Pelle.specialGlyphEffect.infinity.times(Pelle.isDoomed ? 1 : getAdjustedGlyphEffect("infinityIP")),
     powValue: () => (GlyphAlteration.isAdded("infinity") ? getSecondaryGlyphEffect("infinityIP") : 1),
     isActive: () => PlayerProgress.realityUnlocked(),
-    icon: MultiplierTabIcons.GENERIC_GLYPH,
+    icon: MultiplierTabIcons.SPECIFIC_GLYPH("infinity"),
   },
   alchemy: {
-    name: "Glyph Alchemy",
+    name: "Алхимия",
     multValue: () => Replicanti.amount.powEffectOf(AlchemyResource.exponential),
     isActive: () => Ra.unlocks.unlockGlyphAlchemy.canBeApplied,
     icon: MultiplierTabIcons.ALCHEMY,
   },
   pelle: {
-    name: "Pelle Strike - Vacuum Rift",
+    name: "Первый Разлом",
     multValue: () => DC.D1.timesEffectsOf(PelleRifts.vacuum),
     isActive: () => Pelle.isDoomed,
     icon: MultiplierTabIcons.PELLE,
@@ -107,15 +102,14 @@ export const IP = {
     isActive: () => ShopPurchaseData.totalSTD > 0,
     icon: MultiplierTabIcons.IAP,
   },
-
   nerfTeresa: {
-    name: "Teresa's Reality",
+    name: "Условие Реальности Терезы",
     powValue: () => 0.55,
     isActive: () => Teresa.isRunning,
     icon: MultiplierTabIcons.GENERIC_TERESA,
   },
   nerfV: {
-    name: "V's Reality",
+    name: "Условие Реальности Ви",
     powValue: () => 0.5,
     isActive: () => V.isRunning,
     icon: MultiplierTabIcons.GENERIC_V,

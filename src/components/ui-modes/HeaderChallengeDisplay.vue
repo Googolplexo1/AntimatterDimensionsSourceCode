@@ -15,7 +15,7 @@ export default {
       showExit: false,
       exitText: "",
       resetCelestial: false,
-      inPelle: false,
+      inPelle: false
     };
   },
   computed: {
@@ -24,39 +24,44 @@ export default {
       // won't trigger display update if we, say, switch from one challenge to another
       function celestialReality(celestial, name, tab) {
         return {
-          name: () => `${name} Reality`,
+          name: () => `в Реальности ${name}`,
           isActive: token => token,
           activityToken: () => celestial.isRunning,
           tabName: () => tab,
         };
       }
       return [
-        celestialReality(Teresa, "Teresa's", "teresa"),
-        celestialReality(Effarig, "Effarig's", "effarig"),
-        celestialReality(Enslaved, "The Nameless Ones'", "enslaved"),
-        celestialReality(V, "V's", "v"),
-        celestialReality(Ra, "Ra's", "ra"),
-        celestialReality(Laitela, "Lai'tela's", "laitela"),
         {
-          name: () => "Time Dilation",
-          isActive: token => token,
-          activityToken: () => player.dilation.active
-        },
-        {
-          name: token => `Eternity Challenge ${token}`,
+          name: token => `${this.numberText(token)} Обычном Испытании`,
           isActive: token => token > 0,
-          activityToken: () => player.challenge.eternity.current
+          activityToken: () => player.challenge.normal.current
         },
         {
-          name: token => `Infinity Challenge ${token}`,
+          name: token => `${this.numberText(token)} Испытании Бесконечности`,
           isActive: token => token > 0,
           activityToken: () => player.challenge.infinity.current
         },
         {
-          name: token => `${NormalChallenge(token).config.name} Challenge`,
+          name: token => `${this.numberText(token)} Испытании Вечности`,
           isActive: token => token > 0,
-          activityToken: () => player.challenge.normal.current
+          activityToken: () => player.challenge.eternity.current
         },
+        {
+          name: () => "в Замедлении Времени",
+          isActive: token => token,
+          activityToken: () => player.dilation.active
+        },
+        celestialReality(Teresa, "Терезы", "teresa"),
+        celestialReality(Effarig, "Эффарига", "effarig"),
+        celestialReality(Enslaved, "Безымянных", "enslaved"),
+        celestialReality(V, "Ви", "v"),
+        celestialReality(Ra, "Ра", "ra"),
+        celestialReality(Laitela, "Лайтелы", "laitela"),
+        {
+          name: () => "в Обречённой Реальности. Удачи",
+          isActive: token => token,
+          activityToken: () => this.inPelle
+        }
       ];
     },
     activeChallengeNames() {
@@ -65,14 +70,14 @@ export default {
         const token = this.activityTokens[i];
         const part = this.parts[i];
         if (!part.isActive(token)) continue;
-        if (part.name(token).includes("Eternity Challenge")) {
+        if (part.name(token).includes("Испытании Вечности")) {
           const currEC = player.challenge.eternity.current;
           const nextCompletion = EternityChallenge(currEC).completions + 1;
           let completionText = "";
           if (Enslaved.isRunning && currEC === 1) {
             completionText = `(${formatInt(nextCompletion)}/???)`;
           } else if (nextCompletion === 6) {
-            completionText = `(already completed)`;
+            completionText = `(уже выполнено)`;
           } else {
             completionText = `(${formatInt(nextCompletion)}/${formatInt(5)})`;
           }
@@ -86,31 +91,23 @@ export default {
     isVisible() {
       return this.infinityUnlocked || this.activeChallengeNames.length > 0;
     },
-    isInFailableEC() {
-      return this.activeChallengeNames.some(str => str.match(/Eternity Challenge (4|12)/gu));
-    },
     challengeDisplay() {
-      if (this.inPelle && this.activeChallengeNames.length > 0) {
-        return `${this.activeChallengeNames.join(" + ")} in a Doomed Reality. Good luck.`;
-      }
-      if (this.inPelle) return "a Doomed Reality. Good luck.";
       if (this.activeChallengeNames.length === 0) {
-        return "the Antimatter Universe (no active challenges)";
+        return "вне всех испытаний";
       }
-      return this.activeChallengeNames.join(" + ");
-    },
+      return this.activeChallengeNames.join(" ");
+    }
   },
   methods: {
     update() {
       this.infinityUnlocked = PlayerProgress.infinityUnlocked();
       this.activityTokens = this.parts.map(part => part.activityToken());
       // Dilation in Pelle can't be left once entered, but we still want to allow leaving more nested challenges
-      this.showExit = this.inPelle && player.dilation.active
-        ? this.activeChallengeNames.length > 1
-        : this.activeChallengeNames.length !== 0;
+      this.showExit = this.activeChallengeNames.length > this.inPelle * (1 + player.dilation.active);
       this.exitText = this.exitDisplay();
       this.resetCelestial = player.options.retryCelestial;
-      this.inPelle = Pelle.isDoomed;
+      this.inPelle = Pelle.isDoomed
+      this.isInFailableEC = [4, 12].includes(player.challenge.eternity.current);
     },
     // Process exit requests from the inside out; Challenges first, then dilation, then Celestial Reality. If the
     // relevant option is toggled, we pass a bunch of information over to a modal - otherwise we immediately exit
@@ -129,15 +126,15 @@ export default {
       if (Player.isInAnyChallenge) {
         // Regex replacement is used to remove the "(X/Y)" which appears after ECs. The ternary statement is there
         // because this path gets called for NCs, ICs, and ECs
-        const toExit = this.activeChallengeNames[this.activeChallengeNames.length - 1].replace(/\W+\(.*\)/u, "");
-        names = { chall: toExit, normal: isEC ? "Eternity" : "Infinity" };
+        const toExit = this.activeChallengeNames[0].replace(/ \(..5\)|в |во /gu, "").replaceAll("м", "е").replace("ии", "ие");
+        names = { chall: toExit, normal: isEC ? "вечности" : "бесконечности" };
         clickFn = () => {
           const oldChall = Player.anyChallenge;
           Player.anyChallenge.exit(false);
           if (player.options.retryChallenge) oldChall.requestStart();
         };
       } else {
-        names = { chall: this.activeChallengeNames[0], normal: "Reality" };
+        names = { chall: this.activeChallengeNames[0].replace("в ", "").replace("и", "ь"), normal: "реальности" };
         clickFn = () => beginProcessReality(getRealityProps(true));
       }
 
@@ -146,7 +143,7 @@ export default {
           {
             challengeName: names.chall,
             normalName: names.normal,
-            hasHigherLayers: this.inPelle || this.activeChallengeNames.length > 1,
+            hasHigherLayers: this.activeChallengeNames.length > 1,
             exitFn: clickFn
           }
         );
@@ -160,7 +157,7 @@ export default {
 
       // Iterating back-to-front and breaking ensures we get the innermost restriction
       let fullName = "", celestial = "";
-      for (let i = this.activityTokens.length - 1; i >= 0; i--) {
+      for (let i = 0; i < this.activityTokens.length; i++) {
         const token = this.activityTokens[i];
         const part = this.parts[i];
         if (!part.isActive(token)) continue;
@@ -170,23 +167,27 @@ export default {
       }
 
       // Normal challenges are matched with an end-of-string metacharacter
-      if (fullName.match(" Challenge$")) Tab.challenges.normal.show(true);
-      else if (fullName.match("Infinity Challenge")) Tab.challenges.infinity.show(true);
-      else if (fullName.match("Eternity Challenge")) Tab.challenges.eternity.show(true);
+      if (fullName.match("Обычном Испытании")) Tab.challenges.normal.show(true);
+      else if (fullName.match("Испытании Бесконечности")) Tab.challenges.infinity.show(true);
+      else if (fullName.match("Испытании Вечности")) Tab.challenges.eternity.show(true);
       else if (player.dilation.active) Tab.eternity.dilation.show(true);
+      else if (this.inPelle) Tab.celestials.pelle.show(true);
       else Tab.celestials[celestial].show(true);
     },
     exitDisplay() {
-      if (Player.isInAnyChallenge) return player.options.retryChallenge ? "Retry Challenge" : "Exit Challenge";
-      if (player.dilation.active) return "Exit Dilation";
-      if (this.resetCelestial) return "Restart Reality";
-      return "Exit Reality";
+      if (Player.isInAnyChallenge) return player.options.retryChallenge ? "Перезапустить Испытание" : "Покинуть Испытание";
+      if (player.dilation.active) return "Выйти из Замедления";
+      if (this.resetCelestial) return "Перезапустить Реальность";
+      return "Покинуть Реальность";
     },
     textClassObject() {
       return {
         "l-challenge-display": true,
         "l-challenge-display--clickable": this.activeChallengeNames.length !== 0,
       };
+    },
+    numberText(id) {
+      return `${id === 2 ? "во" : "в"} ${id}-м`;
     }
   },
 };
@@ -201,7 +202,7 @@ export default {
       :class="textClassObject()"
       @click="textClicked"
     >
-      You are currently in {{ challengeDisplay }}
+      Вы {{ challengeDisplay }}.
     </span>
     <FailableEcText v-if="isInFailableEC" />
     <span class="l-padding-line" />

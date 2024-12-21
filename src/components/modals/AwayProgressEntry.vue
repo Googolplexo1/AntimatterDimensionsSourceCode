@@ -69,7 +69,7 @@ export default {
     },
     formatBlackHoleActivations() {
       const activations = this.after - this.before;
-      return quantifyInt("time", activations);
+      return quantifyInt("раз", activations);
     },
     isVeryLarge() {
       return this.isBlackHole
@@ -108,16 +108,18 @@ export default {
     @click="hideEntry"
   >
     <span v-if="isBlackHole">
-      Your
+      Ваша
       <b>{{ formattedName }}</b>
-      activated
+      активировалась
       {{ formatBlackHoleActivations }}
     </span>
     <span v-else>
+      <i v-if="isVeryLarge">Порядок количества </i>
+      <i v-else>Количество </i>
       <b>{{ formattedName }}</b>
-      <i v-if="isVeryLarge"> exponent</i>
-      increased from
-      {{ formatBefore }} to {{ formatAfter }}
+      <i v-if="isVeryLarge"> возрос</i>
+      <i v-else> возросло</i>
+      с {{ formatBefore }} до {{ formatAfter }}
     </span>
   </div>
 </template>

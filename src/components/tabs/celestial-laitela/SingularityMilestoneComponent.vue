@@ -67,25 +67,25 @@ export default {
     },
     completionsDisplay() {
       const maxStr = Number.isFinite(this.limit) ? formatInt(this.maxCompletions) : "∞";
-      return `${formatInt(this.completions)}/${maxStr} ${pluralize("completion", this.completions)}`;
+      return `${formatInt(this.completions)}/${maxStr} ${pluralize("выполнения", this.maxCompletions)}`;
     },
     progressDisplay() {
       const condenseCount = this.remainingSingularities / this.singularitiesPerCondense;
       let thisSingularityTime, extraTime, timeText;
       switch (this.milestoneMode) {
         case SINGULARITY_MILESTONE_RESOURCE.SINGULARITIES:
-          return `In ${quantify("Singularity", this.remainingSingularities, 2)}`;
+          return `Через ${quantify("Сингулярность", this.remainingSingularities, 2)}`;
         case SINGULARITY_MILESTONE_RESOURCE.CONDENSE_COUNT:
-          return `Condense ${quantify("time", condenseCount, 2, 2)}`;
+          return `Через ${quantify("сжатие", condenseCount, 2, 2)}`;
         case SINGULARITY_MILESTONE_RESOURCE.MANUAL_TIME:
           thisSingularityTime = Math.clampMin(0, this.currentCondenseTime);
           extraTime = Math.ceil(condenseCount - 1) * this.baseCondenseTime;
-          return `In ${TimeSpan.fromSeconds(thisSingularityTime + extraTime).toStringShort()} (manual)`;
+          return `Через ${TimeSpan.fromSeconds(thisSingularityTime + extraTime).toStringShort()} (при сжатии вручную)`;
         case SINGULARITY_MILESTONE_RESOURCE.AUTO_TIME:
           thisSingularityTime = Math.clampMin(0, this.currentCondenseTime + this.autoCondenseDelay);
           extraTime = Math.ceil(condenseCount - 1) * (this.baseCondenseTime + this.autoCondenseDelay);
-          timeText = `In ${TimeSpan.fromSeconds(thisSingularityTime + extraTime).toStringShort()}`;
-          return this.autoSingActive ? timeText : `Auto-Singularity is OFF`;
+          timeText = `Через ${TimeSpan.fromSeconds(thisSingularityTime + extraTime).toStringShort()}`;
+          return this.autoSingActive ? timeText : `Автоматика сжатия выключена`;
         default:
           throw new Error("Unrecognized Singularity Milestone mode");
       }

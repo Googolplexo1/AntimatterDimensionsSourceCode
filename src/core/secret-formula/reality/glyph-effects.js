@@ -33,9 +33,10 @@ export const glyphEffects = {
     bitmaskIndex: 0,
     isGenerated: true,
     glyphTypes: ["time"],
-    singleDesc: "Time Dimension power +{value}",
-    totalDesc: "Time Dimension multipliers ^{value}",
-    shortDesc: "TD power +{value}",
+    singleDesc: "Увеличить степень множителей Измерений Времени на {value}",
+    totalDesc: "Множители Измерений Времени возведены в степень {value}",
+    genericDesc: "Увеличить степень множителей Измерений Времени",
+    shortDesc: "+{value} к степени ИВ",
     effect: (level, strength) => 1.01 + Math.pow(level, 0.32) * Math.pow(strength, 0.45) / 75,
     formatEffect: x => format(x, 3, 3),
     formatSingleEffect: x => format(x - 1, 3, 3),
@@ -47,10 +48,9 @@ export const glyphEffects = {
     bitmaskIndex: 1,
     isGenerated: true,
     glyphTypes: ["time"],
-    singleDesc: "Multiply game speed by {value}",
-    totalDesc: "Game runs ×{value} faster",
-    genericDesc: "Game speed multiplier",
-    shortDesc: "Game speed ×{value}",
+    singleDesc: "Множитель ×{value} к скорости игры",
+    genericDesc: "Множитель к скорости игры",
+    shortDesc: "×{value} к скорости игры",
     effect: (level, strength) => (GlyphAlteration.isEmpowered("time")
       ? 1 + Math.pow(level, 0.35)
       : 1 + Math.pow(level, 0.3) * Math.pow(strength, 0.65) / 20),
@@ -65,10 +65,9 @@ export const glyphEffects = {
     bitmaskIndex: 2,
     isGenerated: true,
     glyphTypes: ["time"],
-    singleDesc: "Multiply Eternity gain by {value}",
-    totalDesc: "Eternity gain ×{value}",
-    genericDesc: "Eternity gain multiplier",
-    shortDesc: "Eternities ×{value}",
+    singleDesc: "Множитель ×{value} к получению вечностей",
+    genericDesc: "Множитель к получению вечностей",
+    shortDesc: "×{value} вечностей",
     effect: (level, strength) => Math.pow((strength + 3) * level, 0.9) *
       Math.pow(3, GlyphAlteration.sacrificeBoost("time")),
     formatEffect: x => format(x, 2, 2),
@@ -82,17 +81,17 @@ export const glyphEffects = {
     isGenerated: true,
     glyphTypes: ["time"],
     singleDesc: () => (GlyphAlteration.isAdded("time")
-      ? "Eternity Point gain \n×{value} [and ^]{value2}"
-      : "Multiply Eternity Point gain by {value}"),
+      ? "Множитель ×{value} к получению Очков Вечности. [Оно возведено в степень ]{value2}"
+      : "Множитель ×{value} к получению Очков Вечности"),
     totalDesc: () => (GlyphAlteration.isAdded("time")
-      ? "Eternity Point gain ×{value} and ^{value2}"
-      : "Eternity Point gain ×{value}"),
+      ? "Множитель ×{value} к получению Очков Вечности. Оно возведено в степень {value2}"
+      : "Множитель ×{value} к получению Очков Вечности"),
     genericDesc: () => (GlyphAlteration.isAdded("time")
-      ? "Eternity Point gain multiplier and power"
-      : "Eternity Point gain multiplier"),
+      ? "Множитель к получению Очков Вечности; оно возведено в степень"
+      : "Множитель к получению Очков Вечности"),
     shortDesc: () => (GlyphAlteration.isAdded("time")
-      ? "EP ×{value} and ^{value2}"
-      : "EP ×{value}"),
+      ? "×{value} и ^{value2} ОВ"
+      : "×{value} ОВ"),
     effect: (level, strength) => Math.pow(level * strength, 3) * 100,
     formatEffect: x => format(x, 2, 3),
     combine: GlyphCombiner.multiply,
@@ -106,9 +105,9 @@ export const glyphEffects = {
     bitmaskIndex: 4,
     isGenerated: true,
     glyphTypes: ["dilation"],
-    singleDesc: "Multiply Dilated Time gain by {value}",
-    totalDesc: "Dilated Time gain ×{value}",
-    shortDesc: "DT ×{value}",
+    singleDesc: "Множитель ×{value} к производству Замедленного Времени",
+    genericDesc: "Множитель к производству Замедленного Времени",
+    shortDesc: "×{value} ЗВ",
     effect: (level, strength) => (GlyphAlteration.isEmpowered("dilation")
       ? DC.D1_005.pow(level).times(15)
       : Decimal.pow(level * strength, 1.5).times(2)),
@@ -122,9 +121,9 @@ export const glyphEffects = {
     bitmaskIndex: 5,
     isGenerated: true,
     glyphTypes: ["dilation"],
-    singleDesc: "Tachyon Galaxy threshold multiplier ×{value}",
-    genericDesc: "Tachyon Galaxy cost multiplier",
-    shortDesc: "TG threshold ×{value}",
+    singleDesc: "Множитель ×{value} к наценке на Тахионные Галактики",
+    genericDesc: "Множитель к наценке на Тахионные Галактики",
+    shortDesc: "×{value} к наценке ТГ",
     effect: (level, strength) => 1 - Math.pow(level, 0.17) * Math.pow(strength, 0.35) / 100 -
       GlyphAlteration.sacrificeBoost("dilation") / 50,
     formatEffect: x => format(x, 3, 3),
@@ -145,17 +144,17 @@ export const glyphEffects = {
     isGenerated: true,
     glyphTypes: ["dilation"],
     singleDesc: () => (GlyphAlteration.isAdded("dilation")
-      ? "Generates {value} Time Theorems/hour \n[and multiplies Time Theorem \ngeneration by] {value2}"
-      : "Generates {value} Time Theorems per hour"),
+      ? "Вы производите {value} Теоремы Времени в час. [Множитель ×]{value2}[ к производству Теорем Времени]"
+      : "Вы производите {value} Теоремы Времени в час"),
     totalDesc: () => (GlyphAlteration.isAdded("dilation")
-      ? "Generating {value} Time Theorems/hour and Time Theorem generation ×{value2}"
-      : "Generating {value} Time Theorems per hour"),
+      ? "Вы производите {value} Теоремы Времени в час. Множитель ×{value2} к производству Теорем Времени"
+      : "Вы производите {value} Теоремы Времени в час"),
     genericDesc: () => (GlyphAlteration.isAdded("dilation")
-      ? "Time Theorem generation and multiplier"
-      : "Time Theorem generation"),
+      ? "Производство Теорем Времени и множитель к производству Теорем Времени"
+      : "Производство Теорем Времени"),
     shortDesc: () => (GlyphAlteration.isAdded("dilation")
-      ? "{value} TT/hr and TTgen ×{value2}"
-      : "{value} TT/hr"),
+      ? "+{value} ТВ/час; ×{value2} ТВ"
+      : "+{value} ТВ/час"),
     effect: (level, strength) => Math.pow(level * strength, 0.5) / 10000,
     /** @type {function(number): string} */
     formatEffect: x => format(3600 * x, 2, 2),
@@ -170,10 +169,10 @@ export const glyphEffects = {
     bitmaskIndex: 7,
     isGenerated: true,
     glyphTypes: ["dilation"],
-    singleDesc: "Antimatter Dimension power +{value} while Dilated",
-    totalDesc: "Antimatter Dimension multipliers ^{value} while Dilated",
-    genericDesc: "Antimatter Dimensions ^x while Dilated",
-    shortDesc: "Dilated AD power +{value}",
+    singleDesc: "Увеличить степень множителей Измерений Антиматерии на {value} в Замедлении",
+    totalDesc: "Множители Измерений Антиматерии возведены в степень {value} в Замедлении",
+    genericDesc: "Увеличить степень множителей Измерений Антиматерии в Замедлении",
+    shortDesc: "+{value} к степени ИА в Замедлении",
     effect: (level, strength) => 1.1 + Math.pow(level, 0.7) * Math.pow(strength, 0.7) / 25,
     formatEffect: x => format(x, 2, 2),
     formatSingleEffect: x => format(x - 1, 2, 2),
@@ -185,10 +184,9 @@ export const glyphEffects = {
     bitmaskIndex: 8,
     isGenerated: true,
     glyphTypes: ["replication"],
-    singleDesc: "Multiply Replication speed by {value}",
-    totalDesc: "Replication speed ×{value}",
-    genericDesc: "Replication speed multiplier",
-    shortDesc: "Replication speed ×{value}",
+    singleDesc: "Множитель ×{value} к скорости репликации",
+    genericDesc: "Множитель к скорости репликации",
+    shortDesc: "×{value} Репликанти",
     effect: (level, strength) => (GlyphAlteration.isEmpowered("replication")
       ? DC.D1_007.pow(level).times(10)
       : Decimal.times(level, strength).times(3)),
@@ -202,9 +200,9 @@ export const glyphEffects = {
     bitmaskIndex: 9,
     isGenerated: true,
     glyphTypes: ["replication"],
-    singleDesc: "Replicanti multiplier power +{value}",
-    totalDesc: "Replicanti multiplier ^{value}",
-    shortDesc: "Replicanti mult. power +{value}",
+    singleDesc: "Увеличить степень множителя Репликанти на {value}",
+    totalDesc: "Множитель Репликанти возведён в степень {value}",
+    shortDesc: "+{value} к степени Репликанти",
     effect: (level, strength) => 1.1 + Math.pow(level, 0.5) * strength / 25 +
       GlyphAlteration.sacrificeBoost("replication") * 3,
     formatEffect: x => format(x, 2, 2),
@@ -220,20 +218,20 @@ export const glyphEffects = {
     isGenerated: true,
     glyphTypes: ["replication"],
     singleDesc: () => (GlyphAlteration.isAdded("replication")
-      ? `Multiply Dilated Time \n[and Replicanti speed] by \n+{value} per ${format(DC.E10000)} replicanti`
-      : `Multiply Dilated Time gain by \n+{value} per ${format(DC.E10000)} replicanti`),
+      ? `Множитель к производству Замедленного Времени [и скорости репликации] в зависимости от количества Репликанти ({value}×log_${format(Decimal.pow(10, 10000))}_(x), ВАЖНО: при наложении нескольких таких эффектов логарифм учитывается только один раз)`
+      : `Множитель к производству Замедленного Времени в зависимости от количества Репликанти ({value}×log_${format(Decimal.pow(10, 10000))}_(x), ВАЖНО: при наложении нескольких таких эффектов логарифм учитывается только один раз)`),
     totalDesc: () => (GlyphAlteration.isAdded("replication")
-      ? `Multiply Dilated Time and Replication speed by +{value} per ${format(DC.E10000)} replicanti`
-      : `Multiply Dilated Time gain by +{value} per ${format(DC.E10000)} replicanti`),
+      ? `Множитель к производству Замедленного Времени и скорости репликации в зависимости от количества Репликанти ({value}×log₁₀(x))`
+      : `Множитель к производству Замедленного Времени в зависимости от количества Репликанти ({value}×log₁₀(x))`),
     genericDesc: () => (GlyphAlteration.isAdded("replication")
-      ? "Dilated Time+Replicanti mult from replicanti"
-      : "Dilated Time gain multiplier from replicanti"),
+      ? "Множитель к производству Замедленного Времени и скорости репликации в зависимости от количества Репликанти"
+      : "Множитель к производству Замедленного Времени в зависимости от количества Репликанти"),
     shortDesc: () => (GlyphAlteration.isAdded("replication")
-      ? `×DT and repl. by +{value} per ${format(DC.E10000)} replicanti`
-      : `×DT by +{value} per ${format(DC.E10000)} replicanti`),
+      ? `×ЗВ и Репликанти от Репликанти ({value}×log₁₀(x))`
+      : `×ЗВ от Репликанти ({value}×log₁₀(x))`),
     effect: (level, strength) => 0.0003 * Math.pow(level, 0.3) * Math.pow(strength, 0.65),
-    formatEffect: x => format(10000 * x, 2, 2),
-    formatSingleEffect: x => format(10000 * x, 2, 2),
+    formatEffect: x => format(x, 6, 6),
+    formatSingleEffect: x => format(x, 6, 6),
     // It's bad to stack this one additively (N glyphs acts as a DT mult of N) or multiplicatively (the raw number is
     // less than 1), so instead we do a multiplicative stacking relative to the "base" effect of a level 1, 0% glyph.
     // We also introduce a 3x mult per glyph after the first, so that stacking level 1, 0% glyphs still has an effect.
@@ -253,12 +251,9 @@ export const glyphEffects = {
     bitmaskIndex: 11,
     isGenerated: true,
     glyphTypes: ["replication"],
-    singleDesc: () => `Replicanti factor for Glyph level:\n ^${format(0.4, 1, 1)}
-      ➜ ^(${format(0.4, 1, 1)} + {value})`,
-    totalDesc: () => `Replicanti factor for Glyph level: ^${format(0.4, 1, 1)}
-      ➜ ^(${format(0.4, 1, 1)} + {value})`,
-    genericDesc: "Replicanti factor for Glyph level",
-    shortDesc: "Replicanti pow. for level +{value}",
+    singleDesc: () => `Увеличить степень Репликанти в формуле расчёта уровня глифа на {value} (по умолчанию ^${format(0.4, 1, 1)})`,
+    genericDesc: "Увеличить степень Репликанти в формуле расчёта уровня глифа",
+    shortDesc: "+{value} к степени Репликанти для уровня",
     effect: (level, strength) => Math.pow(Math.pow(level, 0.25) * Math.pow(strength, 0.4), 0.5) / 50,
     formatEffect: x => format(x, 3, 3),
     combine: effects => {
@@ -275,9 +270,10 @@ export const glyphEffects = {
     bitmaskIndex: 12,
     isGenerated: true,
     glyphTypes: ["infinity"],
-    singleDesc: "Infinity Dimension power +{value}",
-    totalDesc: "Infinity Dimension multipliers ^{value}",
-    shortDesc: "ID power +{value}",
+    singleDesc: "Увеличить степень множителей Измерений Бесконечности на {value}",
+    totalDesc: "Множители Измерений Бесконечности возведены в степень {value}",
+    genericDesc: "Увеличить степень множителей Измерений Бесконечности",
+    shortDesc: "+{value} к степени Силы Бесконечности",
     effect: (level, strength) => 1.007 + Math.pow(level, 0.21) * Math.pow(strength, 0.4) / 75 +
       GlyphAlteration.sacrificeBoost("infinity") / 50,
     formatEffect: x => format(x, 3, 3),
@@ -292,12 +288,9 @@ export const glyphEffects = {
     bitmaskIndex: 13,
     isGenerated: true,
     glyphTypes: ["infinity"],
-    singleDesc: () => `Infinity Power conversion rate: \n^${formatInt(7)}
-      ➜ ^(${formatInt(7)} + {value})`,
-    totalDesc: () => `Infinity Power conversion rate: ^${formatInt(7)}
-      ➜ ^(${formatInt(7)} + {value})`,
-    genericDesc: "Infinity Power conversion rate",
-    shortDesc: "Infinity Power conversion +{value}",
+    singleDesc: () => `Увеличить степень эффекта Силы Бесконечности на {value} (по умолчанию ^${formatInt(7)})`,
+    genericDesc: "Увеличить степень эффекта Силы Бесконечности",
+    shortDesc: "+{value} к степени эффекта ИБ",
     effect: (level, strength) => Math.pow(level, 0.2) * Math.pow(strength, 0.4) * 0.04,
     formatEffect: x => format(x, 2, 2),
     combine: GlyphCombiner.add,
@@ -309,17 +302,17 @@ export const glyphEffects = {
     isGenerated: true,
     glyphTypes: ["infinity"],
     singleDesc: () => (GlyphAlteration.isAdded("infinity")
-      ? "Infinity Point gain \n×{value} [and ^]{value2}"
-      : "Multiply Infinity Point gain by {value}"),
+      ? "Множитель ×{value} к получению Очков Бесконечности. [Оно возведено в степень ]{value2}"
+      : "Множитель ×{value} к получению Очков Бесконечности"),
     totalDesc: () => (GlyphAlteration.isAdded("infinity")
-      ? "Infinity Point gain ×{value} and ^{value2}"
-      : "Infinity Point gain ×{value}"),
+      ? "Множитель ×{value} к получению Очков Бесконечности. Оно возведено в степень {value2}"
+      : "Множитель ×{value} к получению Очков Бесконечности"),
     genericDesc: () => (GlyphAlteration.isAdded("infinity")
-      ? "Infinity Point gain multiplier and power"
-      : "Infinity Point gain multiplier"),
+      ? "Множитель к получению Очков Бесконечности; оно возведено в степень"
+      : "Множитель к получению Очков Бесконечности"),
     shortDesc: () => (GlyphAlteration.isAdded("infinity")
-      ? "IP ×{value} and ^{value2}"
-      : "IP ×{value}"),
+      ? "×{value} и ^{value2} ОБ"
+      : "×{value} ОБ"),
     effect: (level, strength) => Math.pow(level * (strength + 1), 6) * 10000,
     formatEffect: x => format(x, 2, 3),
     combine: GlyphCombiner.multiply,
@@ -335,10 +328,9 @@ export const glyphEffects = {
     bitmaskIndex: 15,
     isGenerated: true,
     glyphTypes: ["infinity"],
-    singleDesc: "Multiply Infinity gain by {value}",
-    totalDesc: "Infinity gain ×{value}",
-    genericDesc: "Infinity gain multiplier",
-    shortDesc: "Infinities ×{value}",
+    singleDesc: "Множитель ×{value} к получению бесконечностей",
+    genericDesc: "Множитель к получению бесконечностей",
+    shortDesc: "×{value} бесконечностей",
     effect: (level, strength) => (GlyphAlteration.isEmpowered("infinity")
       ? DC.D1_02.pow(level)
       : Decimal.pow(level * strength, 1.5).times(2)),
@@ -353,17 +345,17 @@ export const glyphEffects = {
     isGenerated: true,
     glyphTypes: ["power"],
     singleDesc: () => (GlyphAlteration.isAdded("power")
-      ? "Antimatter Dimension power +{value}\n[and Antimatter Galaxy cost ×]{value2}"
-      : "Antimatter Dimension power +{value}"),
+      ? "Увеличить степень множителей Измерений Антиматерии на {value}. [Множитель ×]{value2}[ к цене Галактик Антиматерии]"
+      : "Увеличить степень множителей Измерений Антиматерии на {value}"),
     totalDesc: () => (GlyphAlteration.isAdded("power")
-      ? "Antimatter Dimension multipliers ^{value} and Antimatter Galaxy cost ×{value2}"
-      : "Antimatter Dimension multipliers ^{value}"),
+      ? "Множители Измерений Антиматерии возведены в степень {value}. Множитель ×{value2} к цене Галактик Антиматерии"
+      : "Множители Измерений Антиматерии возведены в степень {value}"),
     genericDesc: () => (GlyphAlteration.isAdded("power")
-      ? "Antimatter Dimensions multipliers ^x and Antimatter Galaxy cost multiplier"
-      : "Antimatter Dimension multipliers ^x"),
+      ? "Увеличить степень множителей Измерений Антиматерии; множитель к цене Галактик Антиматерии"
+      : "Увеличить степень множителей Измерений Антиматерии"),
     shortDesc: () => (GlyphAlteration.isAdded("power")
-      ? "AD power +{value} and AG cost ×{value2}"
-      : "AD power +{value}"),
+      ? "+{value} к степени ИА; ×{value2} к цене ГА"
+      : "+{value} к степени ИА"),
     effect: (level, strength) => 1.015 + Math.pow(level, 0.2) * Math.pow(strength, 0.4) / 75,
     formatEffect: x => format(x, 3, 3),
     formatSingleEffect: x => format(x - 1, 3, 3),
@@ -379,8 +371,9 @@ export const glyphEffects = {
     bitmaskIndex: 17,
     isGenerated: true,
     glyphTypes: ["power"],
-    singleDesc: "Antimatter Dimension multipliers ×{value}",
-    shortDesc: "AD ×{value}",
+    singleDesc: "Множитель ×{value} к Измерениям Антиматерии",
+    genericDesc: "Множитель к Измерениям Антиматерии",
+    shortDesc: "×{value} к ИА",
     effect: (level, strength) => (GlyphAlteration.isEmpowered("power")
       ? DC.D11111.pow(level * 220)
       : Decimal.pow(level * strength * 10, level * strength * 10)),
@@ -395,9 +388,9 @@ export const glyphEffects = {
     bitmaskIndex: 18,
     isGenerated: true,
     glyphTypes: ["power"],
-    singleDesc: "Dimension Boost multiplier ×{value}",
-    genericDesc: "Dimension Boost multiplier",
-    shortDesc: "Dimboost mult. ×{value}",
+    singleDesc: "Множитель ×{value} ко множителю Расширения Измерений",
+    genericDesc: "Множитель ко множителю Расширения Измерений",
+    shortDesc: "×{value} ко множителю Расширения",
     effect: (level, strength) => Math.pow(level * strength, 0.5) *
       Math.pow(1 + GlyphAlteration.sacrificeBoost("power"), 3),
     formatEffect: x => format(x, 2, 2),
@@ -411,10 +404,10 @@ export const glyphEffects = {
     bitmaskIndex: 19,
     isGenerated: true,
     glyphTypes: ["power"],
-    singleDesc: () => `Increase the bonus from buying ${formatInt(10)} Antimatter Dimensions by {value}`,
-    totalDesc: () => `Multiplier from "Buy ${formatInt(10)}" ×{value}`,
-    genericDesc: () => `"Buy ${formatInt(10)}" bonus increase`,
-    shortDesc: () => `AD "Buy ${formatInt(10)}" mult. ×{value}`,
+    singleDesc: () => `Увеличить множитель ко множителю за покупку ${formatInt(10)} Измерений Антиматерии на {value}`,
+    totalDesc: () => `Множитель ×{value} ко множителю за покупку ${formatInt(10)} Измерений Антиматерии`,
+    genericDesc: () => `Увеличить множитель ко множителю за покупку ${formatInt(10)} Измерений Антиматерии`,
+    shortDesc: () => `×{value} ко множителю за ${formatInt(10)} ИА`,
     effect: (level, strength) => 1 + level * strength / 12,
     formatEffect: x => format(x, 2, 2),
     combine: GlyphCombiner.addExponents,
@@ -425,9 +418,9 @@ export const glyphEffects = {
     bitmaskIndex: 20,
     isGenerated: true,
     glyphTypes: ["effarig"],
-    singleDesc: "Reality Machine multiplier ×{value}",
-    genericDesc: "Reality Machine multiplier",
-    shortDesc: "RM ×{value}",
+    singleDesc: "Множитель ×{value} к получению Машин Реальности",
+    genericDesc: "Множитель к получению Машин Реальности",
+    shortDesc: "×{value} МР",
     effect: (level, strength) => (GlyphAlteration.isEmpowered("effarig")
       ? Math.pow(level, 1.5)
       : Math.pow(level, 0.6) * strength),
@@ -441,11 +434,11 @@ export const glyphEffects = {
     bitmaskIndex: 21,
     isGenerated: true,
     glyphTypes: ["effarig"],
-    singleDesc: "Glyph Instability starting level +{value}",
-    genericDesc: "Glyph Instability delay",
-    shortDesc: "Instability delay +{value}",
+    singleDesc: "Неустойчивость глифов начинается на {value} позже",
+    genericDesc: "Неустойчивость глифов начинается позже",
+    shortDesc: "Неустойчивость на {value}",
     effect: (level, strength) => Math.floor(10 * Math.pow(level * strength, 0.5)),
-    formatEffect: x => formatInt(x),
+    formatEffect: x => quantifyInt("уровень", x),
     combine: GlyphCombiner.add,
   },
   effarigblackhole: {
@@ -453,10 +446,10 @@ export const glyphEffects = {
     bitmaskIndex: 22,
     isGenerated: true,
     glyphTypes: ["effarig"],
-    singleDesc: "Game speed power +{value}",
-    totalDesc: "Game speed ^{value}",
-    genericDesc: "Game speed ^x",
-    shortDesc: "Game speed power +{value}",
+    singleDesc: "Увеличить степень скорости игры на {value}",
+    totalDesc: "Скорость игры возведена в степень {value}",
+    genericDesc: "Увеличить степень скорости игры",
+    shortDesc: "+{value} к степени скорости игры",
     effect: (level, strength) => 1 + Math.pow(level, 0.25) * Math.pow(strength, 0.4) / 75,
     formatEffect: x => format(x, 3, 3),
     formatSingleEffect: x => format(x - 1, 3, 3),
@@ -467,10 +460,10 @@ export const glyphEffects = {
     bitmaskIndex: 23,
     isGenerated: true,
     glyphTypes: ["effarig"],
-    singleDesc: "Achievement multiplier power +{value}",
-    totalDesc: "Achievement multiplier ^{value}",
-    genericDesc: "Achievement multiplier ^x",
-    shortDesc: "Achievement mult. power +{value}",
+    singleDesc: "Увеличить степень множителя достижений на {value}",
+    totalDesc: "Множитель достижений возведён в степень {value}",
+    genericDesc: "Увеличить степень множителя достижений",
+    shortDesc: "+{value} к степени множителя достижений",
     effect: (level, strength) => 1 + Math.pow(level, 0.4) * Math.pow(strength, 0.6) / 60 +
       GlyphAlteration.sacrificeBoost("effarig") / 10,
     formatEffect: x => format(x, 3, 3),
@@ -485,17 +478,17 @@ export const glyphEffects = {
     isGenerated: true,
     glyphTypes: ["effarig"],
     singleDesc: () => (GlyphAlteration.isAdded("effarig")
-      ? `"Buy ${formatInt(10)}" multiplier ^{value} [and\nDimension Boost multiplier ^]{value2}`
-      : `Bonus from buying ${formatInt(10)} Dimensions ^{value}`),
+      ? `Множитель за покупку ${formatInt(10)} Измерений Антиматерии возведён в степень {value}. [Множитель Расширения Измерений возведён в степень] {value2}`
+      : `Множитель за покупку ${formatInt(10)} Измерений Антиматерии возведён в степень {value}`),
     totalDesc: () => (GlyphAlteration.isAdded("effarig")
-      ? `Multiplier from "Buy ${formatInt(10)}" ^{value} and Dimension Boost multiplier ^{value2}`
-      : `Multiplier from "Buy ${formatInt(10)}" ^{value}`),
+      ? `Множитель за покупку ${formatInt(10)} Измерений Антиматерии возведён в степень {value}. Множитель Расширения Измерений возведён в степень {value2}`
+      : `Множитель за покупку ${formatInt(10)} Измерений Антиматерии возведён в степень {value}`),
     genericDesc: () => (GlyphAlteration.isAdded("effarig")
-      ? `"Buy ${formatInt(10)}" and Dimension Boost multipliers ^x`
-      : `"Buy ${formatInt(10)}" multiplier ^x`),
+      ? `Множитель за покупку ${formatInt(10)} Измерений Антиматерии возведён в степень; множитель Расширения Измерений возведён в степень`
+      : `Множитель за покупку ${formatInt(10)} Измерений Антиматерии возведён в степень`),
     shortDesc: () => (GlyphAlteration.isAdded("effarig")
-      ? `Buy ${formatInt(10)} mult. ^{value}, Dimboost mult. ^{value2}`
-      : `Buy ${formatInt(10)} mult. ^{value}`),
+      ? `^{value} ко множителю за ${formatInt(10)} ИА; ^{value2} ко множителю Расширения`
+      : `^{value} ко множителю за ${formatInt(10)} ИА`),
     effect: (level, strength) => 1 + 2 * Math.pow(level, 0.25) * Math.pow(strength, 0.4),
     formatEffect: x => format(x, 2, 2),
     combine: GlyphCombiner.multiply,
@@ -509,10 +502,9 @@ export const glyphEffects = {
     bitmaskIndex: 25,
     isGenerated: true,
     glyphTypes: ["effarig"],
-    singleDesc: "All Dimension power +{value}",
-    totalDesc: "All Dimension multipliers ^{value}",
-    genericDesc: "All Dimension multipliers ^x",
-    shortDesc: "All Dimension power +{value}",
+    singleDesc: "Множители всех измерений возведены в степень {value}",
+    genericDesc: "Множители всех измерений возведены в степень",
+    shortDesc: "^{value} ко всем измерениям",
     effect: (level, strength) => 1 + Math.pow(level, 0.25) * Math.pow(strength, 0.4) / 500,
     formatEffect: x => format(x, 3, 3),
     formatSingleEffect: x => format(x - 1, 3, 3),
@@ -523,9 +515,9 @@ export const glyphEffects = {
     bitmaskIndex: 26,
     isGenerated: true,
     glyphTypes: ["effarig"],
-    singleDesc: () => `Antimatter production:\n${formatInt(10)}^x ➜ ${formatInt(10)}^(x^{value})`,
-    genericDesc: "Antimatter production exponent power",
-    shortDesc: "AM production exponent ^{value}",
+    singleDesc: "Производство антиматерии в секунду замедлено со степенью {value}",
+    genericDesc: "Производство антиматерии в секунду замедлено",
+    shortDesc: "Антиматерия замедлена ^{value}",
     effect: (level, strength) => 1 + Math.pow(level, 0.25) * Math.pow(strength, 0.4) / 5000,
     formatEffect: x => format(x, 4, 4),
     combine: GlyphCombiner.multiply,
@@ -536,10 +528,10 @@ export const glyphEffects = {
     isGenerated: true,
     // This gets explicitly added to time glyphs elsewhere (once unlocked)
     glyphTypes: [],
-    singleDesc: "Time Shard power +{value}",
-    totalDesc: "Time Shard gain ^{value}",
-    genericDesc: "Time Shards ^x",
-    shortDesc: "Time Shard power +{value}",
+    singleDesc: "Увеличить степень производства Осколков Времени в секунду на {value}",
+    totalDesc: "Производство Осколков Времени в секунду возведено в степень {value}",
+    genericDesc: "Увеличить степень производства Осколков Времени в секунду",
+    shortDesc: "+{value} к степени производства Осколков Времени в секунду",
     effect: (level, strength) => 1 + (strength / 3.5) * Math.pow(level, 0.35) / 400,
     formatEffect: x => format(x, 3, 3),
     formatSingleEffect: x => format(x - 1, 3, 3),
@@ -551,9 +543,8 @@ export const glyphEffects = {
     bitmaskIndex: 0,
     isGenerated: false,
     glyphTypes: ["cursed"],
-    singleDesc: `All Galaxies are {value} weaker`,
-    totalDesc: "All Galaxy strength -{value}",
-    shortDesc: "Galaxy Strength -{value}",
+    singleDesc: "Галактики на {value} слабее",
+    shortDesc: "-{value} силы галактик",
     // Multiplies by 0.768 per glyph
     effect: level => Math.pow(level, -0.03),
     formatEffect: x => formatPercents(1 - x, 2),
@@ -564,8 +555,8 @@ export const glyphEffects = {
     bitmaskIndex: 1,
     isGenerated: false,
     glyphTypes: ["cursed"],
-    singleDesc: "All Dimension multipliers ^{value}",
-    shortDesc: "All Dimensions ^{value}",
+    singleDesc: "Множители всех измерений возведены в степень {value}",
+    shortDesc: "^{value} ко всем измерениям",
     // Multiplies by 0.734 per glyph
     effect: level => Math.pow(level, -0.035),
     formatEffect: x => format(x, 3, 3),
@@ -576,9 +567,9 @@ export const glyphEffects = {
     bitmaskIndex: 2,
     isGenerated: false,
     glyphTypes: ["cursed"],
-    singleDesc: "The threshold for Tickspeed Upgrades from Time Dimensions is multiplied by ×{value}",
-    totalDesc: "The threshold for Tickspeed Upgrades from Time Dimensions is increased by ×{value}",
-    shortDesc: "TD Tickspeed threshold ×{value}",
+    singleDesc: "Увеличить наценку на ускорители, получаемые от Осколков Времени",
+    totalDesc: "Наценка на ускорители, получаемые от Осколков Времени, в {value} раза больше",
+    shortDesc: "Осколки Времени слабее",
     // Additive 3.82 per glyph
     effect: level => Math.clampMin(Math.log10(level), 1),
     formatEffect: x => format(x, 3, 3),
@@ -589,9 +580,8 @@ export const glyphEffects = {
     bitmaskIndex: 3,
     isGenerated: false,
     glyphTypes: ["cursed"],
-    singleDesc: "Divide Eternity Point gain by {value}",
-    totalDesc: "Eternity Point gain / {value}",
-    shortDesc: "EP / {value}",
+    singleDesc: "Получение Очков Вечности разделено на {value}",
+    shortDesc: "ОВ / {value}",
     // Divides e666.6 per glyph
     effect: level => Decimal.pow10(-level / 10),
     formatEffect: x => format(x.reciprocal()),
@@ -602,9 +592,8 @@ export const glyphEffects = {
     bitmaskIndex: 4,
     isGenerated: false,
     glyphTypes: ["reality"],
-    singleDesc: "Increase the effective level of equipped basic Glyphs by {value}",
-    totalDesc: "Equipped basic Glyph level +{value}",
-    shortDesc: "Basic Glyph Level +{value}",
+    singleDesc: "Увеличить фактические уровни действующих глифов на {value}",
+    shortDesc: "+{value} к уровням действующих глифов",
     effect: level => Math.floor(Math.sqrt(level * 90)),
     formatEffect: x => formatInt(x),
     combine: GlyphCombiner.add,
@@ -614,9 +603,8 @@ export const glyphEffects = {
     bitmaskIndex: 5,
     isGenerated: false,
     glyphTypes: ["reality"],
-    singleDesc: "All Galaxies are {value} stronger",
-    totalDesc: "All Galaxy strength +{value}",
-    shortDesc: "Galaxy Strength +{value}",
+    singleDesc: "Галактики на {value} сильнее",
+    shortDesc: "+{value} к силе галактик",
     effect: level => 1 + Math.pow(level / 100000, 0.5),
     formatEffect: x => formatPercents(x - 1, 2),
     combine: GlyphCombiner.multiply,
@@ -626,9 +614,8 @@ export const glyphEffects = {
     bitmaskIndex: 6,
     isGenerated: false,
     glyphTypes: ["reality"],
-    singleDesc: "Multiplier from Reality Upgrade Amplifiers ^{value}",
-    totalDesc: "Reality Upgrade Amplifier multiplier ^{value}",
-    shortDesc: "Amplifier Multiplier ^{value}",
+    singleDesc: "Эффекты повторяемых Улучшений Реальности возведены в степень {value}",
+    shortDesc: "^{value} к эффектам повторяемых Улучшений Реальности",
     effect: level => 1 + level / 125000,
     formatEffect: x => format(x, 3, 3),
     combine: GlyphCombiner.addExponents,
@@ -638,12 +625,9 @@ export const glyphEffects = {
     bitmaskIndex: 7,
     isGenerated: false,
     glyphTypes: ["reality"],
-    singleDesc: () => `Dilated Time factor for Glyph level: \n^${format(1.3, 1, 1)}
-      ➜ ^(${format(1.3, 1, 1)} + {value})`,
-    totalDesc: () => `Dilated Time factor for Glyph level: ^${format(1.3, 1, 1)}
-      ➜ ^(${format(1.3, 1, 1)} + {value})`,
-    genericDesc: "Dilated Time factor for Glyph level",
-    shortDesc: "DT pow. for level +{value}",
+    singleDesc: () => `Увеличить степень Замедленного Времени в формуле расчёта уровня глифа на {value} (по умолчанию ^${format(1.3, 1, 1)})`,
+    genericDesc: "Увеличить степень Замедленного Времени в формуле расчёта уровня глифа",
+    shortDesc: "+{value} к степени ЗВ для уровня",
     // You can only get this effect on level 25000 reality glyphs anyway, might as well make it look nice
     effect: () => 0.1,
     formatEffect: x => format(x, 2, 2),
@@ -654,10 +638,10 @@ export const glyphEffects = {
     bitmaskIndex: 8,
     isGenerated: false,
     glyphTypes: ["companion"],
-    singleDesc: "It does nothing but sit there and cutely smile at you, whisper into your dreams politely, " +
-      "and plot the demise of all who stand against you. This one-of-a-kind Glyph will never leave you.",
-    totalDesc: "+{value} happiness",
-    shortDesc: "Doesn't want to hurt you",
+    singleDesc: "Он ничего не делает, разве что сидит и мило улыбается вам, вежливо нашёптывает вам сны " +
+      "и замышляет кару для всех, кто против вас. Это единственный в своём роде глиф, который никогда вас не покинет.",
+    totalDesc: "Счастье увеличено на {value}",
+    shortDesc: "Не хочет обидеть вас",
     effect: () => {
       if (Enslaved.isRunning) return 0;
       const cursedCount = Glyphs.active.countWhere(g => g?.type === "cursed");
@@ -673,9 +657,9 @@ export const glyphEffects = {
     bitmaskIndex: 9,
     isGenerated: false,
     glyphTypes: ["companion"],
-    singleDesc: "Thanks for your dedication for the game! You reached {value} Eternity Points on your first Reality.",
-    shortDesc: "It loves you very, very much",
-    totalDesc: () => ((Enslaved.isRunning || Glyphs.active.countWhere(g => g?.type === "cursed")) ? "Help me" : "Yay!"),
+    singleDesc: "Спасибо за вашу приверженность игре! Вы достигли {value} Очков Вечности на первой реальности.",
+    shortDesc: "Очень, очень сильно любит вас",
+    totalDesc: () => ((Enslaved.isRunning || Glyphs.active.countWhere(g => g?.type === "cursed")) ? "Помоги" : "Ура!"),
     // The EP value for this is entirely encoded in rarity, but level needs to be present to
     // make sure the proper parameter is being used. The actual glyph level shouldn't do anything.
     // eslint-disable-next-line no-unused-vars

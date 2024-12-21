@@ -73,15 +73,15 @@ export default {
       };
     },
     pourText() {
-      return this.isPouredAmountCapped ? "Filled" : "Pour RM";
+      return this.isPouredAmountCapped ? "Ограничено" : "Заливать МР";
     },
     runDescription() {
       return GameDatabase.celestials.descriptions[0].effects();
     },
     lastMachinesString() {
       return this.lastMachines.lt(DC.E10000)
-        ? `${quantify("Reality Machine", this.lastMachines, 2)}`
-        : `${quantify("Imaginary Machine", this.lastMachines.dividedBy(DC.E10000), 2)}`;
+        ? `${quantify("Машиной", this.lastMachines, 2)} Реальности`
+        : `${format(this.lastMachines.dividedBy(DC.E10000), 2)} Мнимой Машины`;
     },
     unlockInfoTooltipArrowStyle() {
       return {
@@ -121,7 +121,7 @@ export default {
     },
     startRun() {
       if (this.isDoomed) return;
-      Modal.celestials.show({ name: "Teresa's", number: 0 });
+      Modal.celestials.show({ name: "Терезы", number: 0 });
     },
     unlockDescriptionHeight(unlockInfo) {
       const maxPrice = TeresaUnlocks[Teresa.lastUnlock].price;
@@ -145,7 +145,7 @@ export default {
   <div class="l-teresa-celestial-tab">
     <CelestialQuoteHistory celestial="teresa" />
     <div>
-      You have {{ quantify("Reality Machine", rm, 2, 2) }}.
+      У вас {{ quantify("Машина", rm, 2, 2) }} Реальности.
     </div>
     <div class="l-mechanics-container">
       <div
@@ -154,7 +154,7 @@ export default {
       >
         <div class="c-teresa-unlock c-teresa-run-button">
           <span :class="{ 'o-pelle-disabled': isDoomed }">
-            Start Teresa's Reality.
+            Запустить Реальность Терезы
           </span>
           <div
             :class="runButtonClassObject"
@@ -165,38 +165,27 @@ export default {
           {{ runDescription }}
           <br><br>
           <div>
-            This Reality can be repeated for a stronger reward based on the antimatter gained within it.
+            Реальность Терезы можно выполнять сколь угодно много раз, и награда за неё зависит от максимального когда-либо достигнутого в ней количества антиматерии.
             <br><br>
             <span v-if="showRunReward">
-              Your record antimatter in Teresa's Reality is {{ format(bestAM, 2) }},
-              achieved with {{ lastMachinesString }}.
+              Рекордное количество антиматерии в Реальности Терезы: {{ format(bestAM, 2) }},
+              достигнуто с {{ lastMachinesString }}
               <br><br>
-              Glyph Set used:
+              и такими глифами:
               <GlyphSetPreview
-                text="Teresa's Best Glyph Set"
+                text="Глифы, использованные при достижении рекорда в Реальности Терезы"
                 :text-hidden="true"
                 :force-name-color="false"
                 :glyphs="bestAMSet"
               />
             </span>
             <span v-else>
-              You have not completed Teresa's Reality yet.
+              Вы ещё не выполнили Реальность Терезы.
             </span>
           </div>
         </div>
-        <div
-          v-if="showRunReward"
-          class="c-teresa-unlock"
-        >
-          Teresa Reality reward: Glyph Sacrifice power {{ formatX(runReward, 2, 2) }}
-        </div>
-        <div
-          v-if="hasEPGen"
-          class="c-teresa-unlock"
-        >
-          <span :class="{ 'o-pelle-disabled': isDoomed }">
-            Every second, you gain {{ formatPercents(0.01) }} of your peaked Eternity Points per minute this Reality.
-          </span>
+        <div class="c-teresa-unlock">
+          Награда: множитель <span v-if="showRunReward">{{ formatX(runReward, 2, 2) }} </span>к жертвенной ценности глифов
         </div>
       </div>
       <div class="l-rm-container l-teresa-mechanic-container">
@@ -220,7 +209,7 @@ export default {
             :style="{ height: percentage}"
           >
             <div class="c-rm-store-label">
-              {{ formatX(rmMult, 2, 2) }} RM gain
+              Множитель {{ formatX(rmMult, 2, 2) }} к получению МР
               <br>
               {{ format(pouredAmount, 2, 2) }}/{{ format(pouredAmountCap, 2, 2) }}
             </div>
@@ -255,14 +244,14 @@ export default {
         class="c-teresa-shop"
       >
         <span class="o-teresa-pp">
-          You have {{ quantify("Perk Point", perkPoints, 2, 0) }}.
+          У вас {{ quantify("Очко", perkPoints, 2, 0) }} Умения.
         </span>
         <PerkShopUpgradeButton
           v-for="upgrade in upgrades"
           :key="upgrade.id"
           :upgrade="upgrade"
         />
-        You can now modify the appearance of your Glyphs to look like Music Glyphs.
+        Теперь вы можете сделать любой глиф музыкальным.
       </div>
       <div
         v-else

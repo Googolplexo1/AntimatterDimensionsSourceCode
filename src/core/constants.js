@@ -29,6 +29,7 @@ export const DC = deepFreeze({
   D0_1:                 new Decimal("0.1"),
   D0_4:                 new Decimal("0.4"),
   D0_55:                new Decimal("0.55"),
+  D0_8:                 new Decimal("0.8"),
   D0_8446303389034288:  new Decimal("0.8446303389034288"),
   D0_95:                new Decimal("0.95"),
   D0_965:               new Decimal("0.965"),
@@ -67,6 +68,7 @@ export const DC = deepFreeze({
   C2P30:                    Decimal.pow(2, 30),
   C2P1024:                  Decimal.pow(2, 1024),
   C10P16000D3:              Decimal.pow(10, 16000 / 3),
+  IP_REQUIREMENT_FOR_2_EP:  Decimal.pow(2 * Math.pow(5, 0.7), 308 / Math.log10(5)),
 
   // 1e1 is 10
   E1:                   new Decimal("1e1"),
@@ -191,6 +193,7 @@ export const DC = deepFreeze({
   E1E8:                 new Decimal("1e100000000"),
   E1_5E12:              new Decimal("1e1500000000000"),
   E1E15:                new Decimal("1e1000000000000000"),
+  E9E15:                new Decimal("1e9000000000000000"),
 });
 
 window.AUTOBUYER_MODE = {
@@ -239,6 +242,7 @@ window.GlyphRarities = [
   {
     minStrength: 3.5,
     name: "Celestial",
+    nameRussian: "Космический",
     darkColor: "#3d3dec",
     lightColor: "#9696ff",
     darkHighContrast: "#ffff00",
@@ -246,6 +250,7 @@ window.GlyphRarities = [
   }, {
     minStrength: 3.25,
     name: "Transcendent",
+    nameRussian: "Трансцендентный",
     darkColor: "#03ffec",
     lightColor: "#00c3c3",
     darkHighContrast: "#00ffff",
@@ -253,6 +258,7 @@ window.GlyphRarities = [
   }, {
     minStrength: 3,
     name: "Mythical",
+    nameRussian: "Мифический",
     darkColor: "#d50000",
     lightColor: "#d50000",
     darkHighContrast: "#c00000",
@@ -260,6 +266,7 @@ window.GlyphRarities = [
   }, {
     minStrength: 2.75,
     name: "Legendary",
+    nameRussian: "Легендарный",
     darkColor: "#ff9800",
     lightColor: "#d68100",
     darkHighContrast: "#ff8000",
@@ -267,6 +274,7 @@ window.GlyphRarities = [
   }, {
     minStrength: 2.5,
     name: "Epic",
+    nameRussian: "Эпичный",
     darkColor: "#9c27b0",
     lightColor: "#9c27b0",
     darkHighContrast: "#ff00ff",
@@ -274,6 +282,7 @@ window.GlyphRarities = [
   }, {
     minStrength: 2,
     name: "Rare",
+    nameRussian: "Редкий",
     darkColor: "#5096f3",
     lightColor: "#0d40ff",
     darkHighContrast: "#6060ff",
@@ -281,6 +290,7 @@ window.GlyphRarities = [
   }, {
     minStrength: 1.5,
     name: "Uncommon",
+    nameRussian: "Необычный",
     darkColor: "#43a047",
     lightColor: "#1e8622",
     darkHighContrast: "#00ff00",
@@ -288,6 +298,7 @@ window.GlyphRarities = [
   }, {
     minStrength: 1,
     name: "Common",
+    nameRussian: "Обычный",
     darkColor: "#ffffff",
     lightColor: "#000000",
     darkHighContrast: "#ffffff",

@@ -5,6 +5,7 @@ import { Pelle } from "./pelle/pelle";
 import { Ra } from "./ra/ra";
 import { Teresa } from "./teresa";
 import { V } from "./V";
+import { DC } from "../constants";
 
 export const Celestials = {
   teresa: Teresa,
@@ -20,43 +21,46 @@ GameDatabase.celestials.descriptions = [
   {
     name: "Teresa",
     effects() {
-      return `Glyph Time Theorem generation is disabled.
-      You gain less Infinity Points and Eternity Points (x^${format(0.55, 2, 2)}).`;
+      return `Производство Теорем Времени Глифами Замедления отключено.
+      Получение Очков Бесконечности и Очков Вечности возведено в степень ${format(0.55, 2, 2)}.`;
     },
   },
   {
     name: "Effarig",
     effects() {
-      return `All Dimension multipliers, game speed, and tickspeed are severely lowered, like Dilation.
-      Infinity Power reduces the production and game speed penalties and Time Shards reduce the tickspeed penalty.
-      Glyph levels are temporarily capped to ${formatInt(Effarig.glyphLevelCap)}, rarity is unaffected.`;
+      return `Множители всех измерений, скорость игры и скорость тика сильно замедлены.\
+      Оба ослабления становятся мягче с каждым слоем Реальности.\
+      Первые два ослабления смягчаются в зависимости от вашего количества Силы Бесконечности, а третье - Осколков Времени.
+      Фактические уровни глифов имеют ограничение в ${formatInt(Effarig.glyphLevelCap)}.` + (Effarig.currentStage === 2 ? `
+      (только на слое вечности) Получение Очков Бесконечности по умолчанию имеет ограничение в ${format(DC.E200)}.
+      (только на слое вечности) У каждого вида множителей к получению Очков Бесконечности совокупный эффект имеет ограничение в ${format(DC.E50)}.` : "");
     },
     description() {
-      return `You will exit Effarig's Reality when you complete a Layer of it for the first time.`;
+      return `Вы принудительно покинете Реальность Эффарига, выполнив её текущий слой.`;
     }
   },
   {
     name: "The Nameless Ones",
     effects() {
-      return `Glyph levels are boosted to a minimum of ${formatInt(5000)}.
-      Infinity, Time, and 8th Antimatter Dimension purchases are limited to ${formatInt(1)} each.
-      Antimatter Dimension multipliers are always Dilated (the Glyph effect still only applies in actual Dilation).
-      Time Study 192 (uncapped Replicanti) is locked.
-      The Black Hole is disabled.
-      Tachyon Particle production and Dilated Time production are severely reduced.
-      Time Theorem generation from Dilation Glyphs is disabled.
-      Certain challenge goals are increased.
-      Stored game time is discharged at a reduced effectiveness (exponent^${format(0.55, 2, 2)}).`;
+      return `Фактические уровни глифов увеличены до ${formatInt(5000)}.
+      Измерения Бесконечности, Измерения Времени и 8-е Измерение Антиматерии можно покупать не более чем по одному разу.
+      Множители Измерений Антиматерии всегда замедлены (соответствующий эффект глифов по-прежнему действует только в Замедлении).
+      Исследование Времени 192 недоступно.
+      Чёрная Дыра отключена.
+      Получение Тахионов и производство Замедленного Времени сильно уменьшены.
+      Производство Теорем Времени Глифами Замедления отключено.
+      Цели некоторых испытаний увеличены.
+      Время в секундах, которое даёт разрядка Чёрной Дыры, замедлено со степенью ${format(0.55, 2, 2)}.`;
     }
   },
   {
     name: "V",
     effects() {
-      const vEffect = `All Dimension multipliers, Eternity Point gain, Infinity Point gain, and Dilated Time gain\
-      per second are square-rooted. 
-      The Replicanti interval is squared.`;
+      const vEffect = `Множители всех измерений, получение Очков Бесконечности, получение Очков Вечности и производство Замедленного Времени\
+      в секунду возведено в степень ${format(0.5, 1, 1)}. 
+      Интервал репликации в миллисекундах возведён в квадрат.`;
       const vEffectAdditional = `
-      The Exponential Glyph Alchemy effect is disabled.`;
+      Эффект Экспоненты отключён.`;
 
       return Ra.unlocks.unlockGlyphAlchemy.canBeApplied
         ? vEffect + vEffectAdditional
@@ -66,8 +70,8 @@ GameDatabase.celestials.descriptions = [
   {
     name: "Ra",
     effects() {
-      return `You only have ${formatInt(4)} Dimension Boosts and can not gain any more.
-      The Tickspeed purchase multiplier is fixed at ${formatX(1.1245, 0, 3)}.`;
+      return `Вы начинаете с ${formatInt(4)} Расширениями Измерений и не можете получить больше.
+      Множитель ускорителя всегда равен ${formatX(1.1245, 0, 3)}.`;
     },
   },
   {
@@ -77,37 +81,31 @@ GameDatabase.celestials.descriptions = [
       const highestActive = 8 - Laitela.difficultyTier;
       switch (highestActive) {
         case 0:
-          disabledDims = "all Dimensions";
-          break;
-        case 1:
-          disabledDims = "2nd and higher Dimensions";
-          break;
-        case 2:
-          disabledDims = "3rd and higher Dimensions";
+          disabledDims = "всех измерений";
           break;
         case 7:
-          disabledDims = "8th Dimensions";
+          disabledDims = "8-х Измерений всех видов";
           break;
         default:
-          disabledDims = `${highestActive + 1}th and higher Dimensions`;
+          disabledDims = `${highestActive + 1}-х и более высоких по уровню Измерений всех видов`;
           break;
       }
       const disabledText = highestActive === 8
         ? ""
-        : `Production from ${disabledDims} is disabled.`;
+        : `Производство ${disabledDims} отключено.`;
 
-      return `Infinity Point and Eternity Point gain are Dilated.
-      Game speed is reduced to ${formatInt(1)} and gradually comes back over ${formatInt(10)} minutes.
-      Black Hole storing, discharging, pulsing, and inversion are all disabled.
+      return `Получение Очков Бесконечности и Очков Вечности замедлено.
+      Скорость игры понижена до ${formatInt(1)} и экспоненциально восстанавливается в течение ${formatInt(10)} минут.
+      Вы не можете заряжать, разряжать или инвертировать Чёрную Дыру.
       ${disabledText}`;
     },
     description() {
-      return `Antimatter generates entropy inside of this Reality.\
-      At ${formatPercents(1)} entropy, the Reality becomes destabilized\
-      and you gain a reward based on how quickly you reached ${formatPercents(1)}.
-      Destabilizing the Reality in less than ${formatInt(30)} seconds makes it become significantly more difficult,\
-      in exchange for giving a much stronger reward.\
-      Doing this ${formatInt(8)} times will also give a ${formatX(8)} to Dark Energy gain.`;
+      return `В Реальности Лайтелы производится энтропия в зависимости от вашего количества антиматерии.\
+      Чтобы выполнить Реальность, нужно достигнуть ${formatPercents(1)} энтропии, при этом вы принудительно покинете Реальность\
+      и получите награду в зависимости от того, насколько быстро вы выполнили её.
+      Если вы дестабилизировали Реальность (выполнили быстрее, чем за ${formatInt(30)} секунд), её условие становится значительно жёстче,\
+      а награда - значительно больше.\
+      За ${formatInt(8)} дестабилизаций вы получите множитель ${formatX(8)} к производству Тёмной Энергии.`;
     }
   },
 

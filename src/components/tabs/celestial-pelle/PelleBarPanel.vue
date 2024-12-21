@@ -17,15 +17,14 @@ export default {
       return this.isCollapsed
         ? "fas fa-expand-arrows-alt"
         : "fas fa-compress-arrows-alt";
-    },
-    strikes() {
-      return PelleStrikes.all;
     }
   },
   methods: {
     update() {
       this.decayRate = Pelle.riftDrainPercent;
       this.isCollapsed = player.celestials.pelle.collapsed.rifts;
+      this.strikes = PelleStrikes.all.filter(strikes => strikes.hasStrike);
+      this.allStrikes = PelleStrikes.all;
     },
     toggleCollapse() {
       player.celestials.pelle.collapsed.rifts = !this.isCollapsed;
@@ -42,22 +41,22 @@ export default {
         class="c-collapse-icon-clickable"
         @click="toggleCollapse"
       />
-      Pelle Strikes and Rifts
+      Разломы и Удары Пелля
     </div>
     <div
       v-if="!isCollapsed"
       class="l-pelle-content-container"
     >
-      Rifts can be activated by clicking on their bars.
-      <span v-if="strikes.length > 1">You cannot activate more than two Rifts at once.</span>
+      Заполнение Разлома можно включить, нажав на его полоску.
+      <span v-if="strikes.length > 2">Вы можете заполнять не более двух Разломов одновременно.</span>
       <br v-else>
-      When active, Rifts consume {{ formatPercents(decayRate) }} of another resource per second.
+      На заполнение Разлома расходуется {{ formatPercents(decayRate) }} соответствующего ресурса в секунду.
       <br>
-      Rift effects apply even when not activated, and are based on the total amount drained.
-      <b class="o-strike-warning">Pelle Strike penalties are permanent and remain active even after Armageddon!</b>
+      Эффекты Разломов действуют вне зависимости от того, заполняются ли они в данный момент, и зависят от общего количества расходованного ресурса.
+      <b class="o-strike-warning">Удары Пелля необратимы и не сбрасываются при армагеддоне!</b>
       <div class="c-pelle-bar-container">
         <PelleRift
-          v-for="strike in strikes"
+          v-for="strike in allStrikes"
           :key="strike.config.id"
           :strike="strike"
         />

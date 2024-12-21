@@ -99,8 +99,8 @@ export default {
       return combinedTree;
     },
     modalTitle() {
-      if (this.deleting) return `Deleting Study Preset "${this.name}"`;
-      return this.isImporting ? "Input your tree" : `Editing Study Preset "${this.name}"`;
+      if (this.deleting) return `Удаление сохранённого Древа "${this.name}"`;
+      return this.isImporting ? "Введите ваше Древо" : `Редактирование сохранённого Древа "${this.name}"`;
     },
     invalidMessage() {
       if (!this.inputIsValidTree || this.importedTree.invalidStudies.length === 0) return null;
@@ -110,10 +110,10 @@ export default {
       if (coloredString.length > 300) coloredString = `${coloredString.slice(0, 297)}...`;
 
       for (const study of this.importedTree.invalidStudies) {
-        const id = `${study}`.match(/(EC)?(\d+)/u);
+        const id = `${study}`.match(/(ИспВ)?(\d+)/u);
         const num = parseInt(id[2], 10);
         switch (id[1]) {
-          case "EC":
+          case "ИспВ":
             coloredString = coloredString.replaceAll(new RegExp(`\\|(${num})`, "gu"),
               `|<span style="color: var(--color-bad);">$1</span>`);
             break;
@@ -123,7 +123,7 @@ export default {
             break;
         }
       }
-      return `Your import string has invalid study IDs: ${coloredString.replaceAll("#", "").replaceAll(",", ", ")}
+      return `Введённая строка содержит недопустимые номера Исследований: ${coloredString.replaceAll("#", "").replaceAll(",", ", ")}
         <br><br>`;
     },
     truncatedInput() {
@@ -139,17 +139,11 @@ export default {
       return TimeStudyTree.isValidImportString(this.truncatedInput);
     },
     inputIsSecret() {
-      // The button to open the modal and the actual modal itself display two different strings;
-      // we should allow either to unlock the secret achievement
-      const secretStrings = [
-        "08b819f253b684773e876df530f95dcb85d2fb052046fa16ec321c65f3330608",
-        "bb450c2a3869bae412ed0b4304dc229521fc69f0fdcc95b3b61460aaf5658fc4"
-      ];
-      return secretStrings.includes(sha512_256(this.input.toLowerCase()));
+      return sha512_256(this.input.toLowerCase()) === "250a61a086aa628c2ec695fc6150836eac6aeba6cb6bc975c0b546f49b37a689";
     },
     confirmText() {
-      if (this.deleting) return "Delete";
-      return this.isImporting ? "Import" : "Save";
+      if (this.deleting) return "Удалить";
+      return this.isImporting ? "Импортировать" : "Сохранить";
     }
   },
   watch: {
@@ -200,19 +194,19 @@ export default {
     savePreset() {
       if (this.inputIsValid) {
         player.timestudy.presets[this.id].studies = this.input;
-        GameUI.notify.eternity(`Study Tree ${this.name} successfully edited.`);
+        GameUI.notify.eternity(`Древо Исследований ${this.name} успешно редактировано.`);
         this.emitClose();
       }
     },
     deletePreset() {
       const name = player.timestudy.presets[this.id].name;
-      const presetName = name ? `Study preset "${name}"` : "Study preset";
+      const presetName = name ? `Сохранённое Древо "${name}"` : "Сохранённое Древо";
       player.timestudy.presets[this.id].studies = "";
       player.timestudy.presets[this.id].name = "";
-      GameUI.notify.eternity(`${presetName} deleted from slot ${this.id + 1}`);
+      GameUI.notify.eternity(`${presetName} удалено из слота ${this.id + 1}`);
     },
     studyString(study) {
-      return study instanceof ECTimeStudyState ? `EC${study.id}` : `${study.id}`;
+      return study instanceof ECTimeStudyState ? `ИспВ${study.id}` : `${study.id}`;
     }
   },
 };
@@ -261,22 +255,22 @@ export default {
           />
           <StudyTreeInfo
             v-if="deleting && importedTree.hasInfo"
-            header-text="Study Preset contains:"
+            header-text="Сохранённое Древо содержит:"
             :tree-status="importedTree"
           />
           <StudyTreeInfo
             v-if="!deleting && !isImporting && importedTree.hasInfo"
-            header-text="Status after loading with <b>no studies</b>:"
+            header-text="Статус при загрузке <b>без Исследований</b>:"
             :tree-status="importedTree"
           />
           <StudyTreeInfo
             v-if="!deleting && combinedTree.hasInfo"
-            header-text="Status after loading with <b>current tree</b>:"
+            header-text="Статус при загрузке <b>с текущим Древом</b>:"
             :tree-status="combinedTree"
           />
         </template>
         <div v-if="!deleting && !inputIsValidTree && hasInput">
-          Not a valid tree
+          Недопустимое Древо
         </div>
       </div>
       <div class="c-study-preview">
@@ -292,16 +286,16 @@ export default {
       <br>
       <PrimaryButton
         v-if="!deleting"
-        v-tooltip="'This will format the study preset text, for example, changing \'a,b,c|d\' to \'a, b, c | d\'.'"
+        v-tooltip="'Кодировка Древа будет форматирована, например, заменой \'a,b,c|d\' на \'a, b, c | d\'.'"
         @click="convertInputShorthands"
       >
-        Format Preset Text
+        Форматировать кодировку Древа
       </PrimaryButton>
     </div>
     <span v-if="isImporting">
       <br>
       <div
-        v-tooltip="canEternity ? '' : 'You are currently unable to eternity, so this will only do a normal load.'"
+        v-tooltip="canEternity ? '' : 'Вы не можете совершить вечность в данный момент, поэтому произойдёт обычная загрузка Древа.'"
         class="c-modal__confirmation-toggle"
         @click="respecAndLoad = !respecAndLoad"
       >
@@ -317,7 +311,7 @@ export default {
           />
         </div>
         <span class="c-modal__confirmation-toggle__text">
-          Also respec tree and eternity
+          Также сбросить Древо и совершить вечность
           <span
             v-if="!canEternity"
             class="c-modal__confirmation-toggle__warning"

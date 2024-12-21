@@ -37,7 +37,7 @@ export default {
       onclick="Modal.singularityMilestones.show()"
       :class="classObject"
     >
-      Show all milestones
+      Показать все этапы
     </div>
     <SingularityMilestoneComponent
       v-for="milestone in milestones"

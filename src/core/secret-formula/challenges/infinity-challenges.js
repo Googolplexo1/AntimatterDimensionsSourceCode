@@ -3,12 +3,11 @@ import { DC } from "../../constants";
 export const infinityChallenges = [
   {
     id: 1,
-    description: `all Normal Challenge restrictions are active at once, with the exception of the
-      Tickspeed (C9) and Big Crunch (C12) Challenges.`,
+    description: "действуют условия всех Обычных Испытаний, кроме 9-го и 12-го.",
     goal: DC.E650,
     isQuickResettable: true,
     reward: {
-      description: () => `${formatX(1.3, 1, 1)} on all Infinity Dimensions for each Infinity Challenge completed`,
+      description: () => `множитель ${formatX(1.3, 1, 1)} ко всем Измерениям Бесконечности за каждое выполненное Испытание Бесконечности`,
       effect: () => Math.pow(1.3, InfinityChallenges.completed.length),
       formatEffect: value => formatX(value, 1, 1)
     },
@@ -16,12 +15,12 @@ export const infinityChallenges = [
   },
   {
     id: 2,
-    description: () => `Dimensional Sacrifice happens automatically every ${formatInt(400)} milliseconds once you have
-      an 8th Antimatter Dimension.`,
+    description: () => `каждые ${formatInt(400)} миллисекунд, когда у вас есть 8-е Измерение Антиматерии,
+      вы принудительно совершаете Пожертвование Измерений.`,
     goal: DC.E10500,
     isQuickResettable: false,
     reward: {
-      description: () => `Dimensional Sacrifice autobuyer and stronger Dimensional Sacrifice
+      description: () => `разблокировать автоматику Пожертвования Измерений и сделать его принципиально сильнее:
         ${Sacrifice.getSacrificeDescription({ "InfinityChallenge2isCompleted": false })} ➜
         ${Sacrifice.getSacrificeDescription({ "InfinityChallenge2isCompleted": true })}`,
     },
@@ -30,14 +29,14 @@ export const infinityChallenges = [
   {
     id: 3,
     description: () =>
-      `Tickspeed upgrades are always ${formatX(1)}. For every Tickspeed upgrade purchase, you instead get a static
-      multiplier on all Antimatter Dimensions which increases based on Antimatter Galaxies.`,
+      `ускорители не имеют эффекта, зато все Измерения Антиматерии получают множитель в зависимости от
+      количества ускорителей и Галактик Антиматерии.`,
     goal: DC.E5000,
     isQuickResettable: false,
     effect: () => Decimal.pow(1.05 + (player.galaxies * 0.005), player.totalTickBought),
     formatEffect: value => formatX(value, 2, 2),
     reward: {
-      description: `Antimatter Dimension multiplier based on Antimatter Galaxies and Tickspeed purchases`,
+      description: `множитель к Измерениям Антиматерии, как внутри Испытания`,
       effect: () => (Laitela.continuumActive
         ? Decimal.pow(1.05 + (player.galaxies * 0.005), Tickspeed.continuumValue)
         : Decimal.pow(1.05 + (player.galaxies * 0.005), player.totalTickBought)),
@@ -48,13 +47,12 @@ export const infinityChallenges = [
   {
     id: 4,
     description: () =>
-      `only the latest bought Antimatter Dimension's production is normal. All other Antimatter Dimensions
-      produce less (${formatPow(0.25, 2, 2)}).`,
+      `множители всех Измерений Антиматерии, кроме последнего купленного, возведены в степень ${format(0.25, 2, 2)}.`,
     goal: DC.E13000,
     isQuickResettable: true,
     effect: 0.25,
     reward: {
-      description: () => `All Antimatter Dimension multipliers become multiplier${formatPow(1.05, 2, 2)}`,
+      description: () => `множители всех Измерений Антиматерии возведены в степень ${format(1.05, 2, 2)}`,
       effect: 1.05
     },
     unlockAM: DC.E14000,
@@ -62,14 +60,14 @@ export const infinityChallenges = [
   {
     id: 5,
     description:
-      `buying Antimatter Dimensions 1-4 causes all cheaper AD costs to increase.
-      Buying Antimatter Dimensions 5-8 causes all more expensive AD costs to increase.`,
+      `при покупке десятки любого Измерения Антиматерии с 1-го по 4-е все цены, меньшие, а с 5-го по 8-е - большие, чем цена,
+      по которой была совершена покупка, возрастают, как если бы вы совершили соответствующую покупку.`,
     goal: DC.E16500,
     isQuickResettable: true,
     reward: {
       description: () =>
-        `All Galaxies are ${formatPercents(0.1)} stronger and reduce the requirements for them
-        and Dimension Boosts by ${formatInt(1)}`,
+        `галактики на ${formatPercents(0.1)} сильнее. Требования Галактик Антиматерии и
+        Расширений Измерений на ${formatInt(1)} 8-е Измерение Антиматерии ниже`,
       effect: 1.1
     },
     unlockAM: DC.E18000,
@@ -77,14 +75,13 @@ export const infinityChallenges = [
   {
     id: 6,
     description: () =>
-      `exponentially rising matter divides the multiplier on all of your Antimatter Dimensions
-      once you have at least ${formatInt(1)} 2nd Antimatter Dimension.`,
+      "существует материя, которая растёт как в 11-м Обычном Испытании и делит множители всех Измерений Антиматерии.",
     goal: DC.D2E22222,
     isQuickResettable: true,
     effect: () => Currency.matter.value.clampMin(1),
     formatEffect: value => `/${format(value, 1, 2)}`,
     reward: {
-      description: "Infinity Dimension multiplier based on tickspeed",
+      description: "множитель к Измерениям Бесконечности в зависимости от скорости тика",
       effect: () => Tickspeed.perSecond.pow(0.0005),
       formatEffect: value => formatX(value, 2, 2)
     },
@@ -92,24 +89,14 @@ export const infinityChallenges = [
   },
   {
     id: 7,
-    description: () => {
-      // Copied from DimBoost.power; this is the base amount before any multipliers. Post-eternity this isn't
-      // necessarily 2.5x by the time the player sees this challenge; it's probably most accurate to say what it
-      // currently is, and this phrasing avoids 10x ➜ 10x with the old description.
-      const mult = Effects.max(
-        2,
-        InfinityUpgrade.dimboostMult,
-        InfinityChallenge(7).reward,
-        TimeStudy(81)
-      );
-      return `you cannot buy Antimatter Galaxies. Base Dimension Boost multiplier is increased to a maximum
-        of ${formatX(10)}. (Current base multiplier: ${formatX(mult, 2, 1)})`;
-    },
+    description: () =>
+      `вы не можете получать Галактики Антиматерии обычным способом, зато множитель Расширения Измерений по умолчанию
+        увеличен до ${formatX(10)}.`,
     goal: DC.E10000,
     isQuickResettable: false,
     effect: 10,
     reward: {
-      description: () => `Dimension Boost multiplier is increased to a minimum of ${formatX(4)}`,
+      description: () => `множитель Расширения Измерений по умолчанию увеличен до ${formatX(4)}`,
       effect: 4
     },
     unlockAM: DC.E23000,
@@ -117,15 +104,15 @@ export const infinityChallenges = [
   {
     id: 8,
     description: () =>
-      `AD production rapidly and continually drops over time. Purchasing Antimatter Dimension or Tickspeed
-        upgrades sets production back to ${formatPercents(1)} before it starts dropping again.`,
+      `вы получаете множитель к Измерениям Антиматерии, который быстро экспоненциально убывает, но восстанавливается
+        до ${formatX(1)} при покупке Измерений Антиматерии или ускорителей.`,
     goal: DC.E27000,
     isQuickResettable: true,
     effect: () => DC.D0_8446303389034288.pow(
       Math.max(0, player.records.thisInfinity.time - player.records.thisInfinity.lastBuyTime)),
     reward: {
       description:
-        "You get a multiplier to AD 2-7 based on 1st and 8th AD multipliers.",
+        "множитель к Измерениям Антиматерии со 2-го по 7-е в зависимости от произведения множителей 1-го и 8-го ИА.",
       effect: () => AntimatterDimension(1).multiplier.times(AntimatterDimension(8).multiplier).pow(0.02),
       formatEffect: value => formatX(value, 2, 2)
     },

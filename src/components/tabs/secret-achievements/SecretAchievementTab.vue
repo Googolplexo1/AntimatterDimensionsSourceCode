@@ -16,7 +16,7 @@ export default {
   <div class="l-achievements-tab">
     <div class="c-achievements-tab__header">
       <span>
-        Secret Achievements are optional and give no bonuses.
+        Секретные достижения не дают никаких наград.
       </span>
     </div>
     <div class="l-achievement-grid">

@@ -12,30 +12,34 @@ export default {
     };
   },
   computed: {
-    refiningOrSacrificing() {
-      if (this.isRefining) return `Refine`;
-      return `Sacrifice`;
+    refiningOrSacrificing1() {
+      if (this.isRefining) return `облагораживаете`;
+      return `жертвуете`;
+    },
+    refiningOrSacrificing2() {
+      if (this.isRefining) return `облагородить`;
+      return `пожертвовать`;
     },
     topLabel() {
-      return `You are about to ${this.refiningOrSacrificing} all rejected Glyphs`;
+      return `Вы ${this.refiningOrSacrificing1} все глифы, отвергнутые Фильтром`;
     },
     message() {
       const negativeWarning = AutoGlyphProcessor.hasNegativeEffectScore()
-        ? ` Note that some of your Effect Filter scores are negative, which may cause you to lose some Glyphs
-          you normally want to keep.`
+        ? ` Обратите внимание, что некоторые веса эффектов для Фильтра Глифов отрицательные, из-за чего вы можете потерять глифы,
+          которые вы хотите сохранить.`
         : "";
-      return `Are you sure you want to ${this.refiningOrSacrificing} all rejected Glyphs? This will remove
-        all Glyphs that would be rejected by your current Glyph Filter settings.${negativeWarning}`;
+      return `Вы уверены, что хотите ${this.refiningOrSacrificing2} все глифы, отвергнутые
+        текущими настройками вашего Фильтра Глифов?${negativeWarning}`;
     },
     extraMessage() {
-      if (this.glyphsDeleted === 0) return `This will remove no Glyphs.`;
-      if (this.glyphsDeleted === this.glyphsTotal) return `This will remove all your Glyphs.`;
-      return `This process will remove ${this.glyphsDeleted}/${this.glyphsTotal} Glyphs.`;
+      if (this.glyphsDeleted === 0) return `Ни один глиф не будет удалён.`;
+      if (this.glyphsDeleted === this.glyphsTotal) return `Все глифы будут удалены.`;
+      return `${this.glyphsDeleted} из ${this.glyphsTotal} будет ${pluralize("удалён", this.glyphsDeleted)}.`;
     },
 
     // These two don't need to be reactive since the modal force-closes itself whenever glyphs change
     glyphsTotal() {
-      return Glyphs.inventory.filter(slot => slot !== null).length;
+      return quantifyInt("глифа", Glyphs.inventory.filter(slot => slot !== null).length);
     },
     glyphsDeleted() {
       return Glyphs.deleteAllRejected(false);

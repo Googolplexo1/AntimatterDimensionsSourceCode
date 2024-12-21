@@ -58,7 +58,7 @@ export default {
     },
     spectateText() {
       return this.isSpectating
-        ? "Numbers here are unaffected by END so that you can see your final records."
+        ? "Чтобы вы могли просмотреть данные забега, мы не замещаем их словом КОНЕЦ."
         : null;
     }
   },
@@ -82,9 +82,9 @@ export default {
 
 <template>
   <div class="c-previous-runs">
-    <b>You have completed {{ quantify("speedrun", numRuns, 0, 0, x => x) }} prior to this playthrough.</b>
-    <b>Statistics of previous runs are below, mouseover icons for more details.</b>
-    <b>Click the magnifying glass to compare the milestones on a particular run to this run.</b>
+    <b>Вы завершили {{ quantify("спидран", numRuns, 0, 0, x => x) }} до текущего забега.</b>
+    <b>Ниже приведены их данные.</b>
+    <b>Нажмите на лупу, чтобы сравнить время прохождения стадий на текущем забеге и на одном из предыдущих.</b>
     <b>{{ spectateText }}</b>
     <br>
     <div
@@ -96,7 +96,7 @@ export default {
         :class="{ 'o-primary-btn--disabled' : runPage === 0 }"
         @click="changePage(-1)"
       />
-      Showing runs {{ 10 * runPage + 1 }} to {{ 10 * (runPage + 1) }} ({{ highestIndex }} total runs)
+      Показаны забеги от №{{ 10 * runPage + 1 }} до №{{ 10 * (runPage + 1) }} (всего {{ highestIndex }})
       <PrimaryButton
         class="o-primary-btn--subtab-option fas fa-arrow-right"
         :class="{ 'o-primary-btn--disabled' : runPage + 1 > highestIndex / 10 }"
@@ -128,16 +128,16 @@ export default {
     <br>
     <div class="c-legend">
       <div class="c-legend-cell">
-        <span class="o-box l-milestone-none" /> Not reached this run
+        <span class="o-box l-milestone-none" /> Ещё не достигнуто
       </div>
       <div class="c-legend-cell">
-        <span class="o-box l-milestone-slow" /> Slower than comparison
+        <span class="o-box l-milestone-slow" /> Медленнее
       </div>
       <div class="c-legend-cell">
-        <span class="o-box l-milestone-fast" /> Faster than comparison
+        <span class="o-box l-milestone-fast" /> Быстрее
       </div>
       <div class="c-legend-cell">
-        <span class="o-box l-milestone-fastest" /> Faster than best
+        <span class="o-box l-milestone-fastest" /> Лучший результат
       </div>
     </div>
     <div class="l-speedrun-milestone-tab">

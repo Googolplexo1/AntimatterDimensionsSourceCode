@@ -38,7 +38,7 @@ export default {
     },
     showModal() {
       Modal.glyphShowcasePanel.show({
-        name: "Potential Glyphs for this Reality",
+        name: "Глифы, предложенные вам на эту реальность",
         glyphSet: this.glyphs,
         closeEvent: GAME_EVENT.REALITY_RESET_AFTER,
         isGlyphSelection: true,
@@ -61,19 +61,19 @@ export default {
     >
       <GlyphSetPreview
         :show-name="false"
-        :text="'Upcoming Glyph selection:'"
+        :text="'Выбор глифов:'"
         :glyphs="glyphs"
         :ignore-modified-level="true"
         :show-sacrifice="canSacrifice"
         :flip-tooltip="true"
         :sort="false"
       />
-      (Click to bring up details)
+      (Нажмите для просмотра подробной информации о глифах)
     </div>
     <div v-else>
-      Purchase the Reality study to see
+      Разблокируйте реальность в Древе Исследований,
       <br>
-      this Reality's Glyph choices
+      чтобы просмотреть предлагаемые глифы
     </div>
   </div>
 </template>

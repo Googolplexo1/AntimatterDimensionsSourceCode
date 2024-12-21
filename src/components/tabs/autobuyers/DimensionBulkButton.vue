@@ -21,10 +21,10 @@ export default {
   computed: {
     bulkDisplay() {
       if (this.hasMaxedBulk) {
-        return `${formatX(this.bulk, 2, 0)} bulk buy (capped)`;
+        return `${format(this.bulk, 2, 0)}-кратный опт (ограничено)`;
       }
       const newBulk = Math.min(this.bulk * 2, this.autobuyer.bulkCap);
-      return `${formatX(this.bulk, 2, 0)} ➜ ${formatX(newBulk, 2, 0)} bulk buy`;
+      return `${format(this.bulk, 2, 0)} ➜ ${format(newBulk, 2, 0)}-кратный опт`;
     },
     classObject() {
       return {
@@ -61,14 +61,14 @@ export default {
     <span>{{ bulkDisplay }}</span>
     <template v-if="!hasMaxedBulk">
       <br>
-      <span>Cost: {{ format(cost, 2, 0) }} IP</span>
+      <span>Цена: {{ format(cost, 2, 0) }} ОБ</span>
     </template>
   </button>
   <button
     v-else-if="hasMaxedInterval && !bulkUnlimited"
     class="o-autobuyer-btn l-autobuyer-box__button o-autobuyer-btn--unavailable"
   >
-    Complete the challenge to upgrade bulk
+    Выполните Испытание, чтобы разблокировать возможность улучшения опта
   </button>
 </template>
 

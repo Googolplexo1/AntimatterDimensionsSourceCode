@@ -85,7 +85,7 @@ export default {
     },
     startRun() {
       if (this.isDoomed) return;
-      Modal.celestials.show({ name: "Effarig's", number: 1 });
+      Modal.celestials.show({ name: "Эффарига", number: 1 });
     },
     createCursedGlyph() {
       Glyphs.giveCursedGlyph();
@@ -100,39 +100,39 @@ export default {
     <div class="l-effarig-shop-and-run">
       <div class="l-effarig-shop">
         <div class="c-effarig-relics">
-          You have {{ quantify("Relic Shard", relicShards, 2, 0) }}.
+          У вас {{ quantify("Реликтовый Осколок", relicShards, 2, 0) }}.
           <br>
           <span v-if="relicShardRarityAlwaysMax">
-            The rarity of new Glyphs is being increased by +{{ formatPercents(shardRarityBoost, 2) }}.
+            Редкость получаемых глифов увеличивается на {{ formatPercents(shardRarityBoost, 2) }}.
           </span>
           <span v-else>
-            Each new Glyph will have its rarity increased
+            У каждого из генерируемых глифов редкость будет увеличена
             <br>
-            by a random value between +{{ formatPercents(0) }} and +{{ formatPercents(shardRarityBoost, 2) }}.
+            на случайное значение от {{ formatPercents(0) }} до {{ formatPercents(shardRarityBoost, 2) }}.
           </span>
           <span v-if="shardPower > 1">
             <br>
-            Glyph Sacrifice gain is also being raised to {{ formatPow(shardPower, 0, 2) }}.
+            Кроме того, жертвенные ценнности глифов возведены в степень {{ format(shardPower, 0, 2) }}.
           </span>
         </div>
         <div class="c-effarig-relic-description">
-          You will gain {{ quantify("Relic Shard", shardsGained, 2) }} next Reality
-          ({{ format(currentShardsRate, 2) }}/min).
+          Вы получите {{ quantify("Реликтовый Осколок", shardsGained, 2) }} на реальности
+          ({{ format(currentShardsRate, 2) }}/мин).
           <span v-if="amplification !== 0">
             <br>
-            Due to amplification of your current Reality,
+            С учётом усиления реальности
             <br>
-            you will actually gain a total of
-            {{ quantify("Relic Shard", amplifiedShards, 2) }} ({{ format(amplifiedShardsRate, 2) }}/min).
+            вы получите
+            {{ quantify("Реликтовый Осколок", amplifiedShards, 2) }} ({{ format(amplifiedShardsRate, 2) }}/мин).
           </span>
         </div>
         <div class="c-effarig-relic-description">
           <br>
-          More Eternity Points slightly increases Relic Shards
+          Количество получаемых Реликтовых Осколков зависит от количества
           <br>
-          gained. More distinct Glyph effects significantly
+          различных действующих эффектов глифов, и в меньшей степени
           <br>
-          increases Relic Shards gained.
+          от Очков Вечности.
         </div>
         <EffarigUnlockButton
           v-for="(unlock, i) in shopUnlocks"
@@ -140,7 +140,6 @@ export default {
           :unlock="unlock"
         />
         <EffarigUnlockButton
-          v-if="!runUnlocked"
           :unlock="runUnlock"
         />
         <button
@@ -148,7 +147,7 @@ export default {
           class="c-effarig-shop-button c-effarig-shop-button--available"
           @click="createCursedGlyph"
         >
-          Get a Cursed Glyph...
+          Получить Проклятый Глиф...
         </button>
       </div>
       <div
@@ -157,7 +156,7 @@ export default {
       >
         <div class="c-effarig-run-description">
           <span :class="{ 'o-pelle-disabled': isDoomed }">
-            Enter Effarig's Reality.
+            Запустить Реальность Эффарига
           </span>
         </div>
         <div
@@ -173,6 +172,9 @@ export default {
         </div>
         <div class="c-effarig-run-description">
           {{ runDescription }}
+          <br>
+          <br>
+          <h3>Награды:</h3>
         </div>
         <EffarigRunUnlockReward
           v-for="(unlock, i) in runUnlocks"

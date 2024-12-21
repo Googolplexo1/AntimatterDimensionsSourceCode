@@ -21,7 +21,7 @@ export default {
     milestones: () => GameDatabase.speedrunMilestones,
     spectateText() {
       return this.isSpectating
-        ? "Times here are unaffected by END so that you can see your final records"
+        ? "Чтобы вы могли просмотреть данные забега, мы не замещаем их словом КОНЕЦ."
         : null;
     }
   },
@@ -35,8 +35,8 @@ export default {
       this.milestoneTimes = [...player.speedrun.records];
       this.maxMilestone = this.milestoneTimes.map(i => Boolean(i)).lastIndexOf(true) + 1;
       this.startTimeStr = player.speedrun.startDate === 0
-        ? "Speedrun not started yet."
-        : `Speedrun started at ${Time.toDateTimeString(player.speedrun.startDate)}`;
+        ? "Спидран ещё не начат."
+        : `Дата начала спидрана: ${Time.toDateTimeString(player.speedrun.startDate)}`;
       this.displayAll = player.speedrun.displayAllMilestones;
       this.isSpectating = GameEnd.endState > END_STATE_MARKERS.SPECTATE_GAME;
     },
@@ -49,7 +49,7 @@ export default {
     <PrimaryToggleButton
       v-model="displayAll"
       class="o-primary-btn--subtab-option"
-      label="Describe all milestones:"
+      label="Показать описания всех стадий:"
     />
     <br>
     <b>{{ startTimeStr }}</b>

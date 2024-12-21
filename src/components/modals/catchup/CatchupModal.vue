@@ -24,10 +24,10 @@ export default {
     timeString() {
       // If diff is zero, that means we opened it up via the button and don't need the text for last opening
       if (!this.diff) return null;
-      return `It has been ${TimeSpan.fromMilliseconds(this.diff).toString()} since you last loaded up the game.`;
+      return `Прошло ${TimeSpan.fromMilliseconds(this.diff).toString()}, с тех пор как вы открыли игру в прошлый раз.`;
     },
     titleText() {
-      return this.diff ? "Content Catch-up" : "Content Summary";
+      return "Краткое изложение контента";
     }
   },
   methods: {
@@ -45,10 +45,10 @@ export default {
     </div>
     <div>
       {{ timeString }}
-      If you need a refresher, here is a quick summary of all the content you have unlocked so far from the beginning of
-      the game, separated into different stages of progression. These are only very brief descriptions; you can check
-      the related How To Play entries by clicking the contents title or <i class="fas fa-question-circle" /> icons
-      to view more detailed information.
+      На случай, если вам нужно освежить игру в памяти, представлено краткое изложение всего контента, разблокированного вами с начала
+      игры, разделённое по стадиям прогресса. Это лишь очень краткие описания; вы можете открыть
+      соответствующую статью помощи по игре, нажав название раздела или иконку <i class="fas fa-question-circle" />
+      для просмотра более детальной информации.
     </div>
     <div
       class="l-catchup-group-container"
@@ -62,13 +62,13 @@ export default {
       />
     </div>
     <span class="c-suggestion-text">
-      Based on your current progression, it will probably be useful to try to increase your {{ suggestedResource }}.
+      Судя по вашему прогрессу, возможно, будет полезно попытаться увеличить ваше количество {{ suggestedResource }}.
     </span>
     <div class="l-confirm-padding">
       <PrimaryButton
         @click="emitClose"
       >
-        Confirm
+        OK
       </PrimaryButton>
     </div>
   </div>

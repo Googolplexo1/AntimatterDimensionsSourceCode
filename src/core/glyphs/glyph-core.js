@@ -270,11 +270,11 @@ export const Glyphs = {
     if (glyph.type !== "companion") {
       if (RealityUpgrade(9).isLockingMechanics) {
         if (this.activeWithoutCompanion.length > 0) {
-          RealityUpgrade(9).tryShowWarningModal("equip another non-Companion Glyph");
+          RealityUpgrade(9).tryShowWarningModal("активировать ещё один глиф");
           return;
         }
         if (glyph.level < 3) {
-          RealityUpgrade(9).tryShowWarningModal(`equip a Glyph whose level is less than ${formatInt(3)}`);
+          RealityUpgrade(9).tryShowWarningModal(`активировать глиф уровня ниже ${formatInt(3)}`);
           return;
         }
       }
@@ -298,7 +298,7 @@ export const Glyphs = {
     }
     if (this.active[targetSlot] === null) {
       if (sameSpecialTypeIndex >= 0) {
-        Modal.message.show(`You may only have one ${glyph.type.capitalize()} Glyph equipped!`,
+        Modal.message.show(`В данный момент времени может действовать только один Глиф ${translateGlyph(glyph.type)}!`,
           { closeEvent: GAME_EVENT.GLYPHS_CHANGED });
         return;
       }
@@ -315,7 +315,7 @@ export const Glyphs = {
     } else {
       // We can only replace effarig/reality glyph
       if (sameSpecialTypeIndex >= 0 && sameSpecialTypeIndex !== targetSlot) {
-        Modal.message.show(`You may only have one ${glyph.type.capitalize()} Glyph equipped!`,
+        Modal.message.show(`В данный момент времени может действовать только один Глиф ${translateGlyph(glyph.type)}!`,
           { closeEvent: GAME_EVENT.GLYPHS_CHANGED });
         return;
       }
@@ -351,11 +351,11 @@ export const Glyphs = {
     const stillEquipped = player.reality.glyphs.active.length;
     const fastReality = player.records.recentRealities[0][1] < 3000;
     if (stillEquipped && !fastReality) {
-      const target = player.options.respecIntoProtected ? "Protected slots" : "Main Inventory";
+      const target = player.options.respecIntoProtected ? "" : "не";
       const hasOther = this.findFreeIndex(!player.options.respecIntoProtected) !== -1;
-      setTimeout(() => Modal.message.show(`${quantifyInt("Glyph", stillEquipped)} could not be unequipped due to lack
-        of space. Free up some space in your ${target}${hasOther ? " or switch where you are unequipping to" : ""}
-        in order to unequip ${stillEquipped === 1 ? "it" : "them"}.`, { closeEvent: GAME_EVENT.GLYPHS_CHANGED }),
+      setTimeout(() => Modal.message.show(`${quantifyInt("глиф", stillEquipped)} не удалось деактивировать ввиду недостатка
+        места. Чтобы деактивировать ${stillEquipped === 1 ? "его" : "их"},
+        освободите ${target}защищённые ячейки${hasOther ? ` или переключите настройку "Помещать деактивированные глифы в"` : ""}.`, { closeEvent: GAME_EVENT.GLYPHS_CHANGED }),
       50);
     }
 
@@ -572,7 +572,7 @@ export const Glyphs = {
       const glyph = (inventoryCopy ?? this.inventory)[inventoryIndex];
       // Never clean companion, and only clean cursed if we choose to sacrifice all
       if (glyph === null || glyph.type === "companion" || (glyph.type === "cursed" && threshold !== 0)) continue;
-      // Don't auto-clean individually customized glyphs unless it's harsh or delete all
+      // Don't auto-clean custom glyphs (eg. music glyphs) unless it's harsh or delete all
       const isCustomGlyph = glyph.color !== undefined || glyph.symbol !== undefined;
       if (isCustomGlyph && !isHarsh) continue;
       // If the threshold for better glyphs needed is zero, the glyph is definitely getting deleted
@@ -781,16 +781,16 @@ export const Glyphs = {
   },
   giveCursedGlyph() {
     if (GameCache.glyphInventorySpace.value === 0) {
-      Modal.message.show("No available inventory space; Sacrifice some Glyphs to free up space.",
+      Modal.message.show("В инвентаре нет пустой ячейки для Проклятого Глифа. Пожертвуйте глиф, чтобы освободить место.",
         { closeEvent: GAME_EVENT.GLYPHS_CHANGED });
       return;
     }
     const cursedCount = this.allGlyphs.filter(g => g !== null && g.type === "cursed").length;
     if (cursedCount >= 5) {
-      GameUI.notify.error(`You don't need more than ${format(5)} Cursed Glyphs!`);
+      GameUI.notify.error(`Вам не нужно больше ${format(5)} Проклятых Глифов!`);
     } else {
       this.addToInventory(GlyphGenerator.cursedGlyph());
-      GameUI.notify.error("Created a Cursed Glyph");
+      GameUI.notify.error("Создан Проклятый Глиф");
     }
   }
 };
@@ -849,7 +849,7 @@ export function getAdjustedGlyphLevel(glyph, realityGlyphBoost = Glyphs.levelBoo
 
 export function respecGlyphs() {
   if (!Glyphs.unequipAll()) {
-    Modal.message.show("Some of your Glyphs could not be unequipped due to lack of inventory space.",
+    Modal.message.show("Некоторые глифы не удалось деактивировать ввиду недостатка места.",
       { closeEvent: GAME_EVENT.GLYPHS_CHANGED });
   }
   player.reality.respec = false;

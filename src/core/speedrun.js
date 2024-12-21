@@ -5,10 +5,10 @@ export const Speedrun = {
   officialFixedSeed: 69420,
   unlock() {
     if (player.speedrun.isUnlocked) return;
-    Modal.message.show(`You have unlocked Speedrun Mode! This allows you to start a new save file with some slight
-      changes which can be helpful if you're trying to complete the game as quickly as possible. The option to
-      start a Speedrun Save is now available in the Options tab, under Saving. Choosing to start a Speedrun Save
-      will provide you with another modal with more in-depth information.`, {}, 3);
+    Modal.message.show(`Вы разблокировали режим спидрана! Теперь вы можете начать новый забег с небольшими
+      изменениями, которые полезны, если вы стараетесь завершить игру как можно скорее. Опция
+      начала спидрана теперь доступна в этой вкладке. Если вы решите начать спидран,
+      всплывёт другое окно с более подробной информацией.`, {}, 3);
     player.speedrun.isUnlocked = true;
   },
   // Used to block the seed-changing modal from opening (other functions assume this is checked beforehand)
@@ -41,13 +41,13 @@ export const Speedrun = {
     const record = rec ?? player.speedrun;
     switch (record.seedSelection) {
       case SPEEDRUN_SEED_STATE.UNKNOWN:
-        return `No seed data (old save)`;
+        return `Данные о зерне отсутсвуют (старое сохранение)`;
       case SPEEDRUN_SEED_STATE.FIXED:
-        return `Official fixed seed (${record.initialSeed})`;
+        return `Официально утверждённое зерно (${record.initialSeed})`;
       case SPEEDRUN_SEED_STATE.RANDOM:
-        return `Random seed (${record.initialSeed})`;
+        return `Случайное зерно (${record.initialSeed})`;
       case SPEEDRUN_SEED_STATE.PLAYER:
-        return `Player seed (${record.initialSeed})`;
+        return `Зерно по выбору игрока (${record.initialSeed})`;
       default:
         throw new Error("Unrecognized speedrun seed option in seedModeText");
     }
@@ -56,7 +56,7 @@ export const Speedrun = {
   generateName(name) {
     if (name.trim() === "") {
       const id = Math.floor((1e7 - 1) * Math.random()) + 1;
-      return `AD Player #${"0".repeat(6 - Math.floor(Math.log10(id)))}${id}`;
+      return `Игрок ИА #${"0".repeat(6 - Math.floor(Math.log10(id)))}${id}`;
     }
     if (name.length > 40) return `${name.slice(0, 37)}...`;
     return name;
@@ -148,7 +148,7 @@ class SpeedrunMilestone extends GameMechanicState {
     if (this.isReached || !player.speedrun.isActive) return;
     // Rounding slightly reduces filesize by removing weird float rounding
     player.speedrun.records[this.config.id] = Math.round(player.records.realTimePlayed);
-    GameUI.notify.success(`Speedrun Milestone Reached: ${this.name}`);
+    GameUI.notify.success(`Достигнута стадия спидрана: ${this.name}`);
   }
 }
 

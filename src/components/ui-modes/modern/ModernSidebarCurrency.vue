@@ -58,18 +58,17 @@ export default {
 <template>
   <div
     :class="containerClass()"
-    @click.exact="cycleResource(1)"
-    @click.shift.exact="cycleResource(-1)"
+    @click.shift.exact="cycleResource(1)"
   >
+    <div class="c-sidebar-resource__information">
+      <span class="c-sidebar-resource__name">{{ resourceName }}:</span>
+    </div>
     <h2
       :class="resource.formatClass"
       :style="styleObject()"
     >
       {{ displayValue }}
     </h2>
-    <div class="c-sidebar-resource__information">
-      <span class="c-sidebar-resource__name">{{ resourceName }}</span>
-    </div>
   </div>
 </template>
 

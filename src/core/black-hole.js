@@ -198,17 +198,17 @@ class BlackHoleState {
   get displayState() {
     if (Pelle.isDisabled("blackhole")) return `<i class="fas fa-ban"></i> Disabled`;
     if (Enslaved.isAutoReleasing) {
-      if (Enslaved.autoReleaseTick < 3) return `<i class="fas fa-compress-arrows-alt u-fa-padding"></i> Pulsing`;
-      return `<i class="fas fa-expand-arrows-alt u-fa-padding"></i> Pulsing`;
+      if (Enslaved.autoReleaseTick < 3) return `<i class="fas fa-compress-arrows-alt u-fa-padding"></i> пульсирует`;
+      return `<i class="fas fa-expand-arrows-alt u-fa-padding"></i> пульсирует`;
     }
-    if (Enslaved.isStoringGameTime) return `<i class="fas fa-compress-arrows-alt"></i> Charging`;
-    if (BlackHoles.areNegative) return `<i class="fas fa-caret-left"></i> Inverted`;
-    if (BlackHoles.arePaused) return `<i class="fas fa-pause"></i> Paused`;
-    if (this.isPermanent) return `<i class="fas fa-infinity"></i> Permanent`;
+    if (Enslaved.isStoringGameTime) return `<i class="fas fa-compress-arrows-alt"></i> заряжается`;
+    if (BlackHoles.areNegative) return `<i class="fas fa-caret-left"></i> инвертирована`;
+    if (BlackHoles.arePaused) return `<i class="fas fa-pause"></i> приостановлена`;
+    if (this.isPermanent) return `<i class="fas fa-infinity"></i> действует беспрерывно`;
 
     const timeString = TimeSpan.fromSeconds(this.timeToNextStateChange).toStringShort(true);
-    if (this.isActive) return `<i class="fas fa-play"></i> Active (${timeString})`;
-    return `<i class="fas fa-redo"></i> Inactive (${timeString})`;
+    if (this.isActive) return `<i class="fas fa-play"></i> действует (${timeString})`;
+    return `<i class="fas fa-redo"></i> бездействует (${timeString})`;
   }
 
   get isActive() {
@@ -256,7 +256,7 @@ class BlackHoleState {
         this._data.phase -= this.duration;
         this._data.active = false;
         if (GameUI.notify.showBlackHoles) {
-          GameUI.notify.blackHole(`${this.description(true)} duration ended.`);
+          GameUI.notify.blackHole(`Действие ${this.description()} завершилось.`);
         }
       }
     } else if (this.phase >= this.interval) {
@@ -264,7 +264,7 @@ class BlackHoleState {
       this._data.activations++;
       this._data.active = true;
       if (GameUI.notify.showBlackHoles) {
-        GameUI.notify.blackHole(`${this.description(true)} has activated!`);
+        GameUI.notify.blackHole(`Активация ${this.description()}!`);
       }
     }
   }
@@ -307,11 +307,8 @@ class BlackHoleState {
     return this.cycleLength - this.phase;
   }
 
-  description(capitalized) {
-    if (RealityUpgrade(20).isBought) {
-      return `Black Hole ${this.id}`;
-    }
-    return capitalized ? "The Black Hole" : "the Black Hole";
+  description() {
+    return (RealityUpgrade(20).isBought ? `${this.id}-й ` : "").concat("Чёрной Дыры");
   }
 }
 
@@ -355,19 +352,24 @@ export const BlackHoles = {
     if (!BlackHoles.areUnlocked) return;
     const maxInversion = player.requirementChecks.reality.slowestBH <= 1e-300;
     if (ImaginaryUpgrade(24).isLockingMechanics && Ra.isRunning && maxInversion) {
-      if (!automatic) ImaginaryUpgrade(24).tryShowWarningModal("uninvert your Black Hole");
+      if (!automatic) ImaginaryUpgrade(24).tryShowWarningModal("отменить инверсию Чёрной Дыры");
       return;
     }
     if (player.blackHolePause) player.requirementChecks.reality.slowestBH = 1;
     player.blackHolePause = !player.blackHolePause;
     player.blackHolePauseTime = player.records.realTimePlayed;
-    const blackHoleString = RealityUpgrade(20).isBought ? "Black Holes" : "Black Hole";
+    let blackHoleString;
+    if (player.blackHolePause) {
+      blackHoleString = RealityUpgrade(20).isBought ? "Чёрные Дыры" : "Чёрная Дыра";
+    } else {
+      blackHoleString = RealityUpgrade(20).isBought ? "Цикл Чёрных Дыр" : "Цикл Чёрной Дыры";
+    }
     // If black holes are going unpaused -> paused, use "inverted" or "paused" depending o
     // whether the player's using negative BH (i.e. BH inversion); if going paused -> unpaused,
     // use "unpaused".
     // eslint-disable-next-line no-nested-ternary
-    const pauseType = player.blackHolePause ? (BlackHoles.areNegative ? "inverted" : "paused") : "unpaused";
-    const automaticString = automatic ? "automatically " : "";
+    const pauseType = player.blackHolePause ? ((BlackHoles.areNegative ? "инвертирован" : "приостановлен").concat(RealityUpgrade(20).isBought ? "ы" : "а")) : "возобновлён";
+    const automaticString = automatic ? "автоматически " : "";
     GameUI.notify.blackHole(`${blackHoleString} ${automaticString}${pauseType}`);
   },
 
@@ -382,7 +384,7 @@ export const BlackHoles = {
   },
 
   get areNegative() {
-    return this.arePaused && !Enslaved.isRunning && !Laitela.isRunning && player.blackHoleNegative < 1;
+    return this.arePaused && !Laitela.isRunning && player.blackHoleNegative < 1;
   },
 
   get arePermanent() {

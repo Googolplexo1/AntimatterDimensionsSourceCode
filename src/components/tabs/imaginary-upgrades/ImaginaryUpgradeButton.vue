@@ -80,7 +80,7 @@ export default {
       if (this.canBeBought || !this.isAvailableForPurchase || this.isBought || Pelle.isDoomed) return "";
       const time = MachineHandler.estimateIMTimer(this.upgrade.cost);
       if (isFinite(time)) return TimeSpan.fromSeconds(time).toString();
-      return "Never affordable";
+      return "Цена недостижима";
     },
     toggleLock(upgrade) {
       if (this.isRebuyable) return;
@@ -113,7 +113,7 @@ export default {
           <br>
           <DescriptionDisplay
             :config="requirementConfig"
-            label="Requirement:"
+            label="Требование:"
             class="c-reality-upgrade-btn__requirement"
           />
         </template>
@@ -126,7 +126,7 @@ export default {
             v-if="!isBought"
             :config="config"
             br
-            name="Imaginary Machine"
+            name="Мнимая Машина"
           />
         </template>
       </span>
@@ -147,7 +147,7 @@ export default {
     <PrimaryToggleButton
       v-if="isRebuyable && isAutoUnlocked"
       v-model="isAutobuyerOn"
-      label="Auto:"
+      label="Автоматика:"
       class="l--spoon-btn-group__little-spoon-reality-btn o-primary-btn--reality-upgrade-toggle"
     />
   </div>

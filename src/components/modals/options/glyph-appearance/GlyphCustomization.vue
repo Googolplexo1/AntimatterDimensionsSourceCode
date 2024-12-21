@@ -99,41 +99,51 @@ export default {
       this.defaultKeySwap = false;
       EventHub.dispatch(GAME_EVENT.GLYPH_VISUAL_CHANGE);
     },
+    getTooltip(type) {
+      switch (type) {
+        case "cursed":
+          return "Проклятые";
+        case "music":
+          return "Музыкальные";
+        default:
+          return translateGlyph(type);
+      }
+    },
   }
 };
 </script>
 
 <template>
   <div class="c-glyph-customization-group">
-    <b>Custom Glyph Appearance</b>
+    <b>Пользовательский внешний вид глифа</b>
     <PrimaryToggleButton
       v-model="enabled"
       class="o-primary-btn--subtab-option"
-      on="Enabled"
-      off="Disabled"
+      on="Включён"
+      off="Отключён"
     />
     <br>
     <div v-if="hasCustomSets">
-      Reset Appearances to Default:
+      Сбросить внешний вид к виду по умолчанию:
       <PrimaryButton
         class="o-primary-btn--subtab-option"
         :class="{ 'o-primary-btn--disabled' : !enabled }"
         @click="resetAll"
       >
-        All Types
+        Всех типов
       </PrimaryButton>
       <PrimaryButton
         class="o-primary-btn--subtab-option"
         :class="{ 'o-primary-btn--disabled' : !enabled }"
         @click="resetSingle"
       >
-        This Type
+        Выбранного типа
       </PrimaryButton>
       <br>
-      <i>This will not reset any individually-modified Glyphs.</i>
+      <i>Внешний вид глифов, изменённых по отдельности, не будет сброшен.</i>
       <br>
       <br>
-      Glyph Type:
+      Тип глифов:
       <br>
       <div class="c-type-selection">
         <div
@@ -143,7 +153,7 @@ export default {
           @click="selectedIndex = index"
         >
           <GlyphComponent
-            v-tooltip="type.capitalize()"
+            v-tooltip="getTooltip(type)"
             v-bind="glyphIconProps"
             :glyph="fakeGlyph(type)"
           />
@@ -153,25 +163,25 @@ export default {
         :key="selectedIndex + enabled + defaultKeySwap"
         :type="cosmeticTypes[selectedIndex]"
       />
-      Note: Some options may cause very poor color contrast or readability on certain themes with certain Glyph types.
+      Примечание: некоторые опции приведут к проблемам с контрастом на определённых темах для определённых типов глифов.
     </div>
     <div v-else>
-      You currently have no available options for changing the default appearance of your Glyphs. To unlock some, visit
-      the Shop Tab or beat the game.
+      В данный момент вам недоступны опции изменения внешнего вида ваших глифов по умолчанию. Для их разблокировки
+      нужно пройти игру.
       <br>
       <br>
       <span v-if="hasSpecialTypes">
-        Enabling this setting will allow you to change individual Glyphs to special cosmetic types you have unlocked.
+        Включение этой настройки позволит вам менять внешний вид отдельных глифов с помощью разблокированных вами косметических наборов.
       </span>
       <span v-else>
-        Enabling or disabling this option will currently do nothing.
+        В данный момент эта настройка ни на что не влияет.
       </span>
     </div>
     <PrimaryButton
       class="o-primary-btn--subtab-option"
       @click="resetIndividual"
     >
-      Reset all individual Glyph cosmetics
+      Сбросить внешний вид всех отдельных глифов
     </PrimaryButton>
   </div>
 </template>

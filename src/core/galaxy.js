@@ -88,10 +88,10 @@ export class Galaxy {
 
   static get lockText() {
     if (this.canBeBought) return null;
-    if (EternityChallenge(6).isRunning) return "Locked (Eternity Challenge 6)";
-    if (InfinityChallenge(7).isRunning) return "Locked (Infinity Challenge 7)";
-    if (InfinityChallenge(1).isRunning) return "Locked (Infinity Challenge 1)";
-    if (NormalChallenge(8).isRunning) return "Locked (8th Antimatter Dimension Autobuyer Challenge)";
+    if (EternityChallenge(6).isRunning) return "Недоступно (6-е Испытание Вечности)";
+    if (InfinityChallenge(7).isRunning) return "Недоступно (7-е Испытание Бесконечности)";
+    if (InfinityChallenge(1).isRunning) return "Недоступно (1-е Испытание Бесконечности)";
+    if (NormalChallenge(8).isRunning) return "Недоступно (8-е Обычное Испытание)";
     return null;
   }
 

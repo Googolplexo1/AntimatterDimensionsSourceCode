@@ -30,15 +30,11 @@ export default {
       hasContinuum: false,
       isContinuumActive: false,
       multiplierText: "",
-      isFullyAutomated: false,
     };
   },
   computed: {
     sacrificeTooltip() {
-      if (this.isFullyAutomated) {
-        return "Sacrifice autobuyer is enabled and Achievement 118 is unlocked, so Sacrifice is now fully automated";
-      }
-      return `Boosts 8th Antimatter Dimension by ${formatX(this.sacrificeBoost, 2, 2)}`;
+      return `Множитель ${formatX(this.sacrificeBoost, 2, 2)} к 8-му Измерению Антиматерии`;
     },
   },
   methods: {
@@ -69,8 +65,8 @@ export default {
       }
     },
     getUntil10Display() {
-      if (this.isContinuumActive) return "Continuum";
-      return this.buyUntil10 ? "Until 10" : "Buy 1";
+      if (this.isContinuumActive) return "Континуум";
+      return this.buyUntil10 ? `Покупать до ${formatInt(10)}` : "Покупать по одному";
     },
     update() {
       this.hasDimensionBoosts = player.dimensionBoosts > 0;
@@ -84,15 +80,14 @@ export default {
 
       this.buy10Mult.copyFrom(AntimatterDimensions.buyTenMultiplier);
 
-      this.multiplierText = `Buy 10 Dimension purchase multiplier: ${formatX(this.buy10Mult, 2, 2)}`;
+      this.multiplierText = `Множитель за покупку ${formatInt(10)} измерений: ${formatX(this.buy10Mult, 2, 2)}`;
       if (!isSacrificeUnlocked) return;
-      this.isFullyAutomated = Autobuyer.sacrifice.isActive && Achievement(118).isUnlocked;
-      this.isSacrificeAffordable = Sacrifice.canSacrifice && !this.isFullyAutomated;
+      this.isSacrificeAffordable = Sacrifice.canSacrifice;
       this.currentSacrifice.copyFrom(Sacrifice.totalBoost);
       this.sacrificeBoost.copyFrom(Sacrifice.nextBoost);
       this.disabledCondition = Sacrifice.disabledCondition;
       const sacText = this.isSacrificeUnlocked
-        ? ` | Dimensional Sacrifice multiplier: ${formatX(this.currentSacrifice, 2, 2)}`
+        ? ` | Множитель Пожертвования Измерений: ${formatX(this.currentSacrifice, 2, 2)}`
         : "";
       this.multiplierText += sacText;
     }
@@ -104,7 +99,7 @@ export default {
   <div class="l-antimatter-dim-tab">
     <div class="modes-container">
       <button
-        class="o-primary-btn l-button-container"
+        class="o-primary-btn"
         @click="changeBuyMode"
       >
         {{ getUntil10Display() }}
@@ -116,17 +111,14 @@ export default {
         class="o-primary-btn--sacrifice"
         @click="sacrifice"
       >
-        <span v-if="isSacrificeAffordable">Dimensional Sacrifice ({{ formatX(sacrificeBoost, 2, 2) }})</span>
-        <span v-else-if="isFullyAutomated && disabledCondition !== ''">
-          Dimensional Sacrifice is Automated (Achievement 118)
-        </span>
-        <span v-else>Dimensional Sacrifice Disabled ({{ disabledCondition }})</span>
+        <span v-if="isSacrificeAffordable">Пожертвование Измерений ({{ formatX(sacrificeBoost, 2, 2) }})</span>
+        <span v-else>Пожертвование Измерений недоступно ({{ disabledCondition }})</span>
       </PrimaryButton>
       <button
-        class="o-primary-btn l-button-container"
+        class="o-primary-btn"
         @click="maxAll"
       >
-        Max All (M)
+        Купить всё (M)
       </button>
     </div>
     <span>{{ multiplierText }}</span>
@@ -145,9 +137,9 @@ export default {
         class="o-primary-btn--quick-reset"
         onclick="softReset(-1, true, true)"
       >
-        Perform a Dimension Boost reset
-        <span v-if="hasDimensionBoosts"> but lose a Dimension Boost</span>
-        <span v-else> for no gain</span>
+        Совершить сброс наподобие Расширения Измерений
+        <span v-if="hasDimensionBoosts"> с потерей одного Расширения Измерений</span>
+        <span v-else> без получения множителя</span>
       </PrimaryButton>
       <AntimatterGalaxyRow />
     </div>

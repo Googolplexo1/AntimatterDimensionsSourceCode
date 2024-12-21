@@ -47,8 +47,8 @@ class PerkState extends SetPurchasableMechanicState {
 
   onPurchased() {
     if (this.config.bumpCurrency !== undefined) this.config.bumpCurrency();
-    if (this.label === "EU1" && Currency.eternities.gt(0)) applyEU1();
-    if (this.label === "ACHNR") {
+    if (this.label === "УВ1" && Currency.eternities.gt(0)) applyEU1();
+    if (this.label === "ДНС") {
       if (Achievements.preReality.some(a => !a.isUnlocked)) player.reality.gainedAutoAchievements = true;
       for (const achievement of Achievements.preReality) {
         achievement.unlock(true);
@@ -85,8 +85,8 @@ export function checkPerkValidity() {
   dev.respecPerks();
   if (Currency.perkPoints.gte(Perks.all.length)) {
     dev.buyAllPerks();
-    Modal.message.show("Some of your Perks were invalid, but you auto-bought all valid perks.");
+    Modal.message.show("Ваше сохранение содержало недопустимые Навыки, что было исправлено. Все Навыки принудительно куплены.");
   } else {
-    Modal.message.show("Some of your Perks were invalid, so your Perks have been reset and your Perk Points refunded.");
+    Modal.message.show("Ваше сохранение содержало недопустимые Навыки, что было исправлено. Все Навыки принудительно сброшены, а Очки Умения, потраченные на них - возвращены.");
   }
 }

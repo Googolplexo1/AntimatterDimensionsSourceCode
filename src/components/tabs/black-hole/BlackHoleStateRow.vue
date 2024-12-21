@@ -19,7 +19,7 @@ export default {
   },
   computed: {
     description() {
-      return this.blackHole.description(true);
+      return this.blackHole.description();
     },
     id() {
       return this.blackHole.id;
@@ -42,18 +42,18 @@ export default {
 
 <template>
   <h3 v-if="isUnlocked">
-    {{ description }} State:
+    Состояние {{ description }}:
     <template v-if="isPermanent">
-      Permanently Active
+      действует беспрерывно
     </template>
     <template v-else-if="isActive">
-      Active ({{ nextChange }} remaining)
+      действует ({{ nextChange }} осталось)
     </template>
     <template v-else-if="id === 2 && isCharged">
-      Charged (Activates with Black Hole 1, {{ nextChange }} remaining)
+      готова (активируется вместе с 1-й Чёрной Дырой через {{ nextChange }})
     </template>
     <template v-else>
-      Inactive (Activation in {{ nextChange }})
+      бездействует ({{ nextChange }} осталось)
     </template>
   </h3>
 </template>

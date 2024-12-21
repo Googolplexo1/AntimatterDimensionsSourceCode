@@ -320,6 +320,8 @@ window.player = {
       bestEternitiesPerMs: DC.D0,
       maxReplicanti: DC.D0,
       maxDT: DC.D0,
+      bestRMmin: DC.D0,
+      bestRMminVal: DC.D0,
       bestRSmin: 0,
       bestRSminVal: 0,
     },
@@ -359,7 +361,7 @@ window.player = {
     previousRuns: {}
   },
   IPMultPurchases: 0,
-  version: 25,
+  version: 102,
   infinityPower: DC.D1,
   postC4Tier: 0,
   eternityPoints: DC.D0,
@@ -372,13 +374,13 @@ window.player = {
   replicanti: {
     unl: false,
     amount: DC.D0,
-    chance: 0.01,
-    chanceCost: DC.E150,
-    interval: 1000,
-    intervalCost: DC.E140,
+    chance: 0,
+    chanceCost: DC.E320,
+    interval: 0,
+    intervalCost: DC.E320,
     boughtGalaxyCap: 0,
     galaxies: 0,
-    galCost: DC.E170,
+    galCost: DC.E320,
   },
   timestudy: {
     theorem: DC.D0,
@@ -772,7 +774,7 @@ window.player = {
       speed: 1,
       includeAnimated: true,
     },
-    notation: "Mixed scientific",
+    notation: "Смешанная научная",
     notationDigits: {
       comma: 5,
       notation: 9
@@ -801,7 +803,6 @@ window.player = {
     multiplierTab: {
       currTab: 0,
       showAltGroup: false,
-      replacePowers: false,
     },
     autosaveInterval: 30000,
     showTimeSinceSave: true,
@@ -840,8 +841,7 @@ window.player = {
       tachyonParticles: true,
       reality: true,
       background: true,
-      blobSnowflakes: 16,
-      blobHole: false
+      blobSnowflakes: 16
     },
     confirmations: {
       armageddon: true,
@@ -907,6 +907,7 @@ window.player = {
     },
     invertTTgenDisplay: false,
     autoRealityForFilter: false,
+    genderMale: true,
   },
   IAP: {
     enabled: false,

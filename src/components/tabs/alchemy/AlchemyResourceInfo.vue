@@ -31,6 +31,9 @@ export default {
         "c-alchemy-resource-info--locked": !this.isUnlocked
       };
     },
+    divisibleByThree() {
+      return this.reaction.reagents.every(r => r.cost % 3 === 0);
+    },
     reaction() {
       return this.resource.reaction;
     },
@@ -40,15 +43,15 @@ export default {
     reactionText() {
       if (this.resource === AlchemyResource.reality) return this.realityReactionText;
       const reagents = this.reaction.reagents
-        .map(r => `${format(r.cost)}${r.resource.symbol}`)
+        .map(r => `${this.formatCoefficient(this.divisibleByThree ? r.cost * 2 / 3 : r.cost * 2)}${r.resource.symbol}`)
         .join(" + ");
-      return `${reagents} ➜ ${format(this.reactionProduction, 2, 2)}${this.resource.symbol}`;
+      return `${reagents} ➜ ${this.formatCoefficient(this.divisibleByThree ? 1 : 3)}${this.resource.symbol}`;
     },
     realityReactionText() {
       const reagents = this.reaction.reagents
         .map(r => r.resource.symbol)
         .join(" + ");
-      return `${reagents} ➜ ${this.resource.symbol}`;
+      return `${reagents} ➜ ${this.resource.symbol} (на эту реакцию не влияет Синергия)`;
     },
     effectConfig() {
       const resource = this.resource;
@@ -65,8 +68,8 @@ export default {
     },
     formattedFlow() {
       const sign = this.flow >= 0 ? "+" : "-";
-      if (Math.abs(this.flow) < 0.01) return "None";
-      const resourceText = `${sign}${format(Math.abs(this.flow), 2, 2)}/sec`;
+      if (Math.abs(this.flow) < 0.01) return "Нет";
+      const resourceText = `${sign}${format(Math.abs(this.flow), 2, 2)}/с`;
       const color = this.flow > 0 ? "9CCC65" : "CC6666";
       return `<span style="color:#${color}">${resourceText}</span>`;
     },
@@ -85,6 +88,9 @@ export default {
         this.isReactionActive = !this.isDoomed && this.reaction.isActive;
         this.reactionProduction = this.reaction.reactionProduction;
       }
+    },
+    formatCoefficient(x) {
+      return x === 1 ? "" : formatInt(x);
     }
   }
 };
@@ -99,17 +105,17 @@ export default {
       {{ resource.symbol }} {{ resource.name }} {{ resource.symbol }}
     </span>
     <span v-if="isDoomed">
-      Destroyed by Pelle
+      Разрушено Пеллем
     </span>
     <span v-else>
-      {{ capped ? "Capped" : "Current" }}: {{ resourceAmount }}/{{ resourceCap }}
-      (Recent change: <span v-html="formattedFlow" />)
+      {{ capped ? "Ограничено" : "Количество" }}: {{ resourceAmount }}/{{ resourceCap }}
+      (Недавнее изменение: <span v-html="formattedFlow" />)
     </span>
-    <span v-if="isBaseResource">Base Resource</span>
-    <span v-else>Reaction: {{ isReactionActive ? "Active" : "Inactive" }} ({{ reactionText }})</span>
+    <span v-if="isBaseResource">Основной ресурс</span>
+    <span v-else>Реакция: {{ isReactionActive ? "включена" : "отключена" }} ({{ reactionText }})</span>
     <span :class="{ 'o-pelle-disabled': isDoomed }">
       <EffectDisplay
-        label="Effect"
+        label="Эффект"
         :config="effectConfig"
       />
     </span>
@@ -118,7 +124,7 @@ export default {
     v-else
     :class="classObject"
   >
-    Unlock requirement: {{ unlockRequirement }}
+    Требование разблокировки: {{ unlockRequirement }}
   </div>
 </template>
 

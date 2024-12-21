@@ -24,7 +24,7 @@ export default {
       return GameStorage.loadFromBackup(this.slotData.id);
     },
     progressStr() {
-      if (!this.save) return "(Empty)";
+      if (!this.save) return "(Пусто)";
 
       // These will be checked in order; the first nonzero resource will be returned
       const resources = [this.save.celestials.pelle.realityShards,
@@ -34,12 +34,12 @@ export default {
         this.save.infinityPoints,
         this.save.antimatter
       ];
-      const names = ["Reality Shards",
-        "Imaginary Machine Cap",
-        "Reality Machines",
-        "Eternity Points",
-        "Infinity Points",
-        "Antimatter"];
+      const names = ["Осколков Реальности",
+        "Предел Мнимых Машин",
+        "Машин Реальности",
+        "Очков Вечности",
+        "Очков Бесконечности",
+        "Антиматерии"];
 
       for (let index = 0; index < resources.length; index++) {
         const val = new Decimal(resources[index]);
@@ -47,17 +47,17 @@ export default {
       }
 
       // In practice this should never happen, unless a save triggers on the same tick the very first AD1 is bought
-      return "No resources";
+      return "Нет ресурсов";
     },
     slotType() {
       const formattedTime = this.slotData.intervalStr?.();
       switch (this.slotData.type) {
         case BACKUP_SLOT_TYPE.ONLINE:
-          return `Saves every ${formattedTime} online`;
+          return `Сохраняется раз в ${formattedTime} онлайн`;
         case BACKUP_SLOT_TYPE.OFFLINE:
-          return `Saves after ${formattedTime} offline`;
+          return `Сохраняется раз в ${formattedTime} офлайн`;
         case BACKUP_SLOT_TYPE.RESERVE:
-          return "Pre-loading save";
+          return "Сохранение до загрузки";
         default:
           throw new Error("Unrecognized backup save type");
       }
@@ -65,8 +65,8 @@ export default {
     lastSaved() {
       const lastSave = GameStorage.lastBackupTimes[this.slotData.id]?.date ?? 0;
       return lastSave
-        ? `Last saved: ${TimeSpan.fromMilliseconds(this.currTime - lastSave)} ago`
-        : "Slot not currently in use";
+        ? `Последний раз сохранено ${TimeSpan.fromMilliseconds(this.currTime - lastSave, "accusative")} назад`
+        : "Слот в данный момент не используется";
     },
   },
   methods: {
@@ -88,7 +88,7 @@ export default {
       GameStorage.offlineEnabled = player.options.loadBackupWithoutOffline ? false : undefined;
       GameStorage.oldBackupTimer = player.backupTimer;
       GameStorage.loadPlayerObject(toLoad);
-      GameUI.notify.info(`Game loaded from backup slot #${this.slotData.id}`);
+      GameUI.notify.info(`Загружено резервное сохранение №${this.slotData.id}`);
       GameStorage.loadBackupTimes();
       GameStorage.ignoreBackupTimer = false;
       GameStorage.offlineEnabled = undefined;
@@ -101,7 +101,7 @@ export default {
 
 <template>
   <div class="c-bordered-entry">
-    <h3>Slot #{{ slotData.id }}:</h3>
+    <h3>Слот №{{ slotData.id }}:</h3>
     <span>{{ progressStr }}</span>
     <span>
       {{ slotType }}
@@ -112,7 +112,7 @@ export default {
       :class="{ 'o-primary-btn--disabled' : !save }"
       @click="load()"
     >
-      Load
+      Загрузить
     </PrimaryButton>
   </div>
 </template>

@@ -509,7 +509,7 @@
 .l-glyph-tooltip {
   display: flex;
   flex-direction: column;
-  width: 27.4rem;
+  width: 37rem;
   position: absolute;
   align-items: center;
   padding: 0.5rem 0;
@@ -970,7 +970,7 @@
 .c-glyph-choice-effect-list {
   display: flex;
   flex-direction: column;
-  width: 25rem;
+  width: 35rem;
   height: 11rem;
   justify-content: space-evenly;
   background-color: rgba(0, 0, 0, 10%);
