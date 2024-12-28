@@ -91,7 +91,7 @@ export default {
 
       const durationInMs = Date.now() - this.player.lastUpdate;
       const ticks = GameStorage.maxOfflineTicks(durationInMs);
-      return `При импортировании будет ${quantifyInt("симулирован", ticks)} ${quantifyInt("тик", ticks)}, каждый продолжительностью в 
+      return `При импортировании будет ${pluralize("симулирован", ticks)} ${quantifyInt("тик", ticks)}, каждый продолжительностью в 
         ${TimeSpan.fromMilliseconds(durationInMs / ticks).toStringShort()}.`;
     },
     willLoseCosmetics() {
