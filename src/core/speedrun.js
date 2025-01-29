@@ -56,7 +56,7 @@ export const Speedrun = {
   generateName(name) {
     if (name.trim() === "") {
       const id = Math.floor((1e7 - 1) * Math.random()) + 1;
-      return `Игрок ИА #${"0".repeat(6 - Math.floor(Math.log10(id)))}${id}`;
+      return `Игрок ИА №${"0".repeat(6 - Math.floor(Math.log10(id)))}${id}`;
     }
     if (name.length > 40) return `${name.slice(0, 37)}...`;
     return name;

@@ -5,7 +5,6 @@ export default {
     return {
       isActive: false,
       isSegmented: false,
-      usedSTD: false,
       hasStarted: false,
       startDate: 0,
       saveName: "",
@@ -30,9 +29,6 @@ export default {
     segmentText() {
       return this.isSegmented ? "Сегментированный забег (импортированное сохранение)" : "Непрерывный забег (без импорта сохранения)";
     },
-    iapText() {
-      return this.usedSTD ? "Использованы внутриигровые покупки" : "Без внутриигровых покупок";
-    },
     offlineText() {
       const stateText = this.offlineProgress
         ? `<span style="color: var(--color-good)">Включён</span>`
@@ -56,7 +52,6 @@ export default {
       // Short-circuit if speedrun isn't active; updating some later stuff can cause vue errors outside of speedruns
       if (!this.isActive) return;
       this.isSegmented = speedrun.isSegmented;
-      this.usedSTD = speedrun.usedSTD;
       this.hasStarted = speedrun.hasStarted;
       this.startDate = speedrun.startDate;
       this.saveName = speedrun.name;
@@ -73,7 +68,7 @@ export default {
     },
     milestoneName(id) {
       const db = GameDatabase.speedrunMilestones;
-      return id === 0 ? "None" : db.find(m => m.id === id).name;
+      return id === 0 ? "Нет" : db.find(m => m.id === id).name;
     },
     changeName() {
       if (this.hasStarted) return;
@@ -109,8 +104,6 @@ export default {
       </span>
       <br>
       <i>{{ segmentText }}</i>
-      <br>
-      <i>{{ iapText }}</i>
       <br>
       <span
         :class="{ 'c-speedrun-status--can-change': canModifySeed }"
