@@ -18,7 +18,7 @@ export const MatterScale = {
       const scale = this.macroScale(planckedMatter);
       const amount = format(planckedMatter.dividedBy(scale.amount), 2, 1);
       return [`Если бы каждая единица антиматерии занимала планковский объём,
-        вы бы могли заполнить около ${amount} объёма ${scale.name}`];
+        вы бы могли заполнить около ${amount} объёма ${scale.name}.`];
     }
     const scale = this.microScale(matter);
     return [`Если бы каждая единица антиматерии занимала объём, равный ${format(this.proton.div(scale.amount).div(matter), 2, 1)} ${scale.name},
