@@ -549,7 +549,7 @@ export const normalAchievements = [
     get description() { return `Достигните ${formatPostBreak("1e35000")} антиматерии.`; },
     checkRequirement: () => Currency.antimatter.exponent >= 35000,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    reward: "множитель к Измерениям Антиматерии, зависящий от количества антиматерии..",
+    reward: "множитель к Измерениям Антиматерии, зависящий от количества антиматерии.",
     effect: () => Currency.antimatter.value.pow(0.00002).plus(1),
     formatEffect: value => `${formatX(value, 2, 2)}`
   },
