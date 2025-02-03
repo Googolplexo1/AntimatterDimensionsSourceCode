@@ -437,7 +437,7 @@ export const normalAchievements = [
     },
     checkRequirement: () => NormalChallenge(3).isOnlyActiveChallenge && Time.thisInfinityRealTime.totalSeconds <= 10,
     checkEvent: GAME_EVENT.BIG_CRUNCH_BEFORE,
-    get reward() { return `множитель ${formatX(1.5, 1, 1)} к 1-му Измерению Антиматерии`; },
+    get reward() { return `множитель ${formatX(1.5, 1, 1)} к 1-му Измерению Антиматерии.`; },
     effect: 1.5
   },
   {

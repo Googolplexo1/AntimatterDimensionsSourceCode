@@ -28,11 +28,11 @@ export default {
       информацию о ходе прогресса.
       <br>
       <br>
-      В 2024 году переводчик под псевдонимом Googolplexo выпустил русскую локализацию "Измерений Антиматерии", в которую вы сейчас играете.
+      В 2024 году переводчик под псевдонимом Gugolplekso выпустил русскую локализацию "Измерений Антиматерии", в которую вы сейчас играете.
     </div>
     <div class="l-socials">
       <InformationModalButton
-        name="Репозиторий на GitHub"
+        name="Репозиторий на GitHub (локализация)"
         icon="fa-brands fa-github"
         link="https://github.com/Googolplexo1/AntimatterDimensionsSourceCode"
       />
@@ -62,7 +62,7 @@ export default {
         show-modal="credits"
       />
       <InformationModalButton
-        name="История изменений"
+        name="История изменений (оригинал)"
         icon="fa-solid fa-file-lines"
         show-modal="changelog"
       />
