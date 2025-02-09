@@ -796,8 +796,8 @@ export function applyRUPG10(real = true) {
     if (autobuyer.data.interval !== undefined) autobuyer.data.interval = 100;
   }
 
-  if (EternityMilestone.keepInfinityUpgrades.isReached) player.dimensionBoosts = Math.max(4, player.dimensionBoosts);
-  if (EternityMilestone.keepInfinityUpgrades.isReached) player.galaxies = Math.max(1, player.galaxies);
+  if (EternityMilestone.keepInfinityUpgrades.isReached && !Player.isInAntimatterChallenge) player.dimensionBoosts = Math.max(4, player.dimensionBoosts);
+  if (EternityMilestone.keepInfinityUpgrades.isReached && !Player.isInAntimatterChallenge) player.galaxies = Math.max(1, player.galaxies);
   if (EternityMilestone.keepAutobuyers.isReached) player.break = true;
 
   applyEU1();
