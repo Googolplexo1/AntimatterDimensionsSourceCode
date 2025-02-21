@@ -450,7 +450,7 @@ export const normalAchievements = [
       DimBoost.purchasedBoosts === 0 &&
       player.galaxies === 0,
     checkEvent: GAME_EVENT.BIG_CRUNCH_BEFORE,
-    get reward() { return `множитель ${formatX(3)} к 1-му Измерению Антиматерии`; },
+    get reward() { return `множитель ${formatX(3)} к 1-му Измерению Антиматерии.`; },
     effect: 3
   },
   {
@@ -516,7 +516,7 @@ export const normalAchievements = [
     get description() { return `Совершите бесконечность за ${formatInt(250)}мс или быстрее.`; },
     checkRequirement: () => Time.thisInfinityRealTime.totalMilliseconds <= 250,
     checkEvent: GAME_EVENT.BIG_CRUNCH_BEFORE,
-    get reward() { return `начинать с ${format(5e25)}.`; },
+    get reward() { return `начинать с ${format(5e25)} антиматерии.`; },
     effect: 5e25
   },
   {
@@ -1067,7 +1067,7 @@ export const normalAchievements = [
     description: "Купите все Навыки.",
     checkRequirement: () => player.reality.perks.size === Perks.all.length,
     checkEvent: GAME_EVENT.PERK_BOUGHT,
-    get reward() { return `Увеличить редкость получаемых глифов на ${formatPercents(0.01)}.`; },
+    get reward() { return `увеличить редкость получаемых глифов на ${formatPercents(0.01)}.`; },
     effect: 1
   },
   {
@@ -1295,7 +1295,7 @@ export const normalAchievements = [
     get description() { return `Достигните ${formatInt(100000)} Галактик Антиматерии.`; },
     checkRequirement: () => player.galaxies >= 100000,
     checkEvent: GAME_EVENT.GALAXY_RESET_AFTER,
-    get reward() { return `Галактики на ${formatPercents(0.01)} сильнее.`; },
+    get reward() { return `галактики на ${formatPercents(0.01)} сильнее.`; },
     effect: 1.01
   },
   {
@@ -1322,7 +1322,7 @@ export const normalAchievements = [
     checkEvent: GAME_EVENT.INFINITY_CHALLENGE_COMPLETED,
     // Weirdly specific reward? Yes, its V's ST bonus because we forgot to disable it
     // when balancing Pelle and only realised too late.
-    get reward() { return `множители Измерений Антиматерии возведены в степень ${format(1.0812403840463596, 3, 3)}.`; },
+    get reward() { return `множители Измерений Антиматерии возведены в степень ${format(1.0812403840463596, 5, 5)}.`; },
     effect: 1.0812403840463596
   },
   {
