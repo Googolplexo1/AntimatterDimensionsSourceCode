@@ -20,7 +20,7 @@ export const tickspeed = {
     multValue: () => Tickspeed.perSecond,
     // No point in showing this breakdown at all unless both components are nonzero; however they will always be nonzero
     // due to the way the calculation works, so we have to manually hide it here
-    isActive: dim => Tickspeed.perSecond.gt(1) && (!dim || EternityChallenge(7).isRunning),
+    isActive: dimType => Tickspeed.perSecond.gt(1) && (dimType === "AD" || EternityChallenge(7).isRunning),
     dilationEffect: () => {
       const baseEff = (player.dilation.active || Enslaved.isRunning)
         ? 0.75 * Effects.product(DilationUpgrade.dilationPenalty)
