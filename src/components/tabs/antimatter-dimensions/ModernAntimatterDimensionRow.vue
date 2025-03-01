@@ -57,7 +57,7 @@ export default {
       return `${AntimatterDimension(this.tier - 2).shortDisplayName}-х ИА`;
     },
     buttonPrefix() {
-      if (!this.isUnlocked) return "Заблокировано";
+      if (!this.isUnlocked) return "Недоступно";
       if (this.isCapped) return "Разрушено Реальностью Безымянных";
       if (this.isContinuumActive) return "Континуум: ";
       return `Купить ${formatInt(this.howManyCanBuy)}`;

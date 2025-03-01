@@ -387,7 +387,7 @@ export const normalAchievements = [
   {
     id: 63,
     name: "Новое начало",
-    get description() { return `Достигните ${formatInt(1)} Силы Бесконечности.`; },
+    description: "Начните производить Силу Бесконечности.",
     checkRequirement: () => Currency.infinityPower.gt(1),
     checkEvent: GAME_EVENT.GAME_TICK_AFTER
   },

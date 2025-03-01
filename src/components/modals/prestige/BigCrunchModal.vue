@@ -29,7 +29,7 @@ export default {
     },
     ipGainInfo() {
       return `Вы получите ${quantify("бесконечность", this.gainedInfinities, 2, 0)}
-        and ${quantify("Очко", this.gainedInfinityPoints, 2, 0)} Бесконечности.`;
+        и ${quantify("Очко", this.gainedInfinityPoints, 2, 0)} Бесконечности.`;
     },
     startingResources() {
       const gainedResources = [];

@@ -35,7 +35,7 @@ export default {
       if (typeof rewardDescription === "function") {
         rewardDescription = rewardDescription();
       }
-      return `Награда за выполнение этого Испытания следующая: ${rewardDescription}`;
+      return `Награда за выполнение этого Испытания следующая: ${rewardDescription}.`;
     },
     condition() {
       let conditionOfChallenge = this.challenge._config.description;
