@@ -137,7 +137,7 @@ window.pluralize = function pluralize(word, amount) {
   }
 
   if (word === "") return "";
-  if (["Машина", "Теорема"].includes(word)) return word.slice(0, -1) + (number === "dual" ? "ы" : "");
+  if (["Машина", "Машину", "Теорема"].includes(word)) return word.slice(0, -1) + (number === "dual" ? "ы" : "");
   if (word === "раз") return (number === "dual" ? "раза" : "раз");
   if (word === "Древо") return (number === "dual" ? "Древа" : "Древ");
   if (word === "год") return (number === "dual" ? "года" : "лет");

@@ -71,7 +71,7 @@ export const eternityChallenges = [
     pelleGoal: DC.E1400,
     goalIncrease: DC.E400,
     reward: {
-      description: "Наценка на Далёкие Галактики начинается позже",
+      description: "наценка на Далёкие Галактики начинается позже",
       effect: completions => completions * 5,
       formatEffect: value => `на ${formatInt(value)} ГА позже`
     }

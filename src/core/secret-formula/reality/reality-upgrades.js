@@ -134,7 +134,7 @@ export const realityUpgrades = [
     name: "Экзистенциальное Продление",
     id: 10,
     cost: 15,
-    requirement: () => `Получите не менее ${formatPostBreak(DC.E400)} Очков Бесконечности`,
+    requirement: () => `Совершите первую вечность в текущей реальности, имея не менее ${formatPostBreak(DC.E400)} Очков Бесконечности`,
     hasFailed: () => !player.requirementChecks.reality.noEternities,
     checkRequirement: () => Currency.infinityPoints.exponent >= 400 &&
       player.requirementChecks.reality.noEternities,

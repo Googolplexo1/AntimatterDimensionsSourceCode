@@ -59,7 +59,7 @@ export default {
       const gainedResources = [];
       gainedResources.push(`${quantifyInt("реальность", this.simRealities)}`);
       gainedResources.push(`${quantifyInt("Очко", this.simRealities)} Умения`);
-      gainedResources.push(`${quantify("Машина", this.realityMachines, 2)} Реальности`);
+      gainedResources.push(`${quantify("Машину", this.realityMachines, 2)} Реальности`);
       if (this.effarigUnlocked) {
         gainedResources.push(`${quantify("Реликтовый Осколок", this.shardsGained, 2)}`);
       }
