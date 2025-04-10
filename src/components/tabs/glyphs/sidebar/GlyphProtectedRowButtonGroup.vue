@@ -80,7 +80,7 @@ export default {
       :class="removeRowButtonClass()"
       @click="removeRow"
     >
-      Убрать незащищённый ряд
+      Убрать защищённый ряд
     </button>
     <ToggleButton
       v-model="moveGlyphs"
