@@ -42,7 +42,7 @@ export default {
 
 <template>
   <div class="l-modal-options__save-record">
-    <h3>Сохранение #{{ saveId + 1 }}:<span v-if="isSelected"> (выбрано)</span></h3>
+    <h3>Сохранение №{{ saveId + 1 }}:<span v-if="isSelected"> (выбрано)</span></h3>
     <span v-if="fileName">Имя файла: {{ fileName }}</span>
     <span>Антиматерии: {{ formatAntimatter(antimatter) }}</span>
     <PrimaryButton
