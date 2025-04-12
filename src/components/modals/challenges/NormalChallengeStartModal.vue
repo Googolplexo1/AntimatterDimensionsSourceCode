@@ -30,7 +30,7 @@ export default {
       return `Вы запускаете ${this.id}-е Обычное Испытание`;
     },
     reward() {
-      return `Награда за выполнение этого Испытания следующая: ${this.challenge._config.reward}.`;
+      return `Награда за выполнение этого Испытания следующая: разблокировать ${this.challenge._config.reward}.`;
     },
     condition() {
       let conditionOfChallenge = this.challenge._config.description;
