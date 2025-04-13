@@ -546,7 +546,7 @@ export const normalTimeStudies = [
     requiresST: [223],
     description() {
       const effect = TimeStudy(224).effectValue;
-      return `Наценка на Далёкие Галактики начинается на ${quantifyInt("Галактику", effect)} позже
+      return `Наценка на Далёкие Галактики начинается на ${quantifyInt("галактику", effect)} позже
         (на одну за каждые ${formatInt(2000)} Расширений)`;
     },
     effect: () => Math.floor(DimBoost.totalBoosts / 2000)

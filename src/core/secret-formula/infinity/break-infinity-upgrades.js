@@ -76,7 +76,7 @@ export const breakInfinityUpgrades = {
     description: () => `Вы производите бесконечности со скоростью ${format(0.5, 1, 1)} за рекордное время бесконечности`,
     effect: () => player.records.bestInfinity.time,
     formatEffect: value => {
-      if (value === Number.MAX_VALUE && !Pelle.isDoomed) return "No Infinity generation";
+      if (value === Number.MAX_VALUE && !Pelle.isDoomed) return "Отключено ввиду отсутствия бесконечностей";
       let infinities = DC.D1;
       infinities = infinities.timesEffectsOf(
         RealityUpgrade(5),
