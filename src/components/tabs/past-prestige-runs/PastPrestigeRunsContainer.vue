@@ -210,7 +210,7 @@ export default {
           width = this.layer.name === "реальность" ? "10rem" : "20rem";
           break;
         default:
-          width = "13rem";
+          width = "15rem";
       }
       return {
         width,
