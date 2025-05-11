@@ -578,7 +578,7 @@ export const normalAchievements = [
     checkRequirement: () => Currency.infinities.gt(DC.D2E6),
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     get reward() {
-      return `получать в ${format(250)} раз больше бесконечностей от бесконечностей, длящихся более ${formatInt(5)} секунд.`;
+      return `вы получаете в ${format(250)} раз больше бесконечностей от бесконечностей, длящихся более ${formatInt(5)} секунд.`;
     },
     effect: 250,
     effectCondition: () => Time.thisInfinity.totalSeconds > 5

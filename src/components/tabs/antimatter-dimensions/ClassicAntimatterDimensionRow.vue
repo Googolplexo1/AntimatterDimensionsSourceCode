@@ -72,7 +72,7 @@ export default {
       return `Куплено ${quantifyInt("раз", this.bought)}`;
     },
     costUnit() {
-      return `${AntimatterDimension(this.tier - 2).shortDisplayName}-х ИА`;
+      return `${this.tier - 2}-х ИА`;
     },
     buySingleClass() {
       return {
