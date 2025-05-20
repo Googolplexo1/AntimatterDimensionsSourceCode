@@ -81,7 +81,7 @@ export default {
         v-if="!withinLimit"
         class="c-overlimit"
       >
-        (Изменения не будут сохранены, так как превышено ограничение на количесвто символов!)
+        (Изменения не будут сохранены, так как превышено ограничение на количество символов!)
       </span>
       <div class="c-automator-split-pane">
         <SplitPane
