@@ -52,7 +52,7 @@ export default {
       gapStr = `${this.currTime > ms ? "-" : "+"}${gapStr}`;
       return ms > 0
         ? `${timeStr}${showGap ? ` (${gapStr})` : ""}`
-        : "Not reached yet";
+        : "Ещё не достигнуто";
     },
     timeStyle(time) {
       const isFastest = time === [this.currTime, this.refTime, this.bestTime].filter(t => t !== 0).min();

@@ -20,12 +20,6 @@ export default {
         text: this.prevRunInfo.isSegmented ? "Сегментированный" : "Непрерывный",
       };
     },
-    stdAttr() {
-      return {
-        icon: `fas fa-coins o-icon ${this.prevRunInfo.usedSTD ? "l-icon-on" : "l-icon-off"}`,
-        text: this.prevRunInfo.usedSTD ? "Использованы внутриигровые покупки" : "Без внутриигровых покупок",
-      };
-    },
     offlineAttr() {
       const offlineFrac = this.prevRunInfo.offlineTimeUsed / this.prevRunInfo.records.max();
       let symbol;
@@ -63,7 +57,7 @@ export default {
       };
     },
     iconAttrs() {
-      return [this.offlineAttr, this.segmentAttr, this.stdAttr, this.seedAttr];
+      return [this.offlineAttr, this.segmentAttr, this.seedAttr];
     },
     startDate() {
       return Time.toDateTimeString(this.prevRunInfo.startDate);
@@ -102,7 +96,7 @@ export default {
 <style scoped>
 .c-icon-container {
   display: grid;
-  grid-template-columns: 7rem 20rem 4rem 4rem 4rem 4rem 30rem 20rem;
+  grid-template-columns: 7rem 20rem 4rem 4rem 4rem 30rem 20rem;
   align-items: center;
   font-size: 1.3rem;
 }
