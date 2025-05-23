@@ -107,7 +107,7 @@ export default {
       if (this.canModifySeed) {
         Modal.modifySeed.show();
       } else {
-        Modal.message.show(`Вы больше не можете менять зерно. Первый набор предлагаемых глифов уже генрирован.`);
+        Modal.message.show(`Вы больше не можете менять зерно. Первый набор предлагаемых глифов уже генерирован.`);
       }
     }
   }
