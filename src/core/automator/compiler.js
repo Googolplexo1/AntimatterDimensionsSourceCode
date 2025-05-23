@@ -37,7 +37,7 @@ class Validator extends BaseVisitor {
         startOffset: err.offset,
         endOffset: err.offset + err.length,
         info: `Недопустимые символы: ${this.rawText.substr(err.offset, err.length)}`,
-        tip: `удалите эти сиволы`
+        tip: `удалите эти символы`
       });
     }
   }

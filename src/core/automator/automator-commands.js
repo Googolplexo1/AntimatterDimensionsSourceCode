@@ -439,7 +439,7 @@ export const AutomatorCommands = [
 
       if (ctx.PrestigeEvent && ctx.PrestigeEvent[0].tokenType === T.Reality && !RealityUpgrade(25).isBought) {
         V.addError(ctx.PrestigeEvent, "Эта команда недоступна",
-          `купите Улучшение Реальности "Непринуждённое существование", чтобы использовать эту команду`);
+          `купите Улучшение Реальности "Непринуждённое Существование", чтобы использовать эту команду`);
         return false;
       }
 
@@ -458,7 +458,7 @@ export const AutomatorCommands = [
         const prestigeName = ctx.PrestigeEvent[0].image === "reality" ? "Реальность" : (ctx.PrestigeEvent[0].image === "infinity" ? "Бесконечность" : "Вечность");
         if (!available) {
           if (!nowait) return AUTOMATOR_COMMAND_STATUS.NEXT_TICK_SAME_INSTRUCTION;
-          AutomatorData.logCommandEvent(`Совершить ${prestigeName} было невозможно, команда пропущена`,
+          AutomatorData.logCommandEvent(`${prestigeName} было невозможно совершить, команда пропущена`,
             ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
@@ -571,7 +571,7 @@ export const AutomatorCommands = [
       const on = Boolean(ctx.On);
       return () => {
         if (on !== player.celestials.enslaved.isStoring) Enslaved.toggleStoreBlackHole();
-        if (Enslaved.isRunning) AutomatorData.logCommandEvent(`Команда переключения зарядки Чёрных Дыр игнорирована, так как они отключены в Реальности этого Небожителя`, ctx.startLine);
+        if (Enslaved.isRunning || Pelle.isDoomed) AutomatorData.logCommandEvent(`Команда переключения зарядки Чёрных Дыр игнорирована, так как они отключены в Реальности этого Небожителя`, ctx.startLine);
         else AutomatorData.logCommandEvent(`Хранение игрового времени ${ctx.On ? "включено" : "выключено"}`, ctx.startLine);
         return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
       };
@@ -598,7 +598,7 @@ export const AutomatorCommands = [
       if (ctx.Identifier) {
         if (!V.isValidVarFormat(ctx.Identifier[0], AUTOMATOR_VAR_TYPES.STUDIES)) {
           V.addError(ctx, `Постоянная ${ctx.Identifier[0].image} не является допустимым Древом Исследований`,
-            `сохраните в ${ctx.Identifier[0].image} допусимое Древо Исследований`);
+            `сохраните в ${ctx.Identifier[0].image} допустимое Древо Исследований`);
           return false;
         }
         const varInfo = V.lookupVar(ctx.Identifier[0], AUTOMATOR_VAR_TYPES.STUDIES);
@@ -787,7 +787,7 @@ export const AutomatorCommands = [
       const nowait = ctx.Nowait !== undefined;
       return () => {
         if (PlayerProgress.dilationUnlocked()) {
-          AutomatorData.logCommandEvent(`Замедление уже было разблокировано`, ctx.startLine);
+          AutomatorData.logCommandEvent(`Замедление уже было разблокировано, команда пропущена`, ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
         const unlockedThisTick = TimeStudy.dilation.purchase(true);
@@ -825,7 +825,7 @@ export const AutomatorCommands = [
       const ecNumber = ctx.eternityChallenge[0].children.$ecNumber;
       return () => {
         if (EternityChallenge(ecNumber).isUnlocked) {
-          AutomatorData.logCommandEvent(`ИспВ${ecNumber} уже было разблокировано`, ctx.startLine);
+          AutomatorData.logCommandEvent(`ИспВ${ecNumber} уже было разблокировано, команда пропущена`, ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
         if (nowait) {
@@ -1026,7 +1026,7 @@ export const AutomatorCommands = [
       // This input has the format "bh#"
       const holeID = ctx.BlackHoleStr ? Number(ctx.BlackHoleStr[0].image.charAt(2)) : 0;
       const bhCond = off ? !BlackHole(1).isActive : BlackHole(holeID).isActive;
-      const bhStr = off ? "Чёрные Дыры вступили в фазу бездействия" : `${holeID}-я Чёрная дыра вступила в действующую фазу`;
+      const bhStr = off ? "Чёрные Дыры вступили в фазу бездействия" : `${holeID}-я Чёрная Дыра вступила в фазу действия`;
       if (bhCond) {
         const timeWaited = TimeSpan.fromMilliseconds(Date.now() - AutomatorData.waitStart).toStringShort();
         AutomatorData.logCommandEvent(`Ожидание завершено (${bhStr} спустя ${timeWaited})`,

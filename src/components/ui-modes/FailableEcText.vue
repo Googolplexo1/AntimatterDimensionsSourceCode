@@ -31,7 +31,7 @@ export default {
     },
     text() {
       if (this.currentEternityChallengeId === 4) {
-        return `${formatInt(this.currentResource)} / ${formatInt(this.maximumResource)} Бесконечностей`;
+        return `${formatInt(this.currentResource)} / ${formatInt(this.maximumResource)} бесконечностей`;
       }
       // We're always either in EC4 or EC12 when displaying this text.
       return `${TimeSpan.fromSeconds(this.currentResource.toNumber()).toString()} /

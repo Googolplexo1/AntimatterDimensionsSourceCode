@@ -245,7 +245,7 @@ export const Pelle = {
         к скорости репликации (зависит от заполнения ${wordShift.wordCycle(["Вакуума", "Полости", "Пустоты"])})`;
       case "dilation":
         return `Множитель ${formatX(Decimal.pow(player.dilation.totalTachyonGalaxies, 1.5).max(1), 2)}
-          к производству Замедленного Времени (зависит от колтчества Тахионных Галктик)`;
+          к производству Замедленного Времени (зависит от количества Тахионных Галктик)`;
       case "power":
         return `Галактики на ${formatPercents(0.02)} сильнее`;
       case "companion":
