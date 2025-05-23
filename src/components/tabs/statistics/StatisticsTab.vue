@@ -53,6 +53,7 @@ export default {
       lastMatterTime: 0,
       paperclips: 0,
       fullTimePlayed: 0,
+      seenAlteredSpeed: false,
     };
   },
   computed: {
@@ -242,7 +243,7 @@ export default {
         Рекорд бесконечности<span v-if="eternity.isUnlocked"> в текущей вечности</span>: {{ infinity.best.toStringShort() }}.
       </div>
       <div>
-        Текущая бесконечность длится {{ infinity.this.toStringShort() }}<span v-if="reality.isUnlocked">
+        Текущая бесконечность длится {{ infinity.this.toStringShort() }}<span v-if="seenAlteredSpeed">
           ({{ infinity.thisReal.toStringShort() }} по реальному времяисчислению)</span>.
       </div>
       <div>
@@ -270,7 +271,7 @@ export default {
         Рекорд вечности<span v-if="reality.isUnlocked"> в текущей реальности</span>: {{ eternity.best.toStringShort() }}.
       </div>
       <div>
-        Текущая вечность длится {{ eternity.this.toStringShort() }}<span v-if="reality.isUnlocked">
+        Текущая вечность длится {{ eternity.this.toStringShort() }}<span v-if="seenAlteredSpeed">
           ({{ eternity.thisReal.toStringShort() }} по реальному времяисчислению)</span>.
       </div>
       <div>
