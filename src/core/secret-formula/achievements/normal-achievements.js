@@ -649,12 +649,10 @@ export const normalAchievements = [
   {
     id: 95,
     name: "Это безопасно?",
-    get description() { return `Достигните ${format(Decimal.NUMBER_MAX_VALUE, 1, 0)} Репликанти в первый час бесконечности.`; },
-    get reward() { return `вы сохраняете Репликанти и до одной Галактики Репликанти на Большом Сжатии.`; },
-    checkRequirement: () =>
-      (Replicanti.amount.eq(Decimal.NUMBER_MAX_VALUE) || player.replicanti.galaxies > 0) &&
-      Time.thisInfinityRealTime.totalHours <= 1,
-    checkEvent: GAME_EVENT.REPLICANTI_TICK_AFTER
+    description: "Получите Галактику Репликанти в первый час бесконечности.",
+    reward: "вы сохраняете Репликанти и до одной Галактики Репликанти на Большом Сжатии.",
+    checkRequirement: () => player.replicanti.galaxies > 0 && Time.thisInfinityRealTime.totalHours <= 1,
+    checkEvent: GAME_EVENT.GAME_TICK_AFTER
   },
   {
     id: 96,
