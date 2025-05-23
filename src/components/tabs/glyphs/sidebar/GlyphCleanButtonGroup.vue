@@ -18,11 +18,11 @@ export default {
       return "Удалить";
     },
     autoCleanTooltip() {
-      return `${this.removeString} глифы${this.hasPerkShop ? " (кроме музыкальных)" : ""}, которые строго хуже, чем
+      return `${this.removeString} глифы${this.hasPerkShop ? " (кроме глифов с косметическими атрибутами)" : ""}, которые строго хуже, чем
         достаточное количество других глифов`;
     },
     harshAutoCleanTooltip() {
-      return `${this.removeString} глифы${this.hasPerkShop ? " (кроме музыкальных)" : ""}, которые строго хуже, чем
+      return `${this.removeString} глифы${this.hasPerkShop ? " (в том числе глифы с косметическими атрибутами)" : ""}, которые строго хуже, чем
         ЛЮБОЙ другой глиф`;
     },
     deleteRejectedTooltip() {
@@ -37,7 +37,7 @@ export default {
   methods: {
     update() {
       this.glyphSacrificeUnlocked = GlyphSacrificeHandler.canSacrifice && !Pelle.isDoomed;
-      this.hasPerkShop = TeresaUnlocks.shop.canBeApplied;
+      this.hasPerkShop = TeresaUnlocks.shop.canBeApplied || player.records.fullGameCompletions;
       this.hasFilter = EffarigUnlock.glyphFilter.isUnlocked;
       this.inventory = Glyphs.inventory.map(GlyphGenerator.copy);
       this.isRefining = AutoGlyphProcessor.sacMode === AUTO_GLYPH_REJECT.REFINE ||
