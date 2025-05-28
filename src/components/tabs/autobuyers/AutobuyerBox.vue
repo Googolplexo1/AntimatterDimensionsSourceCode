@@ -99,7 +99,7 @@ export default {
             : "Сработает как можно скорее";
         case AUTO_ETERNITY_MODE.X_HIGHEST:
         default:
-          return `Сработает при ${format(this.nextValue, 2)} ${this.autobuyer.name === "Infinity" ? "ОБ" : "ОВ"}`;
+          return `Сработает при ${format(this.nextValue, 2)} ${this.autobuyer.name === "вечности" ? "ОВ" : "ОБ"}`;
       }
     }
   },

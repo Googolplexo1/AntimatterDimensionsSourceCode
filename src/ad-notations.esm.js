@@ -608,7 +608,7 @@ var RomanNotation = function (_super) {
     var log10 = value.log10();
     var maximums = log10 / MAX_LOG_10;
     var current = Math.pow(MAXIMUM, maximums - Math.floor(maximums));
-    return "".concat(this.romanize(current), "\u2191").concat(this.formatDecimal(new Decimal(maximums)));
+    return "".concat(this.romanize(current), "\u2191").concat(this.formatDecimal(new Decimal(Math.floor(maximums))));
   };
 
   RomanNotation.prototype.romanize = function (value) {
