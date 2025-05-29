@@ -433,7 +433,7 @@ export const pelleQuotes = {
       },
       "И таким путём ты... победил(а)?",
       {
-        text: "В борьбе, существовашей $1...",
+        text: "В борьбе, существовавшей $1...",
         background: flashCelestial,
         1: forever,
       }, {
