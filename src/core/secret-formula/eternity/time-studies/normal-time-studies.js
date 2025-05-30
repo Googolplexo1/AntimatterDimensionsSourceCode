@@ -231,7 +231,7 @@ export const normalTimeStudies = [
     cost: 4,
     requirement: [91],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: "Множитель к Измерениям Антиматерии в зависимости от количества Репликанти",
+    description: "Множитель к Измерениям Антиматерии, равный количеству Репликанти",
     effect: () => Decimal.max(Replicanti.amount, 1),
     formatEffect: value => formatX(value, 2, 1)
   },
