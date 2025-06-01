@@ -37,9 +37,9 @@ export const pelleStrikes = {
     requirementDescription: "Замедление Времени",
     penaltyDescription: () => `Замедление Времени необратимо. Ваши Очки Вечности конфискуются, а рекордные количества ресурсов,
       которые используются для подсчёта получения Останков, выставляются на ${format(Decimal.pow(10, 180000))} антиматерии,
-      ${format(Decimal.pow(10, 60000))} ОБ и ${format(Decimal.pow(10, 1050))} ОВ.`,
+      ${format(Decimal.pow(10, 60000))} ОБ и ${format(Decimal.pow(10, 1050))} ОВ`,
     rewardDescription: () => `разблокировать ${wordShift.wordCycle(PelleRifts.paradox.config.nameObjective)}. Формула получения
-      Останков улучшена.`,
+      Останков улучшена`,
     rift: () => PelleRifts.paradox
   }
 };
