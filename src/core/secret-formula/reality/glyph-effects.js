@@ -121,9 +121,9 @@ export const glyphEffects = {
     bitmaskIndex: 5,
     isGenerated: true,
     glyphTypes: ["dilation"],
-    singleDesc: "Множитель ×{value} к наценке на Тахионные Галактики",
-    genericDesc: "Множитель к наценке на Тахионные Галактики",
-    shortDesc: "×{value} к наценке ТГ",
+    singleDesc: () => `Множитель ×{value} к значению, на которое наценка на Тахионные Галактики превышает ${formatInt(1)}`,
+    genericDesc: () => `Множитель к значению, на которое наценка на Тахионные Галактики превышает ${formatInt(1)}`,
+    shortDesc: () => `×{value} к наценке ТГ сверх ${formatInt(1)}`,
     effect: (level, strength) => 1 - Math.pow(level, 0.17) * Math.pow(strength, 0.35) / 100 -
       GlyphAlteration.sacrificeBoost("dilation") / 50,
     formatEffect: x => format(x, 3, 3),
@@ -227,11 +227,11 @@ export const glyphEffects = {
       ? "Множитель к производству Замедленного Времени и скорости репликации в зависимости от количества Репликанти"
       : "Множитель к производству Замедленного Времени в зависимости от количества Репликанти"),
     shortDesc: () => (GlyphAlteration.isAdded("replication")
-      ? `×ЗВ и Репликанти от Репликанти ({value}×log₁₀(x))`
-      : `×ЗВ от Репликанти ({value}×log₁₀(x))`),
+      ? `×ЗВ и Репликанти от Репликанти ({value}×log_${format(Decimal.pow(10, 10000))}_(x))`
+      : `×ЗВ от Репликанти ({value}×log₁_${format(Decimal.pow(10, 10000))}_(x))`),
     effect: (level, strength) => 0.0003 * Math.pow(level, 0.3) * Math.pow(strength, 0.65),
     formatEffect: x => format(x, 6, 6),
-    formatSingleEffect: x => format(x, 6, 6),
+    formatSingleEffect: x => format(x * 1e4, 2, 1),
     // It's bad to stack this one additively (N glyphs acts as a DT mult of N) or multiplicatively (the raw number is
     // less than 1), so instead we do a multiplicative stacking relative to the "base" effect of a level 1, 0% glyph.
     // We also introduce a 3x mult per glyph after the first, so that stacking level 1, 0% glyphs still has an effect.

@@ -103,7 +103,7 @@ export const imaginaryUpgrades = [
     id: 11,
     cost: 5e7,
     requirement: () => `${format(1e90)} Реликтовых Осколков
-      (У вас ${format(player.celestials.effarig.relicShards, 2)})`,
+      (у вас ${format(player.celestials.effarig.relicShards, 2)})`,
     hasFailed: () => false,
     checkRequirement: () => player.celestials.effarig.relicShards >= 1e90,
     checkEvent: GAME_EVENT.REALITY_RESET_AFTER,

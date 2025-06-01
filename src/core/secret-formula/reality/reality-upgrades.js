@@ -202,7 +202,7 @@ export const realityUpgrades = [
     automatorPoints: 5,
     shortDescription: () => `Производство вечностей`,
     effect: () => Currency.realities.value * Ra.unlocks.continuousTTBoost.effects.eternity.effectOrDefault(1),
-    formatEffect: value => `${format(value / Ra.unlocks.continuousTTBoost.effects.eternity.effectOrDefault(1))} per second`
+    formatEffect: value => `${format(value / Ra.unlocks.continuousTTBoost.effects.eternity.effectOrDefault(1))} в секунду`
   },
   {
     name: "Парадоксальное Время",

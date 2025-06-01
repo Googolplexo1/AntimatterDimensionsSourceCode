@@ -897,7 +897,7 @@ export const AutomatorCommands = [
           }
           AutomatorBackend.push(commands);
           AutomatorData.logCommandEvent(`${prestigeName} пока не совершена, перемещение на строку
-            ${AutomatorBackend.translateLineNumber(ctx.LCurly[0].startLine + 1)} (start of until loop)`,
+            ${AutomatorBackend.translateLineNumber(ctx.LCurly[0].startLine + 1)} (начало цикла UNTIL)`,
           ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.SAME_INSTRUCTION;
         },

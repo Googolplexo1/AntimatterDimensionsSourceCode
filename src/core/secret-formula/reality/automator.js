@@ -483,7 +483,7 @@ export const automator = {
     {
       id: 14,
       isUnlocked: () => true,
-      keyword: "UNTIL (цикл \"до тех пор пока\")",
+      keyword: "UNTIL (цикл \"до тех пор как\")",
       category: 4,
       syntax: `<b>until</b> <u>сравнение</u> {<br>
         <blockquote><u>тело цикла</u></blockquote>
@@ -601,7 +601,7 @@ export const automator = {
           : "";
         const stText = V.spaceTheorems > 0
           ? `<b>space theorems</b> - количество Теорем Пространства<br>
-            <b>total space theorems</b> - общее количество Теорем Пространтсва (в том числе потраченных)<br>`
+            <b>total space theorems</b> - общее количество Теорем Пространства (в том числе потраченных)<br>`
           : "";
         return `
           <b>am</b> - количество антиматерии<br>
@@ -622,7 +622,7 @@ export const automator = {
           <b>rg</b> - количество Галактик Репликанти<br>
           <b>rep</b> - количество Репликанти<br>
           <b>tt</b> - количество Теорем Времени<br>
-          <b>total tt</b> - общее количество Теорем Пространтсва (в том числе потраченных)<br>
+          <b>total tt</b> - общее количество Теорем Времени (в том числе потраченных)<br>
           <b>total completions</b> - общее количество выполнений Испытаний Вечности<br>
           <b>pending completions</b> - количество выполнений текущего Испытания Вечности, которое вы могли бы получить на вечности<br>
           <b>ec<u>X</u> completions</b> - количество выполнений <b>X</b>-го Испытания Вечности (<b>X</b> - целое число от 1 до 12)<br>
