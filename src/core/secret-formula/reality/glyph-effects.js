@@ -228,10 +228,10 @@ export const glyphEffects = {
       : "Множитель к производству Замедленного Времени в зависимости от количества Репликанти"),
     shortDesc: () => (GlyphAlteration.isAdded("replication")
       ? `×ЗВ и Репликанти от Репликанти ({value}×log_${format(Decimal.pow(10, 10000))}_(x))`
-      : `×ЗВ от Репликанти ({value}×log₁_${format(Decimal.pow(10, 10000))}_(x))`),
+      : `×ЗВ от Репликанти ({value}×log_${format(Decimal.pow(10, 10000))}_(x))`),
     effect: (level, strength) => 0.0003 * Math.pow(level, 0.3) * Math.pow(strength, 0.65),
     formatEffect: x => format(x, 6, 6),
-    formatSingleEffect: x => format(x * 1e4, 2, 1),
+    formatSingleEffect: x => format(x * 1e4, 2, 2),
     // It's bad to stack this one additively (N glyphs acts as a DT mult of N) or multiplicatively (the raw number is
     // less than 1), so instead we do a multiplicative stacking relative to the "base" effect of a level 1, 0% glyph.
     // We also introduce a 3x mult per glyph after the first, so that stacking level 1, 0% glyphs still has an effect.
