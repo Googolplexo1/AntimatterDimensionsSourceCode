@@ -97,7 +97,7 @@ export const progressStages = [
       if (player.realities > 5) return "Машин Реальности";
       const suffix = "в текущей реальности и Машин Реальности в долгосрочной перспективе";
       if (player.eternities.eq(0)) return `Очков Бесконечности ${suffix}`;
-      if (player.dilation.dilatedTime.eq(0)) return `Очков Весконечности ${suffix}`;
+      if (player.dilation.dilatedTime.eq(0)) return `Очков Вечности ${suffix}`;
       return `Очков Вечности и/или Замедленного Времени ${suffix}`;
     },
     subProgressValue: save => Math.clampMax(save.realities / 100, 1),

@@ -283,7 +283,7 @@ export const singularityMilestones = {
     start: 2.5e45,
     repeat: 0,
     limit: 1,
-    description: completions => "Фактическое количество Тессерактов увеличено в зависимости от Сингулярностей",
+    description: completions => "Фактическое количество Тессерактов увеличено в зависимости от количества Сингулярностей",
     effect: () => 1 + Math.log10(Currency.singularities.value) / 80,
     effectFormat: x => formatX(Math.clampMin(x, 1), 2, 2),
     upgradeDirection: LAITELA_UPGRADE_DIRECTION.BOOSTS_MAIN,
