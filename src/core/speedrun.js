@@ -41,7 +41,7 @@ export const Speedrun = {
     const record = rec ?? player.speedrun;
     switch (record.seedSelection) {
       case SPEEDRUN_SEED_STATE.UNKNOWN:
-        return `Данные о зерне отсутсвуют (старое сохранение)`;
+        return `Данные о зерне отсутствуют (старое сохранение)`;
       case SPEEDRUN_SEED_STATE.FIXED:
         return `Официально утверждённое зерно (${record.initialSeed})`;
       case SPEEDRUN_SEED_STATE.RANDOM:
