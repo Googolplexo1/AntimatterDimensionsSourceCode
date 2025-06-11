@@ -270,7 +270,7 @@ export const normalTimeStudies = [
     requiresST: [122, 123],
     description: () => (Perk.studyActiveEP.isBought
       ? `Множитель ${formatX(50)} к получению Очков Вечности`
-      : `Множитель ${formatX(50)} к получению Очков Вечности в зависимости от суммарной длительности 
+      : `Множитель к получению Очков Вечности в зависимости от суммарной длительности 
       десяти прошлых вечностей${PlayerProgress.seenAlteredSpeed() ? " (по реальному времяисчислению)" : ""}`),
     effect: () => (Perk.studyActiveEP.isBought
       ? 50
