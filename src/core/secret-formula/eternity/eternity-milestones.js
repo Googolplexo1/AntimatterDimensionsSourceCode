@@ -121,7 +121,7 @@ export const eternityMilestones = {
   },
   replicantiNoReset: {
     eternities: 40,
-    reward: "При получении Галактик Репликанти ничего не сбрасывается",
+    reward: "При получении Галактик Репликанти ничего не сбрасывается, кроме Репликанти",
     pelleUseless: true
   },
   autobuyerReplicantiChance: {
