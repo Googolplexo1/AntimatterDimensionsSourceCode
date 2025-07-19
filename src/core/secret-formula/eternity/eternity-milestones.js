@@ -169,7 +169,7 @@ export const eternityMilestones = {
   autoInfinities: {
     eternities: 1000,
     reward: () => {
-      if (!player.options.offlineProgress) return "Этот Этап производил бы вечности, но офлайн-прогресс отключён";
+      if (!player.options.offlineProgress) return "Этот Этап производил бы бесконечности, но офлайн-прогресс отключён";
       const infinities = getInfinitiedMilestoneReward(TimeSpan.fromHours(1).totalMilliseconds,
         player.eternities.gte(1000));
       const realTime = PlayerProgress.seenAlteredSpeed() ? " (по реальному времяисчислению)" : "";

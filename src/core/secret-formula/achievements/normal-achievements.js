@@ -1259,7 +1259,7 @@ export const normalAchievements = [
   },
   {
     id: 174,
-    name: "Разве у тебя не было пары этих штух?",
+    name: "Разве у тебя не было пары этих штук?",
     description: "Получите Сингулярность.",
     checkRequirement: () => true,
     checkEvent: GAME_EVENT.SINGULARITY_RESET_BEFORE
