@@ -72,7 +72,7 @@ export default {
 <template>
   <div class="c-dimension-row c-antimatter-dim-row c-antimatter-prestige-row">
     <div class="l-dim-row__prestige-text c-dim-row__label c-dim-row__label--amount">
-    Расширения Измерений ({{ boostCountText }})
+    Расширения Измерений ({{ boostCountText }});
     <span>Требуется: {{ formatInt(requirement.amount) }} {{ dimName }} ИА</span>
     </div>
     <PrimaryButton

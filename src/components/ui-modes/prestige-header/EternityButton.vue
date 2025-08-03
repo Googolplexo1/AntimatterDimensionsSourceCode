@@ -232,7 +232,7 @@ const EP_BUTTON_DISPLAY_TYPE = {
 
     <!-- Dilation -->
     <template v-else-if="type === 3">
-      Совершить вечность за <span :style="tachyonAmountStyle">{{ format(gainedTachyons, 2, 1) }}</span>
+      Совершить вечность за <span :style="tachyonAmountStyle">{{ format(gainedTachyons, 2) }}</span>
       {{ pluralize("Тахион", gainedTachyons) }}
     </template>
 

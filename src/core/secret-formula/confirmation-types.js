@@ -32,7 +32,7 @@ export const confirmationTypes = [
     option: "eternity",
     isUnlocked: () => PlayerProgress.eternityUnlocked(),
   }, {
-    name: "Вход в Замедление",
+    name: "Замедление",
     option: "dilation",
     isUnlocked: () => PlayerProgress.realityUnlocked() || PlayerProgress.dilationUnlocked(),
   }, {

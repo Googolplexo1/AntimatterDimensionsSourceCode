@@ -56,7 +56,7 @@ export default {
       if (this.isCapped) return "Разрушено Реальностью Безымянных";
       if (this.isContinuumActive) return `Континуум: ${this.continuumString}`;
 
-      const prefix = `До ${formatInt(10)},${this.showCostTitle(this.until10Cost) ? " Цена" : ""}`;
+      const prefix = `До ${formatInt(10)},${this.showCostTitle(this.until10Cost) ? " цена" : ""}`;
       const suffix = this.isCostsAD ? `${this.costUnit}` : "антиматерии";
       return `${prefix} ${format(this.until10Cost)} ${suffix}`;
     },
@@ -129,7 +129,7 @@ export default {
       return value.exponent < 1000000;
     },
     isLongText(str) {
-      return str.length > 20;
+      return str.length > 29;
     },
     tutorialClass() {
       return {

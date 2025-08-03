@@ -125,7 +125,7 @@ export default {
     <div
       class="l-dim-row__prestige-text c-dim-row__label c-dim-row__label--amount l-text-wrapper"
     >
-      {{ typeName }} ({{ sumText }}):
+      {{ typeName }} ({{ sumText }});
       Требуется: {{ formatInt(requirement.amount) }} {{ dimName }} ИА
       <div class="l-scaling-text-wrapper">
         {{ hasIncreasedScaling ? costScalingText : "" }}
