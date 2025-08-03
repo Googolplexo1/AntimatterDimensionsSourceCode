@@ -3,7 +3,7 @@ import { DC } from "../../constants";
 export const infinityChallenges = [
   {
     id: 1,
-    description: "действуют условия всех Обычных Испытаний, кроме 9-го и 12-го.",
+    description: "действуют условия всех Обычных Испытаний, кроме 9-го и 12-го. Вы можете получить не более двух Расширений Измерений.",
     goal: DC.E650,
     isQuickResettable: true,
     reward: {
@@ -112,7 +112,7 @@ export const infinityChallenges = [
       Math.max(0, player.records.thisInfinity.time - player.records.thisInfinity.lastBuyTime)),
     reward: {
       description:
-        "множитель к Измерениям Антиматерии со 2-го по 7-е в зависимости от произведения множителей 1-го и 8-го ИА.",
+        "множитель к Измерениям Антиматерии со 2-го по 7-е в зависимости от произведения множителей 1-го и 8-го ИА",
       effect: () => AntimatterDimension(1).multiplier.times(AntimatterDimension(8).multiplier).pow(0.02),
       formatEffect: value => formatX(value, 2, 2)
     },
