@@ -115,8 +115,8 @@ export default {
         @input="adjustSliderValueRepeatBuffer($event)"
       />
     </div>
-    <div class="o-primary-btn o-primary-btn--option-wide o-primary-btn--slider">
-      <b>{{ formatPercents(parseFloat(AIChance)) }} сообщений от ИИ</b>
+    <div class="o-primary-btn o-primary-btn--slider o-primary-btn--news-option">
+      <b>{{ formatPercents(parseFloat(AIChance)) }} сообщений от ИИ (на английском языке)</b>
       <SliderComponent
         class="o-primary-btn--slider__slider"
         v-bind="sliderPropsAIChance"

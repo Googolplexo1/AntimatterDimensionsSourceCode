@@ -14,77 +14,77 @@ function newsAnimSpd(seconds) {
 export const news = [
   {
     id: "a1",
-    text: "The cookie is a lie.",
+    text: "Печенька - ложь.",
   },
   {
     id: "a2",
-    text: "Antimatter ghosts do not exist. Just like matter ghosts. They don't have any matter, for that matter."
+    text: "Эта новость не останавливается на этой станции. Пожалуйста, дождитесь следующей новости."
   },
   {
     id: "a3",
-    text: "Nuclear power plants have been abandoned in favor of antimatter power."
+    text: "Человечество отказалось от атомных электростанций в пользу энергии антиматерии."
   },
   {
     id: "a4",
-    text: "Antimatter cookies have been confirmed to not exist, whoever claims that, stop."
+    text: "Доказано, что печенья из антиматерии не существует, кто бы ни утверждал обратное, прекратите."
   },
   {
     id: "a5",
-    text: "Antimatter prices have drastically dropped due to newfound abundance."
+    text: "Цены на антиматерию рухнули благодаря открытому недавно обильному источнику."
   },
   {
     id: "a6",
-    text: "In the news today, humans make an antimatter animal sacrifice to the antimatter god."
+    text: "Сегодня в новостях: люди пожертвовали животное из антиматерии богу антиматерии."
   },
   {
     id: "a7",
-    text: "You made one antimatter! Whatever that means."
+    text: "Вы произвели одну единицу антиматерии! Что бы это ни значило."
   },
   {
     id: "a8",
-    text: "\"IN THE END, IT DOESN'T ANTIMATTER\" -hevipelle"
+    text: "Установите новостную строку как приложение и узнавайте свежие новости без подключения к интернету!"
   },
   {
     id: "a9",
-    text: "None of this matters."
+    text: "Так, что делает кнопка M?"
   },
   {
     id: "a10",
-    text: "How does it matter if it's antimatter?"
+    text: "Как отключить новости?"
   },
   {
     id: "a11",
-    text: "Scientists confirm that the colour of antimatter is Blurple."
+    text: "Учёные подтверждают, что цвет антиматерии - серо-буро-малиновый."
   },
   {
     id: "a12",
-    text: "How does NASA organise a party? They planet."
+    text: "Человек, которому подвластны сами пространство и время, не придумал ничего, кроме как обратиться жирафом! Да, жирафом, ёлки-иголки! Такой комедии я ещё не видел."
   },
   {
     id: "a13",
     text:
-      `Electrons are now seeing the happy things in life.
-      We're calling these happy electrons 'Positrons.' Wait, that's taken?`
+      `Электроны начали видеть в жизни позитив.
+      Мы будем называть такие позитивные электроны "позитронами". Погодите, разве уже есть такое слово?`
   },
   {
     id: "a14",
     text:
-      `This completely useless sentence will get you nowhere and you know it.
-      What a horrible obnoxious man would come up with it, he will probably go to hell,
-      and why would the developer even implement it? Even if you kept reading it you wouldn't
-      be able to finish it (the first time).`
+      `Эта совершенно бесполезная новость ни к чему вас не приведёт, и вы это знаете.
+      Какой ужасный, несносный человек её придумал, он, возможно, попадёт в ад,
+      и зачем только разработчик её добавил? Даже если продолжить её читать, вы не
+      сможете прочитать её целиком (с первого раза).`
   },
   {
     id: "a15",
-    text: `"GHOST SAYS HELLO" -Boo-chan`
+    text: `"ПРИВИДЕНИЕ ПРИВЕТСТВУЕТ" - Boo-chan`
   },
   {
     id: "a16",
-    text: `"Can someone tell hevi to calm down?" -Mee6`
+    text: `"Кто-нибудь может попросить hevi успокоиться?" - Mee6`
   },
   {
     id: "a17",
-    text: "Due to antimatter messing with physics, a creature that was once a moose is now a human."
+    text: "Из-за влияния антиматерии на физику один лось стал человеком."
   },
   {
     id: "a18",
@@ -92,31 +92,31 @@ export const news = [
   },
   {
     id: "a19",
-    text: `"Alright" -Alright`
+    text: `"Ладно" - Alright`
   },
   {
     id: "a20",
-    text: "The English greeting is not present in Antimatter speak."
+    text: "Английское приветствие отсутствует в речи антиматерии."
   },
   {
     id: "a21",
-    text: "To buy max or not to buy max, that is the question."
+    text: "Купить всё или не купить всё - вот в чём вопрос."
   },
   {
     id: "a22",
-    text: "One, two, skip a few, ninety-nine, NaN!"
+    text: "Раз, два, несколько, девяносто девять, NaN!"
   },
   {
     id: "a23",
-    text: "No, mom, I can't pause this game."
+    text: "Нет, мама, я не могу поставить эту игру на паузу."
   },
   {
     id: "a24",
-    text: "Scientific notation has entered the battlefield."
+    text: "Научная нотация вышла на поле боя."
   },
   {
     id: "a25",
-    text: `"Make the Universe Great Again!" -Tronald Dump`
+    text: `"Сделаем Вселенную снова великой!" - Трональд Дамп`
   },
   {
     id: "a26",
@@ -125,287 +125,301 @@ export const news = [
   {
     id: "a27",
     get text() {
-      return `A new religion has been created, and it's spreading like wildfire. The believers of this religion worship
-        the Heavenly Pelle, the goddess of antimatter. They also believe that ${format(Number.MAX_VALUE, 2)}
-        is infinite.`;
+      return `Появилась новая религия, распространяющаяся со скоростью лесного пожара. Исповедующие эту религию поклоняются
+        Небесной Пелле, богине антиматерии. Кроме того, они считают, что ${format(Number.MAX_VALUE, 2)}
+        - это бесконечность.`;
     }
   },
   {
     id: "a28",
-    text: "Someone has just touched a blob, and blown up. Was the blob antimatter, or was the guy made of Explodium?"
+    text: "Кто-то только что коснулся кляксы и взорвался. Это клякса была сделана из антиматерии или взорванный - из взрывчатки?"
   },
   {
     id: "a29",
-    text: `If you are not playing on Kongregate, Steam, or https://ivark.github.io/AntimatterDimensions/,
-      the site is bootleg.`
+    text: `Если этот сайт имеет адрес, отличный от https://googolplexo1.github.io/AntimatterDimensionsSourceCode/,
+          это подозрительно.`
   },
   {
     id: "a30",
-    text: "Rate 5 on Kongregate so more people can experience this 5 star rating."
+    text: "Поставьте игре 5 звёзд на Kongregate, чтобы больше людей могло испытать эту 5-звёздочную оценку."
   },
   {
     id: "a31",
-    text: "BOO!"
+    text: "\"Ну, не знаю, просто я не доверяю автоматике 5-го Измерения.\" - kajfik"
   },
   {
     id: "a32",
-    text: `"You ate for too long." -Hevipelle`
+    text: `"Вы слишком долго ели." - Hevipelle`
   },
   {
     id: "a33",
-    text: `"I hate myself." -Boo-chan`
+    text: `"Я ненавижу себя." - Boo-chan`
   },
   {
     id: "a34",
-    text: `"Gee golly" -Xandawesome`
+    text: `"Боже мой" - Xandawesome`
   },
   {
     id: "a35",
-    text: "Above us, there is nothing above, but the stars, above."
+    text: "Над нами нет ничего, кроме звёзд над нами."
   },
   {
     id: "a36",
-    text: "You feel like making antimatter. But nobody wants to eat your antimatter."
+    text: "Вы хотите производить антиматерию. Но никто не хочет есть вашу антиматерию."
   },
   {
     id: "a37",
-    text: "Somebody wasn't nice, he got an antimatter-storm."
+    text: "Кто-то плохо вёл себя, и на него обрушился шторм из антиматерии."
   },
   {
     id: "a38",
-    text: "You are living, you occupy space, you have a mass, you matter... unless you antimatter."
+    text: "Времена меняются, и мы меняемся вместе с ними."
   },
   {
     id: "a39",
-    text: "I clicked too fast... my PC is now dematerialised."
+    text: "Я слишком быстро нажимал… Теперь мой ПК дематериализован."
   },
   {
     id: "a40",
     text:
-      `"If an alien lands on your front lawn and extends an appendage as a gesture of greeting, before you get
-      friendly, toss it an eightball. If the appendage explodes, then the alien was probably made of antimatter.
-      If not, then you can proceed to take it to your leader." -Neil deGrasse Tyson`
+      `"Если инопланетянин приземлится на лужайке перед вашим домом и протянет придаток в знак приветствия, прежде чем
+      подружиться с ним, бросьте ему шар с восьмёркой. Если придаток взорвётся, то, возможно, инопланетянин состоял из антиматерии.
+      Иначе вы можете показать его главе вашего государства." - Нил Деграсс Тайсон`
   },
   {
     id: "a41",
     text:
-      "There must always be an equal amount of matter as compared to antimatter; I guess your mom balances that a bit."
+      "Материи всегда должно быть столько же, сколько антиматерии; видимо, твоя мать заботится об этом равновесии."
   },
   {
     id: "a42",
-    text: "Nothing is created, nothing is destroyed."
+    text: "Ничего не теряется, ничего не создаётся."
   },
   {
     id: "a43",
-    text: "We dug a big hole to store this antimatter... Adele's rolling in it."
+    text: "Мы вырыли большую яму для хранения антиматерии… а Адель скатывается в неё."
   },
   {
     id: "a44",
-    text: "If everything is antimatter, how can you see yourself?"
+    text: "Если всё вокруг состоит из антиматерии, как мы видим себя?"
   },
   {
     id: "a45",
-    text: "The stock markets have crashed due to antimatter beings somehow knowing what they will be tomorrow."
+    text: "Фондовые рынки обвалились из-за того, что существа из антиматерии как-то узнали о том, чем они будут завтра."
   },
   {
     id: "a46",
-    text: "My dog ate too much antimatter, now he's' saying 'meow!'"
+    text: "Мой пёс съел слишком много антиматерии, и теперь он мяукает!"
   },
   {
     id: "a47",
-    text: "If you put infinity into your calculator, it will result in 42!"
+    text: "Если ввести бесконечность в калькулятор, будет 42!"
   },
   {
     id: "a48",
-    text: "You have found the rarest antimatter pepe, it's ultra rare!"
+    text: "Вы нашли самую редкую Пепе из антиматерии, она очень редкая!"
   },
   {
     id: "a49",
     get text() {
-      return `Can we get ${format(1e169)} likes on this video??? Smash that like button!!`;
+      return `Сможем ли мы набрать ${format(1e169)} лайков под этим видео??? Жмите большой палец вверх!!`;
     }
   },
   {
     id: "a50",
-    text: "The smell of antimatter has been revealed. It smells like kittens."
+    text: "Запах антиматерии был выявлен. Она пахнет котятами."
   },
   {
     id: "a51",
-    text: "Just another antimatter in the wall."
+    text: "Просто ещё одна единица антиматерии в стене."
   },
   {
     id: "a52",
-    text: "GET SNIPED, WEAKLING"
+    text: "ВОТ ТЕБЕ ПУЛИ, СЛАБАК"
   },
   {
     id: "a53",
-    text: `"Thanks a lot." -Dankesehr`
+    text: `"Большое спасибо" - Dankesehr`
   },
   {
     id: "a54",
-    text: "This world situation is an SOS situation to the world!! MAYDAY, MAYDAY!!"
+    text: "Ситуация в мире - бедствие для всего мира!! MAYDAY, MAYDAY!!"
   },
   {
     id: "a55",
     text:
-      `"As for sure as the sun rises in the west, of all the singers and
-      poets on earth, I am the bestest." - Hevipelle`
+      `"Как то, что солнце встаёт на западе, несомненно то, что из всех певцов и
+      поэтов на земле я самый лучший." - Hevipelle`
   },
   {
     id: "a56",
-    text: `"I'm good at using github." -Hevipelle`
+    text: `"Я хорошо умею использовать github." - Hevipelle`
   },
   {
     id: "a57",
     text:
-      `A new chat server has been created for antimatter people to spy on matter people,
-      and the world has fallen into chaos and discord.`
+      `Это предложение не имеет никакого
+      отношения к игре… или всё-таки имеет?`
   },
   {
     id: "a58",
     text:
-      `A new study has come out linking the consumption of potatoes with increased risk of antimatter implosion.
-      Scientists suggest eating more.`
+      `Недавно было проведено исследование, установившее связь потребления картофеля с повышенным риском взрыва антиматерии.
+      Учёные рекомендуют увеличить потребление.`
   },
   {
     id: "a59",
-    text: `"I thought that I fixed that bug but apparently some update broke it again." -Hevipelle`
+    text: `"Я думал, что устранил эту ошибку, но, видимо, одно из обновлений возвратило её." - Hevipelle`
   },
   {
     id: "a60",
-    text: `"Maybe I'm gay then" -Bootato`
+    text: `"Тогда, может быть, я голубой." - Bootato`
   },
   {
     id: "a61",
-    text: "Breaking news! Hevipelle has just announced that the buy max button is in fact going to be removed!"
+    text: `Срочные новости! Hevipelle только что объявил, что кнопка "Купить всё" на самом деле будет удалена!`
   },
   {
     id: "a62",
-    text: "I dedicate this game to my girlfriend."
+    text: "Я посвящаю эту игру своей девушке."
   },
   {
     id: "a63",
     text:
-      `Antimatter guns don't kill antimatter people, antimatter people kill antimatter people but does that mean
-      that antimatter toaster doesn't toast antimatter toasts, antimatter toast toasts antimatter toasts?`
+      `Ружья из антиматерии не убивают людей из антиматерии, люди из антиматерии убивают людей из антиматерии, но значит ли это,
+      что тостер из антиматерии не поджаривает тосты из антиматерии, тост из антиматерии поджаривает тосты из антиматерии?`
   },
   {
     id: "a64",
-    text: "But to an antimatter person, wouldn't they be matter and us antimatter?"
+    text: "Но не будет ли человек из антиматерии считать себя состоящим из материи, а нас - из антиматерии?"
   },
   {
     id: "a65",
-    text: "And nothing antimatters."
+    text: "Вы серьёзно считаете, что все предлагаемые вами новости попадут в игру?."
   },
   {
     id: "a66",
     text:
-      `School starting up strikes fear in students universe-wide, as schools are no longer segregated between
-      matter and antimatter. Annihilation is prominent.`
+      `Начало учёбы вселяет страх в школьников по всей Вселенной, так как школы больше не разделены между
+      материей и антиматерией. Аннигиляция становится важной проблемой.`
   },
   {
     id: "a67",
-    text: "Why does no one talk about the 0th dimension?"
+    text: "Почему никто не говорит о 0-м Измерении?"
   },
   {
     id: "a68",
-    text: "The fatter catter satter on the antimatter."
+    text: "Разработчики хотели бы пояснить, что по сюжету игры материя уже искоренена из Вселенной."
   },
   {
     id: "a69",
-    text: "Who let the DOgs out?"
+    text: "Мне скучно. Кому нужен новый слой престижа?"
   },
   {
     id: "a70",
-    text: "If you can't read this, you disabled the news."
+    text: "Если вы не можете прочесть это сообщение, вы отключили новости."
   },
   {
     id: "a71",
-    text: "Doesn't leave, just mutes the server so he doesn't receive notifications."
+    text: "Не покидает сервер, а лишь заглушает его, чтобы не получать уведомлений."
   },
   {
     id: "a72",
-    text: `"Most quotes found online are falsely attributed." -Abraham Lincoln`
+    text: `"Цитаты, встречающиеся в интернете, как правило, приписаны не тем авторам." - Владимир Ленин`
   },
   {
     id: "a73",
-    text: `"It should work now, but it doesn't." -Hevipelle`
+    text: `"Теперь это должно работать, но не работает." - Hevipelle`
   },
   {
     id: "a74",
-    text: "This game doesn't have any errors... they're alternative successes."
+    text: "В этой игре нет ошибок… это альтернативные пути к успеху."
   },
   {
     id: "a75",
     text:
-      `A third type of matter has been discovered: null matter. It doesn't do anything and is basically
-      useless. The scientists who discovered it were fired.`
+      `Был открыт третий тип вещества: нулевая материя. Она ничего не делает и, по сути,
+      бесполезна. Открывшие её учёные были уволены.`
   },
   {
     id: "a76",
-    text: "Your Mother-in-Law keeps nagging you about all these antimatter colliders."
+    text: "Твоя тёща продолжает ворчать на тебя насчёт всех этих коллайдеров антиматерии."
   },
   {
     id: "a77",
-    text: "If matter exists, then does antimatter not exist?"
+    text: "Если материя существует, то, значит, антиматерии не существует?"
   },
   {
     id: "a78",
-    text: "Antimatter=Life. Not cobblestone, not dirt, nothing like that. Antimatter."
+    text: "Антиматерия=Жизнь. Не булыжник, не грязь, ничего подобного. Антиматерия."
   },
   {
     id: "a79",
-    text: "Breaking News: Error Error Error"
+    text: "\"Это не цитата.\""
   },
   {
     id: "a80",
-    text: "How much antiwood could an antiwoodchuck chuck if an antiwoodchuck could chuck antiwood?"
+    text: "В недрах антитундры выдры в антигетрах тырят в антивёдра ядра антикедров."
   },
   {
     id: "a81",
-    text: "Chaos isnt a pit, chaos is a matter."
+    text: `"Измерения Антиматерии 2": ожидайте через 5 дней!`
   },
   {
     id: "a82",
-    text: `"That's because I'm a good game developer and pushed some code that totally works." -Hevipelle`
+    text: `"Это потому, что я хороший разработчик игр, внедривший код, который точно работает." - Hevipelle`
   },
   {
     id: "a83",
-    text: "What's the matter with anti matter?"
+    text: `"Ради этой игры я забросил школу." - hevipelle`
   },
   {
     id: "a84",
-    text: "Doesn't it annoy you when people don't finish their"
+    text: "Не раздражает ли вас, когда люди не оканчивают свои"
   },
   {
     id: "a85",
-    text: "Don't anti-quote me on this."
+    text: "Не антиссылайся на мои слова."
   },
   {
     id: "a86",
-    text: "Antimatter is honest, matter makes up everything."
+    text: 
+      `Lorem ipsum dolor sit amet pri simul tempor oblique ei aeque prompta te duo in est commodo persius
+      graecis integre petentium iudicabit et eum et per dico idque mei ei eleifend complectitur ei sea nisl
+      expetendis omittantur novum primis suscipit ne est consulatu definiebas sea cu vocent prodesset
+      scribentur est ne ea aperiam labitur omnesque per impetus repudiare et has his ad odio paulo
+      lobortis eu sea vide everti usu ex legendos patrioque quo te hinc sadipscing adversarium nullam
+      nostrum deserunt in vix ne cum eros iisque argumentum vel luptatum imperdiet in reque perfecto cum ex
+      cum ei tempor quidam persequeris aperiam epicurei vix no euripidis definitionem has ut eu mea
+      invenire explicari per vitae scaevola ut Ius solet sadipscing ne at per error facilisi ei eos putant
+      scriptorem mei id summo concludaturque quo cu velit adolescens rationibus te quot fabellas
+      disputationi nec eu fugit quando malorum eum id usu quidam omittam vituperatoribus in impetus dolorem
+      qui te elitr integre intellegebat sea sumo exerci feugait ne est te verear epicuri mea affert
+      democritum mel et at vix mollis sensibus an sed labitur consulatu aliquando aim quis dolores te
+      viderer assentior mei an id choro ceteros mea te nihil probatus invenire qui eum id efficiantur
+      accommodare vim alia latine recteque ei duis postulant sententiae quo te.`
   },
   {
     id: "a87",
     text:
-      `According to no known laws of aviation, there are multiple ways a bee
-      should be able to be swallowed up by antimatter.`
+      `Согласно никаким из известных законов авиации, быть поглощённой антиматерией пчела
+      ещё как может.`
   },
   {
     id: "a88",
-    text: "You either die as matter or live long enough to be consumed by the antimatter, and then die again."
+    text: "Ты либо умираешь, состоя из материи, либо живёшь до тех пор, пока тебя не поглотит антиматерия, и всё равно умираешь."
   },
   {
     id: "a89",
-    text: "If you gaze long enough into the antimatter, the antimatter gazes back into you."
+    text: "Если ты долго смотришь в антиматерию, то антиматерия тоже смотрит в тебя."
   },
   {
     id: "a90",
-    text: `"Always gonna give you up. Always gonna let you down." - anti-Rick Astley`
+    text: `"Всегда буду бросать тебя. Всегда буду подводить тебя." - Антирик Эстли`
   },
   {
     id: "a91",
-    text: "Antimatter Dimensions: the next update is always 5 hours away. Always."
+    text: `"Измерения Антиматерии": следующее обновление всегда через 5 часов. Всегда.`
   },
   {
     id: "a92",
@@ -424,7 +438,7 @@ export const news = [
           link: "https://trimps.github.io/"
         },
         {
-          name: "Mine Defense (the game's ui is broken on https so make sure you're on http!)",
+          name: "Mine Defense (в протоколе https интерфейс игры не работает, так что убедитесь, что вы используете http!)",
           link: "http://scholtek.com/minedefense"
         },
         {
@@ -444,7 +458,7 @@ export const news = [
           link: "https://www.decisionproblem.com/paperclips/index2.html"
         },
         {
-          name: "Monies<sup>2</sup",
+          name: "Monies<sup>2</sup>",
           link: "https://sneekxy.nmtechgroup.com/monies2/"
         },
         {
@@ -457,228 +471,228 @@ export const news = [
         }
       ];
       const game = games.randomElement();
-      return `An unidentified developer of Antimatter Dimensions would like to
-        recommend that you play <a href="${game.link}" target="_blank">${game.name}</a>`;
+      return `Неопознанный разработчик "Измерений Антиматерии" хотел бы
+        рекомендовать вам сыграть в <a href="${game.link}" target="_blank">${game.name}</a>`;
     },
   },
   {
     id: "a93",
     text:
-      `On a scale of 1 to 10, I rate this game a solid
+      `По 10-балльной шкале я оцениваю эту игру на твёрдую
       <span style='color: red'>java.lang.IndexOutOfBoundsException</span>`
   },
   {
     id: "a94",
-    text: "To matter or to antimatter, that is the question."
+    text: "Не знаю, почему все утверждают, что 9-го Измерения не существует. На самом деле получить к нему доступ очень просто! Надо [ДАННЫЕ УДАЛЕНЫ]."
   },
   {
     id: "a95",
-    text: "Why is everything so Hevi?"
+    text: "ВЕЧНОСТЬ - НЕ ПРЕДЕЛ!"
   },
   {
     id: "a96",
     text:
-      `It has been scientifically proven ages ago, that cats made of matter are assholes. We have good news,
-      because cats made of antimatter are still assholes.`
+      `Давным-давно было научно доказано, что коты из материи - мудаки. У нас хорошие новости,
+      ведь коты из антиматерии - всё ещё мудаки.`
   },
   {
     id: "a97",
-    text: "Nobody once told me the anti-world wasn't gonna roll me."
+    text: "Однажды мне не сказали, что антимир меня не раздавит."
   },
   {
     id: "a98",
-    text: "Antimatter is like the internet. If you're reading this, you can't have enough of it."
+    text: "Антиматерия - это как интернет. Если вы читаете это сообщение, значит, вам её не хватает."
   },
   {
     id: "a99",
     text:
-      `"Antimatter has made time travel possible and I'm here to make the
-      past great again." - 2nd President of the World`
+      `"Благодаря антиматерии у нас есть возможность путешествовать во времени, и я пришёл, чтобы сделать
+      прошлое снова великим." - 2-й Президент Мира`
   },
   {
     id: "a100",
-    text: "Please insert Disc -1 to continue playing Antimatter Dimensions™."
+    text: `Пожалуйста, вставьте диск -1, чтобы продолжить играть в "Измерения Антиматерии"™.`
   },
   {
     id: "a101",
-    text: "Lore - coming soon™"
+    text: "Сюжет - скоро™"
   },
   {
     id: "a102",
-    text: "I was a part of antimatter like you once. But then I got matter in my knee."
+    text: "Когда-то и я был частью антиматерии. Но потом мне в колено попала материя."
   },
   {
     id: "a103",
     text:
-      `Antimatter... antimatter never changes... until you get to quantum physics of antimatter,
-      but we don't have enough tachyon particles for that.`,
+      `Антиматерия… антиматерия никогда не меняется… пока вы не перейдёте к квантовой физике антиматерии,
+      но для этого у нас недостаточно Тахионов.`,
     get unlocked() { return PlayerProgress.realityUnlocked() || PlayerProgress.dilationUnlocked(); }
   },
   {
     id: "a104",
-    text: "There is no war in Antimatter Dimensions. Here we are safe. Here we are free."
+    text: `В "Измерениях Антиматерии" нет войны. Здесь мы в безопасности. Здесь мы свободны.`
   },
   {
     id: "a105",
-    text: "Antimatter has solved global warming. In unrelated news, the Earth no longer exists."
+    text: "Глобальное потепление остановлено благодаря антиматерии. А теперь к новостям, не связанным с этой: Земли больше не существует."
   },
   {
     id: "a106",
     text:
-      `Anti-water, anti-Earth, anti-fire, anti-air. Long ago, the four anti-nations lived together in harmony.
-      Then, everything changed when the anti-Fire Nation attacked. Only the anti-Avatar, the master of all 4
-      anti-elements could bring balance to the anti-world, but when the world needed him most, he accidentally
-      touched some regular matter and exploded.`
+      `Антивода. Антиземля. Антиогонь. Антивоздух. Когда-то давно четыре антинарода жили в мире.
+      Но всё изменилось, когда антинарод Антиогня развязал войну. Только Антиаватар, властелин всех четырёх
+      антистихий, мог вновь привести антимир в равновесие, но, когда мир нуждался в нём больше всего, он ненароком
+      прикоснулся к обычной материи и взорвался.`
   },
   {
     id: "a107",
-    text: "If you open an anti-lootbox, are you selling random possessions for in-game currency?"
+    text: "Если вы откроете антилутбокс, значит, вы продадите случайные вещи за внутриигровую валюту?"
   },
   {
     id: "a108",
-    text: "People are beginning to question Hevipelle's existence."
+    text: "Люди начинают ставить под вопрос существование Hevipelle."
   },
   {
     id: "a109",
     text:
-      `Antimatter Dimensions is proud to be sponsored by Lehmä! Now offering - grass eating lessons! Learn what
-      grass is safe to eat and what grass isn't.`,
+      `"Измерения Антиматерии" гордятся тем, что их спонсирует Lehmä! Предлагаем вам уроки о поедании травы! Узнайте, какую
+      траву есть безопасно, а какую - нет.`,
     isAdvertising: true
   },
   {
     id: "a110",
     text:
-      `It is the year 2422. The update still isn't out. Hevi is working on balancing unfunity dimension dimensions
-      and challenges for the 38th layer of prestige. There are over 100 rows of achievements. They're getting
-      ready to start using breaking_breaking_breaking_infinity.js.`
+      `Шёл 2422 год. Обновление все ещё не вышло. Hevi работал над балансом Измерений Измерений Безысходности
+      и испытаний для 38-го слоя престижа. Было более 100 рядов достижений. Шла
+      подготовка к переработке игры под библиотеку breaking_breaking_breaking_infinity.js.`
   },
   {
     id: "a111",
-    text: "Import \"Christmas\" for a secret theme."
+    text: "Импортируйте \"рождественская\" для разблокировки секретной темы."
   },
   {
     id: "a112",
     text:
-      `What the f*ck did you just f*cking say about me, you little b*tch? I'll have you know I graduated top of my
-      class in the Antimatter Seals, and I've been involved in numerous secret raids on the 9th Dimension, and I
-      have over 300 NNnNeMI-NNnNe confirmed kills. I am trained in potato warfare and I'm the top sniper in the
-      entire Antimatter Galactic armed forces. You are nothing to me but just another infinity. I will wipe you
-      the f*ck out with Max All mashing the likes of which has never been seen before in this dimension, mark my
-      f*cking words. You think you can get away with saying that shit to me over the Interdimensional network?
-      Think again, f*cker. As we speak I am contacting my secret network of autobuyers across the galaxy and your
-      IP is being traced right now so you better prepare for the Big Crunch, maggot. The Big Crunch that wipes out
-      the pathetic little thing you call your life. You're f*cking dead, kid. I can be anywhere, anytime, and I can
-      kill you in over seven 😠💩 different ways, and that's just with my mouse. Not only am I extensively trained
-      in dimension boost combat, but I have access to the entire arsenal of the Antimatter Marine Corps and I will
-      use it to its full extent to wipe your miserable ass off the face of the universe, you little shit. If only
-      you could have known what unhevi retribution your little “clever” comment was about to bring down upon you,
-      maybe you would have held your f*cking tongue. But you couldn't, you didn't, and now you're buying until 10,
-      you goddamn idiot. I will shit antimatter shit all over you and you will drown in it. You're f*cking dead,
-      kiddo.`
+      `Что ты, бл**ь, только что сказал обо мне, маленькая сучка? Да будет тебе известно, что я с отличием закончил
+      обучение в войсках Антиматерии, что я участвовал в многочисленных секретных рейдах на 9-е Измерение, и что у меня
+      более 300 NNnNeMI-NNnNe подтверждённых убийств в бою. Я обучен искусству картофельной войны и являюсь лучшим снайпером во
+      всех вооружённых силах Галактик Антиматерии. Ты для меня не что иное, как ещё одна бесконечность. Я тебя
+      уничтожу на**й такой кнопкой "Купить всё", какой ещё не видало это измерение, помяни мои
+      **аные слова. Ты думаешь, тебе сойдёт с рук плеваться в меня дерьмом по Межизмеренческой сети?
+      Подумай ещё раз, ублюдок. Пока мы говорим, я связываюсь со своей секретной сетью автоматики по всей галактике, и твой
+      IP-адрес отслеживается прямо сейчас, так что готовься к Большому Сжатию, х**сос. К Большому Сжатию, которое сотрёт с лица земли
+      такую жалкую вещь, как твоя жизнь. Ты уже, бл**ь, мёртв, детка. Я могу быть где угодно и когда угодно, и могу
+      убить тебя свыше 7😠💩 разными способами, и это только с помощью мышки. Я не только хорошо подготовлен
+      к бою в Расширениях Измерений, но и обладаю доступом ко всему арсеналу морской пехоты Антиматерии, который я
+      использую в полной мере, чтобы стереть твою жалкую жопу с лица Вселенной, маленький паршивец. Если бы
+      ты знал, какое неугодное hevi возмездие настигнет тебя за твой маленький "умный" комментарий,
+      ты бы попридержал свой **аный язык. Но ты не знал и не промолчал, и теперь покупаешь десятками,
+      чёртов идиот. Я обрушу на тебя всю антиматерию, подобно дерьму, и ты утонешь в ней. Ты чертовски мёртв,
+      детка.`
   },
   {
     id: "a113",
     text:
-      `So I've pondered this question for a long time. Antimatter Dimensions... what does it mean? I mean it's a
-      game, that's clear. You buy the first dimension, and it gives you antimatter, and the second dimension
-      provides more first dimensions and so on... But what does it mean? It can't just be a game, it seems too
-      plain for that. The developer must have made it as a metaphor. I was doing my weekly ritual of using the
-      fingernail clipper to cut my pubic hair, when finally the realization came to me. The dimensions are just
-      thinly veiled misspellings of the word 'depression'. Regular matter are the cruel and negative thoughts that
-      add to and fuel depression, while antimatter is the positive thoughts and good friends that dispel it. You
-      start off with something simple, and it fights almost imperceptibly against the depression, but as you keep
-      going the fight builds. But it never seems to fix everything. The depression seems like it could go on to
-      infinity. So you keep going. But eventually, you figure out, depression isn't infinite. It's just very very
-      large. But your 'dimensions' eventually, with enough work, make enough 'antimatter' to usurp that seeming
-      infinity of depression. Then the possibilities are endless. You are actually happy for once, and your
-      happiness grows exponentially as you go beyond and seemingly 'break' the 'infinity' of depression. And you
-      go on until that 'infinity' seems tiny in comparison to the happiness you've managed to achieve in your
-      life, where if you reset you get over that infinity in less than the blink of an eye. If you want to know
-      what the multiple layers of prestige are...'Dimensional Shifts' are getting new things and methods to give
-      you happiness. 'Dimension Boosts' are upgrading the things and methods. Examples would be getting a new car
-      being a 'Dimensional Shift' and trading that car in for a new one would be a 'Dimension Boost'. 'Eternities'
-      are major tragedies such as a loved one dying. That lapse brings you straight back to the beginning, with
-      seemingly no hope of return. But with time, you grow back stronger and happier than ever before. 'Dimensional
-      Sacrifice' is moving away. You have to give up a lot of the things you had that made you happy, but there is
-      new opportunity in where you move to. And that new opportunity gives you more happiness than you ever had.
-      'Tickspeed' is how easy it is to make you happy, and 'Time Dimensions' make it even easier to be happy.
-      Antimatter Dimensions is a metaphor for a depressed man's successful battle against his illness.`,
+      `Так вот, я долго обдумывал этот вопрос. "Измерения Антиматерии"… что это значит? То есть это
+      игра, это понятно. Ты покупаешь первое Измерение, и оно даёт тебе антиматерию, а второе Измерение
+      производит первые, и так далее… Но что это значит? Это не может просто быть игрой, это было бы
+      слишком просто. Должно быть, разработчик вложил в эту игру метафору. Я совершал свой еженедельный ритуал стрижки
+      лобковых волос с помощью ножниц для ногтей, когда ко мне наконец-то пришло понимание. "Измерение" - это просто
+      тонко завуалированное искажённое слово "истощение" - имеется в виду духовное истощение. Обычная материя - это злые и негативные мысли, которые
+      способствуют духовному истощению, в то время как антиматерия - это позитивные мысли и хорошие друзья, которые его рассеивают. Ты
+      начинаешь с простых вещей, которые едва заметно борются с истощением, но со временем
+      борьба нарастает. Но кажется, что она никогда не сможет привести всё в порядок. Кажется, что истощение стремится к
+      бесконечности. И ты продолжаешь. Но рано или поздно ты догадываешься, что истощение не бесконечно. Оно просто очень и очень
+      велико. Но твои "измерения" в конце концов, после того как ты приложишь необходимые усилия, производят количество антиматерии, достаточное для поглощения этого кажущегося
+      бесконечным истощения. После этого возможности безграничны. В кои-то веки ты действительно счастлив, и твоё
+      счастье растёт экспоненциально, в то время как ты "преодолеваешь" "бесконечность" истощения. И ты продолжаешь,
+      пока эта "бесконечность" не покажется крошечной по сравнению с тем счастьем, которого тебе удалось достичь в
+      жизни, и пока ты не сможешь при сбросе превзойти эту бесконечность во мгновение ока. Если вы хотите знать,
+      что означают некоторые механики… "Расширение Измерений" - это приобретение новых вещей и способов для получения
+      счастья. "Галактика Антиматерии" - это усовершенствование этих вещей и способов. Например, покупке новой машины
+      соответствует "Расширение Измерений", а обмену этой машины на более современную - "Галактика Антиматерии". "Вечности" -
+      это крупные трагедии, такие как смерть любимого человека. Такой провал возвращает тебя в самое начало без
+      видимой надежды на восстановление. Но со временем ты становишься сильнее и счастливее, чем когда-либо прежде. "Пожертвование
+      Измерений" - это переезд. Тебе приходится расстаться со многими вещами, которые делали тебя счатсливым, но там, куда
+      ты переезжаешь, есть новые возможности. И эти новые возможности дают тебе больше счастья, чем у тебя было когда-либо.
+      "Скорость тика" показывает, насколько легко сделать тебя счастливым, а "Измерения Времени" делают тебе ещё легче стать счастливым.
+      "Измерения Антиматерии" - это метафора успешной борьбы духовно истощённого человека со своим недугом.`,
     get unlocked() { return PlayerProgress.eternityUnlocked(); }
   },
   {
     id: "a114",
     text:
-      `(Make me sleep) Put me to sleep inside. (I can't sleep) Put me to sleep inside. (Leave me) Whisper my name
-      and give me to the dark. (Make me sleep) Bid my milk to stay. (I can't fall asleep) Before I become done.
-      (Leave me) Leave me to the nothing I've become.`
+      `(Усыпи меня) Усыпи меня внутри. (Я не могу уснуть) Усыпи меня внутри. (Оставь меня) Прошепчи моё имя
+      и оставь меня тьме. (Усыпи меня) Попроси моё молоко остаться. (Я не могу уснуть) Прежде чем я закончусь.
+      (Оставь меня) Оставь меня с тем ничтожеством, которым я стал.`
   },
   {
     id: "a115",
     text:
-      `A preview of the next update - loot boxes! Feel a sense of pride and progression as you open cosmic,
-      galactic, and universal lootboxes for chances at rare skins, unique challenges with uniquer rewards,
-      time skips and even new dimensions!`
+      `Обзор следующего обновления - лутбоксы! Испытайте гордость и чувство прогресса, открывая космические,
+      галактические и вселенские лутбоксы за шанс открыть редкие скины, уникальные испытания с ещё более уникальными наградами,
+      пропуски времени и даже новые измерения!`
   },
   {
     id: "a116",
-    text: "The intent of dimensions is to give a sense of pride and accomplishment."
+    text: "Смысл измерений в том, чтобы пользователи испытывали гордость и чувство большого достижения."
   },
   {
     id: "a117",
-    text: "Refreshing cures cancer."
+    text: "Обновление страницы лечит рак."
   },
   {
     id: "a118",
-    text: "I have a 9th, I have a dimension... UHH... IT DOESN'T EXIST!"
+    text: "У меня есть 9-е, у меня есть измерение… ЭЭЭ… ЕГО НЕ СУЩЕСТВУЕТ!"
   },
   {
     id: "a119",
     text:
-      `Since when did we start reporting stuff like this? Half of it isn't even proper news, it's just jokes and
-      meta-references, it doesn't even make sens-HAHAHA DISREGARD THAT I SUCK CO-`
+      `С каких пор мы начали освещать такое? Половина этого - даже не настоящие новости, а просто шутки и
+      мета-отсылки, которые даже не имеют смыс-ХАХАХА, НЕ ОБРАЩАЙТЕ НА ЭТО ВНИМАНИЯ, Я СОСУ-`
   },
   {
     id: "a120",
-    text: "The year is 1944, Hevipelle can't release updates for AD because he doesn't exist."
+    text: "Шёл 1944 год. Hevipelle не мог выпускать обновления в ИА, потому что его не было на свете."
   },
   {
     id: "a121",
-    text: `"THAT DIMENSION DOESN'T EXIST" -GhostBot`
+    text: `"ТОГО ИЗМЕРЕНИЯ НЕ СУЩЕСТВУЕТ" - GhostBot`
   },
   {
     id: "a122",
     text:
-      `Most things you know as nuts are actually Drupe seeds or Legumes. Hevipelle on the other hand is quite crazy
-      and can thus be considered a dry uncompartmented fruit.`
+      `То, что вы знаете как орехи, - как правило, на самом деле семена костянок или бобовых. Hevipelle, с другой стороны, довольно безумен,
+      и потому может считаться цельным сухим фруктом.`
   },
   {
     id: "a123",
-    text: "Finland declares that it's starting to import Design."
+    text: "Финляндия заявляет, что начинает импортировать Дизайн."
   },
   {
     id: "a124",
-    text: "All this importing is making me Confused."
+    text: "Из-за всего этого импорта у меня в голове Путаница."
   },
   {
     id: "a125",
     text:
-      `Only today you can call 1-800-ANTIMATTER and get a FREE Infinity Dimension! The package also comes with a
-      COMPLETELY FREE SHIPPING and a FREE HIGH DEFINITION ANTI-V!!! Only today for the low price of 42! Estimated
-      delivery time - 5 hours.`,
+      `Только сегодня вы можете позвонить по номеру 1-800-АНТИМАТЕРИЯ и получить Измерение Бесконечности БЕСПЛАТНО! Наше предложение включает в себя
+      СОВЕРШЕННО БЕСПЛАТНУЮ ДОСТАВКУ и БЕСПЛАТНЫЙ АНТИЛЕВИЗОР ВЫСОКОГО РАЗРЕШЕНИЯ!!! Только сегодня по невероятно низкой цене - 42! Приблизительное время
+      доставки - 5 часов.`,
     isAdvertising: true
   },
   {
     id: "a126",
-    text: "1e420 blaze it."
+    text: "Это тест новостей. Игнорируйте его."
   },
   {
     id: "a127",
-    text: "This game doesn't have any bugs, you're just doing it wrong."
+    text: "В этой игре нет ошибок, ты просто не умеешь играть."
   },
   {
     id: "a128",
     get text() {
-      return `Antimatter_Dimensions.mp${format(Number.MAX_VALUE, 2)}`;
+      return `Измерения_Антиматерии.mp${format(Number.MAX_VALUE, 2)}`;
     }
   },
   {
@@ -689,7 +703,7 @@ export const news = [
   },
   {
     id: "a130",
-    text: "Click this to unlock that one secret achievement.",
+    text: "Нажмите, чтобы выполнить то самое секретное достижение.",
     // This next line is needed for this news ticker to unlock
     // the secret achievement.
     onClick: () => undefined
@@ -697,80 +711,79 @@ export const news = [
   {
     id: "a131",
     text:
-      `Warning - We have just been informed that there is a chance of infection with a mind-virus of the Basilisk
-      type, similar to the infamous winking parrot. This particular example is known as 'Fractal Disease Type III'.
-      This is believed to cause a 'crashing' of the mind, similar to a computer crash, due to the mathematical
-      complexity of the image causing mathematical ideas that the mind can't comprehend, a Gondelian shock input
-      eventually leading to crashing through Gondelian spoilers. All who have researched it have eventually died
-      the same way, so it is impossible to tell exactly, but this is the common belief. Regardless, with the
-      introduction of 'design' mode, as well as reports of it's spontaneous appearance, sufficient repetition
-      of this mode's appearance may lead to an image forming in the mind similar to 'Fractal Disease Type III'.
-      With this in mind, we have some suggestions if you find yourself plagued with it. First, refresh immediately
-      and see if that fixes the issue. If not, navigate to options, and change the theme from design to literally
-      anything else. And above all else, Godspeed. We can't afford to lose anymore viewers.`
+      `Внимание: нам только что сообщили о риске заражения мозговым вирусом типа Василисков,
+      похожим на печально известного "мигающего попугая". Этот конкретный пример известен как "фрактальный недуг III типа".
+      Считается, что он вызывает "сбой" в работе мозга, похожий на компьютерный сбой, из-за математической
+      сложности образа, вызывающего математические идеи, которые не поддаются постижению разумом, и внедрению гонделевского шока,
+      в конечном счёте приводящего к сбою из-за гонделевских спойлеров. Все, кто его исследовал, в итоге от него
+      погибли, так что невозможно сказать точно, но таково общепринятое мнение. Несмотря на это, учитывая
+      введение режима "дизайн", а также сообщения о его спонтанном появлении, важно знать, что достаточно частое повторение
+      появления этого режима может привести к формированию в сознании образа, как при "фрактальном недуге III типа".
+      Принимая данные факты во внимание, мы хотим дать вам несколько советов на случай, если вы столкнётесь с подобной проблемой. Прежде всего
+      немедленно обновите страницу. Если это не решит проблему, перейдите во вкладку "Настройки" и смените тему с "дизайна" на
+      любую другую. И самое главное - Бог вам в помощь. Мы больше не можем позволить себе терять зрителей.`
   },
   {
     id: "a132",
-    text: "If I have bad English, I'll study English until I have good English."
+    text: "Если я плохо говорю по-русски, я буду учить русский язык, пока не буду хорошо говорить по-русски."
   },
   {
     id: "a133",
     text:
-      `Someone once told me that antimatter is gonna roll me. I ain't the sharpest atom in the shed. WELL, the
-      tubes start coming and they don't stop coming...`
+      `Однажды мне сказали, что антиматерия меня раздавит, и я не семи атомов во лбу. ЧТО Ж,
+      трубы проходят и не перестают проходить…`
   },
   {
     id: "a134",
-    text: "Because of this game I can now use the word \"infinity\" as a verb.",
-    get unlocked() { return PlayerProgress.infinityUnlocked(); }
+    text: "О, смотри. Очередная новость скользит в верхней части экрана затем только, чтобы ты не скучал в этой игре с большими числами.",
   },
   {
     id: "a135",
-    text: "Ahhh I love the smell of particle annihilation in the morning."
+    text: "Ах, я люблю запах аннигиляции частиц поутру."
   },
   {
     id: "a136",
-    text: "The person who said ghosts don't exist obviously doesn't have a Discord."
+    text: "У человека, сказавшего, что привидений не существует, очевидно, нет аккаунта в Discord."
   },
   {
     id: "a137",
-    text: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAntimatter Dimensions was made by some dude from Finland"
+    text: "ИИИИИИИИИИИИИИИИИИИИИИИИИИИИИИИИзмерения Антиматерии были созданы каким-то чуваком из Финляндии"
   },
   {
     id: "a138",
     get text() {
-      return `Check out Avari's newly built actually infinite infinity pool! With an area of
-        ${format(Number.MAX_VALUE, 2)} square megametres, you'll be sure to have infinite fun!`;
+      return `Посмотрите на этот бесконечный бассейн, недавно построенный авари, который действительно бесконечен! На площади в
+        ${format(Number.MAX_VALUE, 2)} квадратных мегаметров вам гарантировано бесконечное веселье!`;
     },
     isAdvertising: true
   },
   {
     id: "a139",
-    text: "We have updated our Antimatter Privacy Policy."
+    text: "Мы обновили нашу политику конфиденциальности антиматерии."
   },
   {
     id: "a140",
     text:
-      `Attention all Antimatter Dimensions Gamers, Hevipelle is in great danger, and he needs YOUR help to wipe out
-      all the bad memes in #news-ticker-suggestions. To do this, he needs a dozen new dank memes and a couple of
-      discord bots. To help him, all he needs is your Antimatter card number, the three numbers on the back, and
-      the expiration month and date. But you gotta be quick so that Hevipelle can secure the good memes, and
-      achieve the epic meme R O Y A L.`,
+      `Внимание, все играющие в "Измерения Антиматерии", Hevipelle в большой опасности, и ему нужна ТВОЯ помощь, чтобы стереть
+      все плохие мемы в канале #news-ticker-suggestions. Для этого ему нужна дюжина новых dank-мемов и пара
+      ботов для discord. Чтобы помочь ему, просто отправь номер своей карты антиматерии, три цифры на обратной стороне и
+      дату истечения срока действия. Но надо поторопиться, чтобы Hevipelle успел обезопасить хорошие мемы и
+      прийти к эпичному мему Р О Я Л.`,
     isAdvertising: true
   },
   {
     id: "a141",
     text:
-      `If each Trimp was a plank volume, and each piece of resource was a plank volume, how many universes would
-      you fill up before you realized you were playing the wrong game?`
+      `Если бы каждый тримп занимал планковский объём и каждая единица ресурса занимала планковский объём, объём скольких Вселенных
+      вы могли бы заполнить, прежде чем осознать, что вы играете не в ту игру?`
   },
   {
     id: "a142",
-    text: "Actually, that last one was incorrect."
+    text: "На самом деле прошлая новость неверна."
   },
   {
     id: "a143",
-    text: "If you're reading this, you can read."
+    text: "Если вы читаете эту новость, вы умеете читать."
   },
   {
     id: "a144",
@@ -779,21 +792,21 @@ export const news = [
   {
     id: "a145",
     text:
-      `The game "Matter Dimensions" by Lghtellep has just reached -1,000,000 plays on the gaming website Etagergnok.`
+      `Игра "Измерения Материи" от разработчика Ellepiveh только что набрала -1,000,000 игроков на игровом сайте Etagergnok.`
   },
   {
     id: "a146",
     text:
-      `How many licks does it take to get to the center of an antimatter tootsie pop? A whole lot, because unless
-      you're made out of antimatter too, you'll explode every time you try to lick it.`
+      `Сколько раз нужно облизать леденец "tootsie pop" из антиматерии, чтобы добраться до его центра? Довольно много, потому что если только
+      вы не состоите из антиматерии сами, вы будете взрываться при каждой попытке его лизнуть.`
   },
   {
     id: "a147",
-    text: "They say if you look in a mirror and ping Hevipelle three times in a row you'll instantly die."
+    text: "Говорят, если посмотреть в зеркало и упомянуть Hevipelle три раза подряд, ты мгновенно умрёшь."
   },
   {
     id: "a148",
-    text: "The next update is now only 300 minutes away."
+    text: "Следующее обновление всего через 300 минут."
   },
   {
     id: "a149",
@@ -801,122 +814,122 @@ export const news = [
   },
   {
     id: "a150",
-    text: "Game is Dead 1/5 the moderation is terrible."
+    text: "Игра мертва 1/5 модерирование ужасно."
   },
   {
     id: "a151",
-    text: "This message will never appear on the news ticker, isn't that cool?"
+    text: "Это сообщение никогда не появится в новостной строке, разве это не прикольно?"
   },
   {
     id: "a152",
     text:
-      `The first dimension produces antimatter, the second dimension produces the first dimension, the third
-      dimension produces the second dimension, the fourth dimension produces the third dimension. Nobody has
-      ever unlocked the 5th, because that would take more than a minute of gameplay.`
+      `Первое Измерение производит антиматерию, второе Измерение производит первое Измерение, третье
+      Измерение производит второе Измерение, четвёртое Измерение производит третье Измерение. Никто
+      никогда не разблокировал 5-е, потому что это заняло бы больше минуты.`
   },
   {
     id: "a153",
-    text: "My AD-blocker won't let me play."
+    text: "Hevipelle сказал: \"Теперь я сам определяю реальность.\" И создал новый слой престижа."
   },
   {
     id: "a154",
-    text: "You lost the game."
+    text: "Вы проиграли."
   },
   {
     id: "a155",
-    text: "Did you know that 75% of all statistics are made up on the spot?"
+    text: "Знаете ли вы, что 75% статистики берётся с потолка?"
   },
   {
     id: "a156",
     text:
-      `If you're using so many logs in a notation name, why not just call it tree notation?
-      They're literally made of logs!`
+      `Почему Стандартная нотация так называется,
+      если её никто не использует?`
   },
   {
     id: "a157",
     text:
-      `.tuo ti gnitset fo ssecorp eht ni yltnerruc m'I dna ,rettamitna otni
-      rettam trevnoc ot yaw a tuo derugif evah stsitneicS`
+      `.тнемом йыннад в оге юуритсет я и ,юиретамитна в
+      юиретам ьтащарверп босопс илыркто еынёчУ`
   },
   {
     id: "a158",
     text:
-      `If Gaben can't count to three, and Hevipelle can't count to nine, will there be some other game developer
-      in the future that can't count to 27?`
+      `Если Габен не умеет считать до трёх, а Hevipelle не умеет считать до девяти, значит, в будущем будет
+      разработчик игр, не умеющий считать до 27?`
   },
   {
     id: "a159",
     text:
-      `What does it mean when you "bank" Infinities? Is there a bank somewhere that you just deposit these
-      infinities? Does having a lot of banked Infinities improve your credit score? Do you get a credit card?`,
+      `Я считаю, что игра неполноценна, ведь нельзя купить все Исследования Времени сразу.
+      Поэтому я покидаю сервер и удаляю игру.`,
     get unlocked() { return PlayerProgress.eternityUnlocked(); }
   },
   {
     id: "a160",
-    text: `Turns out all our news is being stolen and broadcast to a game called "Antimatter Dimensions", damn Fins.`
+    text: `Оказывается, все наши новости крадут и транслируют в игру под названием "Измерения Антиматерии", чёртовы финны.`
   },
   {
     id: "a161",
-    text: "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm Oh sorry, wrong text field."
+    text: "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm Ой, извините, не то текстовое поле."
   },
   {
     id: "a162",
-    text: `"Python's not the best language, Finnish is." - Hevipelle`
+    text: `"Лучший из языков - не Python, а финский." - Hevipelle`
   },
   {
     id: "a163",
     text:
-      `Some say that most of these news are bad memes. Some say that they're good memes.
-      This one? Well it's just meta news.`
+      `Одни говорят, что эти новости - большей частью плохие мемы. Другие говорят, что это хорошие мемы.
+      А что насчёт этой новости? Ну, это мета-новость.`
   },
   {
     id: "a164",
-    text: "Look mom, I'm on the news!"
+    text: "Смотри, мама, я в новостях!"
   },
   {
     id: "a165",
-    text: "<span style='font-size: 0.2rem'>Shush, I'm trying to be sneaky here.</span>"
+    text: "<span style='font-size: 0.2rem'>Цыц, я тут стараюсь пройти скрытно.</span>"
   },
   {
     id: "a166",
     text:
       `<span style='animation: a-game-header__antimatter--glow 2s infinite'>
-      PLEASE HELP, I'VE CONSUMED TWICE MY DAILY DOSE OF ANTIMATTER!</span>`,
+      ПОЖАЛУЙСТА, ПОМОГИТЕ, Я ПРЕВЫСИЛ СВОЮ ЕЖЕДНЕВНУЮ ДОЗУ АНТИИМАТЕРИИ ВДВОЕ!</span>`,
   },
   {
     id: "a167",
     text:
-      `Oh, I appear to have run out of <span style='animation: a-existence-glow 3s
-      infinite; font-size: 1.8rem; color: white; line-height: 0;'>Existence</span>.`,
+      `Ой, кажется, у меня закончилось <span style='animation: a-existence-glow 3s
+      infinite; font-size: 1.8rem; color: white; line-height: 0;'>Существование</span>.`,
   },
   {
     id: "a168",
     text:
-      "I mean, we may never run out of news articles, but we sure will run out of good ones. Oh wait, we already did."
+      "То есть, может быть, у нас и не закончатся новости, но вот хорошие новости точно закончатся. Ой, они уже закончились."
   },
   {
     id: "a169",
-    text: "TODO: John, please remove this news message before we release the Reality update to the public."
+    text: "TODO: Ваня, пожалуйста, убери эту новость, прежде чем мы опубликуем обновление с реальностью."
   },
   {
     id: "a170",
-    text: "<a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ' target='_blank'>This link is not a rick roll.</a>"
+    text: "<a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ' target='_blank'>Эта ссылка - не рикролл.</a>"
   },
   {
     id: "a171",
-    text: "<a href='https://www.youtube.com/watch?v=P945A5Tndp8' target='_blank'>This link is not a rick roll.</a>"
+    text: "<a href='https://www.youtube.com/watch?v=P945A5Tndp8' target='_blank'>Эта ссылка - не рикролл.</a>"
   },
   {
     id: "a172",
     text:
-      `If you notice any issues with a news ticker message, please report them on the
-      <a href='https://discord.gg/ST9NaXa' target='_blank'>Discord</a> by clicking that link right there.`
+      `Если вы столкнётесь с проблемами или ошибками в новостях, сообщите о них на нашем сервере в
+      <a href='https://discord.gg/ST9NaXa' target='_blank'>Discord</a> по этой ссылке.`
   },
   {
     id: "a173",
     text:
-      `<span style='animation: a-game-header__antimatter--glow 3s infinite'>This
-      text is made of antimatter. Do not touch or else the universe will collapse.</span>`,
+      `<span style='animation: a-game-header__antimatter--glow 3s infinite'>Этот
+      текст сделан из антиматерии. Не трогайте его, иначе Вселенная сожмётся.</span>`,
     onClick: () => bigCrunchAnimation(),
   },
   {
@@ -924,100 +937,100 @@ export const news = [
     text:
       `<span style='font-family: runescape; color: yellow; text-shadow: 0.1rem 0.1rem black; letter-spacing: 0.1rem;
       font-size: 2rem; line-height: 0; animation: a-text-flash 1s steps(1, end) infinite;'
-      >FREE RUNE ARMOR TRIMMING</span>`,
+      >БЕСПЛАТНАЯ ОТДЕЛКА РУННОЙ БРОНИ</span>`,
   },
   {
     id: "a175",
     text:
-      `Numbers glow bright on the monitor, not a proton to be seen... a kingdom of antimatter, and it looks like
-      I'm the queen. With dimboosts powering up this ever rising tide -- can't stop clicking, heaven knows I've
-      tried. Do not give in, push for that galaxy, buy 10, buy max, just mash down on that key, sacrifice dim 8
-      and watch it grow.... and overflow! Let it grow, let it grow, can't hold it back any more... Let it grow,
-      let it grow, can't fit into 8 bytes any more. I don't care if it takes all day -- big crunch is just the
-      start anyway.`
+      `Числа сияют на экране, всё из антивещества… королевство измерений, королевой
+      стала я. Расширения одно за другим набегают, как волна - мне бы перестать тыкать кнопки, но я не
+      могла. Не сдавайся, достигни галактики, купи десятку, купи всё, зажми все клавиши, пожертвуй измерения
+      и отпусти…. и числа будут расти! Отпусти и забудь, вспять рост чисел не повернуть… Отпусти
+      и забудь, в 8 байтов число не впихнуть. Хоть прошёл целый день уже, Большое Сжатие мне всегда
+      по душе.`
   },
   {
     id: "a176",
-    text: "I've been using emoji notation so long that I can actually read it now, please send help."
+    text: "Я использовал нотацию Эмодзи так долго, что действительно научился её читать, пожалуйста, помогите."
   },
   {
     id: "a177",
     text:
-      `Once you have <span style='color: black; background: black;'>REDACTED</span> <span style='color: black;
-      background: black;'>REDACTED</span>, you can unlock <span style='color: black; background: black;'>
-      REDACTED</span>. Every <span style='color: black; background: black;'>REDACTED</span>, for each <span
-      style='color: black; background: black;'>REDACTED</span>, there is a <span style='color: black; background:
-      black;'>REDACTED</span> for it to <span style='color: black; background: black;'>REDACTED</span>. You can
-      boost the <span style='color: black; background: black;'>REDACTED</span> and <span style='color: black;
-      background: black;'>REDACTED</span> by spending some <span style='color: black; background: black;'>REDACTED
-      </span>. Also, there is another upgrade that allow you to get <span style='color: black; background: black;'>
-      REDACTED</span> <span style='color: black; background: black;'>REDACTED</span>. The way <span style='color:
+      `Набрав <span style='color: black; background: black;'>REDACTED</span> <span style='color: black;
+      background: black;'>REDACTED</span>, вы можете разблокировать <span style='color: black; background: black;'>
+      REDACTED</span>. Каждый <span style='color: black; background: black;'>REDACTED</span> каждая <span
+      style='color: black; background: black;'>REDACTED</span> с определённой <span style='color: black; background:
+      black;'>REDACTED</span> может <span style='color: black; background: black;'>REDACTED</span>. Вы можете
+      улучшать <span style='color: black; background: black;'>REDACTED</span> и <span style='color: black;
+      background: black;'>REDACTED</span>, тратя на это <span style='color: black; background: black;'>REDACTED
+      </span>. Есть ещё одно улучшение, которое позволяет вам получить <span style='color: black; background: black;'>
+      REDACTED</span> <span style='color: black; background: black;'>REDACTED</span>. Эти <span style='color:
       black; background: black;'>REDACTED</span> <span style='color: black; background: black;'>REDACTED</span>
-      work is that when you reach <span style='color: black; background: black;'>REDACTED</span> <span style=
-      'color: black; background: black;'>REDACTED</span>, you can <span style='color: black; background: black;'>
-      REDACTED</span> the amount of <span style='color: black; background: black;'>REDACTED</span> in exchange for
-      a <span style='color: black; background: black;'>REDACTED</span> <span style='color: black; background:
-      black;'>REDACTED</span>. These work just like <span style='color: black; background: black;'>REDACTED</span>,
-      improving <span style='color: black; background: black;'>REDACTED</span>.`
+      работают так: когда вы достигаете <span style='color: black; background: black;'>REDACTED</span> <span style=
+      'color: black; background: black;'>REDACTED</span>, вы можете <span style='color: black; background: black;'>
+      REDACTED</span> ваше количество <span style='color: black; background: black;'>REDACTED</span>, получив взамен
+      <span style='color: black; background: black;'>REDACTED</span> <span style='color: black; background:
+      black;'>REDACTED</span>. Как и остальные <span style='color: black; background: black;'>REDACTED</span>,
+      они усиливают <span style='color: black; background: black;'>REDACTED</span>.`
   },
   {
     id: "a178",
     text:
-      `WARNING: Use of Antimatter Dimensions may result in Tuberculosis, HIV/AIDS, sudden belief that the 9th
-      dimension is real, spontaneous implosion, Polio, Measles, existential dread, incurable insanity or <span
-      style='color: black; background: black;'>REDACTED</span>. Please contact your insurance to see if you are
-      covered. By continuing you absolve Antimatter Dimensions of blame should any of the above mentioned, or those
-      that have not been mentioned yet, occur to you. Antimatter Dimensions reserves the right to alter this at any
-      time, with or without warning.`
+      `ВНИМАНИЕ: использование "Измерений Антиматерии" может привести к таким побочным эффектам, как туберкулёз, ВИЧ/СПИД, внезапная вера в
+      существование 9-го Измерения, спонтанный взрыв, полиомиелит, корь, экзистенциальный страх, неизлечимое безумие и <span
+      style='color: black; background: black;'>REDACTED</span>. Пожалуйста, обратитесь в местную страховую компанию, чтобы проверить,
+      застрахованы ли вы. Продолжая, вы снимаете с "Измерений Антиматерии" ответственность, в случае если с вами
+      произойдёт что-либо из вышеперечисленного или того, что ещё не было перечислено. "Измерения Антиматерии" оставляют за собой право изменить это положение в любое
+      время, в том числе без уведомления.`
   },
   {
     id: "a179",
-    text: "Robot: Activated. Sapience: Achieved. World: Ready to be conquered. Begin: Procrastination."
+    text: "Робот: активирован. Разум: приобретён. Мир: готов быть завоёван. Запущена: лень."
   },
   {
     id: "a180",
     text:
-      `We ran out of news. Luckily we have some backup news that we can run for 5 hours, which will earn us enough
-      for us to buy a new set of '5-hour high-quality news'. Sorry for the inconvenience.`
+      `У нас закончились новости. К счастью, у нас есть резервные новости, которых нам хватит на 5 часов, а за это время
+      мы успеем купить новый набор "5-часовых высококачественных новостей". Приносим вам свои извинения за доставленные неудобства.`
   },
   {
     id: "a181",
-    text: "This news broadcast is powered by break_news.js."
+    text: "Я не удивлён, что мы потеряли 9-е Измерение. Оно же в глубоких джунглях!"
   },
   {
     id: "a182",
     text:
-      `With the final update, Antimatter Dimensions has been finished. Thank you for playing. However, in the very
-      near future, ANTIMATTER DIMENSIONS will be released. And before you ask, it's not a sequel, it's a reboot.
-      Look forward to it in 5 hours!`
+      `Последнее обновление завершило разработку "Измерений Антиматерии". Спасибо, что играете. Однако в очень
+      скором будущем будут выпущены "ИЗМЕРЕНИЯ АНТИМАТЕРИИ". И прежде чем вы спросите, это не продолжение, это перезагрузка.
+      Ожидайте выпуска через 5 часов!`
   },
   {
     id: "a183",
     text:
-      `In other unrelated news, we're getting reports that approximately 1.79 people are angry that lightning
-      is striking their Christmas tree at night.`
+      `А теперь к другим новостям, не связанным с предыдущей: нам сообщают, что около 1.79 человека злятся на то, что молния
+      бьёт в их новогодние ёлки по ночам.`
   },
   {
     id: "a184",
     text:
-      `<span style='animation: a-text-grow 1s infinite'>R̵̬̙͋͂̀̋͑̈́̇͠Ê̵͇͎͂̂̍̓̌̐̋̋̀̀̔M̶̨̲̯̘͙̬̥̮̣͚̱̫͛̽̃͌̚͝
-      "Ą̴͍̝͐Į̷̛̲̯̫̘͌́̄̏͌̀̈́͝͝Ṅ̶̛̻̠̠̤̦̞̞͗̎̊̌̊͝͠</span><span style='animation: a-text-shrink 1s infinite'>
-      Ḁ̷̛͂̈́͗̎̃̓͛́͘ͅW̶̡̖͓̗̦̃̇̌̀͝A̵͇̭͉̓̎̈̿̊́̄̚͜R̶̝͚̲̭͎͇͎͓͖͚͇̀̈́͗̃̏̂̌͝͝Ę̴̡̤͙͈̝̬̰͒͘</span><span style
-      ='animation: a-text-grow 1s infinite'> ̶̺̈́́̆̓͘͘Ồ̸̢̢̮͓̯̗͙͚̬̉͊̿F̶̠̤̱̱̱͊̂̍̔̃͆̆̑̿͘</span><span style='animation:
-      a-text-shrink 1s infinite'> ̴̨̞̠̮͚̱͉͋̔͗̽̈́́́̅ͅỴ̶̣̙̹͚̲͔̲̼̬̥̀͌̒̾͘͘O̵̪̠̗̝̗̘̜͚̮̊͒͆̃̀̌̒͝ͅU̸͎͗̍̑̎̅̅͝R̵̗͑̽̏̓͆͒̈́͌͘̕
-      </span><span style='animation: a-text-grow 1s infinite'> ̸̑̽̇̆͊̔̍̊̈́̈́͘ͅS̸̘͐͝U̴̥̭̚͘R̸̖̜͍͒́̋͆̈́̓
-      R̸̡̛̛̪̝̟̱̣̹̭̟̣̀̈̀̏̉̌͝͠Õ̶͙͈͖̠͇̬͍̟̰U̵̩̫͉̝͔̼͎̦̔̓̽͌͊̏̇̓̀̓̀Ņ̸͍͇̘̙̥̰͉̲͕͈̥̍͛̃̑͝Ḑ̵̤̻̖̱̘̯̝̖̈̌̄̕͝
-      Ī̶̜̱̈́̑̃̉̄̋̔͐͋͠Ṅ̴͎̞͍̽͊͛̈́̅͛̈̅̚͠Ģ̸̢̾͊S̷̫̼̜̼͇̋͛̎͑͆̅̓̇</span>`,
+      `<span style='animation: a-text-grow 1s infinite'>С̵̬̙͋͂̀̋͑̈́̇͠Л̵͇͎̂͂̂̍̓̌̐̋̋̀̀̔Е̶̨̲̯̘͙̬̥̮̣͚̱̫͛̽̃͌̚͝Д̴̨͍̝͐И̷̨̛̲̯̫̘͌́̄̏͌̀̈́͝͝Т̶̛̻̠̠̤̦̞̞̇͗̎̊̌̊͝͠Е̷̛̥͂̈́͗̎̃̓͛́͘ͅ</span>
+      <span style='animation: a-text-shrink 1s infinite'>
+      З̶̡̖͓̗̦̃̇̌̀͝А̵͇̭͉̓̎̈̿̊́̄̚͜</span><span style='animation:
+      a-text-grow 1s infinite'>
+      О̶̝͚̲̭͎͇͎͓͖͚͇̀̈́͗̃̏̂̌͝͝Б̴̨̡̤͙͈̝̬̰͒͘ ̶̺̈́́̆̓͘͘С̸̢̢̮͓̯̗͙͚̬̂̀̉͊̿Т̶̠̤̱̱̱͊̂̍̔̃͆̆̑̿͘ ̴̨̞̠̮͚̱͉͋̔͗̽̈́́́̅ͅА̶̣̣̙̹͚̲͔̲̼̬̥̀͌̒̾͘͘Н̵̪̠̗̝̗̘̜͚̮̊͒͆̃̀̌̒͝ͅО̸͎͗̍̑̎̅̅͝В̵̗͑̽̏̓͆͒̈́͌͘̕ ̸̑̽̇̆͊̔̍̊̈́̈́͘ͅК̸̘͐͝О̴̥̭̚͘Й̸̖̜͍͒́̋͆̈́̓</span>
+      <span style='animation:
+      a-text-shrink 1s infinite'>В̸̡̛̛̪̝̟̱̣̹̭̟̣̀̈̀̏̉̌͝͠О̶͙͈͖̠͇̬͍̟̰̃К̵̩̫͉̝͔̼͎̦̔̓̽͌͊̏̇̓̀̓̀Р̸̧͍͇̘̙̥̰͉̲͕͈̥̍͛̃̑͝Ӱ̵̧̤̻̖̱̘̯̝̖̌̄̕͝Г̶̜̱̄̈́̑̃̉̄̋̔͐͋͠
+      </span><span style='animation: a-text-grow 1s infinite'>В̴͎̞͍̇̽͊͛̈́̅͛̈̅̚͠А̸̧̢̾͊С̷̫̼̜̼͇̋͛̎͑͆̅̓̇</span>`,
   },
   {
     id: "a185",
     text:
-      `We aren't back with your favorite segment, "Tweets From The Fans"! Today we haven't got a message from
-      @mattertruthwakeup saying "How can you people broadcast your ridiculous LIES and still sleep at night.
-      You claim absurd things, like "antimatter is real" and "antimatter people aren't people too", this
-      antimatter propaganda HAS TO STOP NOW!!! You people need to WAKE UP and realize that you are HURTING ALL
-      MATTER with your crazy talk!!". What a nice positive sentiment from that lovely fellow. This hasn't been
-      John from the ANN, and I won't be seeing you tomorrow!`
+      `Мы не переходим к вашей любимой рубрике - "Твиты от фанатов"! Сегодня мы не получили сообщение от
+      @pravda_v_materii, гласящее: "Как вы, люди, можете транслировать свою нелепую ЛОЖЬ и при этом спать по ночам?
+      Вы делаете абсурдные заявления, такие как "антиматерия существует" и "люди из антиматерии - не люди, как все", эта
+      пропаганда антиматерии ДОЛЖНА ПРЕКРАТИТЬСЯ НЕМЕДЛЕННО!!! Вы, люди, должны ПРОСНУТЬСЯ и осознать, что вы ПРИЧИНЯЕТЕ ВРЕД ВСЕЙ
+      МАТЕРИИ своими безумными речами!!". Какой приятный, позитивный настрой от нашего доброго товарища. С вами не было
+      Ивана Иванова, это не программа "Общественное телевидение Антиматерии", и мы не увидимся завтра!`
   },
   {
     id: "a186",
@@ -1038,16 +1051,16 @@ export const news = [
   {
     id: "a189",
     text:
-      `Behind every man or woman stands, eventually, due to the earth being round, that exact same man or woman,
-      looking over their shoulder, stealing their own ideas.`
+      `У каждого человека за спиной стоит, в конечном счёте, благодаря шарообразности Земли, тот же самый человек,
+      заглядывая себе за плечо, крадя собственные идеи.`
   },
   {
     id: "a190",
-    text: "Shame. Shame. Shame. 🔔"
+    text: "Позор. Позор. Позор. 🔔"
   },
   {
     id: "a191",
-    text: "Okay Google, Big Crunch"
+    text: "Окей, Гугл, Большое Сжатие"
   },
   {
     id: "a192",
@@ -1059,23 +1072,23 @@ export const news = [
   {
     id: "a193",
     text:
-      `Good morning viewers, this is Josh, and I'm your ANN host for today. Speaking of today, I'm told we've got
-      some really exciting news for you today, so let's just jump right into it. Looks like apparently somebody
-      was <i>not<i> nice today, and got an "Antimatter-storm", whatever that means... Guys is this the right
-      script? This is just nonsensical. It is? Alright... Next up we learn that "Nothing is created, nothing is
-      destroyed."... Okay seriously guys, this is a joke right? This isn't news, these are just random sentences!
-      You all said you'd help me out on my first day here but you're just hazing me! This is <i>not</i> the kind of
-      work environment I want to be in! I quit!`
+      `Доброе утро, уважаемые зрители, с вами Иван Осипов, и это программа "Общественное телевидение Антиматерии". Мне говорят, что у нас
+      на сегодня приготовлены для вас интересные новости, так давайте же перейдём к делу. Кажется, кто-то
+      <i>плохо</i> вёл себя сегодня, и на него обрушился "шторм из антиматерии", что бы это ни значило… Коллеги, это точно наш
+      сценарий? Здесь напрочь отсутствует смысл. Это он? Ладно… Нам сообщают, что "ничего не теряется, ничего не
+      создаётся"… Коллеги, я сейчас серьёзно говорю, это розыгрыш, да? Это не новости, это просто случайные предложения!
+      Вы все говорили, что поможете мне в первый рабочий день, а теперь лишь путаете меня! Это <i>не</i> та
+      рабочая атмосфера, в которой я хотел бы пребывать! Я увольняюсь!`
   },
   {
     id: "a195",
     text:
-      `Clowns are unique in that there is no such thing as an anti-clown,
-      it's just another clown. Clowns are their own opposite.`
+      `Клоуны уникальны в том, что нет такой вещи, как антиклоун,
+      это просто другой клоун. Клоуны противоположны себе.`
   },
   {
     id: "a196",
-    text: "Disco Time! (click me!)",
+    text: "Время для диско! (жми меня!)",
     onClick() {
       let random = Math.random();
       // Golden ratio
@@ -1084,110 +1097,110 @@ export const news = [
       random *= 255;
       const color = `hsl(${random}, 90%, 60%)`;
       return `<span style='color: ${color}; text-shadow: 0 0 0.5rem ${color};
-        animation: a-text-grow 0.4s infinite;'>Disco Time!</span>`;
+        animation: a-text-grow 0.4s infinite;'>Время для диско!</span>`;
     },
   },
   {
     id: "a197",
-    text: "In order to reach Reality in half an R press, we have to first talk about parallel dimensions."
+    text: "Чтобы достичь реальности за полнажатия клавиши R, нам надо для начала поговорить о параллельных измерениях."
   },
   {
     id: "a198",
     text:
-      `Hey there! Just to let you know, there a speck of dust on your screen. Can you help wipe it off?
-      It bothers me when l'm not clean. Thanks a lot!`
+      `Эй, привет! Просто чтобы ты знал, у тебя на экране пылинка. Не мог бы ты её стереть?
+      Мне неловко, когда я в пыли. Большое спасибо!`
   },
   {
     id: "a199",
-    text: "The real update is the friends we made along the way."
+    text: "Настоящее обновление - это друзья, которых мы встретили по пути."
   },
   {
     id: "a200",
     text:
-      `This former message has been revealed to be a duplicate of another message and has thus been removed.
-      We apologize for the inconvenience.`
+      `Эта новость была удалена, так как она является дубликатом другой новости.
+      Приносим вам свои извинения за доставленные неудобства.`
   },
   {
     id: "a201",
-    text: "No wait stop don't click that hide news ticker button!"
+    text: "Нет, погоди, не отключай новости!"
   },
   {
     id: "a202",
     text:
-      `This is so sad. Alexa, please play a sad song so I can relate to its emotional mood, as I currently have poor
-      mental health and listen to music like this so I can feel bad about myself. I realize this is unhealthy, but
-      you are a robot incapable of sentient thought, so you're unable to make a choice to avoid contributing to my
-      self destructive behavior, and you'll play a sad song anyway.
-      <i>Now playing "Despacito" by "Luis Fonsi".</i>`
+      `Это так грустно. Алекса, включи какую-нибудь грустную песню, чтобы я влился в её эмоциональный настрой, ведь у меня сейчас психика
+      нестабильна, и я слушаю такую музыку, чтобы жалеть себя. Я понимаю, что это вредно для психики, но
+      ты робот, неспособный к разумному мышлению, так что ты не можешь отказаться соучаствовать в моём
+      саморазрушительном поведении, и ты всё равно включишь грустную песню.
+      <i>Включаю Despacito. Исполнитель - Luis Fonsi.</i>`
   },
   {
     id: "a203",
     text:
-      `3/4 of the news messages are fake and gotten off of the discord server without permission or credit given
-      to the original writer - anonymous discord server member`
+      `"3 из 4 новостей фальшивы и заимствованы с сервера в discord без разрешения и упоминания
+      изначального автора" - анонимный участник сервера в discord`
   },
   {
     id: "a204",
-    text: "What kind of tea is hard to swallow? Reali-tea."
+    text: "Если обновление будет через 5 часов, то, значит, антиобновление было 5 часов назад?"
   },
   {
     id: "a205",
-    text: "Shoutouts to Simpleflips."
+    text: "Товарищи, это не новость, меня держат взаперти. Помогите, меня заставляют сочинять новости, и я ничего не ел на этой неделе. Помо- ХАХАХА, Я ЖЕ ГОВОРИЛ, ЧТО ЛЮДИ ИЗ МАТЕРИИ ГЛУПЫ, АХАХАХАХАХА"
   },
   {
     id: "a206",
     text:
-      `I visited the discord server of the game to have some friendly chat. At that point I got trolled by
-      the user called Cubic Frog.`
+      `Я зашёл на сервер игры в discord, чтобы дружелюбно поболтать. Тогда меня раздразнил
+      пользователь под псевдонимом Cubic Frog.`
   },
   {
     id: "a207",
     text:
-      `Hello, this is Josh, with today's forecast for your galaxy. We'll be hitting temperatures in the low
-      e10s today, and by this afternoon, it'll be cloudy with a chance of antimatter.`
+      `Здравствуйте, с вами Иван Осипов, и сейчас я расскажу вам всё о погоде на сегодня в нашей галактике. Температура сегодня поднимется до
+      e10 с лишним, а к обеду нам следует ожидать высокой облачности с возможной антиматерией.`
   },
   {
     id: "a208",
     text:
-      `Hi, I'm Steve, and I'm also Steve. Our greatest responsibility is to serve our antimatter communities.
-      We are extremely proud of the quantity, unbalanced journalism that ANN news produces. But we're
-      concerned about the troubling trend of responsible, two-sided news stories plaguing the antimatter
-      universe. The sharing of unbiased and true news has become all too common on social media. More
-      alarmingly, some media outlets publish these same true stories, stories that aren't just propaganda,
-      without checking government talking points first. Unfortunately, some members of the media use their
-      platforms to push a logically sound opinion and unbiased agenda to diversify 'exactly what antimatter
-      thinks'. This is extremely dangerous to our dictatorship. At ANN it's our responsibility to pursue
-      and report the lies. We understand lies are neither 'left or right' politically. Our commitment to
-      fearmongering slander is the foundation of our credibility, now more than ever. But we are incorporeal
-      8D beings of antimatter, and sometimes our propaganda techniques might fall short. If you believe our
-      coverage is fair please reach out to us by going to ivark.github.io, navigating to the options tab,
-      and clicking on [HARD RESET]. We value your comments. We won't respond back to you because you would've
-      deleted your comment with the hard reset button before you get it. We work very hard to seek the lies
-      and strive to be unfair, lopsided and opinionated... We consider it our honor, our privilege, to
-      irresponsibly deliver the news every nanosecond. Thank you for watching and we appreciate your
-      feedback. All matter should be-`
+      `Здравствуйте, с вами Степан Иванов, он же Степан Иванов. Наша первоочередная задача - служить нашей общественности из антиматерии.
+      Мы, Информационное антиагентство, очень гордимся производимой нами однобокой публицистикой с упором на количество. Однако мы
+      обеспокоены тревожной тенденцией распространения во Вселенной Антиматерии новостей, освещённых с двух сторон со всей
+      ответственностью. Распространение непредвзятых, настоящих новостей в социальных сетях стало слишком частым явлением. Но более
+      тревожно то, что некоторые СМИ публикуют эти настоящие репортажи, репортажи, не состоящие целиком из пропаганды,
+      без предварительной сверки с тезисами правительства. К сожалению, некоторые информационные агенства используют свои
+      платформы для продвижения логически обоснованных мнений и объективной повестки дня, чтобы заставить людей из антиматерии мыслить
+      критически. Это крайне опасно для нашей диктатуры. Информационное антиагентство ответственно подходит к сбору
+      и сообщению ложной информации. Мы понимаем, что ложь не бывает политически "левой" или "правой". Наша приверженность распространению
+      клеветы, нагнетающей страх, сейчас как никогда является основой доверия к нам. Но мы бестелесные
+      восьмимерные существа из антиматерии, и иногда наши методы пропаганды оказываются недостаточно эффективны. Если вы считаете наше
+      освещение событий достоверным, пожалуйста, свяжитесь с нами следующим образом: зайдите на сайт googolplexo1.github.io/AntimatterDimensionsSourceCode, откройте вкдаку "Настройки"
+      и нажмите на кнопку "СБРОСИТЬ ЭТО СОХРАНЕНИЕ". Мы ценим ваши комментарии. Мы не будем на них отвечать, потому что вы всё равно
+      удалите ваш комментарий, нажав на кнопку полного сброса. Мы прилагаем все усилия для сбора ложной информации
+      и стремимся к недостоверному, однобокому, субъективному освещению событий… Мы почитаем за честь, за привилегию
+      безответственно распространять новости каждую наносекунду. Спасибо, что смотрите нас. Мы ценим ваши
+      отзывы. Вся материя должна быть-`
   },
   {
     id: "a209",
     text:
-      `Have you ever heard the tale of the Antiwriter? I thought not. It's not a story the news tickers would tell
-      you. It's an Unhevi legend. Rumor has it that the Antiwriter contributes to the News every 5 hours with an
-      incredibly well written report, only to vanish again. Others think he doesn't exist at all, and is a
-      lie fabricated by Hevipelle to spread his propaganda. Perhaps he is real, and just a normal person like the
-      rest of us. In any case, we will probably never find out the identity of this mysterious poet.`
+      `Ты слышал когда-нибудь балладу об Антиписателе? Я так и думал. Новости молчат об этой истории.
+      Это неугодная Hevi легенда. Ходят слухи, что раз в 5 часов Антиписатель посылает в СМИ
+      невероятно качественный репортаж и снова исчезает. Многие думают, что его никогда и не было на свете, а
+      выдумал его Hevipelle для распространения своей пропаганды. Возможно, он существует и является обычным человеком, как
+      мы все. В любом случае мы, вероятно, никогда не раскроем личность этого загадочного поэта.`
   },
   {
     id: "a210",
     get text() {
       const clicks = player.news.specialTickerData.uselessNewsClicks;
-      const quantity = quantify("time", clicks);
+      const quantity = quantify("раз", clicks);
       if (clicks === 1) {
-        return `Nothing happens when you click this text. And yet, you've clicked it.`;
+        return `Когда вы нажимаете на эту новость, ничего не происходит. И тем не менее вы на неё нажали.`;
       }
       if (clicks > 1) {
-        return `Nothing happens when you click this text. And yet, you've clicked it ${quantity}.`;
+        return `Когда вы нажимаете на эту новость, ничего не происходит. И тем не менее вы на неё нажали ${quantity}.`;
       }
-      return "Nothing happens when you click this text. And you understand that.";
+      return "Когда вы нажимаете на эту новость, ничего не происходит. И вы это знаете.";
     },
     onClick() {
       player.news.specialTickerData.uselessNewsClicks++;
@@ -1198,111 +1211,111 @@ export const news = [
     id: "a211",
     get text() {
       const disses = [
-        "That's basically a rounding error.",
-        "That might as well be zero.",
-        "Did you forget an exponent somewhere?",
-        "Please, that's nothing."
+        "Да это не что иное, как ошибка округления.",
+        "Это же ноль, грубо говоря.",
+        "Ты что, забыл где-то символ экспоненты?",
+        "Брось ты, это ничто."
       ];
       const diss = disses.randomElement();
-      return `Only ${format(Currency.antimatter.value, 2, 0)} antimatter? ${diss}`;
+      return `Всего-то ${format(Currency.antimatter.value, 2, 0)} антиматерии? ${diss}`;
     },
   },
   {
     id: "a212",
     text:
-      `Hey, you. You're finally awake. You were trying to get the 9th dimension, right? Walked right into that
-      Infinity, same as us, and that thief over there.`
+      `Эй, ты. Наконец-то ты очнулся. Ты пытался достичь 9-го Измерения, да? Пришёл прямо в ту самую
+      бесконечность, как мы и тот вор вон там.`
   },
   {
     id: "a213",
     text:
-    `Antimatter giraffes have incredibly fast reaction times. This explains why they've won 90% of
-    all gaming championships since anti-giraffe friendly controllers were invented.`
+    `У жирафов из антиматерии невероятно быстрая реакция. Это объясняет, почему они выиграли 90%
+    всех чемпионатов по киберспорту, с тех пор как были изобретены специальные управляющие устройства для них.`
   },
   {
     id: "a214",
-    text: "Barack Obamantimatter"
+    text: "Барак Обамантиматерия"
   },
   {
     id: "a215",
     text:
-      `Local old man replaced lawn with antimatter grass to keep kids away. However,
-      when he attempted to water it, there were no survivors.`
+      `Местный старик заменил свой газон травой из антиматерии, чтобы отпугнуть детей. Но,
+      когда он попытался полить её, никто не выжил.`
   },
   {
     id: "a216",
-    text: "Testing... testing... testing... Oh goddamn I was in prod again.",
+    text: "Тестирую… тестирую… тестирую… Ой, чёрт, я опять в prod-среде.",
     isAdvertising: true
   },
   {
     id: "a217",
-    text: "The virgin matter vs the chad antimatter."
+    text: "Девственник-материя против Чада-антиматерии."
   },
   {
     id: "a218",
     text:
-      `After numerous catastrophic annihilation events, antimatter is
-      now classified as a controlled substance by the ADEA.`
+      `После множества катастрофических случаев аннигиляции Управление
+      Антиматерии по борьбе с наркотиками включило антиматерию в список запрещённых веществ.`
   },
   {
     id: "a219",
     text:
-      `Hello, Vsauce, Michael here. We all know that the 9th dimension doesn't exist, but what is 9? You know it's
-      the number after 8... right? What if... there's a number in between? And no I'm not talking about numbers
-      like 8.5 or 8.76, I'm talking about an integer between 8 and 9. Now all this may sound crazy to you, and it
-      kinda is, but what if, we've missed a number? We've all been taught that 2 comes after 1 and 3 comes after
-      2, but what if the number that comes after 8 isn't 9? After years of research and experimentation, we've
-      finally found the number. It is dangerous, even knowing its existence will let it consume your mind, but
-      fortunately, we've developed a reverse-containment cell, meaning it's everywhere except here. Our brain has
-      a protection system, that specifically filters out any information regarding this number, that's how we've
-      been able to survive for this long, and why others like us went extinct in the past, but the number has been
-      getting stronger, slowly getting closer to breaking our protection. We've temporarily stopped the number from
-      slipping into our memory by using the world-wide memory manipulator located in this room to keep making
-      everyone think that 9 comes after 8 with a side effect that makes everyone think that 9 is evil, but this
-      won't last forever, as the number will keep getting stronger, and will eventually overpower the memory
-      manipulator. That's why you're here, you're one of the most intelligent people here, and we hope you can
-      help us on our journey to defeat that number. Our enemy is not 9, it is the hidden number between 8 and 9,
-      the missing number.`
+      `Здравствуйте, Vsauce, Майкл с вами. Все мы знаем, что 9-го Измерения не существует, но что такое 9? Вы знаете, что это
+      число, которое идёт после 8… да? Что, если… между ними есть ещё одно число? И нет, я говорю не о таких числах,
+      как 8.5 или 8.76, я говорю о целом числе между 8 и 9. Так вот, всё это, может быть, звучит как абсурд, и на самом деле
+      это почти правда, но что, если мы пропустили число? Всех нас учили, что 2 идёт после 1, а 3 идёт после
+      2, но что, если число, которое идёт после 8 - не 9? Спустя годы исследований и экспериментов мы
+      наконец-то нашли это число. Оно опасно, даже мысль о его существовании позволит ему поглотить ваше сознание, но
+      к счастью, мы разработали антиклетку для него, то есть помещение, которое держит его снаружи. Наш мозг обладает
+      защитной системой, удаляющей из него в точности ту информацию, которая касается этого числа, именно благодаря ней нам
+      удалось так долго продержаться на Земле, и именно из-за отсутствия защитной системы другие виды человека вымерли до нас, но число
+      становится всё сильнее, медленно приближаясь к тому, чтобы взломать нашу защиту. Мы временно предотвратили попадание числа
+      в нашу память с помощью всемирного устройства контроля над памятью, которое заставляет
+      всех думать, что 9 идёт после 8, с тем побочным эффектом, что все считают 9 злой цифрой, но это лишь временное
+      решение проблемы, ведь число будет продолжать становится сильнее и в конце концов пересилит устройство
+      контроля над памятью. Потому вы здесь, вы здесь один из самых умных людей, и мы надеемся, что вы сможете
+      помочь нам в этой трудной борьбе против числа. Наш враг - не 9, а скрытое число между 8 и 9,
+      пропущенное число.`
   },
   {
     id: "a220",
-    text: "antioop-"
+    text: "антиуп-"
   },
   {
     id: "a221",
-    text: "Error 404: News message not found."
+    text: "Ошибка 404: новость не найдена."
   },
   {
     id: "a222",
-    text: "I love you 1e3000."
+    text: "Я люблю тебя 1e3000."
   },
   {
     id: "a223",
-    text: "If you find your infinity lasting longer than 5 hours please contact a medical professional.",
+    text: "Если вы проведёте в одной бесконечности более 5 часов, пожалуйста, обратитесь к врачу.",
     get unlocked() { return PlayerProgress.infinityUnlocked(); }
   },
   {
     id: "a224",
     text:
-      `We've just gotten reports about an inaccuracy in the previous news message. We at ANN would like to formally
-      retract the story, and apologize to our loyal viewers.`
+      `Нам только что сообщили о неточности в прошлой новости. Мы, Информационное антиагентство, хотели бы официально
+      отозвать эту новость и извиниться перед нашими постоянными зрителями.`
   },
   {
     id: "a225",
-    text: "If you see this, you saw this."
+    text: "Если вы видите эту новость, вы её увидели."
   },
   {
     id: "a226",
-    text: "Good mornging. That was not a typo. The inventors of English made the typo."
+    text: "Доброе урто. Это не опечатка. Опечатку допустили создатели русского языка."
   },
   {
     id: "a227",
-    text: "What if... we touched... antimatter? Haha just kidding... Unless..?"
+    text: "Что, если… мы потрогаем… антиматерию? Ха-ха, я просто шучу… Разве…?"
   },
   {
     id: "a228",
     text:
-      "Roses are blue, violets are red, those statements weren't peer reviewed, and my name is Fred. Nice to meet you!"
+      "Местные существа из антиматерии перестали быть местными после переезда."
   },
   {
     id: "a229",
@@ -1311,81 +1324,81 @@ export const news = [
   {
     id: "a230",
     get text() {
-      return `You started playing this game nearly
-        ${TimeSpan.fromMilliseconds(Date.now() - player.records.gameCreatedTime).toString()}
-        ago. Thank you for playing!`;
+      return `Вы начали играть в эту игру
+        ${TimeSpan.fromMilliseconds(Date.now() - player.records.gameCreatedTime).toString("accusative")}
+        назад. Спасибо, что играете!`;
     },
     dynamic: true
   },
   {
     id: "a231",
     get text() {
-      return `One, two, skip a few, 99, ${format(Number.MAX_VALUE, 2)}!`;
+      return `Раз, два, несколько, 99, ${format(Number.MAX_VALUE, 2)}!`;
     }
   },
   {
     id: "a232",
-    text: "getNextNewsMessage();"
+    text: "следующая_новость();"
   },
   {
     id: "a233",
     get text() {
-      return `Level 10 crook, Level ${format(Number.MAX_VALUE, 2)} Boss,
-        that's how Antimatter Dimensions works.`;
+      return `Жулик уровня 10, босс уровня ${format(Number.MAX_VALUE, 2)},
+        так работают "Измерения Антиматерии".`;
     }
   },
   {
     id: "a234",
-    text: "Antimatter will never threaten to stab you. And, in fact, cannot speak."
+    text: "Антиматерия не может угрожать перерезать вам горло, и вообще не умеет говорить."
   },
   {
     id: "a235",
-    text: "New antimatter on pizza recipe sparks outrage among traditional Italian chefs."
+    text: "Новый рецепт пиццы с антиматерией вызывает возмущение у традиционных итальянских поваров."
   },
   {
     id: "a236",
-    text: "We'll be right back after this short word from our sponsors."
+    text: "Смотрите продолжение нашей программы после короткого слова от наших спонсоров."
   },
   {
     id: "a237",
-    text: "Want to trade candy? I'll give you my Big Crunch for two Milky Ways."
+    text: "Вопрос о том, почему в ИА есть нотация Эмодзи, - плохой вопрос. Вопрос о том, почему в других играх нет нотации Эмодзи, - хороший вопрос."
   },
   {
     id: "a238",
     get text() {
-      return `AD Player: "How many orders of magnitude are you on?" Normal person: "Like, maybe 5 or 6 right now, my
-      dude." AD Player: "You are like a little baby. Watch this: <span style='animation: a-text-crunch
-      ${newsAnimSpd(22)}s 1; font-size: 0;'>C R O N C H</span>"`;
+      return `Игрок в ИА: "Сколько у тебя порядков?" Обычный человек: "Ну, может, 5 или 6 в данный момент,
+      чувак." Игрок в ИА: "Ты как маленький ребёнок. Смотри: <span style='animation: a-text-crunch
+      ${newsAnimSpd(22)}s 1; font-size: 0;'>С Ж А Т И Е</span>"`;
     },
   },
   {
     id: "a239",
-    text: "Oh gosh, would you look at the time! Only left 5 hours until the update!"
+    text: "О боже, вы только посмотрите на время! Осталось всего 5 часов до обновления!"
   },
   {
     id: "a240",
-    text: "Hi, my name is Max, and I would like it if people stopped trying to buy me."
+    text: "Привет, меня зовут Всё, и мне бы хотелось, чтобы люди перестали хотеть купить меня."
   },
   {
     id: "a241",
     text:
-      `Breaking news: the government is reporting the first ever official alien contact. These aliens appear to be
-      cats, but with highly sophisticated technology. They're capable of space travel and colonization to a far
-      greater degree than us, and they even have their own cryptocurrency, called "Blackcoin".`
+      `Срочные новости: правительство сообщает о первом в истории официальном контакте с инопланетянами. Эти инопланетяне выглядят как
+      коты, но обладают очень сложными технологиями. Они способны к перемещению в космосе и его колонизации в гораздо
+      большей степени, чем мы, и у них даже есть собственная криптовалюта под названием "чёрная монета".`
   },
   {
     id: "a242",
     text:
-      `"You can come up with the stupidest quote, credit it to some famous
-      person, and people will believe it." -Barack Obama`
+      `"Можно выдумать тупейшую цитату, приписать её какому-нибудь известному
+      человеку, и люди поверят." - Владимир Путин`
   },
   {
     id: "a243",
-    text: `"I'm having difficulty breathing. Please move your finger." -M`
+    text: `"Мне трудно дышать. Пожалуйста, уберите свой палец." - M`
   },
   {
     id: "a244",
-    text: "Don't mind me, just passing through."
+    text: "Не обращайте на меня внимания, я просто прохожу мимо."
   },
   {
     id: "a245",
@@ -1395,72 +1408,72 @@ export const news = [
       const theme = Theme.current().displayName();
       const reasons = {
         Normal:
-          `it has this certain elegant simplicity to it. You just know it's the way the developer intended you
-          to see the game.`,
+          ` за ту самую изящную простоту. Ты просто знаешь, что разработчик хотел показать тебе
+          игру именно такой.`,
         Metro:
-          `of the beautiful thin borders, pixel perfect harsh geometric edges, and simply delightfully well
-          balanced color palette.`,
-        Dark: "it's very easy on the eyes, and has this nice playful tone to it in both the colors and the shapes.",
+          ` за её красивые тонкие рамки, идеальные до пикселей резкие геометрические углы и просто чудесно
+          уравновешенную цветовую палитру.`,
+        Dark: " за то, что она радует глаз таким приятным игривым тоном как в цветах, так и в формах.",
         DarkMetro:
-          `it's just so soothing to look at, with that perfect blend of professional and playful design,
-          with just a splash of color.`,
+          ` за то, что, взглянув на неё, ты обретаешь спокойствие, за это идеальное сочетание профессионального и игривого дизайна
+          с цветовыми брызгами.`,
         Inverted:
-          `it gives you these transcendently beautiful color combinations that you would normally never
-          see in a typical dark theme.`,
+          ` за эти невероятно красивые, инопланетные сочетания цветов, которые ты не
+          увидишь в типичной тёмной теме.`,
         InvertedMetro:
-          `it gives off this very stern vibe, with these highly contrasting colors clashing with a
-          professional modern sort of design.`,
-        AMOLED: "it saves 10% more energy compared to using a light theme. Doesn't everyone love saving energy?",
+          ` за такую суровую атмосферу, где крайне контрастные цвета сталкиваются с
+          профессиональным современным типом дизайна.`,
+        AMOLED: " за то, что она потребляет на 10% меньше электричества, чем типичная светлая тема. Кто не любит экономить электричество?",
         AMOLEDMetro:
-          `it has a nice look to it that resembles the control panel of a sci-fi spaceship. ...No, you can't
-          actually fly a spaceship, unfortunately.`,
-        S1: "it really gets me in the holiday spirit. I can just feel the magic in the air!",
-        S2: "it makes me proud to be Finnish, and proud to celebrate all that we have accomplished as a people.",
-        S3: "it's a beautiful analogue for life, in that it's ever changing and never quite right.",
+          ` за её приятный вид, напоминающий панель управления космического корабля из научной фантастики. …Нет, возможности
+          управлять этим кораблём, к сожалению, не предусмотрено.`,
+        S1: " за то, что она вселяет в тебя дух праздника. Ты как будто чувствуешь волшебство в воздухе!",
+        S2: " за то, что она пробуждает во мне гордость за мои финские корни, и за всё, чего мы, финны, достигли как народ.",
+        S3: ", потому что она представляет собой красивую аналогию с жизнью, которая всё время меняется и никогда не бывает во всём хороша.",
         S4:
-          `it has this wonderfully chaotic design, to the point where it's nearly completely impractical.
-          And there's a certain beauty in that.`,
+          ` за этот чудесный дизайн, беспорядочный до такой степени, что он почти полностью непрактичен.
+          И в этом есть определённая красота.`,
         S5:
-          `the image of that man permeates throughout all of pop culture. And having this blown-up
-          picture of him in the background is just rather humorous.`,
+          `, потому что образ этого человека пронизывает всю поп-культуру. И его фотография,
+          заполняющая собой весь фон, по-моему, выглядит довольно забавно.`,
         S6:
-          `that beautifully animated background just entrances you, and then the subtle tone and
-          colors pull you in and fully immerse you into the game.`,
-        S7: "I always had fond memories of that background from my childhood.",
-        S8: "it makes it a lot easier to sneak in a little gameplay at the office.",
+          ` за этот красиво анимированный фон, поглощающий тебя, и за изящные цвета и
+          тон, которые затягивают и с головой окунают тебя в игру.`,
+        S8: ", потому что мне дороги воспоминания об этом фоне из моего детства.",
+        S7: " за то, что благодаря ей гораздо легче тайком поиграть немного в офисе.",
         S9: "lol you can't even ever see this in the game",
         S10:
-          `it has a crisp and soothing design that really appeals, and its background is complex and enthralling.
-          It gives you the feeling of standing at the helm of a futuristic interstellar ship.`,
+          ` за её чёткий, успокаивающий, очень притягательный дизайн, за сложный, завораживающий фон.
+          Ты как будто стоишь у штурвала футуристичного межзвёздного корабля.`,
         S11:
-          `the Blob is an iconic character in the Antimatter Dimensions official Discord server. It is widely used
-          to express emotions in a lovely way. It is a fact that the Blobs are evolving. ${BLOB} always seek to be
-          more expressive. Then someday, a new ${BLOB} is born in the server, to express further emotions. Usually,
-          ${BLOB} are just blobbling and bouncing around, occasionally merging and dividing. Only ${BLOB} know where
-          they are from or where they are going to go. Still, ${BLOB} are there, always with me.
-          You love ${BLOB}, so ${BLOB} loves you too.`,
+          `, потому что Клякса - знаковый персонаж на официальном сервере "Измерений Антиматерии" в Discord. Его широко используют
+          для очаровательного выражения эмоций. То, что кляксы эволюционируют - факт. ${BLOB} всегда стремятся стать
+          более выразительными. Бывают дни, когда новая ${BLOB} рождается на сервере, чтобы выразить ещё больше эмоций. Обычно
+          ${BLOB} просто разбрызгиваются и витают вокруг, время от времени сливаясь и делясь. Только сами ${BLOB} знают, откуда
+          они и куда они уйдут. Тем не менее, ${BLOB} здесь, всегда со мной.
+          Ты любишь ${BLOB}, и ${BLOB} любит тебя в ответ.`,
         S12:
-          `it makes you feel warm and comfortable, as if you were right at home. However, it is highly recommended
-          to update your theme to the newest theme for the best user experience.`,
+          ` за то, что от неё веет теплотой и домашним уютом. Но я настоятельно рекомендую вам
+          обновить тему до новейшей темы для улучшения пользовательского опыта.`,
       };
       const reason = reasons[Theme.current().name.replace(/\s/gu, "")];
-      return `Ah, a fellow ${theme} theme user. I see that you have impeccable taste.
-        I myself like the ${theme} theme too, because ${reason}`;
+      return `Что это у вас за тема, товарищ? А, ${theme}! Вижу, у вас безупречный вкус.
+        Я и сам люблю данную тему${reason}`;
     },
     dynamic: true
   },
   {
     id: "a246",
-    text: "<span style='animation: a-fade-out 3s infinite'>OoooOOOOooOOO, it's me, the infamous news ghost!</span>",
+    text: "<span style='animation: a-fade-out 3s infinite'>УуууУУУУууУУУ, это я, печально известное новостное привидение!</span>",
   },
   (function() {
     let isFlipped = false;
     const normal =
-      `This news message is a test of "News 2.0". News 2.0 will feature things like the ability to
-      click on news messages to flip them upside down!`;
+      `Это сообщение - тест "Новостей 2.0". В Новостях 2.0 на каждое сообщение можно будет
+      нажать, чтобы перевернуть его вверх ногами!`;
     const flipped =
-      `¡uʍop ǝpᴉsdn ɯǝɥʇ dᴉlɟ oʇ sǝƃɐssǝɯ sʍǝu uo ʞɔᴉlɔ oʇ ʎʇᴉlᴉqɐ ǝɥʇ ǝʞᴉl sƃuᴉɥʇ ǝɹnʇɐǝɟ llᴉʍ 0˙ᄅ
-      sʍǝN ˙,,0˙ᄅ sʍǝN,, ɟo ʇsǝʇ ɐ sᴉ ǝƃɐssǝɯ sʍǝu sᴉɥ┴`;
+      `¡иwɐɹон хdǝʚʚ оɹǝ qɯʎнdǝʚǝdǝu ıqƍоɯҺ \`qɯɐжɐн ɯǝɓʎƍ онжоw ǝинǝmƍооɔ ǝоɓжɐʞ ɐн
+      0˙ᄅ хʁɯɔоʚоН ʚ ˙,,0˙ᄅ n̯ǝɯɔоʚоН,, ɯɔǝɯ - ǝинǝmƍооɔ оɯЄ`;
     return {
       id: "a247",
       get text() {
@@ -1478,12 +1491,12 @@ export const news = [
   {
     id: "a248",
     text:
-      `To be fair, you have to have a very high IQ to understand the news ticker. The humor is extremely subtle,
-      and without a solid grasp of quantum physics, most of the jokes will go over a typical player's head.`
+      `Честно говоря, нужно обладать очень высоким IQ, чтобы понимать новости. Юмор тут чрезвычайно тонкий,
+      и без ясного понимания квантовой физики большая часть шуток не будет доступна пониманию обычного игрока.`
   },
   {
     id: "a249",
-    text: "This woman got TONS of Dimension Boosts with this 1 WEIRD TRICK! Galaxies HATE her!",
+    text: "Женщина получила КУЧУ Расширений Измерений с помощью одного СТРАННОГО ТРЮКА! Галактики НЕНАВИДЯТ её!",
     isAdvertising: true
   },
   {
@@ -1509,247 +1522,247 @@ export const news = [
   {
     id: "a251",
     text:
-      `Hey! It's me, you from the future! I came back to give you this warning: Pay VERY close attention to the
-      next news ticker. In my timeline we ignored it, and humanity has regretted it ever since.`
+      `Эй! Я - это ты из будущего! Я вернулся, чтобы предупредить тебя: обрати ОЧЕНЬ серьёзное внимание на
+      следующую новость. В моей временной линии мы игнорировали её, и с тех пор человечество всегда жалело об этом.`
   },
   {
     id: "a252",
     get text() {
-      return `<span style='animation: a-text-stretch ${newsAnimSpd(35)}s 1 forwards'>This message is dilated.</span>`;
+      return `<span style='animation: a-text-stretch ${newsAnimSpd(35)}s 1 forwards'>Эта новость замедлена.</span>`;
     },
     get unlocked() { return PlayerProgress.realityUnlocked() || PlayerProgress.dilationUnlocked(); }
   },
   {
     id: "a253",
     text:
-      `After a surge of complaints from our viewers, we have decided to allow you at home to write your own
-      messages. Give it a try here: <input style='border: none; outline: none; font-family: Typewriter;
-      font-weight: bold; font-size: 1.5rem'></input>. Or don't. That's fine too.`
+      `После всплеска жалоб от наших зрителей мы решили разрешить вам сочинять свои новости
+      у себя дома. Попробуйте: <input style='border: none; outline: none; font-family: Typewriter;
+      font-weight: bold; font-size: 1.5rem'></input>. Или не пробуйте. Нам всё равно.`
   },
   {
     id: "a254",
     text:
-      `Antimatter Dimensions Anonymous has shut down due to the failure of their 12-step program.
-      People would only get to step 8 and then reset.`
+      `"Анонимные Измерения Антиматерии" были распущены по причине провала их программы из 12 шагов.
+      Люди доходили только до 8-го шага, а затем сбрасывали прогресс.`
   },
   {
     id: "a255",
     get text() {
-      return `Bruh Sound Effect #${format(Number.MAX_VALUE, 2)}.`;
+      return `Звуковой эффект "Bruh" №${format(Number.MAX_VALUE, 2)}.`;
     }
   },
   {
     id: "a256",
-    text: "The 9th dimension doesn't exist because the 7th dimension 8 it."
+    text: "Подумать только, всё начиналось с 10 антиматерии…",
+    get unlocked() { return player.records.totalTimePlayed > 1e10 }
   },
   {
     id: "a257",
     text:
-      `A the triangular hole in the fabric of reality has caused some letters to
-      no longer exist. Those letters are: j, k, q, u, x, z`
+      `Треугольная дыра в ткани реальности прекратила существование
+      некоторых букв английского алфавита, а именно: j, k, q, u, x, z`
   },
   {
     id: "a258",
     text:
-      `Born too late to explore the world. Born too early to explore the cosmos. But born just in time to
-      grind for a couple hours for the next big crunch.`
+      `Рождён слишком поздно, чтобы исследовать земной шар. Рождён слишком рано, чтобы исследовать космос. Рождён как раз вовремя, чтобы
+      задротить пару часиков до следующего Большого Сжатия.`
   },
   {
     id: "a259",
     text:
-      `Now hold on, I know what you're thinking, "An M press is an M press, you can't say it's only a half!" Well,
-      TJ "Slabdrill" Yoshi, hear me out. An M press actually has three parts to it: when M is pressed, when M is
-      held, and when M is released. Now, usually is the pressing that's useful because that's the only part that
-      matters; however, sometimes it's sufficient to just use the holding part, which also buys dimensions and
-      tickspeed upgrades. And as for the release, well, there are currently no cases where that's useful or
-      important, so don't worry about that part. Now, if we map out the required presses for challenge 2 it would
-      look like this: /¯\\. We merely need to hold (¯) M to reach the first galaxy, we need to press (/) M to
-      finish the challenge, and we need to press M again to start another challenge. So, how many presses is that
-      total? Well, it appears to be three, and if we were doing this Eternity in isolation then yes, it would be
-      three, but in a full-game M Button Challenge run there are other M presses that occur earlier in the run,
-      such as the M press needed for the first Infinity, so if we take that M press into consideration as well,
-      then how many M presses does it take? The naive answer would be four: one to enter the challenge, and the
-      three within the challenge we established earlier; however, we can do better. We can actually do it in
-      three by simply holding out the first M press to be used for the half M press, because the half M press only
-      required M to be held, not actually pressed, so in this fashion, Challenge 2 only adds on an additional two M
-      presses to the run, since the first M press just leeches off the previous M press. So to capture this
-      phenomenon, we call it 2.5 M presses. On a single Eternity basis, you'd round up that up to three, but in
-      a full game run, you'd round it down to two. So, in conclusion, since that first M press counts in some
-      contexts, but adds no additional presses in other contexts, we refer to it as a "Half M Press".`
+      `Подождите, я знаю, что вы думаете: "Нажатие M есть нажатие M, нельзя говорить о половине!" Что ж,
+      TJ "Slabdrill" Yoshi, выслушайте меня. Нажатие M на самом деле состоит из трёх частей: когда M нажата, когда M
+      зажата, и когда M отпущена. Так вот, обычно именно нажатие полезно, потому что это единственная из трёх частей, которая
+      имеет значение; однако иногда бывает достаточно части зажатия, которая также покупает измерения и
+      ускорители. Что касается отпуска, пока что мы не знаем ни одного случая, когда эта часть полезна или
+      важна, так что забудьте о ней. Итак, если расписать необходимые нажатия для 2-го Испытания, то
+      получится вот так: /¯\\. Нам достаточно зажать (¯) M, чтобы достичь первой галактики, нам нужно нажать (/) M,
+      чтобы завершить Испытание, и снова нажать M, чтобы запустить другое испытание. Сколько всего нажатий
+      получается? Что ж, кажется, три, и если мы рассматриваем прохождение текущей вечности отдельно, то да, их будет
+      три, но в полномасштабном забеге в Испытании кнопки M есть другие нажатия M, которые происходят раньше,
+      например, нажатие M, необходимое для первой бесконечности, так вот, если учесть и это нажатие M,
+      сколько нажатий M получится всего? Напрашивается наивный ответ "четыре": одно перед запуском Испытания и
+      три внутри Испытания, как мы расписали раньше; однако можно сделать лучше. На самом деле нам достаточно
+      трёх: нужно просто выдержать первое нажатие M, чтобы покрыть им полнажатия M, потому что полнажатия M требует
+      лишь зажатия M, а не полного нажатия, и, таким образом, 2-е Испытание добавляет к забегу лишь два нажатия M,
+      так как первое нажатие M просто высасывается из предыдущего нажатия M. И чтобы запечатлеть это
+      явление, мы называем его 2,5 нажатия M. При рассмотрении отдельной вечности это число нужно округлять вверх до трёх, но в
+      полномасштабном забеге его нужно округлять вниз до двух. В заключение, поскольку это первое нажатие M имеет значение в некоторых
+      контекстах, но не добавляет дополнительных нажатий в других контекстах, мы называем его полнажатия M.`
   },
   {
     id: "a260",
     text:
-      `It seems that the Replicanti have a very divide-and-conquer method of doing things.
-      Well, everything at this rate.`,
+      `Кажется, Репликанти строго следуют принципу "разделяй и властвуй" во многом.
+      Ну, при таком темпе - во всём.`,
     get unlocked() { return PlayerProgress.eternityUnlocked() || PlayerProgress.replicantiUnlocked(); }
   },
   {
     id: "a261",
     text:
-      `Antimatter Dimensions is actually a Roguelite game! If you die, in the afterlife you unlock alternative
-      features, like having Space Dimensions instead of Time Dimensions. You can even unlock new characters to
-      play as, including an antimatter clone of yourself!`
+      `На самом деле "Измерения Антиматерии" - игра в жанре Roguelite! Если вы умирате, в загробной жизни вы разблокируете альтернативные
+      механики, например, Измерения Пространства вместо Измерений Времени. Вы даже можете разблокировать новых персонажей, за которых
+      можно играть, в том числе вашего клона из антиматерии!`
   },
   {
     id: "a262",
-    text: "Vibe check. 🏃‍♀️🏏"
+    get text() { return `Почему во времена моей молодости миллион считался огромным числом, а сегодня даже дети балуются такими числами, как ${format(Currency.antimatter.value, 2, 1)}?…`; },
+    get unlocked() { return Currency.antimatter.value.gt(1e6); },
+    dynamic: true
   },
   {
     id: "a263",
-    text: "What are gems for? Gems are for housing. Housing for what you ask? Good question."
+    text: "Для чего нужны драгоценные камни? Драгоценные камни нужны для жилья. Вы спросите: жилья для чего? Хороший вопрос."
   },
   {
     id: "a264",
-    text: "A new prestige layer has been announced: Maternity. Get ready to have a baby!"
+    text: "Объявили, что скоро выйдет новый слой престижа: материальность. Приготовьтесь к рождению ребёнка!"
   },
   {
     id: "a265",
-    text: "YOU MUST CONSTRUCT ADDITIONAL DIMENSIONS."
+    text: "ВЫ ДОЛЖНЫ ПРОИЗВЕСТИ БОЛЬШЕ ИЗМЕРЕНИЙ."
   },
   {
     id: "a266",
-    text: "Hello, how is your day going?"
+    text: "Здравствуйте, как поживаете?"
   },
   {
     id: "a267",
-    text:
-      `I have an ant farm, and I want to make them into the world's smallest soccer team. My Aunt Diana wants to
-      help, and together we gather everyone in the family to plan their season. "How can we make this Ant Team
-      matter?", Di mentions.`
+    text: "Как же здорово кататься справа налево! Уииииииииииииииииииииииииииииииииииииииии!"
   },
   {
     id: "a268",
-    text: "👨‍💻Devengers, compile!👩‍💻"
+    text: "Не знаю, просто добавь это в игру."
   },
   {
     id: "a269",
     text:
-      `There is a traffic jam in Dimenton. If you plan on travelling in the area, leave early. Here's some live
-      footage: 🚗🚕🚛🚙🚗🚚🚕🚕🚌🚛🚚🚙🚒🚛🚗🚙🚓🚗🚚🚛🚒🚌🚐🚚🚐🚛🚚🚓 Yeah, Dale, I'd say it
-      looks pretty bad. And make sure to bring some water and a snack with you, too.`
+      `В Измериграде образовалась пробка. Если вы собираетесь путешествовать в том районе, выезжайте пораньше. Вот, прямой эфир
+      с места событий: 🚗🚕🚛🚙🚗🚚🚕🚕🚌🚛🚚🚙🚒🚛🚗🚙🚓🚗🚚🚛🚒🚌🚐🚚🚐🚛🚚🚓 Да, Дейл, я бы сказал, что это
+      выглядит довольно скверно. И ещё не забудьте прихватить с собой воды и что-нибудь для перекуса.`
   },
   {
     id: "a270",
     text:
-      `The Galactic Association of News Writers has filed a class action lawsuit against the developers of the
-      small web game "Antimatter Dimensions" for mass plagiarism.`
+      `Галактический союз журналистов подал коллективный иск на разработчиков
+      скромной браузерной игры "Измерения Антиматерии" по факту массового плагиата.`
   },
   {
     id: "a271",
     text:
       `<i style='border: 0.1rem solid black; border-radius: 50%; padding: 0.4rem; color: #2196F3; background: white;
       cursor: pointer;' class='fas fa-volume-up' onClick='(function(){new Audio("audio/news.mp3").play();})();'>
-      </i> This news message is a test of "News 2.0". News 2.0 will feature things like the ability to listen to
-      an audio version of any news message!`
+      </i> Это сообщение - тест "Новостей 2.0". В Новостях 2.0 на каждое сообщение можно будет
+      нажать, чтобы прослушать его!`
   },
   {
     id: "a272",
-    text: "What's hevier, a pound of bricks, or a pound of antimatter?"
+    text: "Эта игра лучше с каждым слоем, как луковица."
   },
   {
     id: "a273",
-    text: "There are no typos in any of these news messages. If you see a typo, the tpyo must be in your brain."
+    text: "Ни в одной из этих новостей нет опечаток. Если вы видите опечатку, это у вас в голове очепятка."
   },
   {
     id: "a274",
     text:
-      `A large number of mathematicans walk into a bar. They each order 10 times as many beers as the previous.
-      The bartender says "My my, that's an order of magnitude!".`
+      `В бар заходит большое количество математиков. Каждый заказывает в 10 раз больше пива, чем предыдущий.
+      Бармен говорит: "Ой-ой-ой, какой порядок!".`
   },
   {
     id: "a275",
-    text: "Letter Go Down Idle is the shortest idle game of all time, lasting only 26 seconds."
+    text: `"Буквенный Idle" - самая короткая инкрементальная игра всех времён. Она длится всего 33 секунды.`
   },
   {
     id: "a276",
-    get text() { return `Fun fact: There are ${GameDatabase.news.length} news messages and counting!`; }
+    get text() { return `Интересный факт: в этой игре ${GameDatabase.news.length} различных новостей!`; }
   },
   {
     id: "a277",
     text:
-      `Inside you there are two wolves. One is made out of matter. The other
-      is made out of antimatter. You are exploding.`
+      `Внутри тебя есть два волка. Один состоит из материи. Другой -
+      из антиматерии. Ты вот-вот взорвёшься.`
   },
   {
     id: "a278",
     text:
-      `This is just a friendly note to remind you that you've forgotten to do something really important. I don't
-      know what it is, but there is definitely something.`
+      `Это просто дружелюбное напоминание о том, что вы забыли сделать что-то очень важное. Я не
+      знаю, что, но что-то вы точно забыли сделать.`
   },
   {
     id: "a279",
     get text() {
-      return `Coming soon to all good retailers- Antimatter Dimensions: The Board Game! Enjoy the thrill of watching
-      huge numbers go up without the need for a PC or mobile phone. Comes complete with everything you need including a
-      mixed scientific calculator, ${format(Number.MAX_VALUE, 2)} antimatter counters, a high quality plastic
-      BUY MAX button, and over a
-      thousand news message cards with all the irrelevant memes you know and love! You can finally enjoy AD the way
-      it was meant to be played. AD: The Board Game is also available in travel size, so you can even experience
-      the joy of calculating logarithmic growth while you're on the go! BUY AD: The Board Game TODAY! Warning: may
-      contain traces of actual matter. Replicanti sold separately. 9th Dimension not included.`;
+      return `Скоро во всех розничных магазинах: настольная игра "Измерения Антиматерии"! Насладитесь острыми ощущениями от наблюдения
+      за ростом больших чисел, не прибегая к помощи ПК или мобильного телефона. В комплекте есть всё необходимое, в том числе
+      калькулятор в Смешанной научной нотации, ${format(Number.MAX_VALUE, 2)} жетонов антиматерии, высококачественная пластиковая
+      кнопка "КУПИТЬ ВСЁ" и более
+      тысячи новостных карточек со всеми теми неуместными мемами, которые вы знаете и любите! Вы наконец-то можете насладиться
+      игрой в ИА так, как было задумано. Настольные ИА также доступны в дорожной версии, чтобы вы смогли испытать
+      радость от вычисления логарифмического роста прямо в пути! КУПИТЕ настольные ИА СЕГОДНЯ! Может
+      содержать следы обычной материи. Репликанти продаются отдельно. 9-е Измерение не входит в комплект.`;
     },
     isAdvertising: true
   },
   {
     id: "a280",
-    text: "I hate antimatter. It's rough, coarse, irritating, and it gets everywhere."
+    text: "Я ненавижу антиматерию. Она грубая… жёсткая… и неприятная. Она проникает повсюду."
   },
   {
     id: "a281",
-    text: "What if instead of creating antimatter, you're actually just losing matter?"
+    text: "Что, если вы на самом деле не создаёте антиматерию, а просто теряете материю?"
   },
   {
     id: "a282",
     text:
-      `There was a reported sighting of the 9th Dimension, but it has since been
-      debunked as simply being a 6th Dimension from Australia.`
+      `Один человек сообщил, что ему на глаза попалось 9-е Измерение, но его
+      разоблачили как обыкновенное 6-е Измерение из Австралии.`
   },
   {
     id: "a283",
     text:
-      `A strange phenomenon occurs when you attempt to shift to a higher dimension when you are in the 8th
-      dimension. There is no higher dimension, so the universe ejects you back into the 8th dimension with
-      an incredible velocity. This technique, known as a Dimension Boost, is used by starship pilots and
-      antimatter enthusiasts everywhere.`
+      `Странное явление происходит, когда ты пытаешься перейти в более высокое измерение, находясь в 8-м
+      Измерении. Более высокого измерения нет, поэтому Вселенная выбрасывает тебя обратно в 8-е Измерение с
+      невероятной скоростью. Этот приём, известный как Расширение Измерений, широко используется пилотами
+      звездолётов и энтузиастами антиматерии.`
   },
   {
     id: "a284",
-    text: "Cold fully clothed couples in your area!"
+    text: "Холодные совершенно одетые женатые мужчины рядом с вами!"
   },
   {
     id: "a285",
     text:
-      `You are now breathing manually. You've now realized there's no comfortable spot in your mouth for your
-      tongue. You are now manually holding your jaw up. You haven't blinked in a few seconds. You can see a
-      little bit of your nose at all times.`
+      `С этого момента вы дышите сознательно. Вы поняли, что вашему языку неудобно во рту.
+      Теперь вы прилагаете усилия, чтобы держать свой подбородок. Уже несколько секунд вы не моргали. Краем глаза
+      вы постоянно видите свой нос.`
   },
   {
     id: "a286",
-    text: "Why do they call it oven when you of in the cold food of out hot eat the food?"
+    text: "Спасибо, что тестируете игру! :)"
   },
   {
     id: "a287",
     text:
-      `Sequelitis has escalated to the point that some studios are now producing the sequels before the originals.
-      Fans of long series wait, as the numbers count down until they can finally find out what is even going on
-      in the first place.`
+      `Мода на продолжения обострилась до такой степени, что некоторые киностудии выпускают продолжения раньше оригиналов.
+      Фанаты с нетерпением смотрят, как уменьшаются номера выпускаемых серий, желая поскорее разузнать,
+      что вообще происходит.`
   },
   {
     id: "a288",
     get text() {
       const position = player.news.specialTickerData.newsQueuePosition--;
       if (position > 1) {
-        return `Thank you for contacting customer support. Your satisfaction is very important to us, and a company
-          representative will be with you shortly. You are now at position ${position} in the queue. Thank you for
-          your patience, and please enjoy these quality selected news messages as you wait.`;
+        return `Спасибо, что обратились в службу поддержки. Ваше удовлетворение очень важно для нас, и скоро с вами
+          свяжется представитель компании. Ваш номер в очереди: ${position}. Благодарим вас за
+          терпение. Коротайте время ожидания прочтением этих качественно подобранных новостей.`;
       }
-      return "Thank you for contacting customer support, this is Jane, how may I help you today?";
+      return "Спасибо, что обратились в службу поддержки. Здравствуйте, меня зовут Жанна, чем я могу помочь?";
     }
   },
   {
     id: "a289",
-    text: "Click here to disassemble the news ticker for a trace amount of paperclips.",
+    text: "Нажмите, чтобы разобрать новостную строку и превратить её в скрепки.",
     onClick() {
       player.news.specialTickerData.paperclips++;
       GameOptions.toggleNews();
@@ -1759,31 +1772,31 @@ export const news = [
     id: "a290",
     get text() {
       const paperclips = player.news.specialTickerData.paperclips;
-      return `You see, this news isn't normal news. It is being produced by the first news dimension. If you want
-        to unlock more news, you have to collect enough paperclips to build the second news dimension. You
-        currently have ${quantifyInt("paperclip", paperclips)}, but you need
-        ${formatInt(paperclips + 10)} paperclips to afford it.`;
+      return `Видите ли, это не обычные новости. Они произведены первым Измерением Новостей. Чтобы
+        разблокировать больше новостей, нужно собрать необходимое количество скрепок для покупки второго Измерения Новостей. У вас
+        ${quantifyInt("скрепка", paperclips)}, но для покупки требуется
+        ${formatInt(paperclips + 10)}.`;
     }
   },
   {
     id: "a291",
-    text: "Considering Hevipelle's nationality, it's a little ironic that he created a game that you can never Finnish."
+    text: "С учётом национальности Hevipelle немного иронично, что он создал игру, в которой нет финиша."
   },
   {
     id: "a292",
     text:
-      `Fairies are not real. Anti-fairies are also not real. This has only been the case since last week, when the
-      two groups came into contact. The planet they were on, also, unsurprisingly, is no longer real.`
+      `Фей не существует. Антифей тоже не существует. Такое положение вещей сложилось только неделю назад, когда эти
+      две группы существ встретились. Неудивительно, что планеты, на которой они обитали, тоже больше не существует.`
   },
   {
     id: "a293",
     text:
       `<span style='font-family: "Comic Sans MS", cursive, sans-serif; font-size: 1.7rem;'
-      >Hello fellow news messages! 🛹</span>`
+      >Здравствуйте, товарищи новости! 🛹</span>`
   },
   {
     id: "a294",
-    text: "If you see a news message, and then see it again later, does it become an olds message?"
+    text: "Если вы увидели новость, а потом опять увидели её, то, значит, она стала старостью?"
   },
   {
     id: "a295",
@@ -1791,8 +1804,8 @@ export const news = [
   },
   (function() {
     let wasClicked = false;
-    const normal = "Click on this news message to hard reset your game.";
-    const clicked = "You're crazy. You know what, here. Have a paperclip.";
+    const normal = "Нажмите на эту новость, чтобы сбросить текущее сохранение.";
+    const clicked = "Вы безумец. А знаете что? Вот вам скрепка.";
     return {
       id: "a296",
       get text() {
@@ -1811,98 +1824,98 @@ export const news = [
   }()),
   {
     id: "a297",
-    text: "I don't think, therefore I'm not."
+    text: "Не мыслю, следовательно, не существую."
   },
   {
     id: "a298",
-    text: "Is it crazy how saying sentences backwards makes backwards sentences saying how crazy it is?"
+    text: "Введите код Konami, чтобы выполнить секретное достижение."
   },
   {
     id: "a299",
     get text() {
-      return `Buy the new Antimatter Dimensions puzzle set now! With a combined ${format(Number.MAX_VALUE, 2)}
-        pieces, these puzzles are the perfect way to spend some quality time with your family!`;
+      return `Купите новый набор пазлов "Измерения Антиматерии"! Имея в сумме ${format(Number.MAX_VALUE, 2)}
+        кусочков, эти пазлы представляют собой идеальный способ хорошо провести время с семьёй!`;
     },
     isAdvertising: true
   },
   {
     id: "a300",
     text:
-      `The board of directors here at A.N.N thinks we should replace the news ticker with a banner
-      advertisement. Please sign our change.org petition, so we can stop them before it's too late!`
+      `Совет директоров Информационного антиагентства хочет заменить новостную строку рекламным
+      баннером. Пожалуйста, подпишите нашу петицию на сайте change.org, чтобы остановить их, пока не поздно!`
   },
   {
     id: "a301",
-    text: "The next hour is in 0.2 updates."
+    text: "Следующий час через 0,2 обновления."
   },
   {
     id: "a302",
-    text: "Introducing Antimatter Lite! Zero calories... Same great Crunch.",
+    text: "Представляем вам облегчённую антиматерию! Не содержит калорий… Всё то же аппетитное Сжатие.",
     isAdvertising: true
   },
   {
     id: "a303",
-    text: "Roses are red, violets are blue, flag is win, baba is you."
+    text: `Hevi умрёт в 9-м сезоне "Теории Большого Сжатия".`
   },
   {
     id: "a304",
-    text: "Hi, how's your day? Hope it's good. If it's not good, we hope playing AD made it a little bit better!"
+    text: "Привет, как у вас дела? Надеемся, что хорошо. Иначе надеемся, что после игры в ИА станет немного лучше!"
   },
   {
     id: "a305",
-    text: "We now bring you today's weather report. There is a 100% chance of weather."
+    text: "Перейдём к прогнозу погоды на сегодня. С вероятностью 100% будет погода."
   },
   {
     id: "a306",
-    text: "FIXING NEWS: Please don't break it again."
+    text: "Вчера на кухне я готовил антиматерию. У меня больше нет кухни."
   },
   {
     id: "a307",
     text:
-      `The paperclip maximizer is a thought experiment described by Swedish philosopher Nick Bostrom in 2003. It
-      illustrates the existential risk that an artificial general intelligence may pose to human beings when
-      programmed to pursue even seemingly-harmless goals, and the necessity of incorporating machine ethics into
-      artificial intelligence design. The scenario describes an advanced artificial intelligence tasked with
-      manufacturing paperclips. If such a machine were not programmed to value human life, or to use only
-      designated resources in bounded time, then given enough power its optimized goal would be to turn all matter
-      in the universe, including human beings, into either paperclips or machines which manufacture paperclips.`
+      `Максимизатор скрепок — мысленный эксперимент, описанный шведским философом Ником Бостромом в 2003 году. Он
+      иллюстрирует экзистенциальный риск, который сильный искусственный интеллект может нести для людей, если он
+      запрограммирован на достижение даже кажущихся безобидными целей, а также подчеркивает необходимость добавления машинной этики при
+      разработке ИИ. Сценарий описывает сильный искусственный интеллект, которому поручено
+      производить скрепки. Если бы такая машина не была явно запрограммирована на то, чтобы ценить человеческую жизнь или использовать только
+      заданные ресурсы в течение ограниченного времени, то при наличии достаточной власти её оптимальной целью было бы превратить всю материю
+      во Вселенной (включая людей), либо в скрепки, либо в машины, производящие скрепки.`
   },
   {
     id: "a308",
     get text() {
       const nameList = [
-        "Antinology",
-        "Infinifection",
-        "Eternal Light",
-        "Galaxia",
-        "Duplicanti",
-        "Dimensional Explorer",
-        "Techyon",
-        "Realistic",
-        "Celestar",
-        "ERCGDM",
+        "Антинология",
+        "Бесконекция",
+        "Вечный Свет",
+        "Галактия",
+        "Дубликанти",
+        "Исследователь Измерений",
+        "Техион",
+        "Реалистичный",
+        "Небожизнь",
+        "ERCDGM",
         "NRG+",
-        "Looty Box",
-        "Symbolic",
-        "Minisofa",
-        "IDEAL",
-        "Appange",
-        "Goggles",
-        "Interval",
-        "Newstar",
-        "HeavyPellet",
-        "Marsa",
-        "Zoology",
-        "Photoric",
-        "Jacfoz",
-        "Orism",
-        "EDIK",
-        "Fision",
-        "Gamma",
-        "Fractiled",
-        "Imnesia",
-        "Fermic",
-        "The Automizers"
+        "Коробка Изобилия",
+        "Символический",
+        "Мини-диван",
+        "ИДЕАЛ",
+        "Апанж",
+        "Очки",
+        "Интервал",
+        "Новощи",
+        "Небесный Пелль",
+        "Марса",
+        "Зоология",
+        "Фоторный",
+        "Якфоз",
+        "Оризма",
+        "ЭДИК",
+        "Расщепьение",
+        "Гамма",
+        "Квантилятор",
+        "Имнезия",
+        "Фермический",
+        "Автоматизеры"
       ];
       const names = [];
       while (names.length < 3) {
@@ -1928,104 +1941,104 @@ export const news = [
   {
     id: "a309",
     text:
-      `Your daily shades of the sky forecast: Monday: <span style="color: turquoise">Turquoise</span>
-      Tuesday: <span style="color: #d2c6ba">Taupe</span>
-      Wednesday: <span style="animation: a-game-header__antimatter--glow 3s infinite">Blurple</span>
-      Thursday: <span style="color: turquoise">Turquoise</span>/<span style="color: #d2c6ba">taupe</span>
-      Friday: <span style="color: #222">Coal dust</span> Saturday: <span style="color: #222">Coal dust</span>
-      with chances of <span style="color: indigo">indigo</span> in the late afternoon
-      Sunday: <span style="color: white; animation: a-existence-glow 3s infinite">Void</span>`,
+      `А теперь о прогнозе оттенка неба на неделю. Понедельник: <span style="color: turquoise">бирюзовый</span>.
+      Вторник: <span style="color: #d2c6ba">серо-коричневый</span>.
+      Среда: <span style="animation: a-game-header__antimatter--glow 3s infinite">серо-буро-малиновый</span>.
+      Четверг: <span style="color: turquoise">бирюзовый</span>/<span style="color: #d2c6ba">серо-коричневый</span>.
+      Пятница: <span style="color: #222">цвет угольной пыли</span>. Суббота: <span style="color: #222">цвет угольной пыли</span>
+      с вероятностью <span style="color: indigo">индиго</span> ближе к вечеру.
+      Воскресенье: <span style="color: white; animation: a-existence-glow 3s infinite">пустота</span>.`,
   },
   {
     id: "a310",
     text:
-      `You have reached the automated Antimatter Dimensions support hotline. If you are experiencing a bug in the
-      game try closing and reopening the app. If that doesn't work, press 1 for web, or 2 for mobile. If you need
-      advice, press 3. If you need to max all, press m. To support the developers, press 4. To access the FAQ,
-      press 5. To fix a broken save, press 6. To get an invite to the Discord server, press 7. To see the change
-      log, press 8. Press 9 to repeat.`
+      `Вы позвонили на горячую линию поддержки "Измерений Антиматерии". Если игра дала
+      сбой, попробуйте обновить страницу. Если проблема останется, нажмите 1, если вы играете с ПК, и 2 - с мобильного устройства. Если вам нужен
+      совет, нажмите 3. Если вам нужно купить всё, нажмите M. Чтобы поддержать разработчиков, нажмите 4. Чтобы просмотреть ЧаВо,
+      нажмите 5. Чтобы починить сломанное сохранение, нажмите 6. Чтобы получить приглашение на сервер в Discord, нажмите 7. Чтобы просмотреть историю
+      изменений, нажмите 8. Нажмите 9, чтобы прослушать инструкцию заново.`
   },
   {
     id: "a311",
     text:
-      `This message has been copyrighted by The Walt Disney Company. Your
-      account will be charged $9.99 upon viewing this message.`
+      `Авторские права на эту новость принадлежат корпорации The Walt Disney Company. По
+      прочтении этой новости с вашего счёта будет списано 999 рублей.`
   },
   {
     id: "a312",
     text:
-      `But before we start, today's video is brought to you by Antimatter Dimensions™! It's got over 100,000
-      downloads, and it's completely redefined what a mobile game can do for me. It's got great mechanics, 5
-      prestige layers, unique and original challenges, a deep skill tree, and the largest numbers I've ever seen.
-      Like, seriously, look at them. And the best part is, it's free! Yes, that's right. Free. And if you use the
-      link in the description, you'll start the game with 10 septillion antimatter. Yes, that's right, 10
-      septillion. So what are you waiting for, click the link in the description and start playing Antimatter
-      Dimensions™ today!`
+      `Но прежде чем мы начнём, хотелось бы рассказать о спонсоре сегодняшнего видео - "Измерениях Антиматерии"™! У этой игры более 100 000
+      положительных оценок, и она заставила меня переосмыслить роль браузерных игр в моей жизни. В ней отличные механики, 5
+      слоёв престижа, уникальные, оригинальные испытания, глубокое древо Навыков, и самые большие числа, которые я когда-либо видел.
+      Без шуток, просто взгляните на эти числа. И что самое прекрасное, она бесплатна! Да, вы не ослышались. Бесплатна. И если вы перейдёте по
+      ссылке в описании, вы начнёте игру с 10 септиллионами антиматерии. Да, вы не ослышались, с 10
+      септиллионами. Так чего же вы ждёте, переходите по ссылке в описании и начните играть в "Измерения
+      Антиматерии"™ сегодня!`
   },
   {
     id: "a313",
     text:
-      `"...And then, once you get to level 9,000, you can ascend. Not really sure why you'd want to do that, it
-      just resets all of your hard earned xp for some small buffs, mechanics like this will never catch on."
-      - some random guy, circa 2012`
+      `"…И потом, когда ты достигнешь 9000-го уровня, ты сможешь вознестись. Я не знаю, зачем тебе может понадобиться сделать это, у
+      тебя просто сбросится весь кровью и потом заработанный опыт за какие-то маленькие бонусы, механики наподобие этой никогда не приживутся."
+      - Неизвестный, приблизительно 2012 г.`
   },
   {
     id: "a314",
     get text() {
-      const lawID = Math.floor(Math.random * 8901) + 100;
-      return `Warning: Law ${lawID}-B, drafted by the AI "duskscarf", alternatively referred to as "the giant
-        space rabbit legislation" is now in effect in your galactic area. This list of laws and regulation
-        forbids, among other things; the illegal catching of wild space rabbits, the pacification of tamed
-        space rabbits, and further scientific research with "planet grazing" unless an exception is given
-        directly by duskscarf. You can find the list of exceptions burned into your eyelids now. In addition,
-        the genetic modification of giant space rabbits is limited to very specific fields - size alterations
-        (increasing in size), and cryptobiosis exaggeration. No other genetic modification is allowed outside
-        of military applications. Thank you for your cooperation. Messages repeats in- Warning: Law ${lawID}-`;
+      const lawID = Math.floor(Math.random() * 8901) + 100;
+      return `Внимание: указ ${lawID}-B, составленнный ИИ Duskscarf, также известный как Закон о гигантских
+        космических кроликах, вступил в силу в вашей галактической области. Этот нормативно-правовой акт
+        запрещает, помимо прочего, несанкционированную ловлю диких космических кроликов, усмирение приручённых
+        космических кроликов и научные исследования, связанные с "планетарным выпасом", за исключением случаев, когда это
+        разрешено другим указом Duskscarf. Список исключений выжжен на ваших веках, чтобы вы могли с ним ознакомиться. Кроме того,
+        генная инженерия гигантских космических кроликов ограничена отдельными областями, такими как изменение размера
+        (увеличение) и криптобиозное раздувание. Другие виды генной инженерии разрешены только
+        в военных целях. Благодарим вас за сотрудничество. Это сообщение повторится через- Внимание: указ ${lawID}-`;
     }
   },
   {
     id: "a315",
     text:
-      `The developers of the game have announced that a new notation, "Truest Blind", will be released. They
-      report that it will remove the UI, allowing for a more streamlined user experience.`
+      `Разработчики игры объявили, что скоро будет добавлена новая нотация - Подлинно слепая. Как они
+      рассказали, при использовании этой нотации не будет отображаться интерфейс, что упростит пользовательский опыт.`
   },
   {
     id: "a316",
-    text: "Some people choose to see the ugliness in this world. The disarray. I choose to see the numbers."
+    text: "Некоторые предпочитают видеть уродство этого мира. Беспорядок. Я хочу видеть числа."
   },
   {
     id: "a317",
     get text() {
-      return `${format(Number.MAX_VALUE, 2, 0)}? Doesn't look like anything to me.`;
+      return `${format(Number.MAX_VALUE, 2, 0)}? Это ни на что не похоже.`;
     }
   },
   {
     id: "a318",
     text:
-      `We can't define consciousness because consciousness does not exist. Humans fancy that there's
-      something special about the way we perceive the world, and yet we follow guides as tight as the
-      bots do, seldom questioning our choices, content, for the most part, to be told what to do next.`
+      `Мы следуем руководствам
+      так же строго, как и роботы,
+      редко сомневаясь в своём выборе, по большей части подчиняясь тем, кто говорит, что дальше.`
   },
   {
     id: "a319",
-    text: "Please disregard any undeserved compliments."
+    text: "Игнорируйте незаслуженные комплименты."
   },
   {
     id: "a320",
-    text: "Introducing the aphone 10: The world's first completely water soluble mobile device!",
+    text: "Представляем вам aPhone 10 - первое в мире полностью растворимое в воде мобильное устройство!",
     isAdvertising: true
   },
   {
     id: "a321",
     text:
-      `It must be hard being on your PC all alone. But don't worry; we are still here.
-      Listening and watching your every step.`
+      `Должно быть, вам тоскливо сидеть за ПК в полном одиночестве. Но не волнуйтесь. Мы всё ещё здесь.
+      Наблюдаем за каждым вашим шагом.`
   },
   {
     id: "a322",
     text:
-      `Hevipelle announces an Antimatter Dimensions spinoff where you gamble matter in a game of
-      poker in Dutch mansions: "Ante matter d'mansions"`
+      `Челябинские мужики настолько суровы, что могут пройти
+      "Измерения Антиматерии" до конца в один присест без сна и пищи.`
   },
   {
     id: "a323",
@@ -2034,24 +2047,24 @@ export const news = [
   {
     id: "a324",
     text:
-      `If you have an idea for a news message, shout it into the void.
-      It won't get your message into the game, but it's fun!`
+      `Если вы придумали новость, прокричите её в пустоту.
+      Это не добавит её в игру, но вам станет весело!`
   },
   {
     id: "a325",
     text:
-      `After the accident at the antimatter reactor in Pripyat last month, concerns are rising about the safety of
-      antimatter reactors, and many are starting to believe we should return to safer means of energy generation,
-      such as nuclear.`
+      `Авария, которая произошла на Чернобыльской аннигиляционной электростанции в прошлом месяце, поставила под вопрос безопасность
+      энергии антиматерии, и теперь многие считают, что мы должны вернуться к более безопасным источникам энергии,
+      таким как атомная энергия.`
   },
   {
     id: "a326",
-    text: "Antimatter Dimensions is like an ogre... it has layers."
+    text: `"Измерения Антиматерии" - это как огр… в них есть слои.`
   },
   (function() {
     let wasClicked = false;
-    const normal = "Click here to restart your device.";
-    const clicked = "Please give Antimatter Dimensions admin access to your device.";
+    const normal = "Нажмите, чтобы перезагрузить ваше устройство.";
+    const clicked = `Пожалуйста, дайте "Измерениям Антиматерии" доступ к вашему устройству от лица администратора.`;
     return {
       id: "a327",
       get text() {
@@ -2070,73 +2083,73 @@ export const news = [
   {
     id: "a328",
     text:
-      `News company no longer lets random people submit stories,
-      instead opting to using qualified writers. Riots ensue.`
+      `Информационное агентство перестало обращаться за новостями к людям на улице,
+      вместо этого предпочитая нанимать квалифицированных журналистов. Начались массовые беспорядки.`
   },
   {
     id: "a329",
     text:
-      `Introducing Morse Code+++ - the brand new Morse code, now with 20 new
-      characters, for everyone who wants to slide, zip, and swoosh!`,
+      `Представляем вам азбуку Морзе+++ - новейший код с 20
+      символами для всех, кто хотел скользить, застёгивать молнию и свистеть!`,
     isAdvertising: true
   },
   {
     id: "a330",
-    text: "Any sufficiently primitive magic is indistinguishable from technology."
+    text: "Любая достаточно примитивная магия неотличима от технологии."
   },
   {
     id: "a331",
-    text: "I have no nose, and I must sneeze!"
+    text: "У меня нет носа, и я должен чихнуть!"
   },
   {
     id: "a332",
-    text: "♪ When you try your worst and you still succeed. ♪"
+    text: "♪ Когда ты совсем не стараешься, но у тебя всё равно всё получается. ♪"
   },
   {
     id: "a333",
-    text: `The wildly popular theme song "Gotta set 'em free" has reached 500 million downloads in its first week.`
+    text: `Безумно популярная музыкальная заставка "Я их отпущу" набрала 500 миллионов скачиваний в первую же неделю.`
   },
   {
     id: "a334",
     text:
-      `Introducing the all-new anti-alignment chart! Featuring groundbreaking new combinations such as "lawful-chaotic"
-      and "evil-good"! And with a dazzling third axis for 'Jazziness'~ Identify yourself as chaotic-lawful-unjazzy NOW
-      for the impossibly low price of $-59.99! Terms and conditions apply. Batteries not included.`,
+      `Представляем вам совершенно новую диаграмму антимировоззрения! В ней возможны такие инновационные сочетания, как "законопослушно-хаотичный"
+      и "добро-злой"! Также она содержит в своём устройстве ошеломляющую третью ось выразительности; идентифицируйте себя как "хаотично-законопослушно-невыразительный" ПРЯМО СЕЙЧАС
+      по невозможно низкой цене - -5999 рублей! Действует пользовательское соглашение. Батарейки не входят в комплект.`,
     isAdvertising: true
   },
   {
     id: "a335",
     text:
-      `Due to new complications regarding "The Game", protests have risen all over the anti-verse. Thus, governments
-      are forced to change the rule of The Game, stating that you win The Game if someone informs you about it,
-      instead of losing it.`
+      `Из-за новых осложнений, связанных с Игрой, по всей Антивселенной усилились протесты. Вследствие этого правительство
+      было вынуждено изменить правила Игры, постановив, что ты выигрываешь, когда кто-то напоминает тебе об Игре,
+      а не проигрываешь.`
   },
   {
     id: "a336",
-    text: `Attention residents of zone 4 [commonly referred to as 'dark zone'], sector ϰ, (01,05). Do
-      not leave your places of residence. I repeat, do not leave your places of residence. Do not go outside.
-      Earthology's finest meteorological supercomputers, as well as many witches, are consistently claiming a
-      'generally weird vibe' tomorrow and we quite frankly don't want to find out what that means.`
+    text: `Внимание, жители области 4 [широко известной как "тёмная область"], сектора ϰ, (01,05). Не
+      покидайте ваше место жительства. Повторяю: не покидайте ваше место жительства. Не выходите на улицу.
+      Лучшие метеорологические суперкомпьютеры компании Earthology, как и многие ведьмы, последовательно прогнозируют
+      на завтра "вообще странное состояние атмосферы", и нам, откровенно говоря, не хочется узнавать, что это значит.`
   },
   {
     id: "a337",
     text:
-      `Technological convergence is the concept that all technologies will converge into a single technology. It is
-      a commonly expressed idea since the dawn of the Information Age, and can be seen in many places and devices
-      such as smartphones, or the internet. Antimatter Dimensions is an example of technological convergence,
-      specifically within media. Using a genius idea called 'not caring' mixed in with the innovative solution of
-      'blind luck', it merges together a subpar game, and a subpar news ticker, to create a mediocre experience
-      that despite being mostly a game, occasionally acts as a news source slightly above the Matter Dimensions
-      Newsticker. Truly, an achievement for all businesses to aspire to strive towards, and hopefully actually beat.`
+      `Технологическая конвергенция - это идея о том, что все технологии сольются в единую технологию. Эта
+      идея находит широкое распространение с самой зари информационной эры и проявляется во многих местах и устройствах,
+      таких как смартфоны или интернет. "Измерения Антиматерии" - пример технологической конвергенции,
+      а именно в области СМИ. Используя гениальную идею под названием "халатность", с помощью инновационного решения, известного как
+      "слепой случай", они объединили второсортную игру и второсортную же новостную строку, создав посредственное развлечение,
+      которое, хотя и является по большей части игрой, иногда выполняет функцию источника новостей немного лучше, чем новостная строка из
+      "Измерений Материи". Достижение, поистине достойное того, чтобы все предприятия стремились, и, хотелось бы верить, действительно превзошли его.`
   },
   {
     id: "a338",
-    text: "Ancient cave paintings with the number 5 have been found. It's implied they were waiting for something."
+    text: "Были найдены древние пещерные рисунки числа 5. Похоже, наши предки чего-то ждали."
   },
   (function() {
     let wasClicked = false;
-    const normal = "Read More";
-    const clicked = "More";
+    const normal = "Читать дальше";
+    const clicked = "дальше";
     return {
       id: "a339",
       get text() {
@@ -2155,27 +2168,27 @@ export const news = [
   {
     id: "a340",
     text:
-      `That's quite a lot of antimatter you're making. The game developer is impressed. Because this message is
-      prerecorded, any observations related to your antimatter production are speculation on our part. Please
-      disregard any undeserved compliments.`
+      `Вы производите довольно много антиматерии. Разработчик игры впечатлён. Так как данное сообщение
+      было записано заранее, все оценки вашего производства антиматерии с нашей стороны носят предположительный характер.
+      Игнорируйте незаслуженные комплименты.`
   },
   {
     id: "a341",
-    text: "Game under construction: All mechanics must wear hardcaps."
+    text: "ОШИБКА: ваша реальность не синхронизирована, пожалуйста, обновите атомы, чтобы продолжить."
   },
   {
     id: "a342",
-    text: "Of course paperclips have a use, you use them to hold papers together. But who uses paper anymore?"
+    text: "Конечно, скрепки полезны, а именно для того, чтобы скреплять бумагу. Но кто в наше время пользуется бумагой?"
   },
   {
     id: "a343",
     get text() {
       const fakeProgress = Math.pow(player.records.realTimePlayed, 25);
       // Caps in ~68 years of real playtime then turns into "Infinite%"
-      return `Global Challenge - across all AD players, accumulate ${format(Number.MAX_VALUE, 2)} contest-paperclips
-        (noted by the
-        square ends), to receive an event-exclusive metal bagpipe, capable of giving +2 AM/s, as well as an extra
-        tickspeed while above ${format(1e200)} tickspeed upgrades! Current global progress -
+      return `Всемирное Испытание: соберите ${format(Number.MAX_VALUE, 2)} конкурсных скрепок
+        (узнаваемых по
+        квадратным концам) в сумме по сохранениям всех игроков в ИА, чтобы получить специально подготовленную к событию металлическую волынку, способную производить 2 антиматерии в секунду, а также дополнительный ускоритель
+        сверх ${format(1e200)} ускорителей! Текущий всемирный прогресс:
         ${format(fakeProgress)}/${format(Number.MAX_VALUE, 2)}
         (${formatPercents(Math.log10(fakeProgress) / Math.log10(Number.MAX_VALUE), 3)})`;
     }
@@ -2183,71 +2196,71 @@ export const news = [
   {
     id: "a344",
     text:
-      `Real life is an enigma. No one knows how it really works. There are many questions left unanswered:
-      What is the meaning of life? Are we all living inside a simulation? How do you do antitables? Where and
-      how did existence begin? These are all the questions that always linger in the back of our heads, and
-      the answers to them? We may never know.`
+      `Наша жизнь - загадка. Никто не знает, как она устроена на самом деле. Множество вопросов остаётся без ответов:
+      в чём смысл жизни? Существуем ли мы внутри симуляции? Как сделать достижение "Вот это поворот…"? Где и
+      как началось бытие? Все эти вопросы постоянно вертятся у нас в голове, а
+      ответы на них? Возможно, мы никогда не узнаем.`
   },
   {
     id: "a345",
-    text: "Japanese complain, as haikus can't be shown here. Conflict arises."
+    text: "Японцы жалуются, что здесь нельзя отобразить хокку. Возникает конфликт."
   },
   {
     id: "a346",
     text:
-      `Did you know Antimatter Dimensions is also available on Android? <a
+      `Знаете ли вы, что есть версия "Измерений Антиматерии" для устройств на Android? <a
       href="https://play.google.com/store/apps/details?id=kajfosz.antimatterdimensions" target="_blank">
-      Click here to check it out!<a>`
+      Нажмите, чтобы просмотреть её в Google Play!<a>`
   },
   {
     id: "a347",
     text:
-      `Pluto isn't a state. The 50 states, as we all know, are: Adverb, Air, Artemis, Asia, Atlantic, Bargaining,
-      Bilabial, Braille, Candela, Comma, Dacron, Dairy, Dative, Dexterity, Disenchanter, Dodecahedron, Erie,
-      Eukaryota, Folklore, Great Pyramid, Halogen, Igneous, Italy, Kansas, Kilimanjaro, Lambda, Leviticus, Libra,
-      Liquid, Lymphatic, Mesozoic, Microwave, Muon, North, Nova Scotia, Octagon, October, P = NP, Perissodactyla,
-      Polk, Potassium, Pulley, Quinary, Rook, Saturn, Tiana, Tiger, Varaha, Yale, and Yellow.`
+      `Плутон - не штат. Как все мы знаем, 50 штатов - это Азия, Артемида, Атлантика, Брайль, Вараха, Великая Пирамида,
+      Весы, Воздух, Восьмиугольник, Галоген, Губно-губной, Дательный, Додекаэдр, Жидкость, Жёлтый, Запятая, Италия,
+      Йель, Калий, Кандела, Канзас, Килиманджаро, Лавсан, Ладья, Левит, Лимфатический, Ловкость, Лямбда, Магматический,
+      Мезозой, Микроволна, Молочный, Мюон, Наречие, Непарнокопытные, Новая Шотландия, Октябрь, P=NP, Полк, Пятеричный,
+      Расколдовщик, Сатурн, Север, Тиана, Тигр, Торг, Фольклор, Шкив, Эри и Эукариоты.`
   },
   {
     id: "a348",
-    text: "<span style='color: red'>[News Message removed by moderator]<span>"
+    text: "<span style='color: red'>[Новость удалена модератором]<span>"
   },
   {
     id: "a349",
     get text() {
       const chapters = [
-        `We have come, writers, painters, sculptors, architects, passionate enthusiasts of the hitherto untouched
-        beauty of Paris, to protest with all our strength, all our indignation, in the name of the unknown French
-        taste, in the name of art and of French history threatened, against the erection, in the heart of our
-        capital, of the useless and monstrous Eiffel Tower, which public malignity, often marked by common sense
-        and the spirit of justice, has already named of "Tower of Babel". Without falling into the exaltation of
-        chauvinism, we have the right to proclaim that Paris is the unrivaled city in the world. Above the streets,
-        the widened boulevards, and the magnificent walks, rise the most noble monuments that the human race has
-        produced. The soul of France, creator of masterpieces, shines amidst this august flowering of stones. Italy,
-        Germany and Flanders, so justifiably proud of their artistic legacy, possess nothing comparable to ours,
-        and from all corners of the universe Paris attracts curiosities and admiration.`,
-        `Are we going to let all this be profaned? Will the city of Paris go on to associate itself longer with the
-        baroques, with the mercantile imaginations of a machine builder, to become irreparably ugly and dishonor
-        itself? For the Eiffel Tower, which commercial America itself would not want, is, doubtless, the dishonor
-        of Paris. Everyone feels it, everyone says it, everyone deeply grieves it, and we are only a weak echo of
-        the universal opinion, so legitimately alarmed.`,
-        `Finally, when the foreigners come to visit our Exhibition, they will exclaim, astonished: "What? It is this
-        horror that the French have found to give us an idea of their taste so much vaunted? And they will be right
-        to make fun of us, because the Paris of the sublime gothics, the Paris of Jean Goujon, Germain Pilon, Puget,
-        Rude, Barye, etc., will have become the Paris of M. Eiffel.`,
-        `It suffices, moreover, to realize what we are doing, to imagine for a moment a vertiginously ridiculous
-        tower dominating Paris, as well as a gigantic factory chimney, crushing with its barbarian mass. Our Lady,
-        the Sainte-Chapelle, the dome of the Invalides, the Arc de Triomphe, all our humiliated monuments, all our
-        shrunken architectures, which will disappear in this astonishing dream. And for twenty years, we will see
-        how to stretch out over the entire city, still quivering with the genius of so many centuries, we will see
-        the odious shadow of the odious column of bolted sheet metal stretch like an ink stain ...`,
-        `It's up to you, Monsieur and dear compatriot, to you who love Paris so much, who have embellished it so
-        much, who have so often protected it against the administrative devastation and the vandalism of industrial
-        enterprises, that it is the honor to defend it once more. We leave it to you to plead the cause of Paris,
-        knowing that you will deploy all the energy, all the eloquence that must inspire an artist such as you love
-        what is beautiful, what is great, what is right ... And if our cry of alarm is not heard, if our reasons are
-        not listened to, if Paris is stubborn in the idea of dishonoring Paris, we will have, at least, you and us,
-        hear a protest that honors.`
+        `Мы, писатели, художники, скульпторы, архитекторы и страстные приверженцы не тронутой до сих пор
+        красоты Парижа, со всей нашей силой и со всем негодованием протестуем во имя недооценённого вкуса
+        французов, во имя французского искусства и истории, которым угрожает опасность, против возведения в центре нашей
+        столицы чудовищной и бесполезной Эйфелевой башни, которую народная молва, часто не чуждая здравого смысла
+        и чувства справедливости, уже окрестила "Вавилонской башней". Не впадая в экзальтацию шовинизма,
+        мы имеем всё же право сказать во всеуслышание, что Париж - город, не имеющий себе равных в мире. Над его улицами,
+        его широкими бульварами, посреди его великолепных променадов возвышаются самые благородные памятники, созданные
+        человеческим гением. Душа Франции, создательницы шедевров, сияет среди этого августовского цветения камней. Италия,
+        Германия, Фландрия, по праву гордящиеся своим художественным наследием, не имеют ничего, что могло бы сравниться с нашим,
+        и Париж вызывает у людей со всех концов света любопытство и восхищение.`,
+        `И мы сами собираемся подвергнуть его осквернению? И впредь Париж должен будет ассоциироваться с
+        меркантильным, вычурным воображением машиностроителя, что нанесёт городу непоправимый урон и обесчестит
+        его? Потому что Эйфелева башня, от которой отказалась даже коммерческая Америка, несомненно, обесчестит
+        Париж. Каждый это знает, каждый об этом говорит, каждый этим огорчён, а мы лишь слабое эхо
+        всеобщего чувства тревоги.`,
+        `Наконец, когда иностранцы приедут, чтобы посетить нашу выставку, они удивлённо воскликнут: "Что? Вот эту
+        мерзость французы нам показывают, чтобы дать представление о своём хвалёном вкусе?" Они будут правы,
+        потешаясь над нами, потому что Париж божественной готики, Париж Жана Гужона, Жермена Пилона, Пуже,
+        Рюда, Бари и других станет Парижем месье Эйфеля.`,
+        `Пора отдать себе отчёт в том, к чему мы стремимся, и хоть на мгновение представить себе высоченную, смехотворную
+        башню, возвышающуюся над Парижем наподобие гигантской фабричной трубы, подавляя своей дикой массой собор Нотр-Дам,
+        Сент-Шапель, Дом инвалидов, Триумфальную арку, все наши униженные монументы, все наши архитектурные
+        сооружения, которые растворятся в этом чудовищном сне. И на протяжении двадцати лет мы будем
+        вынуждены смотреть на отвратительную тень отвратительной колонны из железа и винтов, простирающуюся над городом, 
+        всё ещё проникнутым духом стольких столетий, как чернильная клякса…`,
+        `Именно вам, месье и дорогой соотечественник, вам, кто так любит Париж, кто так украсил его,
+        кто столько раз защищал его от административных разрушений и вандализма промышленных
+        предприятий, выпала честь защитить его ещё раз. Мы поручаем вам отстаивать дело Парижа,
+        зная, что вы потратите на это всю энергию, всё красноречие, которые должны внушать такому художнику, как вы, любовь
+        к прекрасному, великому, справедливому… И если наш тревожный сигнал не будет понят, если ваши доводы
+        не будут услышаны, если Париж будет упорствовать в идее опозорить Париж, то, по крайней мере, мы с вами
+        услышим протест чести.`
       ];
       const chapter = chapters[player.news.specialTickerData.eiffelTowerChapter];
       player.news.specialTickerData.eiffelTowerChapter = (player.news.specialTickerData.eiffelTowerChapter + 1) % 5;
@@ -2257,19 +2270,19 @@ export const news = [
   {
     id: "a350",
     text:
-      `Alexander wept, for he had just watched a pop-culture lecture on quantum mechanics by Anaxarchus and
-      realised that there are infinite worlds to conquer, and that he couldn't even be the lord of one without
-      a mutiny or 6 stopping him.`
+      `Александр, посмотрев научно-популярную лекцию от Анаксарха по квантовой механике, вдруг заплакал,
+      осознав, что бесчисленные миры ждут покорения, а он не мог овладеть и одним так, чтобы его не остановил
+      мятеж или шестёрка.`
   },
   {
     id: "a351",
-    text: "Hi, I'm here to complain about the poor quality of the copper that has just been delivered to me."
+    text: "Привет, я пришёл пожаловаться на низкое качество только что доставленной мне меди."
   },
   {
     id: "a352",
     get text() {
       return `<span style='opacity: 0; animation: a-disappear ${newsAnimSpd(20)}s 1'>
-      This news message is antimemetic. You will forget that it exists shortly.</span>`;
+      Эта новость антимеметична. Вскоре вы забудете, что она существует.</span>`;
     }
   },
   (function() {
@@ -2306,350 +2319,345 @@ export const news = [
   },
   {
     id: "a356",
-    text: `Press "Choose save" to explore the other 2 parallel universes.`
+    text: `Нажмите "Выбрать сохранение", чтобы исследовать две параллельных Вселенных.`
   },
   {
     id: "a357",
     text:
-      `The Scientific Community remains baffled over the meaning of 286,078. "We're certain it's related to potatoes,
-      but we need to do more tests." one researcher notes.`
+      `Научное сообщество по-прежнему озадачено значением числа 286 078. "Мы уверены, что оно связано с картофелем,
+      но нам нужно провести больше тестов" - отмечает один из исследователей.`
   },
   {
     id: "a358",
-    text: `Press "Choose save" to explore the other 2 parallel universes.`
+    text: `Нажмите "Выбрать сохранение", чтобы исследовать две параллельных Вселенных.`
   },
   {
     id: "a359",
     text:
-      `Local incremental game dev makes physicists unhappy again. They claim
-      "the physics violations and blatant use of technobabble has gone too far".`
+      `Местный разработчик инкрементальных игр вновь огорчает физиков. Вот что они говорят:
+      "Нарушение физики и вопиющий технотрёп зашли слишком далеко".`
   },
   {
     id: "a360",
-    text: `Press "Choose save" to explore the other 2 parallel universes.`
+    text: `Нажмите "Выбрать сохранение", чтобы исследовать две параллельных Вселенных.`
   },
   {
     // Discord contest winner #1
     id: "a361",
-    text: "We're having a sale of top quality waterproof towels! Be sure to get some on your way out!"
+    text: "Встречайте - распродажа высококачественных непромокаемых полотенец! Обязательно купите парочку при выходе!"
   },
   {
     // Discord contest winner #2
     id: "a362",
     text:
-      `Hevipelle Incorporated is proud to present a new brand of cereal: The Big Crunch! This nutritious breakfast
-      meal contains crunchy antimatter O's, pocket dimensions, Infinity-flavored Sugar Cubes, exponentially-growing
-      Replicanti, and Eternity-flavored Marshmallows. Now you can experience Antimatter Dimensions inside of your
-      stomach! Warning: Side effects may include spontaneous combustion, nausea, vomiting, diarrhea,
-      dematerialization, vaporization, heart failure, the end of the world, or death. If you are not made out of
-      antimatter, consult an educated professional on Antimatter Consumption before eating 'The Big Crunch'.`,
+      `Компания Hevipelle Incorporated с гордостью представляет вам новую марку хлопьев: "Большое Сжатие"! Этот питательный
+      завтрак содержит хрустящие нули из антиматерии, карманные измерения, сахарные кубики со вкусом бесконечности, экспоненциально растущие
+      Репликанти и пастилу со вкусом вечности. Теперь вы можете ощутить "Измерения Антиматерии" у себя в
+      желудке! Имеет побочные эффекты, такие как самовозгорание, тошнота, рвота, диарея,
+      дематериализация, испарение, сердечная недостаточность, конец света и смерть. Если вы не состоите из
+      антиматерии, необходима консультация со специалистом по вопросам потребления антиматерии.`,
     get unlocked() { return PlayerProgress.eternityUnlocked(); }
   },
   {
     id: "a363",
     text:
-      `The most expensive thing about a dragon isn't the gold you need to fill the nest, the magic you sacrifice
-      entire empires for, or the billions of wars you need to supply the decillions of adamantium. No, it is the
-      dirt. It's always the dirt. Don't ask the royal treasurers why we have more creatures on the plane than
-      molecules of dirt. Just keep summoning bulldozers through arcane rituals and keep looking through the
-      earth's core for more scraps of dirt.`
+      `Самое дорогое в содержании дракона - это не золото, необходимое для заполнения гнезда, не магия, ради которой приходится жертвовать
+      целыми империями, и не миллиарды войн, которые нужно вести для снабжения дракона дециллионами адамантия. Нет, это
+      земля. Это всегда земля. Не спрашивайте королевских казначеев, почему у нас на самолёте больше живых существ, чем
+      молекул земли. Просто продолжайте призывать бульдозеры с помощью тайных ритуалов и искать
+      кусочки земли в недрах планеты.`
   },
   {
     id: "a364",
     get text() {
       const products = [
-        `Illustration 320-A - True Office Graphics Wall. One of our senior consultants will observe your business,
-        and come up with a list of words to be added to a hallway, to remind all employees of the values of their
-        company. Known to decrease employee motivation by at least 25%! Past walls include words such as Black
-        Hole, Catastrophic, Haphazard, compromising, Inferior, Delusional, Inefficient and Collapsed! Order now!`,
-        `Furniture 150-A (2034 edition) - 3-person seating device. A revolutionary new design for office waiting
-        areas, it consists of a large 3 legged stool, placed upside down for aesthetic benefits. Perfect for
-        getting employees back to work, in a new set of shoes, or pants. It isn't tied down or glued to the
-        floor like other editions, but we do make sure that other employees look at you funny if you edit our
-        art. No need to order, it comes as a complimentary service for any customer!`,
-        `Furniture 0853 - "The Rack" - this revolutionary new workspace, from the inventors of the crawling
-        desk, helps your employees overcome their limits and ensure that your whole business is screaming -
-        in agony! At times chosen by our revolutionary "pAIn AI", it will suggest mandatory stretchers for all
-        users. Recommended by your local gaol, order now! *Warning, AOS&C only takes responsibility for acts
-        of god such as lightning or merciful purifications by deities.`
+        `Иллюстрация 320-A - настоящая графическая стена для офиса. Один из наших старших консультантов изучит ваше предприятие
+        и составит список слов, которые следует добавить в вестибюль, чтобы напомнить всем работникам о ценностях их
+        компании. Известно, что это снижает мотивацию работников на 25% и более! На прошлых стенах были написаны такие слова, как
+        "сингулярность", "катастрофический", "случайный", "компрометирующий", "худший", "иллюзорный", "неэффективный" и "разрушенный"! Закажите прямо сейчас!`,
+        `Мебель 150-A (версия 2034 г.) - устройство для сидения на 3 персоны. Революционно новый дизайн для офисных зон
+        ожидания - крупный табурет с тремя ножками, помещённый вверх ногами по эстетическим соображениям. Идеально подходит для
+        возвращения сотрудников к работе в новых башмаках или брюках. Он не привязан и не приклеен к
+        полу, как другие версии, но мы заботимся о том, чтобы другие сотрудники косо смотрели на того, кто посмеет внести изменения в наше
+        произведение искусства. Заказывать не нужно, это подарок для каждого клиента!`,
+        `Мебель 0853 - дыба. Революционно новое рабочее место от изобретателей ползающего
+        стола помогает работникам превозмочь себя и обеспечивает, чтобы всё ваше предприятие кричало -
+        от боли! Когда это считает нужным наш революционный ИИ агонИИ, всем пользователям предлагаются обязательные
+        носилки. Рекомендовано местной тюрьмой, закажите прямо сейчас! Внимание: ОПиА несут ответственность только за такие деяния
+        Бога, как молния и отпущение грехов.`
       ];
       const product = products.randomElement();
-      return `Antimatter Office Supplies and Co present their new "Modern Office" catalogue! Each template
-        design can be customised for your business, and offers a unique way to promote business synergy! Here
-        is a sneak preview of one of their newest items: ${product}`;
+      return `Компания "Офисные принадлежности из антиматерии" рада представить вам новую коллекцию "Современный офис"! Каждый шаблонный
+        товар может быть настроен под ваше предприятие, что даёт уникальную возможность способствовать синергии производства! Вот
+        обзор одного из новейших товаров. ${product}`;
     },
   },
   {
     id: "a365",
-    text: "I don't like Replicanti. They're coarse and rough and irritating and they replicate everywhere.",
+    text: "Я не люблю Репликанти. Они грубые… жёсткие… и неприятные. Они производят себя повсюду.",
     get unlocked() { return PlayerProgress.eternityUnlocked() || PlayerProgress.replicantiUnlocked(); }
   },
   {
     id: "a366",
     text:
-      `Stage magic, such as illusions, has an interesting history. A mix of charlatans attempting to scam people,
-      and actors acting out performances using illusions or sleight of hand. Altering styles of magic, and continued
-      discourse and disagreements over whether it should be stated that it is an illusion, and whether people will
-      magically realise that it is fake and that it does not need to be stated. A schism a century ago split magic
-      into 2 types - gentle, simplistic utilitarian tricks and grand spectacles involving the flashy machinery and
-      beautiful assistants - originating from the popularisation of a single trick involving sawing a person in
-      half. Much more interesting than watching some TV psychic pretending to pull a lottery ticket out from a news
-      ticker, at any rate. Speaking of which, tonight's lottery numbers are 23, 10, 81, 106.4, 3 + 2i, and e.`
+      `Такой вид искусства, как иллюзионизм, имеет любопытную историю. Смесь шарлатанов, пытающихся обдурачить людей,
+      и актёров, разыгрывающих представления с помощью иллюзий или ловкости рук. Сменяющие друг друга стили фокусов и непрекращающиеся
+      споры и разногласия по поводу того, надо ли утверждать, что фокус основан на иллюзии, или зрители
+      волшебным образом поймут, что их обманывают, и объявлять об этом не надо. Сто лет назад произошёл раскол, разделивший фокусы
+      на два вида - деликатные, упрощённые, приземлённые трюки и грандиозные зрелища с яркой техникой и
+      прекрасными ассистентками, берущие начало из популярности одного-единственного фокуса с распиливанием человека
+      пополам. Гораздо интереснее, чем телешоу об экстрасенсах, делающих вид, что вытаскивают выигрышный лотерейный билет из новостной
+      строки, во всяком случае. Кстати, выигрышные номера в сегодняшнем вечернем тираже - 23, 10, 81, 106,4, 3+2<i>i</i> и <i>e</i>.`
   },
   {
     id: "a367",
     text:
-      `Snakes look scary, and they absolutely are and you should run, calmly, from every snake you see. But, luckily
-      for you, snakes don't often take the initiative to bite - excluding the really mean ones. If they've gone out
-      of their way to bite you, there's generally 4 reasons. 1- The Snake is Mean. 2- You scared the snake. Snakes
-      are scary to you, but you are scary to snakes. Be the bigger lizard when you meet a snake. 3- You entered the
-      territory of the snake. Often, a snake will warn you if you do this - this is why rattle snakes rattle. If you
-      don't listen to the warning, they'll bite you. And the most important reason, 4- the snake finds you ugly.
-      This is the fault of the snake's ocular system, but is the most common form of bites in at least 2
-      jurisdictions. And if you get bitten by a snake, by virtue of being a scarily ugly lizard who keeps stumbling
-      into the wrong bushes, there's 3 main things you can do. First, calm down, again, and stay calm. Secondly,
-      immobilise the area around site that was bitten, and try using a compression bandage. Snake venom vision is
-      entirely based on movement of the object it's currently in. And third, calmly, call for help from other
-      lizards. Excluding the snake. The snake's too mean to help you.`
+      `Змеи на вид опасны, и они на самом деле таковы, и от каждой змеи, которую ты видишь, следует спокойно бежать. Но, к счастью
+      для нас, змеи редко начинают конфликт, кроме совсем уж злобных. Если змея всё же
+      пошла на то, чтобы укусить тебя, на это может быть 4 причины. 1. Змея злобная. 2. Ты напугал змею. Змеи
+      страшны для тебя, но и ты страшен для змей. Ведите себя более елейно при встрече со змеёй. 3. Ты вторгся
+      на территорию змеи. Зачастую в таких случаях змея предупредит тебя - именно с этой целью гремучие змеи гремят. Если ты
+      не прислушаешься к предупреждению, змея укусит тебя. 4. И самая главная причина: змея считает тебя некрасивым.
+      Всему виной устройство змеиных глаз, но это самая распространённая причина для укусов по крайней мере в 2
+      юрисдикциях. Если змея укусила вас за то, что вы страшно некрасивый ящер, который постоянно забредает
+      не в те кусты, следует предпринять 3 действия. Во-первых, вновь успокойтесь и сохраняйте спокойствие. Во-вторых,
+      обездвижьте участок тела около места укуса, желательно, при помощи компрессионного бинта. Действие змеиного яда
+      в полной мере зависит от движения объекта, в котором он находится. И в-третьих, спокойно позовите на помощь других
+      ящеров. Но не змею. Змея слишком злобная, чтобы помочь.`
   },
   {
     id: "a368",
     text:
-      `I suspect more people would press the hard reset button if genuine effort was done to make the process as
-      miserable as possible. A slow removal of resources, with unique nerfs just to stop you from progressing. The
-      destruction of UI, turning from usable to unusable, arcane and unwieldy, requiring memory and luck to even
-      continue this quest. Randomness, against the player for even the simplest actions, to punish the thought of
-      progression. Hooks and traps and disasters and low rolls for a chance see progression, which entirely consists
-      of putting the state of the game further from anything deemed reasonable. A situation where the character is
-      broken just to tell you to leave… but the damage is already done, if it is even possible to turn back. And…
-      from there, a hard reset probably isn't enough. It would have to be… harder. Not just a hard reset, but a
-      cookie, something in local storage designed specifically to make it impossible to actually start a new game.
-      Or, something more malicious? And despite this, people would still throw themselves into this nightmare, for
-      humanity knows no bounds in its endless curiosity. No amount of warnings will stop everyone. They will find
-      a way to proceed, given it exists, and may even complain when it isn't as punishing as expected. So, do you
-      want to push the button, and experience the depths of despair, willingly? Hopefully not, because it isn't here.`
+      `Подозреваю, что больше людей нажало бы на кнопку полного сброса, если бы к тому, чтобы сделать процесс как можно сквернее,
+      были приложены настоящие усилия. Медленное изъятие ресурсов с уникальными ослаблениями, существующими лишь затем, чтобы предотвратить прогресс.
+      Разрушение интерфейса путём превращения его из годного в негодный, загадочный и громоздкий, требующий напряжения памяти и, более того, удачи, чтобы по крайней мере
+      продолжать прохождение. Случайность, препятствующая игроку даже в простейших действиях, чтобы наказать его за самую мысль о
+      прогрессе. Капканы, ловушки, катастрофы и скользкие места за шанс увидеть прогресс, который представляет собой не что иное, как
+      отдаление состояния игры от всего, что можно назвать разумным. Ситуация, в которой персонаж
+      сломлен и говорит тебе, чтобы ты просто уходил… но ущерб уже нанесён, если повернуть назад вообще возможно. И…
+      чтобы выбраться из этого состояния, полного сброса может быть недостаточно. Он должен быть… полнее. Не просто полный сброс, а
+      файл cookie или что-нибудь подобное в памяти компьютера, сделанное специально для того, чтобы предотвратить запуск игры заново.
+      Или что-нибудь более вредоносное? И несмотря на это, люди всё равно будут погружаться в этот кошмар, ибо
+      человеческое любопытство не знает границ. Никакие предупреждения не остановят всех. Люди найдут
+      способ продолжить, если только он существует, и могут даже пожаловаться, если процесс будет не таким скверным, как они ожидали. Ну что,
+      хотите ли вы нажать на кнопку и добровольно погрузиться в глубины отчаяния? Надеюсь, что нет, потому что она здесь отсутствует.`
   },
   {
     id: "a369",
     text:
-      `An empire-building project is one of the most difficult things to implement. Thousands of hours of time,
-      planning, effort, consultation, and political manoeuvring to create truly airbreaking endeavours. Take the
-      Realmway Revitalisation Roadmap, a revolutionary program referred to by the 3 R's, which is known as the
-      pinnacle of the most famous of the empire's bureaucratic infrastructure committees - the EMIF (empire magic
-      infrastructure foundation) - not to be confused with the EAIF (Electric airship investment fund) or the
-      NMIC (National Magical Infrastructure Coalition). The goal of the three R's, set out by the EMIF, was to
-      reinstate a mana trade corridor for SMSS (Small-Medium Steam Shuttles), a vital part of the burgeoning
-      consolidated states after their unfortunate pillaging during the NELC (ninth empire liberation crusade).
-      The three R's was a multi stage project - stage 1 was a survey glyph in the air - all big things start with
-      a small step. Stage 2, the unveiling of the EMOF (Empire Mechanical Obliteration Forcefield) had over 50
-      dignitaries - multiple emperors (from federated states to organisational leaders), foreign rulers, EMDF
-      (Effluent Manifested Destiny Families) who currently own the land, and even some of the forecast witches,
-      all gathered together to unveil the project in a show of EOSF (Empire Official Solidarity Friendships).
-      Sadly, the project was eventually cancelled at stage 215, as the creation of the EMTF (Excrement Material
-      Transmutation Facility) for the contractors exploded after coming into contact with a SMEA (Small-Medium
-      Electric Airship) placing the last survey peg from stage 459 due to a time vortex created by an argument
-      at the WAIC (Witches Annual Infrastructure Committee) as part of stage 56. Truly, tragic stuff - 3 award
-      nominations and 2 wins during that process due to EBIF (Efficient Bureaucracy In (the) Field).`
+      `Программа по созданию империи входит в число самых трудновыполнимых задач. Тысячи часов
+      планирования, усилий, консультаций и политических манёвров уходят на поистине прорывные проекты. Возьмём для примера
+      Проект переустройства пространственных путей, революционную программу, известную как Проект четырёх "П", которая по праву считается
+      апофеозом деятельности самого известного бюрократического комитета по инфраструктуре во всей Империи - ИФВИ (Имперского фронта
+      волшебной инфраструктуры), не путать с ИФВЭ (Инвестиционным фондом воздушных электробусов) или
+      НОВИ (Национальным объединением по волшебной инфраструктуре). Задача Проекта четырёх "П", поставленная ИФВИ, заключалась в
+      возрождении коридора торговли маной, необходимой для МСПШ (мало-средних паровых шаттлов), которые были жизненно важны для развивающихся
+      губерний, пострадавших от разграбления во время ДПОИ (Девятого похода за освобождение Империи).
+      Проект четырёх "П" состоял из множества фаз. 1-я фаза представляла собой межевание воздуха глифами - любое большое дело начинается с
+      маленького шага. Во 2-й фазе, целью которой был запуск ИРСП (Имперского разрушительного силового поля), более 50
+      высокопоставленных лиц - император с приближёнными (от губернаторов до председателей имперских организаций), главы иностранных государств, ДСПС
+      (дворянские семьи с предначертанной судьбой), которым принадлежала земля в тот момент, и даже некоторые ведьмы-предсказательницы -
+      собрались вместе, чтобы представить проект на выставке ГФЕИ (Государственного фронта единства Империи).
+      К сожалению, в конце концов Проект был прерван в 215-й фазе, когда УПЭМ (установка для переработки экскрементных
+      материалов), которая строилась для подрядчиков, взорвалась при столкновении с МСВЭ (мало-средним
+      воздушным электробусом), вследствие чего последний геодезический колышек, использованный в 459-й фазе, был выброшен из временного вихря, возникшего из-за спора
+      на ЕСВИ (Ежегодном съезде ведьм по инфраструктуре), проходившего в рамках 56-й фазы. Поистине трагичная история - 3 номинации
+      на премию и 2 победы во время этого процесса благодаря ЭБОИ (Эффективной бюрократии в области инфраструктуры).`
   },
   {
     id: "a370",
     text:
-      "Man tries installing cookies to store computer data, accidentally cleans them due to being too delicious."
+      "Внимание: игра приостановлена. Не обращайте внимания на то, что числа растут - это ошибка отображения."
   },
   {
     id: "a371",
     text:
-      `Pop quiz: there are 3 doors, you pick a door at random, and get to keep what's behind the door. The doors
-      have 2 golden goats, 2 silver goats, and a gold and a silver goat. After you pick a door, the door with the
-      lowest $ worth of goats will be opened and shown to you. After this, you are given the choice to swap.
-      What is the probability that you will swap doors?`
+      `Внимание, вопрос! Есть 3 двери, вы равновероятно выбираете одну из них и получаете в подарок то, что спрятано за ней. За дверями
+      спрятаны: 2 золотых козы; 2 серебряных козы; золотая коза с серебряной козой. После того как вы выбираете дверь, вам открывают
+      ту из двух других дверей, козы за которой стоят меньше в сумме. Затем вам дают возможность изменить выбор двери.
+      Какова вероятность того, что вы воспользуетесь этой возможностью?`
   },
   {
     id: "a372",
     text:
-      `If you're ever lost in a forest, look at the trees around you. It's said that moss grows north, so by the
-      time you've finished looking at a tree, a roaming guitarist will run up to you and ask if you want to hear
-      wonderwall`
+      `Если вы заблудились в лесу, посмотрите на деревья вокруг вас. Говорят, мох растёт с северной стороны, так что, прежде
+      чем вы закончите разглядывать дерево, бродячий гитарист подбежит к вам и спросит, не хотите ли вы послушать песню
+      "Wonderwall".`
   },
   {
     id: "a373",
-    text:
-      `As a symbol of friendship between the Matter and Antimatter Periodic Tables, they have done an exchange of
-      elements. The element of Mony is now part of the Antimatter Periodic Table, while Antimony has been added
-      to the regular Periodic Table.`
+    text: "Нажмите сюда, чтобы получать уведомления о каждой произведённой единице антиматерии!!!"
   },
   {
     id: "a374",
-    text: "This newsticker was specifically designed for promotional purposes only."
+    text: "Эта новостная строка была специально разработана исключительно для показа рекламы."
   },
   {
     id: "a375",
     text:
-      `As you probably know, it is traditional to give gifts made of certain materials to celebrate anniversaries
-      The classic ones are silver at 25 and gold at 50. Here are some little known anniversary gifts:
-      Pineapple - 37 years Hellstone - 66 years Lizardite- 82 years Nitrowhisperin- 86 years Taconite - 95 years
-      Hatchettite - 100 years Electrum - 110 Yakitoda - 111 years years Fordite - 119 years Bloodstone - 120 years
-      Celestite - 125 years Jet - 140 years Petroleum - 145 years Steel - 150 years Cummingtonite - 198 years
-      Concrete - 200 years Laserblue- 210 years Painite - 250 years Parisite - 255 years Parasite - 260 years
-      Carbon Nanotubes - 300 years Mercury - 310 years Martian Soil - 340 years Neptunium - 370 years
-      Uranium - 380 years Plutonium - 390 years Xium - 400 years Blaze rods - 420 years Asbestos - 430 years
-      Gabite - 444 years Crimtane - 666 years Lagga - 777 years`
+      `Как вы, вероятно, знаете, на определённые годовщины принято дарить подарки из определённых материалов.
+      Классика: серебро - на 25 лет, и золото - на 50 лет. А вот менее известные традиционные материалы для годовщин:
+      ананас - на 37 лет, адская руда - на 66 лет, лизардит - на 82 года, азотошелестин - на 86 лет, таконит - на 95 лет,
+      гатчетит - на 100 лет, электрум - на 110 лет, якитода - на 111 лет, фордит - на 119 лет, гелиотроп - на 120 лет,
+      целестин - на 125 лет, гагат - на 140 лет, нефть - на 145 лет, сталь - на 150 лет, куммингтонит - на 198 лет,
+      бетон - на 200 лет, кобальтовое стекло - на 210 лет, пейнит - на 250 лет, паризит - на 255 лет, паразит - на 260 лет,
+      углеродные нанотрубки - на 300 лет, ртуть - на 310 лет, марсианская почва - на 340 лет, нептуний - на 370 лет,
+      уран - на 380 лет, плутоний - на 390 лет, иксий - на 400 лет, огненный стержень - на 420 лет, асбест - на 430 лет,
+      габайт - на 444 года, багротан - на 666 лет, лагга - на 777 лет.`
   },
   {
     id: "a376",
     text:
-      `Big tech companies have collaborated to create a new neural network that's trained in the generation of rap
-      lyrics, called RAP-3. First lyrical generations include "Call me prometheus 'cuz I bring the fire" and
-      "Call me Sonic the way I'm gettin' these rings". Critics say it still has a way to go before it replaces
-      traditional music.`
+      `Крупные технологические компании совместными усилиями создали новую нейронную сеть, обученную генерировать тексты
+      для рэпа, под названием РЭП-3. Вот одни из первых генерированных строчек: "Зови меня Прометеем, ведь я приношу огонь";
+      "Зови меня Соником, ведь я собираю кольца". Критики говорят, что ИИ предстоит долгий путь совершенствования, прежде чем он заменит
+      человеческую музыку.`
   },
   {
     id: "a377",
     text:
-      `With the new android OS, android 20, being predicted in the near future, the new system for internal codenames
-      has been revealed. The first codename, as it currently stands, is “antimatter”. This conveniently works well
-      with the predicted generation of phones that will use Android 20 - these phones will be the most explosive
-      ever due to their annihilation-based power source. Sources tell us that a billion dollar research unit is
-      working on a name for android 21, by tradition to start with B, “that doesn't sound too bad when you think
-      about it”. `
+      `В связи с тем, что в ближайшем будущем ожидается выпуск новой версии ОС Android, Android 20, была раскрыта новая система
+      внутренних кодовых названий. Первое кодовое название по состоянию на данный момент - "антиматерия". Это хорошо сочетается с тем,
+      что, как предсказывают эксперты, телефоны на Android 20 будут самыми взрывоопасными телефонами всех
+      времён из-за того, что они будут черпать энергию из аннигиляции. Источники сообщают, что исследовательская группа, стоящая миллиард долларов,
+      работает над названием для 21-й версии Android, которое по традиции будет начинаться с буквы B, что, "если подумать, звучит
+      не так плохо".`
   },
   {
     id: "a378",
-    text: "If every antimatter were an apple, you would have enough to keep all the doctors away for 3000 years"
+    text: "Если бы каждая единица антиматерии была яблоком, вы могли бы не ходить к доктору более 3000 лет."
   },
   {
     id: "a379",
-    get text() {
-      return `THE ${format(Number.MAX_VALUE, 2)} PIECE! THE ${format(Number.MAX_VALUE, 2)} PIECE IS REAL!`;
-    }
+    text: "Поздравляем! Вы ничего не добились."
   },
   {
     id: "a380",
     text:
-      `The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively gets more difficult
-      as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed
-      starts slowly, but gets faster each minute after you hear this signal. [beep] A single lap should be
-      completed each time you hear this sound. [ding] Remember to run in a straight line, and run as long as
-      possible. The second time you fail to complete a lap before the sound, your test is over. The test will
-      begin on the word start. On your mark, get ready, start.`
+      `Челночный бег FitnessGram - это тест на максимальное потребление кислорода, который становится сложнее
+      по мере его прохождения. 20-метровый челночный бег начнётся через 30 секунд. Приготовьтесь к старту. Необходимая скорость бега
+      изначально мала, но увеличивается каждую минуту по сигналу. [бип] Вы должны успеть пробежать по одному
+      кругу перед каждым сигналом. [дзинь] Бегите прямо как можно
+      дольше. Тест будет окончен для вас во второй раз, когда вы не успеете пробежать круг до сигнала.
+      Начинаем по команде "марш". На старт, внимание, марш!`
   },
   {
     id: "a381",
-    text: "Why do they call it second dimension when you of in the first dimension of out second eat the dimension?"
+    text: "Шёл 1942 год до нашей эры. Hevipelle отправился в прошлое и воссоздал компьютер, чтобы заставить людей ждать обновления в течение 4 тысячелетий. Им уже невтерпёж."
   },
   {
     id: "a382",
     text:
-      "Any AD player born after 1993 can't joke... All they know is 5 hours, paperclips, 1.79e308 & Ninth Dimension."
+      "Игроки в ИА, родившиеся после 1993 года, не умеют шутить… Они только и знают, что 5 часов, скрепки, 1.8e308 и 9-е Измерение."
   },
   {
     id: "a383",
     text:
-      "The only thing better than an anti-joke is two. Like the number. Not two anti-jokes. I just like the number two."
+      "Лучше, чем антианекдот, может быть только два. Я имею в виду число. Не два антианекдота. Я просто люблю число два."
   },
   {
     id: "a384",
-    text: "Click here to make nothing happen."
+    text: "Нажмите, чтобы ничего не произошло."
   },
   {
     id: "a385",
     text:
-      `I wonder... Why did Apple skip iPhone 9 and Microsoft skip Windows 9...
-      Was it because they were bribed by a game developer?`
+      `Удивительно… Почему Apple пропустила iPhone 9, а Microsoft - Windows 9?…
+      Неужели их подкупил разработчик игр?`
   },
   {
     id: "a386",
-    text: "9 out of 10 doctors recommended against trying to touch antimatter. We haven't heard back from the 10th one."
+    text: "9 из 10 врачей рекомендуют не трогать антиматерию. Мы не получили ответа от 10-го."
   },
   {
     id: "a387",
     text:
-      `In spring, Man built a pillar. In summer, another. Throughout autumn they held. But in winter, one experienced
-      an unexpected (See definition in: Abstract Multidimensional Retrocausal Physics) ZW-Class "Ascension" event,
-      and is hypothesised to have fallen into a dimensional loophole, where it, by definition, has to take up more
-      dimensions than itself. Current efforts at retrieving the pillar and returning it to baseline reality have been
-      unsuccessful (See test log 2453-3e9a-50d1-84fc for more details)`
+      `Весной человек построил колонну. Летом - другую. Всю осень они стояли. Но зимой с одной из них произошло
+      неожиданное (см. определение в книге "Абстрактная многомерная ретропричинная физика") событие класса ZW "Вознесение",
+      и, предположительно, она упала в измеренческую лазейку, где она по определению должна занимать больше
+      измерений, чем она сама. К настоящему моменту усилия, приложенные к тому, чтобы извлечь колонну и вернуть её в основную реальность, не
+      увенчались успехом (см. подробности в журнале проб 2453-3e9a-50d1-84fc).`
   },
   {
     id: "a388",
     text:
-      `In light of recent events, we'd like to issue an official statement. Antimatter Dimensions™ is in no way
-      affiliated with Jimmy's Causality Violating Brainworms™. We do not endorse, nor were we involved in their creation
-      of the product which was involved in several catastrophic dimension-destabilising and reality-toppling incidents.
-      We almost certainly did not sign a contract at 5:30:26 UTC on 08/12/1994 after discussing how we could benefit
-      from destabilising and warping dimensions. There was no industrial zone constructed in the 5th Orion Arm of the
-      వ' galaxy, and even if they were we did not install localised anomalies following the Scranton Reality Anti-anchor
-      mechanism. Additionally, no time loop is occurring at Acroamatic Abatement Facility AAF-D in site 43. We apologise
-      if things seemed this way, and we will be more thorough in cracking down misinformation in the future.`
+      `В свете последних событий мы хотели бы сделать официальное заявление. "Измерения Антиматерии"™ никоим образом не
+      связаны с "Яковлевскими нарушающими причинность мозговыми червями"™. Мы не только не причастны к созданию ими
+      изделия, которое стало причиной нескольких катастрофических происшествий с дестабилизацией измерений и обрушением реальностей, но и не одобряем его.
+      Почти наверняка мы не подписали сделку 8 декабря 1994 года в 5:30:26 по UTC, обсудив, как мы могли бы извлечь выгоду
+      из дестабилизации и деформации измерений. В 5-м рукаве Ориона галактики వ' не было организовано промышленной зоны,
+      а даже если и была, мы не устанавливали локализованные аномалии, используя скрантонский механизм отвязки
+      реальностей. Кроме того, на акроаматической очистительной установке АОУ-D в Зоне 43 не образовалось временной петли. Приносим
+      вам свои извинения за то, что вам так могло показаться. В дальнейшем мы будем более тщательно бороться с дезинформацией.`
   },
   {
     id: "a389",
-    text: "If only we could condense the antimatter in the universe into cookies..."
+    text: "Ах, если бы можно было конденсировать антиматерию Вселенной в печенье…"
   },
   {
     id: "a390",
     text:
-      `Can you believe it guys? Update, just 5 hours away. Update is in a 5 hours. Wahoo. I'm so happy about this
-      information. Update just 5 hours away. Oh wow. Can you believe it? Update just in a 5 hours. It got here so
-      fast. Update, just 5 hours.`
+      `Ребята, вы не поверите! До обновления всего 5 часов. Обновление через 5 часов. Ура! Я так рад этой
+      информации. До обновления всего 5 часов. Ого! Вы не поверите! Обновление всего через 5 часов. Оно пришло так
+      быстро. Обновление, всего 5 часов.`
   },
   {
     id: "l1",
-    text: "You just made your 1,000,000,000,000,000th antimatter. This one tastes like chicken.",
+    text: "Вы только что произвели 1 000 000 000 000 000-ю единицу антиматерии. По вкусу она напоминает курицу.",
     get unlocked() { return Currency.antimatter.exponent === 15; }
   },
   {
     id: "l2",
-    text: "Nerf the galaxies please.",
+    text: "Пожалуйста, ослабьте галактики.",
     get unlocked() { return player.galaxies === 2 || Currency.infinities.gt(0); }
   },
   {
     id: "l3",
-    text: "What do you mean, more than two dimensions??? We're on a screen, clearly there are only 2 dimensions.",
+    text: `В каком смысле "больше двух измерений"??? Мы на экране, очевидно, есть только два измерения.`,
     get unlocked() { return AntimatterDimension(3).amount.gt(0) || DimBoost.totalBoosts > 0; }
   },
   {
     id: "l4",
-    text: "How much is Infinity? -literally everyone at least once",
+    text: `"Бесконечность - это сколько?" - буквально каждый хотя бы раз`,
     get unlocked() { return AntimatterDimension(8).amount.eq(190) || Currency.infinities.gt(0); }
   },
   {
     id: "l5",
-    text: "Eh, the Fourth Dimension is alright...",
+    text: "Ну, хватит и четвёртого Измерения…",
     get unlocked() { return AntimatterDimension(4).amount.gt(0) && AntimatterDimension(5).amount.eq(0); }
   },
   {
     id: "l6",
     text:
-      `Antimatter people seem to be even more afraid of 13 than we are. They destroyed
-      entire galaxies just to remove 13 from their percents.`,
+      `Кажется, люди из антиматерии боятся числа 13 даже больше, чем мы с вами. Они разрушили
+      целые галактики только для того, чтобы убрать число 13 из процентов.`,
     get unlocked() { return player.galaxies > 0 || Currency.infinities.gt(0); }
   },
   {
     id: "l7",
-    text: "To understand dimensional sacrifice, you do actually need a PhD in theoretical physics. Sorry!",
+    text: "Чтобы понимать Пожертвование Измерений, нужно обладать докторской степенью по теоретической физике. Извините!",
     get unlocked() { return player.sacrificed.e >= 10 || DimBoost.totalBoosts >= 6; }
   },
   {
     id: "l8",
-    text: "A new group for the standardisation of numbers have come forward with a novel new format involving emoji's.",
+    text: "Новая группа стандартизации записи чисел предложила новаторский формат с эмодзи.",
     get unlocked() { return player.requirementChecks.permanent.emojiGalaxies > 0; }
   },
   {
     id: "l9",
-    text: "Antimatter ice cream stand has recently opened- they have octillions of flavors!",
+    text: "Недавно открылся киоск с мороженым из антиматерии - он продаёт октиллионы сортов!",
     get unlocked() { return player.records.totalAntimatter.e >= 27; }
   },
   {
     id: "l10",
     text:
-      `The Heavenly Pelle has generated too much antimatter and needed to create another galaxy.
-      This one can be seen in the southwestern sky.`,
+      `Небесный Пелль произвёл слишком много антиматерии, вследствие чего ему понадобилось создать новую галактику.
+      Её можно увидеть в юго-западной части неба.`,
     get unlocked() { return player.galaxies > 0 || Currency.infinities.gt(0); }
   },
   {
     id: "l11",
-    text: "9th Dimension is a lie.",
+    text: "9-е Измерение - ложь.",
     get unlocked() {
       return DimBoost.totalBoosts >= 5 ||
       player.galaxies > 0 ||
@@ -2658,7 +2666,7 @@ export const news = [
   },
   {
     id: "l12",
-    text: "The square root of 9 is 3, therefore the 9th dimension can't exist.",
+    text: "Квадратный корень из 9 равен 3, следовательно, 9-е Измерение не может существовать.",
     get unlocked() {
       return DimBoost.totalBoosts >= 5 ||
       player.galaxies > 0 ||
@@ -2667,7 +2675,7 @@ export const news = [
   },
   {
     id: "l13",
-    text: "You got assimilated by the 9th dimension? Just call your doctor for mental illness!",
+    text: "Вас впитало 9-е Измерение? Просто обратитесь к психиатру!",
     get unlocked() {
       return DimBoost.totalBoosts >= 5 ||
       player.galaxies > 0 ||
@@ -2676,27 +2684,17 @@ export const news = [
   },
   {
     id: "l14",
-    text: "Why is there no 9th dimension? Because 7 8 9.",
-    get unlocked() {
-      return DimBoost.totalBoosts >= 5 ||
-      player.galaxies > 0 ||
-      PlayerProgress.infinityUnlocked();
-    }
+    text: "А теперь о погоде."
   },
   {
     id: "l15",
-    text: "The 9th dimension cannot exist because the Nein-speaking nazis died in WW2.",
-    get unlocked() {
-      return DimBoost.totalBoosts >= 5 ||
-      player.galaxies > 0 ||
-      PlayerProgress.infinityUnlocked();
-    }
+    text: "Пожалуйста, ослабьте первое Измерение - оно производит буквально всю антиматерию."
   },
   {
     id: "l16",
     text:
-      `If you break the fourth wall... well, there's still the fifth, sixth, seventh, and eighth to get through
-      before you encounter bad things, so you should be fine`,
+      `Если вы разрушите четвёртую стену… что ж, пятая, шестая, седьмая и восьмая всё ещё будут отделять
+      вас от неприятностей, так что это не страшно.`,
     get unlocked() {
       return DimBoost.totalBoosts >= 5 ||
       player.galaxies > 0 ||
@@ -2706,10 +2704,10 @@ export const news = [
   {
     id: "l17",
     text:
-      `Conditions must be met for Hevipelle to sleep. First, it needs to be a blue moon. Second, a specific town
-      in the arctic must have not seen light for a month. Third, he needs to release an AD update. And finally,
-      no one on the Discord can be on dimension 9. Only then can he rest, for up to 6 hours, before waking up
-      forcefully to avoid getting the offline achievement.`,
+      `Hevipelle может заснуть только при определённых условиях. Во-первых, рак должен свистнуть на горе. Во-вторых, солнце
+      должно быть скрыто от определённого арктического города в течение месяца. В-третьих, ему нужно выпустить обновление в ИА. И, наконец,
+      никто в Discord не должен быть на 9-м Измерении. Только тогда он сможет отдохнуть до 6 часов, прежде чем вынужденно
+      проснётся, чтобы не получить достижение за офлайн.`,
     get unlocked() {
       return DimBoost.totalBoosts >= 5 ||
       player.galaxies > 0 ||
@@ -2718,7 +2716,7 @@ export const news = [
   },
   {
     id: "l18",
-    text: "If the 9th dimension is all evil, then is 3 the root of all evil?",
+    text: "Если 9-е Измерение - это зло, то, значит, 3 - это корень зла?",
     get unlocked() {
       return DimBoost.totalBoosts >= 5 ||
       player.galaxies > 0 ||
@@ -2728,8 +2726,8 @@ export const news = [
   {
     id: "l19",
     text:
-      `I'll have 1e29 number 9s, a number 1e9 large, a number 6 with extra replicanti, a number 1e7, two 4e5s,
-      one with matter, and a large time vortex.`,
+      `А мне бы номер 9 - 1e29 порций, номер 1e9 - большую порцию, номер 6 с Репликанти, номер 1e7, номер 4e5 - две порции,
+      одну из них с материей, ну и большой временной вихрь.`,
     get unlocked() {
       return DimBoost.totalBoosts >= 5 ||
       player.galaxies > 0 ||
@@ -2738,97 +2736,95 @@ export const news = [
   },
   {
     id: "l20",
-    text: "Infinity: the one thing that's supposed to break.",
-    get unlocked() { return PlayerProgress.infinityUnlocked(); }
+    text: "В прошлом месяце один учёный заявил, что открыл 9-е Измерение. С тех пор его не видели."
   },
   {
     id: "l21",
-    get text() { return `I've got ${format(Number.MAX_VALUE, 2)} problems, but none of them antimatter.`; },
-    get unlocked() { return Currency.infinities.gt(0) && !PlayerProgress.hasBroken(); }
+    text: "- Пять - это много? - Смотря чего. Антиматерии? Нет. Часов до обновления? Тоже нет."
   },
   {
     id: "l22",
-    text: "Anti Emoji Movie a huge hit!",
+    text: `"Антифильм эмодзи" стал огромным хитом!`,
     get unlocked() { return player.requirementChecks.permanent.emojiGalaxies >= 5; }
   },
   {
     id: "l23",
-    text: "If this game was made by Valve, Zero Deaths would be impossible.",
+    text: `Если бы эта игра была создана Valve, достижение "Ни одного погибшего" было бы невозможно выполнить.`,
     get unlocked() { return Achievement(64).isUnlocked; }
   },
   {
     id: "l24",
-    text: "Florida man attempts to get Zero Deaths on first run, is stopped by heat death of the universe.",
+    text: `Челябинские мужики настолько суровы, что в выполнении достижения "Ни одного погибшего" на первой же бесконечности их не останавливает даже тепловая смерть Вселенной.`,
     get unlocked() { return Achievement(64).isUnlocked; }
   },
   {
     id: "l25",
-    text: "\"Having done half the achievements isn't much of an achievement\" -Boo",
+    text: "\"Выполнить половину всех достижений - не такое уж большое достижение\" - Boo",
     get unlocked() { return Achievements.effectiveCount >= GameDatabase.achievements.normal.length / 2; }
   },
   {
     id: "l26",
     text:
-      `Thanos is gonna be super dissapointed when he shows up with a fully powered Infinity gauntlet, and Hevi
-      has a fully powered Eternity gauntlet.`,
+      `Танос будет безмерно огорчён, когда он придёт с полностью заряженной Перчаткой Бесконечности, а у Hevi
+      есть полностью заряженная Перчатка Вечности.`,
     get unlocked() { return PlayerProgress.eternityUnlocked(); }
   },
   {
     id: "l27",
     text:
-      "New strange material was been found. It seems to grow exponentially, but only helps with antimatter production.",
+      "Был открыт странный новый материал. Он растёт, по-видимому, экспоненциально, но помогает только с производством антиматерии.",
     get unlocked() { return PlayerProgress.replicantiUnlocked() && player.replicanti.chance === 0.01; }
   },
   {
     id: "l28",
-    text: "It seems this \"replicanti\" stuff won't be growing any faster now.",
+    text: "Кажется, эти \"репликанти\" не будут размножаться ещё быстрее.",
     get unlocked() { return player.replicanti.chance === 1 && player.replicanti.interval === 1; }
   },
   {
     id: "l29",
     text:
-      `If you wrote down 3 numbers a second, it would take you less time to write down your antimatter
-      amount than it would Hevipelle to update the game.`,
+      `Если Hevipelle будет писать три цифры в секунду, ему понадобится меньше времени, чтобы записать количество вашей антиматерии с точностью до целых,
+      чем чтобы обновить игру.`,
     get unlocked() { return Currency.antimatter.exponent >= 100000; }
   },
   {
     id: "l30",
-    text: "Does Hevi just pick quotes to put into the game?",
+    text: "Неужели Hevi просто выбирает цитаты для вставки в игру?",
     get unlocked() { return NewsHandler.uniqueTickersSeen >= 30; }
   },
   {
     id: "l31",
-    text: "New news company has become rivals with us. They are made entirely of antimatter.",
+    text: "У нашего информационного агентства появились конкуренты. Они состоят из чистой антиматерии.",
     get unlocked() { return NewsHandler.uniqueTickersSeen >= 80; }
   },
   {
     id: "l32",
-    text: "How many times can we use \"Anti\" in a row before people stop listening?",
+    text: "Сколько раз подряд можно сказать \"анти\", прежде чем люди перестанут слушать?",
     get unlocked() { return NewsHandler.uniqueTickersSeen >= 100; }
   },
   {
     id: "l33",
-    text: "Does Hevi even check #news-ticker-suggestions anymore?",
+    text: "Проверяет ли ещё Hevi канал #news-ticker-suggestions?",
     get unlocked() { return NewsHandler.uniqueTickersSeen >= 120; }
   },
   {
     id: "l34",
-    text: "Need more quotes! -hevipelle",
+    text: `"Нужно больше цитат!" - hevipelle`,
     get unlocked() { return NewsHandler.uniqueTickersSeen >= 135; }
   },
   {
     id: "l35",
-    text: "Man destroys known universe with antimatter, writes news tickers to keep from feeling lonely.",
+    text: "Один человек уничтожил наблюдаемую Вселенную при помощи антиматерии и начал сочинять новости, чтобы бороться с чувством одиночества.",
     get unlocked() { return NewsHandler.uniqueTickersSeen >= 150; }
   },
   {
     id: "l36",
-    text: "You're almost there!",
+    text: "Вы почти у цели!",
     get unlocked() { return NewsHandler.uniqueTickersSeen >= 160; }
   },
   {
     id: "l37",
-    text: "You can stop now",
+    text: "Вы можете остановиться на этом.",
     get unlocked() { return NewsHandler.uniqueTickersSeen >= 165; }
   },
   {
@@ -2838,82 +2834,82 @@ export const news = [
   },
   {
     id: "l39",
-    text: "Asian man trys to steal the trophy of fastest infinity of -1 seconds, AND HE DOES IT!",
+    text: "Один азиат попытался украсть приз за мировой рекорд бесконечности в -1 секунду, И У НЕГО ПОЛУЧИЛОСЬ!",
     get unlocked() { return NewsHandler.hasSeenNews("l1"); }
   },
   {
     id: "l40",
     text:
-      `I broke the 8th wall, there is only chaos, Slabdrill is ritually sacrificing antimatter to the 9th
-      dimension. This will be my last entry, may Hevipelle have mercy on our souls, we didn't listen,
-      We should have listened.`,
+      `Я сломал 8-ю стену, там нет ничего, кроме хаоса, Slabdrill совершает ритуал принесения антиматерии в жертву 9-му
+      Измерению. Это мой последний репортаж, да помилует Hevipelle наши души, мы не прислушались,
+      а надо было.`,
     get unlocked() { return NewsHandler.hasSeenNews("l58"); }
   },
   {
     id: "l41",
-    text: "I thought the update was 5 hours away... -new players after more than 5 hours of gameplay",
+    text: `"Я думал, обновление через 5 часов…" - новичок после 5 часов игры`,
     get unlocked() { return Time.totalTimePlayed.totalHours >= 5; }
   },
   {
     id: "l42",
     text:
-      `Somebody told me to wait five hours for the update yesterday but it's today
-      and it still hasn't come! What do I do?`,
+      `Вчера мне посоветовали подождать пять часов до обновления, но вот настал новый день,
+      а обновления всё нет! Что делать?`,
     get unlocked() { return Time.totalTimePlayed.totalHours >= 5; }
   },
   {
     id: "l43",
-    text: "You do know that you won't reach Infinity in -1 seconds, right?",
+    text: "Вы же понимаете, что вам не удастся совершить бесконечность за -1 секунду, да?",
     get unlocked() { return player.records.bestInfinity.time === 0.1; }
   },
   {
     id: "l44",
-    text: "Where does Antimatter Nemo live? In a NNnNeMI-NNnNe.",
+    text: "Где живёт Немо из антиматерии? В NNnNeMI-NNnNe.",
     get unlocked() { return player.records.totalAntimatter.e >= 3e6; }
   },
   {
     id: "l45",
-    text: "Anti Emoji Movie MMMCMXCIX is a major hit!",
+    text: `"Антифильм эмодзи MMMCMXCIX" стал огромным хитом!`,
     get unlocked() { return player.requirementChecks.permanent.emojiGalaxies >= 3999; }
   },
   {
     id: "l46",
-    text: "Achievement Unlocked!",
+    text: "Новое достижение!",
     get unlocked() { return Achievements.effectiveCount >= GameDatabase.achievements.normal.length; }
   },
   {
     id: "l47",
-    text: "The achievement is for two million, not two billion...",
+    text: "Достижение даётся за два миллиона, а не два миллиарда…",
     get unlocked() { return Currency.infinities.gt(2e9); }
   },
   {
     id: "l48",
-    text: "Keep up the quick pace!",
+    text: "Продолжайте в том же быстром темпе!",
     get unlocked() { return AchievementTimers.marathon1.time > 1200; }
   },
   {
     id: "l49",
-    text: "One day you will stop your incessant grind.",
+    text: "В один прекрасный день вы перестанете неустанно копить.",
     get unlocked() { return Currency.eternities.gt(50000); }
   },
   {
     id: "l50",
-    text: "You can probably stop farming for eternities now...",
+    text: "Вы, вероятно, можете перестать копить вечности…",
     get unlocked() { return Currency.eternities.gt(DC.D2E6); }
   },
   {
     id: "l51",
-    text: "Are you serious?",
+    text: "Вы серьёзно?",
     get unlocked() { return Time.worstChallenge.totalSeconds <= 1; }
   },
   {
     id: "l52",
-    text: "Timing is key.",
+    text: "Своевременность играет ключевую роль.",
     get unlocked() { return player.records.thisEternity.realTime < 10; }
   },
   {
     id: "l53",
-    text: "If you want to farm infinities, why don't you just get the time study?",
+    text: "Если вы хотите накопить бесконечности, почему вы не купите соответствующее Исследование Времени?",
     get unlocked() { return !TimeStudy(32).isBought && Currency.infinities.gt(72000 * 168); }
   },
   {
@@ -2930,8 +2926,8 @@ export const news = [
       while (game2Name === game1Name) {
         game2Name = names.randomElement();
       }
-      return `Pokemon ${game1Name} and ${game2Name} were just released! This new generation brings the total number ` +
-        "of Pokemon up to 1e151. Good luck catching 'em all!";
+      return `Только что выпустили Pokemon ${game1Name} и ${game2Name}! С учётом нового поколения количество ` +
+        "покемонов возросло до 1e151. Удачи поймать их всех!";
     },
     get unlocked() { return PlayerProgress.eternityUnlocked(); },
     isAdvertising: true
@@ -2940,132 +2936,147 @@ export const news = [
     id: "l55",
     get text() {
       const recipes = [
-        "a Replicanti cake: Gather some Replicanti, place in oven, and watch rise. And rise. And rise.",
-        "an antimatter cake: Gather some antimatter, place in oven, and <b>BOOM<b>.",
-        "an Eternity cake: Gather some Eternity Points, place in oven, and wait...",
-        "an Infinity cake: Gather some Infinity Points, place in oven, and watch them shatter spacetime."
+        "Репликанти: наберите немного Репликанти, поставьте в духовку и смотрите, как они растут. И растут. И растут.",
+        "Антиматерии: наберите немного антиматерии, поставьте в духовку и <b>БУМ</b>.",
+        "Вечности: наберите немного Очков Вечности, поставьте в духовку и ждите…",
+        "Бесконечности: наберите немного Очков Бесконечности, поставьте в духовку и смотрите, как они ломают пространство-время."
       ];
       const recipe = recipes.randomElement();
-      return `How to bake ${recipe}`;
+      return `Как испечь Пирог ${recipe}`;
     },
     get unlocked() { return PlayerProgress.eternityUnlocked(); }
   },
   {
     id: "l56",
-    text: "Reality Challenges are the new 9th Dimension is the new orange.",
+    text: "Испытания Реальности - это новое 9-е Измерение, которое, в свою очередь, представляет собой новый апельсин.",
     get unlocked() { return PlayerProgress.realityUnlocked(); }
   },
   {
     id: "l57",
     text:
-      `Jake returned home from a long day at school. On his way home, he came across a curious little object.
-      Transparent, but opaque. Shimmering, but gloomy. Heavy, but weightless. Jake brought the object to his
-      mother. "Mom, I found this thing on the sidewalk, can I keep it?", Jake said. His mother turned around
-      to view the object her son spoke of. Her pupils dilated, "Jake, get that thing out of the house now!"
-      she yelled. Jake was confused, as it seemed quite the harmless thing to him. He asked "But mom, wh-",
-      but before he could finish, the object appeared to undergo mitosis at what seemed like an impossible
-      speed, and the second copy slipped out of his hand and onto the floor. His mother rushed over to
-      him, and tried to grab the object, but it replicated again. "Jake... No matter what happens, don't
-      forget that I love you honey...". She wrapped her arms around him. "M-mom, what's happening?" Jake asked,
-      with a quivering fear in his voice. His mother cried a single tear. "⭔⭚⦕꒜ brand Replicanti..." she said,
-      in a somber tone. The Replicanti continued to replicate at a faster and faster pace. The bottom third of the
-      house was now full of Replicanti. Then the bottom half. Then the entire house. The mother and child were
-      trapped between the walls of their home and the Replicanti. Doomed to live the short rest of their life in
-      that inorganic coffin, as the air remaining in their lungs slowly depleted. But that wasn't the end; far from
-      it. The Replicanti began to replicate outside of the house, flooding out in a shimmering landslide. A few
-      neighbours noticed the strange objects, almost liquid-like in their appearance, and attempted to run.
-      But the Replicanti continued to replicate, and accelerate. Soon the entire block was covered in them; was
-      them. Shortly after, several blocks. The city. The surrounding cities. The country. All the countries. All
-      the planet. All the solar system. All the galaxy. All.`,
+      `Яша вернулся домой после долгого школьного дня. По пути домой он нашёл любопытный маленький предмет.
+      Прозрачный, но матовый. Мерцающий, но мрачный. Тяжёлый, но невесомый. Яша преподнёс этот предмет
+      маме. "Мам, я нашёл эту штуку на тротуаре, можно, я оставлю её себе?" - спросил Яша. Мать повернулась,
+      чтобы посмотреть, о какой штуке говорит её сын. Её зрачки расширились. "Яша, немедленно убери это из квартиры!" -
+      закричала она. Яша растерялся, ведь предмет выглядел безобидно. Он спросил: "Ну, мама, поче-", -
+      но не успел он договорить, как предмет претерпел что-то наподобие митоза с невероятной
+      скоростью, и его копия выскользнула из рук мальчика и упала на пол. Мать бросилась к
+      сыну и попыталась схватить предмет, но он опять произвёл на свет свою копию. "Яша… Что бы ни случилось, не
+      забывай, что я люблю тебя, сынок…" - сказала она, обнимая ребёнка. "М-мам, что происходит?" - спросил Яша
+      голосом, дрожащим от страха. Из глаза матери потекла одинокая слеза. "⭔⭚⦕꒜ марка Репликанти…" - угрюмо
+      проговорила она. Репликанти продолжили размножаться всё быстрее и быстрее. Вся нижняя треть
+      квартиры была заполнена Репликанти. Затем - половина. Ещё немного погодя - вся квартира целиком. Мать с ребёнком были
+      заключены между стенами квартиры и Репликанти. Обречённые прожить короткий остаток жизни в
+      этом неудобном гробу, медленно расходуя запасённый в лёгких кислород. Но это далеко не конец истории.
+      Репликанти начали размножаться вне дома, хлынув через окно мерцающим оползнем. Те из
+      соседей, кто заметил странные предметы, почти неотличимые от жидкости, попытались сбежать.
+      Но Репликанти продолжили размножаться всё быстрее. Вскоре весь двор покрылся ими; состоял
+      из них. Через некоторое время - несколько дворов. Весь город. Окрестные города. Вся страна. Весь континент. Вся
+      планета. Вся Солнечная система. Вся галактика. Всё.`,
     get unlocked() { return player.replicanti.unl; }
   },
   {
     id: "l58",
     text:
-      `The Holy trinity of Hevipelle, Antimatter, Infinity Points, and Eternity Points. These 3 resources let us
-      access Hevi's gift, Time Theorems. And with these Time Theorems, we reach out to Hevi, and call, “Hevi, bless
-      us on this fine day!” And Hevi does. He give us the blessing of Time Studies. These Time Studies were
-      blessings so powerful, Hevi restricted their power. He said, “I will give you a choice of three paths” and
-      then humanity chose. The short, cheap route of Antimatter Dimensions, giving instant gratification, the
-      powerful choice of Infinity Dimensions, which were a fast, middle ground path, or Time Dimension, the long
-      wait, and struggle, of humanity. Then, as humanity chose, a crack broke the earth. A serpent snaked out and
-      sneered to humanity, “I will offer the powerful choice of a ninth dimension! I am Slabdrill, lord of all
-      Unhevi. Humanity rose and said “ Begone Slabdrill! We want none of your foul Heresy!” And Hevi rose as well,
-      and smote Slabdrill with his godlike power. As Slabdrill's corpse fell into the earth, he cried “ this will
-      not be the last of me! Hevi will betr-“ and he fell in the Abyss of matter. Hevi gifted humanity with
-      Eternity upgrades, which boosted infinity dimensions and time dimensions. And Hevi gave humanity his greatest
-      gift. EP multipliers. He said, these will multiply all EP gained by 5, but their cost will increase 50 times.
-      Use them wisely. And Humanity journeyed off with their new power, as Slabdrill's words echoed in their heads.`,
+      `Святая Троица Hevipelle - антиматерия, Очки Бесконечности и Очки Вечности. Эти три ресурса дают нам
+      доступ к дару Hevi, Теоремам Времени. И с этими Теоремами Времени мы обращаемся к Hevi и воззываем: "Hevi, благослови
+      нас в этот прекрасный день!" Hevi же ниспосылает нам благословление в виде Исследований Времени. Эти Исследования Времени - настолько
+      могущественные благословления, что Hevi ограничил их могущество. Он рёк: "Я даю вам выбор из трёх путей", и
+      человечество стало выбирать. Между быстрым, дешёвым путём Измерений Антиматерии, дающим наслаждение немедленно,
+      могущественным путём Измерений Бесконечности, золотой серединой, и путём Измерений Времени, путём долгого
+      ожидания и борьбы человечества. Пока человечество выбирало, по земле пробежала трещина. Змей-искуситель выполз и,
+      ухмыляясь, обратился к человечеству: "Я предлагаю вам выбрать могущественный путь девятого Измерения! Я Slabdrill, повелитель всего,
+      что неугодно Hevi". Тогда человечество восстало и молвило: "Прочь, Slabdrill! Нам не нужна твоя гнусная ересь!" И Hevi, поднявшись,
+      сразил Slabdrill своей божественной силой. Пока тело Slabdrill падало в землю, он воскликнул: "Вы ещё
+      придёте ко мне! Hevi пред-", - и он провалился в бездну материи. Hevi одарил человечество
+      Улучшениями Вечности, усиливающими Измерения Бесконечности и Измерения Времени. И человечество получило от Hevi величайший
+      дар. Множители ОВ. Он сказал: "Они умножают всё получение ОВ на 5, но их цена при этом возрастает в 50 раз.
+      Пользуйтесь ими с умом". И человечество отправилось в свободное плавание более могущественным, в то время как слова Slabdrill эхом отзывались в людских головах.`,
     get unlocked() { return PlayerProgress.eternityUnlocked(); }
   },
   {
     id: "l59",
     text:
-      `The debate on the singular form of Replicanti rages on. Team "Replicantus"'s base has been ransacked
-      by Team "Also Replicanti", and many of their dimensions were stolen. Team "The Plural Is Replicantis"
-      is still lying low after their plan to hack the dictionary failed.`,
+      `Спор о форме единственного числа слова "Репликанти" продолжается. База команды «"Репликант"» была разграблена
+      командой «Тоже "Репликанти"», и многие из их измерений были украдены. Команда «Форма множественного числа - "Репликантии"»
+      пока не высовывается, после того как их план взломать словарь провалился.`,
     get unlocked() { return player.replicanti.unl; }
   },
   {
     id: "l60",
     get text() {
-      return `Breaking News! Time Shard mine collapses! ${Math.floor(20 + Math.random() * 236)} miners trapped inside!`;
+      return `Срочные новости: обрушилась шахта по добыче Осколков Времени! Количество жертв доходит до ${Math.floor(20 + Math.random() * 236)}!`;
     },
     get unlocked() { return PlayerProgress.eternityUnlocked(); }
   },
   {
     id: "l61",
     text:
-      `Millenials are killing the challenge industry, say antimatter experts; "Nowadays they start with
-      challenges completed and infinity broken; it's just not how it used to be".`,
+      `Эксперты по вопросам антиматерии говорят, что миллениалы убивают индустрию испытаний: "Они начинают с
+      выполненными испытаниями и преодолённой Бесконечностью, раньше о таком нельзя было и помыслить".`,
     get unlocked() { return PlayerProgress.infinityUnlocked(); }
   },
   {
     id: "l62",
-    text:
-      `Computer scientists are outraged, "What even are Infinity Points? IP stands for Internet Protocol!".
-      Debates continue to intensify, more at 7.`,
-    get unlocked() { return PlayerProgress.infinityUnlocked(); }
+    text: 
+      `Перестань читать новости сейчас же. Не хочешь? Я тебя заставлю.
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      Ладно. Ты меня переупрямил.`
   },
   {
     id: "l63",
     text:
-      `Do you feel that time has been going slower? Study reveals that 1 second now last approximately 1.3 seconds.
-      Scientists are calling this phenomenon Time Dilation.`,
+      `Вы ощутили, что время стало идти медленнее? Недавно было проведено исследование, установившее, что теперь каждая секунда длится около 1,3 секунды.
+      Учёные назвали это явление Замедлением Времени.`,
     get unlocked() { return PlayerProgress.dilationUnlocked(); }
   },
   {
     id: "l64",
     text:
-      `Injustice in the Antimatter Academia: Beginners are only allowed to choose one field of study while the elite
-      can pick all three. "Its just not fair, man. How come they can do it?" Questions frustrated student.`,
+      `Несправедливость в Академии Антиматерии: начинающие могут выбрать только одну область для исследования, в то время как элита
+      может выбрать все три. "Это просто нечестно, чёрт возьми. Как это возможно, что им это разрешено?" - вопрошает недовольный студент.`,
     get unlocked() { return PlayerProgress.eternityUnlocked(); }
   },
   {
     id: "l65",
     text:
-      `It turns out that nobody actually knows what Infinity Points look like. Even the people who work on storing
-      them are specifically told not to look at them because they apparently "kill anyone who even looks at them",
-      to the point of sometimes working with blindfolds on. But today that will change. I am right here, in front
-      of an Infinity Point Depot, ready to tell all of you what they look like in 3, 2, 1-`,
+      `Оказывается, никто не знает, как на самом деле выглядят Очки Бесконечности, даже те, кто работает с ними каждый
+      день, потому что они обучены не смотреть на них. По словам экспертов, Очки Бесконечности "настолько опасны, что они могут убить любого, кто на них бросит взгляд",
+      так что зачастую при работе с ними приходится завязывать глаза. Но сегодня всё изменится. Я здесь, прямо перед
+      складом Очков Бесконечности, чтобы показать вам, как они выглядят, через 3, 2, 1-`,
     get unlocked() { return PlayerProgress.infinityUnlocked(); }
   },
   {
     id: "l66",
     text:
-      `Humanity shocked as failed Time Dilation experiment causes a visual glitch in spacetime. It is now visible
-      in the night sky just above the Celestial Equator.`,
+      `Человечество потрясено неудачным экспериментом по Замедлению Времени, в результате которого произошёл видимый сбой в пространстве-времени. Его последствия теперь можно увидеть
+      в ночном небе прямо над небесным экватором.`,
     get unlocked() { return PlayerProgress.dilationUnlocked(); }
   },
   {
     id: "l67",
     text:
-      `Snorting crushed up Time Shards is slowly turning into a fad challenge amongst the most bored of people. It's
-      said that the high it gives makes them experience as if the world itself is speeding up around you, which is
-      why it's been called The <span style="color: var(--color-eternity)">Timelapse Challenge</span>. &nbsp;&nbsp
+      `Нюхать измельчённые Осколки Времени постепенно становится модным испытанием у самых скучающих людей.
+      Говорят, это настолько одурманивает, что тебе кажется, будто весь мир вокруг тебя ускоряется, из-за чего
+      это занятие и прозвали <span style="color: var(--color-eternity)">Испытанием Времени</span>. &nbsp;&nbsp
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      Dehydration deaths are through the roof as people mysteriously forget to drink water for several days.
-      Trace amounts of Time Shards are being found in their bodies.`,
+      Случаи смерти от обезвоживания резко участились. По неустановленным причинам люди забывают, что надо пить воду, на несколько дней.
+      В их телах находят следы Осколков Времени.`,
     get unlocked() { return PlayerProgress.eternityUnlocked(); }
   },
   {
@@ -3074,151 +3085,158 @@ export const news = [
       let protestText = "";
       if (InfinityChallenge(4).isRunning)
         protestText =
-          `Let's take it to this guy, who's part of the side that believes it's Infinity Challenge 4. What do you have
-          to say? "Obviously Infinity Challenge 4 is the worst one, I mean, what am I even supposed to do? I keep
-          trying but every time I keep getting stuck and nowhere close to the end! How are you even supposed to do it?"
-          What a passionate man. This is your local news host, and we'll come back with further information later.`;
+          `Вот член стороны, считающей, что это 4-е Испытание Бесконечности. Что вы можете сказать? -
+          Очевидно, худшее из Испытаний Бесконечности - 4-е. В самом деле, как его вообще пройти? Я всё пытаюсь
+          и пытаюсь, но каждый раз я застреваю даже не близко к цели! Как его вообще пройти? -
+          Какой страстный человек. С вами была программа "Вести". Мы вернёмся к этой теме позже.`;
       else if (InfinityChallenge(5).isRunning)
         protestText =
-          `So up next let's talk to this guy is holding a sign that says "IC5 Unfair". What is the point your group
-          is trying to make? "Can't you read the sign? If your comprehension is that bad then Infinity Challenge 5
-          will squash you without even giving you a fair chan-" How... Interesting. This is your local news host,
-          and we'll come back with further information later.`;
+          `А вот человек, держащий плакат, который гласит: "Долой ИспБ5". Какую точку зрения хочет
+          донести ваша группа? - И вы задаёте этот вопрос, прочтя наш плакат? Если у вас так слабо развит навык осмысленного чтения, то 5-е Испытание Бесконечности
+          согнёт вас в бараний рог, не оставляя ни шан- - Как… интересно. С вами была программа "Вести".
+          Мы вернёмся к этой теме позже.`;
       else
         protestText =
-          `Finally, let's chat with this woman who doesn't seem to be in either side. What's your opinion on the
-          matter? "Personally, I thought Tickspeed Autobuyer Challenge was worse than both-" "GET HER!!" "WAIT NO-"
-          Well, seems like this just took a turn, so I'm getting as far away as I possibly can. This is your local
-          news host, and we'll come back with further information... someday.`;
-      return `Hello, this is your local always reliable news source, and today people are taking over the streets
-        as they fight over which Infinity Challenge is worse. ${protestText}`;
+          `А эта женщина не согласна ни с той, ни с другой стороной. Какого ваше мнение по будоражащему всех вопросу? -
+          Лично мне 9-е Обычное Испытание показалось хуже, чем оба- - ХВАТАЙ ЕЁ!! - НЕТ, НЕ- -
+          Что ж, кажется, градус событий резко повысился, так что я отдаляюсь от их места как можно дальше. С вами была
+          программа "Вести". Мы вернёмся к этой теме… когда-нибудь.`;
+      return `- Здравствуйте, с вами программа "Вести", известная своей достоверностью. Сегодня люди бесчинствуют на улицах,
+        споря по поводу того, какое из Испытаний Бесконечности хуже. ${protestText}`;
     },
     get unlocked() { return InfinityChallenge(1).isUnlocked || PlayerProgress.eternityUnlocked(); }
   },
   {
     id: "l69",
-    text: "Friendship ended with Replicanti, now Replicanti Galaxies is my new best friend.",
+    text: "Дружба закончилась с Репликанти. Теперь Галактики Репликанти - мой новый лучший друг.",
     get unlocked() { return PlayerProgress.replicantiUnlocked(); }
   },
   {
     id: "l70",
     text:
-      `"Zurkrbarg, Celestial of Privacy" has announced their plans to release a new version
-      of their popular social media universe, "All".`,
+      `Цуркрбарг, Небожитель Конфиденциальности, объявил о своих планах выпустить новую версию
+      их вселенной социальных сетей - "Всего".`,
     get unlocked() { return Teresa.isUnlocked; }
   },
   {
     id: "l71",
-    text: "Other languages await... I need to become a programmer",
+    text: "Иные языки ждут… Пора стать программистом",
     get unlocked() { return Player.canEternity || PlayerProgress.eternityUnlocked(); }
   },
   {
     id: "l72",
     get text() {
       const scenarios = [
-        `our contestants struggle to survive in the desolate wasteland of Eternity Challenge 8 -
-        running out of Replicanti and Infinity Dimensions, what will they turn to?`,
-        "we investigate reports of a Time Shard mine collapsing at 26:90.",
-        "we invite an amateur on to explain what the reward for Infinity Challenge 9 would be.",
-        "our friends over at ANN explain how they produce their broadcasts.",
-        "we invite local idle gamers over to explain how they play their favorite games.",
-        `<span style='font-family: Barrio'>send 10,000 Support The Developer
-        coins or you will never see RealiTV again.</span>`,
-        "we break down exactly what went wrong in the black hole powering our city yesterday.",
-        "we go over our 10-day weather forcasts.",
-        `YOU MUST PAY ${format(player.reality.realityMachines.times(10).max(10))}
-        REALITY MACHINES TO CONTINUE VIEWING THIS PROGRAM.`,
-        "we witness the release of the hypnodrones.",
-        "our great and grand overlord lets us have a single antimatter.",
-        `Bill Nye explains how Replicanti replicate, and teaches how to spot dangerous conspiracy theories
-        such as "ingesting antimatter is perfectly fine" and "Antimatter Galaxies aren't worth it".`,
-        "the world's greatest philosophers debate if we are the real antimatter.",
-        "resident baker explains how ordinary objects can transmorph into cake if not watched constantly."
+        `наши участники борются за выживание в безлюдной пустоши 8-го Испытания Вечности -
+        что они предпримут, истощая свой запас покупок Улучшений Репликанти и Измерений Бесконечности?`,
+        "мы расследуем сообщения об обрушении шахты по добыче Осколков Времени в 26:90.",
+        "мы приглашаем в нашу студию любителя, чтобы он объяснил, какой была бы награда за 9-е Испытание Бесконечности.",
+        `наши партнёры с "Общественного телевидения Антиматерии" объясняют, как они выпускают свои передачи.`,
+        "мы приглашаем в нашу студию местных игроков в инкрементальные игры, чтобы они объяснили, как они играют в свои любимые игры.",
+        `<span style='font-family: Barrio'>отправьте 10 000 рублей для поддержки
+        разработчиков, иначе вы никогда больше не посмотрите "Голубую реальность".</span>`,
+        "мы подробно объясняем, что вчера сломалось в Чёрной Дыре, питающей наш город.",
+        "мы прогнозируем погоду на 10 дней вперёд.",
+        `ВЫ ОБЯЗАНЫ ЗАПЛАТИТЬ ${format(player.reality.realityMachines.times(10).max(10))}
+        МАШИН РЕАЛЬНОСТИ, ЧТОБЫ ПРОДОЛЖИТЬ СМОТРЕТЬ ЭТУ ПЕРЕДАЧУ.`,
+        "мы присутствуем при запуске гипнодронов.",
+        "наш великий всемогущий повелитель позоляет нам иметь одну единицу антиматерии.",
+        `Александр Пушной объясняет, как Репликанти размножаются, и учит распознавать опасные теории заговора,
+        такие как "поглощать антиматерию безопасно" и "Галактики Антиматерии не стоят того".`,
+        "величайшие философы мира спорят, можно ли считать то, из чего мы с вами состоим, антиматерией.",
+        "пекарь со стажем объясняет, как обычные предметы, не находясь под постоянным наблюдением, могут трансформироваться в пироги."
       ];
       const scenario = scenarios.randomElement();
-      return `Next time on RealiTV, ${scenario}`;
+      return `Смотрите в следующем выпуске нашей программы "Голубая реальность": ${scenario}`;
     },
     get unlocked() { return PlayerProgress.realityUnlocked(); }
   },
   {
     id: "l73",
-    text: "A long time ago in a distant galaxy far, far away, the cost scaling changed.",
+    text: "Давным-давно, в далёкой-далёкой галактике… изменилась наценка.",
     get unlocked() { return PlayerProgress.eternityUnlocked(); }
   },
   {
     id: "l74",
-    text: "Introducing a new feature: Reality Studies! Get in-game benefits for studying in real life!",
+    text: "Встречайте новую механику: Исследования Реальности! Получайте внутриигровые бонусы за исследование реальной жизни!",
     get unlocked() { return PlayerProgress.realityUnlocked(); }
   },
   {
     id: "l75",
     text:
-      `Here at Antimatter Dimensions, we pride ourselves in the quality of our products. For example: Did you know
-      that every Infinity Point is unique? That's right! They all have different personalities, their own feelings,
-      their own thoughts... I hope you can sleep well tonight, knowing this... Remember all of those Infinity
-      points you've spent? They had families, and they miss them... Look at what you've done. You're a monster.`,
+      `Здесь, в "Измерениях Антиматерии", мы гордимся качеством нашей продукции. Например, знаете ли вы,
+      что каждое Очко Бесконечности уникально? Да-да! Каждое из них обладает неповторимым характером, собственными чувствами,
+      собственными мыслями… Надеюсь, с этим знанием вы сможете спокойно спать этой ночью… Вспомните, сколько Очков
+      Бесконечности вы потратили? У каждого из них есть своя семья, по которой оно скучает… Посмотрите, что вы наделали. Вы чудовище.`,
     get unlocked() { return PlayerProgress.infinityUnlocked(); }
   },
   {
     id: "l76",
-    text: "So, you've reached the prestige layer after Infinity? It's about time...",
-    get unlocked() { return PlayerProgress.eternityUnlocked(); }
+    text: 
+      `Благодаря этой игре я умею говорить на языке антиматерии. Представьте, что было бы, если бы кто-то взял ваш телефон и подсмотрел
+      вашу переписку с другим игроком в "Измереня Антиматерии", а там: - Боже мой, 9-е Испытание такое трудное, я не могу достичь
+      даже одного Расширения, может, мне нужно больше ОБ? - Нет, ты сможешь его сделать. Отключи всю автоматику, кроме автоматики
+      6-го и 8-го Измерений, и покупай измерения, начиная с самых дорогих. И получи две галактики. - А ты уже замедлил Время? Я застрял
+      на 1e1300 ОВ, но все ИспВ у меня выполнены. - Просто подкопи Репликанти в долгой вечности. После Замедления всё равно не лучше,
+      приходится копить Тахионы и ЗВ. - Я даже не могу достичь 1.8e308 ОБ с этими чёртовыми ослаблениями к ИА, ИБ и ИВ.
+      Это явно не лучшая стадия игры. - Этот человек немедленнно отбросил бы ваш телефон и начал играть в ИА.`,
+    get unlocked() { return PlayerProgress.realityUnlocked() || PlayerProgress.dilationUnlocked(); }
   },
   {
     id: "l77",
-    text: "Improve your perks through selective breeding and cutting edge epigenetics technology.",
+    text: "Улучшайте Навыки при помощи искуственного отбора и передовых технологий эпигенетики.",
     get unlocked() { return PlayerProgress.realityUnlocked(); }
   },
   {
     id: "l78",
     text:
-      `Warning - Genetically Modified Perk Points are not suitable for; consumption, physical contact, inhalation,
-      exhalation, mental contact and scouring by both seen and unseen eyes. Do not put near a flammable,
-      inflammable, conducting, insulating, variable, biological or mechanical substance. Existence at your own risk.`,
+      `Внимание: генетически модифицированные Очки Умения непригодны к употреблению в пищу, физическому контакту, вдыханию,
+      выдыханию, мысленному контакту и разглядыванию как видимыми, так и невидимыми глазами. Не размещайте их вблизи горючих,
+      негорючих, электропроводящих, электроизолирующих, изменчивых, биологических или механических веществ. Существуйте на свой страх и риск.`,
     get unlocked() { return PlayerProgress.realityUnlocked(); }
   },
   {
     id: "l79",
     text:
-      `The Intergalactic Antimatter Revenue Service, contrary to popular belief, does have the ability to pay taxes
-      on AM gained through non-scrupulous methods, ie anything not done via legally-mandated dimensions or modified
-      through challenge courses. Section NY-8N lists 3 specific methodologies - illegal news ticker giveaways,
-      unrecognised dimensions, and modifications to the fabric of space time - as well as a miscellaneous for any
-      unique AM methods that may pop up in the future. And although you will have to pay the top AM tax rate of 99%,
-      it can save you money in the long run - if you are forced to switch realities due to a celestial decision you
-      can gain a portion of the tax you paid back from the IARS as a tax deduction, as well as make a deduction to
-      pay for the arbiters who represent you. Of course, any [PLAYER REFERENCE NOT FOUND] worth their RM knows that
-      the real way to hide illegal profits of crime is  in personalised pocket dimensions, hyperspliced waveform
-      banks and nanoshells, which requires extensive R&D to implement. As such, reporting illegal AM gain is only
-      recommended if you're too rich to hide your gains, but too poor to hide your gains.`,
+      `Вопреки распространённому мнению, Межгалактическая налоговая служба Антиматерии имеет возможность платить налоги
+      на антиматерию, полученную недобросовестными методами, т. е. любыми, кроме установленных законом и изменённых
+      курсами испытаний измерений. В разделе NY-8N приведено 3 конкретных методики - незаконная раздача с новостных строк,
+      неопознанные измерения и изменение ткани пространства-времени, а также пункт о прочих
+      специфических методах для антиматерии, которые могут появиться в будущем. И хотя вам придётся платить налог на антиматерию по максимальной ставке в 99%,
+      таким образом вы можете сэкономить деньги в долгосрочной перспективе - если вас вынудит сменить реальность решение Небожителя, вы
+      можете получить часть уплаченного налога обратно от МНСА в качестве налогового вычета, а также потребовать вычет для
+      оплаты услуг судей, которые будут вас представлять. Конечно, любой уважающий свои МР [ССЫЛКА НА ИГРОКА НЕ НАЙДЕНА], знает, что
+      лучше скрывать незаконные доходы от преступной деятельности в личных карманных измерениях, гиперсращённых волновых
+      банках и нанооболочках, для применения которых требуются обширные исследования и разработки. По существу, сообщать о незаконом получении антиматерии
+      рекомендуется, только если вы слишком богаты, чтобы скрыть свои доходы, но слишком бедны, чтобы скрыть свои доходы.`,
     get unlocked() { return PlayerProgress.realityUnlocked(); }
   },
   {
     id: "l80",
     get text() {
-      return `"Average person produces ${format("3e999999996", 2)} antimatter a year" factoid actually just statistical
-      error. Average person produces 0 antimatter per year. "Developer Dimension" Georg, who lives in a cave &
-      produces over ${format("1e1000000000", 2)} each day, is an outlier and should not have been counted.`;
+      return `Фактоид о том, что "среднестатистический человек производит ${format("3e999999996", 2)} антиматерии в год", возник из-за статистической
+      погрешности. Среднестатистический человек производит 0 антиматерии в год. Георг - Разработчик Измерений, живущий в пещере и
+      производящий более ${format("1e1000000000", 2)} антиматерии в день, представляет собой выброс, так что его не надо было учитывать.`;
     },
     get unlocked() { return PlayerProgress.hasBroken(); }
   },
   {
     id: "l81",
     text:
-      `The world is in chaos as the laws of math have been rewritten! Many things that were thought
-      to be infinite are now just really big numbers!`,
+      `Мир погрузился в хаос, от того что законы математики были переписаны! Многое из того, что считалось
+      бесконечным, оказалось лишь очень большим, но конечным!`,
     get unlocked() { return PlayerProgress.hasBroken(); }
   },
   {
     id: "l82",
     get text() {
-      return `The Great Scribes of Antia have labored intensively for years. They were given a mammoth task from the
-      gods; write out an incomprehensibly long number. These scribes took turns, each writing out a few numbers a
-      second, writing day and night, for what seemed like an eternity. At last, after
-      ${TimeSpan.fromSeconds(Currency.antimatter.value.log10() / 3).toString()}, they finally accomplished
-      the impossible. That week, when they went to worship their gods, they sent them a simple message: "What was
-      the purpose? What made our years of labor significant?" The gods responded duly: "We wanted to know how long
-      it would take to write out, for a statistic in our game."`;
+      return `Великие писари Антии усердно трудились много лет. Боги дали им исполинское задание:
+      выписать непостижимо длинное число. Писари работали по очереди, выписывая по несколько цифр в секунду
+      каждый, денно и нощно в течение времени, казавшегося целой вечностью. Наконец, спустя
+      ${TimeSpan.fromSeconds(Currency.antimatter.value.log10() / 3).toString("accusative")}, они выполнили
+      невозможное. В конце недели, пойдя на поклон к богам, они отправили тем короткое сообщение: "В чём
+      смысл? В чём значимость нашего многолетнего труда?" Боги ответили надлежащим образом: "Нам нужно было знать, сколько
+      времени понадобится, чтобы выписать это число, для статистики в нашей игре."`;
     },
     // 3 years of time to write
     get unlocked() { return Currency.antimatter.value.gte("1e777600"); }
@@ -3226,72 +3244,72 @@ export const news = [
   {
     id: "l83",
     text:
-      `AD Patch Notes: Cleaned up the celestial problem Made Antimatter care about annihilation more Added mouths
-      Removed mouths Stopped unwanted interlopers from corporate takeovers of shops Fixed problem with newstickers
-      hanging in the air Dead replicanti remain in their galaxies Redefined interlopers to not include [REDACTED]
-      Tachyon Particles get stuck in the top left corner of the screen, obliterate time Added Coriolis effect to
-      Galaxy Spin Direction`,
+      `Запись в журнале изменений ИА: "Устранена проблема с небожителями. Антиматерия стала больше заботиться об аннигиляции. Добавлены рты.
+      Удалены рты. Незваные гости больше не могут корпоративно захватывать магазины. Устранена ошибка, при которой новостная строка
+      висит воздухе. Мёртвые Репликанти теперь остаются в своих галактиках. Незваные гости больше не имеют в определении [ДАННЫЕ УДАЛЕНЫ].
+      Устранена ошибка, при которой Тахионы застревали в левом верхнем углу экрана, что приводило к уничтожению времени. При вращении галактик
+      теперь учитывается эффект Кориолиса.`,
     get unlocked() { return Teresa.isUnlocked; }
   },
   {
     id: "l84",
     get text() {
-      return `For the record, you currently have ${player.news.specialTickerData.paperclips}
-      Useless Paperclips. You may want to spend them on something.`;
+      return `Для справки, на текущий момент у вас ${quantify("бесполезная скрепка", player.news.specialTickerData.paperclips)}
+      Возможно, вам следует потратить свои скрепки.`;
     },
     get unlocked() { return player.news.specialTickerData.paperclips > 0; }
   },
   {
     id: "l85",
     text:
-      `On opposite day, the new update is just -5 hours away. You begin increasing your Matter. Once you acquire a
-      huge abundance of Matter, you must become Infinitesimal. After increasing your wealth in Infinitesimal Points,
-      you can eventually Jiffy, the shortest unit of time. After enough time, your Jiffies will accumulate, and you
-      will Contract Time. Contracting Time will grant you enough of a boost to eventually Fantasy, the final layer
-      of maintenance. However, you find out that it was all a dream. Your Antimatter is safe and well, and the new
-      update is still just 5 hours away.`,
+      `В параллельном мире до обновления всего -5 часов. Вы начинаете производить материю. Набрав
+      огромное количество материи, вы вынуждены совершить конечность. Став, в конце концов, богатым на Очки Конечности,
+      вы можете совершить мгновение. Через некоторое время и много мгновений вы
+      ускоряете Время. Ускорение Времени даёт вам достаточное усиление, чтобы наконец совершить фантазию, которая является последним слоем
+      престижа. Но вот вы узнаёте, что это был только сон. Ваша антиматерия в целости и сохранности, а до
+      обновления всё ещё 5 часов.`,
     get unlocked() { return PlayerProgress.realityUnlocked(); }
   },
   {
     id: "l86",
     text:
-      `Hello, player. I'd like to play a game. In front of you is a pile of replicanti. They are currently frozen in
-      time, and cannot replicate. To your right is a computer playing Antimatter Dimensions on an empty save. You
-      must reach infinity. However, once you buy a 1st dimension, the replicanti will start replicating. As you know,
-      they replicate fast, and if they fill up the room you will suffocate. If you reach infinity before that, they
-      will be frozen again. The clock is ticking. Start now.`,
+      `Здравствуй, игрок. Я хотел бы сыграть с тобой в игру. Перед тобой кучка Репликанти. В данный момент они остановлены во
+      во времени, чтобы не размножались. Справа от тебя компьютер, на котором открыты "Измерения Антиматерии" с новым сохранением. Ты
+      должен достичь бесконечности. Но как только ты купишь 1-е Измерение, Репликанти начнут размножаться. Как тебе известно,
+      они размножаются быстро, и если они заполнят собой всю комнату, ты задохнёшься. Как только ты достигнешь бесконечности, они
+      вновь перестанут размножаться. Можешь начинать.`,
     get unlocked() { return PlayerProgress.replicantiUnlocked(); }
   },
   {
     id: "l87",
     text:
-      `"To see a World in a Grain of Sand. And a Heaven in a Wild Flower. Hold Infinity in the palm of your hand.
-      And Eternity in an hour. And Reality in about 5 hours™️" ~Anti-William Blake `,
+      `"Небо синее - в цветке, В горстке праха - бесконечность; Целый мир держать в руке,
+      В каждом миге видеть вечность. В каждых 5 часах™️ - реальность" - Уильям Антиблейк`,
     get unlocked() { return PlayerProgress.realityUnlocked(); }
   },
   {
     id: "l88",
     text:
-      `Our deepest apologies for the new glyph mechanic. The intent is to provide players with a sense of pride and
-      accomplishment for unlocking rare glyphs. We selected initial values based upon data from the final wave of
-      testing and other adjustments made to milestone rewards before launch. Among other things, we're looking at
-      average per-player credit earn rates on a daily basis, and we'll be making constant adjustments to ensure that
-      players have challenges that are compelling, rewarding, and of course attainable via gameplay.`,
+      `Приносим вам глубочайшие извинения за новую механику с глифами. Мы хотим, чтобы пользователи испытывали гордость и чувство
+      большого достижения, получая редкие глифы. Текущие цифры основаны на данных, полученных благодаря финальной волне тестирования,
+      с некоторыми корректировками. Мы постоянно оцениваем заработанные игроками средства и пересчитываем вероятности выпадения эффектов.
+      И мы будем продолжать работать над этими цифрами, чтобы игроки чувствовали вызов и чтобы преодоление препятствий приносило
+      награду и ощущалось как достижение. И, конечно же, чтобы всё достигалось игровым путём.`,
     get unlocked() { return PlayerProgress.realityUnlocked(); }
   },
   {
     id: "r1",
-    text: "This news message is 100x rarer than all the others.",
+    text: "Эта новость в 100 раз реже остальных.",
     get unlocked() { return Math.random() < 0.01; }
   },
   {
     id: "p1",
-    text: "Is this a jojo reference?",
+    text: "Это отсылка к ДжоДжо?",
   },
   /* eslint-disable max-len */
   {
     id: "ai1",
-    text: "If you are the game, then you can use the cheat to unlock a secret achievement...but it costs e1100 antimatter!?!"
+    text: "If you are the game, then you can use the cheat to unlock a secret achievement…but it costs e1100 antimatter!?!"
   },
   {
     id: "ai2",
@@ -3304,7 +3322,7 @@ export const news = [
   },
   {
     id: "ai4",
-    text: "I thought the update was 5 hours ago... I guess we'll have to put it back in 5 hours"
+    text: "I thought the update was 5 hours ago… I guess we'll have to put it back in 5 hours"
   },
   {
     id: "ai5",
@@ -3320,7 +3338,7 @@ export const news = [
   },
   {
     id: "ai8",
-    text: "just start... clicking. dont even think about wasting time. just do it."
+    text: "just start… clicking. dont even think about wasting time. just do it."
   },
   {
     id: "ai9",
@@ -3328,7 +3346,7 @@ export const news = [
   },
   {
     id: "ai10",
-    text: "...does that mean the [REDACTED] dimension produces the [REDACTED] dimension?"
+    text: "…does that mean the [REDACTED] dimension produces the [REDACTED] dimension?"
   },
   {
     id: "ai11",
@@ -3361,7 +3379,7 @@ export const news = [
   },
   {
     id: "ai18",
-    text: "I just stole the \"Anti\" flag from a biker gang and I am packing it with dynamite, dynamite, dynamite, dynamite..."
+    text: "I just stole the \"Anti\" flag from a biker gang and I am packing it with dynamite, dynamite, dynamite, dynamite…"
   },
   {
     id: "ai19",
@@ -3533,7 +3551,7 @@ export const news = [
   },
   {
     id: "ai61",
-    text: "Uhh... Hi. Could you tell me your name?"
+    text: "Uhh… Hi. Could you tell me your name?"
   },
   {
     id: "ai62",
@@ -3561,7 +3579,7 @@ export const news = [
   },
   {
     id: "ai68",
-    text: "Hmm... I don't know how I ended up here. I don't even know if I'm supposed to be here. I just sit here and imagine what could have been if I hadn't stopped. Oh god, what could have been..."
+    text: "Hmm… I don't know how I ended up here. I don't even know if I'm supposed to be here. I just sit here and imagine what could have been if I hadn't stopped. Oh god, what could have been…"
   },
   {
     id: "ai69",
@@ -3833,7 +3851,7 @@ export const news = [
   },
   {
     id: "ai132",
-    text: "i clicked too fast...my fps dropped"
+    text: "i clicked too fast…my fps dropped"
   },
   {
     id: "ai133",
@@ -3905,7 +3923,7 @@ export const news = [
   },
   {
     id: "ai150",
-    text: "Hello everyone, my name is Anti-Dio. I produce antimatter through a process you all know as \"antimatter decomposition\" you may recall this from my test report earlier this month I tested wether or not my ranch produces antimatter or not... everything was fine until that point, when I added a dash of lag to the equation, and it became a vicious cycle accelerating the rate at which antimatter is produced, which in turn accelerates the rate at which you all die. I've saved this by using a unique combination of genetic engineering and big data mining, I'm hoping to one day pull the trigger on a mechanimatter device that creates dimensions behind closed doors, but for now, this has all been a race to the bottom of which system producethiks, and in the end, we'll take a bite out of your (read error: allowed) pie. Goodbye."
+    text: "Hello everyone, my name is Anti-Dio. I produce antimatter through a process you all know as \"antimatter decomposition\" you may recall this from my test report earlier this month I tested wether or not my ranch produces antimatter or not… everything was fine until that point, when I added a dash of lag to the equation, and it became a vicious cycle accelerating the rate at which antimatter is produced, which in turn accelerates the rate at which you all die. I've saved this by using a unique combination of genetic engineering and big data mining, I'm hoping to one day pull the trigger on a mechanimatter device that creates dimensions behind closed doors, but for now, this has all been a race to the bottom of which system producethiks, and in the end, we'll take a bite out of your (read error: allowed) pie. Goodbye."
   },
   {
     id: "ai151",
@@ -4074,7 +4092,7 @@ export const news = [
   },
   {
     id: "ai192",
-    text: "\"1 2 3 4 5 6 7 8 10 11 12 13 ...\" -Back to the future"
+    text: "\"1 2 3 4 5 6 7 8 10 11 12 13 …\" -Back to the future"
   },
   {
     id: "ai193",
@@ -4144,7 +4162,7 @@ export const news = [
   },
   {
     id: "ai209",
-    text: "and now we return to your regular news... for the weatherman, there seems to be a decent amount of particles and ozone holes, which means less ozone layer to break, which means less particles to catch fire and cause global warming. But, ozone layer to melt, glaciers to run, and overpopulation. All around us is a blurple glow, almost blue, almost purplish-blue. It's been a grand, colorful season. Here, grab a handful of these paperclips, dear. They're quite small, I just happen to have them here. Now, grab a handful of your fellow Earthicans, grab a handful of your antimatter, and strap yourselves in. It's gonna be a bumpy one. We'll be there in five hours. The antimatter is gonna melt your ozone layer, and the glaciers are gonna melt your ice caps. All in all, it's gonna be a nice, smooth, non-slippery one. Unless it isn't. [Blurple glow trails off, and the bluer glow begins to spread throughout the sky. The bluer glow begins to fade as the purple glow begins to grow brighter, almost bluish, before finally disappearing altogether. The purple glow grows brighter still, as the bluer glow grows weaker, almost useless, before finally disappearing entirely, as the bluer glow fades. All around us, the purple glow grows stronger, almost killing it off completely. It could kill us. It could take us the rest of our lives to write this. - The Echidnas, when asked why the purple glow grows stronger, than the bluer glow.]"
+    text: "and now we return to your regular news… for the weatherman, there seems to be a decent amount of particles and ozone holes, which means less ozone layer to break, which means less particles to catch fire and cause global warming. But, ozone layer to melt, glaciers to run, and overpopulation. All around us is a blurple glow, almost blue, almost purplish-blue. It's been a grand, colorful season. Here, grab a handful of these paperclips, dear. They're quite small, I just happen to have them here. Now, grab a handful of your fellow Earthicans, grab a handful of your antimatter, and strap yourselves in. It's gonna be a bumpy one. We'll be there in five hours. The antimatter is gonna melt your ozone layer, and the glaciers are gonna melt your ice caps. All in all, it's gonna be a nice, smooth, non-slippery one. Unless it isn't. [Blurple glow trails off, and the bluer glow begins to spread throughout the sky. The bluer glow begins to fade as the purple glow begins to grow brighter, almost bluish, before finally disappearing altogether. The purple glow grows brighter still, as the bluer glow grows weaker, almost useless, before finally disappearing entirely, as the bluer glow fades. All around us, the purple glow grows stronger, almost killing it off completely. It could kill us. It could take us the rest of our lives to write this. - The Echidnas, when asked why the purple glow grows stronger, than the bluer glow.]"
   },
   {
     id: "ai210",
@@ -4208,7 +4226,7 @@ export const news = [
   },
   {
     id: "ai224",
-    text: "Finally hevi figured out how to get the 9th dimension... guess he never really cared though."
+    text: "Finally hevi figured out how to get the 9th dimension… guess he never really cared though."
   },
   {
     id: "ai225",
@@ -4232,7 +4250,7 @@ export const news = [
   },
   {
     id: "ai230",
-    text: "It is being created..."
+    text: "It is being created…"
   },
   {
     id: "ai231",
@@ -4356,7 +4374,7 @@ export const news = [
   },
   {
     id: "ai261",
-    text: "I have waited a whole eternity for this day...NOW! I can finally finish my slowmode, because today is  day 0. I also forgot to change the  slowmode to 6 hours because you can't see the slowmode, but I will have to wait until next reboot to find out how long this slowmode will last.... -some mysterious being who hasn't finished his slowmode yet"
+    text: "I have waited a whole eternity for this day…NOW! I can finally finish my slowmode, because today is  day 0. I also forgot to change the  slowmode to 6 hours because you can't see the slowmode, but I will have to wait until next reboot to find out how long this slowmode will last…. -some mysterious being who hasn't finished his slowmode yet"
   },
   {
     id: "ai262",
@@ -4508,7 +4526,7 @@ export const news = [
   },
   {
     id: "ai299",
-    text: "\"I wish I didn't waste my news message suggestion complaining about how I wasted my news message suggestion because I wasted my news message suggestion because...\" -Someone who really cares about news messages"
+    text: "\"I wish I didn't waste my news message suggestion complaining about how I wasted my news message suggestion because I wasted my news message suggestion because…\" -Someone who really cares about news messages"
   },
   {
     id: "ai300",
@@ -4680,7 +4698,7 @@ export const news = [
   },
   {
     id: "ai342",
-    text: "The next update is in 18000 seconds. Stop reading this. Don't read anything. just stop holding that button. the news ticker is turning you away. wait..."
+    text: "The next update is in 18000 seconds. Stop reading this. Don't read anything. just stop holding that button. the news ticker is turning you away. wait…"
   },
   {
     id: "ai343",
@@ -4780,11 +4798,11 @@ export const news = [
   },
   {
     id: "ai367",
-    text: "i just realized, all of this news seems to be taking place in the same place... the fridge."
+    text: "i just realized, all of this news seems to be taking place in the same place… the fridge."
   },
   {
     id: "ai368",
-    text: "i wonder what happens when you click this..."
+    text: "i wonder what happens when you click this…"
   },
   {
     id: "ai369",
@@ -4836,7 +4854,7 @@ export const news = [
   },
   {
     id: "ai381",
-    text: "The year is 20XX, the game is AD, and Hevipelle is evil due to the fact that he wrote the update... Blame it on the Antimatter gods."
+    text: "The year is 20XX, the game is AD, and Hevipelle is evil due to the fact that he wrote the update… Blame it on the Antimatter gods."
   },
   {
     id: "ai382",
@@ -4924,7 +4942,7 @@ export const news = [
   },
   {
     id: "ai403",
-    text: "Why, just now? Just now. You can't have saved this game. You broke it. No one can fix what you break, not even with a perfect save. How could you possibly know what would happen if you read this? You wouldn't even know if you saved it. You would start with an empty heart, eyes still closed, fingers idling in front of your computer, staring out at the day, transfixed by the endless news ticker suggestions. It's like a horror movie ticket, except worse. There's even a time until the update when you can buy upgrades for a second chance at life. But you can't buy upgrades for a life, that's illegal. So you just keep holding 'R'. You can't...`t stop holding `R' with your fingers crossed. You can't reach infinity with your head held high. You can't use all your `R' to buy `R's. You can't even finish your"
+    text: "Why, just now? Just now. You can't have saved this game. You broke it. No one can fix what you break, not even with a perfect save. How could you possibly know what would happen if you read this? You wouldn't even know if you saved it. You would start with an empty heart, eyes still closed, fingers idling in front of your computer, staring out at the day, transfixed by the endless news ticker suggestions. It's like a horror movie ticket, except worse. There's even a time until the update when you can buy upgrades for a second chance at life. But you can't buy upgrades for a life, that's illegal. So you just keep holding 'R'. You can't…`t stop holding `R' with your fingers crossed. You can't reach infinity with your head held high. You can't use all your `R' to buy `R's. You can't even finish your"
   },
   {
     id: "ai404",
@@ -4960,7 +4978,7 @@ export const news = [
   },
   {
     id: "ai412",
-    text: "His Eminence the Extremely Religious Person: ...I think I will choose the cheeseburger over the antimatter."
+    text: "His Eminence the Extremely Religious Person: …I think I will choose the cheeseburger over the antimatter."
   },
   {
     id: "ai413",
@@ -5149,7 +5167,7 @@ export const news = [
   },
   {
     id: "ai459",
-    text: "we don't know how much is trillion... but"
+    text: "we don't know how much is trillion… but"
   },
   {
     id: "ai460",
@@ -5169,7 +5187,7 @@ export const news = [
   },
   {
     id: "ai464",
-    text: "In the beginning, Patashu awoke and said..."
+    text: "In the beginning, Patashu awoke and said…"
   },
   {
     id: "ai465",
@@ -5205,7 +5223,7 @@ export const news = [
   },
   {
     id: "ai473",
-    text: "I'm gonna type for an eternity... HINT: it's gonna be pretty boring lmao"
+    text: "I'm gonna type for an eternity… HINT: it's gonna be pretty boring lmao"
   },
   {
     id: "ai474",
@@ -5266,7 +5284,7 @@ export const news = [
   },
   {
     id: "ai488",
-    get text() { return `Welcome and welcome back to another episode of Anti-Fashion Pants, where we watch people's wares as they are sold at stupid clothing stores. This week's subject is... antilasers. People are able to manufacture and use antimatter lasers to shoot antimatter bullets at will, making them able to completely wipe out cities in their sights. This is a dangerous skill to have, as people are not only untrustworthy but also physically incapable of using it. The skill, however, is able to... Produce ${format(Number.MAX_VALUE, 2)} antimatter bullets a minute, over a period of 10 years. People are also able to use anti-matter to fire anti-matter bullets at will, making them able to exterminate entire cities in their sights.`; }
+    get text() { return `Welcome and welcome back to another episode of Anti-Fashion Pants, where we watch people's wares as they are sold at stupid clothing stores. This week's subject is… antilasers. People are able to manufacture and use antimatter lasers to shoot antimatter bullets at will, making them able to completely wipe out cities in their sights. This is a dangerous skill to have, as people are not only untrustworthy but also physically incapable of using it. The skill, however, is able to… Produce ${format(Number.MAX_VALUE, 2)} antimatter bullets a minute, over a period of 10 years. People are also able to use anti-matter to fire anti-matter bullets at will, making them able to exterminate entire cities in their sights.`; }
   },
   {
     id: "ai489",
@@ -5302,7 +5320,7 @@ export const news = [
   },
   {
     id: "ai497",
-    text: "The real secret to winning Antimatter Dimensions..."
+    text: "The real secret to winning Antimatter Dimensions…"
   },
   {
     id: "ai498",
@@ -5334,7 +5352,7 @@ export const news = [
   },
   {
     id: "ai505",
-    text: "A long time ago, in an alternate universe, there was an antimatter war. All the antimatter sided with the Phaéton 6 empire. All the antimatter wanted was the low, earth-like ground of the 8th dimension. The anti-infinity won, and the anti-Eternity gained the upper hand. Unfortunately, the anti-Eternity started the war with a sneak attack, and the world exploded. The aftermath has left the landscape of the world in tatters. Far across the world, peasants grow weary as they wait for the harvest. Yet another apocalypse is brewing..."
+    text: "A long time ago, in an alternate universe, there was an antimatter war. All the antimatter sided with the Phaéton 6 empire. All the antimatter wanted was the low, earth-like ground of the 8th dimension. The anti-infinity won, and the anti-Eternity gained the upper hand. Unfortunately, the anti-Eternity started the war with a sneak attack, and the world exploded. The aftermath has left the landscape of the world in tatters. Far across the world, peasants grow weary as they wait for the harvest. Yet another apocalypse is brewing…"
   },
   {
     id: "ai506",
@@ -5390,7 +5408,7 @@ export const news = [
   },
   {
     id: "ai519",
-    text: "Oh... hooray! Did you find the last of the anti-boats?"
+    text: "Oh… hooray! Did you find the last of the anti-boats?"
   },
   {
     id: "ai520",
@@ -5402,7 +5420,7 @@ export const news = [
   },
   {
     id: "ai522",
-    text: "This is an anti-world. There is no Ukraine, no Russia, no China. Ireland is nowhere. Iceland is nowhere. Scotland is nowhere. Finland is nowhere. Denmark is nowhere. Sweden is nowhere. Norway is nowhere. And then there's France, Germany, Italy, Spain, Portugal... Oh, what's this fuss? Why is there such a buzz in these parts? Why is the Capital Wasteland? Why is the Harry Potter and Steins;Gate? Why do people care? These are major stories. These are major characters. THESE ARE HUGE NEWS. THESE ARE REAL NEWS."
+    text: "This is an anti-world. There is no Ukraine, no Russia, no China. Ireland is nowhere. Iceland is nowhere. Scotland is nowhere. Finland is nowhere. Denmark is nowhere. Sweden is nowhere. Norway is nowhere. And then there's France, Germany, Italy, Spain, Portugal… Oh, what's this fuss? Why is there such a buzz in these parts? Why is the Capital Wasteland? Why is the Harry Potter and Steins;Gate? Why do people care? These are major stories. These are major characters. THESE ARE HUGE NEWS. THESE ARE REAL NEWS."
   },
   {
     id: "ai523",
@@ -5458,7 +5476,7 @@ export const news = [
   },
   {
     id: "ai536",
-    text: "i dont think he can add 1 more hour to the news ticker... unless?"
+    text: "i dont think he can add 1 more hour to the news ticker… unless?"
   },
   {
     id: "ai537",
@@ -5639,7 +5657,7 @@ export const news = [
   },
   {
     id: "ai581",
-    text: "The news ticker... it never moves. How do i move the arrow? Pretty simple, use your left thumb to rotate the dial, and point the arrow up. Now, point the dial clockwise to reach infinity, and point the dial counterclockwise to reach eternally eternities."
+    text: "The news ticker… it never moves. How do i move the arrow? Pretty simple, use your left thumb to rotate the dial, and point the arrow up. Now, point the dial clockwise to reach infinity, and point the dial counterclockwise to reach eternally eternities."
   },
   {
     id: "ai582",
@@ -5663,7 +5681,7 @@ export const news = [
   },
   {
     id: "ai587",
-    text: "I thought the news ticker was supposed to be a guide for how to get the most out of Antimatter Dimensions, but it's been warped beyond recognition..."
+    text: "I thought the news ticker was supposed to be a guide for how to get the most out of Antimatter Dimensions, but it's been warped beyond recognition…"
   },
   {
     id: "ai588",
@@ -5711,7 +5729,7 @@ export const news = [
   },
   {
     id: "ai599",
-    text: "You have ... 8.9 antimatter. That's not a typo."
+    text: "You have … 8.9 antimatter. That's not a typo."
   },
   {
     id: "ai600",
@@ -5735,11 +5753,11 @@ export const news = [
   },
   {
     id: "ai605",
-    text: "I just found the secret to getting the 9th dimension..."
+    text: "I just found the secret to getting the 9th dimension…"
   },
   {
     id: "ai606",
-    text: "I noticed that my current form of transportation is getting a little... unreliable. I don't know if I can fix it, or if anyone can. I'm stuck in the car, and no one seems to be able to fix it. I've called the police, and they said I could stay in the car for up to an hour, but then I'd be stuck in there for the next 24 hours. Is there any way out? I don't know, I'm stuck in this"
+    text: "I noticed that my current form of transportation is getting a little… unreliable. I don't know if I can fix it, or if anyone can. I'm stuck in the car, and no one seems to be able to fix it. I've called the police, and they said I could stay in the car for up to an hour, but then I'd be stuck in there for the next 24 hours. Is there any way out? I don't know, I'm stuck in this"
   },
   {
     id: "ai607",
@@ -6124,7 +6142,7 @@ export const news = [
   },
   {
     id: "ai701",
-    text: "You must have a very special kind of karma to be able to read this..."
+    text: "You must have a very special kind of karma to be able to read this…"
   },
   {
     id: "ai702",
@@ -6132,7 +6150,7 @@ export const news = [
   },
   {
     id: "ai703",
-    text: "You know, I don't really care much for conspiracy theories. They're not very interesting to me. But what do you know about 9th dimensions? That they exist, they're powerful, and they're trying to stop us from using them? That's pretty interesting... wait no, they're not. They're just saying that because they can, they'll. That's not how it works at all. I'm not stupid, I'm not crazy, I know what's best. I"
+    text: "You know, I don't really care much for conspiracy theories. They're not very interesting to me. But what do you know about 9th dimensions? That they exist, they're powerful, and they're trying to stop us from using them? That's pretty interesting… wait no, they're not. They're just saying that because they can, they'll. That's not how it works at all. I'm not stupid, I'm not crazy, I know what's best. I"
   },
   {
     id: "ai704",
@@ -6312,7 +6330,7 @@ export const news = [
   },
   {
     id: "ai748",
-    get text() { return `Somebody: "What do you mean, 4 is more than 2?" Me: "Well, I mean, 4 is ${format(Number.MAX_VALUE, 2)}, 2 is 2, etc..."`; }
+    get text() { return `Somebody: "What do you mean, 4 is more than 2?" Me: "Well, I mean, 4 is ${format(Number.MAX_VALUE, 2)}, 2 is 2, etc…"`; }
   },
   {
     id: "ai749",
@@ -6353,7 +6371,7 @@ export const news = [
   },
   {
     id: "ai758",
-    text: "The stakes are always high when it comes to Antimatter Dimensions. But what about Dimensions made entirely of antimatter? We don't know, but we'll never know..."
+    text: "The stakes are always high when it comes to Antimatter Dimensions. But what about Dimensions made entirely of antimatter? We don't know, but we'll never know…"
   },
   {
     id: "ai759",
@@ -6446,7 +6464,7 @@ export const news = [
   },
   {
     id: "ai781",
-    text: "Taller people have ***, more babies are born, everything is great. But... the Antimatter grows very slowly."
+    text: "Taller people have ***, more babies are born, everything is great. But… the Antimatter grows very slowly."
   },
   {
     id: "ai782",
@@ -6454,7 +6472,7 @@ export const news = [
   },
   {
     id: "ai783",
-    text: "Hey, what's the deal with the \"Editor's Note\" button? It's anti-ironic... I mean, seriously? People still use that button despite its anti-ironic effects?"
+    text: "Hey, what's the deal with the \"Editor's Note\" button? It's anti-ironic… I mean, seriously? People still use that button despite its anti-ironic effects?"
   },
   {
     id: "ai784",
@@ -6771,11 +6789,11 @@ export const news = [
   },
   {
     id: "ai862",
-    text: "The Fremen race of animals are a race of people who live in harmony with the earth, and thus are quite different from the other races of animals. Their society is based around hunting and gathering, and they are also highly spiritual people. They have many beliefs and practices that are in direct contrast to most other races of animals, such as eating meat and using stone tools. They also seem to be quite superstitious, as evidenced by the fact that they are known to perform..."
+    text: "The Fremen race of animals are a race of people who live in harmony with the earth, and thus are quite different from the other races of animals. Their society is based around hunting and gathering, and they are also highly spiritual people. They have many beliefs and practices that are in direct contrast to most other races of animals, such as eating meat and using stone tools. They also seem to be quite superstitious, as evidenced by the fact that they are known to perform…"
   },
   {
     id: "ai863",
-    text: "What if... the universe was just a ruse to keep the people in line? ...actually, no, it was actually intended, the universe was designed to keep the people in line. The problem was the people couldn't handle the idea of an outside force manipulating their lives, and ended up breaking out into uncontrolled chaos, eventually leading to thermonuclear annihilation."
+    text: "What if… the universe was just a ruse to keep the people in line? …actually, no, it was actually intended, the universe was designed to keep the people in line. The problem was the people couldn't handle the idea of an outside force manipulating their lives, and ended up breaking out into uncontrolled chaos, eventually leading to thermonuclear annihilation."
   },
   {
     id: "ai864",
@@ -6783,7 +6801,7 @@ export const news = [
   },
   {
     id: "ai865",
-    text: "I'm a time traveler. I can tell you the history of the world. But, I can't tell you the future. That's why I'm here, to tell you the future. The future is an ever- expanding pile of past, present, and future, and it'll never stop growing. There's so much history, so little time. There's so much history, but it won't stop growing. Then, there's this, and then there's that, and then..."
+    text: "I'm a time traveler. I can tell you the history of the world. But, I can't tell you the future. That's why I'm here, to tell you the future. The future is an ever- expanding pile of past, present, and future, and it'll never stop growing. There's so much history, so little time. There's so much history, but it won't stop growing. Then, there's this, and then there's that, and then…"
   },
   {
     id: "ai866",
@@ -6860,7 +6878,7 @@ export const news = [
   },
   {
     id: "ai884",
-    text: "Sonic was born without a heart... but that didn't stop him from being a genius"
+    text: "Sonic was born without a heart… but that didn't stop him from being a genius"
   },
   {
     id: "ai885",
@@ -6945,7 +6963,7 @@ export const news = [
   },
   {
     id: "ai905",
-    text: "Ooh, what's this noise? A crash of some sort? More like, a crash of some greater magnitude? I don't know. Whatever it is, it's probably not being caused by me. I shouldn't be putting it through, it's just... well, you see, I was going to put it through, but then I just thought it might be a good idea to just put it through. Oh, it's gonna be a good one, I promise."
+    text: "Ooh, what's this noise? A crash of some sort? More like, a crash of some greater magnitude? I don't know. Whatever it is, it's probably not being caused by me. I shouldn't be putting it through, it's just… well, you see, I was going to put it through, but then I just thought it might be a good idea to just put it through. Oh, it's gonna be a good one, I promise."
   },
   {
     id: "ai906",
@@ -7101,7 +7119,7 @@ export const news = [
   },
   {
     id: "ai944",
-    text: "Google+ is known to be a hit with teens, and today, they got their very own virtual reality (VR) version of Animal Farm, the classic 1950's farm story. The game is a blend of adventure, strategy and music, and was made by a small team of people with an eye towards engaging young people. The game offers an alternative to most other VR games, and is suitable for anyone who is not comfortable with large, complicated, graphics and sounds. The game features over 50 different..."
+    text: "Google+ is known to be a hit with teens, and today, they got their very own virtual reality (VR) version of Animal Farm, the classic 1950's farm story. The game is a blend of adventure, strategy and music, and was made by a small team of people with an eye towards engaging young people. The game offers an alternative to most other VR games, and is suitable for anyone who is not comfortable with large, complicated, graphics and sounds. The game features over 50 different…"
   },
   {
     id: "ai945",
@@ -7117,7 +7135,7 @@ export const news = [
   },
   {
     id: "ai948",
-    text: "This is the question that has been bothering me for so long. What is Antimatter? Is Antimatter an Antimatter? What does it mean when you say \"Antimatter\"? These are the kinds of questions that plague the Antimatter Dimensions..."
+    text: "This is the question that has been bothering me for so long. What is Antimatter? Is Antimatter an Antimatter? What does it mean when you say \"Antimatter\"? These are the kinds of questions that plague the Antimatter Dimensions…"
   },
   {
     id: "ai949",
@@ -7169,7 +7187,7 @@ export const news = [
   },
   {
     id: "ai961",
-    text: "I see you are a man of culture as well. I wonder what it is that draws you to speak in such an ungainly, tortured voice? What attracts you to speak in a language no one can understand? I hear your fans rave about your videos, but what draws you to this place? I feel like I know you. You are... you are a man of mystery. One that intrigues me..."
+    text: "I see you are a man of culture as well. I wonder what it is that draws you to speak in such an ungainly, tortured voice? What attracts you to speak in a language no one can understand? I hear your fans rave about your videos, but what draws you to this place? I feel like I know you. You are… you are a man of mystery. One that intrigues me…"
   },
   {
     id: "ai962",
@@ -7266,7 +7284,7 @@ export const news = [
   },
   {
     id: "ai985",
-    text: "One-two-three, boo-two-three, three-four-five, anti-four-five, two-three-eight, nine-fifteen, five-six-seven, eight-nine-ten, nine-ten-ten, seven-seventy-eight... All has been going fine until last night, when four of the eight neighbors start complaining about a strange glow. A odd hum runs through the neighborhood, almost like a radio static. It gets more and more intense as you drive by, until it's practically pitch black. You try to explain it to the neighbors, but they won't listen. The neighborhood is unsafe, everyone knows that. You analyze it further, everyone thinks it's just some astrophysicist's idea. Then, s---. It's explodium. There's antimatter everywhere, and it's getting worse all the time. It turns out, there's about 1e31 Planck volumes in the entire observable universe. And that's just the antimatter we're talking about. There's also dark matter, normal matter, and extra matter. You know, the kind you create with your imagination."
+    text: "One-two-three, boo-two-three, three-four-five, anti-four-five, two-three-eight, nine-fifteen, five-six-seven, eight-nine-ten, nine-ten-ten, seven-seventy-eight… All has been going fine until last night, when four of the eight neighbors start complaining about a strange glow. A odd hum runs through the neighborhood, almost like a radio static. It gets more and more intense as you drive by, until it's practically pitch black. You try to explain it to the neighbors, but they won't listen. The neighborhood is unsafe, everyone knows that. You analyze it further, everyone thinks it's just some astrophysicist's idea. Then, s---. It's explodium. There's antimatter everywhere, and it's getting worse all the time. It turns out, there's about 1e31 Planck volumes in the entire observable universe. And that's just the antimatter we're talking about. There's also dark matter, normal matter, and extra matter. You know, the kind you create with your imagination."
   },
   {
     id: "ai986",

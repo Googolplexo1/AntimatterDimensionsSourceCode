@@ -111,7 +111,7 @@ export const normalAchievements = [
   },
   {
     id: 28,
-    name: "В этом нет никакого смысла...",
+    name: "В этом нет никакого смысла…",
     get description() {
       return `Купите одиночное 1-е Измерение Антиматерии, имея хотя бы ${format(DC.E150)}.`;
     },
@@ -221,7 +221,7 @@ export const normalAchievements = [
   },
   {
     id: 43,
-    name: "Вот это поворот...",
+    name: "Вот это поворот…",
     description:
       "Сделайте так, чтобы самый высокий множитель среди Измерений Антиматерии имело 8-е, следующий по величине - 7-е, затем 6-е и так далее.",
     checkRequirement: () => {
@@ -379,7 +379,7 @@ export const normalAchievements = [
   },
   {
     id: 62,
-    name: "О, привет... Ты всё ещё здесь?",
+    name: "О, привет… Ты всё ещё здесь?",
     get description() { return `Сделайте прирост Очков Бесконечности за время от бесконечности не менее ${format(DC.E8)} в минуту.`; },
     checkRequirement: () => Player.bestRunIPPM.exponent >= 8,
     checkEvent: GAME_EVENT.BIG_CRUNCH_AFTER
@@ -742,7 +742,7 @@ export const normalAchievements = [
   },
   {
     id: 111,
-    name: "Эй, чувак, я слышал, тебе нравились бесконечности...",
+    name: "Эй, чувак, я слышал, тебе нравились бесконечности…",
     get description() {
       return `Получите на бесконечности хотя бы в ${format(Decimal.NUMBER_MAX_VALUE, 1, 0)} раз больше
         Очков Бесконечности, чем на предыдущей, ${formatInt(9)} раз подряд в течение одной вечности.`;
@@ -892,7 +892,7 @@ export const normalAchievements = [
   },
   {
     id: 127,
-    name: "Но мне хотелось ещё одного слоя престижа...",
+    name: "Но мне хотелось ещё одного слоя престижа…",
     get description() { return `Достигните ${format(Decimal.NUMBER_MAX_VALUE, 1, 0)} Очков Вечности.`; },
     checkRequirement: () => Currency.eternityPoints.gte(Decimal.NUMBER_MAX_VALUE),
     checkEvent: GAME_EVENT.GAME_TICK_AFTER
@@ -1027,7 +1027,7 @@ export const normalAchievements = [
   },
   {
     id: 143,
-    name: "Эй, чувак, я слышал, тебе нравились переделки...",
+    name: "Эй, чувак, я слышал, тебе нравились переделки…",
     get description() {
       return `Получите на вечности хотя бы в ${format(Decimal.NUMBER_MAX_VALUE, 1, 0)} раз больше
         Очков Вечности, чем на предыдущей, ${formatInt(9)} раз подряд в течение одной реальности.`;

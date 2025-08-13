@@ -70,7 +70,7 @@ export const secretAchievements = [
   },
   {
     id: 25,
-    name: "Шшшш... Это секрет",
+    name: "Шшшш… Это секрет",
     description: "Найдите секретную тему."
   },
   {
@@ -78,7 +78,7 @@ export const secretAchievements = [
     name: "Ты неудачник",
     get description() {
       return `Провалите Испытание Вечности ${formatInt(10)} раз на протяжении одного сеанса.
-      Что вы делаете со своей жизнью...`;
+      Что вы делаете со своей жизнью…`;
     },
     checkRequirement: (function() {
       let count = 0;
@@ -126,14 +126,14 @@ export const secretAchievements = [
   },
   {
     id: 35,
-    name: `Может, скажем им про кнопку "Купить все"...`,
+    name: `Может, скажем им про кнопку "Купить все"…`,
     get description() { return `Купите ${formatInt(1e5)} одиночных ускорителей.`; },
     checkRequirement: () => player.requirementChecks.permanent.singleTickspeed >= 1e5,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER
   },
   {
     id: 36,
-    name: "Пока тебя не было... Ничего не произошло.",
+    name: "Пока тебя не было… Ничего не произошло.",
     description: "Сделайте так, чтобы игра сообщила вам, что пока вас не было, ничего не произошло."
   },
   {
