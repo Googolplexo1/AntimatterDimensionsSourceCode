@@ -224,7 +224,7 @@ export function addEternityTime(time, realTime, ep, eternities) {
   if (player.challenge.eternity.current) {
     const currEC = player.challenge.eternity.current;
     const ec = EternityChallenge(currEC);
-    const challText = player.dilation.active ? "ИспВ${currEC} в Замедлении" : "${currEC}-е Испытание Вечности";
+    const challText = player.dilation.active ? `ИспВ${currEC} в Замедлении` : `${currEC}-е Испытание Вечности`;
     challenge = `${challText} (${formatInt(ec.completions)}/${formatInt(ec.maxCompletions)})`;
   } else if (player.dilation.active) challenge = "Замедление Времени";
   // If we call this function outside of dilation, it uses the existing AM and produces an erroneous number
