@@ -16,7 +16,7 @@ export default {
       this.constantCount = Object.keys(player.reality.automator.constants).length;
       if (this.constantCount === 0) this.emitClose();
       this.number = quantify("постоянная", this.constantCount);
-      this.deleted = quantify("удалена", this.constantCount);
+      this.deleted = pluralize("удалена", this.constantCount);
     },
     deleteConstants() {
       player.reality.automator.constants = {};

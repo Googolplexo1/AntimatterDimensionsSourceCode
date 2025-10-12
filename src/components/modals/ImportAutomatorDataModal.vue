@@ -111,7 +111,7 @@ export default {
       this.hasErrors = hasCompilationErrors(this.scriptContent);
       this.isValid = true;
       this.number = quantify("постоянная", this.extraConstants);
-      this.imported = quantify("импортирована", this.extraConstants);
+      this.imported = pluralize("импортирована", this.extraConstants);
     },
     importSave() {
       if (!this.isValid) return;

@@ -25,7 +25,7 @@ export default {
       // during the Reality animation, which would then show an empty modal.
       return Autobuyers.hasAutobuyersForEditModal
         ? `С помощью этого окна вы можете изменять различные настройки вашей автоматики.`
-        : `В данный момент вам недоступа автоматика, которая могла бы быть здесь показана.`;
+        : `В данный момент вам недоступна автоматика, которая могла бы быть здесь показана.`;
     },
   },
 };
