@@ -112,8 +112,8 @@ export const pelleQuotes = {
       { text: "Так вот, многочисленные $1 прошлого.", 1: battles },
       "В них всегда было две стадии.",
       { text: "Мы накапливаем ресурсы, а затем продолжаем $1.", 1: danceAcc },
-      { text: "Иногда ты спотыкаешься об $1.", 1: lesser },
-      { text: "Но чаще ты спотыкаешься об $1.", 1: eternalAcc },
+      { text: "Иногда ты спотыкаешься о $1.", 1: lesser },
+      { text: "Но чаще ты спотыкаешься о $1.", 1: eternalAcc },
       { text: "И в любом случае ты $1 время,", 1: reverse },
       { text: "Чтобы просто не стать $1,", 1: unseen },
       "Как все, кто был до тебя.",
@@ -227,7 +227,7 @@ export const pelleQuotes = {
         text: "Потому ли, что ты знаешь, что в конце концов он уничтожит себя,",
         background: primaryBackground("effarig"),
       }, {
-        text: "Что на этот раз ты так долго ш[ё]л(а) к нему, что этот момент почти наступил?",
+        text: "На этот раз ты так долго ш[ё]л(а) к нему, что этот момент почти наступил?",
         background: primaryBackground("effarig"),
       }, {
         text: "Каждый раз, когда ты спешил(а) к $1, ты бывал(а) побежд(ена)[ён].",
@@ -241,7 +241,7 @@ export const pelleQuotes = {
         background: primaryBackground("enslaved"),
         1: usurperDat,
       }, {
-        text: "Одна из великих утех $1...",
+        text: "Одна из великих утех $1…",
         background: primaryBackground("enslaved"),
         1: danceGen,
       }, {
@@ -249,14 +249,14 @@ export const pelleQuotes = {
         background: primaryBackground("enslaved"),
         1: usurperGen,
       }, {
-        text: "Ну, не совсем попытки...",
+        text: "Ну, не совсем попытки…",
         background: primaryBackground("enslaved"),
       }, {
         text: "Но мы наказываем $1 в любом случае.",
         background: primaryBackground("enslaved"),
         1: usurperAcc,
       }, {
-        text: "Другие $1...",
+        text: "Другие $1…",
         background: primaryBackground("enslaved"),
         1: deities,
       }, {
@@ -298,7 +298,7 @@ export const pelleQuotes = {
         text: "Разве тебе приятно уничтожать его игрушки?",
         background: primaryBackground("v"),
       }, {
-        text: "Пожалуй, самый позорный эпизод в истории $1...",
+        text: "Пожалуй, самый позорный эпизод в истории $1…",
         background: primaryBackground("v"),
         1: destroyerGen,
       }, {
@@ -398,11 +398,11 @@ export const pelleQuotes = {
     id: 8,
     lines: [
       { text: "Я даю тебе выбор, $1:", 1: destroyer },
-      { text: "Ограничить $1 или...", 1: filament },
-      { text: "Уничтожить пять $1...", 1: inevitableGen },
+      { text: "Ограничить $1 или…", 1: filament },
+      { text: "Уничтожить пять $1…", 1: inevitableGen },
       "Погоди, как они называются?",
       { text: "$1?", 1: inevitable },
-      { text: "Но я уже провёл между ними $1...", 1: unbroken }
+      { text: "Но я уже провёл между ними $1…", 1: unbroken }
     ],
   },
   galaxyGeneratorPhase1: {
@@ -421,7 +421,7 @@ export const pelleQuotes = {
   end: {
     id: 11,
     lines: [
-      "...",
+      "…",
       {
         text: "Ты! $1!",
         1: destroyer
@@ -431,20 +431,20 @@ export const pelleQuotes = {
         text: "Соучаствовать в исполнении твоей $1!",
         1: mandateGen
       },
-      "И таким путём ты... победил(а)?",
+      "И таким путём ты… победил(а)?",
       {
-        text: "В борьбе, существовавшей $1...",
+        text: "В борьбе, существовавшей $1…",
         background: flashCelestial,
         1: forever,
       }, {
-        text: "В $1...",
+        text: "В $1…",
         background: flashCelestial,
         1: battlePrep,
       }, {
         text: "Наконец-то есть победитель.",
         background: flashCelestial,
       }, {
-        text: "Необратимая $1...",
+        text: "Необратимая $1…",
         background: flashCelestial,
         1: mandate,
       }, {
