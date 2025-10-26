@@ -113,7 +113,7 @@ export const ID = {
       );
       return Decimal.pow(allMult, dim ? 1 : MultiplierTabHelper.activeDimCount("ID"));
     },
-    isActive: () => InfinityChallenge(1).isCompleted,
+    isActive: () => InfinityChallenge(1).isUnlocked,
     icon: MultiplierTabIcons.CHALLENGE("infinity"),
   },
   eternityChallenge: {
@@ -131,7 +131,7 @@ export const ID = {
       return Decimal.pow(allMult, maxActiveDim)
         .times(maxActiveDim >= 1 ? EternityChallenge(2).reward.effectOrDefault(1) : DC.D1);
     },
-    isActive: () => EternityChallenge(2).completions > 0,
+    isActive: () => PlayerProgress.eternityUnlocked(),
     icon: MultiplierTabIcons.CHALLENGE("eternity"),
   },
   glyph: {

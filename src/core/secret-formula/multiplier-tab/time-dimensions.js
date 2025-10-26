@@ -131,7 +131,7 @@ export const TD = {
       }
       return Decimal.pow(allMult, dim ? 1 : MultiplierTabHelper.activeDimCount("TD"));
     },
-    isActive: () => EternityChallenge(1).completions > 0,
+    isActive: () => PlayerProgress.eternityUnlocked(),
     icon: MultiplierTabIcons.CHALLENGE("eternity")
   },
   dilationUpgrade: {
