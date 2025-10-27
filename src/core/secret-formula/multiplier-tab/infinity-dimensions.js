@@ -121,8 +121,7 @@ export const ID = {
     multValue: dim => {
       const allMult = DC.D1.timesEffectsOf(
         EternityChallenge(4).reward,
-        EternityChallenge(9).reward,
-      ).times(EternityChallenge(7).isRunning ? Tickspeed.perSecond : DC.D1);
+        EternityChallenge(9).reward);
       if (dim) {
         if (dim === 1) return allMult.times(EternityChallenge(2).reward.effectOrDefault(1));
         return allMult;

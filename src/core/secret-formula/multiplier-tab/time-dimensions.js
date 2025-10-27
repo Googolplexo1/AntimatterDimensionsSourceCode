@@ -122,8 +122,7 @@ export const TD = {
     multValue: dim => {
       let allMult = DC.D1.timesEffectsOf(
         EternityChallenge(1).reward,
-        EternityChallenge(10).reward,
-      ).times(EternityChallenge(7).isRunning ? Tickspeed.perSecond : DC.D1);
+        EternityChallenge(10).reward);
       if (EternityChallenge(9).isRunning) {
         allMult = allMult.times(
           Decimal.pow(Math.clampMin(Currency.infinityPower.value.pow(InfinityDimensions.powerConversionRate / 7)
