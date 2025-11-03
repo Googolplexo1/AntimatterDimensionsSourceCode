@@ -58,7 +58,7 @@ export default {
       return `Достигните ${formatPostBreak(InfinityDimension(this.tier).amRequirement)} антиматерии`;
     },
     hasLongText() {
-      return this.costDisplay.length > 15;
+      return this.costDisplay.length > 20;
     },
     capTooltip() {
       if (this.enslavedRunning) return `В Реальности Безымянных нельзя купить более ${format(10)} Измерений Бесконечности одного уровня`;
