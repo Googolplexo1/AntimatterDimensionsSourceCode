@@ -258,7 +258,7 @@ export const normalTimeStudies = [
     cost: 12,
     requirement: [101, 102, 103],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: () => `Получение Очков Бесконечности по умолчанию возведено в степень ${formatFloat(308 / 285, 4, 4)}`,
+    description: () => `Получение Очков Бесконечности по умолчанию возведено в степень около ${formatFloat(308 / 285, 5)}`,
     effect: 285
   },
   {

@@ -252,7 +252,7 @@ export const normalAchievements = [
     get description() { return `Сделайте скорость тика не менее ${format(DC.E29)}.`; },
     checkRequirement: () => Tickspeed.current.exponent <= -26,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    get reward() { return `множитель ${formatX(1.02, 0, 2)} к скорости тика.`; },
+    get reward() { return `множитель около ${formatX(1 / 0.98, 5, 5)} к скорости тика.`; },
     effect: 0.98
   },
   {
@@ -419,7 +419,7 @@ export const normalAchievements = [
     get description() { return `Сделайте скорость тика не менее ${format(DC.E58)}.`; },
     checkRequirement: () => Tickspeed.current.exponent <= -55,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    get reward() { return `множитель ${formatX(1.02, 0, 2)} к скорости тика.`; },
+    get reward() { return `множитель около ${formatX(1 / 0.98, 5, 5)} к скорости тика.`; },
     effect: 0.98
   },
   {
@@ -539,7 +539,7 @@ export const normalAchievements = [
     get description() { return `Получите ${formatInt(50)} Галактик Антиматерии.`; },
     checkRequirement: () => player.galaxies >= 50,
     checkEvent: GAME_EVENT.GALAXY_RESET_AFTER,
-    get reward() { return `множитель ${formatX(1 / 0.95, 4, 4)} к скорости тика за каждую Галактику Антиматерии.`; },
+    get reward() { return `множитель около ${formatX(1 / 0.95, 5, 5)} к скорости тика за каждую Галактику Антиматерии.`; },
     effect: () => DC.D0_95.pow(player.galaxies),
     formatEffect: value => `${formatX(value.recip(), 2, 2)}`
   },
@@ -696,7 +696,7 @@ export const normalAchievements = [
     checkRequirement: () => Currency.infinityPoints.exponent >= 1000,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     get reward() {
-      return `получение Очков Бесконечности по умолчанию возведено в степень ${formatFloat(308 / 307.8, 5)} (не накладывается на ИсслВ111).`;
+      return `получение Очков Бесконечности по умолчанию возведено в степень около ${formatFloat(308 / 307.8, 5)} (не накладывается на ИсслВ111).`;
     },
     effect: 307.8
   },
@@ -1320,7 +1320,7 @@ export const normalAchievements = [
     checkEvent: GAME_EVENT.INFINITY_CHALLENGE_COMPLETED,
     // Weirdly specific reward? Yes, its V's ST bonus because we forgot to disable it
     // when balancing Pelle and only realised too late.
-    get reward() { return `множители Измерений Антиматерии возведены в степень ${format(1.0812403840463596, 5, 5)}.`; },
+    get reward() { return `множители Измерений Антиматерии возведены в степень около ${format(1.0812403840463596, 5, 5)}.`; },
     effect: 1.0812403840463596
   },
   {
