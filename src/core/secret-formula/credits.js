@@ -96,7 +96,6 @@ export const credits = {
       roles: 15
     }, {
       name: "AFYINEE",
-      name2: "Габриэль Хаддаг",
       roles: 15
     }, {
       name: "Alexitato",
@@ -350,7 +349,7 @@ export const credits = {
       roles: 16
     }, {
       name: "NiZeKiHo",
-      name2: "DominusDane",
+      name2: "Nica",
       roles: 16
     }, {
       name: "NotBrewst",
