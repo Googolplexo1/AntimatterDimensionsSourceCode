@@ -66,7 +66,7 @@ export const v = {
     {
       id: 0,
       name: "Рыцарь глифов",
-      description: value => `Разблокируйте Реальность не более чем с ${quantifyInt("действующим глифом", -value)}.`,
+      description: value => `Разблокируйте реальность не более чем с ${quantifyInt("действующим глифом", -value)}.`,
       // This achievement has internally negated values since the check is always greater than
       values: [-5, -4, -3, -2, -1, 0],
       condition: () => V.isRunning && TimeStudy.reality.isBought,
@@ -146,7 +146,7 @@ export const v = {
     {
       id: 6,
       name: "Реквием по глифу",
-      description: value => `Разблокируйте Реальность не более чем с ${quantifyInt("действующим глифом", -value)}.`,
+      description: value => `Разблокируйте реальность не более чем с ${quantifyInt("действующим глифом", -value)}.`,
       // This achievement has internally negated values since the check is always greater than
       values: [1, 4, 7, 10, 13],
       condition: () => V.isRunning && TimeStudy.reality.isBought,
@@ -160,7 +160,7 @@ export const v = {
     {
       id: 7,
       name: "Пункт назначения",
-      description: value => `Достигните ${formatInt(400000)} Теорем Времени в Реальности, на всём протяжении которой
+      description: value => `Достигните ${formatInt(400000)} Теорем Времени в реальности, на всём протяжении которой
         инвертированная Чёрная Дыра имела эффект не менее ${format(Decimal.pow10(value), 2, 2)},
         а вы не разряжали Чёрную Дыру и не начинали ИспВ12.`,
       values: [100, 150, 200, 250, 300],
