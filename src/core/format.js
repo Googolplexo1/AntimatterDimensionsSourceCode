@@ -123,24 +123,23 @@ window.pluralize = function pluralize(word, amount) {
   if (words.length > 1) return words.map(x => pluralize(x, amount)).join(" ");
 
   let n = amount instanceof Decimal ? amount.clampMax(10 ** 9).toNumber() : Math.clampMax(amount, 10 ** 9);
-  let number;
-  if (n !== Math.floor(n)) {
-    number = "dual";
-  } else if (n % 100 < 21 && n % 100 > 4) {
-    number = "plural";
+  n = Math.round(n);
+  let dual;
+  if (n % 100 < 21 && n % 100 > 4) {
+    dual = false;
   } else if (n % 10 === 1) {
     return word;
   } else if (n % 10 < 5 && n % 10 > 1) {
-    number = "dual";
+    dual = true;
   } else {
-    number = "plural";
+    dual = false;
   }
 
   if (word === "") return "";
-  if (["Машина", "Машину", "Теорема"].includes(word)) return word.slice(0, -1) + (number === "dual" ? "ы" : "");
-  if (word === "раз") return (number === "dual" ? "раза" : "раз");
-  if (word === "Древо") return (number === "dual" ? "Древа" : "Древ");
-  if (word === "год") return (number === "dual" ? "года" : "лет");
+  if (["Машина", "Машину", "Теорема"].includes(word)) return word.slice(0, -1) + (dual ? "ы" : "");
+  if (word === "раз") return (dual ? "раза" : "раз");
+  if (word === "Древо") return (dual ? "Древа" : "Древ");
+  if (word === "год") return (dual ? "года" : "лет");
   if (word === "удалён") return "удалено";
   if (word === "постоянной") return "постоянных";
   if (word === "осталась") return "осталось";
@@ -161,7 +160,7 @@ window.pluralize = function pluralize(word, amount) {
   if (["Машиной", "глифом"].includes(word)) return word.slice(0, -2) + "ами";
   if (["ая", "ое", "ый", "ий", "ую"].some(ending => word.endsWith(ending))) return word.slice(0, -2) + "ых";
 
-  if (number === "dual") { 
+  if (dual) { 
     if (word.endsWith("ть")) return word.slice(0, -1) + "и";
     if (word.endsWith("ие")) return word.slice(0, -1) + "я";
     if (word.endsWith("ь") || word === "поле") return word.slice(0, -1) + "я";
