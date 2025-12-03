@@ -48,7 +48,7 @@ export default {
     <EPMultiplierButton />
     <div>
       Цена на упятеритель резко возрастает на {{ format(costIncreases[0]) }},
-      {{ formatPostBreak(costIncreases[1], 2) }} и {{ formatPostBreak(costIncreases[2]) }} Очков Вечности.
+      {{ formatPostBreak(costIncreases[1], 2) }} и {{ formatPostBreak(costIncreases[2]) }} Очков Вечности, при этом начиная расти быстрее.
       <br>
       После {{ formatPostBreak(costIncreases[3]) }} Очков Вечности она растёт принципиально быстрее.
     </div>
