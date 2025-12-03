@@ -109,6 +109,7 @@ export default {
         infinity.hasBest = bestInfinity.time < Number.MAX_VALUE;
         infinity.best.setFrom(bestInfinity.time);
         infinity.this.setFrom(records.thisInfinity.time);
+        infinity.thisReal.setFrom(records.thisInfinity.realTime);
         infinity.bestRate.copyFrom(bestInfinity.bestIPminEternity);
       }
 
@@ -121,6 +122,7 @@ export default {
         eternity.hasBest = bestEternity.time < Number.MAX_VALUE;
         eternity.best.setFrom(bestEternity.time);
         eternity.this.setFrom(records.thisEternity.time);
+        eternity.thisReal.setFrom(records.thisEternity.realTime);
         eternity.bestRate.copyFrom(bestEternity.bestEPminReality);
       }
 
@@ -135,10 +137,7 @@ export default {
         reality.best.setFrom(bestReality.time);
         reality.bestReal.setFrom(bestReality.realTime);
         reality.this.setFrom(records.thisReality.time);
-        // Real time tracking is only a thing once reality is unlocked:
-        infinity.thisReal.setFrom(records.thisInfinity.realTime);
         infinity.bankRate = infinity.projectedBanked.div(Math.clampMin(33, records.thisEternity.realTime)).times(60000);
-        eternity.thisReal.setFrom(records.thisEternity.realTime);
         reality.thisReal.setFrom(records.thisReality.realTime);
         reality.bestRate.copyFrom(bestReality.RMmin);
         reality.bestRarity = Math.max(strengthToRarity(bestReality.glyphStrength), 0);
