@@ -30,7 +30,7 @@ export default {
       if (InfinityChallenge(3).isRunning) return `Множитель ${formatX(1.05 + this.galaxyCount * 0.005, 3, 3)}
         ко всем Измерениям Антиматерии`;
       const tickmult = this.mult;
-      return `Множитель ${format(tickmult.reciprocal(), 2, 3)} ко скорости тика за ускоритель`;
+      return `Множитель ${formatX(tickmult.reciprocal(), 2, 3)} ко скорости тика за ускоритель`;
     },
     tickspeedDisplay() {
       return `Скорость тика: ${format(this.tickspeed, 2, 3)}`;
