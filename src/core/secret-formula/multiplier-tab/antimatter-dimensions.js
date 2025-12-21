@@ -265,13 +265,6 @@ export const AD = {
 
       const dimMults = Array.repeat(DC.D1, 9);
       for (let tier = 1; tier <= 8; tier++) {
-        // We don't want to double-count the base effect that TS31 boosts
-        const infinitiedMult = DC.D1.timesEffectsOf(
-          AntimatterDimension(tier).infinityUpgrade,
-          BreakInfinityUpgrade.infinitiedMult
-        );
-        dimMults[tier] = dimMults[tier].times(infinitiedMult.pow(TimeStudy(31).effectOrDefault(1) - 1));
-
         dimMults[tier] = dimMults[tier].timesEffectsOf(
           tier < 8 ? TimeStudy(71) : null,
           tier === 8 ? TimeStudy(214) : null,
