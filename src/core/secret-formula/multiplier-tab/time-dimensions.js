@@ -123,15 +123,20 @@ export const TD = {
       let allMult = DC.D1.timesEffectsOf(
         EternityChallenge(1).reward,
         EternityChallenge(10).reward);
-      if (EternityChallenge(9).isRunning) {
-        allMult = allMult.times(
-          Decimal.pow(Math.clampMin(Currency.infinityPower.value.pow(InfinityDimensions.powerConversionRate / 7)
-            .log2(), 1), 4).clampMin(1));
-      }
       return Decimal.pow(allMult, dim ? 1 : MultiplierTabHelper.activeDimCount("TD"));
     },
     isActive: () => PlayerProgress.eternityUnlocked(),
     icon: MultiplierTabIcons.CHALLENGE("eternity")
+  },
+  infinityPower: {
+    name: "Сила Бесконечности (9-е Испытание Вечности)",
+    multValue: dim => {
+      const mult = Decimal.pow(Math.clampMin(Currency.infinityPower.value.pow(InfinityDimensions.powerConversionRate / 7)
+        .log2(), 1), 4).clampMin(1));
+      return Decimal.pow(mult, dim ? 1 : MultiplierTabHelper.activeDimCount("TD"));
+    },
+    isActive: () => EternityChallenge(9).isRunning,
+    icon: MultiplierTabIcons.INFINITY_POWER,
   },
   dilationUpgrade: {
     name: "Улучшение Замедления",
