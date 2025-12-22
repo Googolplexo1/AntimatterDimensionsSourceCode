@@ -132,7 +132,7 @@ export const TD = {
     name: "Сила Бесконечности (9-е Испытание Вечности)",
     multValue: dim => {
       const mult = Decimal.pow(Math.clampMin(Currency.infinityPower.value.pow(InfinityDimensions.powerConversionRate / 7)
-        .log2(), 1), 4).clampMin(1));
+        .log2(), 1), 4).clampMin(1);
       return Decimal.pow(mult, dim ? 1 : MultiplierTabHelper.activeDimCount("TD"));
     },
     isActive: () => EternityChallenge(9).isRunning,
