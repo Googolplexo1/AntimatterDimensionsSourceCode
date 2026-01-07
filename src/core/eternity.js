@@ -206,7 +206,7 @@ export function initializeResourcesAfterEternity() {
 }
 
 export function applyEU1() {
-  if (Perk.autounlockEU1.canBeApplied) {
+  if (Perk.autounlockEU1.canBeApplied && Currency.eternities.gt(0)) {
     for (const id of [1, 2, 3]) player.eternityUpgrades.add(id);
   }
 }
