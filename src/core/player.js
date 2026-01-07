@@ -361,7 +361,7 @@ window.player = {
     previousRuns: {}
   },
   IPMultPurchases: 0,
-  version: 102,
+  version: 200,
   infinityPower: DC.D1,
   postC4Tier: 0,
   eternityPoints: DC.D0,
@@ -374,13 +374,13 @@ window.player = {
   replicanti: {
     unl: false,
     amount: DC.D0,
-    chance: 0,
-    chanceCost: DC.E320,
-    interval: 0,
-    intervalCost: DC.E320,
+    chance: 0.01,
+    chanceCost: DC.E150,
+    interval: 1000,
+    intervalCost: DC.E140,
     boughtGalaxyCap: 0,
     galaxies: 0,
-    galCost: DC.E320,
+    galCost: DC.E170,
   },
   timestudy: {
     theorem: DC.D0,

@@ -429,6 +429,20 @@ export const migrations = {
       if (player.records.bestEternity.realTime === 999999999999) player.records.bestEternity.realTime = Number.MAX_VALUE;
       delete player.options.multiplierTab.replacePowers;
       player.options.notation = "Смешанная научная";
+    },
+    200: player => {
+      if (player.celestials.pelle.doomed) return;
+      player.replicanti = {
+        unl: false,
+        amount: DC.D0,
+        chance: 0.01,
+        chanceCost: DC.E150,
+        interval: 1000,
+        intervalCost: DC.E140,
+        boughtGalaxyCap: 0,
+        galaxies: 0,
+        galCost: DC.E170,
+      };
     }
   },
 
