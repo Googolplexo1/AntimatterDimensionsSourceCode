@@ -40,6 +40,7 @@ export default {
 <template>
   <ModalWrapperChoice
     @confirm="disableLock"
+    confirmClass="o-primary-btn--width-large c-modal-message__okay-btn c-modal__confirm-btn"
   >
     <template #header>
       Проверка требования {{ upgradeStr }}
@@ -47,7 +48,7 @@ export default {
     <div class="c-modal-message__text">
       Вы уверены, что хотите {{ lockEvent }}? Если вы сделаете это прямо сейчас,
       <span class="l-emphasis">
-        вы нарушите требование {{ upgradeStr }} "{{ upgrade.name }}"
+        вы нарушите требование {{ upgradeStr }} "{{ upgrade.name }}".
       </span>
       <span :ach-tooltip="upgrade.requirement">
         <i class="fas fa-question-circle" />

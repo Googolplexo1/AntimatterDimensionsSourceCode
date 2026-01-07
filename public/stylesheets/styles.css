@@ -1604,6 +1604,10 @@ br {
   width: 12rem;
 }
 
+.o-primary-btn--width-large {
+  width: 20rem;
+}
+
 .o-primary-btn--subtab-option {
   line-height: 0;
   border: var(--var-border-width, 0.2rem) solid var(--color-accent);
