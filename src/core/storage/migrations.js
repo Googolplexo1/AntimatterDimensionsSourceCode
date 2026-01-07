@@ -443,6 +443,7 @@ export const migrations = {
         galaxies: 0,
         galCost: new Decimal("1e170"),
       };
+      player.eternityUpgrades = new Set();
     }
   },
 
