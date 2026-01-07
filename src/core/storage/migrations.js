@@ -430,18 +430,18 @@ export const migrations = {
       delete player.options.multiplierTab.replacePowers;
       player.options.notation = "Смешанная научная";
     },
-    200: player => {
+    201: player => {
       if (player.celestials.pelle.doomed) return;
       player.replicanti = {
         unl: false,
-        amount: DC.D0,
+        amount: new Decimal(0),
         chance: 0.01,
-        chanceCost: DC.E150,
+        chanceCost: new Decimal("1e150"),
         interval: 1000,
-        intervalCost: DC.E140,
+        intervalCost: new Decimal("1e140"),
         boughtGalaxyCap: 0,
         galaxies: 0,
-        galCost: DC.E170,
+        galCost: new Decimal("1e170"),
       };
     }
   },
