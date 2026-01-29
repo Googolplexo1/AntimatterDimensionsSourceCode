@@ -10,9 +10,9 @@ export const MultiplierTabHelper = {
         return Math.clamp(AntimatterDimensions.all.filter(ad => ad.isProducing).length,
           1, EternityChallenge(7).isRunning ? 7 : 8);
       case "ID":
-        return InfinityDimensions.all.filter(id => id.isProducing).length;
+        return Math.max(1, InfinityDimensions.all.filter(id => id.isProducing).length);
       case "TD":
-        return TimeDimensions.all.filter(td => td.isProducing).length;
+        return Math.max(1, TimeDimensions.all.filter(td => td.isProducing).length);
       default:
         throw new Error("Unrecognized Dimension type in Multiplier tab GameDB entry");
     }
