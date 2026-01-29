@@ -283,7 +283,7 @@ export const AD = {
     icon: MultiplierTabIcons.TIME_STUDY,
   },
   eternityChallenge: {
-    name: "Испытания Вечности",
+    name: "10-е Испытание Вечности",
     multValue: dim => Decimal.pow(EternityChallenge(10).effectValue,
       dim ? 1 : MultiplierTabHelper.activeDimCount("AD")),
     isActive: () => EternityChallenge(10).isRunning,
