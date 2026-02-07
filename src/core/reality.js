@@ -841,4 +841,5 @@ function lockAchievementsOnReality() {
     achievement.lock();
   }
   player.reality.achTimer = 0;
+  if (player.speedrun.isActive) Achievement(35).unlock();
 }
