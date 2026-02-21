@@ -56,7 +56,7 @@ export default {
       const rift = this.rift;
       return `${formatPercents(milestone.requirement)}
       (${this.formatRift(rift.config.percentageToFill(milestone.requirement))} \
-      ${rift.id === 3 ? wordShift.wordCycle(PelleRifts.decay.name) : rift.drainResource})`;
+      ${rift.id === 3 ? wordShift.wordCycle(rift.drainResource) : rift.drainResource})`;
     },
     milestoneDescriptionText(milestone) {
       if (typeof milestone.description === "string") return milestone.description;

@@ -67,7 +67,7 @@ export default {
     },
     drainResource() {
       return this.specialRift
-        ? wordShift.wordCycle(this.rift.drainResource)
+        ? wordShift.wordCycle(["Распад", "Коллапс", "Расстройство"])
         : this.rift.drainResource;
     }
   },

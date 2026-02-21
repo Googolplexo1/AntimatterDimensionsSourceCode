@@ -153,7 +153,7 @@ export default {
         class="c-singularity-milestone-modal-sort-button"
         @click="cycleButton(2)"
       >
-        Помесить завершённые этапы:
+        Поместить завершённые этапы:
         <br>
         {{ completedStr }}
       </button>

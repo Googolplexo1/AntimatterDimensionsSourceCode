@@ -29,7 +29,7 @@ export const pelleRifts = {
       {
         resource: "vacuum",
         requirement: 0.04,
-        description: "Вы можете активировать один глиф"
+        description: "Вы можете активировать один глиф любого из основных типов"
       },
       {
         resource: "vacuum",
@@ -101,7 +101,7 @@ export const pelleRifts = {
     key: "chaos",
     name: ["Хаос", "Беспорядок", "Случайность"],
     nameObjective: ["Хаос", "Беспорядок", "Случайность"],
-    drainResource: ["Распад", "Коллапс", "Расстройство"],
+    drainResource: ["Распада", "Коллапса", "Расстройства"],
     baseEffect: x => `Множитель ${formatX(x, 2, 2)} к Измерениям Времени`,
     strike: () => PelleStrikes.eternity,
     percentage: totalFill => totalFill / 10,
