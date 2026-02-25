@@ -263,7 +263,7 @@ export const imaginaryUpgrades = [
     checkRequirement: () => Effarig.isRunning && player.requirementChecks.reality.maxGlyphs < -10 &&
       Currency.antimatter.value.exponent >= 1.5e11,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    description: () => `Увеличить суммарную жетрвенную ценность глифов каждого типа до ограничения в ${format(1e100)}`,
+    description: () => `Увеличить суммарную жертвенную ценность глифов каждого типа до ограничения в ${format(1e100)}`,
     effect: 1e100,
     isDisabledInDoomed: true
   },
@@ -289,7 +289,7 @@ export const imaginaryUpgrades = [
     // We unfortunately don't have the UI space to be more descriptive on this button without causing text overflow,
     // so hopefully the additional modals (from the upgrade lock) will mostly communicate the idea that this is under
     // the same conditions as hard V's Post-destination
-    requirement: () => `Достигните ${formatInt(13000)} Галактик Антиматерии в Реальности Ра с Чёрной Дырой, интвертированной
+    requirement: () => `Достигните ${formatInt(13000)} Галактик Антиматерии в Реальности Ра с Чёрной Дырой, инвертированной
       на полную мощность на протяжении реальности`,
     hasFailed: () => !Ra.isRunning || player.requirementChecks.reality.slowestBH > 1e-300,
     checkRequirement: () => Ra.isRunning && player.requirementChecks.reality.slowestBH <= 1e-300 &&

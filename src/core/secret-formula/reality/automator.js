@@ -279,7 +279,7 @@ export const automator = {
       category: 2,
       syntax: `<b>black hole on</b><br>
         <b>black hole off</b>`,
-      description: `Эти две команды возобновляет и приостанавливает соответственно цикл активности Чёрной Дыры.`,
+      description: `Эти две команды возобновляют и приостанавливают соответственно цикл активности Чёрной Дыры.`,
       examples: [
         "black hole on",
         "black hole off",
@@ -293,7 +293,7 @@ export const automator = {
       syntax: `<b>store game time on</b><br>
         <b>store game time off</b><br>
         <b>store game time use</b>`,
-      description: `Эти три команды запускает и прекращает зарядку Чёрной Дыры и разряжает её соответственно.`,
+      description: `Эти три команды запускают и прекращают зарядку Чёрной Дыры и разряжают её соответственно.`,
       examples: [
         "store game time on",
         "store game time off",
