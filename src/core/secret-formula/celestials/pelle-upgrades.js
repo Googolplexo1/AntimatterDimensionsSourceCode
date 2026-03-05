@@ -120,7 +120,7 @@ export const pelleUpgrades = {
   },
   keepInfinityChallenges: {
     id: 10,
-    description: "Испытания Бесконечности не сбрасываются на армагеддоне",
+    description: "Выполнения Испытаний Бесконечности не сбрасываются на армагеддоне",
     cost: 1e15,
     formatCost,
   },
