@@ -83,7 +83,7 @@ export default {
   background-color: var(--color-base);
   border-right: 0.1rem solid var(--color-accent);
   border-bottom: 0.1rem solid var(--color-accent);
-  padding: 1rem;
+  padding: 0.5rem;
   user-select: none;
 }
 
