@@ -119,7 +119,7 @@ export default {
 }
 
 .o-pelle-button {
-  font-family: Typewriter;
+  font-family: PTMono, Typewriter;
   color: var(--color-text);
   background: var(--color-text-inverted);
   border: 0.1rem solid var(--color-pelle--base);
@@ -158,7 +158,7 @@ export default {
 .pelle-doom-button {
   width: 20rem;
   align-self: center;
-  font-family: Typewriter;
+  font-family: PTMono, Typewriter;
   font-size: 3rem;
   color: var(--color-pelle--base);
   background: black;

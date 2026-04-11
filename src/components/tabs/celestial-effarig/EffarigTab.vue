@@ -147,7 +147,7 @@ export default {
           class="c-effarig-shop-button c-effarig-shop-button--available"
           @click="createCursedGlyph"
         >
-          Получить Проклятый Глиф...
+          Получить Проклятый Глиф…
         </button>
       </div>
       <div
@@ -188,6 +188,6 @@ export default {
 
 <style scoped>
 .c-effarig-relic-description {
-  width: 46rem;
+  width: 50rem;
 }
 </style>

@@ -110,7 +110,7 @@ export default {
 .c-glyph-choice-container {
   display: flex;
   flex-flow: row wrap;
-  width: 90rem;
+  width: 94rem;
 }
 
 .c-glyph-choice-container-single {
@@ -120,7 +120,7 @@ export default {
 .c-glyph-choice-single-glyph {
   display: flex;
   flex-direction: row;
-  width: 44rem;
+  width: 46rem;
   height: 12rem;
   justify-content: space-evenly;
   align-items: center;

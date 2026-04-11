@@ -68,5 +68,6 @@ export default {
 <style scoped>
 .c-ra-upgrade-icon {
   font-weight: bold;
+  padding-top: 0.3rem;
 }
 </style>

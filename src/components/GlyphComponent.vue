@@ -371,7 +371,6 @@ export default {
         color,
         "text-shadow": this.symbolBlur ? `-0.04em 0.04em 0.08em ${color}` : undefined,
         "border-radius": this.circular ? "50%" : "0",
-        "padding-bottom": this.bottomPadding,
         background: this.bgColor
       };
     },
@@ -709,7 +708,7 @@ export default {
         height: "0.3rem",
         "border-radius": "50%",
         background: this.symbolColor,
-        transform: `translate(${pos.dx - 0.15 * 0.3}rem, ${pos.dy - 0.15 * 0.3}rem)`,
+        transform: `translate(${pos.dx - 0.15 * 0.3}rem, ${pos.dy - 0.15 * 0.3 - 0.1}rem)`,
         opacity: Theme.current().name === "S9" ? 0 : 0.8
       };
     },
@@ -751,7 +750,7 @@ export default {
       :style="innerStyle"
       :class="['l-glyph-component', 'c-glyph-component']"
     >
-      {{ symbol }}
+      <span style="position: absolute; height: 75%;">{{ symbol }}</span>
       <template v-if="$viewModel.shiftDown || showGlyphEffectDots">
         <div
           v-for="x in glyphEffects"

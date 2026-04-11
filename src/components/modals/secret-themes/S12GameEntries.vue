@@ -137,7 +137,7 @@ export default {
   overflow: hidden;
   width: 100%;
   text-align: center;
-  font-family: "Segoe UI", Typewriter;
+  font-family: "Segoe UI", PTMono, Typewriter;
   font-size: var(--icon-font-size);
   font-weight: normal;
   line-height: var(--icon-line-height);

@@ -1536,7 +1536,7 @@ export const news = [
     id: "a253",
     text:
       `После всплеска жалоб от наших зрителей мы решили разрешить вам сочинять свои новости
-      у себя дома. Попробуйте: <input style='border: none; outline: none; font-family: Typewriter;
+      у себя дома. Попробуйте: <input style='border: none; outline: none; font-family: PTMono, Typewriter;
       font-weight: bold; font-size: 1.5rem'></input>. Или не пробуйте. Нам всё равно.`
   },
   {

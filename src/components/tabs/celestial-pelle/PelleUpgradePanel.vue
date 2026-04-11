@@ -147,7 +147,7 @@ export default {
 }
 
 .o-pelle-button {
-  font-family: Typewriter;
+  font-family: PTMono, Typewriter;
   color: var(--color-text);
   background: var(--color-text-inverted);
   border: 0.1rem solid var(--color-pelle--base);

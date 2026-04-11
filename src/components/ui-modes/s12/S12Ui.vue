@@ -170,7 +170,7 @@ export default {
 }
 
 .c-modal__title {
-  font-family: "Segoe UI", Typewriter;
+  font-family: "Segoe UI", PTMono, Typewriter;
   color: black;
 }
 </style>

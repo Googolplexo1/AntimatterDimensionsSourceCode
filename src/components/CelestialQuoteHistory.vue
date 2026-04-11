@@ -47,7 +47,7 @@ export default {
 <style scope>
 .c-celestial-quote-history--button {
   align-self: center;
-  font-family: Typewriter;
+  font-family: PTMono, Typewriter;
   font-size: 1.8rem;
   font-weight: bold;
   color: var(--color-text);

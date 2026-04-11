@@ -32,7 +32,7 @@ export default {
         "o-eternity-milestone__reward": true,
         "o-eternity-milestone__reward--locked": !this.isReached,
         "o-eternity-milestone__reward--reached": this.isReached,
-        "o-eternity-milestone__reward--small-font": this.reward.length > 80
+        "o-eternity-milestone__reward--small-font": true
       };
     },
     activeCondition() {

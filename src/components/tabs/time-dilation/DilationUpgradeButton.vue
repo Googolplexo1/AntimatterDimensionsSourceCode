@@ -152,7 +152,7 @@ export default {
 .o-dilation-upgrade {
   width: 21rem;
   height: 9rem;
-  font-family: Typewriter, serif;
+  font-family: PTMono, Typewriter, serif;
   font-size: 1rem;
   font-weight: bold;
   background: black;

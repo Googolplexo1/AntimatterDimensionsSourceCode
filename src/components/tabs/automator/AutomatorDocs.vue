@@ -398,7 +398,7 @@ export default {
 }
 
 .c-automator__rename-input {
-  font-family: Typewriter;
+  font-family: PTMono, Typewriter;
   font-size: 1.2rem;
   color: var(--color-automator-docs-font);
   background-color: var(--color-automator-controls-active);

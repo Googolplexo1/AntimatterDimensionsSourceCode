@@ -102,7 +102,7 @@ export default {
 }
 
 .c-new-game-button {
-  font-family: Typewriter;
+  font-family: PTMono, Typewriter;
   background: grey;
   border: black;
   border-radius: var(--var-border-radius, 0.5rem);

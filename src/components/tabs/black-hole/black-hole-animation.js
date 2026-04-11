@@ -215,9 +215,9 @@ export const BlackHoleAnimation = (function() {
         const green = 165 * scale ** 2;
 
         context.fillStyle = `rgba(255, ${green}, 0, ${scale * 2})`;
-        context.font = `${px}px Typewriter`;
+        context.font = `${px}px PTMono, Typewriter`;
       } else {
-        context.font = `${FONT_SIZE}px Typewriter`;
+        context.font = `${FONT_SIZE}px PTMono, Typewriter`;
       }
 
       context.save();

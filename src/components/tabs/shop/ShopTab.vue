@@ -235,7 +235,7 @@ export default {
 .o-shop-button-button {
   display: flex;
   align-items: center;
-  font-family: Typewriter;
+  font-family: PTMono, Typewriter;
   background: turquoise;
   border: none;
   border-radius: var(--var-border-radius, 0.5rem);

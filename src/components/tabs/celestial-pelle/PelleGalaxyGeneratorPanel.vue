@@ -171,7 +171,7 @@ export default {
 .c-generator-unlock-button {
   width: 25rem;
   height: 10rem;
-  font-family: Typewriter;
+  font-family: PTMono, Typewriter;
   font-size: 2rem;
   font-weight: bold;
   color: black;
@@ -208,7 +208,7 @@ export default {
   height: 11.4rem;
   max-width: 70rem;
   position: relative;
-  font-family: Typewriter;
+  font-family: PTMono, Typewriter;
   font-size: 1.1rem;
   color: var(--color-text);
   background-color: #c1eaf0;

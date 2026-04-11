@@ -176,7 +176,7 @@ export default {
 }
 
 .c-dropdown-btn {
-  width: 32rem;
+  width: 34rem;
   margin: 0.3rem;
   padding: 0;
 }

@@ -62,7 +62,9 @@ export default {
       >
         ?
       </div>
-      Защищённые ячейки: ({{ quantifyInt("ряд", protectedRows) }})
+      Защищённые ячейки:
+      <br>
+      ({{ quantifyInt("ряд", protectedRows) }})
     </div>
     <button
       :class="addRowButtonClass()"

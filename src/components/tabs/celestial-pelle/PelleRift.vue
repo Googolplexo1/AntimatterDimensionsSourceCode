@@ -153,7 +153,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 97rem;
+  width: 106rem;
 }
 
 .c-pelle-rift-column {
@@ -171,7 +171,7 @@ export default {
 .c-pelle-rift-status {
   display: flex;
   flex-direction: column;
-  width: 32rem;
+  width: 38rem;
   align-items: center;
 }
 

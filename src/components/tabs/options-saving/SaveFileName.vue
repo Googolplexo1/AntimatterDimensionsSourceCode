@@ -43,7 +43,7 @@ export default {
 <style scoped>
 .c-custom-save-name__input {
   text-align: center;
-  font-family: Typewriter;
+  font-family: PTMono, Typewriter;
   font-size: 1.3rem;
   font-weight: bold;
   border: 0.1rem solid black;

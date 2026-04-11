@@ -286,7 +286,7 @@ export default {
       <div :class="realityClassObject()">
         {{ isDoomed ? "Обречённая Реальность" : "Реальность" }}
       </div>
-      <div>У вас {{ quantifyInt("реальность", reality.count) }}.</div>
+      <div>У вас {{ formatDecimalAmount(reality.count.toDecimal()) }} {{ pluralize("реальность", reality.count) }}.</div>
       <div>Рекорд реальности по игровому времяисчислению: {{ reality.best.toStringShort() }}.</div>
       <div>Рекорд реальности по реальному времяисчислению: {{ reality.bestReal.toStringShort() }}.</div>
       <div :class="{ 'c-stats-tab-doomed' : isDoomed }">

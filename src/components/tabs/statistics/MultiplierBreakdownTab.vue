@@ -127,7 +127,7 @@ export default {
   margin: 0 0.5rem -0.1rem;
   z-index: 1;
   text-align: center;
-  font-family: Typewriter;
+  font-family: PTMono, Typewriter;
   font-size: 1rem;
   font-weight: bold;
   color: var(--color-text);

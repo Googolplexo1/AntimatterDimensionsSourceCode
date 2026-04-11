@@ -49,7 +49,7 @@ body.t-s11 {
 
 .o-tachyon-particle {
   fill: orange !important;
-  font-family: Typewriter;
+  font-family: PTMono, Typewriter;
   font-size: 20px;
   pointer-events: none;
   -webkit-user-select: none;

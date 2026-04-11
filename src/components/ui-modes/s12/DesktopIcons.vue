@@ -135,7 +135,7 @@ export default {
 .c-s12-desktop-icon__text {
   overflow: hidden;
   width: 100%;
-  font-family: "Segoe UI", Typewriter;
+  font-family: "Segoe UI", PTMono, Typewriter;
   font-size: var(--icon-font-size);
   font-weight: normal;
   line-height: var(--icon-line-height);

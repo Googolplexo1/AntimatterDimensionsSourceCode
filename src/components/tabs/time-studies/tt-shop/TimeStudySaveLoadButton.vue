@@ -189,7 +189,7 @@ export default {
 
 .c-tt-save-load-btn__menu {
   text-align: left;
-  font-family: Typewriter;
+  font-family: PTMono, Typewriter;
   font-size: 1.4rem;
   font-weight: bold;
   color: white;
@@ -214,7 +214,7 @@ export default {
 
 .c-tt-save-load-btn__menu-rename {
   text-align: left;
-  font-family: Typewriter;
+  font-family: PTMono, Typewriter;
   font-size: 1.4rem;
   font-weight: bold;
   border: none;

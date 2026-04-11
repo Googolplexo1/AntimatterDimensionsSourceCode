@@ -430,7 +430,7 @@ export const migrations = {
       delete player.options.multiplierTab.replacePowers;
       player.options.notation = "Смешанная научная";
     },
-    201: player => {
+    501: player => {
       if (player.celestials.pelle.doomed) return;
       player.replicanti = {
         unl: false,
@@ -1239,6 +1239,7 @@ export const migrations = {
     saveData.totalAntimatter = saveData.totalAntimatter || saveData.totalmoney || saveData.money;
     saveData.thisEternity = saveData.thisEternity || saveData.totalTimePlayed;
     saveData.version = saveData.version || 0;
+    if (saveData.version === 201) saveData.version = 20;
   },
 
   // Patch up to the specified version; we need this functionality in order to properly migrate both saves from

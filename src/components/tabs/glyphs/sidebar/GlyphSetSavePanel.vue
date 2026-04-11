@@ -278,7 +278,7 @@ export default {
 }
 
 .c-glyph-single-set-save-flexbox {
-  width: 17rem;
+  width: 20rem;
 }
 
 .c-glyph-set-preview-area {

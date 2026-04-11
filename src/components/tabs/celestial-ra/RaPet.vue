@@ -150,7 +150,7 @@ export default {
       >
         {{ scalingUpgradeText }}
       </div>
-      <br v-else>
+      <br v-if="v">
       <div v-if="!isCapped">
         <div>
           У вас {{ format(memories, 2) }} Памяти {{ name }}.

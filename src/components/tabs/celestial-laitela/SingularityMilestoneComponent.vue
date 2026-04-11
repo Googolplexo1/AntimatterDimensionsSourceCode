@@ -70,13 +70,13 @@ export default {
       return `${formatInt(this.completions)}/${maxStr} ${pluralize("выполнения", this.maxCompletions)}`;
     },
     progressDisplay() {
-      const condenseCount = this.remainingSingularities / this.singularitiesPerCondense;
+      const condenseCount = Math.ceil(this.remainingSingularities / this.singularitiesPerCondense);
       let thisSingularityTime, extraTime, timeText;
       switch (this.milestoneMode) {
         case SINGULARITY_MILESTONE_RESOURCE.SINGULARITIES:
           return `Через ${quantify("Сингулярность", this.remainingSingularities, 2)}`;
         case SINGULARITY_MILESTONE_RESOURCE.CONDENSE_COUNT:
-          return `Через ${quantify("сжатие", condenseCount, 2, 2)}`;
+          return `Через ${quantify("сжатие", condenseCount, 2)}`;
         case SINGULARITY_MILESTONE_RESOURCE.MANUAL_TIME:
           thisSingularityTime = Math.clampMin(0, this.currentCondenseTime);
           extraTime = Math.ceil(condenseCount - 1) * this.baseCondenseTime;

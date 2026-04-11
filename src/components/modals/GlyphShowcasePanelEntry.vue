@@ -84,6 +84,7 @@ export default {
         "font-weight": "bold",
         "text-shadow": this.type === "cursed" ? "0.05rem 0.05rem var(--color-text)" : undefined,
         animation: this.type === "reality" ? "a-reality-glyph-description-cycle 10s infinite" : undefined,
+        "width": "10rem"
       };
     },
     rarityStyle() {

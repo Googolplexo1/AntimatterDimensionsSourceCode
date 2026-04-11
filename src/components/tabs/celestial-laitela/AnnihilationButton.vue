@@ -80,8 +80,7 @@ export default {
           :style="annihilationInputStyle"
           class="c-small-autobuyer-input c-laitela-annihilation-input"
           @change="handleAutoAnnihilationInputChange()"
-        >
-        .
+        >.
       </span>
     </span>
     <span v-else>

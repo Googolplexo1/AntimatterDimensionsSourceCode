@@ -89,19 +89,19 @@ export const GameStorage = {
   },
 
   get localStorageKey() {
-    return DEV ? "dimensionTestSave" : "dimensionSave";
+    return DEV ? "dimensionTestSaveRussian" : "dimensionSaveRussian";
   },
 
   backupDataKey(saveSlot, backupSlot) {
-    return DEV ? `backupTestSave-${saveSlot}-${backupSlot}` : `backupSave-${saveSlot}-${backupSlot}`;
+    return DEV ? `backupTestSaveRussian-${saveSlot}-${backupSlot}` : `backupSaveRussian-${saveSlot}-${backupSlot}`;
   },
 
   backupTimeKey(saveSlot) {
-    return DEV ? `backupTestTimes-${saveSlot}` : `backupTimes-${saveSlot}`;
+    return DEV ? `backupTestTimesRussian-${saveSlot}` : `backupTimesRussian-${saveSlot}`;
   },
 
   load() {
-    const save = localStorage.getItem(this.localStorageKey);
+    const save = localStorage.getItem(this.localStorageKey) || localStorage.getItem("dimensionSave");
     const root = GameSaveSerializer.deserialize(save);
 
     this.loadRoot(root);
@@ -129,6 +129,8 @@ export const GameStorage = {
       this.save(true);
       return;
     }
+
+    if (!(+root.saves[root.current].news.specialTickerData.paperclips + 1)) this.loadPlayerObject(Player.defaultStart);
 
     this.saves = root.saves;
     this.currentSlot = root.current;

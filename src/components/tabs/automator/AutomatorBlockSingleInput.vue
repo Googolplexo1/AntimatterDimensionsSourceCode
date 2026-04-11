@@ -244,7 +244,7 @@ export default {
         if (this.isBoolTarget) newValue = this.dropdownSelectionRussian !== "";
         else if (this.isTextInput) newValue = this.textContents;
         else {
-          newValue = this.dropdownOptions[this.dropdownOptionsRussian.indexOf(this.dropdownSelectionRussian)];
+          newValue = this.dropdownOptions[this.dropdownOptionsRussian.indexOf(this.dropdownSelectionRussian)] ?? "";
           this.dropdownSelection = newValue;
         }
 

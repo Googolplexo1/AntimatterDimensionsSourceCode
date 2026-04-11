@@ -38,9 +38,9 @@
 /* #region o-time-study */
 
 .c-pelle-useless {
-  width: 18rem;
+  width: 20rem;
   height: 10rem;
-  font-family: Typewriter, serif;
+  font-family: PTMono, Typewriter, serif;
   font-size: 1rem;
   font-weight: bold;
   background-color: crimson;
@@ -75,7 +75,7 @@
 .o-time-study {
   width: 20rem;
   height: 10rem;
-  font-family: Typewriter, serif;
+  font-family: PTMono, Typewriter, serif;
   font-size: 1rem;
   font-weight: bold;
   background-color: black;

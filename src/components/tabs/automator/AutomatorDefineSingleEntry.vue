@@ -168,7 +168,7 @@ export default {
 
 .c-define-textbox {
   display: inline-block;
-  font-family: Typewriter, serif;
+  font-family: PTMono, Typewriter, serif;
   font-size: 1.1rem;
   background: var(--color-blockmator-block-background);
   border: 0.1rem solid var(--color-blockmator-block-border);

@@ -101,7 +101,7 @@ body.t-s12 {
   --color-text: black;
   --color-text-inverted: white;
   max-width: calc(100% - 10rem);
-  font-family: "Segoe UI", Typewriter;
+  font-family: "Segoe UI", PTMono, Typewriter;
   font-weight: normal;
   background-color: rgba(187, 216, 242, 75%);
   background-image: var(--s12-background-gradient);
@@ -143,7 +143,7 @@ body.t-s12 {
 
 .t-s12 .l-singularity-milestone-modal-container-inner .c-laitela-milestone {
   text-align: center;
-  font-family: Typewriter;
+  font-family: PTMono, Typewriter;
   font-size: 1.4rem;
 }
 
@@ -202,7 +202,7 @@ body.t-s12 {
   z-index: 0;
   align-self: flex-end;
   text-align: center;
-  font-family: "Segoe UI", Typewriter;
+  font-family: "Segoe UI", PTMono, Typewriter;
   font-weight: normal;
   color: black;
   background-image: linear-gradient(to bottom, white 45%, #d7d7d7 55%);

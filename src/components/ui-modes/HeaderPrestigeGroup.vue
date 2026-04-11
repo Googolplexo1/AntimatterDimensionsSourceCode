@@ -38,8 +38,8 @@ export default {
 
 .l-game-header__center {
   position: absolute;
-  right: calc(50% - 25rem);
-  width: 50rem;
+  right: calc(50% - 30rem);
+  width: 60rem;
 }
 
 .l-game-header__infinity {
