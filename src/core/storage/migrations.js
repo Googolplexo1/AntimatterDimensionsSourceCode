@@ -444,6 +444,10 @@ export const migrations = {
         galCost: new Decimal("1e170"),
       };
       player.eternityUpgrades = new Set();
+    },
+    502: player => {
+      player.options.themeModern = "Normal";
+      player.options.themeClassic = "Normal";
     }
   },
 
