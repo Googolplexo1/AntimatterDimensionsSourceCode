@@ -45,7 +45,7 @@ export const replicanti = {
     icon: MultiplierTabIcons.UPGRADE("reality"),
   },
   realityUpgrade1: {
-    name: `Улучшение Реальности "Космическая Репликация"`,
+    name: `Улучшение Реальности "Космическое Дублирование"`,
     multValue: () => RealityUpgrade(6).effectOrDefault(1),
     isActive: () => PlayerProgress.realityUnlocked() && !Pelle.isDoomed,
     icon: MultiplierTabIcons.UPGRADE("reality"),

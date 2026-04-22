@@ -152,7 +152,7 @@ export const imaginaryUpgrades = [
     hasFailed: () => false,
     checkRequirement: () => EternityChallenge(5).isRunning && Tickspeed.perSecond.exponent >= 7.5e10,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    description: () => `Все множители за покупку измерений возведены в степень ${formatPow(1.5, 0, 1)}`,
+    description: () => `Все множители за покупку измерений возведены в степень ${format(1.5, 0, 1)}`,
     effect: 1.5,
     isDisabledInDoomed: true
   },

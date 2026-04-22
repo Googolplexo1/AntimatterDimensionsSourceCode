@@ -189,7 +189,7 @@ export const pelleRifts = {
     name: ["Парадокс", "Противоречие", "Заблуждение"],
     nameObjective: ["Парадокс", "Противоречие", "Заблуждение"],
     drainResource: "ЗВ",
-    baseEffect: x => `Множители всех измерений возведены в степень ${formatPow(x, 2, 3)}`,
+    baseEffect: x => `Множители всех измерений возведены в степень ${format(x, 2, 3)}`,
     additionalEffects: () => [PelleRifts.paradox.milestones[2]],
     strike: () => PelleStrikes.dilation,
     percentage: totalFill => totalFill.plus(1).log10() / 100,

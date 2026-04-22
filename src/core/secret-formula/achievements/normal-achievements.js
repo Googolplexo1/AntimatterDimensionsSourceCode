@@ -1152,7 +1152,7 @@ export const normalAchievements = [
   {
     id: 158,
     name: "Ты чё, залез в эту дыру головой?",
-    description: "Сделайте действие обеих Чёрных Дыр беспрервыным.",
+    description: "Сделайте действие обеих Чёрных Дыр беспрерывным.",
     checkRequirement: () => BlackHole(1).isPermanent && BlackHole(2).isPermanent,
     checkEvent: GAME_EVENT.BLACK_HOLE_UPGRADE_BOUGHT,
     get reward() { return `Чёрные Дыры на ${formatPercents(0.1)} сильнее.`; },

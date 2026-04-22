@@ -136,10 +136,10 @@ export default {
     @confirm="importSave"
   >
     <template #header>
-      Ипортировать данные прогаммы для Автоматизатора
+      Импортировать данные прогаммы для Автоматизатора
     </template>
     Новая программа для Автоматизатора будет добавлена в конец списка.
-    <span v-if="isImportingExtraData">Дополнительные данные, связанные с программой, также будут импоритрованы.</span>
+    <span v-if="isImportingExtraData">Дополнительные данные, связанные с программой, также будут импортированы.</span>
     <input
       ref="input"
       v-model="input"
@@ -160,8 +160,8 @@ export default {
           :key="id"
           class="c-import-data-name"
         >
-          <span v-if="preset.name">"{{ preset.name }}" (slot {{ preset.id + 1 }})</span>
-          <span v-else>Preset slot #{{ preset.id + 1 }}</span>
+          <span v-if="preset.name">"{{ preset.name }}" (слот №{{ preset.id + 1 }})</span>
+          <span v-else>слот №{{ preset.id + 1 }}</span>
         </span>
         <div
           v-if="!ignorePresets && overwrittenPresetCount > 0"

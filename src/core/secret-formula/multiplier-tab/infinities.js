@@ -36,7 +36,7 @@ export const infinities = {
     icon: MultiplierTabIcons.UPGRADE("reality"),
   },
   realityUpgrades: {
-    name: `Улучшение Реальности "Бесчисленное Создание"`,
+    name: `Улучшение Реальности "Бессчётное Построение"`,
     multValue: () => DC.D1.timesEffectsOf(RealityUpgrade(7)),
     isActive: () => PlayerProgress.realityUnlocked(),
     icon: MultiplierTabIcons.UPGRADE("reality"),
