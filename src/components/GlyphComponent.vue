@@ -699,7 +699,7 @@ export default {
       return { dx, dy };
     },
     glyphEffectDots(id) {
-      if (["companion", "cursed"].includes(this.glyph.type)) return {};
+      if (["companion", "cursed"].includes(this.glyph.type)) return {position: "absolute"};
       const pos = this.effectIconPos(id);
 
       return {

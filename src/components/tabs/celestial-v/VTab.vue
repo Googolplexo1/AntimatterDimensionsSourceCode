@@ -201,7 +201,7 @@ export default {
           Создать Проклятый Глиф
         </PrimaryButton>
         <br>
-        Проклятые Глифы могут быть созданы отсюда или из вкладки Эффарига.
+        Проклятые Глифы могут быть созданы отсюда или из вкладки "Эффариг".
         <br>
         Каждый Проклятый Глиф считается за {{ formatInt(-3) }} глифа при подсчёте количества действующих глифов.
         <br>
@@ -281,7 +281,7 @@ export default {
               Запустить Реальность Ви
             </b>
             <br>
-            <div :style="{ 'font-size': hasAlchemy ? '1.2rem' : '' }">
+            <div :style="{ 'font-size': hasAlchemy ? '1.2rem' : '1.25rem' }">
               {{ runDescription }}
             </div>
             <div class="c-v-run-button__line c-v-run-button__line--1" />
@@ -344,7 +344,7 @@ export default {
 }
 
 .l-v-goal-reduction-spacer {
-  height: 0.8rem;
+  height: 0rem;
 }
 
 .l-cursed-glyph-creation {

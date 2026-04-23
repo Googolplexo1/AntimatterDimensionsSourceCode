@@ -1779,14 +1779,14 @@ br {
 }
 
 .o-primary-btn--replicanti-galaxy {
-  width: 37rem;
+  width: 38rem;
   height: 7rem;
   font-size: 1.2rem;
   padding: 0.1rem 0.6rem;
 }
 
 .o-primary-btn--replicanti-galaxy-toggle {
-  width: 37rem;
+  width: 38rem;
   font-size: 1.2rem;
 }
 
@@ -6683,7 +6683,7 @@ kbd {
 }
 
 .o-v-unlock-name {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 

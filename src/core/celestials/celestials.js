@@ -57,7 +57,7 @@ GameDatabase.celestials.descriptions = [
     name: "V",
     effects() {
       const vEffect = `Множители всех измерений, получение Очков Бесконечности, получение Очков Вечности и производство Замедленного Времени\
-      в секунду возведено в степень ${format(0.5, 1, 1)}. 
+      в секунду возведены в степень ${format(0.5, 1, 1)}. 
       Интервал репликации в миллисекундах возведён в квадрат.`;
       const vEffectAdditional = `
       Эффект Экспоненты отключён.`;
@@ -71,7 +71,7 @@ GameDatabase.celestials.descriptions = [
     name: "Ra",
     effects() {
       return `Вы начинаете с ${formatInt(4)} Расширениями Измерений и не можете получить больше.
-      Множитель ускорителя всегда равен ${formatX(1.1245, 0, 3)}.`;
+      Множитель ускорителя всегда равен ${formatX(1.1245, 0, 4)}.`;
     },
   },
   {
@@ -87,7 +87,7 @@ GameDatabase.celestials.descriptions = [
           disabledDims = "8-х Измерений всех видов";
           break;
         default:
-          disabledDims = `${highestActive + 1}-х и более высоких по уровню Измерений всех видов`;
+          disabledDims = `${highestActive + 1}-х и более высоких по уровню измерений всех видов`;
           break;
       }
       const disabledText = highestActive === 8
