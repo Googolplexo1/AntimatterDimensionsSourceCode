@@ -192,6 +192,9 @@ export default {
     importFilterSettings() {
       Modal.importFilter.show();
     },
+    translateGlyph(type) {
+      return translateGlyph(type);
+    },
   }
 };
 </script>
@@ -302,7 +305,7 @@ export default {
         <span
           v-for="type in glyphTypes"
           :key="type.id"
-          v-tooltip="type.id.capitalize()"
+          v-tooltip="translateGlyph(type.id)"
           class="l-glyph-sacrifice-options__advanced-type-select c-glyph-sacrifice-options__advanced-type-select"
           :style="advancedTypeSelectStyle(type)"
           @click="advancedType=type.id"
@@ -343,7 +346,7 @@ export default {
         <span
           v-for="type in glyphTypes"
           :key="type.id"
-          v-tooltip="type.id.capitalize()"
+          v-tooltip="translateGlyph(type.id)"
           class="l-glyph-sacrifice-options__advanced-type-select c-glyph-sacrifice-options__advanced-type-select"
           :style="advancedTypeSelectStyle(type)"
           @click="advancedType=type.id"
