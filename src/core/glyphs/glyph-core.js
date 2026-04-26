@@ -787,7 +787,7 @@ export const Glyphs = {
     }
     const cursedCount = this.allGlyphs.filter(g => g !== null && g.type === "cursed").length;
     if (cursedCount >= 5) {
-      GameUI.notify.error(`Вам не нужно больше ${format(5)} Проклятых Глифов!`);
+      GameUI.notify.error(`Вам не нужно больше ${formatInt(5)} Проклятых Глифов!`);
     } else {
       this.addToInventory(GlyphGenerator.cursedGlyph());
       GameUI.notify.error("Создан Проклятый Глиф");

@@ -69,8 +69,8 @@ export default {
       return ALCHEMY_BASIC_GLYPH_TYPES.filter(t => !GlyphTypes.locked.map(e => e.id).includes(t));
     },
     settingTooltipText() {
-      return `Наводите мышь на клетки для просмотра подробностей. Символы ✔ и ✘ означают
-        выбранный/не выбранный эффект в режиме "Заданные эффекты".`;
+      return `Наводите курсор мыши на клетки для просмотра подробностей. Символы ✔ и ✘ означают
+        выбранный/невыбранный эффект в режиме "Заданные эффекты".`;
     }
   },
   mounted() {
@@ -80,8 +80,8 @@ export default {
     update() {
       this.currentSettings = JSON.parse(JSON.stringify(player.reality.glyphs.filter));
     },
-    changedValue(oldVal, newVal, applyFn) {
-      if (oldVal === newVal) return "(No change)";
+    changedValue(newVal, oldVal, applyFn) {
+      if (oldVal === newVal) return "без изменений";
       return `${applyFn(oldVal)} ➜ ${applyFn(newVal)}`;
     },
     importFilter() {
@@ -118,7 +118,7 @@ export default {
       <div v-else-if="inputIsValid">
         <b>Режим фильтрации:</b> {{ selectStr }}
         <br>
-        <b>"Количество эффектов":</b> {{ basicCountStr }}
+        <b>Количество эффектов:</b> {{ basicCountStr }}
         <br>
         <b>Отвергаемые глифы:</b> {{ trashStr }}
         <br>

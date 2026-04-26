@@ -79,7 +79,7 @@ export const perks = {
     label: "НОВ1",
     family: PERK_FAMILY.ETERNITY,
     get description() {
-      return `Начинать с ${formatInt(10)} Очков Вечности.`;
+      return `Начинать с ${formatInt(10)} Очками Вечности.`;
     },
     bumpCurrency: () => Currency.eternityPoints.bumpTo(10),
     effect: 10,

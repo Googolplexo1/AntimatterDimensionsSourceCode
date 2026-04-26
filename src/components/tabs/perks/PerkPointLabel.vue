@@ -111,7 +111,7 @@ export default {
 }
 
 .c-button-perk-layout {
-  width: 40rem;
+  width: 45rem;
   margin-bottom: 1rem;
 }
 

@@ -176,8 +176,7 @@ export default {
           :class="celestialUnlockClassObject"
           @click="unlockCelestial"
         >
-          <p>{{ vUnlock.description }}</p>
-          <p>{{ vUnlock.rewardText }}</p>
+          <p style="font-size: 3rem">{{ vUnlock.rewardText }}</p>
         </div>
       </div>
     </div>

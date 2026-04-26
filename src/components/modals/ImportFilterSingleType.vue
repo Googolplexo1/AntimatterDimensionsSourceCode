@@ -92,21 +92,21 @@ export default {
         <span
           class="c-rarity"
           :class="topLevelClassObject('rarity')"
-          ach-tooltip="Setting for Rarity Threshold and Specified Effect"
+          ach-tooltip='Порог редкости в режимах "Редкость" и "Указанные эффекты"'
         >
           {{ rarityStr }}
         </span>
         <span
           class="c-effects-count"
           :class="topLevelClassObject('effectCount')"
-          ach-tooltip="Number of effects in Specified Effect"
+          ach-tooltip='Требуемое количество эффектов в режиме "Указанные эффекты"'
         >
-          Минимальное количество эффектов: {{ effectStr }}
+          Эффектов: {{ effectStr }}
         </span>
         <span
           class="c-target-score"
           :class="topLevelClassObject('score')"
-          ach-tooltip="Threshold for Effect Score"
+          ach-tooltip='Порог принятия глифов в режиме "Взвешенные эффекты"'
         >
           Оценка: {{ scoreStr }}
         </span>
@@ -140,7 +140,7 @@ export default {
       </span>
     </span>
     <span v-else>
-      (Без изменений)
+      Без изменений
     </span>
   </div>
 </template>

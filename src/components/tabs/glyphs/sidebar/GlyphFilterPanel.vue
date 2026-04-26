@@ -53,7 +53,7 @@ export default {
         size: "3rem",
         "glow-blur": "0.3rem",
         "glow-spread": "0.1rem",
-        "text-proportion": 0.66
+        "text-proportion": 0.75
       };
     },
     questionmarkTooltip() {
@@ -187,7 +187,7 @@ export default {
       const simpleData = [filter.select, filter.simple, filter.trash].join("|");
       const typeData = ALCHEMY_BASIC_GLYPH_TYPES.map(t => serializeType(filter.types[t])).join("|");
       copyToClipboard(GameSaveSerializer.encodeText(`${simpleData}|${typeData}`, "glyph filter"));
-      GameUI.notify.info("Filter settings copied to clipboard");
+      GameUI.notify.info("Настройки Фильтра скопированы в буфер обмена");
     },
     importFilterSettings() {
       Modal.importFilter.show();

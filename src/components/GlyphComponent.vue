@@ -729,6 +729,12 @@ export default {
         // Some cases will have undefined lines which need to be removed to combine everything together properly
         background: lines.filter(l => l).join(",")
       };
+    },
+    symbolStyle() {
+      return {
+        position: "absolute",
+        height: `${this.textProportion * 200 - 25}%`
+      };
     }
   }
 };
@@ -750,7 +756,7 @@ export default {
       :style="innerStyle"
       :class="['l-glyph-component', 'c-glyph-component']"
     >
-      <span style="position: absolute; height: 75%;">{{ symbol }}</span>
+      <span :style="symbolStyle()">{{ symbol }}</span>
       <template v-if="$viewModel.shiftDown || showGlyphEffectDots">
         <div
           v-for="x in glyphEffects"
