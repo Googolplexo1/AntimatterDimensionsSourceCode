@@ -126,7 +126,7 @@ export const dilationUpgrades = {
   ttGenerator: {
     id: 10,
     cost: 1e15,
-    description: () => `Тахионы производят ${format(0.00005, 5, 5)} Теоремы Времени в секунду`,
+    description: () => `Тахионы производят по ${format(0.00005, 5, 5)} Теоремы Времени в секунду`,
     effect: () => Currency.tachyonParticles.value.div(20000),
     formatEffect: value => `${format(value, 2, 1)}/с`
   },
