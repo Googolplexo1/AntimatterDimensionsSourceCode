@@ -182,7 +182,8 @@ class Validator extends BaseVisitor {
         .replace("Use", "разрядить")
         .replace("StringLiteral", "строка, ограниченная кавычками")
         .replace("StringLiteralSingleQuote", "строка, ограниченная апострофами")
-        .replace("entifier", "");
+        .replace("entifier", "")
+        .replace("AutomatorCurrency", "игровой параметр");
       modifiedErrors.push(err);
       lastLine = err.startLine;
     }
