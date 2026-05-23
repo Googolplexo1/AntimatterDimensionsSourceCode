@@ -50,7 +50,7 @@ export default {
       действует ({{ nextChange }} осталось)
     </template>
     <template v-else-if="id === 2 && isCharged">
-      готова (активируется вместе с 1-й Чёрной Дырой через {{ nextChange }})
+      готова (активируется вместе с 1-й Чёрной Дырой на {{ nextChange }})
     </template>
     <template v-else>
       бездействует ({{ nextChange }} осталось)
