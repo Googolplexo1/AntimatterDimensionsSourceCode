@@ -55,7 +55,7 @@ export const glyphSacrifice = {
       const nextGalaxyText = amount < 1500
         ? ` (следующая на ${format(nextDistantGalaxy, 2, 2)})`
         : "";
-      return `Третья наценка на Галактики Репликанти начинается на ${quantifyInt("галактику", amount)} позже${nextGalaxyText}`;
+      return `Вторая и третья наценки на Улучшение Репликанти, увеличивающее максимальное количество Галактик Репликанти, начинаются на ${quantifyInt("покупку", amount)} позже${nextGalaxyText}`;
     },
     cap: () => GlyphSacrificeHandler.maxSacrificeForEffects
   },

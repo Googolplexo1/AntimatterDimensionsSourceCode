@@ -165,7 +165,7 @@ window.pluralize = function pluralize(word, amount) {
     if (word.endsWith("ие")) return word.slice(0, -1) + "я";
     if (word.endsWith("ь") || word === "поле") return word.slice(0, -1) + "я";
     if (word.includes("алактик")) return word.slice(0, -1) + "и";
-    if (word.endsWith("ка") || word === "ошибку") return word.slice(0, -2) + "ки";
+    if (word.endsWith("ка") || word.endsWith("ку")) return word.slice(0, -2) + "ки";
     if (word.includes("минут") || word.includes("секунд")) return word.slice(0, -1) + (word.endsWith("ы") ? "" : "ы");
     if (word.endsWith("а")) return word.slice(0, -1) + "ов";
     return word + "а";
@@ -174,7 +174,7 @@ window.pluralize = function pluralize(word, amount) {
     if (word.endsWith("ие")) return word.slice(0, -1) + "й";
     if (word.endsWith("ь") || word === "поле") return word.slice(0, -1) + "ей";
     if (word.includes("алактик")) return word.slice(0, -1);
-    if (word.endsWith("ка") || word === "ошибку") return word.slice(0, -2) + "ок";
+    if (word.endsWith("ка") || word.endsWith("ку")) return word.slice(0, -2) + "ок";
     if (word.includes("минут") || word.includes("секунд")) return word.slice(0, -1);
     if (word.endsWith("а")) return word.slice(0, -1) + "ов";
     return word + "ов";
