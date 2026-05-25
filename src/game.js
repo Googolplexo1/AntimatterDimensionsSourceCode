@@ -482,6 +482,7 @@ export function gameLoop(passDiff, options = {}) {
   }
 
   applyRUPG10(false);
+  if (Achievement(133).isUnlocked && !Pelle.isDoomed) InfinityChallenges.completeAll();
 
   Autobuyers.tick();
   Tutorial.tutorialLoop();
