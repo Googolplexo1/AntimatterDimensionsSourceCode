@@ -251,7 +251,7 @@ export const ra = {
     },
     unlockHardV: {
       id: 24,
-      reward: () => `Разблокировать супер-достижения Ви`,
+      reward: () => `Разблокировать супердостижения Ви`,
       effect: () => Math.floor(Ra.pets.v.level / 6),
       pet: "v",
       level: 6,
