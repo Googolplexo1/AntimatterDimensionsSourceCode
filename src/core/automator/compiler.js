@@ -184,6 +184,7 @@ class Validator extends BaseVisitor {
         .replace("StringLiteralSingleQuote", "строка, ограниченная апострофами")
         .replace("entifier", "")
         .replace("AutomatorCurrency", "игровой параметр");
+        .replace("BlackHoleStr", "номер Чёрной Дыры");
       modifiedErrors.push(err);
       lastLine = err.startLine;
     }
