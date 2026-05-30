@@ -45,12 +45,6 @@ export const AD = {
       return mult.times(highestDim).clampMin(1);
     },
     isActive: dim => (dim ? dim <= MultiplierTabHelper.activeDimCount("AD") : true),
-    dilationEffect: () => {
-      const baseEff = (player.dilation.active || Enslaved.isRunning)
-        ? 0.75 * Effects.product(DilationUpgrade.dilationPenalty)
-        : 1;
-      return baseEff * (Effarig.isRunning ? Effarig.multDilation : 1);
-    },
     overlay: ["Ω", "<i class='fas fa-cube' />"],
     icon: dim => MultiplierTabIcons.DIMENSION("AD", dim),
   },
