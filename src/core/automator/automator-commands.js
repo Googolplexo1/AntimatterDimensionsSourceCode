@@ -77,15 +77,15 @@ function findLastPrestigeRecord(layer) {
   let addedECs, gainedEP;
   switch (layer) {
     case "INFINITY":
-      return `${format(player.records.recentInfinities[0][1], 2)} ОБ`;
+      return `${format(player.records.recentInfinities[0][2], 2)} ОБ`;
     case "ETERNITY":
       addedECs = AutomatorData.lastECCompletionCount;
-      gainedEP = `${format(player.records.recentEternities[0][1], 2)} ОВ`;
+      gainedEP = `${format(player.records.recentEternities[0][2], 2)} ОВ`;
       return addedECs === 0
         ? `${gainedEP}`
         : `${gainedEP}, ${addedECs} выполнений`;
     case "REALITY":
-      return `${format(player.records.recentRealities[0][1], 2)} МР`;
+      return `${format(player.records.recentRealities[0][2], 2)} МР`;
     default:
       throw Error(`Unrecognized prestige ${layer} in Automator event log`);
   }
@@ -182,7 +182,7 @@ export const AutomatorCommands = [
           autobuyer.mode = durationMode;
           autobuyer.time = duration / 1000;
           // Can't do the units provided in the script because it's been parsed away like 4 layers up the call stack
-          currSetting = `каждые ${quantify("секунд", autobuyer.time)}`;
+          currSetting = `каждые ${format(autobuyer.time, 1, 1)} секунды`;
         } else if (xHighest !== undefined) {
           autobuyer.mode = xHighestMode;
           autobuyer.xHighest = new Decimal(xHighest);
@@ -199,7 +199,7 @@ export const AutomatorCommands = [
         }
         // Settings are drawn from the actual automator text; it's not feasible to parse out all the settings
         // for every combination of autobuyers when they get turned off
-        const settingString = (autobuyer.isActive && currSetting !== "") ? ` (Setting: ${currSetting})` : "";
+        const settingString = (autobuyer.isActive && currSetting !== "") ? ` (настройка: ${currSetting})` : "";
         AutomatorData.logCommandEvent(`Автоматика ${isReality ? "реальности" : (ctx.PrestigeEvent[0].image === "infinity" ? "Большого Сжатия" : "вечности")}
           ${autobuyer.isActive ? "включена" : "выключена"}${settingString}`, ctx.startLine);
         return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
