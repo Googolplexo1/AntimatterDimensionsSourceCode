@@ -105,7 +105,8 @@ export const realityUpgrades = [
     checkRequirement: () => !player.reality.gainedAutoAchievements,
     checkEvent: GAME_EVENT.ETERNITY_RESET_BEFORE,
     canLock: true,
-    // We don't have lockEvent because the modal can never show up for this upgrade
+    // This lock event can only be seen if you are attempting to get ACHNR with the lock on, so we can state ACHNR here
+    lockEvent: "восстановить достижение автоматически (путём покупки Навыка ДОСТНС)",
     description: "Множитель достижений влияет на получение Тахионов с ослабленным эффектом",
     effect: () => Math.sqrt(Achievements.power),
     formatEffect: value => formatX(value, 2, 2)
@@ -344,7 +345,7 @@ export const realityUpgrades = [
     checkRequirement: () => MachineHandler.gainedRealityMachines.gte(5000) &&
       Glyphs.activeWithoutCompanion.length === 0,
     canLock: true,
-    lockEvent: "активировать глиф",
+    lockEvent: () => `активировать глиф либо совершить реальность менее, чем за ${formatInt(5000)} МР`,
     checkEvent: GAME_EVENT.REALITY_RESET_BEFORE,
     description: "Разблокировать дополнительный слот для глифов",
     effect: () => 1

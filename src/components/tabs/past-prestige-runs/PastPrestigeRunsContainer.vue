@@ -177,7 +177,7 @@ export default {
       return this.rateText(run, run[2]);
     },
     prestigeCountRate(run) {
-      return this.rateText(run, run[3]);
+      return this.rateText(run, run[3], 2, 1);
     },
     rateText(run, amount) {
       const time = run[1];

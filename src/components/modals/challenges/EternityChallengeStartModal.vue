@@ -20,7 +20,7 @@ export default {
       return this.challenge.isFullyCompleted;
     },
     message() {
-      return `Вы совершите вечность (по возможности) и начнёте новую внутри Испытания, с
+      return `Вы совершите вечность (по возможности) и начнёте новую внутри Испытания с
         соответствующим условием испытания.
         Чтобы выполнить Испытание${this.challengeIsCompleted ? "" : " и получить награду за него"},
         вы должны достичь цели Испытания в
@@ -41,6 +41,11 @@ export default {
       let conditionOfChallenge = this.challenge._config.description;
       if (typeof conditionOfChallenge === "function") {
         conditionOfChallenge = conditionOfChallenge();
+      }
+      if (this.challenge._config.scrambleText) {
+        conditionOfChallenge = conditionOfChallenge
+          .replace("*", this.challenge._config.scrambleText[1]);
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       }
       return `В этом Испытаниии Вечности действует следующее условие: ${conditionOfChallenge}`;
     }

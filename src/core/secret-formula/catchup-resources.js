@@ -230,7 +230,7 @@ export const catchupResources = [
   {
     name: "Тессеракты",
     id: 30,
-    requiredStage: PROGRESS_STAGE.ENSLAVED,
+    requiredStage: PROGRESS_STAGE.V,
     description: () => `как известно, количество покупок всех Измерений Бесконечности, кроме 8-го,
       ограничено. Тессеракты увеличивают это ограничение.`
   },

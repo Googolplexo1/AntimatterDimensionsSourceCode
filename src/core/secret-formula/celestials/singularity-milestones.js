@@ -265,7 +265,7 @@ export const singularityMilestones = {
     start: 8e33,
     repeat: 0,
     limit: 1,
-    description: completions => "Множитель к Измерениям Тёмной Материи в зависимости от количества Замедленного Времени",
+    description: completions => "Множитель к ИТМ и производству ТЭ в зависимости от количества Замедленного Времени",
     effect: () => Math.pow(1.6, Decimal.log10(Currency.dilatedTime.value.plus(1)) / 1000),
     effectFormat: x => formatX(x, 2, 2),
     upgradeDirection: LAITELA_UPGRADE_DIRECTION.BOOSTS_LAITELA,

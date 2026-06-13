@@ -191,7 +191,7 @@ export const Pelle = {
   },
 
   get uselessTimeStudies() {
-    return [32, 33, 41, 51, 61, 62, 121, 122, 123, 141, 142, 143, 192, 213];
+    return [32, 33, 41, 51, 61, 62, 121, 122, 123, 141, 142, 143, 213];
   },
 
   get disabledRUPGs() {
@@ -217,7 +217,7 @@ export const Pelle = {
         ? Currency.eternityPoints.value.plus(1).pow(0.3)
         : DC.D1,
       replication: isActive("replication")
-        ? 10 ** 53 ** (PelleRifts.vacuum.percentage)
+        ? Math.min(1e308, 10 ** 53 ** (PelleRifts.vacuum.percentage))
         : 1,
       dilation: isActive("dilation")
         ? Decimal.pow(player.dilation.totalTachyonGalaxies, 1.5).max(1)
@@ -241,7 +241,7 @@ export const Pelle = {
         return `Множитель ${formatX(Currency.eternityPoints.value.plus(1).pow(0.3), 2)}
           к получению Очков Вечности (зависит от количества ОВ)`;
       case "replication":
-        return `Множитель ${formatX(10 ** 53 ** (PelleRifts.vacuum.percentage), 2)} \
+        return `Множитель ${formatX(Math.min(1e308, 10 ** 53 ** (PelleRifts.vacuum.percentage)), 2)} \
         к скорости репликации (зависит от заполнения ${wordShift.wordCycle(["Вакуума", "Полости", "Пустоты"])})`;
       case "dilation":
         return `Множитель ${formatX(Decimal.pow(player.dilation.totalTachyonGalaxies, 1.5).max(1), 2)}

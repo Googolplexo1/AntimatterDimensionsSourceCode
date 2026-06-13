@@ -36,8 +36,8 @@ export default {
       const resetResouces = [];
       if (Pelle.isDoomed) resetResouces.push("антиматерии", "Измерений Антиматерии", "ускорителей");
       if (!Perk.antimatterNoReset.isBought) resetResouces.push("Измерений Антиматерии", "ускорителей");
-      if (!Achievement(143).isUnlocked) resetResouces.push("Расширений Измерений");
-      if (!Achievement(111).isUnlocked && !Perk.antimatterNoReset.isBought) resetResouces.push("антиматерии");
+      if (!Achievement(143).isEffectActive) resetResouces.push("Расширений Измерений");
+      if (!Achievement(111).isEffectActive && !Perk.antimatterNoReset.isBought) resetResouces.push("антиматерии");
       return resetResouces.length === 0
         ? `Усилить ускорители`
         : `Сбросить ваше количество ${makeEnumeration(resetResouces)}, чтобы усилить ускорители`;

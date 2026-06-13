@@ -37,7 +37,7 @@ export const raQuotes = {
     id: 4,
     requirement: () => Ra.pets.effarig.level >= 2,
     lines: [
-      "Эфф… а… риг",
+      "Эфф… а… риг…",
       "Помню, Эффариг был дружелюбным.",
     ]
   },

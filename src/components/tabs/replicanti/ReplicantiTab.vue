@@ -149,7 +149,7 @@ export default {
       this.hasIPMult = AlchemyResource.exponential.amount > 0 && !this.isDoomed;
       this.multIP = Replicanti.amount.powEffectOf(AlchemyResource.exponential);
       this.isUncapped = PelleRifts.vacuum.milestones[1].canBeApplied;
-      this.hasRaisedCap = EffarigUnlock.infinity.isUnlocked && !this.isUncapped;
+      this.hasRaisedCap = EffarigUnlock.infinity.isUnlocked && !this.isDoomed;
       this.replicantiCap.copyFrom(replicantiCap());
       if (this.hasRaisedCap) {
         const mult = this.replicantiCap.div(Decimal.NUMBER_MAX_VALUE);
@@ -200,7 +200,7 @@ export default {
     </PrimaryButton>
     <template v-else>
       <div
-        v-if="isDoomed"
+        v-if="isUncapped"
         class="modified-cap"
       >
         Второй этап {{ scrambledText }} снимает ограничение на количество Репликанти.

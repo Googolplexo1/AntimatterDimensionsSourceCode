@@ -47,7 +47,7 @@ class PerkState extends SetPurchasableMechanicState {
 
   onPurchased() {
     if (this.config.bumpCurrency !== undefined) this.config.bumpCurrency();
-    if (this.label === "ДНС") {
+    if (this.label === "ДОСТНС") {
       if (Achievements.preReality.some(a => !a.isUnlocked)) player.reality.gainedAutoAchievements = true;
       for (const achievement of Achievements.preReality) {
         achievement.unlock(true);
@@ -56,6 +56,14 @@ class PerkState extends SetPurchasableMechanicState {
     GameCache.achievementPeriod.invalidate();
     GameCache.buyablePerks.invalidate();
     EventHub.dispatch(GAME_EVENT.PERK_BOUGHT);
+  }
+
+  purchase() {
+    if (this.label === "ДОСТНС" && RealityUpgrade(8).isLockingMechanics) {
+      RealityUpgrade(8).tryShowWarningModal();
+      return;
+    }
+    super.purchase();
   }
 }
 

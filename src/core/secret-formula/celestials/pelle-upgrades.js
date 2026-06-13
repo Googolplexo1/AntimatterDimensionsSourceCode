@@ -102,7 +102,7 @@ export const pelleUpgrades = {
   },
   dimBoostResetsNothing: {
     id: 7,
-    description: "При получении Расширений Измерений ничего не сбрасывается",
+    description: "При получении Расширений Измерений и Галактик Антиматерии ничего не сбрасывается, кроме, может быть, Расширений Измерений",
     cost: 1e11,
     formatCost,
   },
@@ -192,7 +192,7 @@ export const pelleUpgrades = {
   },
   replicantiGalaxyEM40: {
     id: 20,
-    description: "При получении Галактик Репликанти ничего не сбрасывается",
+    description: "При получении Галактик Репликанти ничего не сбрасывается, кроме Репликанти",
     cost: 1e30,
     formatCost,
   }
