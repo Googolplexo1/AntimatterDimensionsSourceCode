@@ -107,7 +107,7 @@ export default {
 <template>
   <ModalWrapper>
     <template #header>
-      Этапы Сингулярностей
+      Этапы Сингулярности
     </template>
     <div
       class="c-modal__confirmation-toggle"
@@ -120,7 +120,7 @@ export default {
         />
       </div>
       <span class="c-modal__confirmation-toggle__text">
-        Включить подсветку кнопки при выполнении новых этапов
+        Включить подсветку кнопки при выполнении новых Этапов
       </span>
     </div>
     <div class="l-singularity-milestone-modal-container-outer">
@@ -137,7 +137,7 @@ export default {
         class="c-singularity-milestone-modal-sort-button"
         @click="cycleButton(0)"
       >
-        Измерять расстояние до этапов в:
+        Измерять расстояние до Этапов в:
         <br>
         {{ resourceStr }}
       </button>
@@ -153,7 +153,7 @@ export default {
         class="c-singularity-milestone-modal-sort-button"
         @click="cycleButton(2)"
       >
-        Поместить завершённые этапы:
+        Поместить завершённые Этапы:
         <br>
         {{ completedStr }}
       </button>
