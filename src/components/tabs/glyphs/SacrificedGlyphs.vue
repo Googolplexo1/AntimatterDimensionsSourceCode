@@ -23,7 +23,7 @@ export default {
     types: () => GLYPH_TYPES.filter(type => type !== "cursed" && type !== "companion"),
     lastMachines() {
       return this.lastMachinesTeresa.lt(DC.E10000)
-        ? `${quantify("Машиной", this.lastMachinesTeresa, 2)} Реальности`
+        ? `${format(this.lastMachinesTeresa, 2)} Машин Реальности`
         : `${format(this.lastMachinesTeresa.dividedBy(DC.E10000), 2)} Мнимой Машины`;
     },
     dropDownIconClass() {

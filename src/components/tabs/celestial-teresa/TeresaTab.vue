@@ -80,7 +80,7 @@ export default {
     },
     lastMachinesString() {
       return this.lastMachines.lt(DC.E10000)
-        ? `${quantify("Машиной", this.lastMachines, 2)} Реальности`
+        ? `${format(this.lastMachines, 2)} Машин Реальности`
         : `${format(this.lastMachines.dividedBy(DC.E10000), 2)} Мнимой Машины`;
     },
     unlockInfoTooltipArrowStyle() {
