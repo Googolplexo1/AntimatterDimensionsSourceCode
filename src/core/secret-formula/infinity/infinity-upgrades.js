@@ -165,10 +165,10 @@ export const infinityUpgrades = {
       return `${format(value, 2)} ОБ раз в ${Time.bestInfinity.times(10).toStringShort()}`;
     },
     charged: {
-      description: "Вы производите Машины Реальности пропорционально количеству, которое вы могли бы получить при реальности",
+      description: "Вы производите Машины Реальности пропорционально количеству, которое вы могли бы получить при реальности, по реальному времяисчислению",
       effect: () => Math.pow(Ra.pets.teresa.level, 2) *
         Ra.unlocks.continuousTTBoost.effects.autoPrestige.effectOrDefault(1),
-      formatEffect: value => formatX(value, 2, 1)
+      formatEffect: value => `${formatInt(value * 100)}% в секунду`
     }
   },
   skipReset1: {
@@ -203,7 +203,7 @@ export const infinityUpgrades = {
     cost: 1000,
     checkRequirement: () => Achievement(41).isUnlocked,
     description: () => (player.options.offlineProgress
-      ? `Производить ${formatPercents(0.5)} от лучшего прироста ОБ за время среди бесконечностей, на протяжении которых вы не нажимали кнопку "Купить всё", офлайн`
+      ? `Производить ${formatPercents(0.5)} от лучшего прироста ОБ за ${PlayerProgress.seenAlteredSpeed() ? "реальное " : ""}время среди бесконечностей, на протяжении которых вы не нажимали кнопку "Купить всё", офлайн`
       : "Это Улучшение производило бы Очки Бесконечности, но офлайн-прогресс отключён"),
     effect: () => (player.options.offlineProgress
       ? player.records.thisEternity.bestIPMsWithoutMaxAll.times(TimeSpan.fromMinutes(1).totalMilliseconds / 2)

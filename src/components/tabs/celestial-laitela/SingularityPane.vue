@@ -178,8 +178,7 @@ export default {
         (+{{ additionalSingularityTime }})
       </span>
       <br>
-      Скорость получения сингулярностей
-      <span v-if="hasAutoSingularity && autoSingularityFactor !== 1"> вручную </span>: {{ manualSingularityRate }}
+      Скорость получения сингулярностей<span v-if="hasAutoSingularity && autoSingularityFactor !== 1"> вручную</span>: {{ manualSingularityRate }}
       <br>
       <span v-if="hasAutoSingularity && autoSingularityFactor !== 1">
         Скорость получения сингулярностей автоматически: {{ autoSingularityRate }}

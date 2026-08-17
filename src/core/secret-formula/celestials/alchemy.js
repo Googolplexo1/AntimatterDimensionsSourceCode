@@ -74,8 +74,8 @@ export const alchemyResources = {
     uiOrder: 3,
     unlockedAt: 8,
     description: "ослабляет мягкое ограничение на скорость репликации",
-    formatEffect: value => `степень мягкого ограничения на скорость репликации понижена: ${formatX(Math.log10(1.2) / LOG10_MAX_VALUE, 6, 6)} ➜
-      ${formatX(Math.log10(value) / LOG10_MAX_VALUE, 6, 6)}`,
+    formatEffect: value => `степень мягкого ограничения на скорость репликации понижена: ${formatPow(Math.log10(1.2) / LOG10_MAX_VALUE, 6, 6)} ➜
+      ${formatPow(Math.log10(value) / LOG10_MAX_VALUE, 6, 6)}`,
     reagents: [
       {
         resource: ALCHEMY_RESOURCE.TIME,
@@ -327,8 +327,8 @@ export const alchemyResources = {
     tier: 4,
     uiOrder: 3,
     unlockedAt: 19,
-    description: "производит реальности и Очки Умения",
-    formatEffect: value => `вы получаете ${format(value, 2, 2)} реальности и Очка Умения в секунду`,
+    description: "производит реальности и Очки Умения по реальному времяисчислению",
+    formatEffect: value => `вы получаете ${format(value, 2, 2)} реальности и Очка Умения в секунду по реальному времяисчислению`,
     reagents: [
       {
         resource: ALCHEMY_RESOURCE.INFINITY,

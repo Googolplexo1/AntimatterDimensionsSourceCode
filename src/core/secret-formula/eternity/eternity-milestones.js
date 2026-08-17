@@ -154,10 +154,12 @@ export const eternityMilestones = {
         player.eternities.gte(200));
       // As far as I can tell, using templates here as Codefactor wants would lead to nested templates,
       // which seems messy to say the least.
-      const realTime = PlayerProgress.seenAlteredSpeed() ? " (по реальному времяисчислению)" : "";
       const realityText = PlayerProgress.realityUnlocked() ? " в текущей реальности" : "";
       // eslint-disable-next-line prefer-template
-      return `Производить ${formatPercents(0.5)} от рекордного прироста вечностей за время${realTime}${realityText} ` +
+      return PlayerProgress.seenAlteredSpeed()
+        ? `Ежеминутно производить ${formatPercents(0.5)} от рекордного прироста вечностей за минуту реального времени${realityText} ` +
+        (eternities.gt(0) ? `(Сейчас: ${format(eternities, 2, 2)} в час)` : "(Не действует)")
+        : `Производить ${formatPercents(0.5)} от рекордного прироста вечностей за время${realityText} ` +
         (eternities.gt(0) ? `(Сейчас: ${format(eternities, 2, 2)} в час)` : "(Не действует)");
     },
     activeCondition: () => (player.options.offlineProgress
@@ -172,9 +174,11 @@ export const eternityMilestones = {
       if (!player.options.offlineProgress) return "Этот Этап производил бы бесконечности, но офлайн-прогресс отключён";
       const infinities = getInfinitiedMilestoneReward(TimeSpan.fromHours(1).totalMilliseconds,
         player.eternities.gte(1000));
-      const realTime = PlayerProgress.seenAlteredSpeed() ? " (по реальному времяисчислению)" : "";
       // eslint-disable-next-line prefer-template
-      return `Производить ${formatPercents(0.5)} от рекордного прироста бесконечностей за время${realTime} в текущей вечности ` +
+      return PlayerProgress.seenAlteredSpeed()
+        ? `Ежеминутно производить ${formatPercents(0.5)} от рекордного прироста бесконечностей за минуту реального времени в текущей вечности ` +
+        (infinities.gt(0) ? `(Сейчас: ${format(infinities, 2, 2)} в час)` : "(Не действует)")
+        : `Производить ${formatPercents(0.5)} от рекордного прироста бесконечностей за время в текущей вечности ` +
         (infinities.gt(0) ? `(Сейчас: ${format(infinities, 2, 2)} в час)` : "(Не действует)");
     },
     activeCondition: () => (player.options.offlineProgress
