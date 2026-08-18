@@ -267,7 +267,7 @@ export default {
         </div>
       </div>
       <div v-if="memoryMultiplier > 1 && !isRaCapped">
-        Получение всей Памяти увеличено в {{ format(memoryMultiplier, 2, 3) }} раз
+        Получение всей Памяти увеличено в {{ format(memoryMultiplier, 2, 3) }} раза
         <span :ach-tooltip="memoryGainTooltip">
           <i class="fas fa-question-circle" />
         </span>

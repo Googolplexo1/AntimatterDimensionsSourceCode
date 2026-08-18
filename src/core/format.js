@@ -151,6 +151,7 @@ window.pluralize = function pluralize(word, amount) {
   if (word === "строки") return "строк";
   if (word === "е") return "х";
   if (word === "Очка") return "Очков";
+  if (word === "алхимический") return "алхимических";
   if (word === "нового") word = "новая";
   if (word.endsWith("ок") || word === "Очко") word = word.slice(0, -2) + "к";
   if (word.endsWith("на")) return word.slice(0, -1) + "о";
@@ -158,7 +159,7 @@ window.pluralize = function pluralize(word, amount) {
   if (word.endsWith("ен") || word.endsWith("ван")) return word + "о";
   if (word.endsWith("ень")) word = word.slice(0, -3) + "нь";
   if (["Машиной", "глифом"].includes(word)) return word.slice(0, -2) + "ами";
-  if (["ая", "ое", "ый", "ий", "ую"].some(ending => word.endsWith(ending))) return word.slice(0, -2) + "ых";
+  if (["ая", "ое", "ый", "ую"].some(ending => word.endsWith(ending))) return word.slice(0, -2) + "ых";
 
   if (dual) { 
     if (word.endsWith("ть")) return word.slice(0, -1) + "и";
