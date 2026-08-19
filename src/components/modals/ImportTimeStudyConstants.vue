@@ -99,7 +99,7 @@ export default {
       </div>
     </div>
     <template #confirm-text>
-      Импортировать все
+      Импортировать
     </template>
   </ModalWrapperChoice>
 </template>
