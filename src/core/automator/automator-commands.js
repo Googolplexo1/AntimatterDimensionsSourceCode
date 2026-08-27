@@ -57,12 +57,12 @@ function parseConditionalIntoText(ctx) {
       "ВЫПОЛНЕНИЙ ИСПВ5", "ВЫПОЛНЕНИЙ ИСПВ6", "ВЫПОЛНЕНИЙ ИСПВ7", "ВЫПОЛНЕНИЙ ИСПВ8",
       "ВЫПОЛНЕНИЙ ИСПВ9", "ВЫПОЛНЕНИЙ ИСПВ10", "ВЫПОЛНЕНИЙ ИСПВ11", "ВЫПОЛНЕНИЙ ИСПВ12",
     ][[
-      "AM", "IP", "EP", "RM", "INFINITIES", "BANKED INFINITIES", "ETERNITIES", "REALITIES",
-      "PENDING IP", "PENDING EP", "PENDING TP", "PENDING RM", "PENDING GLYPH LEVEL",
-      "DT", "TP", "RG", "REP", "TT", "TOTAL TT", "TOTAL COMPLETIONS", "PENDING COMPLETIONS",
-      "EC1 COMPLETIONS", "EC2 COMPLETIONS", "EC3 COMPLETIONS", "EC4 COMPLETIONS",
-      "EC5 COMPLETIONS", "EC6 COMPLETIONS", "EC7 COMPLETIONS", "EC8 COMPLETIONS",
-      "EC9 COMPLETIONS", "EC10 COMPLETIONS", "EC11 COMPLETIONS", "EC12 COMPLETIONS",
+      "am", "ip", "ep", "rm", "infinities", "banked infinities", "eternities", "realities",
+      "pending ip", "pending ep", "pending tp", "pending rm", "pending glyph level",
+      "dt", "tp", "rg", "rep", "tt", "total tt", "total completions", "pending completions",
+      "ec1 completions", "ec2 completions", "ec3 completions", "ec4 completions",
+      "ec5 completions", "ec6 completions", "ec7 completions", "ec8 completions",
+      "ec9 completions", "ec10 completions", "ec11 completions", "ec12 completions",
     ].indexOf(cv.children.AutomatorCurrency[0].image)];
     const val = cv.children.$value;
     if (typeof val === "string") return () => val;
