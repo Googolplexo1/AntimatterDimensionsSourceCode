@@ -152,7 +152,7 @@ export const AutomatorCommands = [
       if (ctx.PrestigeEvent[0].tokenType === T.Reality) {
         if (!RealityUpgrade(25).isBought) {
           V.addError(ctx.PrestigeEvent, "Автоматика реальности недоступна",
-            `купите Улучшение Реальности "Непринуждённое Существование", чтобы использовать эту команду`);
+            `купите Улучшение Реальности "Беспечное Существование", чтобы использовать эту команду`);
           return false;
         }
         if (advSetting) {
@@ -443,7 +443,7 @@ export const AutomatorCommands = [
 
       if (ctx.PrestigeEvent && ctx.PrestigeEvent[0].tokenType === T.Reality && !RealityUpgrade(25).isBought) {
         V.addError(ctx.PrestigeEvent, "Эта команда недоступна",
-          `купите Улучшение Реальности "Непринуждённое Существование", чтобы использовать эту команду`);
+          `купите Улучшение Реальности "Беспечное Существование", чтобы использовать эту команду`);
         return false;
       }
 
