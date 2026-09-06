@@ -20,7 +20,7 @@ export default {
       };
     },
     tooltip() {
-      if (this.isEnslaved) return "...вечность за вечностью, эпоха за эпохой...";
+      if (this.isEnslaved) return "…вечность за вечностью, эпоха за эпохой…";
       return undefined;
     },
     text() {

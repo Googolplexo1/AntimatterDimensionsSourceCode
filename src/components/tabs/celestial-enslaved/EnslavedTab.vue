@@ -257,7 +257,7 @@ export default {
           class="o-primary-btn"
           onclick="Modal.enslavedHints.show()"
         >
-          Ближе присмотреться к Реальности...
+          Ближе присмотреться к Реальности…
         </PrimaryButton>
         <div class="l-enslaved-top-container">
           <div class="l-enslaved-top-container__half">

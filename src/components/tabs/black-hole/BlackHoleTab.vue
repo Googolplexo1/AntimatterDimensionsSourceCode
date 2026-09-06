@@ -41,6 +41,7 @@ export default {
           throw new Error("Unrecognized BH offline pausing mode");
       }
     },
+    ending: () => player.options.genderMale ? "ен" : "на",
   },
   mounted() {
     this.startAnimation();
@@ -152,7 +153,7 @@ export default {
       class="c-black-hole-disabled-description"
     >
       <i v-if="isEnslaved">
-        Ты должен... искать... другие пути...
+        Ты долж{{ ending }}… искать… другие пути…
         <br>
       </i>
       Физика этой реальности несовместима с существованием Чёрных Дыр.

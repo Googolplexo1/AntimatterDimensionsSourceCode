@@ -37,7 +37,7 @@ export default {
     headerText() {
       const timeDisplay = TimeSpan.fromSeconds(this.seconds).toString("genitive");
       if (this.nothingHappened || !this.somethingHappened) {
-        return `Пока вы отсутствовали в течение ${timeDisplay}... Ничего не произошло.`;
+        return `Пока вы отсутствовали в течение ${timeDisplay}… Ничего не произошло.`;
       }
       return `Пока вы отсутствовали в течение ${timeDisplay}: `;
     },

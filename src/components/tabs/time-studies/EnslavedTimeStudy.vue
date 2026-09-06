@@ -54,7 +54,7 @@ export default {
     @click="handleClick"
   >
     <span>
-      У тебя... огромный потенциал...
+      У тебя… огромный потенциал…
       <br>
       <br>
       Цена: {{ format(-enslavedTT) }} Теорем Времени

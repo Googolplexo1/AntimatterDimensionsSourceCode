@@ -202,7 +202,7 @@ const EP_BUTTON_DISPLAY_TYPE = {
 
     <!-- First time -->
     <template v-else-if="type === 0">
-      Иные времена ждут...
+      Иные времена ждут…
       <br>
       Пора стать Вечным
     </template>
@@ -225,7 +225,7 @@ const EP_BUTTON_DISPLAY_TYPE = {
 
     <!-- Challenge -->
     <template v-else-if="type === 2 || (type === 6 && !canEternity)">
-      Иные испытания ждут...
+      Иные испытания ждут…
       <br>
       Пора стать Вечным
     </template>
@@ -250,7 +250,7 @@ const EP_BUTTON_DISPLAY_TYPE = {
 
     <!-- Challenge with multiple completions -->
     <template v-else-if="type === 6">
-      Иные испытания ждут...
+      Иные испытания ждут…
       <template v-if="fullyCompleted">
         <br>
         (Это Испытание уже полностью завершено)

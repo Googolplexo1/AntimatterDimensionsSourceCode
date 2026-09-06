@@ -71,7 +71,7 @@ export default {
       if (!Enslaved.isRunning) return;
       const haveBoost = Glyphs.activeWithoutCompanion.find(e => e.level < Enslaved.glyphLevelMin) !== undefined;
       if (haveBoost) {
-        this.enslavedHint = "сделали... всё... что можем... с глифами...";
+        this.enslavedHint = "сделали… всё… что можем… с глифами…";
       }
     },
     toggleAutoRestartCelestial() {
