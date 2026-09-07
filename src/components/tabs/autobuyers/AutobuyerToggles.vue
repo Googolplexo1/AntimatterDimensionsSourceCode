@@ -72,8 +72,8 @@ export default {
       <PrimaryToggleButton
         v-if="showContinuum"
         v-model="disableContinuum"
-        on="Включить Континуум"
-        off="Выключить Континуум"
+        on="Включить континуум"
+        off="Выключить континуум"
         class="o-primary-btn--subtab-option"
       />
     </span>
