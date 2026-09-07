@@ -7910,6 +7910,7 @@ kbd {
   flex-direction: column;
   width: 21rem;
   height: 16%;
+  font-size: 1rem;
   position: relative;
   z-index: 0;
   justify-content: center;
@@ -8065,7 +8066,7 @@ kbd {
 }
 
 .l-singularity-milestone-modal-container-inner .c-laitela-milestone {
-  height: 19rem;
+  height: 22rem;
 }
 
 .l-singularity-milestone-sort-container {
