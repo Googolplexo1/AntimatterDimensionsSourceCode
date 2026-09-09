@@ -83,7 +83,7 @@ export default {
 
       const ascMult = this.powerDMPerAscension * this.interval / this.intervalAfterAscension;
       const line2 = this.hoverOverAscension
-        ? `${formatX(ascMult, 2, 2)}/с`
+        ? `${formatX(ascMult, 2, 2)}`
         : `Цена: ${this.formatDMCost(this.powerDMCost)} ТМ`;
       return `${line1}<br>${line2}`;
     },
@@ -93,7 +93,7 @@ export default {
       const line1 = this.hoverOverAscension ? `<b>${str}</b>` : str;
       const ascMult = POWER_DE_PER_ASCENSION * this.interval / this.intervalAfterAscension;
       const line2 = this.hoverOverAscension
-        ? `${formatX(ascMult, 2, 2)}/с`
+        ? `${formatX(ascMult, 2, 2)}`
         : `Цена: ${this.formatDMCost(this.powerDECost)} ТМ`;
       return `${line1}<br>${line2}`;
     },
