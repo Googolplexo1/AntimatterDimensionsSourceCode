@@ -81,16 +81,16 @@ export const glyphEffects = {
     isGenerated: true,
     glyphTypes: ["time"],
     singleDesc: () => (GlyphAlteration.isAdded("time")
-      ? "Множитель ×{value} к получению Очков Вечности. [Оно возведено в степень ]{value2}"
+      ? "Множитель ×{value} к получению Очков Вечности. [Увеличить его степень на ]{value2}"
       : "Множитель ×{value} к получению Очков Вечности"),
     totalDesc: () => (GlyphAlteration.isAdded("time")
       ? "Множитель ×{value} к получению Очков Вечности. Оно возведено в степень {value2}"
       : "Множитель ×{value} к получению Очков Вечности"),
     genericDesc: () => (GlyphAlteration.isAdded("time")
-      ? "Множитель к получению Очков Вечности; оно возведено в степень"
+      ? "Множитель к получению Очков Вечности; увеличить его степень"
       : "Множитель к получению Очков Вечности"),
     shortDesc: () => (GlyphAlteration.isAdded("time")
-      ? "×{value} и ^{value2} ОВ"
+      ? "×{value} ОВ и +{value2} к степени"
       : "×{value} ОВ"),
     effect: (level, strength) => Math.pow(level * strength, 3) * 100,
     formatEffect: x => format(x, 2, 3),
@@ -144,16 +144,16 @@ export const glyphEffects = {
     isGenerated: true,
     glyphTypes: ["dilation"],
     singleDesc: () => (GlyphAlteration.isAdded("dilation")
-      ? "Вы производите {value} Теоремы Времени в час. [Множитель ×]{value2}[ к производству Теорем Времени]"
+      ? "Вы производите {value} Теоремы Времени в час. [Увеличить множитель к производству Теорем Времени]"
       : "Вы производите {value} Теоремы Времени в час"),
     totalDesc: () => (GlyphAlteration.isAdded("dilation")
       ? "Вы производите {value} Теоремы Времени в час. Множитель ×{value2} к производству Теорем Времени"
       : "Вы производите {value} Теоремы Времени в час"),
     genericDesc: () => (GlyphAlteration.isAdded("dilation")
-      ? "Производство Теорем Времени и множитель к производству Теорем Времени"
+      ? "Производство Теорем Времени; множитель к производству Теорем Времени увеличен"
       : "Производство Теорем Времени"),
     shortDesc: () => (GlyphAlteration.isAdded("dilation")
-      ? "+{value} ТВ/час; ×{value2} ТВ"
+      ? "+{value} ТВ/час; множитель ТВ"
       : "+{value} ТВ/час"),
     effect: (level, strength) => Math.pow(level * strength, 0.5) / 10000,
     /** @type {function(number): string} */
@@ -302,16 +302,16 @@ export const glyphEffects = {
     isGenerated: true,
     glyphTypes: ["infinity"],
     singleDesc: () => (GlyphAlteration.isAdded("infinity")
-      ? "Множитель ×{value} к получению Очков Бесконечности. [Оно возведено в степень ]{value2}"
+      ? "Множитель ×{value} к получению Очков Бесконечности. [Увеличить его степень на ]{value2}"
       : "Множитель ×{value} к получению Очков Бесконечности"),
     totalDesc: () => (GlyphAlteration.isAdded("infinity")
       ? "Множитель ×{value} к получению Очков Бесконечности. Оно возведено в степень {value2}"
       : "Множитель ×{value} к получению Очков Бесконечности"),
     genericDesc: () => (GlyphAlteration.isAdded("infinity")
-      ? "Множитель к получению Очков Бесконечности; оно возведено в степень"
+      ? "Множитель к получению Очков Бесконечности; увеличить его степень"
       : "Множитель к получению Очков Бесконечности"),
     shortDesc: () => (GlyphAlteration.isAdded("infinity")
-      ? "×{value} и ^{value2} ОБ"
+      ? "×{value} ОБ и +{value2} к степени"
       : "×{value} ОБ"),
     effect: (level, strength) => Math.pow(level * (strength + 1), 6) * 10000,
     formatEffect: x => format(x, 2, 3),
@@ -345,16 +345,16 @@ export const glyphEffects = {
     isGenerated: true,
     glyphTypes: ["power"],
     singleDesc: () => (GlyphAlteration.isAdded("power")
-      ? "Увеличить степень множителей Измерений Антиматерии на {value}. [Множитель ×]{value2}[ к цене Галактик Антиматерии]"
+      ? "Увеличить степень множителей Измерений Антиматерии на {value}. [Галактики Антиматерии дешевле]"
       : "Увеличить степень множителей Измерений Антиматерии на {value}"),
     totalDesc: () => (GlyphAlteration.isAdded("power")
       ? "Множители Измерений Антиматерии возведены в степень {value}. Множитель ×{value2} к цене Галактик Антиматерии"
       : "Множители Измерений Антиматерии возведены в степень {value}"),
     genericDesc: () => (GlyphAlteration.isAdded("power")
-      ? "Увеличить степень множителей Измерений Антиматерии; множитель к цене Галактик Антиматерии"
+      ? "Увеличить степень множителей Измерений Антиматерии; Галактики Антиматерии дешевле"
       : "Увеличить степень множителей Измерений Антиматерии"),
     shortDesc: () => (GlyphAlteration.isAdded("power")
-      ? "+{value} к степени ИА; ×{value2} к цене ГА"
+      ? "+{value} к степени ИА; ГА дешевле"
       : "+{value} к степени ИА"),
     effect: (level, strength) => 1.015 + Math.pow(level, 0.2) * Math.pow(strength, 0.4) / 75,
     formatEffect: x => format(x, 3, 3),
@@ -410,6 +410,7 @@ export const glyphEffects = {
     shortDesc: () => `×{value} ко множителю за ${formatInt(10)} ИА`,
     effect: (level, strength) => 1 + level * strength / 12,
     formatEffect: x => format(x, 2, 2),
+    formatSingleEffect: x => format(x - 1, 2, 2),
     combine: GlyphCombiner.addExponents,
     enabledInDoomed: true,
   },
@@ -447,7 +448,7 @@ export const glyphEffects = {
     isGenerated: true,
     glyphTypes: ["effarig"],
     singleDesc: "Скорость игры возведена в степень {value}",
-    genericDesc: "Увеличить степень скорости игры",
+    genericDesc: "Скорость игры возведена в степень",
     shortDesc: "^{value} к скорости игры",
     effect: (level, strength) => 1 + Math.pow(level, 0.25) * Math.pow(strength, 0.4) / 75,
     formatEffect: x => format(x, 3, 3),
@@ -459,7 +460,7 @@ export const glyphEffects = {
     isGenerated: true,
     glyphTypes: ["effarig"],
     singleDesc: "Множитель достижений возведён в степень {value}",
-    genericDesc: "Увеличить степень множителя достижений",
+    genericDesc: "Множитель достижений возведён в степень",
     shortDesc: "^{value} ко множителю достижений",
     effect: (level, strength) => 1 + Math.pow(level, 0.4) * Math.pow(strength, 0.6) / 60 +
       GlyphAlteration.sacrificeBoost("effarig") / 10,
