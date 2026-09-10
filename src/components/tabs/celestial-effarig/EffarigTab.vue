@@ -112,7 +112,7 @@ export default {
           </span>
           <span v-if="shardPower > 1">
             <br>
-            Кроме того, жертвенные ценнности глифов возведены в степень {{ format(shardPower, 0, 2) }}.
+            Кроме того, жертвенные ценности глифов возведены в степень {{ format(shardPower, 0, 2) }}.
           </span>
         </div>
         <div class="c-effarig-relic-description">
