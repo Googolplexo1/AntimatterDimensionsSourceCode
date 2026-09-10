@@ -137,7 +137,7 @@ export default {
         ? dbEntry.formatSingleEffect(value)
         : dbEntry.formatEffect(value);
       const alteredValue = dbEntry.conversion
-        ? dbEntry.formatSecondaryEffect(dbEntry.conversion(value))
+        ? dbEntry.formatSingleSecondaryEffect(dbEntry.conversion(value))
         : "";
       return {
         text: `${rawDesc}`
