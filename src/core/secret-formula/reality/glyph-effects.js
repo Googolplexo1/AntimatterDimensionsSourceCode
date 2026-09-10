@@ -97,6 +97,7 @@ export const glyphEffects = {
     combine: GlyphCombiner.multiply,
     conversion: x => 1 + Math.log10(x) / 1000,
     formatSecondaryEffect: x => format(x, 4, 4),
+    formatSingleSecondaryEffect: x => format(x - 1, 4, 4),
     alteredColor: () => GlyphAlteration.getAdditionColor("time"),
     alterationType: ALTERATION_TYPE.ADDITION
   },
@@ -201,6 +202,7 @@ export const glyphEffects = {
     isGenerated: true,
     glyphTypes: ["replication"],
     singleDesc: "Увеличить степень множителя Репликанти на {value}",
+    genericDesc: "Увеличить степень множителя Репликанти",
     totalDesc: "Множитель Репликанти возведён в степень {value}",
     shortDesc: "+{value} к степени Репликанти",
     effect: (level, strength) => 1.1 + Math.pow(level, 0.5) * strength / 25 +
@@ -320,6 +322,7 @@ export const glyphEffects = {
     softcap: value => ((Effarig.eternityCap !== undefined) ? Math.min(value, Effarig.eternityCap.toNumber()) : value),
     conversion: x => 1 + Math.log10(x) / 1800,
     formatSecondaryEffect: x => format(x, 4, 4),
+    formatSingleSecondaryEffect: x => format(x - 1, 4, 4),
     alteredColor: () => GlyphAlteration.getAdditionColor("infinity"),
     alterationType: ALTERATION_TYPE.ADDITION
   },
