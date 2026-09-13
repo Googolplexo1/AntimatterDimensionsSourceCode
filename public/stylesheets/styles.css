@@ -6688,7 +6688,7 @@ kbd {
 }
 
 .o-v-unlock-desc {
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .o-v-unlock-amount {
@@ -6769,8 +6769,8 @@ kbd {
 }
 
 .l-v-reduction {
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   font-size: 1.5rem;
   border-radius: var(--var-border-radius, 50%);
   padding: 0;
