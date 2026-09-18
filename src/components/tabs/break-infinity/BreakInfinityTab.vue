@@ -60,7 +60,7 @@ export default {
   <div class="l-break-infinity-tab">
     <div v-if="!isUnlocked">
       Снизьте интервал автоматики Большого Сжатия до
-      {{ format(0.1, 1, 1) }} секунды, чтобы получить возможность Преодолеть Бесконечность.
+      {{ format(0.1, 1, 1) }} секунды, чтобы получить возможность преодолеть Бесконечность.
     </div>
     <BreakInfinityButton class="l-break-infinity-tab__break-btn" />
     <div
