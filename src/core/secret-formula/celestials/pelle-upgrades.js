@@ -72,7 +72,7 @@ export const pelleUpgrades = {
   },
   keepAutobuyers: {
     id: 2,
-    description: "Улучшения автоматики не сбрасываются на армагеддоне",
+    description: "Улучшения автоматики не сбрасываются на армагеддоне и вечности",
     cost: 5e6,
     formatCost,
   },
@@ -120,7 +120,7 @@ export const pelleUpgrades = {
   },
   keepInfinityChallenges: {
     id: 10,
-    description: "Выполнения Испытаний Бесконечности не сбрасываются на армагеддоне",
+    description: "Выполнения Испытаний Бесконечности не сбрасываются на армагеддоне и вечности",
     cost: 1e15,
     formatCost,
   },
