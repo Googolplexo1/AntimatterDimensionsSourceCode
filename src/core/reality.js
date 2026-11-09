@@ -779,7 +779,6 @@ function restoreCelestialRuns(celestialRunState) {
 // which might otherwise be higher. Most explicit values here are the values of upgrades at their caps.
 export function applyRUPG10(real = true) {
   if (real && !Pelle.isDoomed) Currency.eternities.bumpTo(100);
-  playerInfinityUpgradesOnReset(false);
   if (EternityMilestone.keepAutobuyers.isReached) NormalChallenges.completeAll();
   if (PelleUpgrade.replicantiStayUnlocked.canBeApplied || (!Pelle.isDoomed && player.eternities.gte(10))) {
     Replicanti.amount = Replicanti.amount.clampMin(1);
@@ -806,6 +805,8 @@ export function applyRUPG10(real = true) {
   if (EternityMilestone.keepInfinityUpgrades.isReached && !Player.isInAntimatterChallenge) player.dimensionBoosts = Math.max(4, player.dimensionBoosts);
   if (EternityMilestone.keepInfinityUpgrades.isReached && !Player.isInAntimatterChallenge) player.galaxies = Math.max(1, player.galaxies);
   if (EternityMilestone.keepAutobuyers.isReached) player.break = true;
+
+  playerInfinityUpgradesOnReset(false);
 
   applyEU1();
 }

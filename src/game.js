@@ -64,7 +64,12 @@ export function playerInfinityUpgradesOnReset(reset = true) {
     keptUpgrades = keptUpgrades.union(infinityUpgrades);
   }
 
-  if (reset) {
+  if (Pelle.isDoomed) {
+    player.infinityUpgrades = keptUpgrades.intersection(player.infinityUpgrades);
+    for (let i = 0; i < 3; i++) {
+      player.infinityRebuyables[i] = Math.min(player.infinityRebuyables[i], keptRebuyables[i]);
+    }
+  } else if (reset) {
     player.infinityUpgrades = keptUpgrades;
     player.infinityRebuyables = keptRebuyables;
   } else {

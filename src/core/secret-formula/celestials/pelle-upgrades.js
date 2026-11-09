@@ -96,7 +96,7 @@ export const pelleUpgrades = {
   },
   keepInfinityUpgrades: {
     id: 6,
-    description: "Улучшения Бесконечности не сбрасываются на армагеддоне",
+    description: "Улучшения Бесконечности не сбрасываются на армагеддоне и вечности",
     cost: 1e10,
     formatCost,
   },
@@ -108,7 +108,7 @@ export const pelleUpgrades = {
   },
   keepBreakInfinityUpgrades: {
     id: 8,
-    description: "Улучшения Преодоления не сбрасываются на армагеддоне",
+    description: "Улучшения Преодоления не сбрасываются на армагеддоне и вечности",
     cost: 1e12,
     formatCost,
   },
