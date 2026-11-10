@@ -47,7 +47,7 @@ export default {
       return `${this.reachedCap && !this.ignoreCapped ? "Ограничено" : this.label}: `;
     },
     effectDisplay() {
-      if (this.effectValue || this.reachedCap)
+      if (this.effectValue !== undefined || this.reachedCap)
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.effect = this.formatEffect(this.reachedCap ? this.cap : this.effectValue);
       return this.effect;
