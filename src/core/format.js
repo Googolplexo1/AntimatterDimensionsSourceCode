@@ -141,6 +141,7 @@ window.pluralize = function pluralize(word, amount) {
   if (word === "Древо") return (dual ? "Древа" : "Древ");
   if (word === "год") return (dual ? "года" : "лет");
   if (word === "удалён") return "удалено";
+  if (word === "Создан") return "Создано";
   if (word === "постоянной") return "постоянных";
   if (word === "осталась") return "осталось";
   if (word === "Расширением") return "Расширениями";
