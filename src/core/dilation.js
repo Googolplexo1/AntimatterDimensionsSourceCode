@@ -171,12 +171,12 @@ export function getBaseTP(antimatter, requireEternity) {
     : Ra.unlocks.unlockDilationStartingTP.effectOrDefault(antimatter);
   let baseTP = Decimal.pow(Decimal.log10(am) / 400, 1.5);
   if (Enslaved.isRunning) baseTP = baseTP.pow(Enslaved.tachyonNerf);
-  return baseTP.floor();
+  return baseTP;
 }
 
 // Returns the TP that would be gained this run
 export function getTP(antimatter, requireEternity) {
-  return getBaseTP(antimatter, requireEternity).times(tachyonGainMultiplier());
+  return getBaseTP(antimatter, requireEternity).times(tachyonGainMultiplier()).floor();
 }
 
 // Returns the amount of TP gained, subtracting out current TP; used for displaying gained TP, text on the
