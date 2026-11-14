@@ -453,7 +453,7 @@ export const AD = {
   },
   nerfPelle: {
     name: "Условие Обречённой Реальности",
-    multValue: 0.1,
+    multValue: dim => Decimal.pow(0.1, dim ? 1 : MultiplierTabHelper.activeDimCount("AD")),
     isActive: () => Pelle.isDoomed,
     icon: MultiplierTabIcons.PELLE,
   },
