@@ -360,7 +360,7 @@ export const pelleQuotes = {
         background: primaryBackground("laitela"),
         1: paramount,
       }, {
-        text: "Она имеет власть над всеми, и все ей подчиняются.",
+        text: "Она имеет власть над всеми, подчиняется одному.",
         background: primaryBackground("laitela"),
       }, {
         text: "Если ты не падаешь передо мной, ты обычно падаешь перед ней.",
