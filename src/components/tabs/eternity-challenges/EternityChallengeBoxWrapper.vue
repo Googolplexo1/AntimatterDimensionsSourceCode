@@ -84,7 +84,7 @@ export default {
       }
       if (this.isUnlocked) return "Начать";
       if (this.canBeUnlocked) return "Разблокировать";
-      return "Заблокировано";
+      return "Недоступно";
     }
   }
 };
